@@ -67,3 +67,16 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - aamarPay merchant account is in Vitlous Technology's name; domains are managed in Cloudflare.
 - Logos made together on Sat 31 Oct.
 - Live website shows the approved paid prices with "free during the Free Beta".
+
+## 30 Oct 2026 — Motion Studio international standard (owner)
+- Motion Studio must be international standard. Approved together:
+  1. 4K Escalating (upscaled from 1080p Native), priced by the ladder ratio (1080p Esc ÷ 720p Native = 85 ÷ 72 applied to 1080p Native ৳120): 3D ৳142, Cinematic ৳192 (+35%), Islamic ৳107 / ৳144, USD $1.57 / $2.12 (BDT +35% at ৳122) — one rate for Starter and above like 1080p Native; not in Mini, Free Trial or Free Beta (computed values = default, editable).
+  2. Base frame rate 25 fps; 24/25/30/60 selectable, controlled from admin.
+  3. Pro export: ProRes master, SRT/VTT captions, FCPXML/EDL timeline (CPU/FFmpeg only, no GPU; ProRes files count toward storage).
+  4. Loudness: YouTube −14 LUFS, broadcast EBU R128 −23 LUFS.
+  5. More dubbing/voice languages (Spanish, Portuguese, Indonesian, German, Turkish …) on top of bn, en, hi, ur, ar, fr — each after its quality gate.
+  6. DMCA designated agent + CCPA.
+  7. SOC 2 later.
+  8. EUR and GBP prices besides USD (Paddle).
+  9. Motion Studio API + Zapier/Make.
+  10. 24-hour English support: AI first, then human; SLA for enterprise.
