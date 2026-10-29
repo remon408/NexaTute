@@ -15,14 +15,11 @@
 - NexaLogicDev development from March 2027, launch September 2027.
 
 ## Open owner questions
-- Nexa Co-Teacher Pass ৳100 = $1 under the rounding rule (an older note said $2) — confirm.
-- Co-Admin activity log kept 7 years (default) — confirm.
-- L14 learner abroad: "prices in USD, app language of their choice" (was "English UI and USD") — confirm.
-- imo business API access; lawyer/DPO check for Co-Admin on chat apps.
+- Answered 29 Oct 2026 (see decisions.md): Co-Teacher Pass $1; Co-Admin log 7 years; L14 USD + own language; imo business API still to apply; Claude drafts legal positions for the lawyer to check.
 
 ## Next steps (owner's order, updated 29 Oct 2026 night)
 Owner: "start properly — dates may move if needed"; new features paused until Free Beta; people for accounting, legal and developer review are available. All decisions after v32.10 are in `docs/decisions.md` (to go into the next blueprint build).
-1. **Live websites** nexatute.com and remonlogicstudio.com (home, features, prices, contact, terms, privacy, refund, children's data) — needed before aamarPay website check, Meta, YouTube API, Paddle. Open questions: show trade licence / registration? support phone + email? (reminder Sat 31 Oct 10:00 Dhaka).
+1. **Live websites** nexatute.com and remonlogicstudio.com (home, features, prices, contact, terms, privacy, refund, children's data) — needed before aamarPay website check, Meta, YouTube API, Paddle. Trade licence not shown; support phone + email to decide (reminder Sat 31 Oct 10:00 Dhaka).
 2. NexaTute MVP list + week-by-week plan → GitHub Issues for lead / back-end / front-end. 2-week closed pilot before the public Free Beta; Free Beta pass conditions decide the paid launch.
 3. **Remon Motion Studio** prototype, then **NexaLogicDev** prototype — separate canvases, same rules.
 4. Payments: aamarPay (already has a merchant account, supports international) until the Paddle API is approved.
