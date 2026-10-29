@@ -42,3 +42,11 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - All servers run as one cluster with priority (owner first); every product pays only for what it actually uses.
 - Further rules (approved): one company ledger with a product tag per entry (NexaTute / Motion Studio / NexaLogicDev / common); unmeterable costs (Cloudflare plan, monitoring, security tools, backups, domains, C2PA certificate) → "common platform" pool split by total usage ratio; shared wallet top-ups = company liability, revenue of the product where spent, when spent; long-term bills spread monthly before allocation; emergency cloud GPU charged directly to the product that used it; missing meter data → last month's ratio + alert + correction next month; allocation rules locked per financial year (change at year start, two approvals); pre-launch development cost expensed or capitalised as the chartered accountant decides; Paddle payouts split into gross, fee and tax and auto-matched to orders.
 - Also approved: funding-source tag on every entry (Funding A / Funding B) with per-fund investor reports; VAT rate from the product tag (set by the chartered accountant); margin alert per video-/class-minute below 30% (default, editable); monthly budgets per product/category with 80%/100% alerts; meter-data copy kept with each month's allocation as audit proof; foreign-currency bills converted at one rate before splitting.
+
+## 29 Oct 2026 — Development start (owner)
+- Start properly, quality first; launch dates may move later if needed.
+- New features paused until Free Beta (owner: "solved").
+- People for accounting, legal and developer review are available.
+- Platform approvals need a live website first.
+- aamarPay merchant account exists and supports international payments → used for international payments too until the Paddle API is approved.
+- Bangla voices, question banks and quality gates prepared before launch on the night-time servers.
