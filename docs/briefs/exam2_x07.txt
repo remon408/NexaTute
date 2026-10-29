@@ -1,0 +1,12 @@
+Learner side of the Exam & Assessment additions in X07-Prototype-Test.dc.html (folder SP/s2/exam2/x07/). First read SP/s2/briefs/exam2_common.txt and SP/s2/exam2/spec.txt.
+Build in X07 (phone 390, sample learner Tanvir, SSC; adult examples where needed — e.g. a separate sample adult learner "Rakib Hasan, 22" for certificate/proctoring/employer/coding):
+- Spec 1 exam recovery: simulate a connection loss during a test ("offline — your answers are saved on this phone") → reconnect → "resumed where you stopped"; show the different timer rule for practice vs timed/ranked tests and the server-outage time credit.
+- Spec 2: ranked/batch/certificate tests show "questions and options are shuffled for each learner"; a sample "flagged for review" notice to the learner with appeal (never a penalty by itself).
+- Spec 3: an adaptive "Smart practice" / placement flow: questions get easier/harder, progress "about 10–20 questions", result as a level range with "why this level"; a note that board-style mocks and ranks are never adaptive.
+- Spec 4: the "not board-recognised" note on every practice exam start screen and result.
+- Spec 5: a short speaking test sample (e.g. IELTS speaking part 1 or Bangla reading aloud) with marks on clarity, fluency, vocabulary, grammar and a note "accent is never marked"; appeal button.
+- Spec 6: coding test (skill course, adult): problem, code editor box (plain textarea with monospace), run visible tests, submit → hidden tests passed x/y, AI style hints, similarity note; sandbox limits note.
+- Spec 8: certificate exam: pass mark, competency level result (Foundation/Proficient/Advanced), retake rule (after 7 days, 3 per 30 days, best counts), certificate ID + QR verify sample, "not accreditation" note.
+- Spec 9: proctored certificate exam for the adult: consent screen (what is collected: face check, presence checks, focus events, snapshots every few minutes, kept 30 days, deleted after) → exam with a small proctoring indicator → a flag notice ("a person will review; you can appeal") → appeal form. For under-18 (Tanvir) show the reduced version (no snapshots/video, guardian consent).
+- Spec 10: an employer recruitment test invite for the adult: consent to share results with the employer, what they see, "never the only basis for hiring" note.
+Keep all existing X07 flows (incl. today's new question types) working.

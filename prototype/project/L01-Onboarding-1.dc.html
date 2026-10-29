@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Onboarding: welcome to face check</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.inp{height:52px;border:1px solid #D3D8E4;border-radius:14px;background:#fff;padding:0 16px;font:500 16px 'Hind Siliguri',sans-serif;color:#141A33;width:100%;box-sizing:border-box}
+.lbl{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.otp{width:46px;height:56px;border:1px solid #D3D8E4;border-radius:12px;background:#fff;text-align:center;font:700 22px 'Hind Siliguri',sans-serif;color:#141A33;box-sizing:border-box}
+.role{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid #E2E6EF;border-radius:16px;background:#fff;font:600 15px 'Hind Siliguri',sans-serif;color:#141A33;text-align:left;width:100%;box-sizing:border-box;min-height:64px}
+.role .ic{width:40px;height:40px;border-radius:12px;background:#ECEBFD;color:#3B34C9;display:flex;align-items:center;justify-content:center;flex:none}
+.step{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.45}
+.step i{width:24px;height:24px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:700}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Onboarding 1</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 1.1 Welcome -->
+<div class="col">
+  <div class="cap"><b>1.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div class="top">
+      <div style="width:36px;height:36px;border-radius:11px;background:#3B34C9;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px">N</div>
+      <div style="font-size:19px;font-weight:700">NexaTute</div>
+      <span class="chip" style="margin-left:auto">{{ t.k003 }}</span>
+    </div>
+    <div class="bd">
+      <div style="background:#141A33;border-radius:24px;padding:18px;color:#fff;display:flex;flex-direction:column;gap:12px">
+        <div class="row" style="justify-content:space-between">
+          <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k004 }}</span>
+          <span style="font-size:12px;color:#C9CDF0">{{ t.k005 }}</span>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:14px;color:#141A33;font-size:18px;font-weight:600;line-height:1.7">
+          x² − 5x + 6 = 0<br><span style="color:#3B34C9">(x − 2)(x − 3) = 0</span>
+        </div>
+        <div style="font-size:14px;line-height:1.5;color:#E3E5F7">{{ t.k006 }}</div>
+      </div>
+      <h2 class="t1">{{ t.k007 }}</h2>
+      <p class="sm" style="font-size:14px">{{ t.k008 }}</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <button class="role" style="border:2px solid #3B34C9"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>{{ t.k009 }}<svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="margin-left:auto;color:#3B34C9"><path d="M5 12l5 5 9-10"/></svg></button>
+        <button class="role"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.2 2.5 3.5 5.5"/></svg></span>{{ t.k010 }}</button>
+        <button class="role"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg></span>{{ t.k011 }}</button>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k012 }}</button>
+      <p class="sm" style="text-align:center">{{ t.k013 }} <a href="#">{{ t.k014 }}</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- 1.2 Sign up -->
+<div class="col">
+  <div class="cap"><b>1.2</b>{{ t.k015 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k016 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="xs" style="margin-left:auto">{{ t.k017 }}</span>
+    </div>
+    <div class="bd" style="gap:18px">
+      <div>
+        <h2 class="t1">{{ t.k018 }}</h2>
+        <p class="sm" style="margin-top:6px;font-size:14px">{{ t.k019 }}</p>
+      </div>
+      <div>
+        <label class="lbl" for="ph12">{{ t.k020 }}</label>
+        <div class="row" style="gap:8px">
+          <div class="inp" style="width:92px;display:flex;align-items:center;justify-content:center;flex:none">+880</div>
+          <input id="ph12" class="inp" value="1712 345 678">
+        </div>
+      </div>
+      <!-- fix16 (owner 28 Oct 13:54): OTP channel choice — SMS / Email / WhatsApp (admin can switch each off in X10) -->
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <p class="lbl" style="margin:0">{{ fx.och_h }}</p>
+        <div class="row" style="gap:6px;align-items:stretch"><div style="display:flex;flex-direction:column;gap:1px;padding:6px 10px;border:1px solid #D3D8E4;border-radius:12px;background:#fff;flex:1 1 0;min-width:0;border:2px solid #3B34C9;background:#F5F4FF"><b style="font-size:13px">{{ fx.och_sms }} ✓</b><span class="xs">{{ fx.l_sms }}</span></div><div style="display:flex;flex-direction:column;gap:1px;padding:6px 10px;border:1px solid #D3D8E4;border-radius:12px;background:#fff;flex:1 1 0;min-width:0"><b style="font-size:13px">{{ fx.och_email }}</b><span class="xs">{{ fx.l_email }}</span></div><div style="display:flex;flex-direction:column;gap:1px;padding:6px 10px;border:1px solid #D3D8E4;border-radius:12px;background:#fff;flex:1 1 0;min-width:0"><b style="font-size:13px">{{ fx.och_wa }}</b><span class="xs">{{ fx.l_wa }}</span></div></div>
+      </div>
+      <div>
+        <label class="lbl">{{ t.k021 }}</label>
+        <div class="row" style="justify-content:space-between">
+          <input class="otp" value="4" aria-label="{{ t.k022 }}"><input class="otp" value="8" aria-label="{{ t.k023 }}"><input class="otp" value="2" aria-label="{{ t.k024 }}"><input class="otp" value="9" aria-label="{{ t.k025 }}"><input class="otp" value="" aria-label="{{ t.k026 }}" style="border:2px solid #3B34C9"><input class="otp" value="" aria-label="{{ t.k027 }}">
+        </div>
+        <p class="xs" style="margin:10px 0 0">{{ t.k028 }} <b style="color:#141A33">0:42</b> {{ t.k029 }} · <u style="color:#3B34C9;font-weight:600">{{ fx.try_other }}</u></p>
+        <p class="xs" style="margin:6px 0 0;color:#141A33">🔒 {{ fx.sec_rules }}</p>   <!-- fix17: sign-in safety (defaults) -->
+      </div>
+      <div class="row" style="gap:12px;color:#59617A;font-size:13px"><div style="flex:1;height:1px;background:#E2E6EF"></div>{{ t.k030 }}<div style="flex:1;height:1px;background:#E2E6EF"></div></div>
+      <button class="btn2"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>{{ t.k031 }}</button>
+      <div class="cd" style="display:flex;gap:12px;background:#F0F1FB;border-color:#DCDDF7;margin-top:auto">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+        <p class="sm" style="color:#141A33">{{ t.k032 }}</p>
+      </div>
+      <button class="btn">{{ t.k033 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 1.3 Age check -->
+<div class="col">
+  <div class="cap"><b>1.3</b>{{ t.k034 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k016 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="xs" style="margin-left:auto">{{ t.k035 }}</span>
+    </div>
+    <div class="bd" style="gap:16px">
+      <div>
+        <h2 class="t1">{{ t.k036 }}</h2>
+        <p class="sm" style="margin-top:6px;font-size:14px">{{ t.k037 }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px">
+        <div><label class="lbl" for="d13">{{ t.k038 }}</label><input id="d13" class="inp" value="14"></div>
+        <div><label class="lbl" for="m13">{{ t.k039 }}</label><input id="m13" class="inp" value="03"></div>
+        <div><label class="lbl" for="y13">{{ t.k040 }}</label><input id="y13" class="inp" value="2011"></div>
+      </div>
+      <div class="cd" style="background:#FFF6E6;border-color:#F6DFB2;display:flex;gap:12px">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#8A4B00"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>
+        <p class="sm" style="color:#5C3300">{{ t.k041 }}</p>
+      </div>
+      <div>
+        <label class="lbl" for="g13">{{ t.k042 }}</label>
+        <input id="g13" class="inp" value="+880 1819 456 210">
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+        <p class="t3">{{ t.k043 }}</p>
+        <div class="step"><i style="background:#E3F5EC;color:#0F6B40">✓</i>{{ t.k044 }}</div>
+        <div class="step"><i style="background:#ECEBFD;color:#3B34C9">2</i>{{ t.k045 }}</div>
+        <div class="step"><i style="background:#ECEBFD;color:#3B34C9">3</i>{{ t.k046 }}</div>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k047 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 1.4 Face check -->
+<div class="col">
+  <div class="cap"><b>1.4</b>{{ t.k048 }}</div>
+  <div class="ph" style="background:#0E1330;color:#fff">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k016 }}" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span style="margin-left:auto;font-size:12px;color:#C9CDF0">{{ t.k049 }}</span>
+    </div>
+    <div class="bd" style="align-items:center;gap:18px">
+      <h2 class="t1" style="text-align:center">{{ t.k050 }}</h2>
+      <div style="width:260px;height:320px;border-radius:50%;border:4px solid #7C77F0;display:flex;align-items:center;justify-content:center;background:#1B2250;position:relative">
+        <svg viewBox="0 0 120 150" width="150" height="190" aria-hidden="true"><ellipse cx="60" cy="58" rx="34" ry="42" fill="#2B3473"/><path d="M8 150c6-34 26-50 52-50s46 16 52 50z" fill="#2B3473"/></svg>
+        <span class="chip" style="position:absolute;bottom:18px;background:#E3F5EC;color:#0F6B40">{{ t.k051 }}</span>
+      </div>
+      <div class="row" style="gap:8px">
+        <div style="width:56px;height:6px;border-radius:9px;background:#7C77F0"></div>
+        <div style="width:56px;height:6px;border-radius:9px;background:#7C77F0"></div>
+        <div style="width:56px;height:6px;border-radius:9px;background:rgba(255,255,255,.2)"></div>
+      </div>
+      <p style="margin:0;font-size:13px;color:#C9CDF0">{{ t.k052 }}</p>
+      <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px;display:flex;gap:12px;margin-top:auto;width:100%;box-sizing:border-box">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#B9BEF5"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+        <p style="margin:0;font-size:13px;line-height:1.5;color:#E3E5F7">{{ t.k053 }}</p>
+      </div>
+      <a href="#" style="color:#C9CDF0;font-size:14px">{{ t.k054 }}</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix16 (owner 28 Oct 13:54): OTP channel choice — 6 languages, identical keys
+  fx16(l) { var D = {"bn": {"och_h": "কোড কোথায় পাঠাব?", "och_sms": "SMS", "och_email": "ইমেইল", "och_wa": "WhatsApp", "try_other": "অন্যভাবে চেষ্টা করো", "l_sms": "+880 17•• ••• 678-এ কোড যাবে", "l_email": "t••••@gmail.com-এ", "l_wa": "WhatsApp-এ +880 17•• ••• 678", "sec_rules": "60 সেকেন্ড পরে নতুন কোড · দিনে সর্বোচ্চ 5টি কোড · 5 বার ভুল কোড দিলে 15 মিনিট সাইন-ইন বন্ধ (ডিফল্ট)"}, "en": {"och_h": "Where should we send the code?", "och_sms": "SMS", "och_email": "Email", "och_wa": "WhatsApp", "try_other": "Try another way", "l_sms": "Code to +880 17•• ••• 678", "l_email": "to t••••@gmail.com", "l_wa": "on WhatsApp +880 17•• ••• 678", "sec_rules": "New code after 60 s · up to 5 codes a day · 5 wrong codes lock sign-in for 15 minutes (default)"}, "hi": {"och_h": "कोड कहाँ भेजें?", "och_sms": "SMS", "och_email": "ईमेल", "och_wa": "WhatsApp", "try_other": "दूसरे तरीके से कोशिश करो", "l_sms": "+880 17•• ••• 678 पर कोड", "l_email": "t••••@gmail.com पर", "l_wa": "WhatsApp पर +880 17•• ••• 678", "sec_rules": "60 सेकंड बाद नया कोड · दिन में ज़्यादा से ज़्यादा 5 कोड · 5 बार ग़लत कोड पर 15 मिनट साइन-इन बंद (डिफ़ॉल्ट)"}, "ur": {"och_h": "کوڈ کہاں بھیجیں؟", "och_sms": "SMS", "och_email": "ای میل", "och_wa": "WhatsApp", "try_other": "کسی اور طریقے سے کوشش کرو", "l_sms": "کوڈ ⁦+880 17•• ••• 678⁩ پر", "l_email": "⁦t••••@gmail.com⁩ پر", "l_wa": "WhatsApp پر ⁦+880 17•• ••• 678⁩", "sec_rules": "⁦60⁩ سیکنڈ بعد نیا کوڈ · دن میں زیادہ سے زیادہ ⁦5⁩ کوڈ · ⁦5⁩ بار غلط کوڈ پر ⁦15⁩ منٹ سائن اِن بند (ڈیفالٹ)"}, "ar": {"och_h": "أين نرسل الرمز؟", "och_sms": "SMS", "och_email": "البريد الإلكتروني", "och_wa": "WhatsApp", "try_other": "جرّب طريقة أخرى", "l_sms": "الرمز إلى ⁦+880 17•• ••• 678⁩", "l_email": "إلى ⁦t••••@gmail.com⁩", "l_wa": "على WhatsApp ⁦+880 17•• ••• 678⁩", "sec_rules": "رمز جديد بعد ⁦60⁩ ثانية · حتى ⁦5⁩ رموز يوميًا · ⁦5⁩ رموز خاطئة تقفل الدخول ⁦15⁩ دقيقة (افتراضي)"}, "fr": {"och_h": "Où t’envoyer le code ?", "och_sms": "SMS", "och_email": "E-mail", "och_wa": "WhatsApp", "try_other": "Essayer autrement", "l_sms": "Code au +880 17•• ••• 678", "l_email": "à t••••@gmail.com", "l_wa": "sur WhatsApp +880 17•• ••• 678", "sec_rules": "Nouveau code après 60 s · 5 codes max par jour · 5 codes faux bloquent la connexion 15 minutes (par défaut)"}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: 'স্বাগতম থেকে মুখ যাচাই — এক অ্যাকাউন্ট, এক শিক্ষার্থী',
+      k002: 'স্বাগতম ও ভূমিকা বাছাই',
+      k003: 'বাংলা · EN',
+      k004: 'Nexa Teacher (AI) · লাইভ',
+      k005: 'গণিত · 1:1',
+      k006: '“আগে তুমি চেষ্টা করো, তারপর আমি দেখাব।”',
+      k007: 'AI শিক্ষকের সাথে প্রতিদিন শেখো',
+      k008: 'SSC, HSC, ভর্তি, BCS, IELTS সহ সব কোর্স — লাইভ Nexa Teacher, লেখায় Nexa Co-Teacher আর তুমি চাইলে ক্লাসের রেকর্ডিং।',
+      k009: 'আমি শিক্ষার্থী',
+      k010: 'আমি অভিভাবক',
+      k011: 'শিক্ষক / প্রতিষ্ঠান',
+      k012: 'শুরু করি',
+      k013: 'অ্যাকাউন্ট আছে?',
+      k014: 'লগ-ইন করো',
+      k015: 'Nexa ID — মোবাইল ও OTP',
+      k016: 'পেছনে',
+      k017: 'ধাপ 1 / 4',
+      k018: 'তোমার Nexa ID তৈরি করো',
+      k019: 'একটি Nexa ID দিয়েই NexaTute, Remon Motion Studio ও NexaLogicDev চলবে।',
+      k020: 'মোবাইল নম্বর',
+      k021: 'SMS-এ আসা 6 সংখ্যার কোড',
+      k022: 'অঙ্ক 1',
+      k023: 'অঙ্ক 2',
+      k024: 'অঙ্ক 3',
+      k025: 'অঙ্ক 4',
+      k026: 'অঙ্ক 5',
+      k027: 'অঙ্ক 6',
+      k028: 'কোড পাওনি? আবার পাঠানো যাবে',
+      k029: 'পরে',
+      k030: 'অথবা',
+      k031: 'ইমেইল দিয়ে চালিয়ে যাও',
+      k032: 'লগ-ইন হয় accounts.remonlogic.com থেকে। আমরা কখনো SMS-এ পাসওয়ার্ড চাই না।',
+      k033: 'যাচাই করো',
+      k034: 'বয়স যাচাই ও অভিভাবকের সম্মতি',
+      k035: 'ধাপ 2 / 4',
+      k036: 'তোমার জন্ম তারিখ',
+      k037: 'বয়স অনুযায়ী নিরাপদ সেটিংস চালু হবে।',
+      k038: 'দিন',
+      k039: 'মাস',
+      k040: 'বছর',
+      k041: 'তোমার বয়স 18-এর কম। তাই অভিভাবকের অনুমতি লাগবে — তিনি তোমার ডেটা ও কেনাকাটার সিদ্ধান্ত দেখবেন।',
+      k042: 'অভিভাবকের মোবাইল নম্বর',
+      k043: 'এরপর কী হবে',
+      k044: 'অভিভাবকের ফোনে OTP ও লিংক যাবে',
+      k045: 'তিনি রিপোর্ট, আসল নাম ও MindForge শেয়ারের সুইচ বেছে নেবেন — বাকি 8টি 18-এর কম বয়সে বন্ধ করে লক করা',
+      k046: 'অনুমোদনের পর তোমার ক্লাস শুরু',
+      k047: 'অভিভাবককে অনুরোধ পাঠাও',
+      k048: 'মুখ যাচাই (লাইভনেস)',
+      k049: 'ধাপ 3 / 4',
+      k050: 'ধীরে ধীরে মাথা বাঁ দিকে ঘোরাও',
+      k051: 'মুখ পাওয়া গেছে',
+      k052: '2 / 3 সম্পন্ন · সামনে তাকাও → বাঁয়ে → ডানে',
+      k053: 'যাচাই তোমার ব্রাউজারেই হয়। মুখ শুধু “এক অ্যাকাউন্ট = এক শিক্ষার্থী” আর ক্লাসে উপস্থিতির জন্য — মেজাজ বা মনোযোগ বিচারে কখনো নয়।',
+      k054: 'ক্যামেরা নেই? OTP দিয়ে যাচাই করো'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: 'From welcome to face check — one account, one learner',
+      k002: 'Welcome and choosing a role',
+      k003: 'বাংলা · EN',
+      k004: 'Nexa Teacher (AI) · Live',
+      k005: 'Maths · 1:1',
+      k006: '“You try first, then I’ll show you.”',
+      k007: 'Learn every day with an AI teacher',
+      k008: 'Every course, including SSC, HSC, admission, BCS and IELTS — live Nexa Teacher, Nexa Co-Teacher in writing, and a recording of any class you choose to record.',
+      k009: 'I’m a student',
+      k010: 'I’m a guardian',
+      k011: 'Teacher / Institution',
+      k012: 'Get started',
+      k013: 'Have an account?',
+      k014: 'Log in',
+      k015: 'Nexa ID — mobile and OTP',
+      k016: 'Back',
+      k017: 'Step 1 / 4',
+      k018: 'Create your Nexa ID',
+      k019: 'One Nexa ID works for NexaTute, Remon Motion Studio and NexaLogicDev.',
+      k020: 'Mobile number',
+      k021: '6-digit code sent by SMS',
+      k022: 'Digit 1',
+      k023: 'Digit 2',
+      k024: 'Digit 3',
+      k025: 'Digit 4',
+      k026: 'Digit 5',
+      k027: 'Digit 6',
+      k028: 'Didn’t get the code? You can send it again',
+      k029: 'Later',
+      k030: 'or',
+      k031: 'Continue with email',
+      k032: 'Login happens at accounts.remonlogic.com. We never ask for your password by SMS.',
+      k033: 'Verify',
+      k034: 'Age check and guardian consent',
+      k035: 'Step 2 / 4',
+      k036: 'Your date of birth',
+      k037: 'Safe settings are turned on for your age.',
+      k038: 'Day',
+      k039: 'Month',
+      k040: 'Year',
+      k041: 'You are under 18, so your guardian’s permission is needed — they will see your data and decide on purchases.',
+      k042: 'Guardian’s mobile number',
+      k043: 'What happens next',
+      k044: 'An OTP and link go to your guardian’s phone',
+      k045: 'They choose the report, real name and MindForge sharing switches — the other 8 are locked off under 18',
+      k046: 'Your classes start after approval',
+      k047: 'Send request to guardian',
+      k048: 'Face check (liveness)',
+      k049: 'Step 3 / 4',
+      k050: 'Slowly turn your head to the left',
+      k051: 'Face found',
+      k052: '2 / 3 done · look ahead → left → right',
+      k053: 'The check runs in your browser. Your face is used only for “one account = one student” and class attendance — never to judge mood or attention.',
+      k054: 'No camera? Verify with OTP'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: 'स्वागत से चेहरा जाँच तक — एक अकाउंट, एक शिक्षार्थी',
+      k002: 'स्वागत और भूमिका चुनना',
+      k003: 'বাংলা · EN',
+      k004: 'Nexa Teacher (AI) · लाइव',
+      k005: 'गणित · 1:1',
+      k006: '“पहले तुम कोशिश करो, फिर मैं दिखाऊँगा।”',
+      k007: 'AI शिक्षक के साथ रोज़ सीखो',
+      k008: 'SSC, HSC, एडमिशन, BCS, IELTS समेत हर कोर्स — लाइव Nexa Teacher, लिखकर Nexa Co-Teacher और जिस क्लास को तुम चुनो उसकी रिकॉर्डिंग।',
+      k009: 'मैं छात्र हूँ',
+      k010: 'मैं अभिभावक हूँ',
+      k011: 'शिक्षक / संस्थान',
+      k012: 'शुरू करें',
+      k013: 'खाता है?',
+      k014: 'लॉग-इन करो',
+      k015: 'Nexa ID — मोबाइल और OTP',
+      k016: 'पीछे',
+      k017: 'चरण 1 / 4',
+      k018: 'अपनी Nexa ID बनाओ',
+      k019: 'एक Nexa ID से NexaTute, Remon Motion Studio और NexaLogicDev चलेंगे।',
+      k020: 'मोबाइल नंबर',
+      k021: 'SMS से आया 6 अंकों का कोड',
+      k022: 'अंक 1',
+      k023: 'अंक 2',
+      k024: 'अंक 3',
+      k025: 'अंक 4',
+      k026: 'अंक 5',
+      k027: 'अंक 6',
+      k028: 'कोड नहीं मिला? फिर से भेज सकते हो',
+      k029: 'बाद में',
+      k030: 'या',
+      k031: 'ईमेल से आगे बढ़ो',
+      k032: 'लॉग-इन accounts.remonlogic.com से होता है। हम SMS में कभी पासवर्ड नहीं माँगते।',
+      k033: 'सत्यापित करो',
+      k034: 'उम्र जाँच और अभिभावक की सहमति',
+      k035: 'चरण 2 / 4',
+      k036: 'तुम्हारी जन्म तिथि',
+      k037: 'उम्र के अनुसार सुरक्षित सेटिंग्स चालू होंगी।',
+      k038: 'दिन',
+      k039: 'महीना',
+      k040: 'साल',
+      k041: 'तुम्हारी उम्र 18 से कम है, इसलिए अभिभावक की अनुमति चाहिए — वे तुम्हारा डेटा और ख़रीद के फ़ैसले देखेंगे।',
+      k042: 'अभिभावक का मोबाइल नंबर',
+      k043: 'आगे क्या होगा',
+      k044: 'अभिभावक के फ़ोन पर OTP और लिंक जाएगा',
+      k045: 'वे रिपोर्ट, असली नाम और MindForge शेयरिंग के स्विच चुनेंगे — बाकी 8 18 से कम उम्र में लॉक होकर बंद',
+      k046: 'मंज़ूरी के बाद तुम्हारी क्लास शुरू',
+      k047: 'अभिभावक को अनुरोध भेजो',
+      k048: 'चेहरा जाँच (लाइवनेस)',
+      k049: 'चरण 3 / 4',
+      k050: 'धीरे-धीरे सिर बाईं ओर घुमाओ',
+      k051: 'चेहरा मिल गया',
+      k052: '2 / 3 पूरे · सामने देखो → बाएँ → दाएँ',
+      k053: 'जाँच तुम्हारे ब्राउज़र में ही होती है। चेहरा सिर्फ़ “एक खाता = एक छात्र” और क्लास में उपस्थिति के लिए है — मूड या ध्यान आँकने के लिए कभी नहीं।',
+      k054: 'कैमरा नहीं है? OTP से सत्यापित करो'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: 'خوش آمدید سے چہرے کی جانچ تک — ایک اکاؤنٹ، ایک طالب علم',
+      k002: 'خوش آمدید اور کردار کا انتخاب',
+      k003: 'বাংলা · EN',
+      k004: M('Nexa Teacher (AI)') + ' · لائیو',
+      k005: 'ریاضی · ' + M('1:1'),
+      k006: '“پہلے تم کوشش کرو، پھر میں دکھاؤں گا۔”',
+      k007: 'AI استاد کے ساتھ روزانہ سیکھو',
+      k008: 'SSC، HSC، داخلہ، BCS، IELTS سمیت ہر کورس — لائیو Nexa Teacher، تحریری Nexa Co-Teacher اور جو کلاس تم چنو اس کی ریکارڈنگ۔',
+      k009: 'میں طالب علم ہوں',
+      k010: 'میں سرپرست ہوں',
+      k011: 'استاد / ادارہ',
+      k012: 'شروع کریں',
+      k013: 'اکاؤنٹ ہے؟',
+      k014: 'لاگ اِن کرو',
+      k015: 'Nexa ID — موبائل اور OTP',
+      k016: 'پیچھے',
+      k017: 'مرحلہ ' + M('1 / 4'),
+      k018: 'اپنی Nexa ID بناؤ',
+      k019: 'ایک Nexa ID سے NexaTute، Remon Motion Studio اور NexaLogicDev چلیں گے۔',
+      k020: 'موبائل نمبر',
+      k021: 'SMS سے آیا ' + M('6') + ' ہندسوں کا کوڈ',
+      k022: 'ہندسہ ' + M('1'),
+      k023: 'ہندسہ ' + M('2'),
+      k024: 'ہندسہ ' + M('3'),
+      k025: 'ہندسہ ' + M('4'),
+      k026: 'ہندسہ ' + M('5'),
+      k027: 'ہندسہ ' + M('6'),
+      k028: 'کوڈ نہیں ملا؟ دوبارہ بھیج سکتے ہو',
+      k029: 'بعد میں',
+      k030: 'یا',
+      k031: 'ای میل سے آگے بڑھو',
+      k032: 'لاگ اِن accounts.remonlogic.com سے ہوتا ہے۔ ہم SMS میں کبھی پاس ورڈ نہیں مانگتے۔',
+      k033: 'تصدیق کرو',
+      k034: 'عمر کی جانچ اور سرپرست کی رضامندی',
+      k035: 'مرحلہ ' + M('2 / 4'),
+      k036: 'تمہاری تاریخِ پیدائش',
+      k037: 'عمر کے مطابق محفوظ سیٹنگز آن ہوں گی۔',
+      k038: 'دن',
+      k039: 'مہینہ',
+      k040: 'سال',
+      k041: 'تمہاری عمر ' + M('18') + ' سے کم ہے، اس لیے سرپرست کی اجازت چاہیے — وہ تمہارا ڈیٹا اور خریداری کے فیصلے دیکھیں گے۔',
+      k042: 'سرپرست کا موبائل نمبر',
+      k043: 'آگے کیا ہوگا',
+      k044: 'سرپرست کے فون پر OTP اور لنک جائے گا',
+      k045: 'وہ رپورٹ، اصلی نام اور MindForge شیئرنگ کے سوئچ چنیں گے — باقی ' + M('8') + ' اٹھارہ سے کم عمر میں لاک ہو کر بند',
+      k046: 'منظوری کے بعد تمہاری کلاسیں شروع',
+      k047: 'سرپرست کو درخواست بھیجو',
+      k048: 'چہرے کی جانچ (لائیونیس)',
+      k049: 'مرحلہ ' + M('3 / 4'),
+      k050: 'آہستہ آہستہ سر بائیں طرف گھماؤ',
+      k051: 'چہرہ مل گیا',
+      k052: M('2 / 3') + ' مکمل · سامنے دیکھو → بائیں → دائیں',
+      k053: 'تصدیق تمہارے براؤزر میں ہی ہوتی ہے۔ چہرہ صرف “ایک اکاؤنٹ ' + M('=') + ' ایک طالب علم” اور کلاس کی حاضری کے لیے ہے — موڈ یا توجہ جانچنے کے لیے کبھی نہیں۔',
+      k054: 'کیمرا نہیں؟ OTP سے تصدیق کرو'
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: 'من الترحيب إلى فحص الوجه — حساب واحد، متعلّم واحد',
+      k002: 'الترحيب واختيار الدور',
+      k003: 'বাংলা · EN',
+      k004: M('Nexa Teacher (AI)') + ' · مباشر',
+      k005: 'الرياضيات · ' + M('1:1'),
+      k006: '«حاول أنت أولًا، ثم سأريك.»',
+      k007: 'تعلّم كل يوم مع معلّم ذكي',
+      k008: 'كل الدورات، ومنها SSC وHSC والقبول وBCS وIELTS — Nexa Teacher مباشرةً، وNexa Co-Teacher كتابةً، وتسجيل أي حصة تختار تسجيلها.',
+      k009: 'أنا طالب',
+      k010: 'أنا وليّ أمر',
+      k011: 'معلّم / مؤسسة',
+      k012: 'لنبدأ',
+      k013: 'لديك حساب؟',
+      k014: 'سجّل الدخول',
+      k015: 'Nexa ID — الجوال ورمز OTP',
+      k016: 'رجوع',
+      k017: 'الخطوة ' + M('1 / 4'),
+      k018: 'أنشئ معرّف Nexa ID',
+      k019: 'معرّف Nexa ID واحد يعمل مع NexaTute وRemon Motion Studio وNexaLogicDev.',
+      k020: 'رقم الجوال',
+      k021: 'الرمز المكوّن من ' + M('6') + ' أرقام عبر SMS',
+      k022: 'الرقم ' + M('1'),
+      k023: 'الرقم ' + M('2'),
+      k024: 'الرقم ' + M('3'),
+      k025: 'الرقم ' + M('4'),
+      k026: 'الرقم ' + M('5'),
+      k027: 'الرقم ' + M('6'),
+      k028: 'لم يصلك الرمز؟ يمكن إرساله مرة أخرى',
+      k029: 'لاحقًا',
+      k030: 'أو',
+      k031: 'تابع بالبريد الإلكتروني',
+      k032: 'يتم تسجيل الدخول من accounts.remonlogic.com. لا نطلب كلمة المرور عبر SMS أبدًا.',
+      k033: 'تحقّق',
+      k034: 'التحقق من العمر وموافقة ولي الأمر',
+      k035: 'الخطوة ' + M('2 / 4'),
+      k036: 'تاريخ ميلادك',
+      k037: 'ستُفعَّل إعدادات آمنة حسب عمرك.',
+      k038: 'اليوم',
+      k039: 'الشهر',
+      k040: 'السنة',
+      k041: 'عمرك أقل من ' + M('18') + '، لذا تلزم موافقة ولي أمرك — سيطّلع على بياناتك وقرارات الشراء.',
+      k042: 'رقم جوال وليّ الأمر',
+      k043: 'ماذا بعد',
+      k044: 'سيصل رمز OTP ورابط إلى هاتف وليّ أمرك',
+      k045: 'يختار مفاتيح التقرير والاسم الحقيقي ومشاركة MindForge — والثمانية الباقية مقفلة ومتوقفة لمن هم دون ' + M('18'),
+      k046: 'تبدأ حصصك بعد الموافقة',
+      k047: 'أرسل الطلب إلى وليّ الأمر',
+      k048: 'فحص الوجه (الحيوية)',
+      k049: 'الخطوة ' + M('3 / 4'),
+      k050: 'أدِر رأسك ببطء إلى اليسار',
+      k051: 'تم العثور على الوجه',
+      k052: 'اكتمل ' + M('2 / 3') + ' · انظر أمامك → يسارًا → يمينًا',
+      k053: 'يجري التحقق داخل متصفحك فقط. يُستخدم الوجه فقط لقاعدة «حساب واحد ' + M('=') + ' طالب واحد» وللحضور في الحصة — ولا يُستخدم أبدًا للحكم على المزاج أو الانتباه.',
+      k054: 'لا توجد كاميرا؟ تحقّق برمز OTP'
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: 'De l’accueil à la vérification du visage — un compte, un élève',
+      k002: 'Accueil et choix du rôle',
+      k003: 'বাংলা · EN',
+      k004: 'Nexa Teacher (IA) · En direct',
+      k005: 'Maths · 1:1',
+      k006: '« Essaie d’abord, ensuite je te montre. »',
+      k007: 'Apprends chaque jour avec un professeur IA',
+      k008: 'Tous les cours, dont SSC, HSC, admission, BCS et IELTS — Nexa Teacher en direct, Nexa Co-Teacher à l’écrit et l’enregistrement des cours que tu choisis d’enregistrer.',
+      k009: 'Je suis élève',
+      k010: 'Je suis parent / tuteur',
+      k011: 'Enseignant / établissement',
+      k012: 'Commencer',
+      k013: 'Déjà un compte ?',
+      k014: 'Se connecter',
+      k015: 'Nexa ID — mobile et code OTP',
+      k016: 'Retour',
+      k017: 'Étape 1 / 4',
+      k018: 'Crée ton Nexa ID',
+      k019: 'Un seul Nexa ID pour NexaTute, Remon Motion Studio et NexaLogicDev.',
+      k020: 'Numéro de mobile',
+      k021: 'Code à 6 chiffres reçu par SMS',
+      k022: 'Chiffre 1',
+      k023: 'Chiffre 2',
+      k024: 'Chiffre 3',
+      k025: 'Chiffre 4',
+      k026: 'Chiffre 5',
+      k027: 'Chiffre 6',
+      k028: 'Pas reçu le code ? Tu peux le renvoyer',
+      k029: 'Plus tard',
+      k030: 'ou',
+      k031: 'Continuer avec l’e-mail',
+      k032: 'La connexion se fait sur accounts.remonlogic.com. Nous ne demandons jamais ton mot de passe par SMS.',
+      k033: 'Vérifier',
+      k034: 'Vérification de l’âge et accord du parent',
+      k035: 'Étape 2 / 4',
+      k036: 'Ta date de naissance',
+      k037: 'Des réglages adaptés à ton âge seront activés.',
+      k038: 'Jour',
+      k039: 'Mois',
+      k040: 'Année',
+      k041: 'Tu as moins de 18 ans : l’accord de ton parent est nécessaire — il verra tes données et décidera des achats.',
+      k042: 'Numéro de mobile du parent',
+      k043: 'Et ensuite',
+      k044: 'Un code OTP et un lien arrivent sur le téléphone de ton parent',
+      k045: 'Il choisit les interrupteurs rapport, vrai nom et partage MindForge — les 8 autres sont verrouillés avant 18 ans',
+      k046: 'Tes cours commencent après l’accord',
+      k047: 'Envoyer la demande au parent',
+      k048: 'Vérification du visage (vivant)',
+      k049: 'Étape 3 / 4',
+      k050: 'Tourne lentement la tête vers la gauche',
+      k051: 'Visage détecté',
+      k052: '2 / 3 faits · regarde devant → à gauche → à droite',
+      k053: 'La vérification se fait dans ton navigateur. Ton visage sert uniquement à « un compte = un élève » et à la présence en cours — jamais à juger ton humeur ou ton attention.',
+      k054: 'Pas de caméra ? Vérifie par OTP'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, fx: this.fx16(lang), lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

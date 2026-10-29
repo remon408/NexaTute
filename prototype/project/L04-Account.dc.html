@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Wallet, notifications, profile, settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.tb{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:#fff;border-top:1px solid #E2E6EF;padding:8px 6px 20px;flex:none}
+.tb a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:#59617A;text-decoration:none;font-weight:500;min-height:44px}
+.tb a.on{color:#3B34C9;font-weight:700}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.tg{width:44px;height:26px;border-radius:99px;background:#3B34C9;position:relative;border:0;padding:0;flex:none}
+.tg::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+.tg.off{background:#C9CFDC}
+.tg.off::after{right:auto;left:3px}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.st4 .li{padding:8px 0}
+.amt{flex:1;height:44px;border-radius:14px;border:1px solid #D3D8E4;background:#fff;font:600 15px 'Hind Siliguri',sans-serif;color:#141A33}
+.nt{display:flex;gap:12px;padding:14px;background:#fff;border:1px solid #E2E6EF;border-radius:16px}
+.nt .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.sec{margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#59617A}
+/* fix11: shared bits for the new static frames (recording, BdSL avatar, report, settings) */
+.fst{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;line-height:1.5;white-space:nowrap}
+.fst.ok{background:#E3F5EC;color:#0F6B40}.fst.wait{background:#ECEBFD;color:#3B34C9}.fst.bad{background:#FDEDE6;color:#9A3412}.fst.off{background:#EEF0F5;color:#3F475E}
+.fsw{width:48px;height:28px;border-radius:99px;background:#8C93A8;position:relative;flex:none;display:inline-block}
+.fsw::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff}
+.fsw.on{background:#0B6E6A}.fsw.on::after{left:24px}
+.frw{display:flex;gap:10px;align-items:center;min-height:40px;padding:6px 10px;border:1px solid #E2E6EF;border-radius:12px;background:#fff;font-size:13px;line-height:1.4;box-sizing:border-box}
+.frw b{width:38px;flex:none;color:#3B34C9;font-size:12px}
+.fkn{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:#E3F5EC;color:#0F6B40;flex:none}.fkn.no{background:#FFF3DD;color:#8A4B00}
+.fsr{height:40px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:#59617A;background:#fff;flex:none}
+.fh{margin:2px 0 0;font-size:13px;font-weight:700;color:#3B34C9}
+.fpill{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid #D3D8E4;background:#fff;font-size:12.5px;font-weight:600}
+.fpill.on{background:#3B34C9;border-color:#3B34C9;color:#fff}.fpill.off{background:#F0F1F6;color:#59617A;border-style:dashed}
+.frec{background:#B42318;color:#fff}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:2206px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Account</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 4.1 Wallet -->
+<div class="col">
+  <div class="cap"><b>4.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k004 }}</p>
+    </div>
+    <div class="bd" style="gap:8px">
+      <div style="background:#141A33;color:#fff;border-radius:20px;padding:16px 18px">
+        <p style="margin:0;font-size:13px;color:#C9CDF0">{{ t.k005 }}</p>
+        <p style="margin:2px 0 0;font-size:34px;font-weight:700">৳145</p>
+        <p style="margin:6px 0 0;font-size:13px;color:#C9CDF0">{{ t.k006 }}</p>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k007 }}</p>
+      <div class="row"><button class="amt">৳100</button><button class="amt" style="border:2px solid #3B34C9">৳200</button><button class="amt">৳500</button></div>
+      <div class="cd" style="border:2px solid #F2A93B;display:flex;flex-direction:column;gap:6px;padding:14px 16px">
+        <div class="row" style="justify-content:space-between"><p class="t2">Daily Pass</p><b style="font-size:20px">৳20</b></div>
+        <p class="sm">{{ t.k008 }}</p>
+        <button class="btn" style="height:46px;background:#E2136E">{{ t.k009 }}</button>
+      </div>
+      <div class="cd" style="padding:10px 16px">
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k010 }}</span><b>৳180 / ৳1,000</b></div>
+        <div class="bar" style="margin-top:8px"><div style="width:18%;background:#F2A93B"></div></div>
+        <p class="xs" style="margin:6px 0 0">{{ t.k011 }}</p>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k012 }}</p>
+      <div class="cd st4" style="padding:2px 16px">
+        <div class="li"><span style="flex:1">{{ t.k013 }}</span><span>− ৳12</span></div>
+        <div class="li"><span style="flex:1">{{ t.k014 }}</span><span style="color:#0F6B40">{{ t.k015 }}</span></div>
+        <div class="li" style="border:0"><span style="flex:1">{{ t.k016 }}</span><span style="color:#0F6B40">+ ৳100</span></div>
+      </div>
+      <div class="cd" style="padding:8px 12px;background:#E3F5EC;border-color:#BFE6D1;display:flex;gap:10px;align-items:flex-start">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#0F6B40"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div style="flex:1;min-width:0"><p class="xs" style="margin:0;color:#0F3D27"><b>{{ t.k017 }}</b> {{ t.k018 }}</p><p class="xs" style="margin:4px 0 0;color:#0F3D27">{{ t.k019 }}</p></div>
+      </div>
+      <!-- fix16: learning-guarantee claim flow (SP/s2/fix9/shared/guarantee.md v3 §10; the participation checklist is on L09 9.1 and X03) -->
+      <div class="cd" style="padding:6px 12px;display:flex;flex-direction:column;gap:4px">
+        <p class="xs" style="margin:0;color:#141A33"><b style="font-size:13px">{{ fx.check_h }}</b> · {{ fx.week4 }}</p>
+        <div class="row" style="gap:8px;align-items:center"><button class="btn" style="height:36px;width:auto;flex:none;padding:0 16px;font-size:14px">{{ fx.claim_btn }}</button><span class="xs" style="flex:1;min-width:0;color:#141A33">{{ fx.claim_ok }} {{ fx.credit }} · <b>{{ fx.not_result }}</b></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4.2 Notifications -->
+<div class="col">
+  <div class="cap"><b>4.2</b>{{ t.k020 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k020 }}</p>
+      <a href="#" style="font-size:13px">{{ t.k021 }}</a>
+    </div>
+    <div class="bd" style="gap:10px">
+      <div class="nt" style="border:2px solid #3B34C9"><span class="ic" style="background:#ECEBFD;color:#3B34C9"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k022 }}</p><p class="sm">{{ t.k023 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k024 }}</p></div></div>
+      <div class="nt"><span class="ic" style="background:#E3F5EC;color:#0F6B40"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.4 6.5 20.3l1-6.2L3 9.7l6.2-.9z"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k025 }}</p><p class="sm">{{ t.k026 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k027 }}</p></div></div>
+      <div class="nt"><span class="ic" style="background:#FFF3DD;color:#8A4B00"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k028 }}</p><p class="sm">{{ t.k029 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k030 }}</p></div></div>
+      <div class="nt"><span class="ic" style="background:#E1F4F2;color:#0B6E6A"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k031 }}</p><p class="sm">{{ t.k032 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k033 }}</p></div></div>
+      <div class="nt"><span class="ic" style="background:#ECEBFD;color:#3B34C9"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4a3 3 0 0 0 4 4M16 6h4a3 3 0 0 1-4 4M12 13v4M8 21h8"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k034 }}</p><p class="sm">{{ t.k035 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k036 }}</p></div></div>
+      <div class="nt"><span class="ic" style="background:#E3F5EC;color:#0F6B40"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k037 }}</p><p class="sm">{{ t.k038 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k039 }}</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4.3 Profile -->
+<div class="col">
+  <div class="cap"><b>4.3</b>{{ t.k040 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t1" style="flex:1">{{ t.k041 }}</p></div>
+    <div class="bd" style="gap:12px">
+      <div class="row" style="gap:14px">
+        <div style="width:60px;height:60px;border-radius:50%;background:#ECEBFD;color:#3B34C9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px">{{ t.k042 }}</div>
+        <div style="flex:1"><p class="t2">{{ t.k043 }}</p><p class="xs" style="margin:0">{{ t.k044 }}</p></div>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+        <div class="row" style="justify-content:space-between"><p class="t3">SSC · Combo</p><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k045 }}</span></div>
+        <p class="sm">{{ t.k046 }}</p>
+      </div>
+      <div class="cd" style="border:2px solid #3B34C9;background:#F7F7FF;display:flex;flex-direction:column;gap:8px">
+        <p class="t3">{{ t.k047 }}</p>
+        <p class="sm">{{ t.k048 }}</p>
+        <p style="margin:0;font-size:13px">(৳1,000 − ৳800) × 15/30 = <b style="font-size:18px">৳100</b></p>
+        <button class="btn" style="height:46px">{{ t.k049 }}</button>
+        <p class="xs" style="margin:0">{{ t.k050 }}</p>
+      </div>
+      <div class="cd" style="padding:4px 16px">
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><div style="flex:1"><p class="t3" style="font-size:14px">Exam Crash Pack · ৳600</p><p class="xs" style="margin:0">{{ t.k051 }} {{ t.k052 }}</p></div><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k053 }}</span></a>
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><span style="flex:1">{{ t.k054 }}</span><span class="chip">3</span></a>
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><span style="flex:1">{{ t.k055 }}</span><span class="xs">{{ t.k056 }}</span></a>
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><span style="flex:1">{{ t.k057 }}</span></a>
+        <a href="#" class="li" style="color:#141A33;text-decoration:none;border:0"><span style="flex:1">{{ t.k058 }}</span></a>
+      </div>
+    </div>
+    <nav class="tb" aria-label="{{ t.k059 }}">
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>{{ fx.dash }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k060 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/><path d="M4 18a3 3 0 0 1 3-3h11"/></svg>{{ t.k061 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Teacher</a>
+      <a href="#" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>{{ t.k041 }}</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 4.4 Settings -->
+<div class="col">
+  <div class="cap"><b>4.4</b>{{ t.k063 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k064 }}</p>
+    </div>
+    <div class="bd" style="gap:6px">
+      <p class="sec">{{ t.k065 }}</p>
+      <div class="cd" style="padding:12px 14px;display:flex;gap:12px;align-items:center">
+        <span style="width:40px;height:40px;border-radius:12px;background:#E3F5EC;color:#0F6B40;display:flex;align-items:center;justify-content:center;flex:none"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+        <div style="flex:1"><p class="t3" style="font-size:14px">Full mode</p><p class="xs" style="margin:0">{{ t.k066 }}</p></div>
+      </div>
+      <p class="sec">{{ t.k067 }}</p>
+      <div class="cd st4" style="padding:2px 14px">
+        <div class="li"><div style="flex:1"><p class="t3" style="font-size:14px">Data Saver</p><p class="xs" style="margin:0">{{ t.k068 }}</p></div><button class="tg" aria-pressed="true" aria-label="Data Saver"></button></div>
+        <div class="li" style="border:0"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k069 }}</p><p class="xs" style="margin:0">{{ t.k070 }}</p></div><button class="tg off" aria-pressed="false" aria-label="{{ t.k069 }}"></button></div>
+      </div>
+      <p class="sec">{{ t.k071 }}</p>
+      <div class="cd st4" style="padding:2px 14px">
+        <div class="li"><span style="flex:1">{{ t.k072 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k072 }}"></button></div>
+        <div class="li"><span style="flex:1">{{ t.k073 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k073 }}"></button></div>
+        <div class="li"><span style="flex:1">{{ t.k074 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k074 }}"></button></div>
+        <div class="li"><div style="flex:1"><p class="t3" style="font-size:14px;font-weight:500">{{ t.k075 }}</p><p class="xs" style="margin:0">{{ t.k076 }}</p></div><svg class="i" viewBox="0 0 24 24" role="img" aria-label="লক করা" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li" style="border:0"><div style="flex:1"><p class="t3" style="font-size:14px;font-weight:500">{{ t.k077 }}</p><p class="xs" style="margin:0">{{ t.k078 }}</p></div><svg class="i" viewBox="0 0 24 24" role="img" aria-label="লক করা" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      </div>
+      <p class="sec">{{ t.k079 }}</p>
+      <div class="cd st4" style="padding:2px 14px">
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><div style="flex:1"><p class="t3" style="font-size:14px;font-weight:500">{{ t.k080 }}</p><p class="xs" style="margin:0">{{ t.k081 }}</p></div></a>
+        <a href="#" class="li" style="color:#141A33;text-decoration:none"><span style="flex:1">{{ t.k082 }}</span><span class="xs">{{ t.k083 }}</span></a>
+        <div class="li" style="border:0"><div style="flex:1"><p class="t3" style="font-size:14px;font-weight:500">{{ t.k084 }}</p><p class="xs" style="margin:0">{{ t.k085 }}</p></div><button class="tg" aria-pressed="true" aria-label="{{ t.k084 }}"></button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4.5 Settings — fix11 (= X01 Settings): BdSL avatar, report mode, Calm mode, daily question from my mistakes, download all my data; fix12: Calm mode = Latin name (G1), download terms (G6) -->
+<div class="col">
+  <div class="cap"><b>4.5</b>{{ t.k086 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k064 }}</p>
+    </div>
+    <div class="bd" style="gap:8px">
+      <p class="sec">{{ t.k087 }}</p>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <div class="row" style="gap:10px;align-items:flex-start"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k088 }}</p><p class="xs" style="margin:0">{{ t.k089 }}</p></div><span class="fsw on" role="img" aria-label="{{ t.k045 }}"></span></div>
+        <p class="xs" style="margin:0;color:#141A33">{{ t.k090 }}</p>
+        <p class="xs" style="margin:0;color:#141A33">{{ t.k091 }}</p>
+        <p class="xs" style="margin:0;color:#0B5E5A;font-weight:600">{{ t.k092 }}</p>
+      </div>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <p class="t3" style="font-size:14px">{{ t.k093 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fpill">{{ t.k094 }}</span><span class="fpill on">{{ t.k095 }}</span><span class="fpill">{{ t.k096 }}</span></div>
+      </div>
+      <p class="sec">{{ t.k097 }}</p>
+      <div class="cd" style="padding:12px 14px;display:flex;gap:10px;align-items:flex-start"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k098 }}</p><p class="xs" style="margin:0">{{ t.k099 }}</p></div><span class="fsw" role="img" aria-label="{{ t.k100 }}"></span></div>
+      <div class="cd" style="padding:12px 14px;display:flex;gap:10px;align-items:flex-start"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k101 }}</p><p class="xs" style="margin:0">{{ t.k102 }}</p></div><span class="fsw on" role="img" aria-label="{{ t.k045 }}"></span></div>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <p class="t3" style="font-size:14px">{{ t.k103 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fpill">{{ t.k100 }}</span><span class="fpill">18:00</span><span class="fpill on">19:00</span><span class="fpill">20:00</span><span class="fpill">21:00</span><span class="fpill off">21:30</span></div>
+        <p class="xs" style="margin:0">{{ t.k104 }}</p>
+      </div>
+      <p class="sec">{{ t.k105 }}</p>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <p class="xs" style="margin:0">{{ t.k106 }}</p>
+        <a href="#" class="btn2" style="height:44px;font-size:14px">{{ t.k107 }}</a>
+        <p class="xs" style="margin:0;color:#3F475E">{{ t.k108 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2206,"height":1100}}'>
+class Component extends DCLogic {
+  // fix16 (28 Oct 2026): LiveKit class features / learning-guarantee claim flow — 6 languages, identical keys
+  fx16(l) { var D = {"bn": {"check_h": "শেখার নিশ্চয়তা — 4 সপ্তাহের যাচাই", "claim_ok": "তুমি যোগ্য: এই 4 সপ্তাহের মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত আসবে।", "claim_btn": "দাবি করুন", "credit": "ক্রেডিট 6 মাস বৈধ", "week4": "4 সপ্তাহের 4 নম্বর সপ্তাহ", "dash": "ড্যাশবোর্ড", "not_result": "এটি পরীক্ষার গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়।"}, "en": {"check_h": "Learning guarantee — 4-week check", "claim_ok": "You qualify: the minutes from these 4 weeks come back as wallet credit.", "claim_btn": "Claim", "credit": "Credit valid for 6 months", "week4": "Week 4 of 4", "dash": "Dashboard", "not_result": "Not a promise of exam grades or results."}, "hi": {"check_h": "सीखने की गारंटी — 4 हफ़्ते की जाँच", "claim_ok": "आप योग्य हैं: इन 4 हफ़्तों के मिनट वॉलेट क्रेडिट के रूप में लौटेंगे।", "claim_btn": "दावा करें", "credit": "क्रेडिट 6 महीने मान्य", "week4": "4 में से हफ़्ता 4", "dash": "डैशबोर्ड", "not_result": "यह परीक्षा के ग्रेड या परिणाम का कोई वादा नहीं है।"}, "ur": {"check_h": "سیکھنے کی ضمانت — ⁦4⁩ ہفتوں کی جانچ", "claim_ok": "آپ اہل ہیں: ان ⁦4⁩ ہفتوں کے منٹ والیٹ کریڈٹ کے طور پر واپس آئیں گے۔", "claim_btn": "دعویٰ کریں", "credit": "کریڈٹ ⁦6⁩ ماہ کارآمد", "week4": "⁦4⁩ میں سے ہفتہ ⁦4⁩", "dash": "ڈیش بورڈ", "not_result": "یہ امتحانی گریڈ یا نتائج کا کوئی وعدہ نہیں۔"}, "ar": {"check_h": "ضمان التعلّم — تحقّق الأسابيع الأربعة", "claim_ok": "أنت مؤهل: تعود دقائق هذه الأسابيع الأربعة رصيدًا في المحفظة.", "claim_btn": "طالِب", "credit": "الرصيد صالح ⁦6⁩ أشهر", "week4": "الأسبوع ⁦4⁩ من ⁦4⁩", "dash": "لوحة المتابعة", "not_result": "ليس وعدًا بدرجات الامتحانات أو نتائجها."}, "fr": {"check_h": "Garantie d’apprentissage — vérification des 4 semaines", "claim_ok": "Tu y as droit : les minutes de ces 4 semaines reviennent en crédit sur le portefeuille.", "claim_btn": "Demander", "credit": "Crédit valable 6 mois", "week4": "Semaine 4 sur 4", "dash": "Tableau de bord", "not_result": "Ce n’est pas une promesse de notes ou de résultats d’examen."}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: 'ওয়ালেট ও Daily Pass, নোটিফিকেশন, প্রোফাইল ও প্ল্যান, সেটিংস',
+      k002: 'ওয়ালেট ও Daily Pass',
+      k003: 'পেছনে',
+      k004: 'ওয়ালেট',
+      k005: 'ব্যালান্স',
+      k006: 'অতিরিক্ত 1:1 কল · ৳1/মিনিট · রাত 1–7টা ৳0.80/মিনিট (শুধু প্রাপ্তবয়স্ক কোর্সে, 20% ছাড়)',
+      k007: 'টপ-আপ',
+      k008: '24 ঘণ্টা · 20 মিনিট 1:1 Nexa Teacher + Nexa Co-Teacher + মক টেস্ট',
+      k009: 'bKash দিয়ে কিনো',
+      k010: 'মাসিক খরচের সীমা',
+      k011: 'সীমা ঠিক করেছেন তোমার অভিভাবক',
+      k012: 'সাম্প্রতিক',
+      k013: '1:1 কল · গণিত',
+      k014: 'সেরা প্রশ্নের পুরস্কার',
+      k015: '+10 মিনিট',
+      k016: 'টপ-আপ · Nagad',
+      k017: 'শেখার নিশ্চয়তা:',
+      k018: 'নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k019: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; ক্রেডিট থাকে 6 মাস। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k020: 'নোটিফিকেশন',
+      k021: 'সব পড়া হয়েছে',
+      k022: 'ব্যাচ ক্লাস 30 মিনিট পরে',
+      k023: 'গণিত · দ্বিঘাত সমীকরণ · 4:00 pm',
+      k024: 'এইমাত্র',
+      k025: 'তোমার প্রশ্ন যাচাই হয়ে উত্তর-ভাণ্ডারে যোগ হয়েছে',
+      k026: 'পুরস্কার: +10 বোনাস মিনিট',
+      k027: '1 ঘণ্টা আগে',
+      k028: 'ভুলের খাতা: আজ 4টি রি-টেস্ট',
+      k029: '3 দিন আগের ভুলগুলো আবার দেখো',
+      k030: 'সকাল 9:00',
+      k031: '6 মিনিট ফেরত দেওয়া হয়েছে',
+      k032: 'গতকাল সার্ভার সমস্যায় Nexa Teacher থেমে গিয়েছিল',
+      k033: 'গতকাল',
+      k034: 'শনিবার: এই সপ্তাহের লক্ষ্য ঠিক করো',
+      k035: 'শুক্রবারের 2 মিনিটের রিফ্লেকশন বাকি',
+      k036: '2 দিন আগে',
+      k037: 'অটো-রিনিউ ঠিক হয়েছে — পেমেন্ট সফল',
+      k038: 'প্রথম চেষ্টা ব্যর্থ হয়েছিল; 3 দিনের গ্রেসের মধ্যে আবার চেষ্টা সফল। প্ল্যান থামেনি — মেয়াদ 5 মার্চ 2027 পর্যন্ত।',
+      k039: '5 ফেব্রুয়ারি',
+      k040: 'প্রোফাইল ও প্ল্যান',
+      k041: 'প্রোফাইল',
+      k042: 'ত',
+      k043: 'তানভীর আহমেদ',
+      k044: 'Nexa ID · মুখ যাচাই সম্পন্ন',
+      k045: 'চালু',
+      k046: 'মেয়াদ 5 মার্চ 2027 পর্যন্ত · অটো-রিনিউ (কেনার সময় বেছে নেওয়া)',
+      k047: 'Personal-এ আপগ্রেড — এখনই চালু',
+      k048: 'দিনে 75 মিনিট 1:1। এই মাসের বাকি 15 দিনের জন্য শুধু পার্থক্য দাও:',
+      k049: 'আপগ্রেড করো',
+      k050: 'ডাউনগ্রেড হয় পরের রিনিউ থেকে।',
+      k051: 'পরীক্ষার শেষ 30 দিনে +45 মিনিট 1:1 · আসনের কোনো সীমা নেই',
+      k052: '· অভিভাবকের অনুমোদন লাগবে',
+      k053: 'অ্যাড-অন',
+      k054: 'সনদ ও ব্যাজ',
+      k055: 'ভাই-বোনকে যোগ করো',
+      k056: '2য় সন্তানে 30% ছাড়',
+      k057: 'সেটিংস ও গোপনীয়তা',
+      k058: 'সাহায্য ও অভিযোগ',
+      k059: 'প্রধান মেনু',
+      k060: 'হোম',
+      k061: 'ক্লাস',
+      k062: 'অগ্রগতি',
+      k063: 'সেটিংস — ডিভাইস, ডেটা, অ্যাক্সেসিবিলিটি',
+      k064: 'সেটিংস',
+      k065: 'ডিভাইস চেক',
+      k066: 'Android 12 · 6 GB RAM · Chrome — বেশির ভাগ কাজ ব্রাউজারেই',
+      k067: 'ডেটা ও ইন্টারনেট',
+      k068: 'বড় মডেল শুধু Wi-Fi-তে নামবে',
+      k069: 'লো-ইন্টারনেট মোড',
+      k070: 'অবতার বন্ধ, শুধু কণ্ঠ + বোর্ড (~30 kbps)',
+      k071: 'অ্যাক্সেসিবিলিটি',
+      k072: 'বড় লেখা',
+      k073: 'হাই কনট্রাস্ট',
+      k074: 'কালার-ব্লাইন্ড মোড',
+      k075: 'ডিসলেক্সিয়া-বান্ধব ফন্ট',
+      k076: 'অভিভাবক নিয়ন্ত্রিত · বন্ধ',
+      k077: 'সব লেখা পড়ে শোনাও',
+      k078: 'অভিভাবক নিয়ন্ত্রিত · চালু',
+      k079: 'গোপনীয়তা ও ভাষা',
+      k080: 'সম্মতির সুইচগুলো',
+      k081: 'শেখার 7টি ফিচার ও অফার: 18-এর কম হলে বন্ধ (লক) · বাকি 3টি অভিভাবক নিয়ন্ত্রিত',
+      k082: 'ভাষা',
+      k083: 'বাংলা',
+      k084: 'বাংলা ফোনেটিক টাইপিং',
+      k085: 'ইংরেজি অক্ষরে লেখো, বাংলা পাও — “ami bujhini” → “আমি বুঝিনি”',
+      k086: 'সেটিংস — সাংকেতিক ভাষা, Calm mode, রোজের প্রশ্ন, আমার তথ্য',
+      k087: 'সহজে ব্যবহার',
+      k088: 'সাংকেতিক ভাষার অ্যাভাটার (BdSL)',
+      k089: 'বধির ও কম শোনা শিক্ষার্থীদের জন্য — বাংলা ও ইংরেজি মাধ্যম',
+      k090: 'অ্যাভাটার সবসময় BdSL-এ দেখায়। ক্যাপশন তোমার পড়ার ভাষায়: বাংলা মাধ্যম → বাংলা ক্যাপশন, ইংরেজি মাধ্যম → ইংরেজি ক্যাপশন।',
+      k091: 'পুরো 1:1 ক্লাসে অ্যাভাটার চালু থাকলে মিনিট ধীরে গোনা হয়: ক্লাসের 1.5 মিনিট = প্ল্যান থেকে 1 মিনিট।',
+      k092: 'কোনো বাড়তি দাম নেই — সব প্ল্যানে একই দাম',
+      k093: 'রিপোর্ট দেখানোর ধরন',
+      k094: 'সাধারণ',
+      k095: 'ডিসলেক্সিয়া-বান্ধব',
+      k096: 'বর্ণান্ধ-নিরাপদ',
+      k097: 'পড়াশোনা',
+      k098: 'Calm mode · র‍্যাঙ্ক লুকানো',
+      k099: 'পরীক্ষার আগে র‍্যাঙ্ক, মেধাতালিকা আর লিডারবোর্ড লুকিয়ে রাখে — তুমি বা তোমার অভিভাবক চালু করতে পারো।',
+      k100: 'বন্ধ',
+      k101: 'সংবেদন-বান্ধব মোড',
+      k102: '18 বছরের কম হলে অভিভাবক চালু করেন — শিক্ষার্থী চাইতে পারে',
+      k103: 'রোজ “আমার ভুল থেকে একটি প্রশ্ন”',
+      k104: 'রাত 9টার পরে কোনো প্রশ্ন আসে না · 18-এর কম বয়সে সময় তুমিই ঠিক করো',
+      k105: 'আমার তথ্য',
+      k106: 'ক্লাস, রিপোর্ট, রেকর্ডিংয়ের তালিকা, পরীক্ষা, নোট — একটি ফাইলে (ব্যক্তিগত উপাত্ত সুরক্ষা আইন 2026 অনুযায়ী বহনযোগ্যতা)।',
+      k107: '⤓ আমার সব তথ্য ডাউনলোড করো',
+      k108: 'কয়েক মিনিটের মধ্যে তৈরি (ডিফল্ট) · লিংক তোমার নোটিফিকেশনে · 7 দিন কাজ করবে (ডিফল্ট) · একবারের কোড চাইবে'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: 'Wallet and Daily Pass, notifications, profile and plan, settings',
+      k002: 'Wallet and Daily Pass',
+      k003: 'Back',
+      k004: 'Wallet',
+      k005: 'Balance',
+      k006: 'Extra 1:1 call · ৳1/min · 1–7 am ৳0.80/min (adult courses only, 20% off)',
+      k007: 'Top up',
+      k008: '24 hours · 20 min 1:1 Nexa Teacher + Nexa Co-Teacher + mock tests',
+      k009: 'Buy with bKash',
+      k010: 'Monthly spending limit',
+      k011: 'Your guardian set the limit',
+      k012: 'Recent',
+      k013: '1:1 call · Maths',
+      k014: 'Best-question reward',
+      k015: '+10 minutes',
+      k016: 'Top-up · Nagad',
+      k017: 'Learning guarantee:',
+      k018: 'if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we give the minutes back as wallet credit [to confirm with our lawyer].',
+      k019: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the credit lasts 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',
+      k020: 'Notifications',
+      k021: 'Mark all read',
+      k022: 'Batch class in 30 minutes',
+      k023: 'Maths · Quadratic equations · 4:00 pm',
+      k024: 'just now',
+      k025: 'Your question was checked and added to the answer bank',
+      k026: 'Reward: +10 bonus minutes',
+      k027: '1 hour ago',
+      k028: 'Error notebook: 4 retests today',
+      k029: 'Look again at the mistakes from 3 days ago',
+      k030: '9:00 am',
+      k031: '6 minutes given back',
+      k032: 'Nexa Teacher stopped yesterday because of a server problem',
+      k033: 'Yesterday',
+      k034: 'Saturday: set this week’s goal',
+      k035: 'Friday’s 2-minute reflection is still to do',
+      k036: '2 days ago',
+      k037: 'Auto-renew done — payment successful',
+      k038: 'The first try failed; a retry within the 3-day grace period worked. The plan did not stop — valid until 5 March 2027.',
+      k039: '5 February',
+      k040: 'Profile and plan',
+      k041: 'Profile',
+      k042: 'T',
+      k043: 'Tanvir Ahmed',
+      k044: 'Nexa ID · face check done',
+      k045: 'Active',
+      k046: 'Valid until 5 March 2027 · auto-renew (chosen at purchase)',
+      k047: 'Upgrade to Personal — starts now',
+      k048: '75 minutes of 1:1 a day. For the 15 days left this month you pay only the difference:',
+      k049: 'Upgrade',
+      k050: 'A downgrade starts from the next renewal.',
+      k051: '+45 min of 1:1 in the last 30 days before the exam · no seat limit',
+      k052: '· needs guardian approval',
+      k053: 'Add-on',
+      k054: 'Certificates and badges',
+      k055: 'Add a brother or sister',
+      k056: '30% off for the 2nd child',
+      k057: 'Settings and privacy',
+      k058: 'Help and complaints',
+      k059: 'Main menu',
+      k060: 'Home',
+      k061: 'Classes',
+      k062: 'Progress',
+      k063: 'Settings — device, data, accessibility',
+      k064: 'Settings',
+      k065: 'Device check',
+      k066: 'Android 12 · 6 GB RAM · Chrome — most work happens in the browser',
+      k067: 'Data and internet',
+      k068: 'Large models download on Wi-Fi only',
+      k069: 'Low-internet mode',
+      k070: 'Avatar off, voice + board only (~30 kbps)',
+      k071: 'Accessibility',
+      k072: 'Large text',
+      k073: 'High contrast',
+      k074: 'Colour-blind mode',
+      k075: 'Dyslexia-friendly font',
+      k076: 'Guardian-controlled · off',
+      k077: 'Read all text aloud',
+      k078: 'Guardian-controlled · on',
+      k079: 'Privacy and language',
+      k080: 'Consent switches',
+      k081: 'The 7 learning features and offers: locked off under 18 · the other 3 guardian-controlled',
+      k082: 'Language',
+      k083: 'English',
+      k084: 'Bangla phonetic typing',
+      k085: 'Type in English letters, get Bangla — “ami bujhini” → “আমি বুঝিনি”',
+      k086: 'Settings — sign language, Calm mode, daily question, my data',
+      k087: 'Accessibility',
+      k088: 'Sign language avatar (BdSL)',
+      k089: 'For deaf and hard-of-hearing learners — Bangla and English medium',
+      k090: 'The avatar always signs in BdSL. Captions follow your teaching language: Bangla medium → Bangla captions, English medium → English captions.',
+      k091: 'With the avatar on for the whole 1:1 class, your minutes count slower: 1.5 minutes of class = 1 minute from your plan.',
+      k092: 'No extra price — the same price in every plan',
+      k093: 'Report mode',
+      k094: 'Standard',
+      k095: 'Dyslexia-friendly',
+      k096: 'Colour-blind-safe',
+      k097: 'Study',
+      k098: 'Calm mode · ranks hidden',
+      k099: 'Hides ranks, merit lists and leaderboards before exams — you or your guardian can turn it on.',
+      k100: 'Off',
+      k101: 'Sensory-friendly mode',
+      k102: 'Under 18: a guardian turns it on — the learner can ask for it',
+      k103: 'Daily “question from my mistakes”',
+      k104: 'No questions after 9 pm · under 18, you set the time yourself',
+      k105: 'My data',
+      k106: 'Classes, reports, the list of recordings, tests, notes — in one file (portability under the Personal Data Protection Act 2026).',
+      k107: '⤓ Download all my data',
+      k108: 'Ready within a few minutes (default) · link in your notifications · valid 7 days (default) · asks for a one-time code'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: 'वॉलेट और Daily Pass, नोटिफ़िकेशन, प्रोफ़ाइल और प्लान, सेटिंग्स',
+      k002: 'वॉलेट और Daily Pass',
+      k003: 'पीछे',
+      k004: 'वॉलेट',
+      k005: 'बैलेंस',
+      k006: 'अतिरिक्त 1:1 कॉल · ৳1/मिनट · रात 1–7 बजे ৳0.80/मिनट (सिर्फ़ वयस्क कोर्स में, 20% छूट)',
+      k007: 'टॉप-अप',
+      k008: '24 घंटे · 20 मिनट 1:1 Nexa Teacher + Nexa Co-Teacher + मॉक टेस्ट',
+      k009: 'bKash से ख़रीदो',
+      k010: 'मासिक ख़र्च की सीमा',
+      k011: 'सीमा तुम्हारे अभिभावक ने तय की है',
+      k012: 'हाल का',
+      k013: '1:1 कॉल · गणित',
+      k014: 'सबसे अच्छे प्रश्न का इनाम',
+      k015: '+10 मिनट',
+      k016: 'टॉप-अप · Nagad',
+      k017: 'सीखने की गारंटी:',
+      k018: 'अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।',
+      k019: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; क्रेडिट 6 महीने चलता है। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',
+      k020: 'नोटिफ़िकेशन',
+      k021: 'सब पढ़ लिए',
+      k022: 'बैच क्लास 30 मिनट में',
+      k023: 'गणित · द्विघात समीकरण · 4:00 pm',
+      k024: 'अभी-अभी',
+      k025: 'तुम्हारा सवाल जाँचकर उत्तर-भंडार में जोड़ा गया',
+      k026: 'इनाम: +10 बोनस मिनट',
+      k027: '1 घंटा पहले',
+      k028: 'ग़लतियों की कॉपी: आज 4 री-टेस्ट',
+      k029: '3 दिन पहले की ग़लतियाँ फिर देखो',
+      k030: 'सुबह 9:00',
+      k031: '6 मिनट लौटाए गए',
+      k032: 'कल सर्वर की समस्या से Nexa Teacher रुक गया था',
+      k033: 'कल',
+      k034: 'शनिवार: इस हफ़्ते का लक्ष्य तय करो',
+      k035: 'शुक्रवार का 2 मिनट का रिफ़्लेक्शन बाकी',
+      k036: '2 दिन पहले',
+      k037: 'ऑटो-रिन्यू हो गया — भुगतान सफल',
+      k038: 'पहली कोशिश विफल हुई; 3 दिन की छूट-अवधि में दोबारा कोशिश सफल। प्लान रुका नहीं — 5 मार्च 2027 तक वैध।',
+      k039: '5 फ़रवरी',
+      k040: 'प्रोफ़ाइल और प्लान',
+      k041: 'प्रोफ़ाइल',
+      k042: 'त',
+      k043: 'तनवीर अहमद',
+      k044: 'Nexa ID · चेहरा जाँच पूरी',
+      k045: 'चालू',
+      k046: '5 मार्च 2027 तक वैध · ऑटो-रिन्यू (ख़रीदते समय चुना)',
+      k047: 'Personal में अपग्रेड — अभी चालू',
+      k048: 'रोज़ 75 मिनट 1:1। इस महीने के बचे 15 दिनों के लिए सिर्फ़ अंतर दो:',
+      k049: 'अपग्रेड करो',
+      k050: 'डाउनग्रेड अगले रिन्यू से होगा।',
+      k051: 'परीक्षा के आख़िरी 30 दिनों में +45 मिनट 1:1 · सीटों की कोई सीमा नहीं',
+      k052: '· अभिभावक की मंज़ूरी चाहिए',
+      k053: 'ऐड-ऑन',
+      k054: 'प्रमाणपत्र और बैज',
+      k055: 'भाई-बहन जोड़ो',
+      k056: 'दूसरे बच्चे पर 30% छूट',
+      k057: 'सेटिंग्स और गोपनीयता',
+      k058: 'मदद और शिकायत',
+      k059: 'मुख्य मेनू',
+      k060: 'होम',
+      k061: 'क्लास',
+      k062: 'प्रगति',
+      k063: 'सेटिंग्स — डिवाइस, डेटा, सुगमता',
+      k064: 'सेटिंग्स',
+      k065: 'डिवाइस जाँच',
+      k066: 'Android 12 · 6 GB RAM · Chrome — ज़्यादातर काम ब्राउज़र में',
+      k067: 'डेटा और इंटरनेट',
+      k068: 'बड़े मॉडल सिर्फ़ Wi-Fi पर डाउनलोड होंगे',
+      k069: 'लो-इंटरनेट मोड',
+      k070: 'अवतार बंद, सिर्फ़ आवाज़ + बोर्ड (~30 kbps)',
+      k071: 'सुगम्यता',
+      k072: 'बड़ा टेक्स्ट',
+      k073: 'हाई कॉन्ट्रास्ट',
+      k074: 'कलर-ब्लाइंड मोड',
+      k075: 'डिस्लेक्सिया-अनुकूल फ़ॉन्ट',
+      k076: 'अभिभावक नियंत्रित · बंद',
+      k077: 'सारा टेक्स्ट पढ़कर सुनाओ',
+      k078: 'अभिभावक नियंत्रित · चालू',
+      k079: 'गोपनीयता और भाषा',
+      k080: 'सहमति के स्विच',
+      k081: 'सीखने के 7 फ़ीचर और ऑफ़र: 18 से कम पर बंद (लॉक) · बाकी 3 अभिभावक नियंत्रित',
+      k082: 'भाषा',
+      k083: 'हिन्दी',
+      k084: 'बांग्ला फ़ोनेटिक टाइपिंग',
+      k085: 'अंग्रेज़ी अक्षरों में लिखो, बांग्ला पाओ — “ami bujhini” → “আমি বুঝিনি”',
+      k086: 'सेटिंग्स — सांकेतिक भाषा, Calm mode, रोज़ का सवाल, मेरा डेटा',
+      k087: 'सुगमता',
+      k088: 'सांकेतिक भाषा अवतार (BdSL)',
+      k089: 'बधिर और कम सुनने वाले शिक्षार्थियों के लिए — बांग्ला और अंग्रेज़ी माध्यम',
+      k090: 'अवतार हमेशा BdSL में दिखाता है। कैप्शन तुम्हारी पढ़ाई की भाषा में: बांग्ला माध्यम → बांग्ला कैप्शन, अंग्रेज़ी माध्यम → अंग्रेज़ी कैप्शन।',
+      k091: 'पूरी 1:1 क्लास में अवतार चालू रहे तो मिनट धीरे गिने जाते हैं: क्लास के 1.5 मिनट = प्लान से 1 मिनट।',
+      k092: 'कोई अतिरिक्त कीमत नहीं — हर प्लान में वही कीमत',
+      k093: 'रिपोर्ट दिखाने का तरीका',
+      k094: 'सामान्य',
+      k095: 'डिस्लेक्सिया के अनुकूल',
+      k096: 'रंग-अंधता के लिए सुरक्षित',
+      k097: 'पढ़ाई',
+      k098: 'Calm mode · रैंक छिपी',
+      k099: 'परीक्षा से पहले रैंक, मेरिट सूची और लीडरबोर्ड छिपा देता है — तुम या तुम्हारे अभिभावक इसे चालू कर सकते हैं।',
+      k100: 'बंद',
+      k101: 'संवेदी-अनुकूल मोड',
+      k102: '18 साल से कम: अभिभावक चालू करते हैं — विद्यार्थी माँग सकता है',
+      k103: 'रोज़ “मेरी ग़लतियों से एक सवाल”',
+      k104: 'रात 9 बजे के बाद कोई सवाल नहीं · 18 से कम उम्र में समय तुम ख़ुद तय करो',
+      k105: 'मेरा डेटा',
+      k106: 'क्लास, रिपोर्ट, रिकॉर्डिंग की सूची, टेस्ट, नोट — एक फ़ाइल में (व्यक्तिगत डेटा संरक्षण अधिनियम 2026 के तहत पोर्टेबिलिटी)।',
+      k107: '⤓ मेरा सारा डेटा डाउनलोड करो',
+      k108: 'कुछ मिनटों में तैयार (डिफ़ॉल्ट) · लिंक तुम्हारी नोटिफ़िकेशन में · 7 दिन मान्य (डिफ़ॉल्ट) · एक बार का कोड माँगेगा'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: 'والیٹ اور Daily Pass، نوٹیفکیشنز، پروفائل اور پلان، ترتیبات',
+      k002: 'والیٹ اور Daily Pass',
+      k003: 'پیچھے',
+      k004: 'والیٹ',
+      k005: 'بیلنس',
+      k006: 'اضافی ' + M('1:1') + ' کال · ' + M('৳1/') + 'منٹ · رات ' + M('1–7') + ' بجے ' + M('৳0.80/') + 'منٹ (صرف بالغوں کے کورس میں، ' + M('20%') + ' رعایت)',
+      k007: 'ٹاپ اپ',
+      k008: M('24') + ' گھنٹے · ' + M('20') + ' منٹ ' + M('1:1 Nexa Teacher + Nexa Co-Teacher +') + ' ماک ٹیسٹ',
+      k009: 'bKash سے خریدو',
+      k010: 'ماہانہ خرچ کی حد',
+      k011: 'حد تمہارے سرپرست نے طے کی ہے',
+      k012: 'حالیہ',
+      k013: M('1:1') + ' کال · ریاضی',
+      k014: 'بہترین سوال کا انعام',
+      k015: M('+10') + ' منٹ',
+      k016: 'ٹاپ اپ · Nagad',
+      k017: 'سیکھنے کی ضمانت:',
+      k018: 'اگر ' + M('4') + ' ہفتے باقاعدہ پڑھائی (ہفتے میں ' + M('3') + ' یا زیادہ سیشن)' + ' کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k019: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ کریڈٹ ⁦6⁩ ماہ تک رہتا ہے۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k020: 'نوٹیفکیشن',
+      k021: 'سب پڑھ لیے',
+      k022: 'بیچ کلاس ' + M('30') + ' منٹ میں',
+      k023: 'ریاضی · دو درجی مساوات · ' + M('4:00 pm'),
+      k024: 'ابھی ابھی',
+      k025: 'تمہارا سوال جانچ کر جواب بینک میں شامل کیا گیا',
+      k026: 'انعام: ' + M('+10') + ' بونس منٹ',
+      k027: M('1') + ' گھنٹہ پہلے',
+      k028: 'غلطیوں کی کاپی: آج ' + M('4') + ' ری ٹیسٹ',
+      k029: M('3') + ' دن پہلے کی غلطیاں دوبارہ دیکھو',
+      k030: 'صبح ' + M('9:00'),
+      k031: M('6') + ' منٹ واپس کیے گئے',
+      k032: 'کل سرور کے مسئلے سے Nexa Teacher رک گیا تھا',
+      k033: 'کل',
+      k034: 'ہفتہ: اس ہفتے کا ہدف طے کرو',
+      k035: 'جمعہ کا ' + M('2') + ' منٹ کا ریفلیکشن باقی',
+      k036: M('2') + ' دن پہلے',
+      k037: 'آٹو رینیو ہو گیا — ادائیگی کامیاب',
+      k038: 'پہلی کوشش ناکام ہوئی؛ ' + M('3') + ' دن کی رعایتی مدت میں دوبارہ کوشش کامیاب۔ پلان نہیں رکا — ' + M('5') + ' مارچ ' + M('2027') + ' تک کارآمد۔',
+      k039: M('5') + ' فروری',
+      k040: 'پروفائل اور پلان',
+      k041: 'پروفائل',
+      k042: 'ت',
+      k043: 'تنویر احمد',
+      k044: 'Nexa ID · چہرے کی جانچ مکمل',
+      k045: 'فعال',
+      k046: M('5') + ' مارچ ' + M('2027') + ' تک کارآمد · آٹو رینیو (خریدتے وقت چنا)',
+      k047: 'Personal میں اپ گریڈ — ابھی چالو',
+      k048: 'روز ' + M('75') + ' منٹ ' + M('1:1') + '۔ اس مہینے کے باقی ' + M('15') + ' دنوں کے لیے صرف فرق دو:',
+      k049: 'اپ گریڈ کرو',
+      k050: 'ڈاؤن گریڈ اگلے رینیو سے ہوگا۔',
+      k051: 'امتحان کے آخری ' + M('30') + ' دنوں میں ' + M('+45') + ' منٹ ' + M('1:1') + ' · نشستوں کی کوئی حد نہیں',
+      k052: '· سرپرست کی منظوری چاہیے',
+      k053: 'ایڈ آن',
+      k054: 'سرٹیفکیٹ اور بیجز',
+      k055: 'بہن بھائی شامل کرو',
+      k056: 'دوسرے بچے پر ' + M('30%') + ' رعایت',
+      k057: 'ترتیبات اور رازداری',
+      k058: 'مدد اور شکایت',
+      k059: 'مرکزی مینو',
+      k060: 'ہوم',
+      k061: 'کلاس',
+      k062: 'پیش رفت',
+      k063: 'ترتیبات — ڈیوائس، ڈیٹا، رسائی',
+      k064: 'ترتیبات',
+      k065: 'ڈیوائس کی جانچ',
+      k066: M('Android 12') + ' · ' + M('6 GB RAM') + ' · Chrome — زیادہ تر کام براؤزر میں',
+      k067: 'ڈیٹا اور انٹرنیٹ',
+      k068: 'بڑے ماڈل صرف Wi-Fi پر ڈاؤن لوڈ ہوں گے',
+      k069: 'لو انٹرنیٹ موڈ',
+      k070: 'اوتار بند، صرف آواز + بورڈ (~' + M('30 kbps') + ')',
+      k071: 'رسائی',
+      k072: 'بڑا متن',
+      k073: 'ہائی کنٹراسٹ',
+      k074: 'کلر بلائنڈ موڈ',
+      k075: 'ڈسلیکسیا دوست فونٹ',
+      k076: 'سرپرست کے کنٹرول میں · بند',
+      k077: 'سارا متن پڑھ کر سناؤ',
+      k078: 'سرپرست کے کنٹرول میں · آن',
+      k079: 'رازداری اور زبان',
+      k080: 'رضامندی کے سوئچ',
+      k081: 'سیکھنے کے ' + M('7') + ' فیچر اور آفرز: ' + M('18') + ' سے کم پر بند (لاک)' + ' · باقی ' + M('3') + ' سرپرست کے کنٹرول میں',
+      k082: 'زبان',
+      k083: 'اردو',
+      k084: 'بنگلہ فونیٹک ٹائپنگ',
+      k085: 'انگریزی حروف میں لکھو، بنگلہ پاؤ — “ami bujhini” ← “আমি বুঝিনি”',
+      k086: 'ترتیبات — اشاروں کی زبان، ' + M('Calm mode') + '، روز کا سوال، میرا ڈیٹا',
+      k087: 'رسائی',
+      k088: 'اشاروں کی زبان کا اوتار ' + M('(BdSL)'),
+      k089: 'بہرے اور کم سننے والے طلبہ کے لیے — بنگلہ اور انگلش میڈیم',
+      k090: 'اوتار ہمیشہ BdSL میں دکھاتا ہے۔ کیپشن تمہاری پڑھائی کی زبان میں: بنگلہ میڈیم ← بنگلہ کیپشن، انگلش میڈیم ← انگریزی کیپشن۔',
+      k091: 'پوری ' + M('1:1') + ' کلاس میں اوتار آن رہے تو منٹ آہستہ گنے جاتے ہیں: کلاس کے ' + M('1.5') + ' منٹ ' + M('=') + ' پلان سے ' + M('1') + ' منٹ۔',
+      k092: 'کوئی اضافی قیمت نہیں — ہر پلان میں وہی قیمت',
+      k093: 'رپورٹ دکھانے کا طریقہ',
+      k094: 'عام',
+      k095: 'ڈسلیکسیا کے موافق',
+      k096: 'رنگ کوری کے لیے محفوظ',
+      k097: 'پڑھائی',
+      k098: M('Calm mode') + ' · رینک پوشیدہ',
+      k099: 'امتحان سے پہلے رینک، میرٹ لسٹ اور لیڈر بورڈ چھپا دیتا ہے — تم یا تمہارے سرپرست اسے آن کر سکتے ہیں۔',
+      k100: 'بند',
+      k101: 'حسّی دوستانہ موڈ',
+      k102: M('18') + ' سال سے کم: سرپرست آن کرتے ہیں — طالب علم درخواست کر سکتا ہے',
+      k103: 'روز “میری غلطیوں سے ایک سوال”',
+      k104: 'رات ' + M('9') + ' بجے کے بعد کوئی سوال نہیں · ' + M('18') + ' سے کم عمر میں وقت تم خود طے کرو',
+      k105: 'میرا ڈیٹا',
+      k106: 'کلاسیں، رپورٹیں، ریکارڈنگز کی فہرست، ٹیسٹ، نوٹس — ایک فائل میں (ذاتی ڈیٹا تحفظ ایکٹ ' + M('2026') + ' کے تحت پورٹیبلٹی)' + '۔',
+      k107: '⤓ میرا سارا ڈیٹا ڈاؤن لوڈ کرو',
+      k108: 'چند منٹ میں تیار (ڈیفالٹ) · لنک تمہاری نوٹیفکیشن میں · ⁦7⁩ دن کارآمد (ڈیفالٹ) · ایک بار کا کوڈ مانگے گا'
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: 'المحفظة وDaily Pass، الإشعارات، الملف الشخصي والخطة، الإعدادات',
+      k002: 'المحفظة وDaily Pass',
+      k003: 'رجوع',
+      k004: 'المحفظة',
+      k005: 'الرصيد',
+      k006: 'مكالمة ' + M('1:1') + ' إضافية · ' + M('৳1/') + 'دقيقة · من ' + M('1') + ' إلى ' + M('7') + ' صباحًا ' + M('৳0.80/') + 'دقيقة (لدورات البالغين فقط، خصم ' + M('20%') + ')',
+      k007: 'الشحن',
+      k008: M('24') + ' ساعة · ' + M('20') + ' دقيقة ' + M('1:1') + ' مع Nexa Teacher + Nexa Co-Teacher + اختبارات تجريبية',
+      k009: 'اشترِ عبر bKash',
+      k010: 'حدّ الإنفاق الشهري',
+      k011: 'ولي أمرك هو من حدّد هذا الحد',
+      k012: 'الأحدث',
+      k013: 'مكالمة ' + M('1:1') + ' · الرياضيات',
+      k014: 'مكافأة أفضل سؤال',
+      k015: M('+10') + ' دقائق',
+      k016: 'شحن · Nagad',
+      k017: 'ضمان التعلّم:',
+      k018: 'إذا لم يتحسّن إتقانك بعد ' + M('4') + ' أسابيع من الدراسة المنتظمة (' + M('3') + ' جلسات أو أكثر أسبوعيًا)' + '، نعيد إليك الدقائق رصيدًا في المحفظة [بانتظار تأكيد محامينا].',
+      k019: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ ويبقى الرصيد صالحًا ⁦6⁩ أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',
+      k020: 'الإشعارات',
+      k021: 'تمّت قراءة الكل',
+      k022: 'الحصة الجماعية بعد ' + M('30') + ' دقيقة',
+      k023: 'الرياضيات · المعادلات التربيعية · ' + M('4:00 pm'),
+      k024: 'الآن',
+      k025: 'تمت مراجعة سؤالك وإضافته إلى بنك الإجابات',
+      k026: 'المكافأة: ' + M('+10') + ' دقائق إضافية',
+      k027: 'قبل ساعة',
+      k028: 'دفتر الأخطاء: ' + M('4') + ' إعادات اختبار اليوم',
+      k029: 'راجع أخطاء ما قبل ' + M('3') + ' أيام',
+      k030: M('9:00') + ' صباحًا',
+      k031: 'أُعيدت ' + M('6') + ' دقائق',
+      k032: 'توقف Nexa Teacher أمس بسبب مشكلة في الخادم',
+      k033: 'أمس',
+      k034: 'السبت: حدّد هدف هذا الأسبوع',
+      k035: 'تأمّل الجمعة لمدة دقيقتين لم يُنجز بعد',
+      k036: 'قبل يومين',
+      k037: 'تم التجديد التلقائي — الدفع ناجح',
+      k038: 'فشلت المحاولة الأولى؛ ونجحت إعادة المحاولة خلال مهلة ' + M('3') + ' أيام. لم تتوقف الخطة — سارية حتى ' + M('5') + ' مارس ' + M('2027') + '.',
+      k039: M('5') + ' فبراير',
+      k040: 'الملف الشخصي والخطة',
+      k041: 'الملف',
+      k042: 'ت',
+      k043: 'تنوير أحمد',
+      k044: 'Nexa ID · اكتمل فحص الوجه',
+      k045: 'مفعّلة',
+      k046: 'سارية حتى ' + M('5') + ' مارس ' + M('2027') + ' · تجديد تلقائي (اختير عند الشراء)',
+      k047: 'الترقية إلى Personal — تبدأ الآن',
+      k048: M('75') + ' دقيقة ' + M('1:1') + ' يوميًا. للأيام الخمسة عشر المتبقية من هذا الشهر تدفع الفرق فقط:',
+      k049: 'رقِّ الخطة',
+      k050: 'يسري التخفيض من التجديد القادم.',
+      k051: M('+45') + ' دقيقة ' + M('1:1') + ' في آخر ' + M('30') + ' يومًا قبل الامتحان · لا حدّ للمقاعد',
+      k052: '· يحتاج موافقة ولي الأمر',
+      k053: 'إضافة',
+      k054: 'الشهادات والشارات',
+      k055: 'أضف أخًا أو أختًا',
+      k056: 'خصم ' + M('30%') + ' للطفل الثاني',
+      k057: 'الإعدادات والخصوصية',
+      k058: 'المساعدة والشكاوى',
+      k059: 'القائمة الرئيسية',
+      k060: 'الرئيسية',
+      k061: 'الحصص',
+      k062: 'التقدّم',
+      k063: 'الإعدادات — الجهاز، البيانات، سهولة الوصول',
+      k064: 'الإعدادات',
+      k065: 'فحص الجهاز',
+      k066: M('Android 12') + ' · ' + M('6 GB RAM') + ' · Chrome — معظم العمل في المتصفح',
+      k067: 'البيانات والإنترنت',
+      k068: 'تُنزَّل النماذج الكبيرة عبر Wi-Fi فقط',
+      k069: 'وضع الإنترنت الضعيف',
+      k070: 'الأفاتار متوقف، الصوت + السبورة فقط (~' + M('30 kbps') + ')',
+      k071: 'إتاحة الوصول',
+      k072: 'نص كبير',
+      k073: 'تباين عالٍ',
+      k074: 'وضع عمى الألوان',
+      k075: 'خط مناسب لعُسر القراءة',
+      k076: 'يتحكم فيه ولي الأمر · متوقف',
+      k077: 'اقرأ كل النص بصوت عالٍ',
+      k078: 'يتحكم فيه ولي الأمر · مفعّل',
+      k079: 'الخصوصية واللغة',
+      k080: 'مفاتيح الموافقة',
+      k081: 'ميزات التعلّم السبع والعروض: مقفلة لمن هم دون ' + M('18') + ' · والثلاث الباقية يتحكم فيها ولي الأمر',
+      k082: 'اللغة',
+      k083: 'العربية',
+      k084: 'الكتابة الصوتية بالبنغالية',
+      k085: 'اكتب بحروف إنجليزية واحصل على البنغالية — “ami bujhini” ← “আমি বুঝিনি”',
+      k086: 'الإعدادات — لغة الإشارة، ' + M('Calm mode') + '، السؤال اليومي، بياناتي',
+      k087: 'سهولة الوصول',
+      k088: 'أفاتار لغة الإشارة ' + M('(BdSL)'),
+      k089: 'للمتعلمين الصم وضعاف السمع — التعليم بالبنغالية وبالإنجليزية',
+      k090: 'يترجم الأفاتار دائمًا بلغة BdSL. والترجمة النصية بلغة دراستك: التعليم بالبنغالية ← نص بنغالي، التعليم بالإنجليزية ← نص إنجليزي.',
+      k091: 'عند تفعيل الأفاتار طوال حصة ' + M('1:1') + ' تُحسب دقائقك أبطأ: ' + M('1.5') + ' دقيقة من الحصة ' + M('=') + ' دقيقة واحدة من خطتك.',
+      k092: 'بلا سعر إضافي — السعر نفسه في كل خطة',
+      k093: 'طريقة عرض التقارير',
+      k094: 'عادي',
+      k095: 'مناسب لعسر القراءة',
+      k096: 'آمن لعمى الألوان',
+      k097: 'الدراسة',
+      k098: M('Calm mode') + ' · إخفاء الترتيب',
+      k099: 'يُخفي الترتيب وقوائم الأوائل ولوحات المتصدرين قبل الامتحانات — يمكنك أنت أو ولي أمرك تشغيله.',
+      k100: 'متوقف',
+      k101: 'الوضع الملائم للحواس',
+      k102: 'دون ' + M('18') + ' سنة: وليّ الأمر يفعّله — ويمكن للمتعلّم أن يطلبه',
+      k103: 'يوميًا “سؤال من أخطائي”',
+      k104: 'لا أسئلة بعد الساعة ' + M('9') + ' مساءً · لمن هم دون ' + M('18') + ' تختار الوقت بنفسك',
+      k105: 'بياناتي',
+      k106: 'الحصص والتقارير وقائمة التسجيلات والاختبارات والملاحظات — في ملف واحد (قابلية النقل وفق قانون حماية البيانات الشخصية ' + M('2026') + ')' + '.',
+      k107: '⤓ نزّل كل بياناتي',
+      k108: 'جاهز خلال دقائق قليلة (افتراضي) · الرابط في إشعاراتك · صالح ⁦7⁩ أيام (افتراضي) · يطلب رمزًا لمرة واحدة'
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: 'Portefeuille et Daily Pass, notifications, profil et formule, réglages',
+      k002: 'Portefeuille et Daily Pass',
+      k003: 'Retour',
+      k004: 'Portefeuille',
+      k005: 'Solde',
+      k006: 'Appel 1:1 en plus · ৳1/min · de 1 h à 7 h ৳0,80/min (cours adultes seulement, −20 %)',
+      k007: 'Recharger',
+      k008: '24 heures · 20 min de 1:1 Nexa Teacher + Nexa Co-Teacher + examens blancs',
+      k009: 'Acheter avec bKash',
+      k010: 'Plafond de dépenses mensuel',
+      k011: 'C’est ton parent qui a fixé le plafond',
+      k012: 'Récent',
+      k013: 'Appel 1:1 · Maths',
+      k014: 'Récompense meilleure question',
+      k015: '+10 minutes',
+      k016: 'Recharge · Nagad',
+      k017: 'Garantie d’apprentissage :',
+      k018: 'si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous te rendons les minutes en crédit sur ton portefeuille [à confirmer avec notre avocat].',
+      k019: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; le crédit est valable 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',
+      k020: 'Notifications',
+      k021: 'Tout marquer lu',
+      k022: 'Cours en groupe dans 30 minutes',
+      k023: 'Maths · Équations du second degré · 16 h 00',
+      k024: 'à l’instant',
+      k025: 'Ta question a été vérifiée et ajoutée à la banque de réponses',
+      k026: 'Récompense : +10 minutes bonus',
+      k027: 'il y a 1 heure',
+      k028: 'Carnet d’erreurs : 4 re-tests aujourd’hui',
+      k029: 'Revois les erreurs d’il y a 3 jours',
+      k030: '9 h 00',
+      k031: '6 minutes rendues',
+      k032: 'Nexa Teacher s’est arrêté hier à cause d’un problème de serveur',
+      k033: 'Hier',
+      k034: 'Samedi : fixe l’objectif de la semaine',
+      k035: 'La réflexion de 2 minutes de vendredi reste à faire',
+      k036: 'Il y a 2 jours',
+      k037: 'Renouvellement auto effectué — paiement réussi',
+      k038: 'Le premier essai a échoué ; un nouvel essai pendant les 3 jours de grâce a réussi. La formule ne s’est pas arrêtée — valable jusqu’au 5 mars 2027.',
+      k039: '5 février',
+      k040: 'Profil et formule',
+      k041: 'Profil',
+      k042: 'T',
+      k043: 'Tanvir Ahmed',
+      k044: 'Nexa ID · vérification du visage faite',
+      k045: 'Active',
+      k046: 'Valable jusqu’au 5 mars 2027 · renouvellement auto (choisi à l’achat)',
+      k047: 'Passer à Personal — démarre maintenant',
+      k048: '75 min de 1:1 par jour. Pour les 15 jours restants du mois, tu paies seulement la différence :',
+      k049: 'Passer à la formule',
+      k050: 'Une formule inférieure commence au prochain renouvellement.',
+      k051: '+45 min de 1:1 les 30 derniers jours avant l’examen · pas de limite de places',
+      k052: '· accord du parent nécessaire',
+      k053: 'Option',
+      k054: 'Certificats et badges',
+      k055: 'Ajouter un frère ou une sœur',
+      k056: '−30 % pour le 2e enfant',
+      k057: 'Réglages et confidentialité',
+      k058: 'Aide et réclamations',
+      k059: 'Menu principal',
+      k060: 'Accueil',
+      k061: 'Cours',
+      k062: 'Progrès',
+      k063: 'Réglages — appareil, données, accessibilité',
+      k064: 'Réglages',
+      k065: 'Vérification de l’appareil',
+      k066: 'Android 12 · 6 Go de RAM · Chrome — l’essentiel se fait dans le navigateur',
+      k067: 'Données et internet',
+      k068: 'Les gros modèles se téléchargent en Wi-Fi seulement',
+      k069: 'Mode internet faible',
+      k070: 'Avatar coupé, voix + tableau seulement (~30 kbps)',
+      k071: 'Accessibilité',
+      k072: 'Grand texte',
+      k073: 'Contraste élevé',
+      k074: 'Mode daltonien',
+      k075: 'Police adaptée à la dyslexie',
+      k076: 'Contrôlé par le parent · désactivé',
+      k077: 'Lire tout le texte à voix haute',
+      k078: 'Contrôlé par le parent · activé',
+      k079: 'Confidentialité et langue',
+      k080: 'Interrupteurs de consentement',
+      k081: 'Les 7 fonctions d’apprentissage et les offres : verrouillées avant 18 ans · les 3 autres contrôlées par le parent',
+      k082: 'Langue',
+      k083: 'Français',
+      k084: 'Saisie phonétique bengali',
+      k085: 'Tape en lettres latines, obtiens du bengali — « ami bujhini » → « আমি বুঝিনি »',
+      k086: 'Réglages — langue des signes, Calm mode, question du jour, mes données',
+      k087: 'Accessibilité',
+      k088: 'Avatar en langue des signes (BdSL)',
+      k089: 'Pour les élèves sourds et malentendants — enseignement en bengali et en anglais',
+      k090: 'L’avatar signe toujours en BdSL. Les sous-titres suivent ta langue d’enseignement : bengali → sous-titres en bengali, anglais → sous-titres en anglais.',
+      k091: 'Avec l’avatar activé pendant tout le cours 1:1, tes minutes comptent moins vite : 1,5 minute de cours = 1 minute de ta formule.',
+      k092: 'Sans supplément — le même prix dans chaque formule',
+      k093: 'Affichage des rapports',
+      k094: 'Standard',
+      k095: 'Adapté à la dyslexie',
+      k096: 'Sûr pour les daltoniens',
+      k097: 'Études',
+      k098: 'Calm mode · classements masqués',
+      k099: 'Masque les rangs, palmarès et classements avant les examens — toi ou ton parent pouvez l’activer.',
+      k100: 'Non',
+      k101: 'Mode sensoriel adapté',
+      k102: 'Moins de 18 ans : un parent l’active — l’élève peut le demander',
+      k103: 'Chaque jour, « une question de mes erreurs »',
+      k104: 'Aucune question après 21 h · avant 18 ans, tu choisis l’heure toi-même',
+      k105: 'Mes données',
+      k106: 'Cours, rapports, liste des enregistrements, tests, notes — dans un seul fichier (portabilité selon le Personal Data Protection Act 2026).',
+      k107: '⤓ Télécharger toutes mes données',
+      k108: 'Prêt en quelques minutes (par défaut) · lien dans tes notifications · valable 7 jours (par défaut) · demande un code à usage unique'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, fx: this.fx16(lang), lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

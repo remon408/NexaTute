@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Guardian rules, alerts, PlayBoom progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.tg{width:44px;height:26px;border-radius:99px;background:#3B34C9;position:relative;border:0;padding:0;flex:none}
+.tg::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+.tg.off{background:#C9CFDC}
+.tg.off::after{right:auto;left:3px}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.seg button{height:56px;border:1px solid #D3D8E4;background:#fff;border-radius:14px;font:600 14px 'Hind Siliguri',sans-serif;color:#141A33;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.seg button.on{border:2px solid #3B34C9;background:#F0F1FB}
+.al{display:flex;gap:12px;padding:14px;background:#fff;border:1px solid #E2E6EF;border-radius:16px}
+.al .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.tp{display:flex;flex-direction:column;gap:6px}
+/* fix11: 6-language wireframe — language picker; Urdu in Nastaliq needs a taller line; RTL mirrors back arrows */
+.wfl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.wfl span{font-size:12px;font-weight:600;color:#59617A;margin-inline-end:4px}
+.wfl button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #C9CFDC;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#141A33;cursor:pointer}
+.wfl button.on{background:#141A33;border-color:#141A33;color:#fff}
+[lang=ur] *{line-height:1.9}
+[dir=rtl] .ib svg{transform:scaleX(-1)}
+/* longer languages (fr, ur Nastaliq) must not cut the bottom of a phone screen: the phone grows instead */
+.ph{height:auto;min-height:844px}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="width:1346px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="wfl" role="group" aria-label="{{ t.lp }}"><span>{{ t.lp }}</span><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Guardian · 2</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k7 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- G2.1 Screen time -->
+<div class="col">
+  <div class="cap"><b>G5</b>{{ t.k8 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k1 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k9 }}</p><p class="xs" style="margin:0">PlayBoom · KG</p></div>
+    </div>
+    <div class="bd" style="gap:12px">
+      <p class="t3" style="font-size:14px">{{ t.k10 }}</p>
+      <div class="seg"><button class="on">{{ t.k11 }}<span class="xs">{{ t.k12 }}</span></button><button>{{ t.k13 }}</button><button>{{ t.k14 }}</button></div>
+      <div class="cd" style="background:#FFF6E6;border-color:#F6DFB2;padding:12px 14px">
+        <p class="sm" style="color:#5C3300">{{ t.k15 }}</p>
+      </div>
+      <div class="cd" style="padding:2px 16px">
+        <div class="li"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k16 }}</p><p class="xs" style="margin:0">{{ t.k17 }}</p></div><svg class="i" viewBox="0 0 24 24" role="img" aria-label="{{ t.k2 }}" style="color:#59617A"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k18 }}</p><p class="xs" style="margin:0">{{ t.k19 }}</p></div><button class="tg" aria-pressed="true" aria-label="AI Play Buddy"></button></div>
+        <div class="li" style="border:0"><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k20 }}</p><p class="xs" style="margin:0">{{ t.k21 }}</p></div></div>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k22 }}</p>
+      <div class="cd" style="padding:2px 16px">
+        <div class="li"><span style="flex:1">{{ t.k3 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k3 }}"></button></div>
+        <div class="li"><span style="flex:1">{{ t.k4 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k4 }}"></button></div>
+        <div class="li"><span style="flex:1">{{ t.k5 }}</span><button class="tg" aria-pressed="true" aria-label="{{ t.k5 }}"></button></div>
+        <!-- fix12 (R11-family-4, G1, G10): PlayBoom uses the shared Sensory-friendly mode name (sensory.md v2) -->
+        <div class="li" style="align-items:flex-start"><div style="flex:1;min-width:0"><span style="display:block">{{ t.k58 }}</span><span class="xs" style="display:block">{{ t.k59 }}</span><span class="xs" style="display:block">{{ t.k60 }}</span></div><button class="tg off" aria-pressed="false" aria-label="{{ t.k58 }}"></button></div>
+        <div class="li" style="border:0"><span style="flex:1">{{ t.k23 }}</span><button class="tg off" aria-pressed="false" aria-label="{{ t.k6 }}"></button></div>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k24 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- G2.2 Alerts -->
+<div class="col">
+  <div class="cap"><b>G6</b>{{ t.k25 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k1 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k26 }}</p>
+    </div>
+    <div class="bd" style="gap:10px">
+      <div class="al"><span class="ic" style="background:#ECEBFD;color:#3B34C9"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k27 }}</p><p class="sm">{{ t.k28 }}</p><p class="xs" style="margin:6px 0 0">{{ t.k29 }}</p></div></div>
+      <div class="al"><span class="ic" style="background:#E1F4F2;color:#0B6E6A"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k30 }}</p><p class="sm">{{ t.k31 }}</p><p class="xs" style="margin:6px 0 0">{{ t.k32 }}</p></div></div>
+      <div class="al"><span class="ic" style="background:#FFF3DD;color:#8A4B00"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k33 }}</p><p class="sm">{{ t.k34 }}</p><p class="xs" style="margin:6px 0 0">{{ t.k35 }}</p></div></div>
+      <div class="al"><span class="ic" style="background:#E3F5EC;color:#17804F"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.4 6.5 20.3l1-6.2L3 9.7l6.2-.9z"/></svg></span><div><p class="t3" style="font-size:14px">{{ t.k36 }}</p><p class="sm">{{ t.k37 }}</p><p class="xs" style="margin:6px 0 0">{{ t.k38 }}</p></div></div>
+      <p class="xs" style="margin:0">{{ t.k39 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- G2.3 PlayBoom progress -->
+<div class="col">
+  <div class="cap"><b>G7</b>{{ t.k40 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k1 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k41 }}</p><p class="xs" style="margin:0">{{ t.k42 }}</p></div>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div><div class="xs">{{ t.k43 }}</div><b style="font-size:20px">{{ t.k44 }}</b></div>
+        <div><div class="xs">AI Play Buddy</div><b style="font-size:20px">{{ t.k45 }}</b></div>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+        <div class="tp"><div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k46 }}</span><b>21 / 50</b></div><div class="bar"><div style="width:42%;background:#E2572F"></div></div></div>
+        <div class="tp"><div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k47 }}</span><b>{{ t.k48 }}</b></div><div class="bar"><div style="width:100%;background:#3BB273"></div></div></div>
+        <div class="tp"><div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k57 }}</span><b>14 / 26</b></div><div class="bar"><div style="width:54%"></div></div></div>
+        <div class="tp"><div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k49 }}</span><b>9 / 12</b></div><div class="bar"><div style="width:75%;background:#F2A93B"></div></div></div>
+      </div>
+      <!-- fix14: Exam & Admission Hub — school admission tracking for Nusaiba (= X08#hub/kids, X05 guardian area) -->
+      <div class="cd" style="display:flex;flex-direction:column;gap:4px;padding:12px 14px">
+        <div class="row" style="gap:6px"><p class="t3" style="font-size:14px;flex:1">{{ t.k61 }}</p><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k62 }}</span></div>
+        <p class="xs" style="margin:0;font-weight:600;color:#141A33">{{ t.k63 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k64 }}</p>
+        <p class="xs" style="margin:0">{{ t.k65 }}</p>
+        <span class="chip" style="align-self:flex-start;background:#FFF8E1;color:#6B4E00;border:1px dashed #B88A00;white-space:normal">{{ t.k66 }}</span>
+        <p class="xs" style="margin:0">{{ t.k67 }}</p>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="justify-content:space-between"><p class="t3" style="font-size:14px">{{ t.k50 }}</p><span class="chip">{{ t.k51 }}</span></div>
+        <div class="row" style="gap:8px">
+          <div style="flex:1;height:64px;border-radius:12px;background:#FFF8E1;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#7A4A00">{{ t.k52 }}</div>
+          <div style="flex:1;height:64px;border-radius:12px;background:#FFF8E1;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#7A4A00">{{ t.k53 }}</div>
+          <div style="flex:1;height:64px;border-radius:12px;background:#FFF8E1;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#7A4A00">{{ t.k54 }}</div>
+        </div>
+        <p class="xs" style="margin:0">{{ t.k55 }}</p>
+      </div>
+      <div class="cd" style="background:#F0F1FB;border-color:#DCDDF7;padding:12px 14px">
+        <p class="sm" style="color:#141A33">{{ t.k56 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1346,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner addendum 26 Oct 2026, 22:15): the static wireframe in 6 languages — identical keys; ur/ar with LTR isolates; static otherwise
+  uiText() {
+    return {
+      "bn": {
+      "k1": "পেছনে",
+      "k2": "নির্ধারিত",
+      "k3": "ডিসলেক্সিয়া-বান্ধব ফন্ট",
+      "k4": "ছোট অংশ, বেশি বিরতি",
+      "k5": "সময়ের চাপ কম",
+      "k6": "ইশারা-বন্ধু (BdSL)",
+      "k7": "স্ক্রিন সময় ও নিয়ম, সতর্কবার্তা, PlayBoom অগ্রগতি",
+      "k8": "স্ক্রিন সময় ও নিয়ম (PlayBoom)",
+      "k9": "নুসাইবার নিয়ম",
+      "k10": "দিনে কয়টি সেশন (প্রতিটি 25 মিনিট)",
+      "k11": "1টি",
+      "k12": "ডিফল্ট",
+      "k13": "2টি",
+      "k14": "3টি",
+      "k15": "এই বয়সে দিনে 1 ঘণ্টার কম স্ক্রিন সময় সুপারিশ করা হয়। সিদ্ধান্ত আপনার।",
+      "k16": "দুই সেশনের মাঝে বিরতি",
+      "k17": "কমপক্ষে 2 ঘণ্টা",
+      "k18": "AI Play Buddy ভয়েস + ভিডিও",
+      "k19": "দিনে সর্বোচ্চ 30 মিনিট",
+      "k20": "কেনাকাটা",
+      "k21": "PlayBoom-এ শিশু কিছু কিনতে পারে না — প্ল্যান কেনেন আপনি",
+      "k22": "বিশেষ সহায়তা",
+      "k23": "ইশারা-বন্ধু (BdSL) · বাড়তি দাম নেই",
+      "k24": "সংরক্ষণ করুন",
+      "k25": "সতর্কবার্তা ও নোট",
+      "k26": "বার্তা",
+      "k27": "স্কুলের নোটিশ থেকে প্ল্যান আপডেট",
+      "k28": "আপনার দেওয়া লিংক থেকে টেস্ট পরীক্ষার রুটিন পাওয়া গেছে। তানভীরের স্টাডি প্ল্যান ও কাউন্টডাউন সেই অনুযায়ী বদলেছে।",
+      "k29": "আজ 10:12",
+      "k30": "ব্যক্তিগত নোট: ডিজিটাল আদব",
+      "k31": "গ্রুপ চ্যাটে একটি অশোভন শব্দের পর তানভীর 5 মিনিটের “ডিজিটাল আদব” পাঠ শেষ করেছে। এটা শুধু আপনাকে জানানো হলো — কাউকে প্রকাশ্যে দেখানো হয়নি।",
+      "k32": "গতকাল",
+      "k33": "নুসাইবার PlayBoom রিনিউ 20 ফেব্রুয়ারি",
+      "k34": "ম্যানুয়াল রিনিউ · ৳599 − 2য় সন্তান 30% ছাড় = ৳419 · 21 জানুয়ারি পরিশোধিত; 3 দিন আগে মনে করিয়ে দেব",
+      "k35": "2 দিন আগে",
+      "k36": "ভালো আচরণের স্ট্রিক ফিরেছে",
+      "k37": "7 দিন পরিচ্ছন্ন আচরণে চ্যাট আবার পুরোপুরি চালু।",
+      "k38": "3 দিন আগে",
+      "k39": "গুরুতর বিষয় হলে NexaTute-এর মানব নিয়ন্ত্রক আপনাকে সরাসরি জানাবেন।",
+      "k40": "PlayBoom অগ্রগতি",
+      "k41": "নুসাইবা · PlayBoom",
+      "k42": "KG · এই সপ্তাহ",
+      "k43": "আজ খেলেছে",
+      "k44": "25 / 25 মি.",
+      "k45": "12 / 30 মি.",
+      "k46": "বাংলা বর্ণ চেনা",
+      "k47": "সংখ্যা 1–20",
+      "k48": "সম্পন্ন",
+      "k49": "রং ও আকার",
+      "k50": "হাতের লেখা",
+      "k51": "আজ 7/10 স্ক্যান",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "“ই”-এর মাত্রা টানতে এখনো একটু সাহায্য লাগছে।",
+      "k56": "আজ বাড়িতে: খেলনা গুনে 10 পর্যন্ত বলতে বলুন — PlayBoom-এর গণনা খেলার সাথে মিলবে।",
+      "k57": "ইংরেজি বর্ণ",
+      "k58": "সংবেদন-বান্ধব মোড",
+      "k59": "PlayBoom-এও এটি একই সংবেদন-বান্ধব মোড",
+      "k60": "এটি একটি পছন্দ, কোনো তকমা নয় — কোনো রোগনির্ণয় চাওয়া বা রাখা হয় না, আর অন্য কেউ দেখতে পায় না।",
+      "k61": "স্কুল ভর্তি ট্র্যাকিং",
+      "k62": "সবার জন্য ফ্রি",
+      "k63": "নুসাইবা · কেজি",
+      "k64": "প্রথম শ্রেণি · সরকারি স্কুলে ভর্তির লটারি · 2028 শিক্ষাবর্ষ",
+      "k65": "অনলাইন আবেদন সাধারণত নভেম্বরে, লটারি ডিসেম্বর 2027-এ",
+      "k66": "নমুনা তারিখ (প্রোটোটাইপ) — আসল নোটিশ নয়",
+      "k67": "NexaTute শুধু মনে করিয়ে দেয় — আবেদন আর ফি শুধু অফিসিয়াল সাইটে; লটারির ফল আসে অফিসিয়াল ড্র থেকে।",
+      "lp": "ভাষা"
+      },
+      "en": {
+      "k1": "Back",
+      "k2": "Selected",
+      "k3": "Dyslexia-friendly font",
+      "k4": "Shorter parts, more breaks",
+      "k5": "Less time pressure",
+      "k6": "Sign friend (BdSL)",
+      "k7": "Screen time and rules, alerts, PlayBoom progress",
+      "k8": "Screen time and rules (PlayBoom)",
+      "k9": "Nusaiba’s rules",
+      "k10": "Sessions a day (25 minutes each)",
+      "k11": "1",
+      "k12": "Default",
+      "k13": "2",
+      "k14": "3",
+      "k15": "Under 1 hour of screen time a day is recommended at this age. You decide.",
+      "k16": "Break between two sessions",
+      "k17": "At least 2 hours",
+      "k18": "AI Play Buddy voice + video",
+      "k19": "At most 30 minutes a day",
+      "k20": "Purchases",
+      "k21": "In PlayBoom the child can’t buy anything — you buy the plan",
+      "k22": "Extra support",
+      "k23": "Sign friend (BdSL) · no extra price",
+      "k24": "Save",
+      "k25": "Alerts and notes",
+      "k26": "Messages",
+      "k27": "Plan updated from a school notice",
+      "k28": "The test-exam routine was found in the link you shared. Tanvir’s study plan and countdown changed to match.",
+      "k29": "Today 10:12",
+      "k30": "Private note: digital manners",
+      "k31": "After a rude word in the group chat, Tanvir finished a 5-minute “digital manners” lesson. Only you are told — nothing was shown to anyone publicly.",
+      "k32": "Yesterday",
+      "k33": "Nusaiba’s PlayBoom renews on 20 February",
+      "k34": "Manual renewal · ৳599 − 30% 2nd child = ৳419 · paid on 21 January; reminder 3 days before",
+      "k35": "2 days ago",
+      "k36": "Good-conduct streak is back",
+      "k37": "After 7 days of clean conduct, chat is fully on again.",
+      "k38": "3 days ago",
+      "k39": "For anything serious, NexaTute’s Human Controller will tell you directly.",
+      "k40": "PlayBoom progress",
+      "k41": "Nusaiba · PlayBoom",
+      "k42": "KG · this week",
+      "k43": "Played today",
+      "k44": "25 / 25 min",
+      "k45": "12 / 30 min",
+      "k46": "Knows Bangla letters",
+      "k47": "Numbers 1–20",
+      "k48": "Done",
+      "k49": "Colours and shapes",
+      "k50": "Handwriting",
+      "k51": "Today 7/10 scans",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "Still needs a little help drawing the top line of “ই”.",
+      "k56": "At home today: ask her to count toys up to 10 — it matches PlayBoom’s counting game.",
+      "k57": "English letters",
+      "k58": "Sensory-friendly mode",
+      "k59": "In PlayBoom it is the same Sensory-friendly mode",
+      "k60": "A preference, not a label — no diagnosis is asked for or stored, and no one else sees it.",
+      "k61": "School admission tracking",
+      "k62": "Free for everyone",
+      "k63": "Nusaiba · KG",
+      "k64": "Class I · government school admission lottery · 2028 session",
+      "k65": "Online application usually in November, lottery in December 2027",
+      "k66": "sample date (prototype) — not a real notice",
+      "k67": "NexaTute only reminds you — apply and pay only on the official site; lottery results come from the official draw.",
+      "lp": "Language"
+      },
+      "hi": {
+      "k1": "पीछे",
+      "k2": "चुना गया",
+      "k3": "डिस्लेक्सिया-अनुकूल फ़ॉन्ट",
+      "k4": "छोटे हिस्से, ज़्यादा ब्रेक",
+      "k5": "समय का दबाव कम",
+      "k6": "इशारा-दोस्त (BdSL)",
+      "k7": "स्क्रीन समय और नियम, अलर्ट, PlayBoom प्रगति",
+      "k8": "स्क्रीन समय और नियम (PlayBoom)",
+      "k9": "नुसैबा के नियम",
+      "k10": "रोज़ कितने सेशन (हर एक 25 मिनट)",
+      "k11": "1",
+      "k12": "डिफ़ॉल्ट",
+      "k13": "2",
+      "k14": "3",
+      "k15": "इस उम्र में रोज़ 1 घंटे से कम स्क्रीन समय की सलाह दी जाती है। फ़ैसला आपका।",
+      "k16": "दो सेशन के बीच ब्रेक",
+      "k17": "कम से कम 2 घंटे",
+      "k18": "AI Play Buddy आवाज़ + वीडियो",
+      "k19": "रोज़ अधिकतम 30 मिनट",
+      "k20": "ख़रीदारी",
+      "k21": "PlayBoom में बच्चा कुछ नहीं ख़रीद सकता — प्लान आप ख़रीदते हैं",
+      "k22": "विशेष सहायता",
+      "k23": "इशारा-दोस्त (BdSL) · कोई अतिरिक्त कीमत नहीं",
+      "k24": "सहेजें",
+      "k25": "अलर्ट और नोट",
+      "k26": "संदेश",
+      "k27": "स्कूल नोटिस से प्लान अपडेट",
+      "k28": "आपके दिए लिंक से टेस्ट परीक्षा का रूटीन मिला। तनवीर का स्टडी प्लान और काउंटडाउन उसी हिसाब से बदला।",
+      "k29": "आज 10:12",
+      "k30": "निजी नोट: डिजिटल शिष्टाचार",
+      "k31": "ग्रुप चैट में एक अशोभनीय शब्द के बाद तनवीर ने 5 मिनट का “डिजिटल शिष्टाचार” पाठ पूरा किया। यह सिर्फ़ आपको बताया गया — किसी को सार्वजनिक रूप से नहीं दिखाया गया।",
+      "k32": "कल",
+      "k33": "नुसैबा का PlayBoom 20 फ़रवरी को रिन्यू",
+      "k34": "मैन्युअल रिन्यू · ৳599 − दूसरे बच्चे पर 30% = ৳419 · 21 जनवरी को भुगतान; 3 दिन पहले याद दिलाएँगे",
+      "k35": "2 दिन पहले",
+      "k36": "अच्छे व्यवहार की स्ट्रीक लौटी",
+      "k37": "7 दिन साफ़ व्यवहार के बाद चैट फिर पूरी तरह चालू।",
+      "k38": "3 दिन पहले",
+      "k39": "गंभीर मामले में NexaTute के Human Controller आपको सीधे बताएँगे।",
+      "k40": "PlayBoom प्रगति",
+      "k41": "नुसैबा · PlayBoom",
+      "k42": "KG · इस हफ़्ते",
+      "k43": "आज खेला",
+      "k44": "25 / 25 मि.",
+      "k45": "12 / 30 मि.",
+      "k46": "बांग्ला अक्षर पहचान",
+      "k47": "संख्या 1–20",
+      "k48": "पूरा",
+      "k49": "रंग और आकार",
+      "k50": "लिखावट",
+      "k51": "आज 7/10 स्कैन",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "“ই” की ऊपरी रेखा खींचने में अभी थोड़ी मदद चाहिए।",
+      "k56": "आज घर पर: खिलौने गिनकर 10 तक बोलने को कहें — PlayBoom के गिनती खेल से मेल खाएगा।",
+      "k57": "अंग्रेज़ी अक्षर",
+      "k58": "संवेदी-अनुकूल मोड",
+      "k59": "PlayBoom में भी यही संवेदी-अनुकूल मोड है",
+      "k60": "यह एक पसंद है, कोई ठप्पा नहीं — कोई निदान न पूछा जाता है न रखा जाता है, और कोई और इसे नहीं देखता।",
+      "k61": "स्कूल प्रवेश ट्रैकिंग",
+      "k62": "सबके लिए मुफ़्त",
+      "k63": "नुसैबा · KG",
+      "k64": "कक्षा I · सरकारी स्कूल प्रवेश लॉटरी · 2028 सत्र",
+      "k65": "ऑनलाइन आवेदन आमतौर पर नवंबर में, लॉटरी दिसंबर 2027 में",
+      "k66": "नमूना तारीख़ (प्रोटोटाइप) — असली सूचना नहीं",
+      "k67": "NexaTute सिर्फ़ याद दिलाता है — आवेदन और फ़ीस सिर्फ़ आधिकारिक साइट पर; लॉटरी के नतीजे आधिकारिक ड्रॉ से आते हैं।",
+      "lp": "भाषा"
+      },
+      "ur": {
+      "k1": "واپس",
+      "k2": "منتخب",
+      "k3": "ڈسلیکسیا کے لیے موزوں فونٹ",
+      "k4": "چھوٹے حصے، زیادہ وقفے",
+      "k5": "وقت کا دباؤ کم",
+      "k6": "اشارہ دوست (⁦BdSL⁩)",
+      "k7": "اسکرین ٹائم اور اصول، الرٹس، ⁦PlayBoom⁩ پیش رفت",
+      "k8": "اسکرین ٹائم اور اصول (⁦PlayBoom⁩)",
+      "k9": "نسیبہ کے اصول",
+      "k10": "روزانہ کتنے سیشن (ہر ایک ⁦25⁩ منٹ)",
+      "k11": "⁦1⁩",
+      "k12": "ڈیفالٹ",
+      "k13": "⁦2⁩",
+      "k14": "⁦3⁩",
+      "k15": "اس عمر میں روزانہ ⁦1⁩ گھنٹے سے کم اسکرین ٹائم کی سفارش کی جاتی ہے۔ فیصلہ آپ کا۔",
+      "k16": "دو سیشن کے درمیان وقفہ",
+      "k17": "کم از کم ⁦2⁩ گھنٹے",
+      "k18": "⁦AI Play Buddy⁩ آواز + ویڈیو",
+      "k19": "روزانہ زیادہ سے زیادہ ⁦30⁩ منٹ",
+      "k20": "خریداری",
+      "k21": "⁦PlayBoom⁩ میں بچہ کچھ نہیں خرید سکتا — پلان آپ خریدتے ہیں",
+      "k22": "خصوصی مدد",
+      "k23": "اشارہ دوست (⁦BdSL⁩) · کوئی اضافی قیمت نہیں",
+      "k24": "محفوظ کریں",
+      "k25": "الرٹس اور نوٹس",
+      "k26": "پیغامات",
+      "k27": "اسکول نوٹس سے پلان اپڈیٹ",
+      "k28": "آپ کے دیے لنک سے ٹیسٹ امتحان کا شیڈول ملا۔ تنویر کا اسٹڈی پلان اور الٹی گنتی اسی کے مطابق بدلی۔",
+      "k29": "آج ⁦10:12⁩",
+      "k30": "ذاتی نوٹ: ڈیجیٹل آداب",
+      "k31": "گروپ چیٹ میں ایک نازیبا لفظ کے بعد تنویر نے ⁦5⁩ منٹ کا “ڈیجیٹل آداب” سبق مکمل کیا۔ یہ صرف آپ کو بتایا گیا — کسی کو سرِعام نہیں دکھایا گیا۔",
+      "k32": "کل",
+      "k33": "نسیبہ کا ⁦PlayBoom 20⁩ فروری کو رینیو",
+      "k34": "دستی رینیو · ⁦৳599⁩ − دوسرے بچے پر ⁦30%⁩ = ⁦৳419⁩ · ⁦21⁩ جنوری کو ادا؛ ⁦3⁩ دن پہلے یاد دہانی",
+      "k35": "⁦2⁩ دن پہلے",
+      "k36": "اچھے رویے کا سلسلہ واپس آیا",
+      "k37": "⁦7⁩ دن اچھے رویے کے بعد چیٹ دوبارہ مکمل آن۔",
+      "k38": "⁦3⁩ دن پہلے",
+      "k39": "سنجیدہ معاملے میں ⁦NexaTute⁩ کے ⁦Human Controller⁩ آپ کو براہِ راست بتائیں گے۔",
+      "k40": "⁦PlayBoom⁩ پیش رفت",
+      "k41": "نسیبہ · ⁦PlayBoom⁩",
+      "k42": "⁦KG⁩ · اس ہفتے",
+      "k43": "آج کھیلی",
+      "k44": "⁦25 / 25⁩ منٹ",
+      "k45": "⁦12 / 30⁩ منٹ",
+      "k46": "بنگلہ حروف کی پہچان",
+      "k47": "اعداد ⁦1–20⁩",
+      "k48": "مکمل",
+      "k49": "رنگ اور شکلیں",
+      "k50": "لکھائی",
+      "k51": "آج ⁦7/10⁩ اسکین",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "“ই” کی اوپری لکیر کھینچنے میں ابھی تھوڑی مدد چاہیے۔",
+      "k56": "آج گھر پر: کھلونے گن کر ⁦10⁩ تک بولنے کو کہیں — ⁦PlayBoom⁩ کے گنتی کھیل سے میل کھائے گا۔",
+      "k57": "انگریزی حروف",
+      "k58": "حسّی دوستانہ موڈ",
+      "k59": "⁦PlayBoom⁩ میں بھی یہی حسّی دوستانہ موڈ ہے",
+      "k60": "یہ ایک پسند ہے، کوئی لیبل نہیں — نہ کوئی تشخیص پوچھی جاتی ہے نہ محفوظ کی جاتی ہے، اور کوئی اور اسے نہیں دیکھتا۔",
+      "k61": "اسکول داخلہ ٹریکنگ",
+      "k62": "سب کے لیے مفت",
+      "k63": "نسیبہ · ⁦KG⁩",
+      "k64": "جماعت اول · سرکاری اسکول داخلہ لاٹری · ⁦2028⁩ سیشن",
+      "k65": "آن لائن درخواست عموماً نومبر میں، لاٹری دسمبر ⁦2027⁩ میں",
+      "k66": "نمونہ تاریخ (پروٹوٹائپ) — اصل نوٹس نہیں",
+      "k67": "⁦NexaTute⁩ صرف یاد دلاتا ہے — درخواست اور فیس صرف سرکاری سائٹ پر؛ لاٹری کے نتائج سرکاری قرعہ اندازی سے آتے ہیں۔",
+      "lp": "زبان"
+      },
+      "ar": {
+      "k1": "رجوع",
+      "k2": "محدد",
+      "k3": "خط مناسب لعسر القراءة",
+      "k4": "أجزاء أقصر واستراحات أكثر",
+      "k5": "ضغط وقت أقل",
+      "k6": "صديق الإشارة (⁦BdSL⁩)",
+      "k7": "وقت الشاشة والقواعد والتنبيهات وتقدّم ⁦PlayBoom⁩",
+      "k8": "وقت الشاشة والقواعد (⁦PlayBoom⁩)",
+      "k9": "قواعد نسيبة",
+      "k10": "كم جلسة يوميًا (⁦25⁩ دقيقة لكل جلسة)",
+      "k11": "⁦1⁩",
+      "k12": "افتراضي",
+      "k13": "⁦2⁩",
+      "k14": "⁦3⁩",
+      "k15": "يُنصح في هذا العمر بأقل من ساعة يوميًا أمام الشاشة. القرار لكم.",
+      "k16": "استراحة بين جلستين",
+      "k17": "ساعتان على الأقل",
+      "k18": "صوت وفيديو ⁦AI Play Buddy⁩",
+      "k19": "⁦30⁩ دقيقة يوميًا كحد أقصى",
+      "k20": "المشتريات",
+      "k21": "في ⁦PlayBoom⁩ لا يستطيع الطفل شراء أي شيء — أنتم تشترون الخطة",
+      "k22": "دعم إضافي",
+      "k23": "صديق الإشارة (⁦BdSL⁩) · بلا سعر إضافي",
+      "k24": "حفظ",
+      "k25": "التنبيهات والملاحظات",
+      "k26": "الرسائل",
+      "k27": "تحديث الخطة من إشعار المدرسة",
+      "k28": "وُجد جدول الامتحان التجريبي في الرابط الذي أرسلتموه. وتغيّرت خطة دراسة تنوير والعدّ التنازلي وفقًا له.",
+      "k29": "اليوم ⁦10:12⁩",
+      "k30": "ملاحظة خاصة: آداب رقمية",
+      "k31": "بعد كلمة غير لائقة في دردشة المجموعة أنهى تنوير درس «آداب رقمية» مدته ⁦5⁩ دقائق. أُبلغتم أنتم فقط — ولم يُعرض شيء علنًا.",
+      "k32": "أمس",
+      "k33": "يتجدّد ⁦PlayBoom⁩ لنسيبة في ⁦20⁩ فبراير",
+      "k34": "تجديد يدوي · ⁦৳599 − 30%⁩ للطفل الثاني = ⁦৳419⁩ · دُفع في ⁦21⁩ يناير؛ تذكير قبل ⁦3⁩ أيام",
+      "k35": "قبل يومين",
+      "k36": "عادت سلسلة حسن السلوك",
+      "k37": "بعد ⁦7⁩ أيام من السلوك الجيد عادت الدردشة كاملة.",
+      "k38": "قبل ⁦3⁩ أيام",
+      "k39": "في الأمور الخطيرة سيبلغكم ⁦Human Controller⁩ في ⁦NexaTute⁩ مباشرة.",
+      "k40": "تقدّم ⁦PlayBoom⁩",
+      "k41": "نسيبة · ⁦PlayBoom⁩",
+      "k42": "⁦KG⁩ · هذا الأسبوع",
+      "k43": "لعبت اليوم",
+      "k44": "⁦25 / 25⁩ د",
+      "k45": "⁦12 / 30⁩ د",
+      "k46": "معرفة الحروف البنغالية",
+      "k47": "الأعداد ⁦1–20⁩",
+      "k48": "مكتمل",
+      "k49": "الألوان والأشكال",
+      "k50": "الكتابة اليدوية",
+      "k51": "اليوم ⁦7/10⁩ مسح",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "ما زالت تحتاج إلى قليل من المساعدة لرسم الخط العلوي لـ «ই».",
+      "k56": "في البيت اليوم: اطلبوا منها عدّ الألعاب حتى ⁦10⁩ — يتوافق مع لعبة العدّ في ⁦PlayBoom⁩.",
+      "k57": "الحروف الإنجليزية",
+      "k58": "الوضع الملائم للحواس",
+      "k59": "في ⁦PlayBoom⁩ هو الوضع الملائم للحواس نفسه",
+      "k60": "إنه تفضيل لا تصنيف — لا يُطلب أي تشخيص ولا يُحفَظ، ولا يظهر لأحد آخر.",
+      "k61": "متابعة القبول المدرسي",
+      "k62": "مجاني للجميع",
+      "k63": "نُسيبة · الروضة",
+      "k64": "الصف الأول · قرعة القبول في المدارس الحكومية · عام ⁦2028⁩",
+      "k65": "التقديم الإلكتروني عادة في نوفمبر، والقرعة في ديسمبر ⁦2027⁩",
+      "k66": "تاريخ تجريبي (نموذج أولي) — ليس إشعارًا حقيقيًا",
+      "k67": "تذكّركم ⁦NexaTute⁩ فقط — التقديم والدفع في الموقع الرسمي فقط؛ نتائج القرعة تأتي من السحب الرسمي.",
+      "lp": "اللغة"
+      },
+      "fr": {
+      "k1": "Retour",
+      "k2": "Sélectionné",
+      "k3": "Police adaptée à la dyslexie",
+      "k4": "Parties plus courtes, plus de pauses",
+      "k5": "Moins de pression du temps",
+      "k6": "Ami des signes (BdSL)",
+      "k7": "Temps d’écran et règles, alertes, progrès PlayBoom",
+      "k8": "Temps d’écran et règles (PlayBoom)",
+      "k9": "Règles de Nusaiba",
+      "k10": "Séances par jour (25 minutes chacune)",
+      "k11": "1",
+      "k12": "Par défaut",
+      "k13": "2",
+      "k14": "3",
+      "k15": "À cet âge, moins d’1 heure d’écran par jour est conseillée. Vous décidez.",
+      "k16": "Pause entre deux séances",
+      "k17": "Au moins 2 heures",
+      "k18": "AI Play Buddy voix + vidéo",
+      "k19": "30 minutes par jour au maximum",
+      "k20": "Achats",
+      "k21": "Dans PlayBoom, l’enfant ne peut rien acheter — c’est vous qui achetez la formule",
+      "k22": "Aide particulière",
+      "k23": "Ami des signes (BdSL) · sans supplément",
+      "k24": "Enregistrer",
+      "k25": "Alertes et notes",
+      "k26": "Messages",
+      "k27": "Plan mis à jour d’après un avis de l’école",
+      "k28": "Le calendrier de l’examen blanc a été trouvé dans votre lien. Le plan d’étude et le compte à rebours de Tanvir ont été adaptés.",
+      "k29": "Aujourd’hui 10:12",
+      "k30": "Note privée : bonnes manières numériques",
+      "k31": "Après un mot grossier dans la discussion de groupe, Tanvir a suivi une leçon de 5 minutes sur les « bonnes manières numériques ». Vous seul êtes prévenu — rien n’a été montré publiquement.",
+      "k32": "Hier",
+      "k33": "Le PlayBoom de Nusaiba se renouvelle le 20 février",
+      "k34": "Renouvellement manuel · ৳599 − 30 % (2ᵉ enfant) = ৳419 · payé le 21 janvier ; rappel 3 jours avant",
+      "k35": "Il y a 2 jours",
+      "k36": "La série de bonne conduite est revenue",
+      "k37": "Après 7 jours de bonne conduite, la discussion est de nouveau ouverte.",
+      "k38": "Il y a 3 jours",
+      "k39": "Pour toute chose grave, le Human Controller de NexaTute vous prévient directement.",
+      "k40": "Progrès PlayBoom",
+      "k41": "Nusaiba · PlayBoom",
+      "k42": "Maternelle · cette semaine",
+      "k43": "Jeu aujourd’hui",
+      "k44": "25 / 25 min",
+      "k45": "12 / 30 min",
+      "k46": "Lettres bengalies reconnues",
+      "k47": "Nombres 1–20",
+      "k48": "Terminé",
+      "k49": "Couleurs et formes",
+      "k50": "Écriture",
+      "k51": "Aujourd’hui 7/10 scans",
+      "k52": "অ",
+      "k53": "আ",
+      "k54": "ই",
+      "k55": "A encore besoin d’un peu d’aide pour tracer la barre du « ই ».",
+      "k56": "À la maison aujourd’hui : faites-lui compter des jouets jusqu’à 10 — comme le jeu de calcul de PlayBoom.",
+      "k57": "Lettres anglaises",
+      "k58": "Mode sensoriel adapté",
+      "k59": "Dans PlayBoom, c’est le même Mode sensoriel adapté",
+      "k60": "Une préférence, pas une étiquette — aucun diagnostic n’est demandé ni conservé, et personne d’autre ne le voit.",
+      "k61": "Suivi des admissions scolaires",
+      "k62": "Gratuit pour tous",
+      "k63": "Nusaiba · maternelle",
+      "k64": "Classe I · tirage au sort des écoles publiques · année 2028",
+      "k65": "Candidature en ligne en général en novembre, tirage en décembre 2027",
+      "k66": "date d’exemple (prototype) — pas un vrai avis",
+      "k67": "NexaTute ne fait que rappeler — candidature et paiement uniquement sur le site officiel ; les résultats viennent du tirage officiel.",
+      "lp": "Langue"
+      }
+      };
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, U = this.uiText(), lang = U[s.lang] ? s.lang : 'bn', rtl = lang === 'ar' || lang === 'ur';
+    var FF = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif" };
+    var NM = {"bn": "বাংলা", "en": "English", "hi": "हिन्दी", "ur": "اردو", "ar": "العربية", "fr": "Français"};
+    return { t: U[lang], lang: lang, dir: rtl ? 'rtl' : 'ltr', ff: FF[lang] || "'Hind Siliguri','Hind',system-ui,sans-serif",
+      langs: Object.keys(NM).map(function (c) { var on = c === lang; return { code: c, name: NM[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

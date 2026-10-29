@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>PlayBoom buddy, handwriting, break</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Baloo+Da+2:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#DFF1FF;overflow:hidden;display:flex;flex-direction:column;border:1px solid #C3D9EC;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative;font-family:'Baloo Da 2','Hind Siliguri',sans-serif;color:#23194D}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.rb{width:56px;height:56px;border-radius:50%;border:0;background:#fff;display:flex;align-items:center;justify-content:center;color:#23194D;box-shadow:0 4px 0 #B9D7EF;padding:0;flex:none}
+.big{height:72px;border-radius:26px;border:0;font:800 22px 'Baloo Da 2',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+.star{width:44px;height:44px}
+/* fix11: 6-language wireframe — language picker; Urdu in Nastaliq needs a taller line; RTL mirrors back arrows */
+.wfl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.wfl span{font-size:12px;font-weight:600;color:#59617A;margin-inline-end:4px}
+.wfl button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #C9CFDC;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#141A33;cursor:pointer}
+.wfl button.on{background:#141A33;border-color:#141A33;color:#fff}
+[lang=ur] *{line-height:1.9}
+[dir=rtl] .ib svg{transform:scaleX(-1)}
+/* longer languages (fr, ur Nastaliq) must not cut the bottom of a phone screen: the phone grows instead */
+.ph{height:auto;min-height:844px}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="width:1346px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="wfl" role="group" aria-label="{{ t.lp }}"><span>{{ t.lp }}</span><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">PlayBoom · 2</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k4 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- P2.1 Play Buddy -->
+<div class="col">
+  <div class="cap"><b>P4</b>{{ t.k5 }}</div>
+  <div class="ph" style="background:#EAE8FF">
+    <div style="padding:28px 20px 24px;display:flex;flex-direction:column;gap:14px;flex:1;align-items:center">
+      <div class="row" style="width:100%">
+        <button class="rb" aria-label="{{ t.k1 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></button>
+        <span style="margin-left:auto;background:#fff;border-radius:99px;padding:6px 14px;font-size:15px;font-weight:700">{{ t.k6 }}</span>
+      </div>
+      <span style="background:#23194D;color:#fff;border-radius:99px;padding:4px 14px;font-size:14px;font-weight:700;font-family:'Hind Siliguri',sans-serif">AI Play Buddy</span>
+      <svg viewBox="0 0 220 220" width="230" height="230" aria-hidden="true">
+        <ellipse cx="110" cy="206" rx="70" ry="10" fill="#C9C6F6"/>
+        <path d="M110 34v-18" stroke="#7C77F0" stroke-width="7" stroke-linecap="round"/><circle cx="110" cy="14" r="10" fill="#FFC93C"/>
+        <circle cx="110" cy="118" r="82" fill="#7C77F0"/>
+        <circle cx="80" cy="108" r="20" fill="#fff"/><circle cx="140" cy="108" r="20" fill="#fff"/>
+        <circle cx="84" cy="112" r="9" fill="#23194D"/><circle cx="144" cy="112" r="9" fill="#23194D"/>
+        <circle cx="87" cy="108" r="3" fill="#fff"/><circle cx="147" cy="108" r="3" fill="#fff"/>
+        <ellipse cx="62" cy="140" rx="10" ry="6" fill="#FF9EB0"/><ellipse cx="158" cy="140" rx="10" ry="6" fill="#FF9EB0"/>
+        <path d="M86 146q24 26 48 0" fill="#23194D"/><path d="M98 156q12 8 24 0" fill="#FF6B6B"/>
+      </svg>
+      <div style="background:#fff;border-radius:24px;padding:14px 18px;font-size:19px;font-weight:600;line-height:1.4;text-align:center;width:100%;box-sizing:border-box">{{ t.k7 }}</div>
+      <div class="row" style="gap:6px;height:36px">
+        <span style="width:6px;height:14px;border-radius:9px;background:#3B34C9"></span><span style="width:6px;height:28px;border-radius:9px;background:#3B34C9"></span><span style="width:6px;height:36px;border-radius:9px;background:#3B34C9"></span><span style="width:6px;height:22px;border-radius:9px;background:#3B34C9"></span><span style="width:6px;height:30px;border-radius:9px;background:#3B34C9"></span><span style="width:6px;height:12px;border-radius:9px;background:#3B34C9"></span>
+      </div>
+      <button aria-label="{{ t.k2 }}" style="margin-top:auto;width:104px;height:104px;border-radius:50%;border:0;background:#E2572F;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 0 #B23E1E"><svg viewBox="0 0 24 24" width="46" height="46" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+      <span style="font-size:16px;font-weight:700">{{ t.k8 }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- P2.2 Handwriting -->
+<div class="col">
+  <div class="cap"><b>P5</b>{{ t.k9 }}</div>
+  <div class="ph" style="background:#E6F6EC">
+    <div style="padding:28px 20px 24px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div class="row">
+        <button class="rb" aria-label="{{ t.k1 }}" style="box-shadow:0 4px 0 #BFE3CC"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></button>
+        <div style="flex:1;text-align:center;font-size:20px;font-weight:800">{{ t.k10 }}</div>
+        <button class="rb" aria-label="{{ t.k3 }}" style="background:#3B34C9;color:#fff;box-shadow:0 4px 0 #2A24A0"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg></button>
+      </div>
+      <div style="background:#fff;border-radius:32px;height:430px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <div style="position:absolute;left:24px;right:24px;top:118px;border-top:3px dashed #BFE3CC"></div>
+        <div style="position:absolute;left:24px;right:24px;bottom:96px;border-top:3px dashed #BFE3CC"></div>
+        <span style="font-family:'Hind Siliguri',sans-serif;font-size:280px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:3px #9CCFB0;letter-spacing:0">{{ t.k11 }}</span>
+        <svg viewBox="0 0 340 430" width="340" height="430" aria-hidden="true" style="position:absolute;inset:0;margin:auto">
+          <path d="M120 175 C 95 160, 80 205, 112 222 C 150 240, 160 285, 118 300" stroke="#3B34C9" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <circle cx="120" cy="175" r="14" fill="#3BB273"/>
+          <text x="114" y="181" font-size="16" font-weight="800" fill="#fff" font-family="Baloo Da 2">{{ t.k12 }}</text>
+          <path d="M150 300 l26 -12 l-6 26" stroke="#E2572F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="row" style="gap:12px">
+        <button class="big" style="flex:1;background:#fff;color:#23194D;box-shadow:0 5px 0 #BFE3CC">{{ t.k13 }}</button>
+        <button class="big" style="flex:1;background:#17804F;color:#fff;box-shadow:0 5px 0 #0F5C38"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>{{ t.k14 }}</button>
+      </div>
+      <p style="margin:0;text-align:center;font-size:15px;font-weight:600;font-family:'Hind Siliguri',sans-serif;color:#2B5A3D">{{ t.k15 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- P2.3 Break -->
+<div class="col">
+  <div class="cap"><b>P6</b>{{ t.k16 }}</div>
+  <div class="ph" style="background:#FFF4D1">
+    <div style="padding:56px 24px 28px;display:flex;flex-direction:column;gap:18px;flex:1;align-items:center;text-align:center">
+      <div class="row" style="gap:10px">
+        <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" fill="#FFC93C" stroke="#E0A800"/></svg>
+        <svg viewBox="0 0 24 24" width="62" height="62" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" fill="#FFC93C" stroke="#E0A800"/></svg>
+        <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" fill="#FFC93C" stroke="#E0A800"/></svg>
+      </div>
+      <h2 style="margin:0;font-size:36px;font-weight:800;line-height:1.1">{{ t.k17 }}</h2>
+      <p style="margin:0;font-size:20px;font-weight:600;line-height:1.4">{{ t.k18 }}</p>
+      <div style="background:#fff;border-radius:28px;padding:18px;width:100%;box-sizing:border-box;display:flex;gap:14px;align-items:center;text-align:left">
+        <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#DFF1FF"/><path d="M8 40c8-6 16-8 24-8s16 2 24 8" stroke="#3BB273" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="44" cy="18" r="7" fill="#FFC93C"/></svg>
+        <span style="font-size:17px;font-weight:600;line-height:1.35">{{ t.k19 }}</span>
+      </div>
+      <div style="background:#23194D;color:#fff;border-radius:22px;padding:12px 18px;font-size:16px;font-weight:600;font-family:'Hind Siliguri',sans-serif">{{ t.k20 }}</div>
+      <button class="big" style="margin-top:auto;background:#3B34C9;color:#fff;box-shadow:0 6px 0 #2A24A0">{{ t.k21 }}</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1346,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner addendum 26 Oct 2026, 22:15): the static wireframe in 6 languages — identical keys; ur/ar with LTR isolates; static otherwise
+  uiText() {
+    return {
+      "bn": {
+      "k1": "হোমে ফেরো",
+      "k2": "কথা বলো",
+      "k3": "আবার শোনো",
+      "k4": "AI Play Buddy, Handwriting Studio, সেশন শেষে বিরতি",
+      "k5": "AI Play Buddy — কণ্ঠে কথা",
+      "k6": "ভয়েস + ভিডিও ১২/৩০ মি.",
+      "k7": "“লাল রঙের তিনটা জিনিস দেখাতে পারবে? আমি গুনব!”",
+      "k8": "চেপে ধরে কথা বলো",
+      "k9": "Handwriting Studio — ট্রেসিং",
+      "k10": "“অ” লিখি",
+      "k11": "অ",
+      "k12": "১",
+      "k13": "মুছে আবার",
+      "k14": "খাতা স্ক্যান",
+      "k15": "আজ স্ক্যান বাকি: ৩ / ১০",
+      "k16": "সেশন শেষ — এবার বিরতি",
+      "k17": "দারুণ খেলেছ!",
+      "k18": "আজ পেয়েছ ৩টা তারা। এখন চোখকে একটু বিশ্রাম দাও।",
+      "k19": "জানালা দিয়ে দূরের গাছটা দেখো, ১০ পর্যন্ত গোনো!",
+      "k20": "পরের খেলা কমপক্ষে ২ ঘণ্টা পরে",
+      "k21": "আম্মুকে দেখাও",
+      "lp": "ভাষা"
+      },
+      "en": {
+      "k1": "Back home",
+      "k2": "Talk",
+      "k3": "Listen again",
+      "k4": "AI Play Buddy, Handwriting Studio, a break after the session",
+      "k5": "AI Play Buddy — talking by voice",
+      "k6": "Voice + video 12/30 min",
+      "k7": "“Can you show me three red things? I’ll count!”",
+      "k8": "Hold and talk",
+      "k9": "Handwriting Studio — tracing",
+      "k10": "Let’s write “অ”",
+      "k11": "অ",
+      "k12": "1",
+      "k13": "Erase, try again",
+      "k14": "Scan the notebook",
+      "k15": "Scans left today: 3 / 10",
+      "k16": "Session over — time for a break",
+      "k17": "Great playing!",
+      "k18": "You got 3 stars today. Now give your eyes a little rest.",
+      "k19": "Look at the far tree through the window and count to 10!",
+      "k20": "Next game in at least 2 hours",
+      "k21": "Show Mum",
+      "lp": "Language"
+      },
+      "hi": {
+      "k1": "होम पर लौटो",
+      "k2": "बोलो",
+      "k3": "फिर सुनो",
+      "k4": "AI Play Buddy, Handwriting Studio, सेशन के बाद ब्रेक",
+      "k5": "AI Play Buddy — आवाज़ में बात",
+      "k6": "आवाज़ + वीडियो 12/30 मि.",
+      "k7": "“तीन लाल चीज़ें दिखा सकते हो? मैं गिनूँगा!”",
+      "k8": "दबाकर बोलो",
+      "k9": "Handwriting Studio — ट्रेसिंग",
+      "k10": "“অ” लिखें",
+      "k11": "অ",
+      "k12": "1",
+      "k13": "मिटाकर फिर",
+      "k14": "कॉपी स्कैन",
+      "k15": "आज बाकी स्कैन: 3 / 10",
+      "k16": "सेशन ख़त्म — अब ब्रेक",
+      "k17": "बहुत बढ़िया खेले!",
+      "k18": "आज तुम्हें 3 तारे मिले। अब आँखों को थोड़ा आराम दो।",
+      "k19": "खिड़की से दूर का पेड़ देखो, 10 तक गिनो!",
+      "k20": "अगला खेल कम से कम 2 घंटे बाद",
+      "k21": "अम्मी को दिखाओ",
+      "lp": "भाषा"
+      },
+      "ur": {
+      "k1": "ہوم پر واپس",
+      "k2": "بولو",
+      "k3": "دوبارہ سنو",
+      "k4": "⁦AI Play Buddy⁩، ⁦Handwriting Studio⁩، سیشن کے بعد وقفہ",
+      "k5": "⁦AI Play Buddy⁩ — آواز میں بات",
+      "k6": "آواز + ویڈیو ⁦12/30⁩ منٹ",
+      "k7": "“تین لال چیزیں دکھا سکتے ہو؟ میں گنوں گا!”",
+      "k8": "دبا کر بولو",
+      "k9": "⁦Handwriting Studio⁩ — ٹریسنگ",
+      "k10": "“অ” لکھیں",
+      "k11": "অ",
+      "k12": "⁦1⁩",
+      "k13": "مٹا کر دوبارہ",
+      "k14": "کاپی اسکین",
+      "k15": "آج باقی اسکین: ⁦3 / 10⁩",
+      "k16": "سیشن ختم — اب وقفہ",
+      "k17": "زبردست کھیلے!",
+      "k18": "آج تمہیں ⁦3⁩ ستارے ملے۔ اب آنکھوں کو تھوڑا آرام دو۔",
+      "k19": "کھڑکی سے دور کا درخت دیکھو، ⁦10⁩ تک گنو!",
+      "k20": "اگلا کھیل کم از کم ⁦2⁩ گھنٹے بعد",
+      "k21": "امی کو دکھاؤ",
+      "lp": "زبان"
+      },
+      "ar": {
+      "k1": "العودة للرئيسية",
+      "k2": "تحدّث",
+      "k3": "استمع مجددًا",
+      "k4": "⁦AI Play Buddy⁩ و⁦Handwriting Studio⁩ واستراحة بعد الجلسة",
+      "k5": "⁦AI Play Buddy⁩ — الحديث بالصوت",
+      "k6": "صوت + فيديو ١٢/٣٠ د",
+      "k7": "«هل تستطيع أن تريني ثلاثة أشياء حمراء؟ سأعدّ!»",
+      "k8": "اضغط مطوّلًا وتحدّث",
+      "k9": "⁦Handwriting Studio⁩ — الشفّ",
+      "k10": "لنكتب «অ»",
+      "k11": "অ",
+      "k12": "١",
+      "k13": "امسح وأعد",
+      "k14": "مسح الدفتر",
+      "k15": "المسح المتبقي اليوم: ٣ / ١٠",
+      "k16": "انتهت الجلسة — حان وقت الاستراحة",
+      "k17": "لعبت رائعًا!",
+      "k18": "حصلت اليوم على ٣ نجوم. أرِح عينيك قليلًا الآن.",
+      "k19": "انظر إلى الشجرة البعيدة من النافذة وعُدّ حتى ١٠!",
+      "k20": "اللعبة التالية بعد ساعتين على الأقل",
+      "k21": "أرِ ماما",
+      "lp": "اللغة"
+      },
+      "fr": {
+      "k1": "Retour à l’accueil",
+      "k2": "Parle",
+      "k3": "Réécouter",
+      "k4": "AI Play Buddy, Handwriting Studio, pause après la séance",
+      "k5": "AI Play Buddy — parler à voix haute",
+      "k6": "Voix + vidéo 12/30 min",
+      "k7": "« Tu peux me montrer trois choses rouges ? Je compte ! »",
+      "k8": "Appuie et parle",
+      "k9": "Handwriting Studio — tracé",
+      "k10": "Écrivons « অ »",
+      "k11": "অ",
+      "k12": "1",
+      "k13": "Effacer, recommencer",
+      "k14": "Scanner le cahier",
+      "k15": "Scans restants aujourd’hui : 3 / 10",
+      "k16": "Séance terminée — c’est la pause",
+      "k17": "Super partie !",
+      "k18": "Tu as gagné 3 étoiles aujourd’hui. Maintenant, repose un peu tes yeux.",
+      "k19": "Regarde l’arbre au loin par la fenêtre et compte jusqu’à 10 !",
+      "k20": "Prochain jeu dans au moins 2 heures",
+      "k21": "Montre à maman",
+      "lp": "Langue"
+      }
+      };
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, U = this.uiText(), lang = U[s.lang] ? s.lang : 'bn', rtl = lang === 'ar' || lang === 'ur';
+    var FF = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif" };
+    var NM = {"bn": "বাংলা", "en": "English", "hi": "हिन्दी", "ur": "اردو", "ar": "العربية", "fr": "Français"};
+    return { t: U[lang], lang: lang, dir: rtl ? 'rtl' : 'ltr', ff: FF[lang] || "'Hind Siliguri','Hind',system-ui,sans-serif",
+      langs: Object.keys(NM).map(function (c) { var on = c === lang; return { code: c, name: NM[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

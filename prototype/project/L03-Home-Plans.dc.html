@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Home, catalogue, plans, checkout</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box;position:relative}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.tb{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:#fff;border-top:1px solid #E2E6EF;padding:8px 6px 20px;flex:none}
+.tb a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:#59617A;text-decoration:none;font-weight:500;min-height:44px}
+.tb a.on{color:#3B34C9;font-weight:700}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.inp{height:52px;border:1px solid #D3D8E4;border-radius:14px;background:#fff;padding:0 16px;font:500 16px 'Hind Siliguri',sans-serif;color:#141A33;width:100%;box-sizing:border-box}
+.qa{display:flex;flex-direction:column;align-items:center;gap:6px;font:500 12px 'Hind Siliguri',sans-serif;color:#141A33;background:none;border:0;padding:0}
+.row.qrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;align-items:start}
+.qrow .qa{min-width:0;overflow-wrap:anywhere;line-height:1.3;text-align:center}
+.qa span{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+.pl{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:#fff;border:1px solid #E2E6EF}
+.num{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:none}
+.course{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:#fff;border:1px solid #E2E6EF}
+.course .th{width:52px;height:52px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.plan{border:1px solid #E2E6EF;border-radius:18px;background:#fff;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.seg button{border:1px solid #D3D8E4;background:#fff;border-radius:14px;padding:10px 6px;font:600 14px 'Hind Siliguri',sans-serif;color:#141A33;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:60px}
+.seg button.on{border:2px solid #3B34C9;background:#F0F1FB}
+.ln{display:flex;justify-content:space-between;font-size:14px;padding:4px 0}
+/* fix11: shared bits for the new static frames (recording, BdSL avatar, report, settings) */
+.fst{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;line-height:1.5;white-space:nowrap}
+.fst.ok{background:#E3F5EC;color:#0F6B40}.fst.wait{background:#ECEBFD;color:#3B34C9}.fst.bad{background:#FDEDE6;color:#9A3412}.fst.off{background:#EEF0F5;color:#3F475E}
+.fsw{width:48px;height:28px;border-radius:99px;background:#8C93A8;position:relative;flex:none;display:inline-block}
+.fsw::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff}
+.fsw.on{background:#0B6E6A}.fsw.on::after{left:24px}
+.frw{display:flex;gap:10px;align-items:center;min-height:40px;padding:6px 10px;border:1px solid #E2E6EF;border-radius:12px;background:#fff;font-size:13px;line-height:1.4;box-sizing:border-box}
+.frw b{width:38px;flex:none;color:#3B34C9;font-size:12px}
+.fkn{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:#E3F5EC;color:#0F6B40;flex:none}.fkn.no{background:#FFF3DD;color:#8A4B00}
+.fsr{height:40px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:#59617A;background:#fff;flex:none}
+.fh{margin:2px 0 0;font-size:13px;font-weight:700;color:#3B34C9}
+.fpill{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid #D3D8E4;background:#fff;font-size:12.5px;font-weight:600}
+.fpill.on{background:#3B34C9;border-color:#3B34C9;color:#fff}.fpill.off{background:#F0F1F6;color:#59617A;border-style:dashed}
+.frec{background:#B42318;color:#fff}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Home &amp; plans</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 3.1 Home -->
+<div class="col">
+  <div class="cap"><b>3.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div class="top">
+      <div style="width:44px;height:44px;border-radius:50%;background:#ECEBFD;color:#3B34C9;display:flex;align-items:center;justify-content:center;font-weight:700">{{ t.k003 }}</div>
+      <div style="flex:1"><p class="xs" style="margin:0">{{ t.k004 }}</p><p class="t2">{{ t.k005 }}</p></div>
+      <button class="ib" aria-label="{{ t.k006 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg><span style="position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:#C2410C;border:2px solid #fff"></span></button>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div style="background:#3B34C9;color:#fff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px">
+        <div class="row" style="justify-content:space-between"><span style="font-size:13px;color:#DCDCFB">{{ t.k007 }}</span><span class="chip" style="background:rgba(255,255,255,.16);color:#fff">{{ t.k008 }}</span></div>
+        <div style="font-size:30px;font-weight:700;line-height:1">18 <span style="font-size:16px;font-weight:500">{{ t.k009 }}</span></div>
+        <div style="height:8px;border-radius:99px;background:rgba(255,255,255,.22)"><div style="width:40%;height:100%;border-radius:99px;background:#F2A93B"></div></div>
+      </div>
+      <div class="row" style="gap:10px">
+        <div class="cd" style="flex:1;padding:12px;display:flex;gap:10px;align-items:center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#C2410C"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z"/></svg><div><b style="font-size:16px">{{ t.k010 }}</b><div class="xs">{{ t.k011 }}</div></div></div>
+        <div class="cd" style="flex:1;padding:12px;display:flex;gap:10px;align-items:center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#A3600B"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.4 6.5 20.3l1-6.2L3 9.7l6.2-.9z"/></svg><div><b style="font-size:16px">1,240</b><div class="xs">XP</div></div></div>
+      </div>
+      <p class="t3">{{ t.k012 }}</p>
+      <div class="pl"><span class="num" style="background:#E3F5EC;color:#0F6B40">✓</span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k013 }}</p><p class="xs" style="margin:0">{{ t.k014 }}</p></div></div>
+      <div class="pl" style="border:2px solid #3B34C9"><span class="num" style="background:#ECEBFD;color:#3B34C9">2</span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k015 }}</p><p class="xs" style="margin:0">{{ t.k016 }}</p></div><a href="#" class="chip" style="text-decoration:none">{{ t.k017 }}</a></div>
+      <div class="pl"><span class="num" style="background:#ECEBFD;color:#3B34C9">3</span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k018 }}</p><p class="xs" style="margin:0">{{ t.k019 }}</p></div></div>
+      <div class="row qrow" style="margin-top:2px">
+        <button class="qa"><span style="background:#E1F4F2;color:#0B6E6A"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>Nexa Co-Teacher</button>
+        <button class="qa"><span style="background:#ECEBFD;color:#3B34C9"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></span>{{ t.k020 }}</button>
+        <button class="qa"><span style="background:#FFF3DD;color:#8A4B00"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></svg></span>{{ t.k021 }}</button>
+        <button class="qa"><span style="background:#E3F5EC;color:#0F6B40"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/></svg></span>{{ t.k022 }}</button>
+        <button class="qa" title="{{ t.k023 }}"><span style="background:#F0F1F6;color:#141A33"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg></span>{{ t.k024 }}</button>
+      </div>
+    </div>
+    <nav class="tb" aria-label="{{ t.k025 }}">
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>{{ fx.dash }}</a>
+      <a href="#" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k026 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/><path d="M4 18a3 3 0 0 1 3-3h11"/></svg>{{ t.k027 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Teacher</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>{{ t.k029 }}</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 3.2 Catalogue -->
+<div class="col">
+  <div class="cap"><b>3.2</b>{{ t.k030 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t1" style="flex:1">{{ t.k031 }}</p><button class="ib" aria-label="{{ t.k032 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></div>
+    <div class="bd" style="gap:10px">
+      <div class="row" style="gap:8px;flex-wrap:wrap">
+        <span class="chip" style="background:#141A33;color:#fff">{{ t.k033 }}</span><span class="chip">{{ t.k034 }}</span><span class="chip">{{ t.k035 }}</span><span class="chip">{{ t.k036 }}</span><span class="chip">{{ t.k037 }}</span><span class="chip">{{ t.k038 }}</span>
+      </div>
+      <div class="course"><div class="th" style="background:#ECEBFD;color:#3B34C9">SSC</div><div style="flex:1"><p class="t3">{{ t.k039 }}</p><p class="xs" style="margin:0">{{ t.k040 }}</p></div><div style="text-align:right"><b>৳600</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <div class="course"><div class="th" style="background:#ECEBFD;color:#3B34C9">HSC</div><div style="flex:1"><p class="t3">HSC</p><p class="xs" style="margin:0">{{ t.k042 }}</p></div><div style="text-align:right"><b>৳700</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <div class="course"><div class="th" style="background:#FFF3DD;color:#8A4B00">BCS</div><div style="flex:1"><p class="t3">BCS + Job Test Preparation</p><p class="xs" style="margin:0">{{ t.k043 }}</p></div><div style="text-align:right"><b>৳750</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <div class="course"><div class="th" style="background:#FFF3DD;color:#8A4B00">{{ t.k044 }}</div><div style="flex:1"><p class="t3">Admission Test Preparation</p><p class="xs" style="margin:0">{{ t.k045 }}</p></div><div style="text-align:right"><b>৳700</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <!-- fix14 (owner 27 Oct 2026, idea 51): English-medium Class 4–8 — Class 6–8 Batch ৳900 / Combo ৳1,200 / Personal ৳1,500; Class 4–5 Personal ৳1,400 / ৳800 -->
+      <div class="course"><div class="th" style="background:#ECEBFF;color:#3730A3;font-size:12px">4–8</div><div style="flex:1"><p class="t3">{{ t.kem1 }}</p><p class="xs" style="margin:0">{{ t.kem2 }}</p></div><div style="text-align:right"><b>৳900</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <div class="course"><div class="th" style="background:#E1F4F2;color:#0B5E5A">IELTS</div><div style="flex:1"><p class="t3">IELTS / TOEFL / PTE</p><p class="xs" style="margin:0">L · R · W · S</p></div><div style="text-align:right"><b>৳1,800</b><div class="xs">{{ t.k041 }}</div></div></div>
+      <div class="course"><div class="th" style="background:#FFF1C9;color:#7A4A00;font-size:12px">Play<br>Boom</div><div style="flex:1"><p class="t3">PlayBoom</p><p class="xs" style="margin:0">{{ t.k046 }}</p></div><div style="text-align:right"><b>৳599</b><div class="xs">{{ t.k047 }}</div></div></div>
+      <div class="cd" style="background:#F0F1FB;border:1px dashed #A9A6EE;padding:14px;display:flex;gap:12px;align-items:center">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><path d="M12 5v14M5 12h14"/></svg>
+        <div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k048 }}</p><p class="xs" style="margin:0">{{ t.k049 }}</p></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k050 }}</p>
+    </div>
+    <nav class="tb" aria-label="{{ t.k025 }}">
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>{{ fx.dash }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k026 }}</a>
+      <a href="#" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/><path d="M4 18a3 3 0 0 1 3-3h11"/></svg>{{ t.k027 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Teacher</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>{{ t.k029 }}</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 3.3 Plans -->
+<div class="col">
+  <div class="cap"><b>3.3</b>{{ t.k051 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k052 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k053 }}</p>
+    </div>
+    <div class="bd" style="gap:6px">
+      <div class="plan">
+        <div class="row" style="justify-content:space-between"><p class="t2">Batch</p><p style="margin:0"><b style="font-size:20px">৳600</b><span class="xs">{{ t.k054 }}</span></p></div>
+        <p class="sm">{{ t.k055 }}</p>
+      </div>
+      <div class="plan" style="border:2px solid #3B34C9;background:#F7F7FF">
+        <div class="row" style="justify-content:space-between"><div class="row" style="gap:8px"><p class="t2">Combo</p><span class="chip" style="background:#F2A93B;color:#141A33">{{ t.k056 }}</span></div><p style="margin:0"><b style="font-size:20px">৳800</b><span class="xs">{{ t.k054 }}</span></p></div>
+        <p class="sm">{{ t.k057 }}</p>
+      </div>
+      <div class="plan">
+        <div class="row" style="justify-content:space-between"><p class="t2">Personal</p><p style="margin:0"><b style="font-size:20px">৳1,000</b><span class="xs">{{ t.k054 }}</span></p></div>
+        <p class="sm">{{ t.k058 }}</p>
+      </div>
+      <div class="plan" style="background:#FFF9EE;border-color:#F3E2BF;gap:4px">
+        <div class="row" style="justify-content:space-between;gap:8px"><div class="row" style="gap:8px"><p class="t3">Exam Crash Pack</p><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k059 }}</span></div><p style="margin:0"><b style="font-size:18px">৳600</b><span class="xs"> {{ t.k060 }}</span></p></div>
+        <p class="sm">{{ t.k061 }} <b>{{ t.k062 }}</b> {{ t.k063 }} <b style="color:#0F6B40">{{ t.k064 }}</b>{{ t.k065 }}</p>
+      </div>
+      <div class="cd" style="padding:14px">
+        <p class="t3" style="font-size:14px;margin-bottom:8px">{{ t.k066 }}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:13px">
+          <span>✓ Nexa Co-Teacher</span><span>{{ t.k067 }}</span><span>{{ t.k068 }}</span><span>{{ t.k069 }}</span><span>{{ t.k070 }}</span><span>{{ t.k071 }}</span><span>{{ t.k072 }}</span><span>{{ t.k073 }}</span><span>{{ t.k096 }}</span><span>{{ t.k097 }}</span>
+        </div>
+      </div>
+      <div class="cd" style="padding:8px 12px;display:flex;flex-direction:column;gap:2px;background:#F0F1FB;border-color:#DCDDF7"><p class="xs" style="margin:0;color:#141A33;font-weight:600">{{ t.k074 }}</p><p class="xs" style="margin:0;color:#3F475E">{{ t.k075 }}</p></div>
+      <button class="btn" style="margin-top:auto">{{ t.k076 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 3.4 Checkout -->
+<div class="col">
+  <div class="cap"><b>3.4</b>{{ t.k077 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k052 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k078 }}</p>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="padding:14px"><p class="t3">SSC · Combo</p><p class="xs" style="margin:0">{{ t.k079 }}</p></div>
+      <p class="t3" style="font-size:14px">{{ t.k080 }}</p>
+      <div class="seg">
+        <button>{{ t.k081 }}<span class="xs">৳800</span></button>
+        <button class="on">{{ t.k082 }}<span class="xs" style="color:#0F6B40">{{ t.k083 }}</span></button>
+        <button>{{ t.k084 }}<span class="xs" style="color:#0F6B40">{{ t.k085 }}</span></button>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k086 }} <span class="xs">{{ t.k087 }}</span></p>
+      <div class="seg" style="grid-template-columns:1fr 1fr">
+        <button>{{ t.k088 }}</button>
+        <button class="on">{{ t.k089 }}</button>
+      </div>
+      <div class="cd" style="padding:12px 16px">
+        <div class="ln"><span>৳800 × 3</span><span>৳2,400</span></div>
+        <div class="ln" style="color:#0F6B40"><span>{{ t.k090 }}</span><span>− ৳240</span></div>
+        <div class="ln" style="border-top:1px solid #E2E6EF;margin-top:4px;padding-top:8px"><b>{{ t.k091 }}</b><b>৳2,160</b></div>
+        <p class="xs" style="margin:6px 0 0">{{ t.k092 }}</p>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k093 }}</p>
+      <div class="cd" style="background:#FFF6E6;border-color:#F6DFB2;display:flex;gap:10px;padding:12px">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#8A4B00"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+        <p class="sm" style="color:#5C3300">{{ t.k094 }}</p>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k095 }}</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix16 (28 Oct 2026): dashboard-first menu label — 6 languages
+  fx16(l) { var D = {"bn": {"dash": "ড্যাশবোর্ড"}, "en": {"dash": "Dashboard"}, "hi": {"dash": "डैशबोर्ड"}, "ur": {"dash": "ڈیش بورڈ"}, "ar": {"dash": "لوحة المتابعة"}, "fr": {"dash": "Tableau de bord"}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: 'হোম, কোর্স ক্যাটালগ, Batch → Combo → Personal, পেমেন্ট',
+      k002: 'হোম ড্যাশবোর্ড',
+      k003: 'ত',
+      k004: 'শুভ বিকেল',
+      k005: 'তানভীর',
+      k006: 'নোটিফিকেশন, 3টি নতুন',
+      k007: 'SSC · Combo · আজকের 1:1 সময়',
+      k008: 'রিসেট রাত 12টায়',
+      k009: '/ 30 মিনিট বাকি',
+      k010: '12 দিন',
+      k011: 'স্ট্রিক',
+      k012: 'আজকের প্ল্যান',
+      k013: 'রিট্রিভাল ওয়ার্ম-আপ',
+      k014: '3 প্রশ্ন · গতকাল, গত সপ্তাহ, গত মাস',
+      k015: 'ব্যাচ ক্লাস · গণিত 4:00 pm',
+      k016: '18 মিনিট পরে শুরু',
+      k017: 'যোগ দাও',
+      k018: '1:1 · দ্বিঘাত সমীকরণ',
+      k019: 'পোলে ভুল হওয়া টপিক থেকে',
+      k020: 'রেকর্ডিং',
+      k021: 'মক টেস্ট',
+      k022: 'স্টাডি হল',
+      k023: 'শেখার আরও উপায়: সক্রেটিক মোড, স্টাডি বাডি, গল্পের মিশন, গেম ও AR, ক্যারিয়ার, ফোন টিউটর এবং আরও।',
+      k024: 'আরও',
+      k025: 'প্রধান মেনু',
+      k026: 'হোম',
+      k027: 'ক্লাস',
+      k028: 'অগ্রগতি',
+      k029: 'প্রোফাইল',
+      k030: 'কোর্স ক্যাটালগ',
+      k031: 'কোর্স',
+      k032: 'খোঁজো',
+      k033: 'সব',
+      k034: 'স্কুল',
+      k035: 'চাকরি',
+      k036: 'বিদেশে পড়া',
+      k037: 'ভাষা',
+      k038: 'স্কিল',
+      k039: 'SSC (ক্লাস 9–10)',
+      k040: 'বাংলা মাধ্যম ও English version',
+      k041: 'থেকে/মাস',
+      k042: 'বিজ্ঞান · ব্যাচ বিকেল 4টা',
+      k043: 'ব্যাচ সকাল 7–9টা',
+      k044: 'ভর্তি',
+      k045: 'ইউনিট অনুযায়ী',
+      k046: 'প্লে থেকে ক্লাস III · খেলায় শেখা',
+      k047: '/30 দিন',
+      k048: 'যেকোনো কোর্স চাও?',
+      k049: 'AI আউটলাইন বানিয়ে দাম দেখাবে — “কেন এই দাম” সহ',
+      k050: 'সব দাম VAT সহ।',
+      kem1: 'ইংরেজি মাধ্যম শ্রেণি 4–8',
+      kem2: 'Cambridge / Edexcel · শ্রেণি 4–5 শুধু Personal ৳1,400 · কোয়ালিটি গেটের পরে খুলবে',
+      k051: 'প্ল্যান তুলনা — SSC',
+      k052: 'পেছনে',
+      k053: 'SSC · প্ল্যান বেছে নাও',
+      k054: '/মাস',
+      k055: 'গ্রুপ ক্লাস (1 AI : 50, সপ্তাহে 5 দিন) + দিনে 5 মিনিট 1:1',
+      k056: 'সবচেয়ে জনপ্রিয়',
+      k057: 'গ্রুপ ক্লাস + দিনে 30 মিনিট 1:1 Personal Nexa Teacher। 1:1 শুরু হয় গ্রুপ ক্লাসের পোলে ভুল টপিক দিয়ে।',
+      k058: 'দিনে 75 মিনিট 1:1 (সব বিষয়) · এক বিষয় দিনে 40 মিনিট ৳500',
+      k059: 'অ্যাড-অন',
+      k060: '· শেষ 30 দিন',
+      k061: 'পরীক্ষার আগের শেষ 30 দিনে দিনে',
+      k062: '+45 মিনিট 1:1',
+      k063: '· 3 ও 6 মাসের Crash প্রোগ্রামও আছে —',
+      k064: 'আসনের কোনো সীমা নেই',
+      k065: '; ক্লাস শুরুর আগে সার্ভার বাড়ানো হয়',
+      k066: 'সব প্ল্যানে আছে',
+      k067: '✓ তুমি চাইলে ক্লাস রেকর্ডিং, 12 মাস রাখা হয়',
+      k068: '✓ সীমাহীন মক টেস্ট',
+      k069: '✓ AI স্টাডি প্ল্যান',
+      k070: '✓ ব্যাচ র‍্যাঙ্ক',
+      k071: '✓ অভিভাবক রিপোর্ট',
+      k072: '✓ MindForge (ফ্রি অংশ)',
+      k073: '✓ ক্যালকুলেটর ও অভিধান',
+      k074: 'শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k075: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; ক্রেডিট থাকে 6 মাস। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k076: 'Combo নিয়ে এগিয়ে যাও',
+      k077: 'পেমেন্ট (অভিভাবকের অনুমোদনসহ)',
+      k078: 'পেমেন্ট',
+      k079: 'গ্রুপ ক্লাস + দিনে 30 মিনিট 1:1',
+      k080: 'মেয়াদ',
+      k081: '1 মাস',
+      k082: '3 মাস',
+      k083: '10% ছাড়',
+      k084: '6 মাস',
+      k085: '1 মাস ফ্রি',
+      k086: 'রিনিউ কীভাবে হবে?',
+      k087: '(তুমিই বেছে নাও)',
+      k088: 'অটো-রিনিউ',
+      k089: 'ম্যানুয়াল রিনিউ',
+      k090: 'প্রিপে ছাড় (10%)',
+      k091: 'মোট (VAT সহ)',
+      k092: 'একসাথে একটাই ছাড় — সবচেয়ে বড়টি প্রযোজ্য।',
+      k093: 'একদিন চেষ্টা করতে চাও? Daily Pass ৳20 (24 ঘণ্টা)। মাঝ-মাসে আপগ্রেড সাথে সাথে চালু।',
+      k094: 'তোমার বয়স 18-এর কম। অভিভাবকের ফোনে অনুরোধ যাবে, তিনি অনুমোদন দিলে aamarPay-তে (bKash, Nagad, কার্ড) পেমেন্ট হবে।',
+      k095: 'অভিভাবকের অনুমোদন চাও',
+      k096: '✓ সংবেদন-বান্ধব মোড',
+      k097: '✓ প্রতিটি ক্লাসে সাংকেতিক ভাষার অ্যাভাটার (BdSL) — বাড়তি দাম নেই'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: 'Home, course catalogue, Batch → Combo → Personal, payment',
+      k002: 'Home dashboard',
+      k003: 'T',
+      k004: 'Good afternoon',
+      k005: 'Tanvir',
+      k006: 'Notifications, 3 new',
+      k007: 'SSC · Combo · today’s 1:1 time',
+      k008: 'Resets at midnight',
+      k009: '/ 30 min left',
+      k010: '12 days',
+      k011: 'Streak',
+      k012: 'Today’s plan',
+      k013: 'Retrieval warm-up',
+      k014: '3 questions · yesterday, last week, last month',
+      k015: 'Batch class · Maths 4:00 pm',
+      k016: 'Starts in 18 minutes',
+      k017: 'Join',
+      k018: '1:1 · Quadratic equations',
+      k019: 'From the topics you got wrong in polls',
+      k020: 'Recordings',
+      k021: 'Mock tests',
+      k022: 'Study Hall',
+      k023: 'More ways to learn: Socratic mode, study buddy, story missions, games and AR, careers, phone tutor and more.',
+      k024: 'More',
+      k025: 'Main menu',
+      k026: 'Home',
+      k027: 'Classes',
+      k028: 'Progress',
+      k029: 'Profile',
+      k030: 'Course catalogue',
+      k031: 'Course',
+      k032: 'Search',
+      k033: 'All',
+      k034: 'School',
+      k035: 'Jobs',
+      k036: 'Study abroad',
+      k037: 'Language',
+      k038: 'Skills',
+      k039: 'SSC (Class 9–10)',
+      k040: 'Bangla medium and English version',
+      k041: 'from/month',
+      k042: 'Science · batch 4 pm',
+      k043: 'Batch 7–9 am',
+      k044: 'Admission',
+      k045: 'By unit',
+      k046: 'Play to Class III · learning through play',
+      k047: '/30 days',
+      k048: 'Want any course?',
+      k049: 'AI drafts an outline and shows the price — with “why this price”',
+      k050: 'All prices include VAT.',
+      kem1: 'English medium Class 4–8',
+      kem2: 'Cambridge / Edexcel · Class 4–5 Personal only ৳1,400 · opens after the quality gate',
+      k051: 'Plan comparison — SSC',
+      k052: 'Back',
+      k053: 'SSC · choose a plan',
+      k054: '/month',
+      k055: 'Group class (1 AI : 50, 5 days a week) + 5 min of 1:1 a day',
+      k056: 'Most popular',
+      k057: 'Group class + 30 min a day of 1:1 Personal Nexa Teacher. The 1:1 starts with the topics you got wrong in group-class polls.',
+      k058: '75 minutes of 1:1 a day (all subjects) · one subject 40 minutes a day ৳500',
+      k059: 'Add-on',
+      k060: '· last 30 days',
+      k061: 'In the last 30 days before the exam,',
+      k062: '+45 minutes of 1:1 a day',
+      k063: '· also as 3- and 6-month crash programs —',
+      k064: 'no seat limit',
+      k065: '; servers are scaled up before classes start',
+      k066: 'Every plan includes',
+      k067: '✓ Class recordings when you choose them, kept 12 months',
+      k068: '✓ Unlimited mock tests',
+      k069: '✓ AI study plan',
+      k070: '✓ Batch rank',
+      k071: '✓ Guardian report',
+      k072: '✓ MindForge (free part)',
+      k073: '✓ Calculator and dictionary',
+      k074: 'Learning guarantee: if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we give the minutes back as wallet credit [to confirm with our lawyer].',
+      k075: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the credit lasts 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',
+      k076: 'Continue with Combo',
+      k077: 'Payment (with guardian approval)',
+      k078: 'Payment',
+      k079: 'Group class + 30 minutes of 1:1 a day',
+      k080: 'Duration',
+      k081: '1 month',
+      k082: '3 months',
+      k083: '10% off',
+      k084: '6 months',
+      k085: '1 month free',
+      k086: 'How should it renew?',
+      k087: '(you choose)',
+      k088: 'Auto-renew',
+      k089: 'Manual renew',
+      k090: 'Prepay discount (10%)',
+      k091: 'Total (incl. VAT)',
+      k092: 'Only one discount at a time — the biggest applies.',
+      k093: 'Want to try for a day? Daily Pass ৳20 (24 hours). A mid-month upgrade starts right away.',
+      k094: 'You’re under 18. A request goes to your guardian’s phone; once they approve, payment is made through aamarPay (bKash, Nagad, card).',
+      k095: 'Ask guardian for approval',
+      k096: '✓ Sensory-friendly mode',
+      k097: '✓ Sign language avatar (BdSL) in every class — no extra price'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: 'होम, कोर्स कैटलॉग, Batch → Combo → Personal, भुगतान',
+      k002: 'होम डैशबोर्ड',
+      k003: 'त',
+      k004: 'शुभ दोपहर',
+      k005: 'तनवीर',
+      k006: 'नोटिफ़िकेशन, 3 नए',
+      k007: 'SSC · Combo · आज का 1:1 समय',
+      k008: 'आधी रात को रीसेट',
+      k009: '/ 30 मिनट बाकी',
+      k010: '12 दिन',
+      k011: 'स्ट्रीक',
+      k012: 'आज की योजना',
+      k013: 'रिट्रीवल वॉर्म-अप',
+      k014: '3 सवाल · कल, पिछले हफ़्ते, पिछले महीने',
+      k015: 'बैच क्लास · गणित 4:00 pm',
+      k016: '18 मिनट में शुरू',
+      k017: 'जुड़ो',
+      k018: '1:1 · द्विघात समीकरण',
+      k019: 'पोल में ग़लत हुए टॉपिक से',
+      k020: 'रिकॉर्डिंग',
+      k021: 'मॉक टेस्ट',
+      k022: 'स्टडी हॉल',
+      k023: 'सीखने के और तरीके: सुकराती मोड, स्टडी बडी, कहानी मिशन, गेम और AR, करियर, फ़ोन ट्यूटर और भी।',
+      k024: 'और',
+      k025: 'मुख्य मेनू',
+      k026: 'होम',
+      k027: 'क्लास',
+      k028: 'प्रगति',
+      k029: 'प्रोफ़ाइल',
+      k030: 'कोर्स कैटलॉग',
+      k031: 'कोर्स',
+      k032: 'खोजो',
+      k033: 'सब',
+      k034: 'स्कूल',
+      k035: 'नौकरी',
+      k036: 'विदेश में पढ़ाई',
+      k037: 'भाषा',
+      k038: 'स्किल',
+      k039: 'SSC (कक्षा 9–10)',
+      k040: 'बांग्ला माध्यम और English version',
+      k041: 'से/महीना',
+      k042: 'विज्ञान · बैच शाम 4 बजे',
+      k043: 'बैच सुबह 7–9 बजे',
+      k044: 'प्रवेश',
+      k045: 'यूनिट के हिसाब से',
+      k046: 'प्ले से क्लास III · खेल-खेल में सीखना',
+      k047: '/30 दिन',
+      k048: 'कोई भी कोर्स चाहिए?',
+      k049: 'AI रूपरेखा बनाकर क़ीमत दिखाएगा — “यह क़ीमत क्यों” के साथ',
+      k050: 'सभी क़ीमतें VAT सहित।',
+      kem1: 'इंग्लिश मीडियम कक्षा 4–8',
+      kem2: 'Cambridge / Edexcel · कक्षा 4–5 सिर्फ़ Personal ৳1,400 · क्वालिटी गेट के बाद खुलेगा',
+      k051: 'प्लान तुलना — SSC',
+      k052: 'पीछे',
+      k053: 'SSC · प्लान चुनो',
+      k054: '/महीना',
+      k055: 'ग्रुप क्लास (1 AI : 50, हफ़्ते में 5 दिन) + रोज़ 5 मिनट 1:1',
+      k056: 'सबसे लोकप्रिय',
+      k057: 'ग्रुप क्लास + रोज़ 30 मिनट 1:1 Personal Nexa Teacher। 1:1 ग्रुप क्लास के पोल में ग़लत हुए टॉपिक से शुरू होता है।',
+      k058: 'रोज़ 75 मिनट 1:1 (सभी विषय) · एक विषय रोज़ 40 मिनट ৳500',
+      k059: 'ऐड-ऑन',
+      k060: '· आख़िरी 30 दिन',
+      k061: 'परीक्षा से पहले के आख़िरी 30 दिनों में रोज़',
+      k062: '+45 मिनट 1:1',
+      k063: '· 3 और 6 महीने के Crash प्रोग्राम भी —',
+      k064: 'सीटों की कोई सीमा नहीं',
+      k065: '; क्लास शुरू होने से पहले सर्वर बढ़ाए जाते हैं',
+      k066: 'हर प्लान में',
+      k067: '✓ तुम चुनो तो क्लास रिकॉर्डिंग, 12 महीने रखी जाती है',
+      k068: '✓ असीमित मॉक टेस्ट',
+      k069: '✓ AI स्टडी प्लान',
+      k070: '✓ बैच रैंक',
+      k071: '✓ अभिभावक रिपोर्ट',
+      k072: '✓ MindForge (मुफ़्त हिस्सा)',
+      k073: '✓ कैलकुलेटर और शब्दकोश',
+      k074: 'सीखने की गारंटी: अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।',
+      k075: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; क्रेडिट 6 महीने चलता है। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',
+      k076: 'Combo के साथ आगे बढ़ो',
+      k077: 'भुगतान (अभिभावक की मंज़ूरी के साथ)',
+      k078: 'भुगतान',
+      k079: 'ग्रुप क्लास + रोज़ 30 मिनट 1:1',
+      k080: 'अवधि',
+      k081: '1 महीना',
+      k082: '3 महीने',
+      k083: '10% छूट',
+      k084: '6 महीने',
+      k085: '1 महीना मुफ़्त',
+      k086: 'रिन्यू कैसे होगा?',
+      k087: '(तुम ही चुनो)',
+      k088: 'ऑटो-रिन्यू',
+      k089: 'मैनुअल रिन्यू',
+      k090: 'प्रीपे छूट (10%)',
+      k091: 'कुल (VAT सहित)',
+      k092: 'एक समय में एक ही छूट — सबसे बड़ी लागू होगी।',
+      k093: 'एक दिन आज़माना है? Daily Pass ৳20 (24 घंटे)। महीने के बीच अपग्रेड तुरंत चालू।',
+      k094: 'तुम्हारी उम्र 18 से कम है। अनुरोध अभिभावक के फ़ोन पर जाएगा; वे मंज़ूरी देंगे तो aamarPay (bKash, Nagad, कार्ड) से भुगतान होगा।',
+      k095: 'अभिभावक से मंज़ूरी माँगो',
+      k096: '✓ संवेदी-अनुकूल मोड',
+      k097: '✓ हर क्लास में सांकेतिक भाषा अवतार (BdSL) — अतिरिक्त कीमत नहीं'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: 'ہوم، کورس کیٹلاگ، Batch → Combo → Personal، ادائیگی',
+      k002: 'ہوم ڈیش بورڈ',
+      k003: 'ت',
+      k004: 'سہ پہر بخیر',
+      k005: 'تنویر',
+      k006: 'نوٹیفکیشنز، ' + M('3') + ' نئے',
+      k007: 'SSC · Combo · آج کا ' + M('1:1') + ' وقت',
+      k008: 'آدھی رات کو ری سیٹ',
+      k009: M('/ 30') + ' منٹ باقی',
+      k010: M('12') + ' دن',
+      k011: 'اسٹریک',
+      k012: 'آج کا منصوبہ',
+      k013: 'یاد دہانی وارم اپ',
+      k014: M('3') + ' سوال · کل، پچھلے ہفتے، پچھلے مہینے',
+      k015: 'بیچ کلاس · ریاضی ' + M('4:00 pm'),
+      k016: M('18') + ' منٹ میں شروع',
+      k017: 'شامل ہو',
+      k018: M('1:1') + ' · دو درجی مساوات',
+      k019: 'پول میں غلط ہونے والے ٹاپک سے',
+      k020: 'ریکارڈنگ',
+      k021: 'ماک ٹیسٹ',
+      k022: 'اسٹڈی ہال',
+      k023: 'سیکھنے کے مزید طریقے: سقراطی موڈ، اسٹڈی بڈی، کہانی مشن، گیمز اور AR، کیریئر، فون ٹیوٹر اور مزید۔',
+      k024: 'مزید',
+      k025: 'مرکزی مینو',
+      k026: 'ہوم',
+      k027: 'کلاس',
+      k028: 'پیش رفت',
+      k029: 'پروفائل',
+      k030: 'کورس کیٹلاگ',
+      k031: 'کورس',
+      k032: 'تلاش',
+      k033: 'سب',
+      k034: 'اسکول',
+      k035: 'نوکری',
+      k036: 'بیرون ملک تعلیم',
+      k037: 'زبان',
+      k038: 'ہنر',
+      k039: M('SSC') + ' (' + 'جماعت ' + M('9–10') + ')',
+      k040: 'بنگلہ میڈیم اور English version',
+      k041: 'سے/ماہ',
+      k042: 'سائنس · بیچ شام ' + M('4') + ' بجے',
+      k043: 'بیچ صبح ' + M('7–9') + ' بجے',
+      k044: 'داخلہ',
+      k045: 'یونٹ کے حساب سے',
+      k046: 'پلے سے کلاس III · کھیل کھیل میں سیکھنا',
+      k047: M('/30') + ' دن',
+      k048: 'کوئی بھی کورس چاہیے؟',
+      k049: 'AI خاکہ بنا کر قیمت دکھائے گا — “یہ قیمت کیوں” کے ساتھ',
+      k050: 'تمام قیمتیں VAT سمیت۔',
+      kem1: 'انگلش میڈیم جماعت ⁦4–8⁩',
+      kem2: '⁦Cambridge / Edexcel⁩ · جماعت ⁦4–5⁩ صرف ⁦Personal ৳1,400⁩ · کوالٹی گیٹ کے بعد کھلے گا',
+      k051: 'پلان کا موازنہ — SSC',
+      k052: 'پیچھے',
+      k053: 'SSC · پلان چنو',
+      k054: '/ماہ',
+      k055: 'گروپ کلاس (' + M('1 AI : 50') + '، ہفتے میں ' + M('5') + ' دن) + روز ' + M('5') + ' منٹ ' + M('1:1'),
+      k056: 'سب سے مقبول',
+      k057: 'گروپ کلاس + روزانہ ' + M('30') + ' منٹ ' + M('1:1 Personal Nexa Teacher') + '۔ ' + M('1:1') + ' گروپ کلاس کے پول میں غلط ہونے والے موضوع سے شروع ہوتا ہے۔',
+      k058: 'روز ' + M('75') + ' منٹ ' + M('1:1') + ' (' + 'تمام مضامین)' + ' · ایک مضمون روز ' + M('40') + ' منٹ ' + M('৳500'),
+      k059: 'ایڈ آن',
+      k060: '· آخری ' + M('30') + ' دن',
+      k061: 'امتحان سے پہلے کے آخری ' + M('30') + ' دنوں میں روز',
+      k062: M('+45') + ' منٹ ' + M('1:1'),
+      k063: '· ' + M('3') + ' اور ' + M('6') + ' مہینے کے ' + M('Crash') + ' پروگرام بھی —',
+      k064: 'نشستوں کی کوئی حد نہیں',
+      k065: '؛ کلاس شروع ہونے سے پہلے سرور بڑھائے جاتے ہیں',
+      k066: 'ہر پلان میں شامل',
+      k067: '✓ ' + 'تم چنو تو کلاس ریکارڈنگ، ' + M('12') + ' مہینے رکھی جاتی ہے',
+      k068: '✓ لامحدود ماک ٹیسٹ',
+      k069: '✓ AI اسٹڈی پلان',
+      k070: '✓ بیچ رینک',
+      k071: '✓ سرپرست رپورٹ',
+      k072: '✓ ' + M('MindForge') + ' (' + 'مفت حصہ)',
+      k073: '✓ کیلکولیٹر اور لغت',
+      k074: 'سیکھنے کی ضمانت: اگر ' + M('4') + ' ہفتے باقاعدہ پڑھائی (ہفتے میں ' + M('3') + ' یا زیادہ سیشن)' + ' کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k075: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ کریڈٹ ⁦6⁩ ماہ تک رہتا ہے۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k076: 'Combo کے ساتھ آگے بڑھو',
+      k077: 'ادائیگی (سرپرست کی منظوری کے ساتھ)',
+      k078: 'ادائیگی',
+      k079: 'گروپ کلاس + روز ' + M('30') + ' منٹ ' + M('1:1'),
+      k080: 'مدت',
+      k081: M('1') + ' ماہ',
+      k082: M('3') + ' ماہ',
+      k083: M('10%') + ' رعایت',
+      k084: M('6') + ' مہینے',
+      k085: M('1') + ' ماہ مفت',
+      k086: 'تجدید کیسے ہوگی؟',
+      k087: '(' + 'تم خود چنو)',
+      k088: 'خودکار تجدید',
+      k089: 'دستی تجدید',
+      k090: 'پیشگی ادائیگی رعایت ' + M('(10%)'),
+      k091: 'کل (' + M('VAT') + ' سمیت)',
+      k092: 'ایک وقت میں ایک ہی رعایت — سب سے بڑی لاگو ہوگی۔',
+      k093: 'ایک دن آزمانا ہے؟ ' + M('Daily Pass ৳20') + ' (' + M('24') + ' گھنٹے)' + '۔ مہینے کے بیچ اپ گریڈ فوراً چالو۔',
+      k094: 'تمہاری عمر ' + M('18') + ' سے کم ہے۔ درخواست سرپرست کے فون پر جائے گی؛ وہ منظوری دیں تو ' + M('aamarPay') + ' (' + M('bKash') + '، Nagad، کارڈ)' + ' سے ادائیگی ہوگی۔',
+      k095: 'سرپرست سے منظوری مانگو',
+      k096: '✓ حسّی دوستانہ موڈ',
+      k097: '✓ ہر کلاس میں اشاروں کی زبان کا اوتار (⁦BdSL⁩) — اضافی قیمت نہیں'
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: 'الرئيسية، دليل الدورات، Batch ← Combo ← Personal، الدفع',
+      k002: 'لوحة الرئيسية',
+      k003: 'ت',
+      k004: 'مساء الخير',
+      k005: 'تنوير',
+      k006: 'الإشعارات، ' + M('3') + ' جديدة',
+      k007: 'SSC · Combo · وقت ' + M('1:1') + ' اليوم',
+      k008: 'يُعاد ضبطه منتصف الليل',
+      k009: M('/ 30') + ' دقيقة متبقية',
+      k010: M('12') + ' يومًا',
+      k011: 'سلسلة الأيام',
+      k012: 'خطة اليوم',
+      k013: 'إحماء الاسترجاع',
+      k014: M('3') + ' أسئلة · أمس، الأسبوع الماضي، الشهر الماضي',
+      k015: 'حصة جماعية · الرياضيات ' + M('4:00 pm'),
+      k016: 'تبدأ بعد ' + M('18') + ' دقيقة',
+      k017: 'انضم',
+      k018: M('1:1') + ' · المعادلات التربيعية',
+      k019: 'من الموضوعات التي أخطأت فيها في الاستطلاعات',
+      k020: 'التسجيلات',
+      k021: 'اختبارات تجريبية',
+      k022: 'قاعة الدراسة',
+      k023: 'طرق أخرى للتعلّم: الوضع السقراطي، رفيق الدراسة، مهام القصص، الألعاب والواقع المعزّز، المهن، المعلّم الهاتفي والمزيد.',
+      k024: 'المزيد',
+      k025: 'القائمة الرئيسية',
+      k026: 'الرئيسية',
+      k027: 'الحصص',
+      k028: 'التقدّم',
+      k029: 'الملف',
+      k030: 'دليل الدورات',
+      k031: 'الدورة',
+      k032: 'بحث',
+      k033: 'الكل',
+      k034: 'المدرسة',
+      k035: 'الوظائف',
+      k036: 'الدراسة في الخارج',
+      k037: 'اللغة',
+      k038: 'المهارات',
+      k039: M('SSC') + ' (' + 'الصف ' + M('9–10') + ')',
+      k040: 'التعليم بالبنغالية والنسخة الإنجليزية',
+      k041: 'ابتداءً/شهريًا',
+      k042: 'العلوم · دفعة ' + M('4') + ' مساءً',
+      k043: 'دفعة ' + M('7–9') + ' صباحًا',
+      k044: 'القبول الجامعي',
+      k045: 'حسب الوحدة',
+      k046: 'من الروضة إلى الصف الثالث · التعلّم باللعب',
+      k047: M('/30') + ' يومًا',
+      k048: 'تريد أي دورة؟',
+      k049: 'يُعدّ الذكاء الاصطناعي مخططًا ويعرض السعر — مع “لماذا هذا السعر”',
+      k050: 'كل الأسعار شاملة الضريبة.',
+      kem1: 'التعليم الإنجليزي الصفوف ⁦4–8⁩',
+      kem2: '⁦Cambridge / Edexcel⁩ · الصفان ⁦4–5⁩ ⁦Personal⁩ فقط ⁦৳1,400⁩ · يفتح بعد بوابة الجودة',
+      k051: 'مقارنة الخطط — SSC',
+      k052: 'رجوع',
+      k053: 'SSC · اختر خطة',
+      k054: '/شهريًا',
+      k055: 'حصة جماعية (' + M('1 AI : 50') + '، ' + M('5') + ' أيام أسبوعيًا) + ' + M('5') + ' دقائق ' + M('1:1') + ' يوميًا',
+      k056: 'الأكثر طلبًا',
+      k057: 'حصة جماعية ' + M('+ 30') + ' دقيقة يوميًا ' + M('1:1') + ' مع Personal Nexa Teacher. تبدأ حصة ' + M('1:1') + ' بالمواضيع التي أخطأت فيها في استطلاعات الحصة الجماعية.',
+      k058: M('75') + ' دقيقة ' + M('1:1') + ' يوميًا (كل المواد)' + ' · مادة واحدة ' + M('40') + ' دقيقة يوميًا ' + M('৳500'),
+      k059: 'إضافة',
+      k060: '· آخر ' + M('30') + ' يومًا',
+      k061: 'في آخر ' + M('30') + ' يومًا قبل الامتحان، يوميًا',
+      k062: M('+45') + ' دقيقة ' + M('1:1'),
+      k063: '· وتتوفر أيضًا برامج ' + M('Crash') + ' لمدة ' + M('3') + ' و' + M('6') + ' أشهر —',
+      k064: 'لا حدّ للمقاعد',
+      k065: '؛ تُوسَّع الخوادم قبل بدء الحصص',
+      k066: 'تشمل كل الخطط',
+      k067: '✓ ' + 'تسجيلات الحصص حين تختارها، وتُحفظ ' + M('12') + ' شهرًا',
+      k068: '✓ اختبارات تجريبية بلا حدود',
+      k069: '✓ خطة دراسة بالذكاء الاصطناعي',
+      k070: '✓ ترتيب الدفعة',
+      k071: '✓ تقرير ولي الأمر',
+      k072: '✓ ' + M('MindForge') + ' (' + 'الجزء المجاني)',
+      k073: '✓ آلة حاسبة وقاموس',
+      k074: 'ضمان التعلّم: إذا لم يتحسّن إتقانك بعد ' + M('4') + ' أسابيع من الدراسة المنتظمة (' + M('3') + ' جلسات أو أكثر أسبوعيًا)' + '، نعيد إليك الدقائق رصيدًا في المحفظة [بانتظار تأكيد محامينا].',
+      k075: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ ويبقى الرصيد صالحًا ⁦6⁩ أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',
+      k076: 'تابع مع Combo',
+      k077: 'الدفع (بموافقة ولي الأمر)',
+      k078: 'الدفع',
+      k079: 'حصة جماعية ' + M('+ 30') + ' دقيقة ' + M('1:1') + ' يوميًا',
+      k080: 'المدة',
+      k081: 'شهر واحد',
+      k082: M('3') + ' أشهر',
+      k083: 'خصم ' + M('10%'),
+      k084: M('6') + ' أشهر',
+      k085: 'شهر مجاني',
+      k086: 'كيف يتم التجديد؟',
+      k087: '(' + 'أنت تختار)',
+      k088: 'تجديد تلقائي',
+      k089: 'تجديد يدوي',
+      k090: 'خصم الدفع المسبق ' + M('(10%)'),
+      k091: 'الإجمالي (شامل الضريبة)',
+      k092: 'خصم واحد فقط في كل مرة — يُطبَّق الأكبر.',
+      k093: 'تريد التجربة ليوم واحد؟ ' + M('Daily Pass ৳20') + ' (' + M('24') + ' ساعة)' + '. الترقية في منتصف الشهر تبدأ فورًا.',
+      k094: 'عمرك أقل من ' + M('18') + '. سيُرسل طلب إلى هاتف وليّ أمرك، وبعد موافقته يتم الدفع عبر ' + M('aamarPay') + ' (' + M('bKash') + '، Nagad، البطاقة)' + '.',
+      k095: 'اطلب موافقة وليّ الأمر',
+      k096: '✓ الوضع الملائم للحواس',
+      k097: '✓ أفاتار لغة الإشارة (⁦BdSL⁩) في كل حصة — بلا سعر إضافي'
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: 'Accueil, catalogue, Batch → Combo → Personal, paiement',
+      k002: 'Tableau de bord d’accueil',
+      k003: 'T',
+      k004: 'Bon après-midi',
+      k005: 'Tanvir',
+      k006: 'Notifications, 3 nouvelles',
+      k007: 'SSC · Combo · temps 1:1 du jour',
+      k008: 'Remis à zéro à minuit',
+      k009: '/ 30 min restantes',
+      k010: '12 jours',
+      k011: 'Série',
+      k012: 'Plan du jour',
+      k013: 'Échauffement de rappel',
+      k014: '3 questions · hier, la semaine dernière, le mois dernier',
+      k015: 'Cours en groupe · Maths 16 h 00',
+      k016: 'Commence dans 18 minutes',
+      k017: 'Rejoindre',
+      k018: '1:1 · Équations du second degré',
+      k019: 'À partir des sujets ratés aux sondages',
+      k020: 'Cours enregistrés',
+      k021: 'Examens blancs',
+      k022: 'Salle d’étude',
+      k023: 'D’autres façons d’apprendre : mode socratique, binôme d’étude, missions-histoires, jeux et RA, métiers, tuteur par téléphone et plus.',
+      k024: 'Plus',
+      k025: 'Menu principal',
+      k026: 'Accueil',
+      k027: 'Cours',
+      k028: 'Progrès',
+      k029: 'Profil',
+      k030: 'Catalogue des cours',
+      k031: 'Cours',
+      k032: 'Chercher',
+      k033: 'Tout',
+      k034: 'École',
+      k035: 'Emplois',
+      k036: 'Études à l’étranger',
+      k037: 'Langue',
+      k038: 'Compétences',
+      k039: 'SSC (classes 9–10)',
+      k040: 'Bengali et English version',
+      k041: 'à partir de/mois',
+      k042: 'Sciences · groupe à 16 h',
+      k043: 'Groupe de 7 h à 9 h',
+      k044: 'Admission',
+      k045: 'Par unité',
+      k046: 'De la maternelle au CE2 · apprendre en jouant',
+      k047: '/30 jours',
+      k048: 'Tu veux un autre cours ?',
+      k049: 'L’IA prépare un plan et affiche le prix — avec « pourquoi ce prix »',
+      k050: 'Tous les prix incluent la TVA.',
+      kem1: 'English medium classes 4–8',
+      kem2: 'Cambridge / Edexcel · classes 4–5 Personal seulement ৳1 400 · ouvre après le contrôle qualité',
+      k051: 'Comparer les formules — SSC',
+      k052: 'Retour',
+      k053: 'SSC · choisis une formule',
+      k054: '/mois',
+      k055: 'Cours de groupe (1 IA : 50, 5 jours par semaine) + 5 min de 1:1 par jour',
+      k056: 'La plus choisie',
+      k057: 'Cours de groupe + 30 min par jour de 1:1 avec Personal Nexa Teacher. Le 1:1 commence par les sujets ratés aux sondages du cours de groupe.',
+      k058: '75 min de 1:1 par jour (toutes les matières) · une matière 40 min par jour ৳500',
+      k059: 'Option',
+      k060: '· 30 derniers jours',
+      k061: 'Pendant les 30 derniers jours avant l’examen,',
+      k062: '+45 minutes de 1:1 par jour',
+      k063: '· aussi en programmes Crash de 3 et 6 mois —',
+      k064: 'pas de limite de places',
+      k065: ' ; les serveurs sont renforcés avant les cours',
+      k066: 'Inclus dans chaque formule',
+      k067: '✓ Les enregistrements des cours que tu choisis, gardés 12 mois',
+      k068: '✓ Examens blancs illimités',
+      k069: '✓ Plan d’étude IA',
+      k070: '✓ Classement du groupe',
+      k071: '✓ Rapport au parent',
+      k072: '✓ MindForge (partie gratuite)',
+      k073: '✓ Calculatrice et dictionnaire',
+      k074: 'Garantie d’apprentissage : si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous te rendons les minutes en crédit sur ton portefeuille [à confirmer avec notre avocat].',
+      k075: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; le crédit est valable 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',
+      k076: 'Continuer avec Combo',
+      k077: 'Paiement (avec l’accord du parent)',
+      k078: 'Paiement',
+      k079: 'Cours de groupe + 30 min de 1:1 par jour',
+      k080: 'Durée',
+      k081: '1 mois',
+      k082: '3 mois',
+      k083: '−10 %',
+      k084: '6 mois',
+      k085: '1 mois offert',
+      k086: 'Comment renouveler ?',
+      k087: '(tu choisis)',
+      k088: 'Renouvellement auto',
+      k089: 'Renouvellement manuel',
+      k090: 'Remise prépaiement (10 %)',
+      k091: 'Total (TVA incluse)',
+      k092: 'Une seule remise à la fois — la plus élevée s’applique.',
+      k093: 'Envie d’essayer une journée ? Daily Pass ৳20 (24 heures). Une montée de formule en cours de mois démarre tout de suite.',
+      k094: 'Tu as moins de 18 ans. Une demande part sur le téléphone de ton parent ; après son accord, le paiement se fait via aamarPay (bKash, Nagad, carte).',
+      k095: 'Demander l’accord du parent',
+      k096: '✓ Mode sensoriel adapté',
+      k097: '✓ Avatar en langue des signes (BdSL) dans chaque cours — sans supplément'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, fx: this.fx16(lang), lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

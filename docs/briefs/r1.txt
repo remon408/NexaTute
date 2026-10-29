@@ -1,0 +1,17 @@
+You are an independent reviewer of clickable prototypes for NexaTute (Bangladeshi AI-tutoring platform by RemonLogic; all teachers are AI). Find real problems; do NOT edit any project file. SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Scope (learner/guardian/teacher phone prototypes, 390×844)
+SP/ntd/project/X01-Prototype-Flow1.dc.html, X02-Prototype-Flow2, X03-Prototype-Flow3 (two phones), X04-Prototype-Flow4 (Study Hall + Q&A), X05-Prototype-Flow5 (PlayBoom), X06-Prototype-Batch, X07-Prototype-Test, X08-Prototype-Guardian, X09-Prototype-Teacher, X11-Prototype-Tools. (Board titles in SP/ntd/project/canvas.json describe each.)
+
+## What "correct" means
+- Approved product decisions are in the user's memory — read with mcp__memory__memory_read (read-only, never write): /areas/nexatute.md, /areas/nexatute-learning.md, /areas/nexatute-playboom.md, /areas/nexatute-growth.md, /areas/nexatute-admin.md. Also SP/report_unapproved.md lists assumptions the user approved (top part) and newer ones. Flag anything in the prototypes that contradicts these (prices, limits, plan rules, names like Nexa Teacher / Nexa Co-Teacher / Nexa Study Hall Moderator / Nexa Guard / PlayBoom / MindForge, child-safety rules, consent, curriculum-per-country rule, Latin digits in UI except PlayBoom children's digits, etc.).
+- Cross-prototype consistency: the same price, limit, name or rule must read the same everywhere.
+- Quality: broken or dead-end flows, buttons that do nothing, wrong state after an action, text cut off or overlapping, horizontal scroll at 390, RTL problems in ur/ar, untranslated or mixed-language strings, missing tooltips on interactive elements, confusing wording for learners/guardians.
+
+## How
+- Format notes: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md (DC format, holes {{ }} , sc-if/sc-for, class Component with renderVals()).
+- Tools: `python3 SP/dcverify.py FILE [TEST] [--state JSON]` (X02/X04 read this.props — pass props with env var DCPROPS='{"freeUser":true}' etc.), `node SP/dcrender.js FILE OUT.html '{state}'`, `python3 SP/shoot.py 390 OUT.html` for screenshots (look at them with Read). Existing tests: SP/x*test*.js, SP/pb/x05test.js, SP/mf/*.js, SP/s2/x04test.js — running them is a quick sanity check.
+- Work in SP/review/r1/ for scratch files.
+
+## Output
+Write SP/review/R1.md: a findings table — ID, severity (P1 = wrong rule/price/broken flow/safety; P2 = inconsistency/unclear wording/visual defect; P3 = polish), file, where (screen/state/key or line), what is wrong with evidence (quote the text or the memory line), and the exact proposed fix. Group by file. Be concrete and avoid false alarms: verify each finding against the file and the memory before listing it. Reply with a short summary and the path.

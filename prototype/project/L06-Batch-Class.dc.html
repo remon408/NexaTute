@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Batch class</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.dib{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;padding:0}
+.big{flex:1;height:64px;border-radius:16px;border:0;font:700 17px 'Hind Siliguri',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px}
+.tm{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.tm div{background:#fff;border:1px solid #E2E6EF;border-radius:12px;padding:8px 4px;text-align:center;font-size:12px;color:#59617A}
+.tm b{display:block;font-size:15px;color:#141A33}
+.opt{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #E2E6EF;border-radius:14px;background:#fff;font:500 15px 'Hind Siliguri',sans-serif;color:#141A33;width:100%;text-align:left;box-sizing:border-box;position:relative;overflow:hidden}
+.ltr{width:28px;height:28px;border-radius:8px;background:#F0F1F6;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none}
+.q{display:flex;gap:12px;padding:14px;background:#fff;border:1px solid #E2E6EF;border-radius:16px}
+.vote{display:flex;flex-direction:column;align-items:center;justify-content:center;width:48px;min-height:52px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;font:700 15px 'Hind Siliguri',sans-serif;color:#141A33;flex:none;padding:0}
+.rk{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.rk .n{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none}
+/* fix11: shared bits for the new static frames (recording, BdSL avatar, report, settings) */
+.fst{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;line-height:1.5;white-space:nowrap}
+.fst.ok{background:#E3F5EC;color:#0F6B40}.fst.wait{background:#ECEBFD;color:#3B34C9}.fst.bad{background:#FDEDE6;color:#9A3412}.fst.off{background:#EEF0F5;color:#3F475E}
+.fsw{width:48px;height:28px;border-radius:99px;background:#8C93A8;position:relative;flex:none;display:inline-block}
+.fsw::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff}
+.fsw.on{background:#0B6E6A}.fsw.on::after{left:24px}
+.frw{display:flex;gap:10px;align-items:center;min-height:40px;padding:6px 10px;border:1px solid #E2E6EF;border-radius:12px;background:#fff;font-size:13px;line-height:1.4;box-sizing:border-box}
+.frw b{width:38px;flex:none;color:#3B34C9;font-size:12px}
+.fkn{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:#E3F5EC;color:#0F6B40;flex:none}.fkn.no{background:#FFF3DD;color:#8A4B00}
+.fsr{height:40px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:#59617A;background:#fff;flex:none}
+.fh{margin:2px 0 0;font-size:13px;font-weight:700;color:#3B34C9}
+.fpill{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid #D3D8E4;background:#fff;font-size:12.5px;font-weight:600}
+.fpill.on{background:#3B34C9;border-color:#3B34C9;color:#fff}.fpill.off{background:#F0F1F6;color:#59617A;border-style:dashed}
+.frec{background:#B42318;color:#fff;white-space:normal;text-align:start;max-width:100%}
+.btn{text-decoration:none}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:2206px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Batch class (1 AI : 50)</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 6.1 Live batch -->
+<div class="col">
+  <div class="cap"><b>6.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div style="background:#0E1330;color:#fff;padding:20px 18px 14px;display:flex;flex-direction:column;gap:12px;flex:none">
+      <div class="row">
+        <button class="dib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div style="flex:1"><p style="margin:0;font-size:15px;font-weight:600">{{ t.k004 }}</p><p style="margin:0;font-size:12px;color:#C9CDF0">{{ t.k005 }}</p></div>
+        <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k006 }}</span>
+      </div>
+      <div style="background:#fff;color:#141A33;border-radius:14px;padding:14px;font-size:17px;line-height:1.8;font-weight:500">
+        ax² + bx + c = 0<br><span style="color:#3B34C9">x = (−b ± √(b² − 4ac)) / 2a</span>
+      </div>
+      <div class="row" style="gap:6px">
+        <div style="flex:1;height:6px;border-radius:9px;background:#7C77F0"></div>
+        <div style="flex:1;height:6px;border-radius:9px;background:#7C77F0;position:relative"><div style="position:absolute;inset:0;width:55%;background:#F2A93B;border-radius:9px"></div></div>
+        <div style="flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.2)"></div>
+        <div style="flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.2)"></div>
+      </div>
+      <p style="margin:0;font-size:12px;color:#C9CDF0">{{ t.k007 }}</p>
+      <!-- fix16: LiveKit — connection quality + speaking permissions -->
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600"><i style="width:8px;height:8px;border-radius:50%;background:#3FD08A;display:inline-block"></i>{{ fx.cq_good }}</span><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600">{{ fx.ns_n }} ✓</span></div>
+    </div>
+    <div class="bd" style="padding-top:14px;gap:12px">
+      <div class="cd" role="status" style="padding:8px 12px;background:#ECEBFD;border-color:#D9D6FB;color:#3730A3;font-size:12.5px;font-weight:600;line-height:1.45" title="{{ fx.vt_150_tip }}"><b>{{ fx.vt_150 }}</b> · 🎙️ {{ fx.mic_off }} · {{ fx.sp_rule }}</div>
+      <p class="t3" style="font-size:14px">{{ t.k008 }}</p>
+      <div class="row">
+        <button class="big" style="background:#E3F5EC;color:#0F6B40"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>{{ t.k009 }}</button>
+        <button class="big" style="background:#FFF3DD;color:#8A4B00"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 1-1 1.7M12 17v.5"/></svg>{{ t.k010 }}</button>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k011 }}</p>
+      <div class="tm">
+        <div style="border:2px solid #3B34C9">{{ t.k012 }}<b>320</b></div><div>{{ t.k013 }}<b>290</b></div><div>{{ t.k014 }}<b>305</b></div><div>{{ t.k015 }}<b>270</b></div><div>{{ t.k016 }}<b>285</b></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k017 }}</p>
+      <div class="row" style="margin-top:auto;gap:10px">
+        <button class="ib" aria-label="{{ t.k018 }}" style="width:52px;height:52px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7 6 6 0 0 1-5-3l-2.5-4a1.5 1.5 0 0 1 2.5-1.6L8 15"/></svg></button>
+        <label style="flex:1"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">{{ t.k019 }}</span><input placeholder="{{ t.k020 }}" style="width:100%;height:52px;box-sizing:border-box;border:1px solid #D3D8E4;border-radius:14px;padding:0 14px;font:500 15px 'Hind Siliguri',sans-serif"></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6.2 Poll + Peer -->
+<div class="col">
+  <div class="cap"><b>6.2</b>{{ t.k021 }}</div>
+  <div class="ph">
+    <div class="top">
+      <p class="t2" style="flex:1">{{ t.k022 }}</p>
+      <span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k023 }}</span>
+    </div>
+    <div class="bd" style="gap:10px">
+      <p class="t3">{{ t.k024 }}</p>
+      <div class="opt"><div style="position:absolute;inset:0;width:18%;background:#F0F1F6"></div><span class="ltr" style="position:relative">{{ t.k025 }}</span><span style="position:relative;flex:1">{{ t.k026 }}</span><span style="position:relative" class="xs">18%</span></div>
+      <div class="opt" style="border:2px solid #3B34C9"><div style="position:absolute;inset:0;width:52%;background:#ECEBFD"></div><span class="ltr" style="position:relative;background:#3B34C9;color:#fff">{{ t.k027 }}</span><span style="position:relative;flex:1">{{ t.k028 }}</span><span style="position:relative" class="xs">52%</span></div>
+      <div class="opt"><div style="position:absolute;inset:0;width:30%;background:#F0F1F6"></div><span class="ltr" style="position:relative">{{ t.k029 }}</span><span style="position:relative;flex:1">{{ t.k030 }}</span><span style="position:relative" class="xs">30%</span></div>
+      <div class="cd" style="background:#F0F1FB;border-color:#DCDDF7;display:flex;flex-direction:column;gap:6px">
+        <p class="t3" style="font-size:14px">{{ t.k031 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k032 }}</p>
+      </div>
+      <div class="cd" style="padding:12px;display:flex;flex-direction:column;gap:10px;flex:1">
+        <div class="row"><span style="width:32px;height:32px;border-radius:50%;background:#E1F4F2;color:#0B5E5A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">{{ t.k033 }}</span><p class="t3" style="font-size:14px;flex:1">{{ t.k034 }}</p><span class="xs">1:12</span></div>
+        <div style="align-self:flex-start;background:#F0F1F6;border-radius:4px 14px 14px 14px;padding:8px 12px;font-size:14px;max-width:80%">{{ t.k035 }}</div>
+        <div style="align-self:flex-end;background:#3B34C9;color:#fff;border-radius:14px 4px 14px 14px;padding:8px 12px;font-size:14px;max-width:80%">{{ t.k036 }}</div>
+        <input aria-label="{{ t.k037 }}" placeholder="{{ t.k038 }}" style="margin-top:auto;height:46px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;font:500 14px 'Hind Siliguri',sans-serif">
+      </div>
+      <p class="xs" style="margin:0">{{ t.k039 }} <a href="#">{{ t.k040 }}</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- 6.3 Question wall -->
+<div class="col">
+  <div class="cap"><b>6.3</b>{{ t.k041 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k042 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k043 }}</p>
+      <span class="chip">{{ t.k044 }}</span>
+    </div>
+    <div class="bd" style="gap:10px">
+      <p class="sm">{{ t.k045 }}</p>
+      <div class="q" style="border:2px solid #3B34C9"><button class="vote" style="background:#ECEBFD;color:#3B34C9;border-color:#ECEBFD" aria-label="{{ t.k046 }}">▲<span>18</span></button><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k047 }}</p><span class="chip" style="margin-top:6px;background:#E3F5EC;color:#0F6B40">{{ t.k048 }}</span></div></div>
+      <div class="q"><button class="vote" aria-label="{{ t.k049 }}">▲<span>11</span></button><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k050 }}</p></div></div>
+      <div class="q"><button class="vote" aria-label="{{ t.k051 }}">▲<span>6</span></button><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k052 }}</p></div></div>
+      <div class="q"><button class="vote" aria-label="{{ t.k053 }}">▲<span>2</span></button><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k054 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k055 }}</p></div></div>
+      <div class="row" style="margin-top:auto;gap:10px">
+        <input aria-label="{{ t.k056 }}" placeholder="{{ t.k057 }}" style="flex:1;height:52px;border:1px solid #D3D8E4;border-radius:14px;padding:0 14px;font:500 15px 'Hind Siliguri',sans-serif">
+        <button class="ib" aria-label="{{ t.k058 }}" style="width:52px;height:52px;background:#3B34C9;color:#fff;border:0"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-3-7z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6.4 Batch rank -->
+<div class="col">
+  <div class="cap"><b>6.4</b>{{ t.k059 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t1" style="flex:1;white-space:nowrap">{{ t.k060 }}</p><span class="chip" style="white-space:normal;text-align:center">{{ t.k061 }}</span></div>
+    <div class="bd" style="gap:12px">
+      <div style="background:#3B34C9;color:#fff;border-radius:20px;padding:16px;display:flex;align-items:center;gap:16px">
+        <div style="text-align:center"><div style="font-size:34px;font-weight:700;line-height:1">{{ t.k095 }}</div><div style="font-size:12px;color:#DCDCFB">{{ t.k062 }}</div></div>
+        <div style="flex:1;font-size:14px;line-height:1.5">{{ t.k063 }} <b>{{ t.k064 }}</b> {{ t.k065 }}</div>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k066 }}</p>
+      <div class="cd" style="padding:2px 16px">
+        <div class="rk"><span class="n" style="background:#F2A93B;color:#141A33">1</span><span style="flex:1">{{ t.k067 }}</span><b>940</b></div>
+        <div class="rk"><span class="n" style="background:#E6E9F2">2</span><span style="flex:1">{{ t.k068 }}</span><b>915</b></div>
+        <div class="rk" style="border:0"><span class="n" style="background:#E6E9F2">3</span><span style="flex:1">{{ t.k069 }}</span><b>880</b></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k070 }}</p>
+      <p class="t3" style="font-size:14px">{{ t.k071 }}</p>
+      <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="justify-content:space-between"><span style="font-size:14px">{{ t.k072 }}</span><span class="chip">{{ t.k073 }}</span></div>
+        <div class="row" style="justify-content:space-between"><span style="font-size:14px">{{ t.k074 }}</span><span class="chip">{{ t.k075 }}</span></div>
+      </div>
+      <div class="row" style="gap:8px"><span class="chip" style="background:#E1F4F2;color:#0B5E5A">{{ t.k076 }}</span><span class="xs">{{ t.k077 }}</span></div>
+      <div class="cd" style="padding:10px 12px;display:flex;gap:10px;align-items:center;background:#F0F1FB;border-color:#DCDDF7"><span class="chip">{{ t.k078 }}</span><span class="xs" style="flex:1;color:#141A33">{{ t.k079 }}</span></div>
+      <button class="btn" style="margin-top:auto">{{ t.k080 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 6.5 Batch recording choice — fix11 (memory 26 Oct 2026; matches X06): every learner chooses; one shared recording if at least one wants it -->
+<div class="col">
+  <div class="cap"><b>6.5</b>{{ t.k081 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t1" style="flex:1;white-space:nowrap">{{ t.k060 }}</p><span class="chip">{{ t.k082 }}</span></div>
+    <div class="bd" style="gap:10px">
+      <div class="cd" style="display:flex;flex-direction:column;gap:10px">
+        <p class="t2">{{ t.k083 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k084 }}</p>
+        <a href="#" class="btn">{{ t.k085 }}</a>
+        <a href="#" class="btn" style="background:#fff;color:#141A33;border:1px solid #D3D8E4">{{ t.k086 }}</a>
+      </div>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#3F475E">{{ t.k087 }}</span><span class="fst wait">{{ t.k088 }}</span></div>
+        <p class="xs" style="margin:0">{{ t.k089 }}</p>
+        <div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#3F475E">{{ t.k090 }}</span><span class="chip frec">{{ t.k091 }}</span></div>
+        <div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#3F475E">{{ t.k092 }}</span><span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k093 }}</span></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k094 }}</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2206,"height":1100}}'>
+class Component extends DCLogic {
+  // fix16 (28 Oct 2026): LiveKit class features / learning-guarantee claim flow — 6 languages, identical keys
+  fx16(l) { var D = {"bn": {"cq_good": "সংযোগ: ভালো", "ns_n": "শব্দ কমানো (তোমার ব্রাউজারে)", "mic_off": "তোমার মাইক বন্ধ — বলতে চাইলে হাত তোলো", "sp_rule": "1:50 AI ক্লাসে তোমার মাইক শুরুতে বন্ধ থাকে। হাত তোলো: Nexa Teacher একটি পালার জন্য মাইক দেয় (সর্বোচ্চ 60 সেকেন্ড), একটি ছোট প্রশ্ন আবার করতে পারে, আর প্রতিটি পালার শেষে মাইক নিজেই বন্ধ হয়। পোলের সময় সবার মাইক বন্ধ; হঠাৎ ডাকলে লিখে বা বলে উত্তর দাও।", "vt_150": "1:50 AI ক্লাস", "vt_150_tip": "AI ব্যাচ ক্লাস: একজন Nexa Teacher, প্রতি ব্যাচে সর্বোচ্চ 50 জন শিক্ষার্থী (ডিফল্ট, অ্যাডমিন বদলাতে পারেন)"}, "en": {"cq_good": "Connection: good", "ns_n": "Noise suppression (in your browser)", "mic_off": "Your mic is off — raise your hand to ask for it", "sp_rule": "In the 1:50 AI class your mic starts off. Raise your hand: Nexa Teacher gives you the mic for one turn (max 60 s), may ask you one follow-up, and the mic turns off by itself after every turn. Everyone is muted during polls; on a cold-call you answer by text or voice.", "vt_150": "1:50 AI class", "vt_150_tip": "AI batch class: one Nexa Teacher, up to 50 learners per batch (default, admin can change it)"}, "hi": {"cq_good": "कनेक्शन: अच्छा", "ns_n": "शोर कम करना (तुम्हारे ब्राउज़र में)", "mic_off": "तुम्हारा माइक बंद है — बोलना हो तो हाथ उठाओ", "sp_rule": "1:50 AI क्लास में तुम्हारा माइक शुरू में बंद रहता है। हाथ उठाओ: Nexa Teacher एक बारी के लिए माइक देता है (ज़्यादा से ज़्यादा 60 सेकंड), एक छोटा अगला सवाल पूछ सकता है, और हर बारी के बाद माइक अपने आप बंद होता है। पोल के दौरान सबका माइक बंद; अचानक बुलाए जाने पर लिखकर या बोलकर जवाब दो।", "vt_150": "1:50 AI क्लास", "vt_150_tip": "AI बैच क्लास: एक Nexa Teacher, हर बैच में ज़्यादा से ज़्यादा 50 विद्यार्थी (डिफ़ॉल्ट, एडमिन बदल सकते हैं)"}, "ur": {"cq_good": "کنکشن: اچھا", "ns_n": "شور کم کرنا (تمہارے براؤزر میں)", "mic_off": "تمہارا مائیک بند ہے — بولنا ہو تو ہاتھ اٹھاؤ", "sp_rule": "⁦1:50⁩ AI کلاس میں تمہارا مائیک شروع میں بند رہتا ہے۔ ہاتھ اٹھاؤ: Nexa Teacher ایک باری کے لیے مائیک دیتا ہے (زیادہ سے زیادہ ⁦60⁩ سیکنڈ)، ایک مختصر اگلا سوال پوچھ سکتا ہے، اور ہر باری کے بعد مائیک خود بند ہو جاتا ہے۔ پول کے دوران سب کا مائیک بند؛ اچانک بلائے جانے پر لکھ کر یا بول کر جواب دو۔", "vt_150": "⁦1:50⁩ AI کلاس", "vt_150_tip": "AI بیچ کلاس: ایک Nexa Teacher، ہر بیچ میں زیادہ سے زیادہ ⁦50⁩ طلبہ (ڈیفالٹ، ایڈمن بدل سکتے ہیں)"}, "ar": {"cq_good": "الاتصال: جيد", "ns_n": "كتم الضوضاء (في متصفحك)", "mic_off": "الميكروفون مغلق — ارفع يدك لتطلبه", "sp_rule": "في حصة AI ⁦1:50⁩ يبدأ ميكروفونك مغلقًا. ارفع يدك: يمنحك Nexa Teacher الميكروفون لدور واحد (حتى ⁦60⁩ ثانية)، وقد يطرح عليك سؤال متابعة واحدًا، ويُغلق الميكروفون وحده بعد كل دور. يُكتم الجميع أثناء الاستطلاعات، وعند المناداة المفاجئة تجيب كتابةً أو صوتًا.", "vt_150": "حصة AI ⁦1:50⁩", "vt_150_tip": "حصة دفعة بالذكاء الاصطناعي: Nexa Teacher واحد وحتى ⁦50⁩ متعلّمًا في الدفعة (افتراضي، ويمكن للمشرف تغييره)"}, "fr": {"cq_good": "Connexion : bonne", "ns_n": "Réduction du bruit (dans ton navigateur)", "mic_off": "Ton micro est coupé — lève la main pour le demander", "sp_rule": "En cours IA 1:50, ton micro démarre coupé. Lève la main : Nexa Teacher te donne le micro pour un tour (60 s max), peut te poser une question de suivi, et le micro se coupe tout seul après chaque tour. Tout le monde est muet pendant les sondages ; si on t’interroge, tu réponds par écrit ou à voix haute.", "vt_150": "Cours IA 1:50", "vt_150_tip": "Cours en groupe IA : un Nexa Teacher, 50 élèves max par groupe (par défaut, modifiable par l’admin)"}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: '8 মিনিট শেখা → 2 মিনিট পোল, বুঝলাম/বুঝিনি, জোড়ায় আলোচনা, প্রশ্ন-দেয়াল, র‍্যাঙ্ক',
+      k002: 'লাইভ ব্যাচ ক্লাস',
+      k003: 'বের হও',
+      k004: 'SSC ব্যাচ B-07 · গণিত',
+      k005: 'Nexa Teacher · AI · 42 জন উপস্থিত',
+      k006: 'লাইভ',
+      k007: 'পর্ব 2/4 · শেখানো চলছে · 3 মিনিট পরে পোল',
+      k008: 'এই অংশটা কেমন লাগছে?',
+      k009: 'বুঝলাম',
+      k010: 'বুঝিনি',
+      k011: 'দলের স্কোর',
+      k012: 'দল ক',
+      k013: 'দল খ',
+      k014: 'দল গ',
+      k015: 'দল ঘ',
+      k016: 'দল ঙ',
+      k017: 'তুমি দল ক-তে। পোলে সঠিক উত্তর দলের স্কোর বাড়ায়।',
+      k018: 'হাত তোলো',
+      k019: 'প্রশ্ন লেখো',
+      k020: 'প্রশ্ন লেখো…',
+      k021: 'পোল → জোড়ায় আলোচনা',
+      k022: 'পোল · পর্ব 2',
+      k023: '1:45 বাকি',
+      k024: 'x² − 7x + 12 = 0 এর মূল কোনগুলো?',
+      k025: 'ক',
+      k026: '2 ও 6',
+      k027: 'খ',
+      k028: '3 ও 4 · তোমার উত্তর',
+      k029: 'গ',
+      k030: '−3 ও −4',
+      k031: '52% সঠিক → 2 মিনিট জোড়ায় আলোচনা',
+      k032: 'নিজের যুক্তি সঙ্গীকে বোঝাও, তারপর আবার ভোট।',
+      k033: 'D',
+      k034: 'তোমার সঙ্গী: Doel-63',
+      k035: 'আমি গ দিয়েছি, কারণ −7…',
+      k036: 'গুণফল +12, যোগফল +7 — তাই দুটোই ধনাত্মক',
+      k037: 'সঙ্গীকে লেখো',
+      k038: 'লেখো…',
+      k039: 'অপ্রাপ্তবয়স্কদের জন্য শুধু লেখা · Nexa Guard চালু ·',
+      k040: 'রিপোর্ট',
+      k041: 'বেনামি প্রশ্ন-দেয়াল',
+      k042: 'ক্লাসে ফেরো',
+      k043: 'প্রশ্ন-দেয়াল',
+      k044: 'বেনামি',
+      k045: 'সবচেয়ে বেশি ভোট পাওয়া প্রশ্নের উত্তর Nexa Teacher আগে দেবে।',
+      k046: 'ভোট দিয়েছ, 18',
+      k047: 'b² − 4ac ঋণাত্মক হলে কী হয়?',
+      k048: 'এখন উত্তর হচ্ছে',
+      k049: 'ভোট দাও, 11',
+      k050: 'সূত্রে 2a দিয়ে ভাগ কেন?',
+      k051: 'ভোট দাও, 6',
+      k052: 'কখন উৎপাদকে বিশ্লেষণ, কখন সূত্র?',
+      k053: 'ভোট দাও, 2',
+      k054: 'বাস্তবে দ্বিঘাত সমীকরণ কোথায় লাগে?',
+      k055: 'Nexa Teacher এটা “কৌতূহল কোণ”-এ পাঠাবে',
+      k056: 'নতুন প্রশ্ন',
+      k057: 'বেনামে প্রশ্ন করো…',
+      k058: 'পাঠাও',
+      k059: 'ব্যাচ র‍্যাঙ্ক ও ব্যক্তিগত হোমওয়ার্ক',
+      k060: 'ব্যাচ B-07',
+      k061: '1 মার্চ (SSC 2027 শুরু) পর্যন্ত 39 দিন বাকি',
+      k062: '46 জনে',
+      k063: 'তোমার র‍্যাঙ্ক এক সপ্তাহে',
+      k064: '3 ধাপ',
+      k065: 'উপরে। মাসিক মক টেস্ট: 28 জানুয়ারি।',
+      k066: 'এই সপ্তাহের সেরা 3',
+      k067: 'NilPakhi-04',
+      k068: 'Megh-02',
+      k069: 'Rocket-11',
+      k070: 'ব্যাচের তালিকা, চ্যাট আর পোলে শুধু ডাকনাম (অভিভাবক অনুমতি দিলে আসল নাম) আর র‍্যাঙ্ক দেখানো হয়।',
+      k071: 'তোমার হোমওয়ার্ক — আজকের পোলের ভুল থেকে',
+      k072: 'চিহ্নের ভুল · 3 প্রশ্ন',
+      k073: '10 মিনিট',
+      k074: 'নিশ্চায়ক b² − 4ac · 2 প্রশ্ন',
+      k075: '6 মিনিট',
+      k076: 'সহায়ক ব্যাজ',
+      k077: 'অন্যদের প্রশ্নের উত্তর দিয়ে XP পেয়েছ',
+      k078: 'মানব শিক্ষক',
+      k079: 'মানব শিক্ষকের সাপ্তাহিক রিভিশন ক্লাস · ব্যাচ B-07-এর ভেতরে · শনিবার রাত 8টা (ডিফল্ট)',
+      k080: 'হোমওয়ার্ক শুরু করো',
+      k081: 'ব্যাচের রেকর্ডিং — প্রত্যেকে নিজে বেছে নেয়',
+      k082: 'গণিত · বিকেল 4টা',
+      k083: 'এই ক্লাসের রেকর্ডিং',
+      k084: 'অন্তত একজন চাইলে তবেই পুরো ক্লাসের একটি যৌথ রেকর্ডিং হয়। শুধু রাজি শিক্ষার্থীদের কণ্ঠ রাখা হয়; বাকিরা ডাকনামে থাকে। 18-এর কম হলে অভিভাবকের সম্মতি লাগবে।',
+      k085: 'আমি রেকর্ডিং চাই',
+      k086: 'আমার রেকর্ডিং লাগবে না',
+      k087: 'অভিভাবকের সম্মতি',
+      k088: 'সম্মতির অপেক্ষায়',
+      k089: 'তোমার অভিভাবকের অ্যাপে অনুরোধ গেছে। সম্মতি না আসা পর্যন্ত তোমার কণ্ঠ রেকর্ডিংয়ে রাখা হবে না।',
+      k090: 'যৌথ রেকর্ডিং',
+      k091: '● যৌথ রেকর্ডিং · শুধু রাজি শিক্ষার্থীদের কণ্ঠ',
+      k092: 'চ্যাট ও পোলে তোমার নাম',
+      k093: 'ডাকনাম: Kodom-27',
+      k094: 'রেকর্ডিং দেখতে পারে শুধু এই ক্লাসের অনুমোদিত সদস্যরা। ক্লাসের 12 মাস পরে নিজে থেকে মুছে যায়।',
+      k095: '7'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: '8 min teaching → 2 min poll, got it / didn’t get it, pair talk, question wall, rank',
+      k002: 'Live batch classes',
+      k003: 'Leave',
+      k004: 'SSC batch EN-03 · Maths',
+      k005: 'Nexa Teacher · AI · 18 present',
+      k006: 'Live',
+      k007: 'Part 2/4 · teaching · poll in 3 minutes',
+      k008: 'How is this part going?',
+      k009: 'Got it',
+      k010: 'Didn’t get it',
+      k011: 'Team scores',
+      k012: 'Team A',
+      k013: 'Team B',
+      k014: 'Team C',
+      k015: 'Team D',
+      k016: 'Team E',
+      k017: 'You’re in Team A. Right answers in polls raise your team’s score.',
+      k018: 'Raise hand',
+      k019: 'Type a question',
+      k020: 'Write a question…',
+      k021: 'Poll → pair talk',
+      k022: 'Poll · part 2',
+      k023: '1:45 left',
+      k024: 'What are the roots of x² − 7x + 12 = 0?',
+      k025: 'A',
+      k026: '2 and 6',
+      k027: 'B',
+      k028: '3 and 4 · your answer',
+      k029: 'C',
+      k030: '−3 and −4',
+      k031: '52% correct → 2 minutes of pair talk',
+      k032: 'Explain your reasoning to your partner, then vote again.',
+      k033: 'D',
+      k034: 'Your partner: Doel-63',
+      k035: 'I picked C, because −7…',
+      k036: 'Product +12, sum +7 — so both are positive',
+      k037: 'Write to your partner',
+      k038: 'Write…',
+      k039: 'Text only for minors · Nexa Guard on ·',
+      k040: 'Report',
+      k041: 'Anonymous question wall',
+      k042: 'Back to class',
+      k043: 'Question wall',
+      k044: 'Anonymous',
+      k045: 'Nexa Teacher answers the most-voted question first.',
+      k046: 'You voted, 18',
+      k047: 'What happens if b² − 4ac is negative?',
+      k048: 'Being answered now',
+      k049: 'Vote, 11',
+      k050: 'Why divide by 2a in the formula?',
+      k051: 'Vote, 6',
+      k052: 'When to factorise, when to use the formula?',
+      k053: 'Vote, 2',
+      k054: 'Where are quadratic equations used in real life?',
+      k055: 'Nexa Teacher will send this to the “curiosity corner”',
+      k056: 'New question',
+      k057: 'Ask anonymously…',
+      k058: 'Send',
+      k059: 'Batch rank and personal homework',
+      k060: 'Batch EN-03',
+      k061: '39 days to 1 March (SSC 2027 starts)',
+      k062: 'of 21',
+      k063: 'In a week your rank went up',
+      k064: '3 places',
+      k065: '. Monthly mock test: 28 January.',
+      k066: 'This week’s top 3',
+      k067: 'NilPakhi-04',
+      k068: 'Megh-02',
+      k069: 'Rocket-11',
+      k070: 'Batch lists, chat and polls show nicknames only (or a real name, if a guardian allows it) and the rank.',
+      k071: 'Your homework — from today’s poll mistakes',
+      k072: 'Sign mistakes · 3 questions',
+      k073: '10 min',
+      k074: 'Discriminant b² − 4ac · 2 questions',
+      k075: '6 minutes',
+      k076: 'Helper badge',
+      k077: 'You earned XP by answering others’ questions',
+      k078: 'Human teacher',
+      k079: 'Weekly revision class with a human teacher · inside batch EN-03 · Saturday 8 pm (default)',
+      k080: 'Start homework',
+      k081: 'Batch recording — each learner chooses',
+      k082: 'Maths · 4 pm',
+      k083: 'Recording of this class',
+      k084: 'One shared recording is made only if at least one learner asks for it. Only the voices of learners who agreed are kept; others appear by nickname. Under 18: your guardian’s consent is needed.',
+      k085: 'I want the recording',
+      k086: 'I don’t need the recording',
+      k087: 'Guardian consent',
+      k088: 'Consent pending',
+      k089: 'The request went to your guardian’s app. Until they consent, your voice is not kept in the recording.',
+      k090: 'Shared recording',
+      k091: '● Shared recording · only voices of learners who agreed',
+      k092: 'Your name in chat and polls',
+      k093: 'Nickname: Kodom-27',
+      k094: 'Only approved members of this class can watch the recording. Deleted automatically 12 months after the class.',
+      k095: '4'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: '8 मिनट पढ़ाई → 2 मिनट पोल, समझा/नहीं समझा, जोड़ी में चर्चा, सवाल-दीवार, रैंक',
+      k002: 'लाइव बैच क्लास',
+      k003: 'बाहर निकलो',
+      k004: 'SSC बैच EN-03 · गणित',
+      k005: 'Nexa Teacher · AI · 18 उपस्थित',
+      k006: 'लाइव',
+      k007: 'भाग 2/4 · पढ़ाई जारी · 3 मिनट बाद पोल',
+      k008: 'यह हिस्सा कैसा लग रहा है?',
+      k009: 'समझ गया',
+      k010: 'समझ नहीं आया',
+      k011: 'टीम स्कोर',
+      k012: 'टीम क',
+      k013: 'टीम ख',
+      k014: 'टीम ग',
+      k015: 'टीम घ',
+      k016: 'टीम ङ',
+      k017: 'तुम टीम क में हो। पोल में सही उत्तर टीम का स्कोर बढ़ाता है।',
+      k018: 'हाथ उठाओ',
+      k019: 'प्रश्न लिखो',
+      k020: 'सवाल लिखो…',
+      k021: 'पोल → जोड़ी में चर्चा',
+      k022: 'पोल · भाग 2',
+      k023: '1:45 बाकी',
+      k024: 'x² − 7x + 12 = 0 के मूल कौन से हैं?',
+      k025: 'क',
+      k026: '2 और 6',
+      k027: 'ख',
+      k028: '3 और 4 · तुम्हारा उत्तर',
+      k029: 'ग',
+      k030: '−3 और −4',
+      k031: '52% सही → 2 मिनट जोड़ी में चर्चा',
+      k032: 'अपना तर्क साथी को समझाओ, फिर दोबारा वोट।',
+      k033: 'D',
+      k034: 'तुम्हारा साथी: Doel-63',
+      k035: 'मैंने ग चुना, क्योंकि −7…',
+      k036: 'गुणनफल +12, योग +7 — इसलिए दोनों धनात्मक',
+      k037: 'साथी को लिखो',
+      k038: 'लिखो…',
+      k039: 'नाबालिगों के लिए सिर्फ़ लिखना · Nexa Guard चालू ·',
+      k040: 'रिपोर्ट',
+      k041: 'गुमनाम सवाल-दीवार',
+      k042: 'क्लास में लौटो',
+      k043: 'प्रश्न-दीवार',
+      k044: 'गुमनाम',
+      k045: 'सबसे ज़्यादा वोट वाले सवाल का जवाब Nexa Teacher पहले देगा।',
+      k046: 'तुमने वोट दिया, 18',
+      k047: 'b² − 4ac ऋणात्मक हो तो क्या होता है?',
+      k048: 'अभी उत्तर दिया जा रहा है',
+      k049: 'वोट दो, 11',
+      k050: 'सूत्र में 2a से भाग क्यों?',
+      k051: 'वोट दो, 6',
+      k052: 'कब गुणनखंड करें, कब सूत्र?',
+      k053: 'वोट दो, 2',
+      k054: 'असल ज़िंदगी में द्विघात समीकरण कहाँ काम आते हैं?',
+      k055: 'Nexa Teacher इसे “जिज्ञासा कोना” में भेजेगा',
+      k056: 'नया प्रश्न',
+      k057: 'गुमनाम प्रश्न पूछो…',
+      k058: 'भेजो',
+      k059: 'बैच रैंक और निजी होमवर्क',
+      k060: 'बैच EN-03',
+      k061: '1 मार्च (SSC 2027 शुरू) तक 39 दिन बाकी',
+      k062: '21 में',
+      k063: 'एक हफ़्ते में तुम्हारी रैंक',
+      k064: '3 स्थान',
+      k065: 'ऊपर। मासिक मॉक टेस्ट: 28 जनवरी।',
+      k066: 'इस हफ़्ते के टॉप 3',
+      k067: 'NilPakhi-04',
+      k068: 'Megh-02',
+      k069: 'Rocket-11',
+      k070: 'बैच सूची, चैट और पोल में सिर्फ़ उपनाम (अभिभावक अनुमति दें तो असली नाम) और रैंक दिखती है।',
+      k071: 'तुम्हारा होमवर्क — आज के पोल की ग़लतियों से',
+      k072: 'चिह्न की ग़लती · 3 सवाल',
+      k073: '10 मिनट',
+      k074: 'विविक्तकर b² − 4ac · 2 सवाल',
+      k075: '6 मिनट',
+      k076: 'मददगार बैज',
+      k077: 'दूसरों के सवालों के जवाब देकर XP पाया',
+      k078: 'मानव शिक्षक',
+      k079: 'मानव शिक्षक की साप्ताहिक रिविज़न क्लास · बैच EN-03 के अंदर · शनिवार रात 8 बजे (डिफ़ॉल्ट)',
+      k080: 'होमवर्क शुरू करो',
+      k081: 'बैच रिकॉर्डिंग — हर कोई ख़ुद चुनता है',
+      k082: 'गणित · शाम 4 बजे',
+      k083: 'इस क्लास की रिकॉर्डिंग',
+      k084: 'कम से कम एक शिक्षार्थी चाहे तभी पूरी क्लास की एक साझा रिकॉर्डिंग बनती है। सिर्फ़ सहमत शिक्षार्थियों की आवाज़ रखी जाती है; बाकी उपनाम से दिखते हैं। 18 से कम: अभिभावक की सहमति ज़रूरी है।',
+      k085: 'मुझे रिकॉर्डिंग चाहिए',
+      k086: 'मुझे रिकॉर्डिंग नहीं चाहिए',
+      k087: 'अभिभावक की सहमति',
+      k088: 'सहमति बाकी',
+      k089: 'तुम्हारे अभिभावक के ऐप में अनुरोध गया है। सहमति आने तक तुम्हारी आवाज़ रिकॉर्डिंग में नहीं रखी जाएगी।',
+      k090: 'साझा रिकॉर्डिंग',
+      k091: '● साझा रिकॉर्डिंग · सिर्फ़ सहमत शिक्षार्थियों की आवाज़',
+      k092: 'चैट और पोल में तुम्हारा नाम',
+      k093: 'उपनाम: Kodom-27',
+      k094: 'रिकॉर्डिंग सिर्फ़ इस क्लास के मंज़ूरशुदा सदस्य देख सकते हैं। क्लास के 12 महीने बाद अपने आप मिट जाती है।',
+      k095: '4'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: M('8') + ' منٹ پڑھائی ← ' + M('2') + ' منٹ پول، سمجھا/نہیں سمجھا، جوڑی میں بحث، سوالوں کی دیوار، رینک',
+      k002: 'لائیو بیچ کلاسیں',
+      k003: 'باہر نکلو',
+      k004: 'SSC بیچ ' + M('EN-03') + ' · ریاضی',
+      k005: 'Nexa Teacher · AI · ' + M('18') + ' حاضر',
+      k006: 'لائیو',
+      k007: 'حصہ ' + M('2/4') + ' · پڑھائی جاری · ' + M('3') + ' منٹ بعد پول',
+      k008: 'یہ حصہ کیسا لگ رہا ہے؟',
+      k009: 'سمجھ گیا',
+      k010: 'سمجھ نہیں آیا',
+      k011: 'ٹیم اسکور',
+      k012: 'ٹیم الف',
+      k013: 'ٹیم ب',
+      k014: 'ٹیم ج',
+      k015: 'ٹیم د',
+      k016: 'ٹیم ہ',
+      k017: 'تم ٹیم الف میں ہو۔ پول میں درست جواب ٹیم کا اسکور بڑھاتا ہے۔',
+      k018: 'ہاتھ اٹھاؤ',
+      k019: 'سوال لکھو',
+      k020: 'سوال لکھو…',
+      k021: 'پول ← جوڑی میں بحث',
+      k022: 'پول · حصہ ' + M('2'),
+      k023: M('1:45') + ' باقی',
+      k024: M('x² − 7x + 12 = 0') + ' کے جذر کون سے ہیں؟',
+      k025: 'ا',
+      k026: M('2') + ' اور ' + M('6'),
+      k027: 'ب',
+      k028: M('3') + ' اور ' + M('4') + ' · تمہارا جواب',
+      k029: 'ج',
+      k030: M('−3') + ' اور ' + M('−4'),
+      k031: M('52%') + ' درست ← ' + M('2') + ' منٹ جوڑی میں بحث',
+      k032: 'اپنی دلیل ساتھی کو سمجھاؤ، پھر دوبارہ ووٹ۔',
+      k033: 'D',
+      k034: 'تمہارا ساتھی: ' + M('Doel-63'),
+      k035: 'میں نے ج چنا، کیونکہ ' + M('−7…'),
+      k036: 'حاصل ضرب ' + M('+12') + '، مجموعہ ' + M('+7') + ' — اس لیے دونوں مثبت',
+      k037: 'ساتھی کو لکھو',
+      k038: 'لکھو…',
+      k039: 'نابالغوں کے لیے صرف تحریر · Nexa Guard آن ·',
+      k040: 'رپورٹ',
+      k041: 'گمنام سوالوں کی دیوار',
+      k042: 'کلاس میں واپس',
+      k043: 'سوالات کی دیوار',
+      k044: 'گمنام',
+      k045: 'سب سے زیادہ ووٹ والے سوال کا جواب Nexa Teacher پہلے دے گا۔',
+      k046: 'تم نے ووٹ دیا، ' + M('18'),
+      k047: 'اگر ' + M('b² − 4ac') + ' منفی ہو تو کیا ہوتا ہے؟',
+      k048: 'ابھی جواب دیا جا رہا ہے',
+      k049: 'ووٹ دو، ' + M('11'),
+      k050: 'فارمولے میں ' + M('2a') + ' سے تقسیم کیوں؟',
+      k051: 'ووٹ دو، ' + M('6'),
+      k052: 'کب اجزائے ضربی، کب فارمولا؟',
+      k053: 'ووٹ دو، ' + M('2'),
+      k054: 'حقیقی زندگی میں دو درجی مساوات کہاں کام آتی ہیں؟',
+      k055: 'Nexa Teacher اسے “تجسس کا گوشہ” میں بھیجے گا',
+      k056: 'نیا سوال',
+      k057: 'گمنام سوال پوچھو…',
+      k058: 'بھیجو',
+      k059: 'بیچ رینک اور ذاتی ہوم ورک',
+      k060: 'بیچ ' + M('EN-03'),
+      k061: M('1') + ' مارچ (' + M('SSC 2027') + ' شروع)' + ' تک ' + M('39') + ' دن باقی',
+      k062: M('21') + ' میں',
+      k063: 'ایک ہفتے میں تمہاری رینک',
+      k064: M('3') + ' درجے',
+      k065: 'اوپر۔ ماہانہ ماک ٹیسٹ: ' + M('28') + ' جنوری۔',
+      k066: 'اس ہفتے کے ٹاپ ' + M('3'),
+      k067: M('NilPakhi-04'),
+      k068: M('Megh-02'),
+      k069: M('Rocket-11'),
+      k070: 'بیچ کی فہرست، چیٹ اور پول میں صرف عرفی نام (سرپرست اجازت دیں تو اصل نام) اور رینک دکھتی ہے۔',
+      k071: 'تمہارا ہوم ورک — آج کے پول کی غلطیوں سے',
+      k072: 'علامت کی غلطی · ' + M('3') + ' سوال',
+      k073: M('10') + ' منٹ',
+      k074: 'ممیز ' + M('b² − 4ac') + ' · ' + M('2') + ' سوال',
+      k075: M('6') + ' منٹ',
+      k076: 'مددگار بیج',
+      k077: 'دوسروں کے سوالوں کے جواب دے کر XP پایا',
+      k078: 'انسانی استاد',
+      k079: 'انسانی استاد کی ہفتہ وار ریویژن کلاس · بیچ ' + M('EN-03') + ' کے اندر · ہفتہ رات ' + M('8') + ' بجے (ڈیفالٹ)',
+      k080: 'ہوم ورک شروع کرو',
+      k081: 'بیچ ریکارڈنگ — ہر کوئی خود چنتا ہے',
+      k082: 'ریاضی · شام ' + M('4') + ' بجے',
+      k083: 'اس کلاس کی ریکارڈنگ',
+      k084: 'کم از کم ایک طالب علم چاہے تبھی پوری کلاس کی ایک مشترکہ ریکارڈنگ بنتی ہے۔ صرف رضامند طلبہ کی آواز رکھی جاتی ہے؛ باقی عرفی نام سے دکھتے ہیں۔ ' + M('18') + ' سے کم: سرپرست کی رضامندی ضروری ہے۔',
+      k085: 'مجھے ریکارڈنگ چاہیے',
+      k086: 'مجھے ریکارڈنگ نہیں چاہیے',
+      k087: 'سرپرست کی رضامندی',
+      k088: 'رضامندی باقی',
+      k089: 'تمہارے سرپرست کی ایپ میں درخواست گئی ہے۔ رضامندی آنے تک تمہاری آواز ریکارڈنگ میں نہیں رکھی جائے گی۔',
+      k090: 'مشترکہ ریکارڈنگ',
+      k091: '● مشترکہ ریکارڈنگ · صرف رضامند طلبہ کی آواز',
+      k092: 'چیٹ اور پول میں تمہارا نام',
+      k093: 'عرفی نام: ' + M('Kodom-27'),
+      k094: 'ریکارڈنگ صرف اس کلاس کے منظور شدہ ارکان دیکھ سکتے ہیں۔ کلاس کے ' + M('12') + ' مہینے بعد خود بخود مٹ جاتی ہے۔',
+      k095: M('4')
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: M('8') + ' دقائق تدريس ← استطلاع دقيقتين، فهمت/لم أفهم، نقاش ثنائي، جدار الأسئلة، الترتيب',
+      k002: 'حصص دفعات مباشرة',
+      k003: 'اخرج',
+      k004: 'دفعة ' + M('SSC EN-03') + ' · الرياضيات',
+      k005: 'Nexa Teacher · AI · ' + M('18') + ' حاضرًا',
+      k006: 'مباشر',
+      k007: 'الجزء ' + M('2/4') + ' · الشرح جارٍ · استطلاع بعد ' + M('3') + ' دقائق',
+      k008: 'كيف تجد هذا الجزء؟',
+      k009: 'فهمت',
+      k010: 'لم أفهم',
+      k011: 'نقاط الفرق',
+      k012: 'فريق أ',
+      k013: 'فريق ب',
+      k014: 'فريق ج',
+      k015: 'فريق د',
+      k016: 'فريق هـ',
+      k017: 'أنت في فريق أ. الإجابات الصحيحة في الاستطلاعات ترفع نقاط فريقك.',
+      k018: 'ارفع يدك',
+      k019: 'اكتب سؤالًا',
+      k020: 'اكتب سؤالًا…',
+      k021: 'استطلاع ← نقاش ثنائي',
+      k022: 'استطلاع · الجزء ' + M('2'),
+      k023: 'متبقٍ ' + M('1:45'),
+      k024: 'ما جذرا المعادلة ' + M('x² − 7x + 12 = 0') + '؟',
+      k025: 'أ',
+      k026: M('2') + ' و' + M('6'),
+      k027: 'ب',
+      k028: M('3') + ' و' + M('4') + ' · إجابتك',
+      k029: 'ج',
+      k030: M('−3') + ' و' + M('−4'),
+      k031: M('52%') + ' صحيح ← دقيقتان من النقاش الثنائي',
+      k032: 'اشرح حجتك لزميلك، ثم صوّت مجددًا.',
+      k033: 'D',
+      k034: 'شريكك: ' + M('Doel-63'),
+      k035: 'اخترت ج، لأن ' + M('−7…'),
+      k036: 'حاصل الضرب ' + M('+12') + ' والمجموع ' + M('+7') + ' — إذن كلاهما موجب',
+      k037: 'اكتب لزميلك',
+      k038: 'اكتب…',
+      k039: 'كتابة فقط للقاصرين · Nexa Guard مفعّل ·',
+      k040: 'التقرير',
+      k041: 'جدار الأسئلة المجهول',
+      k042: 'العودة إلى الحصة',
+      k043: 'جدار الأسئلة',
+      k044: 'دون اسم',
+      k045: 'يجيب Nexa Teacher عن السؤال الأكثر تصويتًا أولًا.',
+      k046: 'صوّتّ، ' + M('18'),
+      k047: 'ماذا يحدث إذا كان ' + M('b² − 4ac') + ' سالبًا؟',
+      k048: 'تجري الإجابة الآن',
+      k049: 'صوّت، ' + M('11'),
+      k050: 'لماذا نقسم على ' + M('2a') + ' في القانون؟',
+      k051: 'صوّت، ' + M('6'),
+      k052: 'متى نحلّل إلى عوامل، ومتى نستخدم القانون؟',
+      k053: 'صوّت، ' + M('2'),
+      k054: 'أين تُستخدم المعادلات التربيعية في الحياة الواقعية؟',
+      k055: 'سيرسل Nexa Teacher هذا إلى «ركن الفضول»',
+      k056: 'سؤال جديد',
+      k057: 'اسأل دون اسم…',
+      k058: 'إرسال',
+      k059: 'ترتيب الدفعة والواجب الشخصي',
+      k060: 'الدفعة ' + M('EN-03'),
+      k061: M('39') + ' يومًا حتى ' + M('1') + ' مارس (بداية ' + M('SSC 2027') + ')',
+      k062: 'من ' + M('21'),
+      k063: 'في أسبوع واحد ارتفع ترتيبك',
+      k064: M('3') + ' مراتب',
+      k065: '. الاختبار التجريبي الشهري: ' + M('28') + ' يناير.',
+      k066: 'أفضل ' + M('3') + ' هذا الأسبوع',
+      k067: M('NilPakhi-04'),
+      k068: M('Megh-02'),
+      k069: M('Rocket-11'),
+      k070: 'تُظهر قوائم الدفعة والدردشة والاستطلاعات الأسماء المستعارة فقط (أو الاسم الحقيقي إذا سمح ولي الأمر) والترتيب.',
+      k071: 'واجبك — من أخطاء استطلاعات اليوم',
+      k072: 'أخطاء الإشارة · ' + M('3') + ' أسئلة',
+      k073: M('10') + ' دقائق',
+      k074: 'المميِّز ' + M('b² − 4ac') + ' · سؤالان',
+      k075: M('6') + ' دقائق',
+      k076: 'شارة المساعد',
+      k077: 'ربحت XP بالإجابة عن أسئلة الآخرين',
+      k078: 'معلّم بشري',
+      k079: 'حصة مراجعة أسبوعية داخل الدفعة ' + M('EN-03') + ' مع معلّم بشري · السبت ' + M('8') + ' مساءً (افتراضي)',
+      k080: 'ابدأ الواجب',
+      k081: 'تسجيل الدفعة — كل متعلّم يختار بنفسه',
+      k082: 'الرياضيات · ' + M('4') + ' مساءً',
+      k083: 'تسجيل هذه الحصة',
+      k084: 'يُصنع تسجيل مشترك واحد للحصة فقط إذا طلبه متعلّم واحد على الأقل. تُحفظ أصوات من وافقوا فقط؛ ويظهر الباقون بأسماء مستعارة. أقل من ' + M('18') + ': يلزم موافقة ولي الأمر.',
+      k085: 'أريد التسجيل',
+      k086: 'لا أحتاج إلى التسجيل',
+      k087: 'موافقة وليّ الأمر',
+      k088: 'بانتظار الموافقة',
+      k089: 'أُرسل الطلب إلى تطبيق ولي أمرك. لن يُحفظ صوتك في التسجيل حتى تصل موافقته.',
+      k090: 'التسجيل المشترك',
+      k091: '● تسجيل مشترك · أصوات الموافقين فقط',
+      k092: 'اسمك في الدردشة والاستطلاعات',
+      k093: 'الاسم المستعار: ' + M('Kodom-27'),
+      k094: 'لا يشاهد التسجيل إلا الأعضاء المعتمدون في هذه الحصة. ويُحذف تلقائيًا بعد ' + M('12') + ' شهرًا من الحصة.',
+      k095: M('4')
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: '8 min de cours → sondage de 2 min, compris / pas compris, discussion en binôme, mur de questions, classement',
+      k002: 'Cours de groupe en direct',
+      k003: 'Quitter',
+      k004: 'Groupe SSC EN-03 · Maths',
+      k005: 'Nexa Teacher · IA · 18 présents',
+      k006: 'Direct',
+      k007: 'Partie 2/4 · cours en cours · sondage dans 3 minutes',
+      k008: 'Comment se passe cette partie ?',
+      k009: 'Compris',
+      k010: 'Pas compris',
+      k011: 'Scores des équipes',
+      k012: 'Équipe A',
+      k013: 'Équipe B',
+      k014: 'Équipe C',
+      k015: 'Équipe D',
+      k016: 'Équipe E',
+      k017: 'Tu es dans l’équipe A. Les bonnes réponses aux sondages font monter le score de ton équipe.',
+      k018: 'Lever la main',
+      k019: 'Écris une question',
+      k020: 'Écris une question…',
+      k021: 'Sondage → discussion en binôme',
+      k022: 'Sondage · partie 2',
+      k023: '1:45 restante',
+      k024: 'Quelles sont les racines de x² − 7x + 12 = 0 ?',
+      k025: 'A',
+      k026: '2 et 6',
+      k027: 'B',
+      k028: '3 et 4 · ta réponse',
+      k029: 'C',
+      k030: '−3 et −4',
+      k031: '52 % de bonnes réponses → 2 minutes en binôme',
+      k032: 'Explique ton raisonnement à ton binôme, puis revote.',
+      k033: 'D',
+      k034: 'Ton binôme : Doel-63',
+      k035: 'J’ai choisi C, parce que −7…',
+      k036: 'Produit +12, somme +7 — donc les deux sont positifs',
+      k037: 'Écrire à ton binôme',
+      k038: 'Écris…',
+      k039: 'Écrit seulement pour les mineurs · Nexa Guard activé ·',
+      k040: 'Rapport',
+      k041: 'Mur de questions anonyme',
+      k042: 'Retour au cours',
+      k043: 'Mur des questions',
+      k044: 'Anonyme',
+      k045: 'Nexa Teacher répond d’abord à la question la plus votée.',
+      k046: 'Tu as voté, 18',
+      k047: 'Que se passe-t-il si b² − 4ac est négatif ?',
+      k048: 'Réponse en cours',
+      k049: 'Voter, 11',
+      k050: 'Pourquoi diviser par 2a dans la formule ?',
+      k051: 'Voter, 6',
+      k052: 'Quand factoriser, quand utiliser la formule ?',
+      k053: 'Voter, 2',
+      k054: 'Où utilise-t-on les équations du second degré dans la vraie vie ?',
+      k055: 'Nexa Teacher l’enverra au « coin curiosité »',
+      k056: 'Nouvelle question',
+      k057: 'Pose une question anonyme…',
+      k058: 'Envoyer',
+      k059: 'Classement du groupe et devoirs personnels',
+      k060: 'Groupe EN-03',
+      k061: '39 jours jusqu’au 1er mars (début du SSC 2027)',
+      k062: 'sur 21',
+      k063: 'En une semaine, ton classement a gagné',
+      k064: '3 places',
+      k065: '. Examen blanc mensuel : 28 janvier.',
+      k066: 'Top 3 de la semaine',
+      k067: 'NilPakhi-04',
+      k068: 'Megh-02',
+      k069: 'Rocket-11',
+      k070: 'Les listes du groupe, le chat et les sondages ne montrent que des pseudos (ou un vrai nom si un parent l’autorise) et le rang.',
+      k071: 'Tes devoirs — à partir de tes erreurs aux sondages',
+      k072: 'Erreurs de signe · 3 questions',
+      k073: '10 min',
+      k074: 'Discriminant b² − 4ac · 2 questions',
+      k075: '6 minutes',
+      k076: 'Badge d’entraide',
+      k077: 'Tu as gagné des XP en répondant aux questions des autres',
+      k078: 'Professeur humain',
+      k079: 'Cours de révision hebdomadaire avec un professeur humain · dans le groupe EN-03 · samedi 20 h (par défaut)',
+      k080: 'Commencer les devoirs',
+      k081: 'Enregistrement du groupe — chacun choisit',
+      k082: 'Maths · 16 h',
+      k083: 'Enregistrement de ce cours',
+      k084: 'Un seul enregistrement partagé est fait seulement si au moins un élève le demande. Seules les voix des élèves d’accord sont gardées ; les autres apparaissent par pseudo. Moins de 18 ans : l’accord de ton parent est nécessaire.',
+      k085: 'Je veux l’enregistrement',
+      k086: 'Je n’ai pas besoin de l’enregistrement',
+      k087: 'Accord du parent',
+      k088: 'Accord en attente',
+      k089: 'La demande est partie dans l’appli de ton parent. Tant qu’il n’a pas donné son accord, ta voix n’est pas gardée dans l’enregistrement.',
+      k090: 'Enregistrement partagé',
+      k091: '● Enregistrement partagé · seules les voix des élèves d’accord',
+      k092: 'Ton nom dans le chat et les sondages',
+      k093: 'Pseudo : Kodom-27',
+      k094: 'Seuls les membres approuvés de ce cours peuvent regarder l’enregistrement. Supprimé automatiquement 12 mois après le cours.',
+      k095: '4'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, fx: this.fx16(lang), lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

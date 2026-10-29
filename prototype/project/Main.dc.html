@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>NexaTute style guide</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;family=Baloo+Da+2:wght@500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E8EBF2}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sm{font-size:13px;color:#59617A;line-height:1.45;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.sw{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#59617A}
+.sw div{height:64px;border-radius:14px;border:1px solid rgba(20,26,51,.08)}
+.sw b{color:#141A33;font-size:13px}
+.ix{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #E2E6EF;font-size:14px}
+.ix span{color:#59617A;font-size:13px}
+.lab{margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#59617A}
+.tg{width:44px;height:44px;border-radius:99px;background:transparent;position:relative;border:0;padding:0;flex:none}  /* fix20: 44×44 hit area, 44×26 track */
+.tg::before{content:"";position:absolute;left:0;right:0;top:9px;height:26px;border-radius:99px;background:#3B34C9}
+.tg::after{content:"";position:absolute;top:12px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+.tg.off::before{background:#C9CFDC}
+.tg.off::after{right:auto;left:3px}
+.pl{display:flex;align-items:center;gap:8px;min-height:27px;padding:0 12px;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-size:13px;line-height:1.3;font-weight:600}
+.pl:hover{background:rgba(255,255,255,.16);color:#fff}
+.pl b{color:#F2A93B;font-size:12px;width:28px;flex:none}
+/* fix11 — layout classes (were inline styles) so the board reflows with the Mobile / Tablet / Desktop prototype switch;
+   the desktop frame keeps the original 1776 × 1100 three-column style guide. */
+.mn{position:relative;min-height:100vh;background:#E8EBF2;color:#141A33}
+.mng{box-sizing:border-box;min-height:1100px;padding:56px;display:grid;grid-template-columns:520px minmax(0,1fr) 420px;gap:40px}
+.mnl{background:#141A33;color:#fff;border-radius:28px;padding:36px 40px;display:flex;flex-direction:column;gap:16px;min-height:0}
+.mnb{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mnlogo{width:48px;height:48px;border-radius:14px;background:#3B34C9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;flex:none}
+.mnn{font-size:24px;font-weight:700}
+.mnk{margin:0;font-size:14px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:#B9BEF5;font-weight:600}
+.mnh1{margin:8px 0 0;font-size:42px;line-height:1.15;font-weight:700}
+.mnos{margin:6px 0 0;font-size:17px;line-height:1.4;font-weight:700;color:#FFD58F}
+.mnp{margin:12px 0 0;font-size:16px;line-height:1.5;color:#D6D9F2}
+.mnst{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mnst div{background:rgba(255,255,255,.08);border-radius:16px;padding:12px 14px}
+.mnst b{display:block;font-size:28px;line-height:1.15;font-weight:700}
+.mnst span{display:block;font-size:13px;line-height:1.35;color:#D6D9F2}
+.mnpk{margin:0;font-size:13px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:#B9BEF5;font-weight:600}
+.mnpl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.mnpl .w{grid-column:1 / -1}
+.mnft{margin-top:auto;font-size:13px;line-height:1.5;color:#B9BEF5}
+.mnlg{display:flex;flex-wrap:wrap;gap:4px}
+.mnlg button{min-height:34px;padding:0 10px;border-radius:10px;border:1px solid #C3C9D8;background:#fff;color:#141A33;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.mnlg button[aria-pressed="true"]{background:#141A33;border-color:#141A33;color:#fff}
+.dvbar .mnlg{margin-inline-end:8px}
+.mnm{display:flex;flex-direction:column;gap:28px;min-width:0}
+.mnsw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.mnty{display:flex;flex-direction:column;gap:10px;padding:22px}
+.mnty .a{font-size:30px;font-weight:700;line-height:1.2}
+.mnty .b{font-size:18px;font-weight:600}
+.mnty .c{font-size:15px;line-height:1.6}
+.mnty .d{font-family:'Baloo Da 2',sans-serif;font-size:28px;font-weight:800;color:#E2572F}
+.mncp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:22px}
+.mnch{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mntg{display:flex;align-items:center;gap:12px;font-size:14px}
+.mnpr{grid-column:1 / -1;display:flex;flex-direction:column;gap:6px}
+.mnpr .r{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.mnpr .t{height:8px;border-radius:99px;background:#E6E9F2}
+.mnpr .t div{width:60%;height:100%;border-radius:99px;background:#3B34C9}
+.mnru{padding:18px 22px;display:flex;gap:16px;align-items:flex-start}
+.mnix{padding:26px;display:flex;flex-direction:column;min-width:0}
+.mnix .ix span{text-align:end}
+.mnhint{margin:auto 0 0;padding-top:16px}
+.mn[dir="rtl"] :is(.mnk,.mnpk,.lab){letter-spacing:0;text-transform:none}
+.mn[lang="ur"]{line-height:1.9}
+.mn[lang="ur"] :is(.mnh1,.mnty .a){line-height:1.6}
+.dvbar{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 10px;padding:6px 16px;background:#F5F4FF;border-bottom:2px dashed #8B86E8}
+.dv-d .dvbar{position:absolute;top:4px;inset-inline-end:56px;z-index:5;padding:1px 8px;border:2px dashed #8B86E8;border-radius:14px}
+.dvpt{font-size:13px;font-weight:700;color:#3B34C9;line-height:1.3}
+.dvsw{display:inline-flex;flex-wrap:wrap;gap:4px;background:#fff;border:1px solid #C3C9D8;border-radius:12px;padding:3px}
+.dvb{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:0;border-radius:9px;background:transparent;color:#141A33;font:inherit;font-size:14px;font-weight:600;line-height:1.2;cursor:pointer}
+.dv-d .dvb{min-height:34px}
+.dvb:hover{background:#ECEBFD}
+.dvb[aria-pressed="true"]{background:#3B34C9;color:#fff}
+.dvf{container:ntv / inline-size}
+.dv-t .dvf{width:834px;max-width:100%;margin:16px auto 24px}
+.dv-m .dvf{width:390px;max-width:100%;margin:16px auto 24px}
+.dv-m .dvf,.dv-t .dvf{background:#E8EBF2;border:1px solid #C9CFDC;border-radius:28px;box-shadow:0 30px 60px -30px rgba(20,26,51,.45);overflow:hidden;transform:translateZ(0);height:calc(100vh - 120px);min-height:560px}
+.dv-m .dvs,.dv-t .dvs{height:100%;overflow:auto;overscroll-behavior:contain}
+.mn.dv-m,.mn.dv-t{background:#D9DDE8}
+@media (max-width:440px){.mn.dv-m{background:#E8EBF2}.dv-m .dvf{margin:0;border:0;border-radius:0;box-shadow:none;transform:none;height:auto;min-height:0}.dv-m .dvs{height:auto;overflow:visible}}
+@media (max-width:1023px){.mnlg button{min-height:44px}}
+.mnlg button{min-width:44px}  /* fix15 R14-site-10: the language buttons (e.g. "اردو") are at least 44 px wide */
+@media (max-width:884px){.mn.dv-t{background:#E8EBF2}.dv-t .dvf{margin:0;border:0;border-radius:0;box-shadow:none;transform:none;height:auto;min-height:0}.dv-t .dvs{height:auto;overflow:visible}}
+@container ntv (max-width:1599px){.mng{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:0;padding:40px}.mnl{grid-row:auto}.mnix{grid-column:1/-1;display:block;column-count:2;column-gap:40px}.mnix .lab,.mnix .mnhint{column-span:all}.mnix .ix{break-inside:avoid}.mnpl>.pl:last-child:nth-child(even){grid-column:1/-1}}  /* fix16: the screen index runs full width in 2 columns under the panel + style guide, so the dark panel has no empty half */
+@container ntv (max-width:1023px){.mnpl>.pl:last-child:nth-child(even){grid-column:auto}.mng{grid-template-columns:minmax(0,1fr);padding:28px;gap:28px}.mnl{grid-row:auto}.mnpl{grid-template-columns:repeat(3,minmax(0,1fr))}.pl{min-height:44px}}
+@container ntv (max-width:599px){.mng{padding:16px;gap:20px}.mnl{padding:24px 20px;border-radius:22px}.mnh1{font-size:32px}.mnpl{grid-template-columns:minmax(0,1fr)}.mnsw{grid-template-columns:repeat(2,minmax(0,1fr))}.mncp{grid-template-columns:minmax(0,1fr)}.mnty .a{font-size:24px}.mnty .d{font-size:24px}.ix{flex-wrap:wrap}.mnix{padding:20px}}
+.ttb{position:absolute;z-index:9999;width:max-content;max-width:240px;box-sizing:border-box;background:#141A33;color:#fff;font-size:12.5px;line-height:1.45;font-weight:500;padding:8px 11px;border-radius:9px;box-shadow:0 8px 24px rgba(20,26,51,.28);pointer-events:none;transform:translate(-50%,calc(-100% - 9px))}
+.ttb.below{transform:translate(-50%,9px)}
+.ttb::after{content:"";position:absolute;left:50%;margin-left:-6px;top:100%;border:6px solid transparent;border-top-color:#141A33}
+.ttb.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#141A33}
+</style>
+</helmet>
+<div class="{{ rootCls }}" dir="{{ dir }}" lang="{{ lang }}" style="font-family:{{ ff }}" onPointerOver="{{ ttOver }}" onPointerOut="{{ ttOut }}" onFocus="{{ ttFocus }}" onBlur="{{ ttBlur }}" onWheel="{{ ttHide }}" onTouchMove="{{ ttHide }}">
+<div class="dvbar"><div class="mnlg" role="group" aria-labelledby="mnlgh"><span class="vh" id="mnlgh" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">{{ t.lang }}</span><sc-for list="{{ langOpts }}" as="l" hint-placeholder-count="6"><button type="button" lang="{{ l.code }}" aria-pressed="{{ l.on }}" data-tip="{{ t.tip.lang }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div><div class="dvgrp" role="group" aria-labelledby="dvph" style="display:contents"><span class="dvpt" id="dvph">{{ t.dv.g }}</span><div class="dvsw"><sc-for list="{{ dvOpts }}" as="o" hint-placeholder-count="3"><button type="button" class="dvb" aria-pressed="{{ o.on }}" data-tip="{{ t.tip.dv }}" onClick="{{ o.pick }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ o.icon }}"></path></svg><span>{{ o.l }}</span></button></sc-for></div></div></div>
+<div class="dvf"><div class="dvs">
+<div class="mng">
+
+<div class="mnl">
+  <div class="mnb">
+    <div class="mnlogo">N</div>
+    <div class="mnn">NexaTute</div>
+  </div>
+  <div>
+    <p class="mnk">{{ t.k }}</p>
+    <h1 class="mnh1">{{ t.h1 }}</h1>
+    <p class="mnos">{{ t.os }}</p>
+    <p class="mnp">{{ t.p }}</p>
+  </div>
+  <div class="mnst"><sc-for list="{{ stats }}" as="x" hint-placeholder-count="4"><div><b>{{ x.n }}</b><span>{{ x.l }}</span></div></sc-for></div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <p class="mnpk">{{ t.ph }}</p>
+    <div class="mnpl">
+      <a class="pl w" href="W00-Website-Preview.dc.html"><b>W00</b>{{ t.w0 }}</a>
+      <sc-for list="{{ links }}" as="x" hint-placeholder-count="23"><a class="pl" href="{{ x.href }}"><b>{{ x.id }}</b>{{ x.l }}</a></sc-for>
+    </div>
+  </div>
+  <div class="mnft">RemonLogic Private Limited · nexatute.com<br>{{ t.sample }}</div>
+</div>
+
+<div class="mnm">
+  <div>
+    <p class="lab">{{ t.col }}</p>
+    <div class="mnsw"><sc-for list="{{ swatches }}" as="x" hint-placeholder-count="8"><div class="sw"><div style="background:{{ x.c }}"></div><b>{{ x.n }}</b><span><span dir="ltr">{{ x.hex }}</span>{{ x.d }}</span></div></sc-for></div>
+  </div>
+  <div>
+    <p class="lab">{{ t.typ }}</p>
+    <div class="cd mnty"><div class="a">{{ ty.a }}</div><div class="b">{{ ty.b }}</div><div class="c">{{ ty.c }}</div><div class="d">{{ ty.d }}</div></div>
+  </div>
+  <div>
+    <p class="lab">{{ t.cmp }}</p>
+    <div class="cd mncp">
+      <button class="btn">{{ t.b1 }}</button>
+      <button class="btn2">{{ t.b2 }}</button>
+      <div class="mnch">
+        <span class="chip">Combo</span>
+        <span class="chip" style="background:#FFF3DD;color:#8A4B00">+25 XP</span>
+        <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.live }}</span>
+        <span class="chip" style="background:#E1F4F2;color:#0B5E5A">Nexa Co-Teacher</span>
+      </div>
+      <div class="mntg"><button class="tg" aria-pressed="true" aria-label="{{ t.on }}"></button>{{ t.on }} <button class="tg off" aria-pressed="false" aria-label="{{ t.off }}"></button>{{ t.off }}</div>
+      <div class="mnpr"><div class="r"><span>{{ t.pl }}</span><b>{{ t.pv }}</b></div><div class="t"><div></div></div></div>
+    </div>
+  </div>
+  <div class="cd mnru">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9;margin-top:2px"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+    <p class="sm" style="color:#141A33">{{ t.rule }}</p>
+  </div>
+</div>
+
+<div class="cd mnix">
+  <p class="lab">{{ t.lh }}</p>
+  <sc-for list="{{ t.rows }}" as="x" hint-placeholder-count="20"><div class="ix"><b>{{ x.k }}</b><span>{{ x.v }}</span></div></sc-for>
+  <p class="xs mnhint">{{ t.hint }}</p>
+</div>
+
+</div>
+</div></div>
+<sc-if value="{{ ttOn }}" hint-placeholder-val="{{ false }}"><div class="{{ ttCls }}" role="tooltip" style="left:{{ ttX }}px;top:{{ ttY }}px">{{ ttText }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100},"dev":{"editor":"enum","options":["m","t","d"],"default":"d"}}'>
+class Component extends DCLogic {
+  // fix11 (coordinator addendum 26 Oct 2026): the style guide & index in bn, en, hi, ur, ar, fr (identical keys), RTL for ur/ar, Latin digits.
+  uiText() {
+    return {
+     "bn": {
+      "k": "হাই-ফাই মকআপ · সম্পূর্ণ প্রোডাক্ট",
+      "h1": "AI শিক্ষক, সত্যিকারের শেখা",
+      "os": "একটি AI-চালিত লার্নিং অপারেটিং সিস্টেম",
+      "p": "শিক্ষার্থী, অভিভাবক, PlayBoom, শিক্ষক ও প্রতিষ্ঠান এবং অ্যাডমিন প্যানেল — সব স্ক্রিন এক জায়গায়। প্রতিটি প্রোটোটাইপ মোবাইল, ট্যাব ও ডেস্কটপে চলে।",
+      "st": [
+       "মোবাইল স্ক্রিন",
+       "ডেস্কটপ স্ক্রিন",
+       "ব্যবহারকারীর ধরন",
+       "Blueprint অনুযায়ী"
+      ],
+      "ph": "ক্লিকযোগ্য প্রোটোটাইপ · Play চেপে খোলো",
+      "w0": "ওয়েবসাইট প্রিভিউ — সব মকআপ ও প্রোটোটাইপ এক জায়গায়",
+      "links": [
+       "নতুন শিক্ষার্থী",
+       "ক্লাস ও Co-Teacher",
+       "কেনাকাটা ও অনুমোদন",
+       "Study Hall",
+       "PlayBoom",
+       "ব্যাচ ক্লাস",
+       "মক টেস্ট ও OMR",
+       "অভিভাবক অ্যাপ",
+       "শিক্ষক অ্যাপ",
+       "অ্যাডমিন প্যানেল",
+       "ক্যালকুলেটর ও ডিকশনারি",
+       "প্রতিষ্ঠানের অ্যাডমিন প্যানেল",
+       "Landing Page AI",
+       "প্ল্যাটফর্ম অপারেশন",
+       "অ্যাকাউন্ট, সাপোর্ট ও আইন",
+       "কনটেন্টের মান ও টাকা",
+       "প্রবৃদ্ধি",
+       "MindForge",
+       "AI Marketing Hub",
+       "ল্যান্ডিং পেজ",
+       "নোটিফিকেশন ও চ্যাট",
+       "অ্যাভাটার ও কণ্ঠ স্টুডিও",
+       "অ্যাভাটার ও কণ্ঠ (ব্যবহারকারী)",
+        "আইনি পেজ",
+        "অ্যাডমিন: প্ল্যান ও মডিউল",
+        "অ্যাডমিন: নিয়ম ও সেটিংস",
+        "অ্যাডমিন: Nexa Co-Admin"
+      ],
+      "sample": "নমুনা শিক্ষার্থী: তানভীর (SSC · Combo) · নমুনা অভিভাবক: নাসরিন",
+      "col": "রং",
+      "cd": [
+       "প্রধান",
+       "লেখা",
+       "XP, স্ট্রিক",
+       "",
+       "বুঝলাম",
+       "সতর্কতা",
+       "পটভূমি",
+       ""
+      ],
+      "typ": "টাইপোগ্রাফি",
+      "ty": [
+       "Hind Siliguri 700 — শিরোনাম",
+       "Hind Siliguri 600 — কার্ডের শিরোনাম, বোতাম",
+       "Hind Siliguri 400 — মূল লেখা। বাংলা ও English দুটোই এক ফন্টে পরিষ্কার পড়া যায়।",
+       "Baloo Da 2 — PlayBoom-এর জন্য"
+      ],
+      "cmp": "কম্পোনেন্ট",
+      "b1": "প্রধান বোতাম",
+      "b2": "দ্বিতীয় বোতাম",
+      "live": "লাইভ",
+      "on": "চালু",
+      "off": "বন্ধ",
+      "pl": "আজকের 1:1 সময়",
+      "pv": "18 / 30 মিনিট",
+      "rule": "নকশার নিয়ম: Nexa Teacher-এর পাশে সবসময় “AI” লেখা থাকে (AI স্বচ্ছতা) · টাচ টার্গেট ≥ 44px · লেখার কনট্রাস্ট ≥ 4.5:1 (WCAG 2.2 AA) · বুঝলাম/বুঝিনি শুধু রঙে নয়, লেখাতেও আলাদা · কোনো স্ক্রিনে বিজ্ঞাপন নেই; শিশুদের কোনো ট্র্যাকিং নেই, আর সম্মতি ছাড়া কারও ট্র্যাকিং নেই (অ্যানালিটিক্স ও মার্কেটিং কুকি শুধু 18+ বয়সীদের সম্মতিতে)। Free Beta: প্রতিটি শিক্ষার্থী, অভিভাবক ও প্রতিষ্ঠানের স্ক্রিনে “সমস্যা জানাও / মতামত দাও” · প্রতিটি AI উত্তরের নিচে “AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।” · কোনো ফিচার বন্ধ থাকলে এরর নয়, দেখায় “এই ফিচারটি আপাতত বন্ধ আছে — শিগগিরই আবার চালু হবে।”।",
+      "lh": "স্ক্রিন তালিকা",
+      "rows": [
+       {
+        "k": "L1 · অনবোর্ডিং 1",
+        "v": "স্বাগতম, Nexa ID, বয়স, মুখ যাচাই"
+       },
+       {
+        "k": "L2 · অনবোর্ডিং 2",
+        "v": "কোর্স, সিলেবাস, সম্মতি, Free Beta"
+       },
+       {
+        "k": "L3 · হোম ও প্ল্যান",
+        "v": "হোম, ক্যাটালগ, তুলনা, পেমেন্ট"
+       },
+       {
+        "k": "L4 · অ্যাকাউন্ট",
+        "v": "ওয়ালেট, নোটিফিকেশন, প্রোফাইল, সেটিংস"
+       },
+       {
+        "k": "L5 · Nexa Teacher 1:1",
+        "v": "ক্লাস, ধাপ যাচাই, রেকর্ডিং বাছাই, ETA"
+       },
+       {
+        "k": "L6 · ব্যাচ ক্লাস",
+        "v": "লাইভ, পোল, প্রশ্ন-দেয়াল, র‍্যাঙ্ক"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "চ্যাট, রেকর্ডিং প্লেয়ার, ভুলের খাতা"
+       },
+       {
+        "k": "L8 · পরীক্ষা",
+        "v": "মক টেস্ট, সব পরীক্ষা, পরীক্ষার দিন, পরীক্ষা ও ভর্তি হাব"
+       },
+       {
+        "k": "L9 · অগ্রগতি",
+        "v": "ড্যাশবোর্ড, Mastery Map, সনদ"
+       },
+       {
+        "k": "L10 · স্টাডি হল ও ল্যাব",
+        "v": "হল, গ্রুপ, ল্যাব, Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "সাহায্য, হ্যান্ডওভার, নিরাপত্তা"
+       },
+       {
+        "k": "L12 · আরও শেখা",
+        "v": "ভাইভা বোর্ড, ব্যবহারিক, Boss, ইভেন্ট"
+       },
+       {
+        "k": "L13 · সিলেবাসের বাইরে",
+        "v": "পড়া, বোঝাও, প্রজেক্ট, কৌতূহল"
+       },
+       {
+        "k": "L14 · যত্ন ও বিশ্ব",
+        "v": "কষ্ট, লিংক, যেকোনো কোর্স, USD"
+       },
+       {
+        "k": "L15 · ফ্রি ও গ্রোথ",
+        "v": "ফ্রি টিয়ার, Year Pass, উপহার"
+       },
+       {
+        "k": "G1–G2 · অভিভাবক",
+        "v": "7টি স্ক্রিন"
+       },
+       {
+        "k": "P1–P2 · PlayBoom",
+        "v": "6টি স্ক্রিন"
+       },
+       {
+        "k": "T1 · শিক্ষক",
+        "v": "3টি মোবাইল স্ক্রিন"
+       },
+       {
+        "k": "D1–D10 · ডেস্কটপ",
+        "v": "শিক্ষার্থী, শিক্ষক, প্রতিষ্ঠান, অ্যাডমিন"
+       },
+       {
+        "k": "X1–X27 · প্রোটোটাইপ",
+        "v": "Learner পেজের নিচে · Play চাপো"
+       }
+      ],
+      "hint": "উপরের Pages মেনু থেকে প্রতিটি অংশে যাও।",
+      "lang": "ভাষা",
+      "dv": {
+       "g": "প্রোটোটাইপ: ডিভাইসের মাপ",
+       "p": "প্রোটোটাইপ",
+       "m": "মোবাইল",
+       "t": "ট্যাব",
+       "d": "ডেস্কটপ",
+       "tip": "শুধু প্রোটোটাইপ — অন্য ডিভাইসের মাপে এই পেজ দেখো"
+      },
+      "tip": {
+       "dv": "শুধু প্রোটোটাইপ — অন্য ডিভাইসের মাপে এই পেজ দেখো",
+       "lang": "এই পেজ এই ভাষায় দেখায়"
+      }
+     },
+     "en": {
+      "k": "Hi-fi mockup · The whole product",
+      "h1": "AI teacher, real learning",
+      "os": "An AI-Powered Learning Operating System",
+      "p": "Learner, guardian, PlayBoom, teacher and institution, and the admin panels — every screen in one place. Every prototype runs on mobile, tablet and desktop.",
+      "st": [
+       "mobile screens",
+       "desktop screens",
+       "user types",
+       "Per Blueprint"
+      ],
+      "ph": "Clickable prototypes · press Play to open",
+      "w0": "Website preview — every mockup and prototype in one place",
+      "links": [
+       "New learner",
+       "Class & Co-Teacher",
+       "Purchase & approval",
+       "Study Hall",
+       "PlayBoom",
+       "Batch class",
+       "Mock test & OMR",
+       "Guardian app",
+       "Teacher app",
+       "Admin panel",
+       "Calculator & dictionary",
+       "Institute admin panel",
+       "Landing Page AI",
+       "Platform operations",
+       "Accounts, support & legal",
+       "Content quality & money",
+       "Growth",
+       "MindForge",
+       "AI Marketing Hub",
+       "Landing page",
+       "Notifications & chat",
+       "Avatar & voice studio",
+       "Avatar & voice (users)",
+        "Legal pages",
+        "Admin: plans & modules",
+        "Admin: rules & settings",
+        "Admin: Nexa Co-Admin"
+      ],
+      "sample": "Sample learner: Tanvir (SSC · Combo) · Sample guardian: Nasrin",
+      "col": "Colours",
+      "cd": [
+       "primary",
+       "text",
+       "XP, streak",
+       "",
+       "got it",
+       "alert",
+       "background",
+       ""
+      ],
+      "typ": "Typography",
+      "ty": [
+       "Hind Siliguri 700 — headings",
+       "Hind Siliguri 600 — card titles, buttons",
+       "Hind Siliguri 400 — body text. Bangla and English both read clearly in one font.",
+       "Baloo Da 2 — for PlayBoom"
+      ],
+      "cmp": "Components",
+      "b1": "Primary button",
+      "b2": "Secondary button",
+      "live": "Live",
+      "on": "On",
+      "off": "Off",
+      "pl": "Today’s 1:1 time",
+      "pv": "18 / 30 min",
+      "rule": "Design rules: Nexa Teacher always carries an “AI” label (AI transparency) · touch targets ≥ 44px · text contrast ≥ 4.5:1 (WCAG 2.2 AA) · “got it / didn’t get it” differ in words, not only colour · no ads on any screen; no tracking of children, and no tracking of anyone without consent (analytics and marketing cookies only with the consent of people aged 18+). Free Beta: “Report a problem / Give feedback” on every learner, guardian and institution screen · “AI can make mistakes. If something looks wrong, check with your teacher or report it.” under every AI answer · a paused feature shows “This feature is paused for now — it will be back soon.”, never an error.",
+      "lh": "Screen index",
+      "rows": [
+       {
+        "k": "L1 · Onboarding 1",
+        "v": "Welcome, Nexa ID, age, face check"
+       },
+       {
+        "k": "L2 · Onboarding 2",
+        "v": "Course, syllabus, consent, Free Beta"
+       },
+       {
+        "k": "L3 · Home & plans",
+        "v": "Home, catalogue, compare, payment"
+       },
+       {
+        "k": "L4 · Account",
+        "v": "Wallet, notifications, profile, settings"
+       },
+       {
+        "k": "L5 · Nexa Teacher 1:1",
+        "v": "Class, step check, recording choice, ETA"
+       },
+       {
+        "k": "L6 · Batch class",
+        "v": "Live, polls, question wall, rank"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "Chat, recording player, error notebook"
+       },
+       {
+        "k": "L8 · Tests",
+        "v": "Mock test, All Exams, exam day, Exam & Admission Hub"
+       },
+       {
+        "k": "L9 · Progress",
+        "v": "Dashboard, Mastery Map, certificate"
+       },
+       {
+        "k": "L10 · Study Hall & lab",
+        "v": "Hall, group, lab, Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "Help, handover, safety"
+       },
+       {
+        "k": "L12 · More learning",
+        "v": "Viva board, practical, Boss, events"
+       },
+       {
+        "k": "L13 · Beyond the syllabus",
+        "v": "Reading, explain-it, projects, curiosity"
+       },
+       {
+        "k": "L14 · Care & global",
+        "v": "Distress, links, any course, USD"
+       },
+       {
+        "k": "L15 · Free & growth",
+        "v": "Free tier, Year Pass, gifts"
+       },
+       {
+        "k": "G1–G2 · Guardian",
+        "v": "7 screens"
+       },
+       {
+        "k": "P1–P2 · PlayBoom",
+        "v": "6 screens"
+       },
+       {
+        "k": "T1 · Teacher",
+        "v": "3 mobile screens"
+       },
+       {
+        "k": "D1–D10 · Desktop",
+        "v": "Learner, teacher, institution, admin"
+       },
+       {
+        "k": "X1–X27 · Prototypes",
+        "v": "Below the Learner page · press Play"
+       }
+      ],
+      "hint": "Use the Pages menu above to go to each part.",
+      "lang": "Language",
+      "dv": {
+       "g": "Prototype: device size",
+       "p": "Prototype",
+       "m": "Mobile",
+       "t": "Tablet",
+       "d": "Desktop",
+       "tip": "Prototype only — preview this page on another device size"
+      },
+      "tip": {
+       "dv": "Prototype only — preview this page on another device size",
+       "lang": "Shows this page in this language"
+      }
+     },
+     "hi": {
+      "k": "हाई-फ़ाई मॉकअप · पूरा प्रोडक्ट",
+      "h1": "AI शिक्षक, असली सीखना",
+      "os": "एक AI-संचालित लर्निंग ऑपरेटिंग सिस्टम",
+      "p": "विद्यार्थी, अभिभावक, PlayBoom, शिक्षक और संस्थान, और एडमिन पैनल — हर स्क्रीन एक जगह। हर प्रोटोटाइप मोबाइल, टैबलेट और डेस्कटॉप पर चलता है।",
+      "st": [
+       "मोबाइल स्क्रीन",
+       "डेस्कटॉप स्क्रीन",
+       "उपयोगकर्ता प्रकार",
+       "Blueprint के अनुसार"
+      ],
+      "ph": "क्लिक करने योग्य प्रोटोटाइप · खोलने के लिए Play दबाएँ",
+      "w0": "वेबसाइट प्रीव्यू — हर मॉकअप और प्रोटोटाइप एक जगह",
+      "links": [
+       "नया विद्यार्थी",
+       "क्लास और Co-Teacher",
+       "ख़रीद और मंज़ूरी",
+       "Study Hall",
+       "PlayBoom",
+       "बैच क्लास",
+       "मॉक टेस्ट और OMR",
+       "अभिभावक ऐप",
+       "शिक्षक ऐप",
+       "एडमिन पैनल",
+       "कैलकुलेटर और डिक्शनरी",
+       "संस्थान एडमिन पैनल",
+       "Landing Page AI",
+       "प्लेटफ़ॉर्म ऑपरेशंस",
+       "अकाउंट, सहायता और क़ानूनी",
+       "कंटेंट की गुणवत्ता और पैसा",
+       "ग्रोथ",
+       "MindForge",
+       "AI Marketing Hub",
+       "लैंडिंग पेज",
+       "नोटिफ़िकेशन और चैट",
+       "अवतार और आवाज़ स्टूडियो",
+       "अवतार और आवाज़ (उपयोगकर्ता)",
+        "क़ानूनी पेज",
+        "एडमिन: प्लान और मॉड्यूल",
+        "एडमिन: नियम और सेटिंग्स",
+        "एडमिन: Nexa Co-Admin"
+      ],
+      "sample": "नमूना विद्यार्थी: तनवीर (SSC · Combo) · नमूना अभिभावक: नसरीन",
+      "col": "रंग",
+      "cd": [
+       "मुख्य",
+       "टेक्स्ट",
+       "XP, स्ट्रीक",
+       "",
+       "समझ गया",
+       "चेतावनी",
+       "पृष्ठभूमि",
+       ""
+      ],
+      "typ": "टाइपोग्राफ़ी",
+      "ty": [
+       "Hind Siliguri 700 — शीर्षक",
+       "Hind Siliguri 600 — कार्ड शीर्षक, बटन",
+       "Hind Siliguri 400 — मुख्य पाठ। बांग्ला और अंग्रेज़ी दोनों एक ही फ़ॉन्ट में साफ़ पढ़े जाते हैं।",
+       "Baloo Da 2 — PlayBoom के लिए"
+      ],
+      "cmp": "कंपोनेंट",
+      "b1": "मुख्य बटन",
+      "b2": "दूसरा बटन",
+      "live": "लाइव",
+      "on": "चालू",
+      "off": "बंद",
+      "pl": "आज का 1:1 समय",
+      "pv": "18 / 30 मिनट",
+      "rule": "डिज़ाइन के नियम: Nexa Teacher के साथ हमेशा “AI” लिखा रहता है (AI पारदर्शिता) · टच टारगेट ≥ 44px · टेक्स्ट कंट्रास्ट ≥ 4.5:1 (WCAG 2.2 AA) · “समझ गया / नहीं समझा” सिर्फ़ रंग से नहीं, शब्दों से भी अलग · किसी स्क्रीन पर विज्ञापन नहीं; बच्चों की कोई ट्रैकिंग नहीं, और सहमति के बिना किसी की ट्रैकिंग नहीं (एनालिटिक्स और मार्केटिंग कुकी सिर्फ़ 18+ उम्र वालों की सहमति से)। Free Beta: हर शिक्षार्थी, अभिभावक और संस्थान की स्क्रीन पर “समस्या बताओ / सुझाव दो” · हर AI जवाब के नीचे “AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।” · कोई सुविधा रुकी हो तो एरर नहीं, दिखता है “यह सुविधा अभी के लिए रुकी है — जल्द ही वापस आएगी।”।",
+      "lh": "स्क्रीन सूची",
+      "rows": [
+       {
+        "k": "L1 · ऑनबोर्डिंग 1",
+        "v": "स्वागत, Nexa ID, उम्र, चेहरे की जाँच"
+       },
+       {
+        "k": "L2 · ऑनबोर्डिंग 2",
+        "v": "कोर्स, सिलेबस, सहमति, Free Beta"
+       },
+       {
+        "k": "L3 · होम और प्लान",
+        "v": "होम, कैटलॉग, तुलना, भुगतान"
+       },
+       {
+        "k": "L4 · अकाउंट",
+        "v": "वॉलेट, नोटिफ़िकेशन, प्रोफ़ाइल, सेटिंग्स"
+       },
+       {
+        "k": "L5 · Nexa Teacher 1:1",
+        "v": "क्लास, चरण जाँच, रिकॉर्डिंग चुनाव, ETA"
+       },
+       {
+        "k": "L6 · बैच क्लास",
+        "v": "लाइव, पोल, सवालों की दीवार, रैंक"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "चैट, रिकॉर्डिंग प्लेयर, ग़लतियों की कॉपी"
+       },
+       {
+        "k": "L8 · टेस्ट",
+        "v": "मॉक टेस्ट, सभी परीक्षाएँ, परीक्षा का दिन, परीक्षा और प्रवेश हब"
+       },
+       {
+        "k": "L9 · प्रगति",
+        "v": "डैशबोर्ड, Mastery Map, प्रमाणपत्र"
+       },
+       {
+        "k": "L10 · स्टडी हॉल और लैब",
+        "v": "हॉल, ग्रुप, लैब, Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "मदद, हैंडओवर, सुरक्षा"
+       },
+       {
+        "k": "L12 · और सीखना",
+        "v": "वाइवा बोर्ड, प्रायोगिक, Boss, इवेंट"
+       },
+       {
+        "k": "L13 · सिलेबस से आगे",
+        "v": "पढ़ना, समझाओ, प्रोजेक्ट, जिज्ञासा"
+       },
+       {
+        "k": "L14 · देखभाल और दुनिया",
+        "v": "परेशानी, लिंक, कोई भी कोर्स, USD"
+       },
+       {
+        "k": "L15 · मुफ़्त और ग्रोथ",
+        "v": "मुफ़्त टियर, Year Pass, उपहार"
+       },
+       {
+        "k": "G1–G2 · अभिभावक",
+        "v": "7 स्क्रीन"
+       },
+       {
+        "k": "P1–P2 · PlayBoom",
+        "v": "6 स्क्रीन"
+       },
+       {
+        "k": "T1 · शिक्षक",
+        "v": "3 मोबाइल स्क्रीन"
+       },
+       {
+        "k": "D1–D10 · डेस्कटॉप",
+        "v": "विद्यार्थी, शिक्षक, संस्थान, एडमिन"
+       },
+       {
+        "k": "X1–X27 · प्रोटोटाइप",
+        "v": "Learner पेज के नीचे · Play दबाएँ"
+       }
+      ],
+      "hint": "हर हिस्से पर जाने के लिए ऊपर का Pages मेन्यू इस्तेमाल करें।",
+      "lang": "भाषा",
+      "dv": {
+       "g": "प्रोटोटाइप: डिवाइस का आकार",
+       "p": "प्रोटोटाइप",
+       "m": "मोबाइल",
+       "t": "टैबलेट",
+       "d": "डेस्कटॉप",
+       "tip": "सिर्फ़ प्रोटोटाइप — यह पेज दूसरे डिवाइस के आकार में देखें"
+      },
+      "tip": {
+       "dv": "सिर्फ़ प्रोटोटाइप — यह पेज दूसरे डिवाइस के आकार में देखें",
+       "lang": "यह पेज इस भाषा में दिखाता है"
+      }
+     },
+     "ur": {
+      "k": "ہائی فائی ماک اپ · مکمل پروڈکٹ",
+      "h1": "AI استاد، حقیقی سیکھنا",
+      "os": "ایک AI سے چلنے والا لرننگ آپریٹنگ سسٹم",
+      "p": "طالب علم، سرپرست، PlayBoom، استاد اور ادارہ، اور ایڈمن پینل — ہر اسکرین ایک جگہ۔ ہر پروٹوٹائپ موبائل، ٹیبلٹ اور ڈیسک ٹاپ پر چلتا ہے۔",
+      "st": [
+       "موبائل اسکرینیں",
+       "ڈیسک ٹاپ اسکرینیں",
+       "صارفین کی اقسام",
+       "Blueprint کے مطابق"
+      ],
+      "ph": "کلک ہونے والے پروٹوٹائپ · کھولنے کے لیے Play دبائیں",
+      "w0": "ویب سائٹ پریویو — ہر ماک اپ اور پروٹوٹائپ ایک جگہ",
+      "links": [
+       "نیا طالب علم",
+       "کلاس اور Co-Teacher",
+       "خریداری اور منظوری",
+       "Study Hall",
+       "PlayBoom",
+       "بیچ کلاس",
+       "ماک ٹیسٹ اور OMR",
+       "سرپرست ایپ",
+       "استاد ایپ",
+       "ایڈمن پینل",
+       "کیلکولیٹر اور ڈکشنری",
+       "ادارے کا ایڈمن پینل",
+       "Landing Page AI",
+       "پلیٹ فارم آپریشنز",
+       "اکاؤنٹس، معاونت اور قانونی",
+       "مواد کا معیار اور پیسہ",
+       "ترقی",
+       "MindForge",
+       "AI Marketing Hub",
+       "لینڈنگ پیج",
+       "نوٹیفکیشن اور چیٹ",
+       "اوتار اور آواز اسٹوڈیو",
+       "اوتار اور آواز (صارفین)",
+        "قانونی صفحات",
+        "ایڈمن: پلانز اور ماڈیولز",
+        "ایڈمن: قواعد اور سیٹنگز",
+        "ایڈمن: ⁦Nexa Co-Admin⁩"
+      ],
+      "sample": "نمونہ طالب علم: تنویر (SSC · Combo) · نمونہ سرپرست: نسرین",
+      "col": "رنگ",
+      "cd": [
+       "بنیادی",
+       "متن",
+       "XP، اسٹریک",
+       "",
+       "سمجھ گیا",
+       "انتباہ",
+       "پس منظر",
+       ""
+      ],
+      "typ": "ٹائپوگرافی",
+      "ty": [
+       "Hind Siliguri 700 — سرخیاں",
+       "Hind Siliguri 600 — کارڈ کی سرخیاں، بٹن",
+       "Hind Siliguri 400 — بنیادی متن۔ بنگلہ اور انگریزی دونوں ایک ہی فونٹ میں صاف پڑھے جاتے ہیں۔",
+       "Baloo Da 2 — PlayBoom کے لیے"
+      ],
+      "cmp": "کمپوننٹس",
+      "b1": "بنیادی بٹن",
+      "b2": "ثانوی بٹن",
+      "live": "لائیو",
+      "on": "آن",
+      "off": "بند",
+      "pl": "آج کا ⁦1:1⁩ وقت",
+      "pv": "⁦18 / 30⁩ منٹ",
+      "rule": "ڈیزائن کے اصول: Nexa Teacher کے ساتھ ہمیشہ “AI” لکھا ہوتا ہے (AI شفافیت) · ٹچ ٹارگٹ ⁦≥ 44px⁩ · متن کا کنٹراسٹ ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · “سمجھ گیا / نہیں سمجھا” صرف رنگ سے نہیں، الفاظ سے بھی الگ · کسی اسکرین پر اشتہار نہیں؛ بچوں کی کوئی ٹریکنگ نہیں، اور رضامندی کے بغیر کسی کی ٹریکنگ نہیں (اینالیٹکس اور مارکیٹنگ کوکیز صرف ⁦18+⁩ عمر والوں کی رضامندی سے)۔ Free Beta: ہر طالب علم، سرپرست اور ادارے کی اسکرین پر “مسئلہ بتاؤ / رائے دو” · ہر AI جواب کے نیچے “AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔” · کوئی فیچر رکا ہو تو ایرر نہیں، دکھتا ہے “یہ فیچر فی الحال رکا ہوا ہے — جلد واپس آئے گا۔”۔",
+      "lh": "اسکرینوں کی فہرست",
+      "rows": [
+       {
+        "k": "L1 · آن بورڈنگ 1",
+        "v": "خوش آمدید، Nexa ID، عمر، چہرے کی جانچ"
+       },
+       {
+        "k": "L2 · آن بورڈنگ 2",
+        "v": "کورس، نصاب، رضامندی، Free Beta"
+       },
+       {
+        "k": "L3 · ہوم اور پلانز",
+        "v": "ہوم، کیٹلاگ، موازنہ، ادائیگی"
+       },
+       {
+        "k": "L4 · اکاؤنٹ",
+        "v": "والیٹ، نوٹیفکیشن، پروفائل، سیٹنگز"
+       },
+       {
+        "k": "⁦L5 · Nexa Teacher 1:1⁩",
+        "v": "کلاس، مرحلے کی جانچ، ریکارڈنگ کا انتخاب، ETA"
+       },
+       {
+        "k": "L6 · بیچ کلاس",
+        "v": "لائیو، پول، سوالوں کی دیوار، رینک"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "چیٹ، ریکارڈنگ پلیئر، غلطیوں کی کاپی"
+       },
+       {
+        "k": "L8 · ٹیسٹ",
+        "v": "ماک ٹیسٹ، تمام امتحانات، امتحان کا دن، امتحان اور داخلہ ہب"
+       },
+       {
+        "k": "L9 · پیش رفت",
+        "v": "ڈیش بورڈ، Mastery Map، سرٹیفکیٹ"
+       },
+       {
+        "k": "L10 · اسٹڈی ہال اور لیب",
+        "v": "ہال، گروپ، لیب، Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "مدد، حوالگی، حفاظت"
+       },
+       {
+        "k": "L12 · مزید سیکھنا",
+        "v": "وائیوا بورڈ، عملی، Boss، ایونٹس"
+       },
+       {
+        "k": "L13 · نصاب سے آگے",
+        "v": "پڑھنا، سمجھاؤ، پروجیکٹ، تجسس"
+       },
+       {
+        "k": "L14 · دیکھ بھال اور دنیا",
+        "v": "پریشانی، لنکس، کوئی بھی کورس، USD"
+       },
+       {
+        "k": "L15 · مفت اور ترقی",
+        "v": "مفت درجہ، Year Pass، تحائف"
+       },
+       {
+        "k": "⁦G1–G2⁩ · سرپرست",
+        "v": "7 اسکرینیں"
+       },
+       {
+        "k": "⁦P1–P2⁩ · PlayBoom",
+        "v": "6 اسکرینیں"
+       },
+       {
+        "k": "T1 · استاد",
+        "v": "3 موبائل اسکرینیں"
+       },
+       {
+        "k": "⁦D1–D10⁩ · ڈیسک ٹاپ",
+        "v": "طالب علم، استاد، ادارہ، ایڈمن"
+       },
+       {
+        "k": "⁦X1–X27⁩ · پروٹوٹائپ",
+        "v": "Learner صفحے کے نیچے · Play دبائیں"
+       }
+      ],
+      "hint": "ہر حصے پر جانے کے لیے اوپر کا Pages مینو استعمال کریں۔",
+      "lang": "زبان",
+      "dv": {
+       "g": "پروٹوٹائپ: ڈیوائس کا سائز",
+       "p": "پروٹوٹائپ",
+       "m": "موبائل",
+       "t": "ٹیبلٹ",
+       "d": "ڈیسک ٹاپ",
+       "tip": "صرف پروٹوٹائپ — یہ صفحہ کسی اور ڈیوائس کے سائز میں دیکھیں"
+      },
+      "tip": {
+       "dv": "صرف پروٹوٹائپ — یہ صفحہ کسی اور ڈیوائس کے سائز میں دیکھیں",
+       "lang": "یہ صفحہ اس زبان میں دکھاتا ہے"
+      }
+     },
+     "ar": {
+      "k": "نموذج تصميم عالي الدقة · المنتج كاملًا",
+      "h1": "معلّم AI، وتعلّم حقيقي",
+      "os": "نظام تشغيل للتعلّم مدعوم بالذكاء الاصطناعي",
+      "p": "المتعلّم، ووليّ الأمر، وPlayBoom، والمعلّم والمؤسسة، ولوحات الإدارة — كل الشاشات في مكان واحد. يعمل كل نموذج أولي على الجوال والجهاز اللوحي وسطح المكتب.",
+      "st": [
+       "شاشات الجوال",
+       "شاشات سطح المكتب",
+       "أنواع المستخدمين",
+       "وفق Blueprint"
+      ],
+      "ph": "نماذج أولية قابلة للنقر · اضغط Play للفتح",
+      "w0": "معاينة الموقع — كل النماذج والشاشات في مكان واحد",
+      "links": [
+       "متعلّم جديد",
+       "الحصة وCo-Teacher",
+       "الشراء والموافقة",
+       "Study Hall",
+       "PlayBoom",
+       "الحصة الجماعية",
+       "الاختبار التجريبي وOMR",
+       "تطبيق وليّ الأمر",
+       "تطبيق المعلّم",
+       "لوحة الإدارة",
+       "الآلة الحاسبة والقاموس",
+       "لوحة إدارة المؤسسة",
+       "Landing Page AI",
+       "عمليات المنصة",
+       "الحسابات والدعم والقانون",
+       "جودة المحتوى والمال",
+       "النمو",
+       "MindForge",
+       "AI Marketing Hub",
+       "الصفحة الرئيسية للموقع",
+       "الإشعارات والدردشة",
+       "استوديو الأفاتار والصوت",
+       "الأفاتار والصوت (المستخدمون)",
+        "الصفحات القانونية",
+        "المشرف: الخطط والوحدات",
+        "المشرف: القواعد والإعدادات",
+        "المشرف: ⁦Nexa Co-Admin⁩"
+      ],
+      "sample": "متعلّم نموذجي: تنوير (SSC · Combo) · وليّة أمر نموذجية: نسرين",
+      "col": "الألوان",
+      "cd": [
+       "الأساسي",
+       "النص",
+       "XP، السلسلة",
+       "",
+       "فهمت",
+       "تنبيه",
+       "الخلفية",
+       ""
+      ],
+      "typ": "الخطوط",
+      "ty": [
+       "Hind Siliguri 700 — العناوين",
+       "Hind Siliguri 600 — عناوين البطاقات والأزرار",
+       "Hind Siliguri 400 — النص الأساسي. تُقرأ البنغالية والإنجليزية بوضوح بخط واحد.",
+       "Baloo Da 2 — لـ PlayBoom"
+      ],
+      "cmp": "المكوّنات",
+      "b1": "الزر الأساسي",
+      "b2": "الزر الثانوي",
+      "live": "مباشر",
+      "on": "مفعّل",
+      "off": "متوقف",
+      "pl": "وقت ⁦1:1⁩ اليوم",
+      "pv": "⁦18 / 30⁩ دقيقة",
+      "rule": "قواعد التصميم: يحمل Nexa Teacher دائمًا وسم «AI» (شفافية الذكاء الاصطناعي) · أهداف اللمس ⁦≥ 44px⁩ · تباين النص ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · «فهمت / لم أفهم» يختلفان بالكلمات لا باللون فقط · لا إعلانات في أي شاشة؛ ولا تتبّع للأطفال، ولا تتبّع لأحد دون موافقته (ملفات التحليلات والتسويق فقط بموافقة من هم ⁦18+⁩). Free Beta: «أبلِغ عن مشكلة / شارك رأيك» في كل شاشة للمتعلّم ووليّ الأمر والمؤسسة · «قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه.» تحت كل إجابة للذكاء الاصطناعي · الميزة المتوقفة تعرض «هذه الميزة متوقفة مؤقتًا — وستعود قريبًا.» وليس خطأً.",
+      "lh": "فهرس الشاشات",
+      "rows": [
+       {
+        "k": "L1 · التسجيل 1",
+        "v": "الترحيب، Nexa ID، العمر، فحص الوجه"
+       },
+       {
+        "k": "L2 · التسجيل 2",
+        "v": "الدورة، المنهج، الموافقة، Free Beta"
+       },
+       {
+        "k": "L3 · الرئيسية والخطط",
+        "v": "الرئيسية، الكتالوج، المقارنة، الدفع"
+       },
+       {
+        "k": "L4 · الحساب",
+        "v": "المحفظة، الإشعارات، الملف الشخصي، الإعدادات"
+       },
+       {
+        "k": "⁦L5 · Nexa Teacher 1:1⁩",
+        "v": "الحصة، فحص الخطوات، اختيار التسجيل، الوقت المتوقّع"
+       },
+       {
+        "k": "L6 · الحصة الجماعية",
+        "v": "مباشر، استطلاعات، جدار الأسئلة، الترتيب"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "الدردشة، مشغّل التسجيلات، دفتر الأخطاء"
+       },
+       {
+        "k": "L8 · الاختبارات",
+        "v": "اختبار تجريبي، كل الامتحانات، يوم الامتحان، مركز الامتحانات والقبول"
+       },
+       {
+        "k": "L9 · التقدّم",
+        "v": "اللوحة، Mastery Map، الشهادة"
+       },
+       {
+        "k": "L10 · Study Hall والمختبر",
+        "v": "القاعة، المجموعة، المختبر، Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "مساعدة، تسليم، أمان"
+       },
+       {
+        "k": "L12 · تعلّم أكثر",
+        "v": "لجنة شفهية، عملي، Boss، فعاليات"
+       },
+       {
+        "k": "L13 · ما بعد المنهج",
+        "v": "قراءة، اشرح، مشاريع، فضول"
+       },
+       {
+        "k": "L14 · الرعاية والعالم",
+        "v": "الضيق، الروابط، أي دورة، USD"
+       },
+       {
+        "k": "L15 · المجاني والنمو",
+        "v": "الخطة المجانية، Year Pass، الهدايا"
+       },
+       {
+        "k": "⁦G1–G2⁩ · وليّ الأمر",
+        "v": "7 شاشات"
+       },
+       {
+        "k": "⁦P1–P2⁩ · PlayBoom",
+        "v": "6 شاشات"
+       },
+       {
+        "k": "T1 · المعلّم",
+        "v": "3 شاشات جوال"
+       },
+       {
+        "k": "⁦D1–D10⁩ · سطح المكتب",
+        "v": "المتعلّم، المعلّم، المؤسسة، الإدارة"
+       },
+       {
+        "k": "⁦X1–X27⁩ · النماذج الأولية",
+        "v": "أسفل صفحة Learner · اضغط Play"
+       }
+      ],
+      "hint": "استخدم قائمة Pages في الأعلى للانتقال إلى كل قسم.",
+      "lang": "اللغة",
+      "dv": {
+       "g": "نموذج أولي: حجم الجهاز",
+       "p": "نموذج أولي",
+       "m": "الجوال",
+       "t": "الجهاز اللوحي",
+       "d": "سطح المكتب",
+       "tip": "للنموذج الأولي فقط — اعرض هذه الصفحة بحجم جهاز آخر"
+      },
+      "tip": {
+       "dv": "للنموذج الأولي فقط — اعرض هذه الصفحة بحجم جهاز آخر",
+       "lang": "يعرض هذه الصفحة بهذه اللغة"
+      }
+     },
+     "fr": {
+      "k": "Maquette haute fidélité · Le produit complet",
+      "h1": "Enseignant IA, vrai apprentissage",
+      "os": "Un système d’exploitation de l’apprentissage propulsé par l’IA",
+      "p": "Élève, parent, PlayBoom, enseignant et établissement, et panneaux d’administration — tous les écrans au même endroit. Chaque prototype fonctionne sur mobile, tablette et ordinateur.",
+      "st": [
+       "écrans mobiles",
+       "écrans ordinateur",
+       "types d’utilisateurs",
+       "Selon le Blueprint"
+      ],
+      "ph": "Prototypes cliquables · appuyez sur Play pour ouvrir",
+      "w0": "Aperçu du site — toutes les maquettes et tous les prototypes au même endroit",
+      "links": [
+       "Nouvel élève",
+       "Cours et Co-Teacher",
+       "Achat et validation",
+       "Study Hall",
+       "PlayBoom",
+       "Cours collectif",
+       "Test blanc et OMR",
+       "Appli parent",
+       "Appli enseignant",
+       "Panneau d’administration",
+       "Calculatrice et dictionnaire",
+       "Panneau d’administration de l’établissement",
+       "Landing Page AI",
+       "Exploitation de la plateforme",
+       "Comptes, support et juridique",
+       "Qualité du contenu et argent",
+       "Croissance",
+       "MindForge",
+       "AI Marketing Hub",
+       "Page d’accueil",
+       "Notifications et chat",
+       "Studio avatar et voix",
+       "Avatar et voix (utilisateurs)",
+        "Pages juridiques",
+        "Admin : formules et modules",
+        "Admin : règles et réglages",
+        "Admin : Nexa Co-Admin"
+      ],
+      "sample": "Élève d’exemple : Tanvir (SSC · Combo) · Parent d’exemple : Nasrin",
+      "col": "Couleurs",
+      "cd": [
+       "principale",
+       "texte",
+       "XP, série",
+       "",
+       "compris",
+       "alerte",
+       "fond",
+       ""
+      ],
+      "typ": "Typographie",
+      "ty": [
+       "Hind Siliguri 700 — titres",
+       "Hind Siliguri 600 — titres de cartes, boutons",
+       "Hind Siliguri 400 — texte courant. Le bengali et l’anglais se lisent clairement dans une seule police.",
+       "Baloo Da 2 — pour PlayBoom"
+      ],
+      "cmp": "Composants",
+      "b1": "Bouton principal",
+      "b2": "Bouton secondaire",
+      "live": "En direct",
+      "on": "Activé",
+      "off": "Désactivé",
+      "pl": "Temps de 1:1 du jour",
+      "pv": "18 / 30 min",
+      "rule": "Règles de design : Nexa Teacher porte toujours la mention « IA » (transparence de l’IA) · cibles tactiles ≥ 44 px · contraste du texte ≥ 4,5:1 (WCAG 2.2 AA) · « compris / pas compris » se distinguent par les mots, pas seulement par la couleur · aucune publicité sur aucun écran ; aucun suivi des enfants, et aucun suivi de quiconque sans consentement (cookies d’analyse et de marketing uniquement avec le consentement des 18 ans et plus). Free Beta : « Signaler un problème / Donner ton avis » sur chaque écran élève, parent et établissement · « L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le. » sous chaque réponse de l’IA · une fonction en pause affiche « Cette fonction est en pause pour le moment — elle revient bientôt. », jamais une erreur.",
+      "lh": "Index des écrans",
+      "rows": [
+       {
+        "k": "L1 · Inscription 1",
+        "v": "Accueil, Nexa ID, âge, vérification du visage"
+       },
+       {
+        "k": "L2 · Inscription 2",
+        "v": "Cours, programme, consentement, Free Beta"
+       },
+       {
+        "k": "L3 · Accueil et formules",
+        "v": "Accueil, catalogue, comparer, paiement"
+       },
+       {
+        "k": "L4 · Compte",
+        "v": "Portefeuille, notifications, profil, réglages"
+       },
+       {
+        "k": "L5 · Nexa Teacher 1:1",
+        "v": "Cours, étapes, choix d’enregistrement, délai"
+       },
+       {
+        "k": "L6 · Cours collectif",
+        "v": "Direct, sondages, mur de questions, rang"
+       },
+       {
+        "k": "L7 · Nexa Co-Teacher",
+        "v": "Chat, lecteur d’enregistrements, cahier d’erreurs"
+       },
+       {
+        "k": "L8 · Tests",
+        "v": "Test blanc, Tous les examens, jour d’examen, Hub examens & admissions"
+       },
+       {
+        "k": "L9 · Progrès",
+        "v": "Tableau de bord, Mastery Map, certificat"
+       },
+       {
+        "k": "L10 · Study Hall et labo",
+        "v": "Salle, groupe, labo, Classroom Builder"
+       },
+       {
+        "k": "L11 · Nexa Study Hall Moderator",
+        "v": "Aide, relais, sécurité"
+       },
+       {
+        "k": "L12 · Apprendre plus",
+        "v": "Jury d’oral, pratique, Boss, événements"
+       },
+       {
+        "k": "L13 · Au-delà du programme",
+        "v": "Lecture, explique-le, projets, curiosité"
+       },
+       {
+        "k": "L14 · Bien-être et international",
+        "v": "Détresse, liens, tout cours, USD"
+       },
+       {
+        "k": "L15 · Gratuit et croissance",
+        "v": "Offre gratuite, Year Pass, cadeaux"
+       },
+       {
+        "k": "G1–G2 · Parent",
+        "v": "7 écrans"
+       },
+       {
+        "k": "P1–P2 · PlayBoom",
+        "v": "6 écrans"
+       },
+       {
+        "k": "T1 · Enseignant",
+        "v": "3 écrans mobiles"
+       },
+       {
+        "k": "D1–D10 · Ordinateur",
+        "v": "Élève, enseignant, établissement, administration"
+       },
+       {
+        "k": "X1–X27 · Prototypes",
+        "v": "Sous la page Learner · appuyez sur Play"
+       }
+      ],
+      "hint": "Utilisez le menu Pages ci-dessus pour aller à chaque partie.",
+      "lang": "Langue",
+      "dv": {
+       "g": "Prototype : taille de l’appareil",
+       "p": "Prototype",
+       "m": "Mobile",
+       "t": "Tablette",
+       "d": "Ordinateur",
+       "tip": "Prototype uniquement — afficher cette page sur une autre taille d’appareil"
+      },
+      "tip": {
+       "dv": "Prototype uniquement — afficher cette page sur une autre taille d’appareil",
+       "lang": "Affiche cette page dans cette langue"
+      }
+     }
+    };
+  }
+  // Tooltips: hover (mouse), tap (touch, 3.5 s) or keyboard focus on anything with data-tip shows a short explanation in one floating bubble
+  ttVals() {
+    var self = this, tp = (this.state || {})._tt;
+    var find = function (e) { var el = e.target && e.target.closest ? e.target.closest('[data-tip]') : null; return el && el.getAttribute('data-tip') && e.currentTarget.contains(el) ? el : null; };
+    var hide = function () { clearTimeout(self._ttT); clearInterval(self._ttW); if (self._ttEl || (self.state && self.state._tt)) { self._ttEl = null; self.setState({ _tt: null }); } };
+    var show = function (e, el, how) {
+      var root = e.currentTarget, rr = root.getBoundingClientRect(), r = el.getBoundingClientRect(), w = root.offsetWidth || rr.width, sc = rr.width / w || 1;
+      var top = (r.top - rr.top) / sc, below = top < 70 || r.top < 70, x = (r.left + r.width / 2 - rr.left) / sc, m = Math.min(132, w / 2);
+      x = Math.round(Math.max(m, Math.min(w - m, x)));
+      var y = Math.round(below ? (r.bottom - rr.top) / sc : top), t = el.getAttribute('data-tip'), cur = self.state && self.state._tt;
+      self._ttEl = el; clearTimeout(self._ttT);
+      if (!cur || cur.t !== t || cur.x !== x || cur.y !== y || cur.how !== how) self.setState({ _tt: { t: t, x: x, y: y, below: below, how: how } });
+      if (how === 'tap') self._ttT = setTimeout(function () { if (self._ttEl === el) hide(); }, 3500);
+      clearInterval(self._ttW); self._ttW = setInterval(function () { if (self._ttEl !== el || !root.isConnected) { clearInterval(self._ttW); return; } if (!el.isConnected || el.getAttribute('data-tip') !== t) hide(); }, 250);
+    };
+    return {
+      ttOn: !!tp, ttText: tp ? tp.t : '', ttX: tp ? tp.x : 0, ttY: tp ? tp.y : 0, ttCls: tp && tp.below ? 'ttb below' : 'ttb',
+      ttOver: function (e) { var el = find(e); if (!el) { if (e.pointerType !== 'touch' && self.state && self.state._tt && self.state._tt.how === 'hover') hide(); return; } if (el !== self._ttEl || !(self.state && self.state._tt)) show(e, el, e.pointerType === 'touch' ? 'tap' : 'hover'); },
+      ttOut: function (e) { if (e.pointerType === 'touch' || !self._ttEl) return; var to = e.relatedTarget; if ((!to || !self._ttEl.contains(to)) && self.state && self.state._tt && self.state._tt.how === 'hover') hide(); },
+      ttFocus: function (e) { var el = find(e); if (el && el !== self._ttEl && el.matches && el.matches(':focus-visible')) show(e, el, 'focus'); },
+      ttBlur: function () { if (self.state && self.state._tt && self.state._tt.how === 'focus') hide(); },
+      ttHide: hide
+    };
+  }
+  renderVals() { return Object.assign(this.renderVals0(), this.ttVals()); }
+  // fix11 responsive spec: prop `dev` if given; else auto from the real window ONLY when the global __NT_AUTO_DEV === true (read via globalThis) (Netlify export); else desktop (Main = desktop-first)
+  devInit() { var p = (this.props || {}).dev; if (p === 'm' || p === 't' || p === 'd') return p; try { if (typeof globalThis !== 'undefined' && globalThis.__NT_AUTO_DEV === true) { var w = globalThis.innerWidth || 1440; return w < 600 ? 'm' : (w < 1024 ? 't' : 'd'); } } catch (e) { } return 'd'; }
+  renderVals0() {
+    var self = this, s = this.state || {}, L6 = ['bn', 'en', 'hi', 'ur', 'ar', 'fr'];
+    var lang = L6.indexOf(s.lang) >= 0 ? s.lang : 'bn', t = this.uiText()[lang], isR = lang === 'ur' || lang === 'ar';
+    var M = function (x) { return isR ? '\u2066' + x + '\u2069' : String(x); };
+    var DV = s.dev === 'm' || s.dev === 't' || s.dev === 'd' ? s.dev : this.devInit();
+    var FONT = { hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
+    var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
+    var STEMS = ["X01-Prototype-Flow1", "X02-Prototype-Flow2", "X03-Prototype-Flow3", "X04-Prototype-Flow4", "X05-Prototype-Flow5", "X06-Prototype-Batch", "X07-Prototype-Test", "X08-Prototype-Guardian", "X09-Prototype-Teacher", "X10-Prototype-Admin", "X11-Prototype-Tools", "X12-Prototype-Institute", "X13-Prototype-LandingAI", "X14-Prototype-Ops", "X15-Prototype-Accounts", "X16-Prototype-Quality", "X17-Prototype-Growth", "X18-Prototype-MindForge", "X19-Prototype-MarketingHub", "X20-Prototype-Landing", "X21-Prototype-Comms", "X22-Prototype-AvatarVoice", "X23-Prototype-AvatarVoice-User", "X24-Prototype-Legal", "X25-Prototype-AdminPlans", "X26-Prototype-AdminRules", "X27-Prototype-CoAdmin"], SW = [["#3B34C9", "Nexa Indigo", "#3B34C9"], ["#141A33", "Ink", "#141A33"], ["#F2A93B", "Saffron", "#F2A93B"], ["#0B6E6A", "Co-Teacher Teal", "#0B6E6A"], ["#17804F", "Success", "#17804F"], ["#C2410C", "Alert", "#C2410C"], ["#F5F6FA", "Ground", "#F5F6FA"], ["#FFC93C", "PlayBoom Sun", "#FFC93C"]], NUM = ['75', '10', '5', 'v32.5'];
+    return {
+      t: t, lang: lang, dir: isR ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      rootCls: 'mn dv-' + DV,
+      langOpts: L6.map(function (c) { return { code: c, name: NAMES[c], on: lang === c, pick: function () { self.setState({ lang: c }); } }; }),
+      dvOpts: ['m', 't', 'd'].map(function (k) { return { k: k, l: t.dv[k], on: DV === k, icon: ({ m: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2', t: 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM11 18h2', d: 'M3 4h18v12H3zM8 20h8M12 16v4' })[k], pick: function () { self.setState({ dev: k }); } }; }),
+      stats: NUM.map(function (n, i) { return { n: M(n), l: t.st[i] }; }),
+      links: STEMS.map(function (st, i) { return { href: st + '.dc.html', id: M('X' + (i + 1)), l: t.links[i] }; }),
+      ty: { a: t.ty[0], b: t.ty[1], c: t.ty[2], d: t.ty[3] },
+      swatches: SW.map(function (x, i) { return { c: x[0], n: x[1], hex: x[2], d: t.cd[i] ? ' · ' + t.cd[i] : '' }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

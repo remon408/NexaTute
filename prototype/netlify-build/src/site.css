@@ -1,0 +1,45 @@
+/* NexaTute mockups — static export shell styles (prefix dcx-) */
+html.dcx-shell, html.dcx-shell body { background: #DCDFE7; }
+html.dcx-shell body { margin: 0; font-family: 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #141A33; }
+.dcx-stage { box-sizing: border-box; width: max-content; min-width: 100%; padding: 18px 24px 76px; }
+.dcx-frame { position: relative; margin: 0 auto; width: var(--w); height: var(--h); border-radius: var(--r, 0); overflow: hidden; background: #fff;
+  box-shadow: 0 0 0 1px rgba(20, 26, 51, .06), 0 28px 64px -28px rgba(20, 26, 51, .5); }
+.dcx-frame iframe { display: block; border: 0; width: 100%; height: 100%; background: transparent; }
+.dcx-fixed .dcx-frame { border-radius: 6px; }
+.dcx-cap { margin: 0 auto 10px; width: var(--w); max-width: 100%; font-size: 14px; line-height: 1.4; font-weight: 600; color: #434A66; text-align: center; }
+.dcx-fixed .dcx-cap { text-align: start; }
+@media (max-width: 437px) {
+  .dcx-phone .dcx-stage { padding: 0 0 64px; }
+  .dcx-phone .dcx-cap { display: none; }
+  .dcx-phone .dcx-frame { border-radius: 0; box-shadow: none; }
+}
+/* "All pages" link: always starts folded as a 24 px tab (44 px hit area); the label opens on hover / keyboard focus.
+   dcx-all.js moves it so it never sits on the page's own controls or fixed / sticky bars. */
+a.dcx-all, a.dcx-all:visited, a.dcx-all:hover {
+  position: fixed; left: 0; right: auto; bottom: 12px; top: auto; z-index: 2147483600; box-sizing: border-box;
+  display: flex; flex-direction: row; align-items: center; min-width: 44px; height: 44px; margin: 0; padding: 0;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #fff !important;
+  font: 600 13px/1 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: 0;
+  text-decoration: none !important; white-space: nowrap; direction: ltr; unicode-bidi: isolate; transform: none;
+  width: auto; overflow: visible; outline: none; -webkit-tap-highlight-color: transparent;
+}
+a.dcx-all .dcx-tab { display: inline-flex; flex-direction: row; align-items: center; height: 44px; overflow: hidden;
+  border-radius: 0 12px 12px 0; background: rgba(20, 26, 51, .84); box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .4); opacity: .9; }
+a.dcx-all .dcx-arr { display: inline-flex; flex: none; width: 24px; height: 44px; align-items: center; justify-content: center; font-size: 14px; }
+a.dcx-all .dcx-lbl { display: inline-block; overflow: hidden; max-width: 0; padding: 0; line-height: 44px; transition: max-width .2s ease, padding .2s ease; }
+a.dcx-all:hover .dcx-tab, a.dcx-all:focus-visible .dcx-tab { opacity: 1; background: #141A33; }
+a.dcx-all:hover .dcx-lbl, a.dcx-all:focus-visible .dcx-lbl { max-width: 240px; padding: 0 14px 0 0; }
+a.dcx-all:focus-visible .dcx-tab { outline: 3px solid #F2A93B; outline-offset: -3px; }
+/* attached to the right edge (RTL boards, or when the left edge is taken): mirror it */
+a.dcx-all.dcx-r { flex-direction: row-reverse; }
+a.dcx-all.dcx-r .dcx-tab { flex-direction: row-reverse; border-radius: 12px 0 0 12px; }
+a.dcx-all.dcx-r:hover .dcx-lbl, a.dcx-all.dcx-r:focus-visible .dcx-lbl { padding: 0 0 0 14px; }
+a.dcx-all.dcx-rtl .dcx-arr { transform: scaleX(-1); }
+/* until dcx-all.js has found a free spot (a few ms after load) the tab is invisible and click-through */
+a.dcx-all:not(.dcx-ready) { opacity: 0; pointer-events: none; }
+a.dcx-all:not(.dcx-ready):focus-visible { opacity: 1; pointer-events: auto; }
+/* no free spot on screen (e.g. a full-screen sheet is open): invisible, but still reachable with the keyboard */
+a.dcx-all.dcx-off { opacity: 0; pointer-events: none; }
+a.dcx-all.dcx-off:focus-visible { opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) { a.dcx-all .dcx-lbl { transition: none; } }
+@media print { a.dcx-all { display: none !important; } }

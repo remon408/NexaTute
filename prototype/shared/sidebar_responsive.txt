@@ -1,0 +1,160 @@
+# Responsive admin sidebar — fix12 (admin1, 27 Oct 2026) — v2. Copy BYTE-FOR-BYTE into X13, X16, X17, X19, X22 (admin1 applies it to X14, X15, X21; X10 keeps its own approved sidebar layout with the same behaviour and uses the same strings).
+# CHANGES v1 -> v2 (R11-admin-5, -7): [CSS] gets one more line at its end (.ng-cb 44 px wide on tablet/phone); uiMenu S-sets get foot (footer line), nav (nav aria-label) and lang(n) (language-button tooltip, X21 wording) in 6 languages; menuVals returns mn.foot, mn.nav and mn.langs (= appLangs + tip).
+#   Markup inside <aside>: aria-label="{{ t.menu }}" -> "{{ mn.nav }}"; {{ t.foot }} -> {{ mn.foot }}; the language sc-for reads {{ mn.langs }} and every button carries data-tip="{{ x.tip }}" (see [ASIDE-V2]). The page keeps its own t.foot / t.menu keys (unused by the sidebar now).
+# EASIEST: a page already on v1 -> sys.path.insert(0, SP + "/s2/fix12/admin1/tools"); import sidebar12; sidebar12.upgrade(P)   (P has .s, the page source). A page without the sidebar block -> sidebar12.apply(P).
+# Requirement: renderVals0() must return appLangs (all 8 pages do).
+# Apply by hand exactly as v1 (SP/s2/fix11/shared/sidebar_responsive.txt steps 1–5, kept below) with the v2 [MENUVALS] and [UIMENU] and the [ASIDE-V2] replacements:
+#  1. CSS: insert block [CSS] right BEFORE the line "@media (prefers-reduced-motion:reduce){.sbm,.sbm-rb svg,.ng-cv{transition:none}}" (the old sidebar rules stay unchanged above it).
+#  2. Root div: "<div dir=\"{{ dir }}\" lang=..." becomes "<div class=\"{{ mn.dvCls }}\" dir=\"{{ dir }}\" lang=..."; insert block [SWITCH] + newline right before "<aside class=\"sbm {{ mn.mod }}\">".
+#  3. Aside: the Menu button aria-controls="sbm-nav" -> "sbm-dr"; wrap <nav class="nav" id="sbm-nav"> … the sbm-ft div in <div class="sbm-dr" id="sbm-dr"> … </div>; then block [SCRIM] as the last child of <aside>; then the [ASIDE-V2] replacements.
+#  4. Logic: replace the whole menuVals(r) method with [DEVOF] + [MENUVALS]; replace the uiMenu(L) method (incl. its "// Sidebar menu strings" comment line) with [UIMENU].
+#  5. Page content: add .dv-m copies of your page's own @media (max-width:560px / 760px) content rules so the 390 frame works inside a wide canvas.
+# State keys: dev (m|t|d, default from devOf), mnWide (tablet: rail expanded), mnRail (desktop rail), mnMob (phone drawer open).
+
+===== [CSS] BEGIN =====
+/* fix11 (owner 26 Oct 2026): one responsive page — the root carries dv-m / dv-t / dv-d (mobile ≤ 599 · tablet 600–1023 · desktop ≥ 1024); every rule keys off the class, so the prototype switch works in a fixed-size canvas board too */
+.dvf{box-sizing:border-box;width:100%;margin:52px auto 0}
+.dvsw-strip{display:none}
+.dvf.dv-d{max-width:1440px}
+.dvf.dv-t{width:min(834px,100%);box-shadow:0 0 0 1px #C9CEDB,0 0 0 10px #E6E8EF}
+.dvf.dv-m{width:min(390px,100%);box-shadow:0 0 0 1px #C9CEDB,0 0 0 10px #E6E8EF}
+.dvsw{position:fixed;top:8px;right:8px;z-index:60;display:flex;align-items:center;gap:2px;padding:3px;border-radius:12px;background:#141A33;color:#fff;box-shadow:0 4px 14px rgba(20,26,51,.28);font-size:12px;line-height:1.3}
+.dvsw-b{padding:0 8px;font-size:11px;font-weight:700;color:#FFC93C;white-space:nowrap}
+.dvsw button{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:32px;padding:0 9px;border:0;border-radius:9px;background:none;color:#C9CDF0;font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+.dvsw button:hover{color:#fff;background:rgba(255,255,255,.08)}
+.dvsw button[aria-pressed="true"]{background:#3B34C9;color:#fff}
+.dvsw button:focus-visible{outline:2px solid #FFC93C;outline-offset:1px}
+.dvsw svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media (max-width:1023px){.dvsw button{min-height:44px;min-width:44px}}
+@media (max-width:599px){.dvsw .dvsw-l{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.dvsw-b{display:none}}
+/* sidebar drawer wrapper: invisible on desktop (its children stay in the sidebar column) */
+.sbm-dr{display:contents}
+.sbm-scrim{display:none}
+/* tablet: an icon rail by default — the arrow button expands it (the page stays beside it) */
+.dv-t .sbm{flex:0 0 240px;padding:24px 16px;gap:22px}
+.dv-t .sbm-rb{display:inline-flex}
+.dv-t .sbm-mb{display:none}
+.dv-t .sbm:not(.open) .nav,.dv-t .sbm .nav{display:flex}
+.dv-t .sbm:not(.open) .sbm-ft,.dv-t .sbm .sbm-ft{display:flex}
+.dv-t .sbm.rail{flex:0 0 72px;padding:20px 12px;gap:16px}
+.dv-t .sbm.rail .sbm-top{flex-direction:column;gap:10px}
+.dv-t .sbm.rail .sbm-brand{flex:none}
+.dv-t .sbm.rail .sbm-bt,.dv-t .sbm.rail .ng-cv,.dv-t .sbm.rail .ng-cb,.dv-t .sbm.rail .ng-sub,.dv-t .sbm.rail .sbm-lgw{display:none}
+.dv-t .sbm.rail .sbm-rb svg{transform:rotate(180deg)}
+[dir=rtl].dv-t .sbm.rail .sbm-rb svg{transform:none}
+.dv-t .sbm.rail .ng-l{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.dv-t .sbm.rail .ng-h,.dv-t .sbm.rail .ng-it{justify-content:center;padding:0;min-height:44px}
+.dv-t .sbm.rail .ng-hi{display:block}
+.dv-t .sbm.rail .ng+.ng{border-top:1px solid rgba(255,255,255,.12);padding-top:10px}
+.dv-t .sbm.rail .sbm-lgi{display:inline-flex;align-self:center}
+.dv-t .ng-h{min-height:44px}
+/* mobile: a top bar with the Menu (hamburger) button; the menu opens as a drawer over the page with a dimmed backdrop */
+.dv-m .sbm{flex:1 1 100%;position:relative;z-index:30;padding:12px 16px;gap:14px}
+.dv-m .sbm-rb{display:none}
+.dv-m .sbm-mb{display:inline-flex}
+.dv-m .sbm .sbm-dr{display:none}
+.dv-m .sbm.open .sbm-dr{display:flex;flex-direction:column;gap:14px;position:absolute;top:100%;inset-inline-start:0;width:min(320px,88%);max-height:min(82vh,780px);overflow-y:auto;box-sizing:border-box;padding:12px 16px 20px;background:#141A33;border-end-end-radius:16px;box-shadow:0 18px 40px rgba(20,26,51,.35);z-index:32}
+[dir=rtl].dv-m .sbm.open .sbm-dr{border-end-end-radius:0;border-end-start-radius:16px}
+.dv-m .sbm.open .nav,.dv-m .sbm.open .sbm-ft{display:flex}
+.dv-m .sbm.open .sbm-scrim{display:block;position:absolute;top:100%;left:0;right:0;height:100vh;border:0;margin:0;padding:0;background:rgba(20,26,51,.45);cursor:pointer;z-index:31}
+.dv-m .ng-h,.dv-m .ng-si{min-height:44px}
+/* fix12 (R11-admin-7): the sub-list arrow next to the current page is 44 px wide on tablet and phone */
+.dv-t .ng-cb,.dv-m .ng-cb{min-width:44px}
+===== [CSS] END =====
+
+===== [SWITCH] BEGIN =====
+<div class="dvsw" role="group" aria-label="{{ mn.dvLbl }}" data-tip="{{ mn.dvTip }}"><span class="dvsw-b">{{ mn.dvBadge }}</span><button aria-pressed="{{ mn.dvM.on }}" aria-label="{{ mn.dvM.lbl }}" onClick="{{ mn.dvM.pick }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span class="dvsw-l">{{ mn.dvM.lbl }}</span></button><button aria-pressed="{{ mn.dvT.on }}" aria-label="{{ mn.dvT.lbl }}" onClick="{{ mn.dvT.pick }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span class="dvsw-l">{{ mn.dvT.lbl }}</span></button><button aria-pressed="{{ mn.dvD.on }}" aria-label="{{ mn.dvD.lbl }}" onClick="{{ mn.dvD.pick }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/><path d="M8 20.5h8M12 16.5v4"/></svg><span class="dvsw-l">{{ mn.dvD.lbl }}</span></button></div>
+===== [SWITCH] END =====
+
+===== [SCRIM] BEGIN =====
+  <button class="sbm-scrim" aria-label="{{ mn.closeLbl }}" tabindex="-1" onClick="{{ mn.mobToggle }}"></button>
+===== [SCRIM] END =====
+
+===== [ASIDE-V2] BEGIN =====
+NAV  old: <nav class="nav" id="sbm-nav" aria-label="{{ t.menu }}">
+NAV  new: <nav class="nav" id="sbm-nav" aria-label="{{ mn.nav }}">
+LANG old: <div class="lg"><sc-for list="{{ appLangs }}" as="x" hint-placeholder-count="6"><button class="{{ x.cls }}" aria-pressed="{{ x.on }}" lang="{{ x.code }}" onClick="{{ x.pick }}">{{ x.name }}</button></sc-for></div>
+LANG old (X21): <div class="lg"><sc-for list="{{ appLangs }}" as="x" hint-placeholder-count="6"><button class="{{ x.cls }}" aria-pressed="{{ x.on }}" lang="{{ x.code }}" onClick="{{ x.pick }}" data-tip="{{ x.tip }}">{{ x.name }}</button></sc-for></div>
+LANG new: <div class="lg"><sc-for list="{{ mn.langs }}" as="x" hint-placeholder-count="6"><button class="{{ x.cls }}" aria-pressed="{{ x.on }}" lang="{{ x.code }}" onClick="{{ x.pick }}" data-tip="{{ x.tip }}">{{ x.name }}</button></sc-for></div>
+FOOT old: <p style="margin:6px 0 0;font-size:12px;color:#9AA1C5;line-height:1.5">{{ t.foot }}</p>
+FOOT new: <p style="margin:6px 0 0;font-size:12px;color:#9AA1C5;line-height:1.5">{{ mn.foot }}</p>
+===== [ASIDE-V2] END =====
+
+===== [DEVOF] BEGIN =====
+  // fix11 (owner 26 Oct 2026): device of the one responsive page — prop "dev" if given; real-width auto start only when window.__NT_AUTO_DEV === true (Netlify export); else this board's primary device (admin: desktop)
+  devOf(s) {
+    var d = (s && s.dev) || (this.props && this.props.dev);
+    if (d === 'm' || d === 't' || d === 'd') return d;
+    if (typeof window !== 'undefined' && window.__NT_AUTO_DEV === true) { var w = window.innerWidth || 1440; return w <= 599 ? 'm' : (w <= 1023 ? 't' : 'd'); }
+    return 'd';
+  }
+===== [DEVOF] END =====
+
+===== [MENUVALS] BEGIN =====
+  menuVals(r) {
+    var self = this, s = this.st(), t = r.t, T = t.mn, c = this.menuCfg(r), key = this.menuKey(s), dev = this.devOf(s);
+    // fix11: tablet = icon rail unless expanded (mnWide); phone = top bar + drawer (never a rail); desktop = as before (mnRail)
+    var shut = s.mnShut || {}, rail = dev === 't' ? !s.mnWide : (dev === 'm' ? false : !!s.mnRail), mob = !!s.mnMob;
+    var isOpen = function (g) { return !(g in shut) || (g !== 'g1' && shut[g] !== key); };
+    var flip = function (g) { return function () { var o = Object.assign({}, shut); if (isOpen(g)) o[g] = key; else delete o[g]; self.setState({ mnShut: o }); }; };
+    var tf = function (b) { return b ? 'true' : 'false'; };
+    // one tooltip set for every admin page (R10-admin-7): "Open …" for the other pages, "You are here" for this one; the label itself in the icon rail
+    var tips = {}; Object.keys(c.lbl).forEach(function (k) { tips[k] = rail ? c.lbl[k] : (k === c.own ? T.here(c.lbl[k]) : (T.tips[k] || '')); });
+    var grp = function (g, lbl) { var o = isOpen(g); return { lbl: lbl, open: tf(o), show: o, tip: rail ? lbl : '', toggle: flip(g) }; };
+    var so = isOpen('sub'), subLbl = T.subs(c.lbl[c.own]);
+    var subs = (c.subs || []).map(function (x) {
+      var on = !!(x.on === true || x.cls === 'on' || x.cls === 'on2'), has = !!(x.hasBadge || x.hasN);
+      return { name: x.name, cls: on ? 'ng-si on' : 'ng-si', cur: tf(on), tip: x.tip || '', hasBadge: has, badge: has ? String(x.hasBadge ? x.badge : x.n) : '', bbg: x.bbg || x.bc || '#C2410C',
+        pick: function () { x.pick(); self.setState({ mnMob: false }); } };
+    });
+    var dvB = function (d) { return { on: tf(dev === d), lbl: T.dv[d], pick: function () { self.setState({ dev: d, mnMob: false }); } }; };
+    return { mn: {
+      mod: (rail ? 'rail' : '') + (rail && mob ? ' ' : '') + (mob ? 'open' : ''), rail: rail, wide: tf(!rail), railLbl: rail ? T.exp : T.col,
+      railToggle: function () { if (dev === 't') self.setState({ mnWide: rail }); else self.setState({ mnRail: !rail }); },
+      mob: mob, noMob: !mob, mobOpen: tf(mob), mobLbl: T.menu, mobToggle: function () { self.setState({ mnMob: !mob }); }, closeLbl: T.close,
+      g1: grp('g1', c.lbl.x10), g2: grp('g2', T.g2), tips: tips,
+      sub: { open: tf(so), show: so, lbl: subLbl, tip: subLbl, toggle: flip('sub') }, subs: subs,
+      dev: dev, dvCls: 'dvf dv-' + dev, dvLbl: T.dv_lbl, dvTip: T.dv_tip, dvBadge: T.dv_badge, dvM: dvB('m'), dvT: dvB('t'), dvD: dvB('d'),
+      lgTip: t.l_admin + ': ' + t['langName'],   // bracket form: X15's key scanner only reads lower-case keys
+      // fix12 (R11-admin-5): the same footer line, nav label and language-button tooltips on every admin page
+      foot: T.foot, nav: T.nav, langs: (r.appLangs || []).map(function (x) { return Object.assign({}, x, { tip: T.lang(x.name) }); }) } };
+  }
+===== [MENUVALS] END =====
+
+===== [UIMENU] BEGIN =====
+  // Sidebar menu strings, merged into each panel language as t.mn (group and page names stay the canonical sidebar labels); fix11: page tooltips, device switch, drawer close; fix12 (R11-admin-5): one footer line, nav label and language-button tooltip for every admin page
+  uiMenu(L) {
+    var M = function (x) { return '⁦' + x + '⁩'; }, S = {
+      bn: { foot: 'সব পরিবর্তন লগ হয় · লগ-ইন 2-ধাপে', nav: 'অ্যাডমিন মেনু', lang: function (n) { return 'প্যানেল ' + n + ' ভাষায় দেখুন'; },
+        g2: 'অ্যাডমিন পেজ', col: 'মেনু ছোট করুন', exp: 'মেনু বড় করুন', menu: 'মেনু', subs: function (n) { return n + '-এর অংশগুলো'; }, close: 'মেনু বন্ধ করুন',
+        here: function (n) { return 'আপনি এখানে আছেন: ' + n; },
+        tips: { x10: 'প্ল্যাটফর্ম অ্যাডমিন খুলুন: সারাংশ, অ্যাকাউন্ট ও হিসাব, অ্যাক্সেস ও নিরাপত্তা।', x13: 'Landing Page AI খুলুন।', x14: 'প্ল্যাটফর্ম অপারেশন খুলুন: মডেল, API সীমা, ব্যাকআপ, ইনসিডেন্ট।', x15: 'অ্যাকাউন্ট, সাপোর্ট ও আইন খুলুন।', x16: 'কনটেন্টের মান ও টাকা খুলুন: রিফান্ড, দাম, পেআউট।', x17: 'প্রবৃদ্ধি খুলুন।', x19: 'AI Marketing Hub খুলুন।', x21: 'নোটিফিকেশন ও চ্যাট খুলুন: বেল, push, স্টাফ চ্যাট ও অনুমোদন।', x22: 'অ্যাভাটার ও কণ্ঠ স্টুডিও খুলুন।' },
+        dv: { m: 'মোবাইল', t: 'ট্যাব', d: 'ডেস্কটপ' }, dv_lbl: 'ডিভাইসের মাপ (প্রোটোটাইপ)', dv_badge: 'প্রোটোটাইপ', dv_tip: 'শুধু প্রোটোটাইপ — অন্য ডিভাইসের মাপে এই পেজ দেখুন' },
+      en: { foot: 'Every change is logged · 2-step login', nav: 'Admin menu', lang: function (n) { return 'Show the panel in ' + n; },
+        g2: 'Admin pages', col: 'Collapse menu', exp: 'Expand menu', menu: 'Menu', subs: function (n) { return 'Sections of ' + n; }, close: 'Close the menu',
+        here: function (n) { return 'You are here: ' + n; },
+        tips: { x10: 'Open Platform admin: overview, accounts & finance, access and security.', x13: 'Open Landing Page AI.', x14: 'Open Platform operations: models, API caps, backups, incidents.', x15: 'Open Accounts, support & legal.', x16: 'Open Content quality & money: refunds, prices, payouts.', x17: 'Open Growth.', x19: 'Open AI Marketing Hub.', x21: 'Open Notifications & chat: the bell, push, staff chat and approvals.', x22: 'Open Avatar & Voice Studio.' },
+        dv: { m: 'Mobile', t: 'Tablet', d: 'Desktop' }, dv_lbl: 'Device size (prototype)', dv_badge: 'Prototype', dv_tip: 'Prototype only — preview this page on another device size' },
+      hi: { foot: 'हर बदलाव लॉग होता है · 2-चरण लॉगिन', nav: 'एडमिन मेनू', lang: function (n) { return 'पैनल ' + n + ' में दिखाएँ'; },
+        g2: 'एडमिन पेज', col: 'मेनू छोटा करें', exp: 'मेनू बड़ा करें', menu: 'मेनू', subs: function (n) { return n + ' के हिस्से'; }, close: 'मेनू बंद करें',
+        here: function (n) { return 'आप यहाँ हैं: ' + n; },
+        tips: { x10: 'प्लेटफ़ॉर्म एडमिन खोलें: सारांश, अकाउंट और वित्त, एक्सेस और सुरक्षा।', x13: 'Landing Page AI खोलें।', x14: 'प्लेटफ़ॉर्म ऑपरेशंस खोलें: मॉडल, API सीमा, बैकअप, इंसिडेंट।', x15: 'अकाउंट, सपोर्ट और क़ानूनी खोलें।', x16: 'कंटेंट की गुणवत्ता और पैसा खोलें: रिफ़ंड, क़ीमतें, भुगतान।', x17: 'ग्रोथ खोलें।', x19: 'AI Marketing Hub खोलें।', x21: 'नोटिफ़िकेशन और चैट खोलें: घंटी, push, स्टाफ़ चैट और मंज़ूरियाँ।', x22: 'अवतार और वॉइस स्टूडियो खोलें।' },
+        dv: { m: 'मोबाइल', t: 'टैबलेट', d: 'डेस्कटॉप' }, dv_lbl: 'डिवाइस का आकार (प्रोटोटाइप)', dv_badge: 'प्रोटोटाइप', dv_tip: 'सिर्फ़ प्रोटोटाइप — इस पेज को दूसरे डिवाइस के आकार में देखें' },
+      ur: { foot: 'ہر تبدیلی لاگ ہوتی ہے · ' + M('2') + ' مرحلوں والا لاگ اِن', nav: 'ایڈمن مینو', lang: function (n) { return 'پینل ' + M(n) + ' میں دکھائیں'; },
+        g2: 'ایڈمن صفحات', col: 'مینو چھوٹا کریں', exp: 'مینو بڑا کریں', menu: 'مینو', subs: function (n) { return M(n) + ' کے حصے'; }, close: 'مینو بند کریں',
+        here: function (n) { return 'آپ یہاں ہیں: ' + M(n); },
+        tips: { x10: 'پلیٹ فارم ایڈمن کھولیں: جائزہ، اکاؤنٹس اور مالیات، رسائی اور سیکیورٹی۔', x13: M('Landing Page AI') + ' کھولیں۔', x14: 'پلیٹ فارم آپریشنز کھولیں: ماڈلز، ' + M('API') + ' حدیں، بیک اپ، انسیڈنٹس۔', x15: 'اکاؤنٹس، سپورٹ اور قانونی کھولیں۔', x16: 'مواد کا معیار اور رقم کھولیں: ریفنڈ، قیمتیں، ادائیگیاں۔', x17: 'ترقی کھولیں۔', x19: M('AI Marketing Hub') + ' کھولیں۔', x21: 'نوٹیفکیشنز اور چیٹ کھولیں: گھنٹی، ' + M('push') + '، اسٹاف چیٹ اور منظوریاں۔', x22: 'اوتار اور آواز اسٹوڈیو کھولیں۔' },
+        dv: { m: 'موبائل', t: 'ٹیبلٹ', d: 'ڈیسک ٹاپ' }, dv_lbl: 'ڈیوائس کا سائز (پروٹوٹائپ)', dv_badge: 'پروٹوٹائپ', dv_tip: 'صرف پروٹوٹائپ — یہ صفحہ کسی اور ڈیوائس کے سائز میں دیکھیں' },
+      ar: { foot: 'كل تغيير مسجَّل · دخول بخطوتين', nav: 'قائمة الإدارة', lang: function (n) { return 'اعرض اللوحة بـ' + M(n); },
+        g2: 'صفحات الإدارة', col: 'طيّ القائمة', exp: 'توسيع القائمة', menu: 'القائمة', subs: function (n) { return 'أقسام ' + M(n); }, close: 'أغلق القائمة',
+        here: function (n) { return 'أنت هنا: ' + M(n); },
+        tips: { x10: 'افتح إدارة المنصة: النظرة العامة، الحسابات والمالية، الوصول والأمن.', x13: 'افتح ' + M('Landing Page AI') + '.', x14: 'افتح عمليات المنصة: النماذج، حدود ' + M('API') + '، النسخ الاحتياطي، الحوادث.', x15: 'افتح الحسابات والدعم والشؤون القانونية.', x16: 'افتح جودة المحتوى والمال: الاستردادات، الأسعار، المدفوعات.', x17: 'افتح النمو.', x19: 'افتح ' + M('AI Marketing Hub') + '.', x21: 'افتح الإشعارات والدردشة: الجرس، ' + M('push') + '، دردشة الموظفين والموافقات.', x22: 'افتح استوديو الأفاتار والصوت.' },
+        dv: { m: 'الجوال', t: 'الجهاز اللوحي', d: 'سطح المكتب' }, dv_lbl: 'مقاس الجهاز (نموذج أولي)', dv_badge: 'نموذج أولي', dv_tip: 'للنموذج الأولي فقط — اعرض هذه الصفحة بمقاس جهاز آخر' },
+      fr: { foot: 'Chaque changement est journalisé · connexion en 2 étapes', nav: 'Menu d’administration', lang: function (n) { return 'Afficher le panneau en ' + n; },
+        g2: 'Pages d’administration', col: 'Réduire le menu', exp: 'Agrandir le menu', menu: 'Menu', subs: function (n) { return 'Sections de « ' + n + ' »'; }, close: 'Fermer le menu',
+        here: function (n) { return 'Vous êtes ici : ' + n; },
+        tips: { x10: 'Ouvrir l’administration de la plateforme : vue d’ensemble, comptes et finance, accès et sécurité.', x13: 'Ouvrir Landing Page AI.', x14: 'Ouvrir les opérations : modèles, plafonds API, sauvegardes, incidents.', x15: 'Ouvrir Comptes, support et juridique.', x16: 'Ouvrir Qualité des contenus et argent : remboursements, prix, versements.', x17: 'Ouvrir Croissance.', x19: 'Ouvrir AI Marketing Hub.', x21: 'Ouvrir Notifications et discussion : cloche, push, discussion de l’équipe et validations.', x22: 'Ouvrir Studio avatars et voix.' },
+        dv: { m: 'Mobile', t: 'Tablette', d: 'Ordinateur' }, dv_lbl: 'Taille de l’appareil (prototype)', dv_badge: 'Prototype', dv_tip: 'Prototype uniquement — voir cette page sur une autre taille d’écran' } };
+    Object.keys(L).forEach(function (k) { L[k].mn = S[k] || S.en; });
+  }
+===== [UIMENU] END =====

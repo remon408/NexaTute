@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Viva board, practical, Boss battle, leaderboards</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 var(--ff);border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 var(--ff);border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.dib{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;flex:none;padding:0}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.mem{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;font-size:11px;color:#C9CDF0;text-align:center}
+.mem .f{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:3px solid transparent;font-size:24px;font-weight:700;color:#fff;box-sizing:border-box}
+.stp{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.stp span{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#E6E9F2;border-radius:12px;padding:4px}
+.tabs button{height:38px;border:0;border-radius:9px;background:transparent;font:600 14px var(--ff);color:#59617A}
+.tabs button.on{background:#fff;color:#141A33}
+.rk{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.rk .n{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none;background:#E6E9F2}
+.ev{display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:#fff;border:1px solid #E2E6EF}
+.ev .d{width:48px;height:48px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none;font-weight:700;line-height:1.1;font-size:16px}
+.ev .d small{font-size:10px;font-weight:600}
+/* fix11 (owner 22:15): language picker for the static wireframe — 6 languages, default bn */
+.lpk{position:absolute;inset-inline-end:48px;top:16px;display:flex;gap:4px;padding:4px;background:#fff;border:1px solid #D3D8E4;border-radius:12px;z-index:5;box-shadow:0 4px 14px rgba(20,26,51,.10)}
+.lpk button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:none;font-family:var(--ff);font-size:12px;font-weight:600;color:#141A33;cursor:pointer}
+.lpk button.on{background:#3B34C9;color:#fff}
+:lang(ur){line-height:1.75}
+.btn,.btn2{height:auto!important;min-height:52px;padding-top:6px!important;padding-bottom:6px!important;line-height:1.25!important;text-align:center}
+/* longer languages (fr, ur, hi) must never lose text: phone bodies scroll (scrollbar hidden) instead of clipping */
+.ph .bd,.ph>.bd{overflow-y:auto!important;scrollbar-width:none}
+.ph .bd::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;color:#141A33;display:flex;flex-direction:column;gap:28px;--ff:{{ ff }};font-family:var(--ff)">
+<div class="lpk" role="group" aria-label="{{ t.lp }}"><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">{{ t.k001 }}</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k002 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 12.1 Viva board -->
+<div class="col">
+  <div class="cap"><b>12.1</b>{{ t.k003 }}</div>
+  <div class="ph" style="background:#0E1330;color:#fff">
+    <div class="top">
+      <button class="dib" aria-label="{{ t.k004 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p style="margin:0;font-size:15px;font-weight:600">{{ t.k005 }}</p><p style="margin:0;font-size:12px;color:#C9CDF0">{{ t.k006 }}</p></div>
+      <span class="chip" style="background:#F2A93B;color:#141A33"><bdi dir="ltr">1:42</bdi></span>
+    </div>
+    <div class="bd" style="gap:16px">
+      <div class="row" style="background:rgba(255,255,255,.08);border-radius:12px;padding:4px;gap:4px">
+        <button style="flex:1;height:38px;border:0;border-radius:9px;background:transparent;color:#C9CDF0;font:600 14px var(--ff)">{{ t.k007 }}</button>
+        <button style="flex:1;height:38px;border:0;border-radius:9px;background:#fff;color:#141A33;font:600 14px var(--ff)">{{ t.k008 }}</button>
+      </div>
+      <div class="row" style="gap:6px;align-items:flex-start">
+        <div class="mem"><div class="f" style="background:#2B3473">{{ t.k009 }}</div>{{ t.k010 }}</div>
+        <div class="mem" style="color:#fff"><div class="f" style="background:#7C77F0;border-color:#F2A93B">{{ t.k011 }}</div><b>{{ t.k012 }}</b><span class="chip" style="background:#F2A93B;color:#141A33">{{ t.k013 }}</span></div>
+        <div class="mem"><div class="f" style="background:#2B3473">{{ t.k014 }}</div>{{ t.k015 }}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border-radius:16px;padding:16px;font-size:16px;line-height:1.55">{{ t.k016 }}</div>
+      <div class="row" style="gap:6px;justify-content:center;height:40px">
+        <span style="width:6px;height:14px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:30px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:22px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:36px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:18px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:28px;border-radius:9px;background:#7C77F0"></span><span style="width:6px;height:12px;border-radius:9px;background:#7C77F0"></span>
+      </div>
+      <p style="margin:0;text-align:center;font-size:13px;color:#C9CDF0">{{ t.k017 }}</p>
+      <div style="margin-top:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px;font-size:13px;line-height:1.5;color:#E3E5F7">{{ t.k018 }}</div>
+      <button class="btn" style="background:#C2410C">{{ t.k019 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 12.2 Practical -->
+<div class="col">
+  <div class="cap"><b>12.2</b>{{ t.k020 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k021 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k022 }}</p><p class="xs" style="margin:0">{{ t.k023 }}</p></div>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div style="background:#0E1330;border-radius:18px;height:150px;position:relative;flex:none">
+        <svg viewBox="0 0 350 150" width="100%" height="150" aria-hidden="true"><rect x="166" y="10" width="18" height="80" rx="3" fill="none" stroke="#C9CDF0" stroke-width="2"/><rect x="168" y="40" width="14" height="48" fill="#7C77F0"/><path d="M175 90v14" stroke="#C9CDF0" stroke-width="2"/><path d="M150 110h50l-8 32h-34z" fill="none" stroke="#C9CDF0" stroke-width="2"/><path d="M154 126h42l-4 16h-34z" fill="#FF9EB0"/><text x="210" y="60" fill="#C9CDF0" font-size="12" font-family="Hind Siliguri">{{ t.k065 }}</text></svg>
+        <span class="chip" style="position:absolute;right:12px;bottom:12px;background:rgba(255,255,255,.14);color:#fff">{{ t.k024 }}</span>
+      </div>
+      <div class="cd" style="padding:4px 16px">
+        <div class="stp"><span style="background:#E3F5EC;color:#0F6B40">✓</span>{{ t.k025 }}</div>
+        <div class="stp"><span style="background:#E3F5EC;color:#0F6B40">✓</span>{{ t.k026 }}</div>
+        <div class="stp" style="font-weight:600"><span style="background:#3B34C9;color:#fff">3</span>{{ t.k027 }}</div>
+        <div class="stp" style="color:#59617A"><span style="background:#F0F1F6">4</span>{{ t.k028 }}</div>
+        <div class="stp" style="border:0;color:#59617A"><span style="background:#F0F1F6">5</span>{{ t.k029 }}</div>
+      </div>
+      <div class="row" style="gap:10px">
+        <button class="btn2" style="flex:1;height:48px;font-size:14px">{{ t.k030 }}</button>
+        <button class="btn" style="flex:1;height:48px;font-size:14px">{{ t.k008 }}</button>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k031 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- 12.3 Boss battle -->
+<div class="col">
+  <div class="cap"><b>12.3</b>{{ t.k032 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k021 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k033 }}</p>
+    </div>
+    <div class="bd" style="gap:14px">
+      <div style="background:#141A33;color:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+        <svg viewBox="0 0 80 80" width="88" height="88" aria-hidden="true"><path d="M40 6l28 12v18c0 20-12 32-28 38C24 68 12 56 12 36V18z" fill="#3B34C9" stroke="#F2A93B" stroke-width="3"/><text x="40" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#fff" font-family="Hind Siliguri">x²</text></svg>
+        <p style="margin:0;font-size:20px;font-weight:700">{{ t.k034 }}</p>
+        <p style="margin:0;font-size:13px;color:#C9CDF0">{{ t.k035 }}</p>
+      </div>
+      <div>
+        <div class="row" style="justify-content:space-between;font-size:14px;margin-bottom:6px"><span>{{ t.k036 }}</span><b><bdi dir="ltr">3 / 5</bdi></b></div>
+        <div class="bar"><div style="width:60%;background:#F2A93B"></div></div>
+      </div>
+      <div class="cd" style="display:flex;gap:12px;align-items:center">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#59617A;width:28px;height:28px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k037 }}</p><p class="xs" style="margin:0">{{ t.k038 }}</p></div>
+      </div>
+      <div class="cd" style="display:flex;gap:12px;align-items:center;background:#FFF6E6;border-color:#F6DFB2">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#A3600B;width:28px;height:28px"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.4 6.5 20.3l1-6.2L3 9.7l6.2-.9z"/></svg>
+        <p class="sm" style="color:#5C3300">{{ t.k039 }}</p>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k040 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 12.4 Leaderboard + events -->
+<div class="col">
+  <div class="cap"><b>12.4</b>{{ t.k041 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t2" style="flex:1">{{ t.k042 }}</p><span class="chip">{{ t.k043 }}</span></div>
+    <div class="bd" style="gap:10px">
+      <div class="tabs"><button class="on">{{ t.k044 }}</button><button>{{ t.k045 }}</button><button>{{ t.k046 }}</button></div>
+      <div class="cd" style="padding:2px 16px">
+        <div class="rk"><span class="n" style="background:#F2A93B">1</span><span style="flex:1">{{ t.k047 }}</span><b>1,840</b></div>
+        <div class="rk"><span class="n">2</span><span style="flex:1">{{ t.k048 }}</span><b>1,795</b></div>
+        <div class="rk"><span class="n">3</span><span style="flex:1">{{ t.k049 }}</span><b>1,702</b></div>
+        <div class="rk" style="border:0;background:#F0F1FB;margin:0 -16px;padding:10px 16px;border-radius:0 0 18px 18px"><span class="n" style="background:#3B34C9;color:#fff">9</span><b style="flex:1">{{ t.k050 }}</b><b>1,240</b></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k051 }}</p>
+      <p class="xs" style="margin:0;color:#141A33"><b>{{ fx.lb_on }}</b> — {{ fx.lb_rule }}</p>   <!-- fix17 -->
+      <div class="cd" style="display:flex;flex-direction:column;gap:6px;border-color:#D9D2F5;background:#F7F5FF;padding:12px 14px">
+        <div class="row" style="justify-content:space-between;gap:8px"><p class="t3" style="font-size:14px">{{ t.k052 }}</p><span class="chip">{{ t.k053 }}</span></div>
+        <p class="sm" style="color:#141A33">{{ t.k054 }}</p>
+      </div>
+      <p class="t3" style="font-size:14px">{{ t.k055 }}</p>
+      <div class="ev" style="border:2px solid #3B34C9"><span class="d" style="background:#ECEBFD;color:#3B34C9">21<small>{{ t.k056 }}</small></span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k057 }}</p><p class="xs" style="margin:0">{{ t.k058 }}</p></div><span class="chip">{{ t.k059 }}</span></div>
+      <div class="ev"><span class="d" style="background:#E3F5EC;color:#0F6B40">16<small>{{ t.k060 }}</small></span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k061 }}</p><p class="xs" style="margin:0">{{ t.k062 }}</p></div></div>
+      <div class="ev"><span class="d" style="background:#FFF3DD;color:#8A4B00"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k063 }}</p><p class="xs" style="margin:0">{{ t.k064 }}</p></div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix17 (owner 28 Oct 2026 17:46 (5)): leaderboard off by default; under 18 nickname only — 6 languages
+  fx16(l) { var D = {"bn": {"lb_on": "লিডারবোর্ড: চালু (অ্যাডমিন চালু করেছেন)", "lb_rule": "অ্যাডমিন চালু না করলে NexaTute-এ লিডারবোর্ড বন্ধ থাকে। 18 বছরের কম হলে শুধু তোমার ডাকনাম দেখা যায় — আসল নাম কখনো না।"}, "en": {"lb_on": "Leaderboard: on (turned on by admin)", "lb_rule": "NexaTute keeps leaderboards off unless admin turns them on. Under 18 you appear only by your nickname — never your real name."}, "hi": {"lb_on": "लीडरबोर्ड: चालू (एडमिन ने चालू किया)", "lb_rule": "एडमिन चालू न करे तो NexaTute में लीडरबोर्ड बंद रहता है। 18 से कम हो तो सिर्फ़ तुम्हारा उपनाम दिखता है — असली नाम कभी नहीं।"}, "ur": {"lb_on": "لیڈر بورڈ: آن (ایڈمن نے آن کیا)", "lb_rule": "ایڈمن آن نہ کرے تو NexaTute میں لیڈر بورڈ بند رہتا ہے۔ ⁦18⁩ سے کم ہو تو صرف تمہارا عرفی نام دکھتا ہے — اصل نام کبھی نہیں۔"}, "ar": {"lb_on": "لوحة المتصدّرين: مفعّلة (شغّلها المشرف)", "lb_rule": "تبقى لوحات المتصدّرين في NexaTute متوقفة ما لم يشغّلها المشرف. ودون ⁦18⁩ عامًا تظهر باسمك المستعار فقط — لا باسمك الحقيقي أبدًا."}, "fr": {"lb_on": "Classement : activé (par l’admin)", "lb_rule": "NexaTute laisse les classements désactivés sauf si l’admin les active. Avant 18 ans, tu n’apparais que sous ton pseudo — jamais ton vrai nom."}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): 6-language dictionary — identical keys; ur/ar numbers in LTR isolates
+  uiText() {
+    var L = {};
+    L.bn = {"k001": "Learner · More learning", "k002": "BCS ভাইভা বোর্ড, ব্যবহারিক পরীক্ষা, Boss battle, লিডারবোর্ড ও জাতীয় ইভেন্ট", "k003": "BCS Written + Viva মক বোর্ড", "k004": "বের হও", "k005": "BCS ভাইভা মক", "k006": "AI বোর্ড · প্রশ্ন 4 / 8", "k007": "লিখিত মক", "k008": "ভাইভা মক", "k009": "চে", "k010": "চেয়ারম্যান", "k011": "বি", "k012": "বিষয় বিশেষজ্ঞ", "k013": "বলছেন", "k014": "ম", "k015": "মনোবিজ্ঞানী", "k016": "“বাংলাদেশের ব্লু ইকোনমির সম্ভাবনা নিয়ে দুই মিনিটে বলুন। একটি উদাহরণ দিন।”", "k017": "তুমি বলছ… তিন সদস্যের আলাদা কণ্ঠ ও ধরন", "k018": "শেষে প্রত্যেক সদস্যের আলাদা মতামত: বিষয়জ্ঞান, উপস্থাপন, আত্মবিশ্বাস, আর উন্নতির 3টি পরামর্শ।", "k019": "উত্তর শেষ", "k020": "SSC/HSC ব্যবহারিক পরীক্ষার প্রস্তুতি", "k021": "পেছনে", "k022": "রসায়ন ব্যবহারিক", "k023": "টাইট্রেশন: NaOH-এর ঘনমাত্রা নির্ণয়", "k024": "ব্রাউজারে", "k025": "উদ্দেশ্য ও যন্ত্রপাতি", "k026": "কার্যপ্রণালী", "k027": "পর্যবেক্ষণ টেবিল", "k028": "হিসাব", "k029": "ফলাফল ও সতর্কতা", "k030": "ব্যবহারিক খাতা সাহায্য", "k031": "ভাইভা মকে Nexa Teacher বোর্ডের মতো 5টি প্রশ্ন করবে। শেষে বাসায় হলুদ ও সাবান-পানি দিয়ে অম্ল-ক্ষারের একই ধারণা পরীক্ষা (13.3)।", "k032": "অধ্যায় শেষের Boss battle", "k033": "অধ্যায় 4 · Boss battle", "k034": "দ্বিঘাত দানব", "k035": "5টি কঠিন, অদেখা সমস্যা · নিজের চেষ্টায়", "k036": "সমাধান হয়েছে", "k037": "অধ্যায় 5 এখনো বন্ধ", "k038": "Boss জিতলে খুলবে · Personal প্ল্যানে 80% আয়ত্তও লাগবে", "k039": "জিতলে ব্যাজ “দ্বিঘাত জয়ী” + XP। হারলে “এখনো না” — ভুলগুলো ভুলের খাতায় যাবে।", "k040": "4 নম্বর সমস্যা", "k041": "লিডারবোর্ড ও জাতীয় ইভেন্ট", "k042": "লিডারবোর্ড", "k043": "এই সপ্তাহ", "k044": "স্কুল", "k045": "থানা", "k046": "জাতীয় কুইজ", "k047": "নীল আকাশ", "k048": "শাপলা-19", "k049": "গণিতপ্রেমী", "k050": "তুমি", "k051": "মডেল হাই স্কুল · মিরপুর থানা · শুধু ডাকনাম (18-র কম)", "k052": "বিতর্ক: দুই পক্ষেই যুক্তি দাও", "k053": "BCS · বাংলা · সামাজিক", "k054": "“মোবাইল ফোন শিক্ষার্থীর জন্য ভালো না ক্ষতিকর?” — 2 মিনিট পক্ষে, 2 মিনিট বিপক্ষে বলো। AI তোমার যুক্তির গঠন ও প্রমাণে ফিডব্যাক দেয়; Thinking Profile-এ যোগ হয়।", "k055": "জাতীয় ইভেন্ট", "k056": "ফেব্রু.", "k057": "ভাষা চ্যালেঞ্জ", "k058": "বাংলা বানান ও শব্দের খেলা", "k059": "যোগ দাও", "k060": "ডিসে.", "k061": "বিজয় দিবস কুইজ", "k062": "মুক্তিযুদ্ধের ইতিহাস", "k063": "রমজান স্ট্রিক", "k064": "ফজরের পর পড়ার অভ্যাস", "k065": "ব্যুরেট: 18.4 mL", "lp": "ভাষা"};
+    L.en = {"k001": "Learner · More learning", "k002": "BCS viva board, practical exams, Boss battle, leaderboards and national events", "k003": "BCS Written + Viva mock board", "k004": "Exit", "k005": "BCS viva mock", "k006": "AI board · question 4 / 8", "k007": "Written mock", "k008": "Viva mock", "k009": "C", "k010": "Chairman", "k011": "S", "k012": "Subject expert", "k013": "is speaking", "k014": "P", "k015": "Psychologist", "k016": "“Speak for two minutes on the potential of Bangladesh’s blue economy. Give one example.”", "k017": "You are speaking… three members with different voices and styles", "k018": "At the end each member gives separate feedback: subject knowledge, presentation, confidence, and 3 tips to improve.", "k019": "Done answering", "k020": "SSC/HSC practical exam preparation", "k021": "Back", "k022": "Chemistry practical", "k023": "Titration: finding the concentration of NaOH", "k024": "In the browser", "k025": "Aim and apparatus", "k026": "Procedure", "k027": "Observation table", "k028": "Calculation", "k029": "Result and precautions", "k030": "Practical notebook help", "k031": "In the viva mock Nexa Teacher asks 5 questions like the board. Then at home, test the same acid–base idea with turmeric and soapy water (13.3).", "k032": "End-of-chapter Boss battle", "k033": "Chapter 4 · Boss battle", "k034": "The Quadratic Monster", "k035": "5 hard, unseen problems · on your own", "k036": "Solved", "k037": "Chapter 5 still locked", "k038": "Opens when you beat the Boss · on the Personal plan 80% mastery is also needed", "k039": "Win and get the “Quadratic Conqueror” badge + XP. Lose and it’s “not yet” — the mistakes go to the error notebook.", "k040": "Problem 4", "k041": "Leaderboards and national events", "k042": "Leaderboard", "k043": "This week", "k044": "School", "k045": "Thana", "k046": "National quiz", "k047": "Blue Sky", "k048": "Shapla-19", "k049": "MathLover", "k050": "you", "k051": "Model High School · Mirpur thana · nicknames only (under 18)", "k052": "Debate: argue both sides", "k053": "BCS · Bangla · Social science", "k054": "“Is a mobile phone good or harmful for learners?” — 2 minutes for, 2 minutes against. AI gives feedback on the structure of your arguments and evidence; it is added to your Thinking Profile.", "k055": "National events", "k056": "Feb", "k057": "Language challenge", "k058": "Bangla spelling and word games", "k059": "Join", "k060": "Dec", "k061": "Victory Day quiz", "k062": "History of the Liberation War", "k063": "Ramadan streak", "k064": "Studying after Fajr", "k065": "Burette: 18.4 mL", "lp": "Language"};
+    L.hi = {"k001": "Learner · More learning", "k002": "BCS वाइवा बोर्ड, प्रायोगिक परीक्षा, Boss battle, लीडरबोर्ड और राष्ट्रीय इवेंट", "k003": "BCS लिखित + वाइवा मॉक बोर्ड", "k004": "बाहर निकलो", "k005": "BCS वाइवा मॉक", "k006": "AI बोर्ड · प्रश्न 4 / 8", "k007": "लिखित मॉक", "k008": "वाइवा मॉक", "k009": "अ", "k010": "अध्यक्ष", "k011": "वि", "k012": "विषय विशेषज्ञ", "k013": "बोल रहे हैं", "k014": "म", "k015": "मनोवैज्ञानिक", "k016": "“बांग्लादेश की ब्लू इकॉनमी की संभावनाओं पर दो मिनट बोलिए। एक उदाहरण दीजिए।”", "k017": "तुम बोल रहे हो… तीन सदस्यों की अलग आवाज़ और अंदाज़", "k018": "आख़िर में हर सदस्य की अलग राय: विषय-ज्ञान, प्रस्तुति, आत्मविश्वास, और सुधार के 3 सुझाव।", "k019": "उत्तर पूरा", "k020": "SSC/HSC प्रायोगिक परीक्षा की तैयारी", "k021": "पीछे", "k022": "रसायन प्रायोगिक", "k023": "अनुमापन: NaOH की सांद्रता ज्ञात करना", "k024": "ब्राउज़र में", "k025": "उद्देश्य और उपकरण", "k026": "प्रक्रिया", "k027": "अवलोकन तालिका", "k028": "हिसाब", "k029": "परिणाम और सावधानियाँ", "k030": "प्रायोगिक कॉपी में मदद", "k031": "वाइवा मॉक में Nexa Teacher बोर्ड की तरह 5 प्रश्न पूछेगा। फिर घर पर हल्दी और साबुन-पानी से वही अम्ल-क्षार प्रयोग (13.3)।", "k032": "अध्याय के अंत का Boss battle", "k033": "अध्याय 4 · Boss battle", "k034": "द्विघात दानव", "k035": "5 कठिन, अनदेखी समस्याएँ · अपने दम पर", "k036": "हल हुआ", "k037": "अध्याय 5 अभी बंद", "k038": "Boss जीतने पर खुलेगा · Personal प्लान में 80% महारत भी चाहिए", "k039": "जीते तो “द्विघात विजेता” बैज + XP। हारे तो “अभी नहीं” — गलतियाँ गलतियों की कॉपी में जाएँगी।", "k040": "समस्या 4", "k041": "लीडरबोर्ड और राष्ट्रीय इवेंट", "k042": "लीडरबोर्ड", "k043": "यह हफ़्ता", "k044": "स्कूल", "k045": "थाना", "k046": "राष्ट्रीय क्विज़", "k047": "नीला आसमान", "k048": "शापला-19", "k049": "गणितप्रेमी", "k050": "तुम", "k051": "मॉडल हाई स्कूल · मीरपुर थाना · सिर्फ़ उपनाम (18 से कम)", "k052": "बहस: दोनों पक्षों के तर्क दो", "k053": "BCS · बांग्ला · सामाजिक", "k054": "“मोबाइल फ़ोन विद्यार्थी के लिए अच्छा है या हानिकारक?” — 2 मिनट पक्ष में, 2 मिनट विपक्ष में बोलो। AI तुम्हारे तर्क की बनावट और सबूत पर राय देता है; Thinking Profile में जुड़ता है।", "k055": "राष्ट्रीय इवेंट", "k056": "फ़र.", "k057": "भाषा चुनौती", "k058": "बांग्ला वर्तनी और शब्दों का खेल", "k059": "जुड़ो", "k060": "दिस.", "k061": "विजय दिवस क्विज़", "k062": "मुक्ति संग्राम का इतिहास", "k063": "रमज़ान स्ट्रीक", "k064": "फ़ज्र के बाद पढ़ने की आदत", "k065": "ब्यूरेट: 18.4 mL", "lp": "भाषा"};
+    L.ur = {"k001": "Learner · More learning", "k002": "BCS وائیوا بورڈ، عملی امتحان، Boss battle، لیڈر بورڈ اور قومی ایونٹس", "k003": "BCS تحریری + وائیوا ماک بورڈ", "k004": "باہر نکلو", "k005": "BCS وائیوا ماک", "k006": "AI بورڈ · سوال ⁦4 / 8⁩", "k007": "تحریری ماک", "k008": "وائیوا ماک", "k009": "چ", "k010": "چیئرمین", "k011": "م", "k012": "مضمون کا ماہر", "k013": "بول رہے ہیں", "k014": "ن", "k015": "ماہر نفسیات", "k016": "“بنگلہ دیش کی بلیو اکانومی کے امکانات پر دو منٹ بولیں۔ ایک مثال دیں۔”", "k017": "تم بول رہے ہو… تین ارکان کی الگ آواز اور انداز", "k018": "آخر میں ہر رکن کی الگ رائے: مضمون کا علم، پیشکش، اعتماد، اور بہتری کے ⁦3⁩ مشورے۔", "k019": "جواب مکمل", "k020": "SSC/HSC عملی امتحان کی تیاری", "k021": "پیچھے", "k022": "کیمیا عملی", "k023": "ٹائٹریشن: NaOH کا ارتکاز معلوم کرنا", "k024": "براؤزر میں", "k025": "مقصد اور آلات", "k026": "طریقہ کار", "k027": "مشاہداتی جدول", "k028": "حساب", "k029": "نتیجہ اور احتیاطیں", "k030": "عملی کاپی میں مدد", "k031": "وائیوا ماک میں Nexa Teacher بورڈ کی طرح ⁦5⁩ سوال پوچھے گا۔ پھر گھر پر ہلدی اور صابن کے پانی سے وہی تیزاب اور قلی کا تجربہ (⁦13.3⁩)۔", "k032": "باب کے آخر کا Boss battle", "k033": "باب ⁦4⁩ · Boss battle", "k034": "دو درجی دیو", "k035": "⁦5⁩ مشکل، ان دیکھے مسئلے · اپنی کوشش سے", "k036": "حل ہوا", "k037": "باب ⁦5⁩ ابھی بند", "k038": "Boss جیتنے پر کھلے گا · Personal پلان میں ⁦80%⁩ مہارت بھی چاہیے", "k039": "جیتے تو “دو درجی فاتح” بیج + XP۔ ہارے تو “ابھی نہیں” — غلطیاں غلطیوں کی کاپی میں جائیں گی۔", "k040": "مسئلہ ⁦4⁩", "k041": "لیڈر بورڈ اور قومی ایونٹس", "k042": "لیڈر بورڈ", "k043": "یہ ہفتہ", "k044": "اسکول", "k045": "تھانہ", "k046": "قومی کوئز", "k047": "نیلا آسمان", "k048": "شاپلا-⁦19⁩", "k049": "ریاضی کا شوقین", "k050": "تم", "k051": "ماڈل ہائی اسکول · میرپور تھانہ · صرف عرفی نام (⁦18⁩ سے کم)", "k052": "بحث: دونوں طرف دلیل دو", "k053": "BCS · بنگلہ · سماجی علوم", "k054": "“موبائل فون طالب علم کے لیے اچھا ہے یا نقصان دہ؟” — ⁦2⁩ منٹ حق میں، ⁦2⁩ منٹ مخالفت میں بولو۔ AI تمہاری دلیل کی ساخت اور ثبوت پر رائے دیتا ہے؛ Thinking Profile میں شامل ہوتا ہے۔", "k055": "قومی ایونٹس", "k056": "فروری", "k057": "زبان کا چیلنج", "k058": "بنگلہ املا اور الفاظ کا کھیل", "k059": "شامل ہو", "k060": "دسمبر", "k061": "یومِ فتح کوئز", "k062": "جنگِ آزادی کی تاریخ", "k063": "رمضان سلسلہ", "k064": "فجر کے بعد پڑھنے کی عادت", "k065": "بیوریٹ: ⁦18.4 mL⁩", "lp": "زبان"};
+    L.ar = {"k001": "Learner · More learning", "k002": "لجنة BCS الشفهية، الامتحانات العملية، Boss battle، لوحات المتصدرين والفعاليات الوطنية", "k003": "لجنة BCS التجريبية للكتابي والشفهي", "k004": "خروج", "k005": "اختبار BCS الشفهي التجريبي", "k006": "لجنة AI · السؤال ⁦4 / 8⁩", "k007": "كتابي تجريبي", "k008": "شفهي تجريبي", "k009": "ر", "k010": "رئيس اللجنة", "k011": "خ", "k012": "خبير المادة", "k013": "يتحدث", "k014": "أ", "k015": "أخصائي نفسي", "k016": "«تحدّث دقيقتين عن إمكانات الاقتصاد الأزرق في بنغلاديش. أعطِ مثالًا واحدًا.»", "k017": "أنت تتحدث… ثلاثة أعضاء بأصوات وأساليب مختلفة", "k018": "في النهاية ملاحظات منفصلة من كل عضو: المعرفة بالموضوع والعرض والثقة و⁦3⁩ نصائح للتحسين.", "k019": "انتهيت من الإجابة", "k020": "التحضير للامتحان العملي SSC/HSC", "k021": "رجوع", "k022": "الكيمياء العملية", "k023": "المعايرة: تعيين تركيز NaOH", "k024": "في المتصفح", "k025": "الهدف والأدوات", "k026": "طريقة العمل", "k027": "جدول الملاحظات", "k028": "الحساب", "k029": "النتيجة والاحتياطات", "k030": "مساعدة في دفتر العملي", "k031": "في الشفهي التجريبي يطرح Nexa Teacher خمسة أسئلة مثل اللجنة. ثم في البيت جرّب فكرة الحمض والقاعدة نفسها بالكركم وماء الصابون (⁦13.3⁩).", "k032": "Boss battle في نهاية الفصل", "k033": "الفصل ⁦4⁩ · Boss battle", "k034": "وحش المعادلات التربيعية", "k035": "⁦5⁩ مسائل صعبة غير مألوفة · بجهدك وحدك", "k036": "تم الحل", "k037": "الفصل ⁦5⁩ ما زال مقفلًا", "k038": "يُفتح عند هزيمة Boss · في خطة Personal يلزم أيضًا إتقان ⁦80%⁩", "k039": "إن فزت: شارة «قاهر التربيعية» + XP. وإن خسرت: «ليس بعد» — تذهب الأخطاء إلى دفتر الأخطاء.", "k040": "المسألة ⁦4⁩", "k041": "لوحات المتصدرين والفعاليات الوطنية", "k042": "لوحة المتصدرين", "k043": "هذا الأسبوع", "k044": "المدرسة", "k045": "المنطقة", "k046": "المسابقة الوطنية", "k047": "السماء الزرقاء", "k048": "شابلا-⁦19⁩", "k049": "عاشق الرياضيات", "k050": "أنت", "k051": "Model High School · منطقة ميربور · الأسماء المستعارة فقط (دون ⁦18⁩)", "k052": "مناظرة: قدّم حجج الطرفين", "k053": "BCS · البنغالية · الاجتماعيات", "k054": "«هل الهاتف المحمول مفيد للمتعلّم أم ضار؟» — دقيقتان مع ودقيقتان ضد. يعطيك AI ملاحظات على بنية حججك وأدلتك؛ وتُضاف إلى Thinking Profile.", "k055": "الفعاليات الوطنية", "k056": "فبراير", "k057": "تحدي اللغة", "k058": "ألعاب الإملاء والكلمات البنغالية", "k059": "انضم", "k060": "ديسمبر", "k061": "مسابقة يوم النصر", "k062": "تاريخ حرب التحرير", "k063": "سلسلة رمضان", "k064": "عادة الدراسة بعد الفجر", "k065": "السحاحة: ⁦18.4 mL⁩", "lp": "اللغة"};
+    L.fr = {"k001": "Learner · More learning", "k002": "Jury oral BCS, examens pratiques, Boss battle, classements et événements nationaux", "k003": "Jury blanc BCS écrit + oral", "k004": "Quitter", "k005": "Oral blanc BCS", "k006": "Jury IA · question 4 / 8", "k007": "Écrit blanc", "k008": "Oral blanc", "k009": "P", "k010": "Président", "k011": "E", "k012": "Expert de la matière", "k013": "parle", "k014": "P", "k015": "Psychologue", "k016": "« Parlez deux minutes du potentiel de l’économie bleue du Bangladesh. Donnez un exemple. »", "k017": "Tu parles… trois membres aux voix et styles différents", "k018": "À la fin, chaque membre donne son avis : connaissances, présentation, assurance, et 3 conseils pour progresser.", "k019": "Réponse terminée", "k020": "Préparation aux épreuves pratiques SSC/HSC", "k021": "Retour", "k022": "TP de chimie", "k023": "Titrage : trouver la concentration de NaOH", "k024": "Dans le navigateur", "k025": "But et matériel", "k026": "Mode opératoire", "k027": "Tableau d’observations", "k028": "Calcul", "k029": "Résultat et précautions", "k030": "Aide pour le cahier de TP", "k031": "À l’oral blanc, Nexa Teacher pose 5 questions comme le jury. Puis à la maison, teste la même idée acide–base avec du curcuma et de l’eau savonneuse (13.3).", "k032": "Boss battle de fin de chapitre", "k033": "Chapitre 4 · Boss battle", "k034": "Le monstre du second degré", "k035": "5 problèmes difficiles et inédits · seul", "k036": "Résolu", "k037": "Chapitre 5 encore verrouillé", "k038": "S’ouvre quand tu bats le Boss · avec la formule Personal, 80 % de maîtrise aussi", "k039": "Victoire : badge « Conquérant du second degré » + XP. Défaite : « pas encore » — les erreurs vont dans le carnet d’erreurs.", "k040": "Problème 4", "k041": "Classements et événements nationaux", "k042": "Classement", "k043": "Cette sem.", "k044": "École", "k045": "Thana", "k046": "Quiz national", "k047": "Ciel bleu", "k048": "Shapla-19", "k049": "FanDeMaths", "k050": "toi", "k051": "Model High School · thana de Mirpur · pseudos seulement (moins de 18 ans)", "k052": "Débat : défends les deux côtés", "k053": "BCS · bengali · sciences sociales", "k054": "« Le téléphone portable est-il bon ou nuisible pour les élèves ? » — 2 minutes pour, 2 minutes contre. L’IA commente la structure de tes arguments et tes preuves ; c’est ajouté à ton Thinking Profile.", "k055": "Événements nationaux", "k056": "févr.", "k057": "Défi de la langue", "k058": "Jeux d’orthographe et de mots en bengali", "k059": "Participer", "k060": "déc.", "k061": "Quiz du Jour de la Victoire", "k062": "Histoire de la guerre de libération", "k063": "Série du Ramadan", "k064": "Étudier après Fajr", "k065": "Burette : 18,4 mL", "lp": "Langue"};
+    return L;
+  }
+  renderVals() {
+    var self = this, s = Object.assign({ lang: 'bn' }, this.state || {}), L = this.uiText(), lang = L[s.lang] ? s.lang : 'bn';
+    var FF = { bn: "'Hind Siliguri','Hind',system-ui,sans-serif", en: "'Hind Siliguri','Hind',system-ui,sans-serif", fr: "'Hind Siliguri','Hind',system-ui,sans-serif", hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
+    var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
+    var base = this.renderVals0 ? this.renderVals0() : {};
+    return Object.assign(base, { t: Object.assign({}, L.bn, L[lang]), lang: lang, dir: (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr', ff: FF[lang],
+      langs: ['bn', 'en', 'hi', 'ur', 'ar', 'fr'].map(function (c) { var on = c === lang; return { code: c, name: NAMES[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) });
+  }
+
+  renderVals0() { var s = Object.assign({ lang: 'bn' }, this.state || {}); return { fx: this.fx16(s.lang) }; }
+}
+</script>
+</body>
+</html>

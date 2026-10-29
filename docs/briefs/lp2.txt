@@ -1,0 +1,35 @@
+Improve NexaTute's landing-page prototype X20 (owner feedback, 24 Oct 2026): "The landing page looks beautiful but some places are empty and look bad; show University, Vocational and Polytechnic on the landing page; where is the sign-up button?" SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Files and rules
+- Copy SP/ntd/project/X20-Prototype-Landing.dc.html to SP/s2/lp2/work/ and edit ONLY the copy. Never write in SP/ntd/, never publish, never write memory (read-only memory is fine: /areas/nexatute.md for prices, /areas/nexatute-growth.md for landing-page rules).
+- Format rules: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md. X20 has 6-language dictionaries (bn, en, hi, ur, ar, fr) with IDENTICAL keys, RTL via M(), Latin digits, tooltip kit with kitfix `_ttW` watcher, an admin-preview mode (adm) with per-section badges, the country & syllabus picker, the plan finder, a join (sign-up) modal opened by openJoin, legal pages.
+- Tools: `python3 SP/dcverify.py FILE [TEST]`, `node SP/dcrender.js FILE OUT.html '{state}'`, `python3 SP/shoot.py 1440 OUT.html` (also 390). Current full-page screenshot slices (bn, 1440, default state) are SP/s2/lp2/p0.png … p5.png — look at them.
+- Tests that must keep passing (run them against your work copy; check how each picks its file, e.g. DCFILE env or a path constant — copy a test into SP/s2/lp2/tests/ and update it only where your change makes an old expectation wrong, and say so): SP/lp/x20test.js, SP/lp/x20c_test.js, SP/lp/legal_test.js, SP/lp/owner_test.js, SP/lp/fix5_test.js (compares against "before" copies in SP/s2/pp5), SP/s2/x20c/*, SP/s2/fix/tests/x20test.js where still relevant. Write SP/s2/lp2/lp2_test.js for the new things.
+
+## 1. Sign-up button
+The sign-up exists today only as "Free Beta-তে যোগ দাও" (openJoin), so the owner didn't recognise it. Make it obvious:
+- Header (desktop and the phone menu): "Log in" link + a primary button labelled clearly as sign-up — bn "সাইন আপ — ফ্রি", en "Sign up — free", hi "साइन अप — मुफ़्त", ur "سائن اپ — مفت", ar "إنشاء حساب — مجانًا", fr "S'inscrire — gratuit" (a short form on narrow screens). It opens the same join flow.
+- The join modal's title says Sign up (with the Free Beta 12–31 Dec 2026 line under it) and has "Already have an account? Log in" (link to X01-Prototype-Flow1.dc.html). If the modal doesn't already ask who is signing up, add a first choice: Learner · Guardian · Teacher · Institution (institution → scrolls/links to the institution demo form). Keep everything else in the flow working.
+- Hero and final CTA buttons may keep "Free Beta-তে যোগ দাও" but add a small "Sign up free" cue consistent with the header. Tooltips in 6 languages.
+
+## 2. University, Vocational, Polytechnic
+Today Bangladesh's course list has SSC/HSC Vocational, but University and Polytechnic only appear as a small "University / BTEB" chip and a "more courses" tile. Show all three prominently:
+- A "Higher & technical education" block (6 languages) with three cards: University (any subject, follows your university's syllabus; Personal 1:1 only ৳750/month one subject, ৳1,500 all subjects; USD $11 / $22), Polytechnic — Diploma in Engineering & other BTEB diplomas (Civil, Electrical, Computer, Mechanical, … technologies; follows the BTEB syllabus; same Personal prices as University/BTEB), Vocational (SSC Vocational: Batch ৳600 / Combo ৳800 / Personal ৳500 one subject, ৳1,000 all; HSC Vocational: Batch ৳700 / Combo ৳850 / Personal ৳500 / ৳1,000; 3 common subjects in the group class, trade subjects in the 1:1 time). Each card: short line, price "from …", a "See price" link to the plans section with that course selected and a Sign-up button. Prices must come from the same price data the plans section uses (add entries there), never hard-typed twice. Abroad (USD) prices per the existing USD rule in the file.
+- Add "University" and "Polytechnic (BTEB diploma)" rows to the Bangladesh course list in the syllabus card, to the plans course tabs (Personal-only card with a note "1:1 only — no batch class" like other Personal-only courses) and to the plan finder's course select. Keep the "more courses, 1:1 only" tiles consistent (University/BTEB may split into University and Polytechnic).
+- A header/nav or hero entry point is welcome if it fits (e.g. a "University · Polytechnic · Vocational" chip row under the hero syllabus question).
+
+## 3. Empty spaces — fix every visibly empty area at 1440 and 390, in bn and en (check ar/RTL too)
+Seen in the screenshots (fix these and any others you find):
+a. Hero demo card: the lined answer area is a tall empty box — show a short sample step-by-step answer state or shrink it so the card has no big blank.
+b. Syllabus card (Bangladesh · NCTB Bangla medium): the left column is half empty below its 3 bullets — fill it naturally (e.g. the Higher & technical education cards, books for the chosen syllabus, or quick facts), balanced with the course list.
+c. Plan finder: the right result panel is an almost empty box until the 3 questions are answered — show a useful default (e.g. a preview of the recommended plan for the pre-selected course, or the three steps with what you'll get) and balance the two columns.
+d. "More courses, 1:1 only" grid: 5 tiles in 3 columns leaves a blank cell — make the grid full.
+e. MindForge card: big blank above the "MindForge দেখো" button because the PlayBoom card is taller — balance (add a small sample puzzle/feature list, or align content) so neither card has a hole.
+f. Proof section: right column is shorter than the left — balance.
+g. FAQ: the left column is blank below its intro — add a compact contact/help card (website chat, WhatsApp, Messenger — no email/phone, per the approved rule) or make the intro sticky.
+Check every other section and state (other countries, institution form, legal pages, admin preview) for similar holes. Don't change approved content/prices/rules; only layout, filler that is real content from the file/memory, and the three requests above.
+
+## Done means
+- dcverify → 0 hole problems, 0 parity issues, 0 errors; all listed tests pass (with any justified expectation updates kept in SP/s2/lp2/tests/); lp2_test.js covers the sign-up button (header desktop + phone menu, opens join, title, role choice, log-in link), the three new courses in every place (6 languages, BD ৳ and abroad $ prices), and a hole sweep after flows.
+- Before/after screenshots at 1440 and 390 (bn, en, ar) in SP/s2/lp2/shots/ — full page sliced so each empty-space fix can be seen.
+- Reply with a short summary (what changed per item a–g, the three courses, sign-up), any test expectation you changed and why, and results.

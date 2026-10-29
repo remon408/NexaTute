@@ -1,0 +1,1449 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Institution workspace</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:16px;padding:18px;box-sizing:border-box;min-width:0}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.row{display:flex;align-items:center;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;background:#3B34C9;color:#fff;font:600 14px/1 'Hind Siliguri',sans-serif;border:0;text-decoration:none}
+.btn2{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;background:#fff;color:#141A33;font:600 14px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4}
+.nav a{display:flex;align-items:center;gap:12px;padding:0 14px;height:44px;border-radius:12px;color:#141A33;text-decoration:none;font-size:15px;font-weight:500}
+.nav a.on{background:#ECEBFD;color:#3B34C9;font-weight:700}
+.kpi .v{font-size:28px;font-weight:700;line-height:1.1}
+.bar{height:8px;border-radius:99px;background:#E6E9F2}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;color:#59617A;font-weight:600;padding:10px 12px;border-bottom:1px solid #E2E6EF;white-space:nowrap}
+td{padding:12px;border-bottom:1px solid #EEF0F5;white-space:nowrap}
+/* fix11: 6-language wireframe — language picker; Urdu in Nastaliq needs a taller line; RTL mirrors back arrows */
+.wfl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.wfl span{font-size:12px;font-weight:600;color:#59617A;margin-inline-end:4px}
+.wfl button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #C9CFDC;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#141A33;cursor:pointer}
+.wfl button.on{background:#141A33;border-color:#141A33;color:#fff}
+[lang=ur] *{line-height:1.9}
+[dir=rtl] .ib svg{transform:scaleX(-1)}
+/* longer languages (fr, ur Nastaliq) must not cut the bottom of a phone screen: the phone grows instead */
+.ph{height:auto;min-height:844px}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="background:#F5F6FA;font-family:{{ ff }};color:#141A33;min-height:1100px;display:flex;flex-wrap:wrap">
+<div class="wfl" role="group" style="flex:1 1 100%;padding:10px 16px;box-sizing:border-box;background:#fff" aria-label="{{ t.lp }}"><span>{{ t.lp }}</span><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+
+<aside style="flex:1 1 240px;max-width:100%;background:#fff;border-right:1px solid #E2E6EF;padding:24px 18px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px">
+  <div class="row"><div style="width:38px;height:38px;border-radius:11px;background:#0B6E6A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px">MHS</div><div><div style="font-weight:700">{{ t.k2 }}</div><div class="xs">{{ t.k3 }}</div></div></div>
+  <nav class="nav" aria-label="{{ t.k1 }}" style="display:flex;flex-direction:column;gap:4px">
+    <a href="#d4-over" class="on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k4 }}</a>
+    <a href="#d4-students"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/></svg>{{ t.k5 }}</a>
+    <a href="#d4-batch"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/></svg>{{ t.k6 }}</a>
+    <a href="#d4-batch"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11"/></svg>{{ t.k7 }}</a>
+    <a href="#d4-report"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>{{ t.k8 }}</a>
+    <a href="#d4-brand"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1L19 8l-3-3L5 16z"/></svg>{{ t.k9 }}</a>
+    <a href="#d4-students"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>{{ t.k10 }}</a>
+  </nav>
+</aside>
+
+<main style="flex:999 1 560px;min-width:0;padding:28px clamp(16px,3vw,40px);box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+  <div class="row" style="flex-wrap:wrap;gap:14px">
+    <div style="flex:1;min-width:240px"><p class="sm">{{ t.k11 }}</p><h1 id="d4-over" style="margin:2px 0 0;font-size:28px;font-weight:700">{{ t.k12 }}</h1></div>
+    <button class="btn2">{{ t.k13 }}</button>
+    <button class="btn">{{ t.k14 }}</button>
+  </div>
+  <!-- fix18f/fix18g (owner 29 Oct 2026 01:24–01:56): institution storage pool (= X12 Billing) + Team Quest results by topic (= X12 Study) -->
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start" id="d4-f18f">
+    <div class="cd" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:8px">
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:8px"><p class="t2">{{ t.k159 }}</p><span class="chip" style="background:#E1F4F2;color:#0B5E5A;white-space:normal">{{ t.k160 }}</span></div>
+      <p class="t3" style="font-size:14px">{{ t.k161 }}</p>
+      <div style="height:10px;border-radius:5px;background:#EEF0F5;overflow:hidden"><span style="display:block;height:100%;width:58%;background:#0B6E6A"></span></div>
+      <p class="xs" style="margin:0">{{ t.k162 }}</p>
+      <p class="xs" style="margin:0;font-weight:600;color:#141A33">{{ t.k163 }}</p>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="chip" style="background:#3B34C9;color:#fff">{{ t.k164 }}</span><span class="chip">{{ t.k165 }}</span><span class="chip">{{ t.k166 }}</span></div>
+      <span class="btn2" style="align-self:flex-start;height:44px;display:inline-flex;align-items:center;padding:0 14px">{{ t.k167 }}</span>
+      <p class="xs" style="margin:0">{{ t.k168 }}</p>
+    </div>
+    <div class="cd" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:8px">
+      <p class="t2">{{ t.k169 }}</p>
+      <p class="xs" style="margin:0">{{ t.k170 }}</p>
+      <p class="xs" style="margin:0">{{ t.k183 }}</p>
+      <p class="t3" style="font-size:14px;margin-top:4px">{{ t.k171 }}</p><span class="xs">{{ t.k172 }}</span>
+      <p class="sm" style="margin:0;background:#FFF6E6;border:1px solid #F6DFB2;border-radius:12px;padding:8px 10px;color:#5C3300;font-weight:600">{{ t.k173 }}</p>
+        <div style="display:flex;flex-direction:column;gap:3px"><div class="row" style="justify-content:space-between;gap:8px;font-size:13px"><span style="flex:1;min-width:0">{{ t.k174 }}</span><b dir="ltr">{{ t.k175 }}</b></div><div style="height:8px;border-radius:4px;background:#EEF0F5;overflow:hidden"><span style="display:block;height:100%;width:100%;background:#0B6E6A"></span></div></div>
+        <div style="display:flex;flex-direction:column;gap:3px"><div class="row" style="justify-content:space-between;gap:8px;font-size:13px"><span style="flex:1;min-width:0">{{ t.k176 }}</span><b dir="ltr">{{ t.k177 }}</b></div><div style="height:8px;border-radius:4px;background:#EEF0F5;overflow:hidden"><span style="display:block;height:100%;width:92%;background:#0B6E6A"></span></div></div>
+        <div style="display:flex;flex-direction:column;gap:3px"><div class="row" style="justify-content:space-between;gap:8px;font-size:13px"><span style="flex:1;min-width:0">{{ t.k178 }}</span><b dir="ltr">{{ t.k179 }}</b></div><div style="height:8px;border-radius:4px;background:#EEF0F5;overflow:hidden"><span style="display:block;height:100%;width:58%;background:#E08A00"></span></div></div>
+        <div style="display:flex;flex-direction:column;gap:3px"><div class="row" style="justify-content:space-between;gap:8px;font-size:13px"><span style="flex:1;min-width:0">{{ t.k180 }}</span><b dir="ltr">{{ t.k181 }}</b></div><div style="height:8px;border-radius:4px;background:#EEF0F5;overflow:hidden"><span style="display:block;height:100%;width:83%;background:#0B6E6A"></span></div></div>
+      <p class="xs" style="margin:0">🔒 {{ t.k182 }}</p>
+    </div>
+  </div>
+  <!-- fix18k (owner 29 Oct 2026 02:25): teacher's AI assistant draft + Nexa Swap supervision (= X12 Study) -->
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start" id="d4-f18k">
+    <div class="cd" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px"><p class="t2">{{ t.k184 }}</p><p class="xs" style="margin:0">{{ t.k185 }}</p><b style="font-size:14px">{{ t.k186 }}</b><p class="xs" style="margin:0;color:#141A33">{{ t.k187 }}</p><p class="xs" style="margin:0;color:#141A33">{{ t.k188 }}</p><p class="xs" style="margin:0;color:#141A33">{{ t.k189 }}</p><p class="xs" style="margin:0;font-weight:600">{{ t.k190 }}</p><span class="btn" style="align-self:flex-start;height:44px;display:inline-flex;align-items:center;padding:0 14px">{{ t.k191 }}</span></div>
+    <div class="cd" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px"><p class="t2">{{ t.k192 }}</p><p class="xs" style="margin:0;color:#141A33">{{ t.k193 }}</p><p class="xs" style="margin:0">{{ t.k194 }}</p><span class="btn2" style="align-self:flex-start;height:44px;display:inline-flex;align-items:center;padding:0 14px">{{ t.k195 }}</span></div>
+  </div>
+  <!-- fix17 (owner 17:56–18:01): maintenance notification sample (= X12 Overview) -->
+  <div class="cd" style="display:flex;flex-direction:column;gap:6px;background:#EEF4FF;border-color:#C7D7F5">
+    <div class="row" style="gap:8px;flex-wrap:wrap"><b style="flex:1;min-width:0;font-size:15px">{{ t.k146 }}</b></div>
+    <p class="sm" style="margin:0;color:#141A33">{{ t.k148 }}</p>
+    <span class="xs">{{ t.k147 }}</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+    <div class="cd kpi"><div class="xs">{{ t.k15 }}</div><div class="v">312</div><div class="xs">{{ t.k16 }}</div></div>
+    <div class="cd kpi"><div class="xs">{{ t.k17 }}</div><div class="v">91%</div><div class="xs">{{ t.k18 }}</div></div>
+    <div class="cd kpi"><div class="xs">{{ t.k19 }}</div><div class="v">68%</div><div class="xs">{{ t.k20 }}</div></div>
+    <div class="cd kpi"><div class="xs">{{ t.k21 }}</div><div class="v">93%</div><div class="xs">{{ t.k22 }}</div></div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+    <div class="cd" style="flex:2 1 520px;padding:0;overflow:hidden">
+      <div class="row" style="justify-content:space-between;padding:16px 18px 6px"><p class="t2" id="d4-batch">{{ t.k6 }}</p><a href="#d4-students" style="font-size:13px">{{ t.k23 }}</a></div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>{{ t.k6 }}</th><th>{{ t.k24 }}</th><th>{{ t.k25 }}</th><th>{{ t.k26 }}</th><th>{{ t.k27 }}</th><th>{{ t.k28 }}</th><th>{{ t.k29 }}</th></tr></thead>
+          <tbody>
+            <tr><td><b>{{ t.k30 }}</b></td><td>SSC Batch</td><td>48</td><td>92%</td><td>14%</td><td>{{ t.k31 }}</td><td>{{ t.k32 }}</td></tr>
+            <tr><td><b>{{ t.k33 }}</b> · English</td><td>SSC Batch</td><td>46</td><td>89%</td><td>18%</td><td>{{ t.k34 }}</td><td>{{ t.k32 }}</td></tr>
+            <tr><td><b>{{ t.k35 }}</b></td><td>SSC Batch</td><td>62</td><td>94%</td><td>9%</td><td>{{ t.k36 }}</td><td>{{ t.k32 }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="xs" style="margin:0;padding:12px 18px 4px">{{ t.k37 }}</p>
+      <p class="xs" style="margin:0;padding:0 18px 12px;color:#141A33">{{ t.k38 }}</p>
+    </div>
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:16px">
+      <div class="cd" style="display:flex;flex-direction:column;gap:10px">
+        <p class="t2" id="d4-students">{{ t.k39 }}</p>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k40 }}</span><b>286 / 312</b></div>
+        <div class="bar"><div style="width:92%;background:#17804F"></div></div>
+        <p class="sm">{{ t.k41 }}</p>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+        <p class="t2" id="d4-brand">{{ t.k42 }}</p>
+        <div style="height:96px;border-radius:12px;background:#E1F4F2;display:flex;align-items:center;gap:12px;padding:0 16px">
+          <div style="width:52px;height:52px;border-radius:12px;background:#0B6E6A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">MHS</div>
+          <div><b>{{ t.k43 }}</b><div class="xs">{{ t.k44 }}</div></div>
+        </div>
+        <button class="btn2">{{ t.k45 }}</button>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+        <p class="t2" id="d4-setup">{{ t.k46 }}</p>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k47 }}</span><b style="color:#0F6B40">{{ t.k48 }}</b></div>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k49 }}</span><b>{{ t.k50 }}</b></div>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k51 }}</span><b>{{ t.k52 }}</b></div>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k53 }}</span><b>{{ t.k54 }}</b></div>
+        <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k55 }}</span><b style="color:#8A4B00">{{ t.k56 }}</b></div>
+        <p class="xs" style="margin:0">{{ t.k57 }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- fix11: anonymised class reports, Learning Atlas (own district), BdSL avatar (= X12) -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+      <p class="t2">{{ t.k58 }}</p>
+      <p class="sm">{{ t.k59 }}</p>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="chip">{{ t.k60 }}</span><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k61 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k62 }}</p>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+      <p class="t2">{{ t.k63 }}</p>
+      <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k64 }}</span><b>{{ t.k65 }}</b></div>
+      <div class="row" style="justify-content:space-between;font-size:14px"><span>{{ t.k66 }}</span><b>{{ t.k67 }}</b></div>
+      <p class="xs" style="margin:0">{{ t.k68 }}</p>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+      <p class="t2">{{ t.k69 }}</p>
+      <p class="sm">{{ t.k70 }}</p>
+      <p class="xs" style="margin:0">{{ t.k71 }}</p>
+    </div>
+    <!-- fix14: Exam & Admission Hub — the institution pushes its own test routine and shared circulars; counts only (= X12 Classes) -->
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:6px"><p class="t2">{{ t.k80 }}</p><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k81 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k82 }}</p>
+      <div class="row" style="gap:8px;flex-wrap:wrap;border-top:1px solid #EEF0F5;padding-top:8px"><span style="flex:1 1 200px;min-width:0"><b style="font-weight:600;font-size:14px;display:block">{{ t.k83 }}</b><span class="xs">{{ t.k84 }}</span></span><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k85 }}</span><span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k86 }}</span></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap;border-top:1px solid #EEF0F5;padding-top:8px"><span style="flex:1 1 200px;min-width:0"><b style="font-weight:600;font-size:14px;display:block">{{ t.k87 }}</b><span class="xs">{{ t.k88 }}</span></span><span class="chip" style="background:#FFF1D6;color:#8A4B00">{{ t.k89 }}</span><span class="chip" style="background:#FFF8E1;color:#6B4E00;border:1px dashed #B88A00;white-space:normal">{{ t.k90 }}</span><span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k86 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k98 }}</p>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+      <p class="t2">{{ t.k92 }}</p>
+      <p class="sm" style="color:#141A33">{{ t.k93 }}</p>
+      <p class="sm">{{ t.k94 }}</p>
+      <p class="sm" style="color:#141A33">{{ t.k95 }}</p>
+      <p class="sm">{{ t.k96 }}</p>
+      <p class="xs" style="margin:0">{{ t.k97 }}</p>
+    </div>
+    <!-- fix16: speaking permissions in live classes, centre past papers, guarantee teacher duties, agreement + DPA (= X12 Classes / Studies / Staff / Billing) -->
+    <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+      <p class="t2">{{ t.k99 }}</p>
+      <p class="xs" style="margin:0;color:#141A33;font-weight:600">{{ t.k100 }}</p>
+      <div class="row" style="gap:8px;flex-wrap:wrap;border-top:1px solid #EEF0F5;padding-top:6px"><span class="sm" style="flex:1 1 160px;color:#141A33">{{ t.k101 }}</span><span class="btn2" style="height:36px;font-size:13px;padding:0 12px;width:auto">{{ t.k128 }}</span></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap;border-top:1px solid #EEF0F5;padding-top:6px"><span class="sm" style="flex:1 1 160px;color:#141A33">{{ t.k102 }}</span></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap"><span class="chip">{{ t.k103 }}</span><span class="chip">{{ t.k104 }}</span></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap;border-top:1px solid #EEF0F5;padding-top:6px"><span class="chip" style="background:#FDECEC;color:#8B1C1C;white-space:normal">{{ t.k142 }}</span></div>
+      <p class="xs" style="margin:0;background:#F7F8FB;border-radius:10px;padding:6px 8px;color:#141A33">{{ t.k144 }}</p>
+      <p class="xs" style="margin:0;font-weight:600;color:#141A33">{{ t.k136 }}</p>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="chip">{{ t.k137 }}</span><span class="chip">{{ t.k138 }}</span><span class="chip">{{ t.k139 }}</span><span class="chip">{{ t.k140 }}</span><span class="chip">{{ t.k141 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k105 }}</p>
+      <p class="xs" style="margin:0;font-weight:600;color:#141A33">{{ t.k129 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k130 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k131 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k132 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k133 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k134 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k135 }}</p>
+      <p class="xs" style="margin:0">• {{ t.k158 }}</p>
+    </div>
+    <!-- fix17 (admin gap 20): at-risk rule as an institution setting (= X12 Overview) -->
+    <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+      <p class="t2">{{ t.k150 }}</p>
+      <p class="xs" style="margin:0">{{ t.k151 }}</p>
+      <div class="row" style="justify-content:space-between;font-size:14px;border-top:1px solid #EEF0F5;padding-top:6px"><span>{{ t.k152 }}</span></div>
+      <div class="row" style="justify-content:space-between;font-size:14px;border-top:1px solid #EEF0F5;padding-top:6px"><span>{{ t.k153 }}</span></div>
+      <div class="row" style="justify-content:space-between;font-size:14px;border-top:1px solid #EEF0F5;padding-top:6px"><span>{{ t.k154 }}</span></div>
+      <div class="row" style="justify-content:space-between;font-size:14px;border-top:1px solid #EEF0F5;padding-top:6px"><span>{{ t.k155 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k156 }}</p>
+      <span class="btn" style="height:auto;min-height:44px;font-size:13px;padding:0 12px;width:auto;align-self:flex-start">{{ t.k157 }}</span>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:6px"><p class="t2">{{ t.k106 }}</p><span class="chip" style="background:#141A33;color:#fff;white-space:normal">{{ t.k107 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k108 }}</p>
+      <p class="xs" style="margin:0;border:1px solid #D3D8E4;border-radius:10px;padding:8px 10px;color:#141A33;background:#fff">{{ t.k145 }}</p>
+      <p class="sm" style="color:#141A33;font-weight:600">{{ t.k109 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k110 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k111 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k112 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k113 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k114 }}</p>
+      <p class="xs" style="margin:0">☐ {{ t.k115 }}</p>
+      <p class="xs" style="margin:0;background:#FFF8EC;border-radius:10px;padding:6px 8px;color:#141A33">{{ t.k116 }} <a href="X24-Prototype-Legal.dc.html#legal/copyright-takedown">{{ t.k117 }}</a></p>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="btn" style="height:36px;font-size:13px;padding:0 12px;width:auto">{{ t.k118 }}</span><span class="chip" style="white-space:normal">{{ t.k119 }}</span></div>
+      <p class="xs" style="margin:0;font-weight:600;color:#141A33">{{ t.k120 }}</p>
+      <p class="xs" style="margin:0">{{ t.k121 }}</p>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+      <p class="t2">{{ t.k122 }}</p>
+      <p class="sm" style="color:#141A33">{{ t.k123 }}</p>
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:6px;border-top:1px solid #EEF0F5;padding-top:8px"><b style="font-size:14px">{{ t.k124 }}</b><span class="chip" style="background:#FFF1D6;color:#8A4B00;white-space:normal">{{ t.k126 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k125 }}</p>
+      <a href="X24-Prototype-Legal.dc.html#legal/institution-agreement" style="font-size:13px;font-weight:600">{{ t.k127 }}</a>
+    </div>
+    <!-- fix12 (R11-family-4, G10): Sensory-friendly mode for a class — guardians consent first (= X12 Classes) -->
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+      <p class="t2">{{ t.k77 }}</p>
+      <p class="sm">{{ t.k78 }}</p>
+      <p class="xs" style="margin:0">{{ t.k79 }}</p>
+    </div>
+  </div>
+
+  <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+    <div class="row" style="justify-content:space-between;flex-wrap:wrap"><p class="t2" id="d4-report">{{ t.k72 }}</p><span class="xs">{{ t.k73 }}</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <div><div class="row" style="justify-content:space-between;font-size:14px;margin-bottom:6px"><span>{{ t.k74 }}</span><b>44% → 76%</b></div><div class="bar"><div style="width:76%"></div></div></div>
+      <div><div class="row" style="justify-content:space-between;font-size:14px;margin-bottom:6px"><span>{{ t.k75 }}</span><b>39% → 64%</b></div><div class="bar"><div style="width:64%"></div></div></div>
+      <div><div class="row" style="justify-content:space-between;font-size:14px;margin-bottom:6px"><span>{{ t.k76 }}</span><b>51% → 82%</b></div><div class="bar"><div style="width:82%"></div></div></div>
+    </div>
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner addendum 26 Oct 2026, 22:15): the static wireframe in 6 languages — identical keys; ur/ar with LTR isolates; static otherwise
+  uiText() {
+    return {
+      "bn": {
+      "k1": "প্রতিষ্ঠান মেনু",
+      "k2": "মডেল হাই স্কুল",
+      "k3": "NexaTute প্রতিষ্ঠান",
+      "k4": "ওভারভিউ",
+      "k5": "শিক্ষার্থী ও সিট",
+      "k6": "ব্যাচ",
+      "k7": "শিক্ষক",
+      "k8": "রিপোর্ট",
+      "k9": "ব্র্যান্ডিং",
+      "k10": "বিলিং",
+      "k11": "সোম, 1 ফেব্রুয়ারি 2027",
+      "k12": "প্রতিষ্ঠানের ওভারভিউ",
+      "k13": "সব রিপোর্ট ডাউনলোড",
+      "k14": "+ শিক্ষার্থী যোগ করুন",
+      "k15": "সক্রিয় সিট",
+      "k16": "320 সিট কেনা · 100+ সিট → 40% ছাড়",
+      "k17": "গড় উপস্থিতি",
+      "k18": "এই সপ্তাহ",
+      "k19": "পোলে গড় সঠিক",
+      "k20": "সব ব্যাচ",
+      "k21": "ক্লাস শেষ পর্যন্ত",
+      "k22": "সম্পূর্ণতা",
+      "k23": "সব দেখুন",
+      "k24": "প্ল্যান",
+      "k25": "শিক্ষার্থী",
+      "k26": "উপস্থিতি",
+      "k27": "বিভ্রান্তি",
+      "k28": "দুর্বল টপিক",
+      "k29": "প্রতি জন/মাস",
+      "k30": "নবম-ক",
+      "k31": "নিশ্চায়ক",
+      "k32": "৳360",
+      "k33": "নবম-খ",
+      "k34": "মোল ধারণা",
+      "k35": "দশম-ক",
+      "k36": "বলবিদ্যা",
+      "k37": "6টি সেকশনের 3টি দেখানো হলো · প্রতিষ্ঠানের দাম: 20–99 সিটে 30% ছাড়, 100+ সিটে 40% ছাড় (Batch ও Combo)।",
+      "k38": "রমজান আনুমানিক 8 ফেব্রুয়ারি থেকে (চাঁদ দেখা সাপেক্ষে): রমজানের রুটিন তৈরি, এখনো চালু নয় — NexaTute চালু করলে স্কুলের ব্যাচ দুপুর 2:00–4:10-এ সরে যাবে।",
+      "k39": "অভিভাবকের সম্মতি",
+      "k40": "সম্মতি পাওয়া গেছে",
+      "k41": "21 জনের অভিভাবকের OTP বাকি — আবার SMS পাঠানো হয়েছে; 5 জনের মোবাইল নম্বর নেই। সম্মতি ছাড়া ক্লাস শুরু হয় না। ব্যক্তিগতকরণের সুইচগুলো 18-এর কম বয়সে বন্ধ ও লক — আইনজীবী নিশ্চিত না করা পর্যন্ত।",
+      "k42": "ব্র্যান্ডিং · Classroom Builder",
+      "k43": "মডেল হাই স্কুল · ভার্চুয়াল ক্লাসরুম",
+      "k44": "শিক্ষার্থীরা এই লোগো ও রং দেখবে",
+      "k45": "লোগো ও রং বদলান",
+      "k46": "প্রতিষ্ঠান সেটআপ",
+      "k47": "প্রোফাইল · EIIN 136742",
+      "k48": "যাচাই করা",
+      "k49": "শিক্ষাবর্ষ",
+      "k50": "2027 · 1 জানুয়ারি – 31 ডিসেম্বর",
+      "k51": "ক্লাস / সেকশন / শিফট",
+      "k52": "6 সেকশন · সকাল ও দিবা",
+      "k53": "বিষয়",
+      "k54": "গণিত · বিজ্ঞান · ইংরেজি · বাংলা",
+      "k55": "সিলেবাস ম্যাপিং (NCTB)",
+      "k56": "3 / 4 নিশ্চিত",
+      "k57": "সেটআপ কখনো দাম বদলায় না, যাচাই ছাড়া কনটেন্টও প্রকাশ করে না।",
+      "k58": "ক্লাস রিপোর্ট (বেনামি)",
+      "k59": "গণিত — জ্যামিতি: উপপাদ্য ও সম্পাদ্য — পাঠ 06 — 1 ফেব্রুয়ারি 2027",
+      "k60": "রিপোর্ট: তৈরি হচ্ছে",
+      "k61": "31 জানুয়ারি · রিপোর্ট: তৈরি",
+      "k62": "শুধু সেকশনের মোট হিসাব — কোনো শিক্ষার্থীর নাম, কণ্ঠ বা নম্বর নয়। ভুলের কারণ “সম্ভাব্য কারণ” হিসেবে।",
+      "k63": "Learning Atlas · ঢাকা জেলা",
+      "k64": "গণিত · দ্বিঘাত সমীকরণ",
+      "k65": "প্রথম চেষ্টায় 41% ভুল",
+      "k66": "পদার্থবিজ্ঞান · প্রতিসরণ",
+      "k67": "প্রথম চেষ্টায় 38% ভুল",
+      "k68": "SSC শিক্ষার্থী · জানুয়ারি 2027 · ঢাকায় 520 জন · বেনামি জেলা × বিষয় মানচিত্র · 20 জনের কম শিক্ষার্থীর ঘর লুকানো",
+      "k69": "সাংকেতিক ভাষার অ্যাভাটার (BdSL)",
+      "k70": "প্রতিটি ক্লাস বাংলা সাংকেতিক ভাষায় দেখায় — সব বিষয়, সব কোর্স · কোনো বাড়তি দাম নেই",
+      "k71": "বধির স্কুল ও NGO স্বাভাবিক সিট-দামে · সাংকেতিক ভাষা তহবিল Sponsor-a-Learner থেকে আলাদা",
+      "k72": "এই সপ্তাহের শেখা — আগে বনাম পরে",
+      "k73": "অধ্যায় শেষের প্রি-টেস্ট ও পোস্ট-টেস্ট",
+      "k74": "নবম-ক · গণিত",
+      "k75": "নবম-খ · রসায়ন",
+      "k76": "দশম-ক · পদার্থ",
+      "k77": "সংবেদন-বান্ধব মোড",
+      "k78": "প্রতিষ্ঠান একটি ক্লাসের জন্য চালু করতে পারে — আগে প্রত্যেক শিক্ষার্থীর অভিভাবকের সম্মতি লাগে",
+      "k79": "এটি একটি পছন্দ, কোনো তকমা নয় — কোনো রোগনির্ণয় চাওয়া বা রাখা হয় না, আর অন্য কেউ দেখতে পায় না।",
+      "k80": "প্রতিষ্ঠানের সময়সূচি ও সার্কুলার",
+      "k81": "সবার জন্য ফ্রি",
+      "k82": "আপনার নিজের টেস্টের রুটিন আর যে ভর্তি-বিজ্ঞপ্তি শেয়ার করেন, তা প্রত্যেক শিক্ষার্থীর পরীক্ষা ও ভর্তি হাবের ক্যালেন্ডারে পাঠান — 18-এর কম শিক্ষার্থীদের অভিভাবকের কপিতেও। শিক্ষকেরা শুধু সংখ্যা দেখেন, কোনো নাম নয়।",
+      "k83": "স্কুলের প্রি-টেস্ট (মডেল পরীক্ষা)",
+      "k84": "রবিবার 7 ফেব্রুয়ারি – বৃহস্পতিবার 11 ফেব্রুয়ারি 2027 · দশম-ক · 62 জন শিক্ষার্থী",
+      "k85": "সরকারি উৎস থেকে যাচাই করা",
+      "k86": "ক্যালেন্ডারে আছে ✓",
+      "k87": "কলেজে (একাদশ) অনলাইন ভর্তির আবেদন",
+      "k88": "রবিবার 23 মে – রবিবার 6 জুন 2027 · দশম-ক · 62 জন শিক্ষার্থী",
+      "k89": "যাচাই বাকি",
+      "k90": "নমুনা তারিখ (প্রোটোটাইপ) — আসল নোটিশ নয়",
+      "k92": "কে কোথায় আবেদন করেছে — শুধু সংখ্যা",
+      "k93": "কলেজে (একাদশ) অনলাইন ভর্তির আবেদন — 41 জন শিক্ষার্থী",
+      "k94": "পলিটেকনিক (BTEB) ডিপ্লোমা ভর্তির আবেদন — লুকানো · 20-এর কম",
+      "k95": "SSC-ভিত্তিক শিক্ষা বোর্ড বৃত্তির ফল (প্রত্যাশিত) — 23 জন শিক্ষার্থী",
+      "k96": "ক্যাডেট কলেজে ভর্তি (সপ্তম শ্রেণি) — লুকানো · 20-এর কম",
+      "k97": "যেসব শিক্ষার্থী হাবে এগুলোর খোঁজ রাখে, তাদের থেকে। কোনো নাম নেই; 20-এর কম হলে ঘর লুকানো। শিক্ষকেরা একই সংখ্যা দেখেন।",
+      "k98": "NexaTute-এর রিভিউয়ার অফিসিয়াল PDF-এর সঙ্গে মিলিয়ে না দেখা পর্যন্ত বিজ্ঞপ্তির তথ্য “যাচাই বাকি” থাকে — তারপরই অ্যালার্ট যায়।",
+      "k99": "লাইভ ক্লাসে কথা বলা",
+      "k100": "নমুনা লাইভ ক্লাস · নবম-খ · সাধারণ বিজ্ঞান · 1:50 AI ক্লাস (সর্বোচ্চ 50 জন) · 46 জনের মধ্যে 41 জন উপস্থিত",
+      "k101": "রাফি — হাত তুলেছে · 0:40",
+      "k102": "সাদিয়া — মাইক চালু · 1:00-এর মধ্যে 0:35 · ফলো-আপের উত্তর",
+      "k103": "সবাইকে মিউট",
+      "k104": "একজনকে কোল্ড-কল",
+      "k105": "18-এর কম: মাইক দেওয়ার পরই শুধু শিক্ষার্থী কথা বলে; গ্রুপ চ্যাট শুধু লেখায়।",
+      "k106": "আমাদের সেন্টারের পুরোনো প্রশ্নপত্র",
+      "k107": "প্রাইভেট · শুধু আমাদের শিক্ষার্থী",
+      "k108": "শুধু অনুমোদিত Cambridge International বা Pearson Edexcel সেন্টার আর IB-অনুমোদিত স্কুলের জন্য। NexaTute Cambridge, Pearson বা IB-এর পুরোনো প্রশ্ন হুবহু ব্যবহার করে না — নিজের অধিকারে নিজের শিক্ষার্থীদের জন্য প্রশ্নপত্র আপলোড করবেন কি না, তা আপনার স্কুলের সিদ্ধান্ত। কোনো খরচ নেই।",
+      "k109": "আপলোডের আগে — ছয়টিই নিশ্চিত করুন",
+      "k110": "আমরা অনুমোদিত Cambridge/Pearson সেন্টার বা IB-অনুমোদিত স্কুল (সেন্টার বা স্কুল নম্বর ওপরে)।",
+      "k111": "এই প্রশ্নপত্র আমরা শুধু আমাদের নিজের ভর্তি হওয়া শিক্ষার্থীদের সাথে অনুশীলন, রিভিশন বা পড়ানোর জন্য ব্যবহার করি।",
+      "k112": "এগুলোর জন্য আমরা কোনো টাকা নিই না।",
+      "k113": "এগুলো আমাদের প্রতিষ্ঠানেই প্রাইভেট থাকে — কখনো প্রকাশ্য নয়, অন্য প্রতিষ্ঠানের সাথে শেয়ারও নয়।",
+      "k114": "যে প্রশ্নপত্রে এমন তৃতীয় পক্ষের উপাদান আছে যা আমরা শেয়ার করতে পারি না, তা সরিয়ে দিই; বোর্ডের সীমার চেয়ে পুরোনো প্রশ্নপত্র মুছে দিই (Pearson: সিরিজের 5 বছর পর)।",
+      "k115": "সেন্টারের অধিকারে এগুলো ব্যবহারের সিদ্ধান্ত ও দায় আমাদের, NexaTute-এর নয়।",
+      "k116": "NexaTute শুধু প্রাইভেট স্টোরেজ দেয়। এই প্রশ্নপত্র প্রকাশ, বিক্রি বা অন্য কাজে ব্যবহার করে না; আপলোডের লগ রাখে (কে, কখন, সেন্টার নম্বর) এবং কোনো স্বত্বাধিকারী চাইলে সাথে সাথে প্রশ্নপত্রটি সরিয়ে দেয়।",
+      "k117": "কপিরাইট ও অপসারণ নীতি",
+      "k118": "প্রাইভেটভাবে আপলোড",
+      "k119": "তোমার স্কুল থেকে — শুধু তোমার স্কুলের শিক্ষার্থীদের জন্য",
+      "k120": "আপলোড লগ",
+      "k121": "স্বত্বাধিকারীর অনুরোধে সরানো · Cambridge IGCSE English 0500 · Paper 1 · মে/জুন 2023 · কে: NexaTute · কখন: সোমবার 1 ফেব্রুয়ারি 2027, 11:34 · TD-0007 · সেন্টার নম্বর: BD123",
+      "k122": "শেখার নিশ্চয়তা · প্রতিষ্ঠানের শিক্ষক",
+      "k123": "শেখার নিশ্চয়তা: আপনার শিক্ষকেরা অ্যাপে অনুশীলন দেন আর প্রত্যেক শিক্ষার্থীর পরিকল্পনা মেনে চলেন; আপনি যে সপ্তাহগুলো বন্ধ রাখেন (ছুটি, পরীক্ষা), সেগুলোতে 4 সপ্তাহের সময়সীমা বাড়ে।",
+      "k124": "প্রতিষ্ঠানের চুক্তি + DPA",
+      "k125": "NexaTute-এর সাথে আপনার চুক্তি — ডেটা প্রসেসিং চুক্তি (DPA) ও “সেন্টারের আপলোড করা পরীক্ষার উপকরণ” ধারাসহ।",
+      "k126": "আইনজীবী/DPO-র অনুমোদনের খসড়া",
+      "k127": "চুক্তিটি পড়ুন",
+      "k128": "মাইক দিন",
+      "k129": "ক্লাসে শিক্ষার্থীরা যা দেখে (NexaTute-এর ডিফল্ট)",
+      "k130": "1:50 AI ক্লাস — প্রতি ব্যাচে সর্বোচ্চ 50 জন (ডিফল্ট)",
+      "k131": "তোমার মাইক শুরুতে বন্ধ থাকে (ডিফল্ট)",
+      "k132": "একবারে কথা বলার পালা: সর্বোচ্চ 60 সেকেন্ড; কথা শেষ হলে মাইক নিজেই বন্ধ হয় (ডিফল্ট)",
+      "k133": "প্রতিবার হাত তোলায় আরেকটি প্রশ্ন: 1টি (ডিফল্ট)",
+      "k134": "যতবার খুশি হাত তুলতে পারো — কোনো সীমা নেই (ডিফল্ট)",
+      "k135": "10 মিনিটে 3টি পালা বিষয়ের বাইরে, শুধু শব্দ বা প্রশ্ন না হলে মাইক 2 মিনিট বিরতিতে যায়, সঙ্গে একটি সুন্দর বার্তা — লিখে প্রশ্ন করা তখনো চলে (ডিফল্ট)",
+      "k158": "অ্যাডমিন এগুলো শুধু দুজনের অনুমোদনে বদলাতে পারেন; প্রতিটি বদল লগে থাকে।",
+      "k136": "একটি কথার পালা",
+      "k137": "1 · প্রশ্ন",
+      "k138": "2 · ব্যাখ্যা",
+      "k139": "3 · ফলো-আপ",
+      "k140": "4 · উত্তর",
+      "k141": "5 · মাইক বন্ধ",
+      "k142": "তাসনিম — মাইক থেমে আছে · আর 1:40 · লিখতে পারবে",
+      "k144": "Nexa Teacher: “চলো মাইকটাকে 2 মিনিট বিশ্রাম দিই। তুমি ক্লাসে অংশ নিতে চাও — এটা আমার খুব ভালো লাগে! এর মধ্যে প্রশ্নগুলো লিখে পাঠাও — মাইক ফিরলে পাঠের একটা প্রশ্ন করো, একসাথে সমাধান করব।”",
+      "k145": "সেন্টার নম্বর: BD123",
+      "k146": "নির্ধারিত রক্ষণাবেক্ষণ",
+      "k147": "নমুনা নোটিশ · নোটিশ কীভাবে যাবে (অ্যাপ, SMS, ইমেইল, WhatsApp) তা NexaTute অ্যাডমিন ঠিক করেন",
+      "k148": "বুধবার 3 ফেব্রুয়ারি 2027, রাত 02:00–05:00 (বাংলাদেশ সময়): পরিকল্পিত সফটওয়্যার আপডেট। তখন কোনো লাইভ ক্লাস থাকে না, তাই কোনো ক্লাস থামবে না। আপনাকে কিছু করতে হবে না।",
+      "k150": "আপনার প্রতিষ্ঠানের ঝুঁকির নিয়ম",
+      "k151": "ডিফল্ট 75% · 2 সপ্তাহ · 15 নম্বর · 3টি (NexaTute)। আপনার হেড অ্যাডমিন প্ল্যাটফর্মের সীমার মধ্যে আপনার প্রতিষ্ঠানের নিজস্ব মান ঠিক করতে পারেন; তা শুধু আপনার প্রতিষ্ঠানে প্রযোজ্য।",
+      "k152": "উপস্থিতি এর নিচে (%): 75%",
+      "k153": "সময়কাল (সপ্তাহ): 2",
+      "k154": "ক্লাস টেস্টে স্বাভাবিকের চেয়ে কম (নম্বর): 15",
+      "k155": "টানা যতগুলো হোমওয়ার্ক জমা হয়নি: 3",
+      "k156": "NexaTute-এর ঠিক করা প্ল্যাটফর্ম সীমা: উপস্থিতি 60–90% · 1–4 সপ্তাহ · 10–25 পয়েন্ট · 2–5 হোমওয়ার্ক",
+      "k157": "অনুমোদনের জন্য পাঠান",
+      "k159": "স্টোরেজ",
+      "k160": "প্রতিষ্ঠানের স্টোরেজ পুল: 50 GB + প্রতি সিটে 1 GB (ডিফল্ট)",
+      "k161": "370 GB-এর মধ্যে 215 GB ব্যবহার হয়েছে · 58%",
+      "k162": "320 জন শিক্ষার্থীর রেকর্ডিং ও আপলোডে ব্যবহৃত",
+      "k163": "স্টোরেজ অ্যাড-অন (প্রতি মাসে)",
+      "k164": "+20 GB · ৳80/মাস ($1)",
+      "k165": "+50 GB · ৳180/মাস ($3)",
+      "k166": "+100 GB · ৳300/মাস ($4)",
+      "k167": "অ্যাড-অন কিনুন",
+      "k168": "প্ল্যান শেষ হওয়ার পর ফাইল 30 দিন রাখা হয় — তখনো ডাউনলোড করা যায়। কিছু মোছার আগে আমরা আপনাকে জানাব।",
+      "k169": "Team Quest শুরু করুন",
+      "k170": "Team Quest — ক্লাসের সবার সাথে মিলে একটি সমস্যা সমাধান",
+      "k171": "শেষ টিম কোয়েস্ট — টপিক অনুযায়ী ফল",
+      "k172": "শনি 23 জানুয়ারি · 4 জনের 12টি দল · নমুনা (প্রোটোটাইপ) · সমাধান করো: x² + 6 = 5x",
+      "k173": "ক্লাস আটকে গিয়েছিল ধাপ 3-এ: উৎপাদকে বিশ্লেষণ",
+      "k174": "ধাপ 1 — ax² + bx + c = 0 আকারে লেখা",
+      "k175": "100%",
+      "k176": "ধাপ 2 — গুণফল 6, যোগফল −5",
+      "k177": "92%",
+      "k178": "ধাপ 3 — উৎপাদকে বিশ্লেষণ",
+      "k179": "58%",
+      "k180": "ধাপ 4 — প্রতিটি উৎপাদক = 0",
+      "k181": "83%",
+      "k182": "শুধু টপিক অনুযায়ী ফল — কোনো শিক্ষার্থীর নাম বা নম্বর নয়",
+      "k183": "একই ক্লাসের 3–5 জনের দল (ডিফল্ট 4), AI মিলিয়ে দেয় · সপ্তাহে 2 বার, 15 মিনিট (ডিফল্ট) · Study Hall-এর রাউন্ডের বাইরে",
+      "k184": "শিক্ষকের AI সহকারী",
+      "k185": "অধ্যায় বেছে নিন — AI যাচাই করা প্রশ্নব্যাংক থেকে পাঠ পরিকল্পনা, বাড়ির কাজের শিট বা ক্লাস কুইজের খসড়া বানায়; আপনি বদলে অনুমোদন করেন। অনুমোদনের আগে কিছুই শিক্ষার্থীর কাছে যায় না।",
+      "k186": "পাঠ পরিকল্পনা · গণিত · অধ্যায় 4: দ্বিঘাত সমীকরণ",
+      "k187": "1 · শুরু (5 মিনিট): আগের ক্লাসের 3টি মনে করার প্রশ্ন",
+      "k188": "2 · শেখানো (15 মিনিট): সমাধান করা উদাহরণ x² − 5x + 6 = 0, তারপর আংশিক উদাহরণ",
+      "k189": "3 · অনুশীলন (15 মিনিট): যাচাই করা ব্যাংকের 6টি প্রশ্ন · এক্সিট টিকিট",
+      "k190": "আজ 20টির মধ্যে 20টি খসড়া বাকি (প্রতিষ্ঠানের প্ল্যান)",
+      "k191": "অনুমোদন করে ক্লাসে দিন",
+      "k192": "আপনার ক্লাসের Nexa Swap রুম তত্ত্বাবধান করুন",
+      "k193": "নবম-ক সোয়াপ রুম — এখন 6 জন শিক্ষার্থী · শুধু হোয়াইটবোর্ড ও নির্দিষ্ট বোতাম · ব্যক্তিগত বার্তা বা যোগাযোগ শেয়ার নয়",
+      "k194": "এখন: Shapla-08 ভগ্নাংশ শেখাচ্ছে → Kodom-11 · Joba-15 উৎপাদক শেখাচ্ছে → Megh-04",
+      "k195": "রুম থামান",
+      "lp": "ভাষা"
+      },
+      "en": {
+      "k1": "Institution menu",
+      "k2": "Model High School",
+      "k3": "NexaTute institution",
+      "k4": "Overview",
+      "k5": "Students and seats",
+      "k6": "Batch",
+      "k7": "Teachers",
+      "k8": "Reports",
+      "k9": "Branding",
+      "k10": "Billing",
+      "k11": "Mon, 1 February 2027",
+      "k12": "Institution overview",
+      "k13": "Download all reports",
+      "k14": "+ Add students",
+      "k15": "Active seats",
+      "k16": "320 seats bought · 100+ seats → 40% off",
+      "k17": "Average attendance",
+      "k18": "This week",
+      "k19": "Average right in polls",
+      "k20": "All batches",
+      "k21": "Stayed to the end",
+      "k22": "Completion",
+      "k23": "See all",
+      "k24": "Plan",
+      "k25": "Students",
+      "k26": "Attendance",
+      "k27": "Confusion",
+      "k28": "Topic needing practice",
+      "k29": "Per learner / month",
+      "k30": "9-A",
+      "k31": "Discriminant",
+      "k32": "৳360",
+      "k33": "9-B",
+      "k34": "Mole concept",
+      "k35": "10-A",
+      "k36": "Mechanics",
+      "k37": "3 of 6 sections shown · institution price: 30% off at 20–99 seats, 40% off at 100+ (Batch and Combo).",
+      "k38": "Ramadan expected from about 8 February (subject to the moon sighting): the Ramadan timetable is ready but not on yet — when NexaTute switches it on, school batches move to 2:00–4:10 pm.",
+      "k39": "Guardian consent",
+      "k40": "Consent received",
+      "k41": "OTP pending for 21 guardians — SMS sent again; 5 have no mobile number. Classes don’t start without consent. Personalisation switches are off and locked under 18 until our lawyer confirms.",
+      "k42": "Branding · Classroom Builder",
+      "k43": "Model High School · virtual classroom",
+      "k44": "Students will see this logo and colour",
+      "k45": "Change logo and colour",
+      "k46": "Institution setup",
+      "k47": "Profile · EIIN 136742",
+      "k48": "Verified",
+      "k49": "Academic year",
+      "k50": "2027 · 1 January – 31 December",
+      "k51": "Classes / sections / shifts",
+      "k52": "6 sections · morning and day",
+      "k53": "Subjects",
+      "k54": "Maths · Science · English · Bangla",
+      "k55": "Syllabus mapping (NCTB)",
+      "k56": "3 / 4 confirmed",
+      "k57": "Setup never changes prices, and never publishes content without the checks.",
+      "k58": "Class reports (anonymised)",
+      "k59": "Maths — Geometry: theorems and constructions — Lesson 06 — 1 Feb 2027",
+      "k60": "Report: Generating",
+      "k61": "31 January · Report: Ready",
+      "k62": "Section totals only — no learner names, voices or scores. Mistake causes shown as “possible cause”.",
+      "k63": "Learning Atlas · Dhaka district",
+      "k64": "Maths · quadratic equations",
+      "k65": "41% wrong at the first try",
+      "k66": "Physics · refraction",
+      "k67": "38% wrong at the first try",
+      "k68": "SSC learners · January 2027 · 520 in Dhaka · anonymised district × subject map · cells with fewer than 20 learners hidden",
+      "k69": "Sign language avatar (BdSL)",
+      "k70": "Signs every class in Bangla Sign Language — every subject, every course · no extra price",
+      "k71": "Deaf schools and NGOs at the normal seat price · the Sign Language Fund is separate from Sponsor-a-Learner",
+      "k72": "This week’s learning — before vs after",
+      "k73": "End-of-chapter pre-test and post-test",
+      "k74": "9-A · Maths",
+      "k75": "9-B · Chemistry",
+      "k76": "10-A · Physics",
+      "k77": "Sensory-friendly mode",
+      "k78": "An institution can turn it on for a class — each learner’s guardian consents first",
+      "k79": "A preference, not a label — no diagnosis is asked for or stored, and no one else sees it.",
+      "k80": "Institution schedules & circulars",
+      "k81": "Free for everyone",
+      "k82": "Push your own test routine and the admission circulars you share into each student’s Exam & Admission Hub calendar — and into the guardian’s copy for students under 18. Teachers see counts only, never names.",
+      "k83": "School pre-test (model exam)",
+      "k84": "Sun 7 Feb – Thu 11 Feb 2027 · 10-A · 62 students",
+      "k85": "Verified from official source",
+      "k86": "In calendars ✓",
+      "k87": "College (Class XI) online admission application",
+      "k88": "Sun 23 May – Sun 6 Jun 2027 · 10-A · 62 students",
+      "k89": "Pending verification",
+      "k90": "sample date (prototype) — not a real notice",
+      "k92": "How many applied where — counts only",
+      "k93": "College (Class XI) online admission application — 41 students",
+      "k94": "Polytechnic (BTEB) diploma admission application — Hidden · under 20",
+      "k95": "SSC-based education board scholarship results (expected) — 23 students",
+      "k96": "Cadet college admission (Class VII) — Hidden · under 20",
+      "k97": "From students who track these in their hub. No names; cells under 20 are hidden. Teachers see the same counts.",
+      "k98": "Circular facts stay “Pending verification” until a NexaTute reviewer checks them against the official PDF — only then do alerts go out.",
+      "k99": "Speaking in live classes",
+      "k100": "Sample live class · 9-B · General Science · 1:50 AI class (up to 50 learners) · 41 of 46 present",
+      "k101": "Rafi — Hand raised · 0:40",
+      "k102": "Sadia — Mic on · 0:35 of 1:00 · follow-up answer",
+      "k103": "Mute all",
+      "k104": "Cold-call a learner",
+      "k105": "Under 18: a learner speaks only after the mic is given; group chat stays text-only.",
+      "k106": "Our centre’s past papers",
+      "k107": "Private · our students only",
+      "k108": "Only for approved Cambridge International or Pearson Edexcel centres and IB-authorised schools. NexaTute does not use Cambridge, Pearson or IB past-paper questions word for word — your school decides whether to upload papers for its own students under its own rights. Free of charge.",
+      "k109": "Before uploading — confirm all six",
+      "k110": "We are an approved Cambridge/Pearson centre or an IB-authorised school (centre or school number above).",
+      "k111": "We use these papers only with our own enrolled students, for practice, revision or teaching.",
+      "k112": "We charge nothing for them.",
+      "k113": "They stay private to our institution — never public and never shared with other institutions.",
+      "k114": "We remove any paper that contains third-party material we may not share, and we delete papers older than the board’s limit (Pearson: 5 years after the series).",
+      "k115": "The decision and responsibility for using them under our centre rights are ours, not NexaTute’s.",
+      "k116": "NexaTute only provides private storage. It does not publish, sell or reuse these papers, keeps an upload log (who, when, centre number) and removes a paper at once if a rights holder asks.",
+      "k117": "Copyright & takedown policy",
+      "k118": "Upload privately",
+      "k119": "From your school — for your school’s students only",
+      "k120": "Upload log",
+      "k121": "Removed at a rights holder’s request · Cambridge IGCSE English 0500 · Paper 1 · May/June 2023 · Who: NexaTute · When: Mon 1 Feb 2027, 11:34 · TD-0007 · Centre number: BD123",
+      "k122": "Learning guarantee · Institution teacher",
+      "k123": "Learning guarantee: your teachers assign practice in the app and keep to each learner’s plan; weeks you block (holidays, exams) extend the 4-week window.",
+      "k124": "Institution agreement + DPA",
+      "k125": "Your agreement with NexaTute, with the data processing agreement (DPA) and the “Centre-uploaded exam materials” clauses.",
+      "k126": "Draft for lawyer/DPO approval",
+      "k127": "Read the agreement",
+      "k128": "Give mic",
+      "k129": "What learners see in class (NexaTute defaults)",
+      "k130": "1:50 AI class — up to 50 learners per batch (default)",
+      "k131": "Your mic starts off (default)",
+      "k132": "One voice turn: up to 60 s; the mic turns off by itself when you finish (default)",
+      "k133": "Follow-up questions per raised hand: 1 (default)",
+      "k134": "Raise your hand as often as you like — no limit (default)",
+      "k135": "If 3 turns in 10 minutes are off-topic, noise or not a question, the mic pauses for 2 minutes with a kind message — you can still type (default)",
+      "k158": "Admin changes these only with two-person approval; every change is logged.",
+      "k136": "One voice turn",
+      "k137": "1 · Question",
+      "k138": "2 · Explanation",
+      "k139": "3 · Follow-up",
+      "k140": "4 · Answer",
+      "k141": "5 · Mic off",
+      "k142": "Tasnim — Mic paused · 1:40 left · can still type",
+      "k144": "Nexa Teacher: “Let’s give the mic a 2-minute rest. I really like that you want to join in! Type your questions meanwhile — when the mic is back, ask me one about the lesson and we’ll solve it together.”",
+      "k145": "Centre number: BD123",
+      "k146": "Scheduled maintenance",
+      "k147": "Sample notice · NexaTute admin chooses how notices are sent (app, SMS, email, WhatsApp)",
+      "k148": "Wed 3 Feb 2027, 02:00–05:00 (Bangladesh time): a planned software update. No live classes run then, so no class is interrupted. No action is needed.",
+      "k150": "At-risk rule for your institution",
+      "k151": "Defaults 75% · 2 weeks · 15 points · 3 (NexaTute). Your head admin may set your institution’s own values within the platform limits; they apply to your institution only.",
+      "k152": "Attendance below (%): 75%",
+      "k153": "Over (weeks): 2",
+      "k154": "Class-test mark below usual (points): 15",
+      "k155": "Homework missed in a row: 3",
+      "k156": "Platform limits set by NexaTute: Attendance 60–90% · 1–4 weeks · 10–25 points · 2–5 homework",
+      "k157": "Send for approval",
+      "k159": "Storage",
+      "k160": "Institution storage pool: 50 GB + 1 GB per seat (default)",
+      "k161": "215 GB of 370 GB used · 58%",
+      "k162": "Used by 320 learners’ recordings and uploads",
+      "k163": "Storage add-ons (per month)",
+      "k164": "+20 GB · ৳80/month ($1)",
+      "k165": "+50 GB · ৳180/month ($3)",
+      "k166": "+100 GB · ৳300/month ($4)",
+      "k167": "Buy an add-on",
+      "k168": "Files are kept for 30 days after a plan ends — they can still be downloaded. We’ll tell you before anything is deleted.",
+      "k169": "Start a Team Quest",
+      "k170": "Team Quest — solve one problem together with your class",
+      "k171": "Last Team Quest — results by topic",
+      "k172": "Sat 23 Jan · 12 teams of 4 · sample (prototype) · Solve: x² + 6 = 5x",
+      "k173": "Class got stuck on step 3: factorising",
+      "k174": "Step 1 — write it as ax² + bx + c = 0",
+      "k175": "100%",
+      "k176": "Step 2 — product 6, sum −5",
+      "k177": "92%",
+      "k178": "Step 3 — factorising",
+      "k179": "58%",
+      "k180": "Step 4 — each factor = 0",
+      "k181": "83%",
+      "k182": "Results by topic only — no learner names or scores",
+      "k183": "Teams of 3–5 from the same class (default 4), mixed by AI · 2 sessions a week, 15 min (default) · outside the Study Hall rounds",
+      "k184": "Teacher’s AI assistant",
+      "k185": "Pick a chapter — the AI drafts a lesson plan, homework sheet or class quiz from the verified question bank; you edit and approve. Nothing reaches learners before you approve.",
+      "k186": "Lesson plan · Maths · ch. 4: Quadratic equations",
+      "k187": "1 · Warm-up (5 min): 3 recall questions from last class",
+      "k188": "2 · Teach (15 min): worked example x² − 5x + 6 = 0, then a faded example",
+      "k189": "3 · Practice (15 min): 6 questions from the verified bank · exit ticket",
+      "k190": "20 of 20 drafts left today (institution plan)",
+      "k191": "Approve and share with the class",
+      "k192": "Supervise your class’s Nexa Swap room",
+      "k193": "Class 9-A swap room — 6 learners now · whiteboard and preset buttons only · no private messages or contact sharing",
+      "k194": "Now: Shapla-08 teaches fractions → Kodom-11 · Joba-15 teaches factorising → Megh-04",
+      "k195": "Pause the room",
+      "lp": "Language"
+      },
+      "hi": {
+      "k1": "संस्था मेनू",
+      "k2": "मॉडल हाई स्कूल",
+      "k3": "NexaTute संस्था",
+      "k4": "ओवरव्यू",
+      "k5": "विद्यार्थी और सीटें",
+      "k6": "बैच",
+      "k7": "शिक्षक",
+      "k8": "रिपोर्ट",
+      "k9": "ब्रांडिंग",
+      "k10": "बिलिंग",
+      "k11": "सोम, 1 फ़रवरी 2027",
+      "k12": "संस्था का ओवरव्यू",
+      "k13": "सारी रिपोर्ट डाउनलोड",
+      "k14": "+ विद्यार्थी जोड़ें",
+      "k15": "सक्रिय सीटें",
+      "k16": "320 सीटें ख़रीदीं · 100+ सीट → 40% छूट",
+      "k17": "औसत उपस्थिति",
+      "k18": "इस हफ़्ते",
+      "k19": "पोल में औसत सही",
+      "k20": "सभी बैच",
+      "k21": "क्लास के अंत तक",
+      "k22": "पूर्णता",
+      "k23": "सब देखें",
+      "k24": "प्लान",
+      "k25": "विद्यार्थी",
+      "k26": "उपस्थिति",
+      "k27": "उलझन",
+      "k28": "कमज़ोर टॉपिक",
+      "k29": "प्रति विद्यार्थी/महीना",
+      "k30": "9-A",
+      "k31": "विविक्तकर",
+      "k32": "৳360",
+      "k33": "9-B",
+      "k34": "मोल अवधारणा",
+      "k35": "10-A",
+      "k36": "यांत्रिकी",
+      "k37": "6 में से 3 सेक्शन दिखाए गए · संस्था की कीमत: 20–99 सीट पर 30% छूट, 100+ पर 40% छूट (Batch और Combo)।",
+      "k38": "रमज़ान लगभग 8 फ़रवरी से (चाँद दिखने पर): रमज़ान का रूटीन तैयार, अभी चालू नहीं — NexaTute चालू करे तो स्कूल के बैच दोपहर 2:00–4:10 पर चले जाएँगे।",
+      "k39": "अभिभावक की सहमति",
+      "k40": "सहमति मिली",
+      "k41": "21 अभिभावकों का OTP बाकी — SMS फिर भेजा गया; 5 का मोबाइल नंबर नहीं है। सहमति के बिना क्लास शुरू नहीं होती। निजीकरण के स्विच 18 से कम उम्र में वकील की पुष्टि तक बंद और लॉक हैं।",
+      "k42": "ब्रांडिंग · Classroom Builder",
+      "k43": "मॉडल हाई स्कूल · वर्चुअल क्लासरूम",
+      "k44": "विद्यार्थी यह लोगो और रंग देखेंगे",
+      "k45": "लोगो और रंग बदलें",
+      "k46": "संस्था सेटअप",
+      "k47": "प्रोफ़ाइल · EIIN 136742",
+      "k48": "सत्यापित",
+      "k49": "शैक्षणिक वर्ष",
+      "k50": "2027 · 1 जनवरी – 31 दिसंबर",
+      "k51": "कक्षा / सेक्शन / शिफ़्ट",
+      "k52": "6 सेक्शन · सुबह और दिन",
+      "k53": "विषय",
+      "k54": "गणित · विज्ञान · अंग्रेज़ी · बांग्ला",
+      "k55": "सिलेबस मैपिंग (NCTB)",
+      "k56": "3 / 4 पुष्टि",
+      "k57": "सेटअप कभी कीमत नहीं बदलता, और बिना जाँच के सामग्री प्रकाशित नहीं करता।",
+      "k58": "क्लास रिपोर्ट (गुमनाम)",
+      "k59": "गणित — ज्यामिति: प्रमेय और रचनाएँ — पाठ 06 — 1 फ़रवरी 2027",
+      "k60": "रिपोर्ट: बन रही है",
+      "k61": "31 जनवरी · रिपोर्ट: तैयार",
+      "k62": "सिर्फ़ सेक्शन के कुल आँकड़े — किसी विद्यार्थी का नाम, आवाज़ या अंक नहीं। ग़लती का कारण “संभावित कारण” के रूप में।",
+      "k63": "Learning Atlas · ढाका ज़िला",
+      "k64": "गणित · द्विघात समीकरण",
+      "k65": "पहली कोशिश में 41% ग़लत",
+      "k66": "भौतिकी · अपवर्तन",
+      "k67": "पहली कोशिश में 38% ग़लत",
+      "k68": "SSC शिक्षार्थी · जनवरी 2027 · ढाका में 520 · गुमनाम ज़िला × विषय नक्शा · 20 से कम विद्यार्थियों वाले खाने छिपे",
+      "k69": "सांकेतिक भाषा अवतार (BdSL)",
+      "k70": "हर क्लास बांग्ला सांकेतिक भाषा में दिखाता है — हर विषय, हर कोर्स · कोई अतिरिक्त कीमत नहीं",
+      "k71": "बधिर स्कूल और NGO सामान्य सीट कीमत पर · सांकेतिक भाषा कोष Sponsor-a-Learner से अलग",
+      "k72": "इस हफ़्ते की पढ़ाई — पहले बनाम बाद",
+      "k73": "अध्याय के अंत का प्री-टेस्ट और पोस्ट-टेस्ट",
+      "k74": "9-A · गणित",
+      "k75": "9-B · रसायन",
+      "k76": "10-A · भौतिकी",
+      "k77": "संवेदी-अनुकूल मोड",
+      "k78": "संस्थान किसी क्लास के लिए चालू कर सकता है — पहले हर विद्यार्थी के अभिभावक की सहमति",
+      "k79": "यह एक पसंद है, कोई ठप्पा नहीं — कोई निदान न पूछा जाता है न रखा जाता है, और कोई और इसे नहीं देखता।",
+      "k80": "संस्थान की समय-सारिणी और सर्कुलर",
+      "k81": "सबके लिए मुफ़्त",
+      "k82": "अपना टेस्ट रूटीन और जो प्रवेश सर्कुलर आप साझा करते हैं, उन्हें हर विद्यार्थी के परीक्षा और प्रवेश हब कैलेंडर में भेजें — 18 से कम उम्र वालों के अभिभावक की कॉपी में भी। शिक्षक सिर्फ़ संख्या देखते हैं, नाम कभी नहीं।",
+      "k83": "स्कूल का प्री-टेस्ट (मॉडल परीक्षा)",
+      "k84": "रवि 7 फ़रवरी – गुरु 11 फ़रवरी 2027 · 10-A · 62 विद्यार्थी",
+      "k85": "आधिकारिक स्रोत से सत्यापित",
+      "k86": "कैलेंडर में है ✓",
+      "k87": "कॉलेज (कक्षा XI) ऑनलाइन प्रवेश आवेदन",
+      "k88": "रवि 23 मई – रवि 6 जून 2027 · 10-A · 62 विद्यार्थी",
+      "k89": "सत्यापन बाक़ी",
+      "k90": "नमूना तारीख़ (प्रोटोटाइप) — असली सूचना नहीं",
+      "k92": "किसने कहाँ आवेदन किया — सिर्फ़ संख्या",
+      "k93": "कॉलेज (कक्षा XI) ऑनलाइन प्रवेश आवेदन — 41 विद्यार्थी",
+      "k94": "पॉलिटेक्निक (BTEB) डिप्लोमा प्रवेश आवेदन — छिपा · 20 से कम",
+      "k95": "SSC आधारित शिक्षा बोर्ड छात्रवृत्ति परिणाम (अपेक्षित) — 23 विद्यार्थी",
+      "k96": "कैडेट कॉलेज प्रवेश (कक्षा VII) — छिपा · 20 से कम",
+      "k97": "जो विद्यार्थी हब में इन पर नज़र रखते हैं, उनसे। कोई नाम नहीं; 20 से कम के खाने छिपे। शिक्षक भी यही संख्या देखते हैं।",
+      "k98": "NexaTute समीक्षक आधिकारिक PDF से मिलान करने तक सर्कुलर के तथ्य “सत्यापन बाक़ी” रहते हैं — उसके बाद ही अलर्ट जाते हैं।",
+      "k99": "लाइव क्लास में बोलना",
+      "k100": "नमूना लाइव क्लास · 9-B · सामान्य विज्ञान · 1:50 AI क्लास (अधिकतम 50 विद्यार्थी) · 46 में से 41 मौजूद",
+      "k101": "राफ़ी — हाथ उठाया · 0:40",
+      "k102": "सादिया — माइक चालू · 1:00 में से 0:35 · फ़ॉलो-अप का जवाब",
+      "k103": "सबको म्यूट",
+      "k104": "किसी एक को कोल्ड-कॉल",
+      "k105": "18 से कम: माइक मिलने के बाद ही विद्यार्थी बोलता है; ग्रुप चैट सिर्फ़ लिखकर।",
+      "k106": "हमारे सेंटर के पुराने प्रश्नपत्र",
+      "k107": "निजी · सिर्फ़ हमारे विद्यार्थी",
+      "k108": "सिर्फ़ मान्यता प्राप्त Cambridge International या Pearson Edexcel सेंटरों और IB-अधिकृत स्कूलों के लिए। NexaTute Cambridge, Pearson या IB के पुराने प्रश्न शब्दशः इस्तेमाल नहीं करता — अपने अधिकार के तहत अपने विद्यार्थियों के लिए प्रश्नपत्र अपलोड करने हैं या नहीं, यह आपका स्कूल तय करता है। कोई शुल्क नहीं।",
+      "k109": "अपलोड से पहले — छहों की पुष्टि करें",
+      "k110": "हम मान्यता प्राप्त Cambridge/Pearson सेंटर या IB-अधिकृत स्कूल हैं (सेंटर या स्कूल नंबर ऊपर)।",
+      "k111": "हम ये प्रश्नपत्र सिर्फ़ अपने नामांकित विद्यार्थियों के साथ अभ्यास, दोहराई या पढ़ाने के लिए इस्तेमाल करते हैं।",
+      "k112": "हम इनके लिए कोई शुल्क नहीं लेते।",
+      "k113": "ये हमारी संस्था में ही निजी रहते हैं — कभी सार्वजनिक नहीं, दूसरी संस्थाओं से साझा भी नहीं।",
+      "k114": "जिस प्रश्नपत्र में ऐसी तीसरे पक्ष की सामग्री हो जिसे हम साझा नहीं कर सकते, उसे हटा देते हैं; बोर्ड की सीमा से पुराने प्रश्नपत्र मिटा देते हैं (Pearson: सीरीज़ के 5 साल बाद)।",
+      "k115": "सेंटर के अधिकार के तहत इनके इस्तेमाल का फ़ैसला और ज़िम्मेदारी हमारी है, NexaTute की नहीं।",
+      "k116": "NexaTute सिर्फ़ निजी स्टोरेज देता है। वह इन प्रश्नपत्रों को प्रकाशित, बेचता या दोबारा इस्तेमाल नहीं करता; अपलोड लॉग रखता है (कौन, कब, सेंटर नंबर) और किसी अधिकार-धारक के कहने पर प्रश्नपत्र तुरंत हटा देता है।",
+      "k117": "कॉपीराइट और हटाने की नीति",
+      "k118": "निजी रूप से अपलोड करें",
+      "k119": "तुम्हारे स्कूल से — सिर्फ़ तुम्हारे स्कूल के विद्यार्थियों के लिए",
+      "k120": "अपलोड लॉग",
+      "k121": "अधिकार-धारक के अनुरोध पर हटाया · Cambridge IGCSE English 0500 · Paper 1 · मई/जून 2023 · कौन: NexaTute · कब: सोम 1 फ़रवरी 2027, 11:34 · TD-0007 · सेंटर नंबर: BD123",
+      "k122": "सीखने की गारंटी · संस्थान के शिक्षक",
+      "k123": "सीखने की गारंटी: आपके शिक्षक ऐप में अभ्यास देते हैं और हर विद्यार्थी की योजना पर चलते हैं; आप जिन हफ़्तों को रोकते हैं (छुट्टियाँ, परीक्षाएँ), उनसे 4 हफ़्ते की अवधि बढ़ती है।",
+      "k124": "संस्था का समझौता + DPA",
+      "k125": "NexaTute के साथ आपका समझौता — डेटा प्रोसेसिंग समझौते (DPA) और “सेंटर द्वारा अपलोड की गई परीक्षा सामग्री” की धाराओं के साथ।",
+      "k126": "वकील/DPO की मंज़ूरी के लिए मसौदा",
+      "k127": "समझौता पढ़ें",
+      "k128": "माइक दें",
+      "k129": "क्लास में विद्यार्थी क्या देखते हैं (NexaTute के डिफ़ॉल्ट)",
+      "k130": "1:50 AI क्लास — हर बैच में ज़्यादा से ज़्यादा 50 विद्यार्थी (डिफ़ॉल्ट)",
+      "k131": "तुम्हारा माइक शुरू में बंद रहता है (डिफ़ॉल्ट)",
+      "k132": "एक बारी: ज़्यादा से ज़्यादा 60 सेकंड; बात ख़त्म होते ही माइक अपने आप बंद (डिफ़ॉल्ट)",
+      "k133": "हर बार हाथ उठाने पर अगला सवाल: 1 (डिफ़ॉल्ट)",
+      "k134": "जितनी बार चाहो हाथ उठाओ — कोई सीमा नहीं (डिफ़ॉल्ट)",
+      "k135": "10 मिनट में 3 बारी विषय से हटकर, सिर्फ़ शोर या सवाल न हों तो माइक 2 मिनट रुकता है, एक प्यारे संदेश के साथ — लिखकर पूछना तब भी चलता है (डिफ़ॉल्ट)",
+      "k158": "एडमिन इन्हें सिर्फ़ दो लोगों की मंज़ूरी से बदलते हैं; हर बदलाव लॉग में रहता है।",
+      "k136": "बोलने की एक बारी",
+      "k137": "1 · सवाल",
+      "k138": "2 · समझाना",
+      "k139": "3 · फ़ॉलो-अप",
+      "k140": "4 · जवाब",
+      "k141": "5 · माइक बंद",
+      "k142": "तसनीम — माइक रुका है · 1:40 बाक़ी · लिख सकता है",
+      "k144": "Nexa Teacher: “चलो माइक को 2 मिनट आराम देते हैं। मुझे बहुत अच्छा लगता है कि तुम क्लास में हिस्सा लेना चाहते हो! तब तक सवाल लिखकर भेजो — माइक लौटे तो पाठ का एक सवाल पूछना, साथ मिलकर हल करेंगे।”",
+      "k145": "सेंटर नंबर: BD123",
+      "k146": "निर्धारित रखरखाव",
+      "k147": "नमूना सूचना · सूचना कैसे भेजी जाए (ऐप, SMS, ईमेल, WhatsApp) यह NexaTute एडमिन तय करते हैं",
+      "k148": "बुध 3 फ़रवरी 2027, 02:00–05:00 (बांग्लादेश समय): योजनाबद्ध सॉफ़्टवेयर अपडेट। उस समय कोई लाइव क्लास नहीं होती, इसलिए कोई क्लास नहीं रुकेगी। आपको कुछ नहीं करना है।",
+      "k150": "आपकी संस्था का जोखिम नियम",
+      "k151": "डिफ़ॉल्ट 75% · 2 हफ़्ते · 15 अंक · 3 (NexaTute)। आपके हेड एडमिन प्लैटफ़ॉर्म की सीमाओं के भीतर आपकी संस्था के अपने मान तय कर सकते हैं; ये सिर्फ़ आपकी संस्था पर लागू होते हैं।",
+      "k152": "उपस्थिति इससे कम (%): 75%",
+      "k153": "अवधि (हफ़्ते): 2",
+      "k154": "क्लास टेस्ट में सामान्य से कम (अंक): 15",
+      "k155": "लगातार न जमा हुए होमवर्क: 3",
+      "k156": "NexaTute की तय प्लैटफ़ॉर्म सीमाएँ: उपस्थिति 60–90% · 1–4 सप्ताह · 10–25 अंक · 2–5 होमवर्क",
+      "k157": "मंज़ूरी के लिए भेजें",
+      "k159": "स्टोरेज",
+      "k160": "संस्थान का स्टोरेज पूल: 50 GB + हर सीट पर 1 GB (डिफ़ॉल्ट)",
+      "k161": "370 GB में से 215 GB इस्तेमाल हुआ · 58%",
+      "k162": "320 शिक्षार्थियों की रिकॉर्डिंग और अपलोड में उपयोग",
+      "k163": "स्टोरेज ऐड-ऑन (हर महीने)",
+      "k164": "+20 GB · ৳80/महीना ($1)",
+      "k165": "+50 GB · ৳180/महीना ($3)",
+      "k166": "+100 GB · ৳300/महीना ($4)",
+      "k167": "ऐड-ऑन ख़रीदें",
+      "k168": "प्लान ख़त्म होने के बाद फ़ाइलें 30 दिन रखी जाती हैं — तब भी डाउनलोड की जा सकती हैं। कुछ मिटाने से पहले हम आपको बताएँगे।",
+      "k169": "Team Quest शुरू करें",
+      "k170": "Team Quest — अपनी क्लास के साथ मिलकर एक सवाल हल करें",
+      "k171": "पिछला टीम क्वेस्ट — टॉपिक के अनुसार नतीजे",
+      "k172": "शनि 23 जनवरी · 4-4 की 12 टीमें · नमूना (प्रोटोटाइप) · हल करो: x² + 6 = 5x",
+      "k173": "क्लास चरण 3 पर अटकी: गुणनखंड करना",
+      "k174": "क़दम 1 — ax² + bx + c = 0 के रूप में लिखना",
+      "k175": "100%",
+      "k176": "क़दम 2 — गुणनफल 6, योग −5",
+      "k177": "92%",
+      "k178": "क़दम 3 — गुणनखंड करना",
+      "k179": "58%",
+      "k180": "क़दम 4 — हर गुणनखंड = 0",
+      "k181": "83%",
+      "k182": "सिर्फ़ टॉपिक के हिसाब से नतीजे — किसी विद्यार्थी का नाम या अंक नहीं",
+      "k183": "एक ही क्लास के 3–5 लोगों की टीम (डिफ़ॉल्ट 4), AI मिलाता है · हफ़्ते में 2 बार, 15 मिनट (डिफ़ॉल्ट) · Study Hall के राउंड से अलग",
+      "k184": "शिक्षक का AI सहायक",
+      "k185": "अध्याय चुनें — AI जाँचे प्रश्न बैंक से पाठ योजना, होमवर्क शीट या क्लास क्विज़ का ड्राफ़्ट बनाता है; आप बदलकर मंज़ूर करते हैं। मंज़ूरी से पहले कुछ भी शिक्षार्थियों तक नहीं पहुँचता।",
+      "k186": "पाठ योजना · गणित · अध्याय 4: द्विघात समीकरण",
+      "k187": "1 · वार्म-अप (5 मिनट): पिछली क्लास के 3 याद करने वाले सवाल",
+      "k188": "2 · पढ़ाना (15 मिनट): हल किया उदाहरण x² − 5x + 6 = 0, फिर आधा हल उदाहरण",
+      "k189": "3 · अभ्यास (15 मिनट): जाँचे बैंक के 6 सवाल · एग्ज़िट टिकट",
+      "k190": "आज 20 में से 20 ड्राफ़्ट बाक़ी (संस्थान प्लान)",
+      "k191": "मंज़ूर करके क्लास को दें",
+      "k192": "अपनी क्लास के Nexa Swap रूम की निगरानी करें",
+      "k193": "कक्षा 9-A स्वैप रूम — अभी 6 शिक्षार्थी · सिर्फ़ व्हाइटबोर्ड और तय बटन · निजी संदेश या संपर्क साझा नहीं",
+      "k194": "अभी: Shapla-08 भिन्न सिखा रही → Kodom-11 · Joba-15 गुणनखंड सिखा रहा → Megh-04",
+      "k195": "रूम रोकें",
+      "lp": "भाषा"
+      },
+      "ur": {
+      "k1": "ادارہ مینو",
+      "k2": "ماڈل ہائی اسکول",
+      "k3": "⁦NexaTute⁩ ادارہ",
+      "k4": "جائزہ",
+      "k5": "طلبہ اور سیٹیں",
+      "k6": "بیچ",
+      "k7": "اساتذہ",
+      "k8": "رپورٹس",
+      "k9": "برانڈنگ",
+      "k10": "بلنگ",
+      "k11": "پیر، ⁦1⁩ فروری ⁦2027⁩",
+      "k12": "ادارے کا جائزہ",
+      "k13": "تمام رپورٹس ڈاؤن لوڈ",
+      "k14": "+ طلبہ شامل کریں",
+      "k15": "فعال سیٹیں",
+      "k16": "⁦320⁩ سیٹیں خریدیں · ⁦100⁩+ سیٹیں → ⁦40%⁩ رعایت",
+      "k17": "اوسط حاضری",
+      "k18": "اس ہفتے",
+      "k19": "پول میں اوسط درست",
+      "k20": "تمام بیچ",
+      "k21": "کلاس کے آخر تک",
+      "k22": "تکمیل",
+      "k23": "سب دیکھیں",
+      "k24": "پلان",
+      "k25": "طلبہ",
+      "k26": "حاضری",
+      "k27": "الجھن",
+      "k28": "کمزور موضوع",
+      "k29": "فی طالب علم/مہینہ",
+      "k30": "⁦9-A⁩",
+      "k31": "ممیز",
+      "k32": "⁦৳360⁩",
+      "k33": "⁦9-B⁩",
+      "k34": "مول کا تصور",
+      "k35": "⁦10-A⁩",
+      "k36": "میکانیات",
+      "k37": "⁦6⁩ میں سے ⁦3⁩ سیکشن دکھائے گئے · ادارے کی قیمت: ⁦20–99⁩ سیٹوں پر ⁦30%⁩ رعایت، ⁦100⁩+ پر ⁦40%⁩ رعایت (⁦Batch⁩ اور ⁦Combo⁩)۔",
+      "k38": "رمضان تقریباً ⁦8⁩ فروری سے (چاند نظر آنے پر): رمضان کا شیڈول تیار ہے، ابھی آن نہیں — ⁦NexaTute⁩ آن کرے تو اسکول کے بیچ دوپہر ⁦2:00–4:10⁩ پر چلے جائیں گے۔",
+      "k39": "سرپرست کی رضامندی",
+      "k40": "رضامندی ملی",
+      "k41": "⁦21⁩ سرپرستوں کا ⁦OTP⁩ باقی — ⁦SMS⁩ دوبارہ بھیجا گیا؛ ⁦5⁩ کا موبائل نمبر نہیں۔ رضامندی کے بغیر کلاس شروع نہیں ہوتی۔ ذاتی بنانے کے سوئچ ⁦18⁩ سے کم عمر میں وکیل کی تصدیق تک بند اور لاک ہیں۔",
+      "k42": "برانڈنگ · ⁦Classroom Builder⁩",
+      "k43": "ماڈل ہائی اسکول · ورچوئل کلاس روم",
+      "k44": "طلبہ یہ لوگو اور رنگ دیکھیں گے",
+      "k45": "لوگو اور رنگ بدلیں",
+      "k46": "ادارے کا سیٹ اپ",
+      "k47": "پروفائل · ⁦EIIN 136742⁩",
+      "k48": "تصدیق شدہ",
+      "k49": "تعلیمی سال",
+      "k50": "⁦2027⁩ · ⁦1⁩ جنوری – ⁦31⁩ دسمبر",
+      "k51": "جماعت / سیکشن / شفٹ",
+      "k52": "⁦6⁩ سیکشن · صبح اور دن",
+      "k53": "مضامین",
+      "k54": "ریاضی · سائنس · انگریزی · بنگلہ",
+      "k55": "نصاب میپنگ (⁦NCTB⁩)",
+      "k56": "⁦3 / 4⁩ تصدیق",
+      "k57": "سیٹ اپ کبھی قیمت نہیں بدلتا، اور جانچ کے بغیر مواد شائع نہیں کرتا۔",
+      "k58": "کلاس رپورٹس (گمنام)",
+      "k59": "ریاضی — جیومیٹری: مسئلے اور عملی تشکیل — سبق ⁦06⁩ — ⁦1⁩ فروری ⁦2027⁩",
+      "k60": "رپورٹ: بن رہی ہے",
+      "k61": "⁦31⁩ جنوری · رپورٹ: تیار",
+      "k62": "صرف سیکشن کے کل اعداد — کسی طالب علم کا نام، آواز یا نمبر نہیں۔ غلطی کی وجہ “ممکنہ وجہ” کے طور پر۔",
+      "k63": "⁦Learning Atlas⁩ · ضلع ڈھاکہ",
+      "k64": "ریاضی · دو درجی مساوات",
+      "k65": "پہلی کوشش میں ⁦41%⁩ غلط",
+      "k66": "فزکس · انعطاف",
+      "k67": "پہلی کوشش میں ⁦38%⁩ غلط",
+      "k68": "⁦SSC⁩ طلبہ · جنوری ⁦2027⁩ · ڈھاکہ میں ⁦520⁩ · گمنام ضلع × مضمون نقشہ · ⁦20⁩ سے کم طلبہ والے خانے چھپے",
+      "k69": "اشاروں کی زبان کا اوتار (⁦BdSL⁩)",
+      "k70": "ہر کلاس بنگلہ اشاروں کی زبان میں دکھاتا ہے — ہر مضمون، ہر کورس · کوئی اضافی قیمت نہیں",
+      "k71": "بہرے بچوں کے اسکول اور ⁦NGO⁩ عام سیٹ قیمت پر · اشاروں کی زبان کا فنڈ ⁦Sponsor-a-Learner⁩ سے الگ",
+      "k72": "اس ہفتے کی پڑھائی — پہلے بمقابلہ بعد",
+      "k73": "باب کے آخر کا پری ٹیسٹ اور پوسٹ ٹیسٹ",
+      "k74": "⁦9-A⁩ · ریاضی",
+      "k75": "⁦9-B⁩ · کیمیا",
+      "k76": "⁦10-A⁩ · طبیعیات",
+      "k77": "حسّی دوستانہ موڈ",
+      "k78": "ادارہ کسی کلاس کے لیے آن کر سکتا ہے — پہلے ہر طالب علم کے سرپرست کی رضامندی",
+      "k79": "یہ ایک پسند ہے، کوئی لیبل نہیں — نہ کوئی تشخیص پوچھی جاتی ہے نہ محفوظ کی جاتی ہے، اور کوئی اور اسے نہیں دیکھتا۔",
+      "k80": "ادارے کا شیڈول اور سرکلر",
+      "k81": "سب کے لیے مفت",
+      "k82": "اپنا ٹیسٹ روٹین اور وہ داخلہ سرکلر جو آپ شیئر کرتے ہیں، ہر طالب علم کے امتحان اور داخلہ ہب کیلنڈر میں بھیجیں — ⁦18⁩ سے کم عمر طلبہ کے سرپرست کی کاپی میں بھی۔ اساتذہ صرف تعداد دیکھتے ہیں، نام کبھی نہیں۔",
+      "k83": "اسکول کا پری ٹیسٹ (ماڈل امتحان)",
+      "k84": "اتوار ⁦7⁩ فروری – جمعرات ⁦11⁩ فروری ⁦2027⁩ · ⁦10-A⁩ · ⁦62⁩ طلبہ",
+      "k85": "سرکاری ماخذ سے تصدیق شدہ",
+      "k86": "کیلنڈر میں ہے ✓",
+      "k87": "کالج (جماعت ⁦XI⁩) آن لائن داخلہ درخواست",
+      "k88": "اتوار ⁦23⁩ مئی – اتوار ⁦6⁩ جون ⁦2027⁩ · ⁦10-A⁩ · ⁦62⁩ طلبہ",
+      "k89": "تصدیق باقی",
+      "k90": "نمونہ تاریخ (پروٹوٹائپ) — اصل نوٹس نہیں",
+      "k92": "کس نے کہاں درخواست دی — صرف تعداد",
+      "k93": "کالج (جماعت ⁦XI⁩) آن لائن داخلہ درخواست — ⁦41⁩ طلبہ",
+      "k94": "پولی ٹیکنک (⁦BTEB⁩) ڈپلومہ داخلہ درخواست — چھپا · ⁦20⁩ سے کم",
+      "k95": "⁦SSC⁩ پر مبنی تعلیمی بورڈ وظیفہ نتائج (متوقع) — ⁦23⁩ طلبہ",
+      "k96": "کیڈٹ کالج داخلہ (جماعت ہفتم) — چھپا · ⁦20⁩ سے کم",
+      "k97": "ان طلبہ سے جو ہب میں ان پر نظر رکھتے ہیں۔ کوئی نام نہیں؛ ⁦20⁩ سے کم والے خانے چھپے ہیں۔ اساتذہ بھی یہی تعداد دیکھتے ہیں۔",
+      "k98": "جب تک ⁦NexaTute⁩ کا جائزہ کار سرکاری ⁦PDF⁩ سے مِلا نہ لے، سرکلر کی معلومات “تصدیق باقی” رہتی ہیں — اس کے بعد ہی الرٹ جاتے ہیں۔",
+      "k99": "لائیو کلاس میں بولنا",
+      "k100": "نمونہ لائیو کلاس · ⁨⁦9-B⁩⁩ · جنرل سائنس · ⁦1:50 AI⁩ کلاس (زیادہ سے زیادہ ⁦50⁩ طلبہ) · ⁦46⁩ میں سے ⁦41⁩ حاضر",
+      "k101": "رافی — ہاتھ اٹھایا · ⁦0:40⁩",
+      "k102": "سعدیہ — مائیک آن · ⁦⁦1:00⁩ میں سے ⁦0:35⁩⁩ · فالو اپ کا جواب",
+      "k103": "سب کو میوٹ",
+      "k104": "کسی ایک کو کولڈ کال",
+      "k105": "⁦18⁩ سے کم: مائیک ملنے کے بعد ہی طالب علم بولتا ہے؛ گروپ چیٹ صرف تحریری۔",
+      "k106": "ہمارے سینٹر کے پرانے پرچے",
+      "k107": "نجی · صرف ہمارے طلبہ",
+      "k108": "صرف منظور شدہ ⁦Cambridge International⁩ یا ⁦Pearson Edexcel⁩ سینٹرز اور ⁦IB⁩ سے منظور شدہ اسکولوں کے لیے۔ ⁦NexaTute Cambridge⁩، ⁦Pearson⁩ یا ⁦IB⁩ کے پرانے سوال لفظ بہ لفظ استعمال نہیں کرتا — اپنے حقوق کے تحت اپنے طلبہ کے لیے پرچے اپ لوڈ کرنے ہیں یا نہیں، یہ آپ کا اسکول طے کرتا ہے۔ کوئی فیس نہیں۔",
+      "k109": "اپ لوڈ سے پہلے — چھے کی چھے تصدیق کریں",
+      "k110": "ہم منظور شدہ ⁦Cambridge/Pearson⁩ سینٹر یا ⁦IB⁩ سے منظور شدہ اسکول ہیں (سینٹر یا اسکول نمبر اوپر)۔",
+      "k111": "ہم یہ پرچے صرف اپنے داخل شدہ طلبہ کے ساتھ مشق، دہرائی یا پڑھانے کے لیے استعمال کرتے ہیں۔",
+      "k112": "ہم ان کے لیے کچھ نہیں لیتے۔",
+      "k113": "یہ ہمارے ادارے میں ہی نجی رہتے ہیں — کبھی عوامی نہیں اور دوسرے اداروں سے شیئر بھی نہیں۔",
+      "k114": "جس پرچے میں ایسا تیسرے فریق کا مواد ہو جو ہم شیئر نہیں کر سکتے، اسے ہٹا دیتے ہیں؛ بورڈ کی حد سے پرانے پرچے حذف کر دیتے ہیں (⁦Pearson⁩: سیریز کے ⁦5⁩ سال بعد)۔",
+      "k115": "سینٹر کے حقوق کے تحت انہیں استعمال کرنے کا فیصلہ اور ذمہ داری ہماری ہے، ⁦NexaTute⁩ کی نہیں۔",
+      "k116": "⁦NexaTute⁩ صرف نجی اسٹوریج دیتا ہے۔ وہ یہ پرچے نہ شائع کرتا، نہ بیچتا اور نہ دوبارہ استعمال کرتا ہے؛ اپ لوڈ لاگ رکھتا ہے (کون، کب، سینٹر نمبر) اور کسی حق دار کے کہنے پر پرچہ فوراً ہٹا دیتا ہے۔",
+      "k117": "کاپی رائٹ اور ہٹانے کی پالیسی",
+      "k118": "نجی طور پر اپ لوڈ کریں",
+      "k119": "تمہارے اسکول سے — صرف تمہارے اسکول کے طلبہ کے لیے",
+      "k120": "اپ لوڈ لاگ",
+      "k121": "حق دار کی درخواست پر ہٹایا · ⁦Cambridge IGCSE English 0500⁩ · ⁦Paper 1⁩ · مئی/جون ⁦2023⁩ · کون: NexaTute · کب: پیر ⁦1⁩ فروری ⁦2027⁩، ⁦11:34⁩ · ⁦TD-0007⁩ · سینٹر نمبر: BD123",
+      "k122": "سیکھنے کی ضمانت · ادارے کا استاد",
+      "k123": "سیکھنے کی ضمانت: آپ کے اساتذہ ایپ میں مشق دیتے ہیں اور ہر طالب علم کے منصوبے پر چلتے ہیں؛ جن ہفتوں کو آپ روکتے ہیں (چھٹیاں، امتحان)، ان سے ⁦4⁩ ہفتوں کی مدت بڑھ جاتی ہے۔",
+      "k124": "ادارے کا معاہدہ + ⁦DPA⁩",
+      "k125": "⁦NexaTute⁩ کے ساتھ آپ کا معاہدہ — ڈیٹا پروسیسنگ معاہدے (⁦DPA⁩) اور “سینٹر کی اپ لوڈ کردہ امتحانی مواد” کی شقوں کے ساتھ۔",
+      "k126": "وکیل/⁦DPO⁩ کی منظوری کے لیے مسودہ",
+      "k127": "معاہدہ پڑھیں",
+      "k128": "مائیک دیں",
+      "k129": "کلاس میں طلبہ کیا دیکھتے ہیں (⁦NexaTute⁩ کے ڈیفالٹ)",
+      "k130": "⁦1:50⁩ AI کلاس — ہر بیچ میں زیادہ سے زیادہ ⁦50⁩ طلبہ (ڈیفالٹ)",
+      "k131": "تمہارا مائیک شروع میں بند رہتا ہے (ڈیفالٹ)",
+      "k132": "ایک باری: زیادہ سے زیادہ ⁦60⁩ سیکنڈ؛ بات ختم ہوتے ہی مائیک خود بند (ڈیفالٹ)",
+      "k133": "ہر بار ہاتھ اٹھانے پر اگلا سوال: ⁦1⁩ (ڈیفالٹ)",
+      "k134": "جتنی بار چاہو ہاتھ اٹھاؤ — کوئی حد نہیں (ڈیفالٹ)",
+      "k135": "⁦10⁩ منٹ میں ⁦3⁩ باریاں موضوع سے ہٹ کر، صرف شور یا سوال نہ ہوں تو مائیک ⁦2⁩ منٹ کے لیے رکتا ہے، ایک نرم پیغام کے ساتھ — لکھ کر پوچھنا تب بھی چلتا ہے (ڈیفالٹ)",
+      "k158": "ایڈمن انہیں صرف دو افراد کی منظوری سے بدلتے ہیں؛ ہر تبدیلی لاگ میں رہتی ہے۔",
+      "k136": "بولنے کی ایک باری",
+      "k137": "⁦1⁩ · سوال",
+      "k138": "⁦2⁩ · وضاحت",
+      "k139": "⁦3⁩ · فالو اپ",
+      "k140": "⁦4⁩ · جواب",
+      "k141": "⁦5⁩ · مائیک بند",
+      "k142": "تسنیم — مائیک رکا ہوا ہے · ⁦1:40⁩ باقی · لکھ سکتا ہے",
+      "k144": "Nexa Teacher: “چلو مائیک کو ⁦2⁩ منٹ آرام دیتے ہیں۔ مجھے بہت اچھا لگتا ہے کہ تم کلاس میں حصہ لینا چاہتے ہو! تب تک سوال لکھ کر بھیجو — مائیک واپس آئے تو سبق کا ایک سوال پوچھنا، مل کر حل کریں گے۔”",
+      "k145": "سینٹر نمبر: ⁦BD123⁩",
+      "k146": "طے شدہ دیکھ بھال",
+      "k147": "نمونہ نوٹس · نوٹس کیسے بھیجا جائے (ایپ، ⁦SMS⁩، ای میل، ⁦WhatsApp⁩) یہ ⁦NexaTute⁩ ایڈمن طے کرتے ہیں",
+      "k148": "بدھ ⁦3⁩ فروری ⁦2027⁩، ⁦02:00–05:00⁩ (بنگلہ دیش وقت): طے شدہ سافٹ ویئر اپ ڈیٹ۔ اس وقت کوئی لائیو کلاس نہیں ہوتی، اس لیے کوئی کلاس نہیں رکے گی۔ آپ کو کچھ نہیں کرنا۔",
+      "k150": "آپ کے ادارے کا خطرے کا اصول",
+      "k151": "ڈیفالٹ ⁦75%⁩ · ⁦2⁩ ہفتے · ⁦15⁩ نمبر · ⁦3⁩ (⁦NexaTute⁩)۔ آپ کے ہیڈ ایڈمن پلیٹ فارم کی حدود کے اندر اپنے ادارے کی اپنی قدریں طے کر سکتے ہیں؛ یہ صرف آپ کے ادارے پر لاگو ہوتی ہیں۔",
+      "k152": "حاضری اس سے کم (⁦%⁩): ⁦75%⁩",
+      "k153": "مدت (ہفتے): ⁦2⁩",
+      "k154": "کلاس ٹیسٹ میں معمول سے کم (نمبر): ⁦15⁩",
+      "k155": "لگاتار جمع نہ ہونے والے ہوم ورک: ⁦3⁩",
+      "k156": "⁦NexaTute⁩ کی طے کردہ پلیٹ فارم حدیں: حاضری ⁦60–90%⁩ · ⁦1–4⁩ ہفتے · ⁦10–25⁩ پوائنٹس · ⁦2–5⁩ ہوم ورک",
+      "k157": "منظوری کے لیے بھیجیں",
+      "k159": "اسٹوریج",
+      "k160": "ادارے کا اسٹوریج پول: ⁦50 GB⁩ + فی سیٹ ⁦1 GB⁩ (ڈیفالٹ)",
+      "k161": "⁦370 GB⁩ میں سے ⁦215 GB⁩ استعمال ہوا · ⁦58%⁩",
+      "k162": "⁦320⁩ طلبہ کی ریکارڈنگز اور اپلوڈ میں استعمال",
+      "k163": "اسٹوریج ایڈ آنز (ماہانہ)",
+      "k164": "⁦+20 GB⁩ · ⁦৳80⁩/ماہ (⁦$1⁩)",
+      "k165": "⁦+50 GB⁩ · ⁦৳180⁩/ماہ (⁦$3⁩)",
+      "k166": "⁦+100 GB⁩ · ⁦৳300⁩/ماہ (⁦$4⁩)",
+      "k167": "ایڈ آن خریدیں",
+      "k168": "پلان ختم ہونے کے بعد فائلیں ⁦30⁩ دن رکھی جاتی ہیں — تب بھی ڈاؤن لوڈ کی جا سکتی ہیں۔ کچھ مٹانے سے پہلے ہم آپ کو بتائیں گے۔",
+      "k169": "⁦Team Quest⁩ شروع کریں",
+      "k170": "⁦Team Quest⁩ — اپنی کلاس کے ساتھ مل کر ایک سوال حل کریں",
+      "k171": "پچھلا ٹیم کویسٹ — موضوع کے لحاظ سے نتائج",
+      "k172": "ہفتہ ⁦23⁩ جنوری · ⁦4⁩ کی ⁦12⁩ ٹیمیں · نمونہ (پروٹوٹائپ) · حل کرو: ⁦x² + 6 = 5x⁩",
+      "k173": "کلاس مرحلہ ⁦3⁩ پر رکی: اجزائے ضربی بنانا",
+      "k174": "قدم ⁦1 — ax⁩² ⁦+ bx + c⁩ = ⁦0⁩ کی شکل میں لکھنا",
+      "k175": "⁦100%⁩",
+      "k176": "قدم ⁦2⁩ — حاصل ضرب ⁦6⁩، مجموعہ −⁦5⁩",
+      "k177": "⁦92%⁩",
+      "k178": "قدم ⁦3⁩ — اجزائے ضربی بنانا",
+      "k179": "⁦58%⁩",
+      "k180": "قدم ⁦4⁩ — ہر جزو = ⁦0⁩",
+      "k181": "⁦83%⁩",
+      "k182": "صرف موضوع کے لحاظ سے نتائج — کسی طالب علم کا نام یا نمبر نہیں",
+      "k183": "ایک ہی کلاس کے ⁦3–5⁩ طلبہ کی ٹیم (ڈیفالٹ ⁦4⁩)، AI ملاتا ہے · ہفتے میں ⁦2⁩ بار، ⁦15⁩ منٹ (ڈیفالٹ) · Study Hall کے راؤنڈز سے الگ",
+      "k184": "استاد کا ⁦AI⁩ معاون",
+      "k185": "باب منتخب کریں — ⁦AI⁩ جانچے سوال بینک سے سبق کا منصوبہ، ہوم ورک شیٹ یا کلاس کوئز کا مسودہ بناتا ہے؛ آپ ترمیم کر کے منظور کرتے ہیں۔ منظوری سے پہلے کچھ بھی طلبہ تک نہیں پہنچتا۔",
+      "k186": "سبق کا منصوبہ · ریاضی · باب ⁦4⁩: دو درجی مساوات",
+      "k187": "⁦1⁩ · آغاز (⁦5⁩ منٹ): پچھلی کلاس کے ⁦3⁩ یاد کرنے والے سوال",
+      "k188": "⁦2⁩ · پڑھانا (⁦15⁩ منٹ): حل شدہ مثال ⁦x² − 5x + 6 = 0⁩، پھر نیم حل مثال",
+      "k189": "⁦3⁩ · مشق (⁦15⁩ منٹ): جانچے بینک کے ⁦6⁩ سوال · ایگزٹ ٹکٹ",
+      "k190": "آج ⁦20⁩ میں سے ⁦20⁩ مسودے باقی (ادارہ جاتی پلان)",
+      "k191": "منظور کر کے کلاس کو دیں",
+      "k192": "اپنی کلاس کے ⁦Nexa Swap⁩ روم کی نگرانی کریں",
+      "k193": "جماعت ⁦9-A⁩ سواپ روم — ابھی ⁦6⁩ طلبہ · صرف وائٹ بورڈ اور طے شدہ بٹن · نجی پیغام یا رابطہ شیئر نہیں",
+      "k194": "ابھی: ⁦Shapla-08⁩ کسور سکھا رہی → ⁦Kodom-11⁩ · ⁦Joba-15⁩ اجزائے ضربی سکھا رہا → ⁦Megh-04⁩",
+      "k195": "روم روکیں",
+      "lp": "زبان"
+      },
+      "ar": {
+      "k1": "قائمة المؤسسة",
+      "k2": "مدرسة موديل الثانوية",
+      "k3": "مؤسسة ⁦NexaTute⁩",
+      "k4": "نظرة عامة",
+      "k5": "الطلاب والمقاعد",
+      "k6": "الدفعة",
+      "k7": "المعلّمون",
+      "k8": "التقارير",
+      "k9": "الهوية",
+      "k10": "الفوترة",
+      "k11": "الاثنين ⁦1⁩ فبراير ⁦2027⁩",
+      "k12": "نظرة عامة على المؤسسة",
+      "k13": "تنزيل كل التقارير",
+      "k14": "+ إضافة طلاب",
+      "k15": "المقاعد النشطة",
+      "k16": "⁦320⁩ مقعدًا مشترى · ⁦100⁩+ مقعد ← خصم ⁦40%⁩",
+      "k17": "متوسط الحضور",
+      "k18": "هذا الأسبوع",
+      "k19": "متوسط الصحيح في الاستطلاعات",
+      "k20": "كل الدفعات",
+      "k21": "حتى نهاية الحصة",
+      "k22": "الإكمال",
+      "k23": "عرض الكل",
+      "k24": "الخطة",
+      "k25": "الطلاب",
+      "k26": "الحضور",
+      "k27": "الالتباس",
+      "k28": "موضوع يحتاج تدريبًا",
+      "k29": "لكل طالب/شهر",
+      "k30": "⁦9-A⁩",
+      "k31": "المميِّز",
+      "k32": "⁦৳360⁩",
+      "k33": "⁦9-B⁩",
+      "k34": "مفهوم المول",
+      "k35": "⁦10-A⁩",
+      "k36": "الميكانيكا",
+      "k37": "عُرضت ⁦3⁩ من ⁦6⁩ شعب · سعر المؤسسات: خصم ⁦30%⁩ لـ ⁦20–99⁩ مقعدًا و⁦40%⁩ لـ ⁦100⁩+ (⁦Batch⁩ و⁦Combo⁩).",
+      "k38": "رمضان متوقع من نحو ⁦8⁩ فبراير (حسب رؤية الهلال): جدول رمضان جاهز وغير مفعّل بعد — عندما تفعّله ⁦NexaTute⁩ تنتقل دفعات المدرسة إلى ⁦2:00–4:10⁩ ظهرًا.",
+      "k39": "موافقة أولياء الأمور",
+      "k40": "تم الحصول على الموافقة",
+      "k41": "رمز ⁦OTP⁩ معلّق لـ ⁦21⁩ وليّ أمر — أُعيد إرسال ⁦SMS⁩؛ و⁦5⁩ بلا رقم جوال. لا تبدأ الحصص دون موافقة. مفاتيح التخصيص متوقفة ومقفلة لمن دون ⁦18⁩ حتى يؤكد محامينا.",
+      "k42": "الهوية · ⁦Classroom Builder⁩",
+      "k43": "مدرسة موديل الثانوية · الفصل الافتراضي",
+      "k44": "سيرى الطلاب هذا الشعار واللون",
+      "k45": "تغيير الشعار واللون",
+      "k46": "إعداد المؤسسة",
+      "k47": "الملف · ⁦EIIN 136742⁩",
+      "k48": "موثّق",
+      "k49": "العام الدراسي",
+      "k50": "⁦2027⁩ · ⁦1⁩ يناير – ⁦31⁩ ديسمبر",
+      "k51": "الصفوف / الشعب / الفترات",
+      "k52": "⁦6⁩ شعب · صباحية ونهارية",
+      "k53": "المواد",
+      "k54": "الرياضيات · العلوم · الإنجليزية · البنغالية",
+      "k55": "ربط المنهج (⁦NCTB⁩)",
+      "k56": "⁦3 / 4⁩ مؤكدة",
+      "k57": "الإعداد لا يغيّر الأسعار أبدًا، ولا ينشر محتوى دون فحص.",
+      "k58": "تقارير الحصص (مجهولة الهوية)",
+      "k59": "الرياضيات — الهندسة: المبرهنات والإنشاءات — الدرس ⁦06⁩ — ⁦1⁩ فبراير ⁦2027⁩",
+      "k60": "التقرير: قيد الإنشاء",
+      "k61": "⁦31⁩ يناير · التقرير: جاهز",
+      "k62": "مجاميع الشعبة فقط — بلا أسماء طلاب أو أصوات أو درجات. سبب الخطأ «سببًا محتملًا».",
+      "k63": "⁦Learning Atlas⁩ · منطقة دكا",
+      "k64": "الرياضيات · المعادلات التربيعية",
+      "k65": "⁦41%⁩ خطأ في المحاولة الأولى",
+      "k66": "الفيزياء · الانكسار",
+      "k67": "⁦38%⁩ خطأ في المحاولة الأولى",
+      "k68": "متعلمو ⁦SSC⁩ · يناير ⁦2027⁩ · ⁦520⁩ في دكا · خريطة منطقة × مادة مجهولة الهوية · تُخفى الخانات التي فيها أقل من ⁦20⁩ متعلّمًا",
+      "k69": "أفاتار لغة الإشارة (⁦BdSL⁩)",
+      "k70": "يترجم كل حصة بلغة الإشارة البنغالية — كل مادة وكل دورة · بلا سعر إضافي",
+      "k71": "مدارس الصم والمنظمات بالسعر العادي للمقعد · صندوق لغة الإشارة منفصل عن ⁦Sponsor-a-Learner⁩",
+      "k72": "تعلّم هذا الأسبوع — قبل وبعد",
+      "k73": "اختبار قبلي وبعدي في نهاية الفصل",
+      "k74": "⁦9-A⁩ · الرياضيات",
+      "k75": "⁦9-B⁩ · الكيمياء",
+      "k76": "⁦10-A⁩ · الفيزياء",
+      "k77": "الوضع الملائم للحواس",
+      "k78": "يمكن للمؤسسة تفعيله لصف كامل — بعد موافقة وليّ أمر كل متعلّم",
+      "k79": "إنه تفضيل لا تصنيف — لا يُطلب أي تشخيص ولا يُحفَظ، ولا يظهر لأحد آخر.",
+      "k80": "جداول المؤسسة وتعاميمها",
+      "k81": "مجاني للجميع",
+      "k82": "أرسلوا جدول اختباراتكم والتعاميم التي تشاركونها إلى تقويم مركز الامتحانات والقبول لكل طالب — وإلى نسخة وليّ الأمر للطلاب دون ⁦18⁩. يرى المعلّمون الأعداد فقط، ولا أسماء أبدًا.",
+      "k83": "الاختبار التمهيدي في المدرسة (امتحان نموذجي)",
+      "k84": "الأحد ⁦7⁩ فبراير – الخميس ⁦11⁩ فبراير ⁦2027⁩ · ⁦10-A⁩ · ⁦62⁩ طالبًا",
+      "k85": "موثّق من مصدر رسمي",
+      "k86": "في التقاويم ✓",
+      "k87": "طلب القبول الإلكتروني في الكلية (الصف ⁦XI⁩)",
+      "k88": "الأحد ⁦23⁩ مايو – الأحد ⁦6⁩ يونيو ⁦2027⁩ · ⁦10-A⁩ · ⁦62⁩ طالبًا",
+      "k89": "بانتظار التحقق",
+      "k90": "تاريخ تجريبي (نموذج أولي) — ليس إشعارًا حقيقيًا",
+      "k92": "كم تقدّم وأين — أعداد فقط",
+      "k93": "طلب القبول الإلكتروني في الكلية (الصف ⁦XI⁩) — ⁦41⁩ طالبًا",
+      "k94": "طلب القبول في دبلوم البوليتكنيك (⁦BTEB⁩) — مخفي · أقل من ⁦20⁩",
+      "k95": "نتائج منح المجلس التعليمي المبنية على ⁦SSC⁩ (متوقعة) — ⁦23⁩ طالبًا",
+      "k96": "القبول في الكلية العسكرية (الصف السابع) — مخفي · أقل من ⁦20⁩",
+      "k97": "من الطلاب الذين يتابعونها في مركزهم. بلا أسماء؛ تُخفى الخانات التي تقل عن ⁦20⁩. يرى المعلّمون الأعداد نفسها.",
+      "k98": "تبقى معلومات التعميم «بانتظار التحقق» حتى يطابقها مراجع ⁦NexaTute⁩ مع ملف ⁦PDF⁩ الرسمي — وبعدها فقط تُرسل التنبيهات.",
+      "k99": "التحدث في الحصص المباشرة",
+      "k100": "حصة مباشرة نموذجية · ⁨⁦9-B⁩⁩ · العلوم العامة · حصة ⁦AI 1:50⁩ (حتى ⁦50⁩ متعلّمًا) · ⁦41⁩ حاضرًا من ⁦46⁩",
+      "k101": "رافي — رفع يده · ⁦0:40⁩",
+      "k102": "سعدية — الميكروفون مفتوح · ⁦⁦0:35⁩ من ⁦1:00⁩⁩ · إجابة المتابعة",
+      "k103": "كتم الجميع",
+      "k104": "سؤال مفاجئ لمتعلّم",
+      "k105": "دون ⁦18⁩: لا يتحدث المتعلّم إلا بعد منحه الميكروفون؛ وتبقى الدردشة الجماعية نصية فقط.",
+      "k106": "أوراق امتحانات مركزنا السابقة",
+      "k107": "خاص · لطلابنا فقط",
+      "k108": "لمراكز ⁦Cambridge International⁩ أو ⁦Pearson Edexcel⁩ المعتمدة وللمدارس المعتمدة من ⁦IB⁩ فقط. لا تستخدم ⁦NexaTute⁩ أسئلة ⁦Cambridge⁩ أو ⁦Pearson⁩ أو ⁦IB⁩ السابقة حرفيًا — ومدرستكم هي من يقرر رفع الأوراق لطلابها بموجب حقوقها. دون أي رسوم.",
+      "k109": "قبل الرفع — أكّدوا البنود الستة كلها",
+      "k110": "نحن مركز ⁦Cambridge/Pearson⁩ معتمد أو مدرسة معتمدة من ⁦IB⁩ (رقم المركز أو المدرسة أعلاه).",
+      "k111": "نستخدم هذه الأوراق مع طلابنا المسجّلين فقط، للتمرين أو المراجعة أو التدريس.",
+      "k112": "لا نتقاضى عنها أي مقابل.",
+      "k113": "تبقى خاصة بمؤسستنا — لا تُنشر أبدًا ولا تُشارك مع مؤسسات أخرى.",
+      "k114": "نزيل أي ورقة تتضمن مواد لطرف ثالث لا يحق لنا مشاركتها، ونحذف الأوراق الأقدم من حدّ المجلس (⁦Pearson: 5⁩ سنوات بعد الدورة).",
+      "k115": "قرار استخدامها بموجب حقوقنا كمركز ومسؤوليته علينا، لا على ⁦NexaTute⁩.",
+      "k116": "توفّر ⁦NexaTute⁩ التخزين الخاص فقط. لا تنشر هذه الأوراق ولا تبيعها ولا تعيد استخدامها، وتحتفظ بسجل للرفع (من، متى، رقم المركز)، وتزيل أي ورقة فورًا إذا طلب ذلك صاحب الحقوق.",
+      "k117": "سياسة حقوق النشر والإزالة",
+      "k118": "ارفعوا بشكل خاص",
+      "k119": "من مدرستك — لطلاب مدرستك فقط",
+      "k120": "سجل الرفع",
+      "k121": "أُزيلت بطلب من صاحب الحقوق · ⁦Cambridge IGCSE English 0500⁩ · ⁦Paper 1⁩ · مايو/يونيو ⁦2023⁩ · من: NexaTute · متى: الاثنين ⁦1⁩ فبراير ⁦2027⁩، ⁦11:34⁩ · ⁦TD-0007⁩ · رقم المركز: BD123",
+      "k122": "ضمان التعلّم · معلّم المؤسسة",
+      "k123": "ضمان التعلّم: يُسند معلّموكم التمارين في التطبيق ويلتزمون بخطة كل متعلّم؛ والأسابيع التي توقفونها (العطلات، الامتحانات) تمدّد مدة الأسابيع الأربعة.",
+      "k124": "اتفاقية المؤسسة + ⁦DPA⁩",
+      "k125": "اتفاقيتكم مع ⁦NexaTute⁩، مع اتفاقية معالجة البيانات (⁦DPA⁩) وبنود «مواد الامتحانات التي يرفعها المركز».",
+      "k126": "مسودة بانتظار موافقة المحامي/مسؤول حماية البيانات",
+      "k127": "اقرؤوا الاتفاقية",
+      "k128": "امنح الميكروفون",
+      "k129": "ما يراه المتعلّمون في الحصة (القيم الافتراضية في ⁦NexaTute⁩)",
+      "k130": "حصة AI ⁦1:50⁩ — حتى ⁦50⁩ متعلّمًا في الدفعة (افتراضي)",
+      "k131": "يبدأ ميكروفونك مغلقًا (افتراضي)",
+      "k132": "الدور الصوتي: حتى ⁦60⁩ ثانية؛ ويُغلق الميكروفون وحده عند انتهائك (افتراضي)",
+      "k133": "أسئلة المتابعة لكل رفع يد: ⁦1⁩ (افتراضي)",
+      "k134": "ارفع يدك كلما شئت — بلا حدّ (افتراضي)",
+      "k135": "إذا كانت ⁦3⁩ أدوار خلال ⁦10⁩ دقائق خارج الموضوع أو ضوضاء أو ليست سؤالًا، يتوقف الميكروفون دقيقتين مع رسالة لطيفة — ويمكنك الكتابة (افتراضي)",
+      "k158": "لا يغيّرها المشرف إلا بموافقة شخصين، وكل تغيير مسجَّل.",
+      "k136": "دور صوتي واحد",
+      "k137": "⁦1⁩ · سؤال",
+      "k138": "⁦2⁩ · شرح",
+      "k139": "⁦3⁩ · متابعة",
+      "k140": "⁦4⁩ · إجابة",
+      "k141": "⁦5⁩ · إغلاق الميكروفون",
+      "k142": "تسنيم — الميكروفون متوقف · بقي ⁦1:40⁩ · يمكنه الكتابة",
+      "k144": "⁦Nexa Teacher⁩: «لنمنح الميكروفون استراحة دقيقتين. يسعدني كثيرًا أنك تريد المشاركة! اكتب أسئلتك في الأثناء — وحين يعود الميكروفون اسألني سؤالًا عن الدرس وسنحلّه معًا.»",
+      "k145": "رقم المركز: ⁦BD123⁩",
+      "k146": "صيانة مجدولة",
+      "k147": "إشعار تجريبي · يحدّد مشرف ⁦NexaTute⁩ طريقة إرسال الإشعارات (التطبيق، ⁦SMS⁩، البريد، ⁦WhatsApp⁩)",
+      "k148": "الأربعاء ⁦3⁩ فبراير ⁦2027⁩، ⁦02:00–05:00⁩ (بتوقيت بنغلاديش): تحديث برمجي مخطَّط. لا تُعقد حصص مباشرة في ذلك الوقت، فلن تتوقف أي حصة. لا يلزمكم أي إجراء.",
+      "k150": "قاعدة الخطر في مؤسستكم",
+      "k151": "القيم الافتراضية ⁦75%⁩ · أسبوعان · ⁦15⁩ نقطة · ⁦3⁩ (⁦NexaTute⁩). يمكن للمسؤول الرئيسي لديكم ضبط قيم خاصة بمؤسستكم ضمن حدود المنصة، وتسري على مؤسستكم فقط.",
+      "k152": "الحضور أقل من (⁦%⁩): ⁦75%⁩",
+      "k153": "المدة (أسابيع): ⁦2⁩",
+      "k154": "درجة الاختبار الصفّي أقل من المعتاد (نقاط): ⁦15⁩",
+      "k155": "واجبات متتالية لم تُسلَّم: ⁦3⁩",
+      "k156": "حدود المنصة التي تضبطها ⁦NexaTute⁩: الحضور ⁦60–90%⁩ · ⁦1–4⁩ أسابيع · ⁦10–25⁩ نقطة · ⁦2–5⁩ واجبات",
+      "k157": "إرسال للموافقة",
+      "k159": "مساحة التخزين",
+      "k160": "مساحة التخزين المشتركة للمؤسسة: ⁦50 GB⁩ + ⁦1 GB⁩ لكل مقعد (افتراضي)",
+      "k161": "تم استخدام ⁦215 GB⁩ من ⁦370 GB⁩ · ⁦58%⁩",
+      "k162": "تستخدمه تسجيلات وملفات ⁦320⁩ متعلمًا",
+      "k163": "إضافات التخزين (شهريًا)",
+      "k164": "⁦+20 GB⁩ · ⁦৳80⁩/شهر (⁦$1⁩)",
+      "k165": "⁦+50 GB⁩ · ⁦৳180⁩/شهر (⁦$3⁩)",
+      "k166": "⁦+100 GB⁩ · ⁦৳300⁩/شهر (⁦$4⁩)",
+      "k167": "شراء إضافة",
+      "k168": "تُحفظ الملفات ⁦30⁩ يومًا بعد انتهاء الخطة — ويمكن تنزيلها خلالها. سنُعلمكم قبل حذف أي شيء.",
+      "k169": "ابدأ ⁦Team Quest⁩",
+      "k170": "⁦Team Quest⁩ — حلّ مسألة واحدة مع زملاء الصف",
+      "k171": "آخر مهمة فريق — النتائج حسب الموضوع",
+      "k172": "السبت ⁦23⁩ يناير · ⁦12⁩ فريقًا من ⁦4⁩ · عيّنة (نموذج أولي) · حُلّ: ⁦x² + 6 = 5x⁩",
+      "k173": "تعثّر الصف في الخطوة ⁦3⁩: التحليل إلى عوامل",
+      "k174": "الخطوة ⁦1⁩ — الكتابة على صورة ⁦ax⁩² ⁦+ bx + c⁩ = ⁦0⁩",
+      "k175": "⁦100%⁩",
+      "k176": "الخطوة ⁦2⁩ — الناتج ⁦6⁩ والمجموع −⁦5⁩",
+      "k177": "⁦92%⁩",
+      "k178": "الخطوة ⁦3⁩ — التحليل إلى عوامل",
+      "k179": "⁦58%⁩",
+      "k180": "الخطوة ⁦4⁩ — كل عامل = ⁦0⁩",
+      "k181": "⁦83%⁩",
+      "k182": "النتائج حسب الموضوع فقط — دون أسماء المتعلّمين أو درجاتهم",
+      "k183": "فرق من ⁦3–5⁩ من الصف نفسه (افتراضي ⁦4⁩)، يمزجها الذكاء الاصطناعي · مرتان أسبوعيًا، ⁦15⁩ دقيقة (افتراضي) · خارج جولات Study Hall",
+      "k184": "مساعد المعلّم الذكي",
+      "k185": "اختر فصلًا — يصوغ الذكاء الاصطناعي خطة درس أو ورقة واجب أو اختبار صف من بنك الأسئلة المعتمد؛ وأنت تعدّل وتعتمد. لا يصل شيء إلى المتعلمين قبل اعتمادك.",
+      "k186": "خطة درس · الرياضيات · الفصل ⁦4⁩: المعادلات التربيعية",
+      "k187": "⁦1⁩ · تمهيد (⁦5⁩ دقائق): ⁦3⁩ أسئلة استرجاع من الحصة السابقة",
+      "k188": "⁦2⁩ · الشرح (⁦15⁩ دقيقة): مثال محلول ⁦x² − 5x + 6 = 0⁩ ثم مثال جزئي",
+      "k189": "⁦3⁩ · تدريب (⁦15⁩ دقيقة): ⁦6⁩ أسئلة من البنك المعتمد · بطاقة خروج",
+      "k190": "تبقّى ⁦20⁩ من ⁦20⁩ مسودات اليوم (خطة المؤسسة)",
+      "k191": "اعتمد وشارك مع الصف",
+      "k192": "أشرف على غرفة ⁦Nexa Swap⁩ لصفّك",
+      "k193": "غرفة التبادل للصف ⁦9-A — 6⁩ متعلمين الآن · سبورة وأزرار جاهزة فقط · بلا رسائل خاصة أو مشاركة جهات اتصال",
+      "k194": "الآن: ⁦Shapla-08⁩ تعلّم الكسور ← ⁦Kodom-11⁩ · ⁦Joba-15⁩ يعلّم التحليل ← ⁦Megh-04⁩",
+      "k195": "أوقف الغرفة",
+      "lp": "اللغة"
+      },
+      "fr": {
+      "k1": "Menu établissement",
+      "k2": "Model High School",
+      "k3": "Établissement NexaTute",
+      "k4": "Vue d’ensemble",
+      "k5": "Élèves et places",
+      "k6": "Groupe",
+      "k7": "Enseignants",
+      "k8": "Rapports",
+      "k9": "Image de marque",
+      "k10": "Facturation",
+      "k11": "Lun. 1 février 2027",
+      "k12": "Vue d’ensemble de l’établissement",
+      "k13": "Télécharger tous les rapports",
+      "k14": "+ Ajouter des élèves",
+      "k15": "Places actives",
+      "k16": "320 places achetées · 100+ places → 40 % de remise",
+      "k17": "Présence moyenne",
+      "k18": "Cette semaine",
+      "k19": "Moyenne de réponses justes",
+      "k20": "Tous les groupes",
+      "k21": "Jusqu’à la fin du cours",
+      "k22": "Achèvement",
+      "k23": "Tout voir",
+      "k24": "Formule",
+      "k25": "Élèves",
+      "k26": "Présence",
+      "k27": "Confusion",
+      "k28": "Thème à travailler",
+      "k29": "Par élève / mois",
+      "k30": "9-A",
+      "k31": "Discriminant",
+      "k32": "৳360",
+      "k33": "9-B",
+      "k34": "Notion de mole",
+      "k35": "10-A",
+      "k36": "Mécanique",
+      "k37": "3 classes sur 6 affichées · prix établissement : 30 % de remise de 20 à 99 places, 40 % à partir de 100 (Batch et Combo).",
+      "k38": "Ramadan prévu vers le 8 février (selon l’observation de la lune) : l’emploi du temps du Ramadan est prêt mais pas encore actif — quand NexaTute l’active, les groupes de l’école passent à 14 h 00 – 16 h 10.",
+      "k39": "Accord des parents",
+      "k40": "Accords reçus",
+      "k41": "OTP en attente pour 21 parents — SMS renvoyé ; 5 n’ont pas de numéro. Les cours ne commencent pas sans accord. Les réglages de personnalisation sont désactivés et verrouillés avant 18 ans jusqu’à confirmation de notre juriste.",
+      "k42": "Image de marque · Classroom Builder",
+      "k43": "Model High School · classe virtuelle",
+      "k44": "Les élèves verront ce logo et cette couleur",
+      "k45": "Changer le logo et la couleur",
+      "k46": "Configuration de l’établissement",
+      "k47": "Profil · EIIN 136742",
+      "k48": "Vérifié",
+      "k49": "Année scolaire",
+      "k50": "2027 · 1er janvier – 31 décembre",
+      "k51": "Classes / sections / horaires",
+      "k52": "6 sections · matin et journée",
+      "k53": "Matières",
+      "k54": "Maths · sciences · anglais · bengali",
+      "k55": "Correspondance du programme (NCTB)",
+      "k56": "3 / 4 confirmées",
+      "k57": "La configuration ne change jamais les prix et ne publie rien sans les vérifications.",
+      "k58": "Rapports de cours (anonymisés)",
+      "k59": "Maths — Géométrie : théorèmes et constructions — Leçon 06 — 1 févr. 2027",
+      "k60": "Rapport : En préparation",
+      "k61": "31 janvier · Rapport : Prêt",
+      "k62": "Totaux de la classe seulement — aucun nom, voix ni note. Les causes d’erreur en « cause possible ».",
+      "k63": "Learning Atlas · district de Dhaka",
+      "k64": "Maths · équations du second degré",
+      "k65": "41 % faux au premier essai",
+      "k66": "Physique · réfraction",
+      "k67": "38 % faux au premier essai",
+      "k68": "Élèves SSC · janvier 2027 · 520 à Dhaka · carte anonymisée district × matière · cases de moins de 20 élèves masquées",
+      "k69": "Avatar en langue des signes (BdSL)",
+      "k70": "Signe chaque cours en langue des signes bangladaise — toutes les matières, tous les cours · sans supplément",
+      "k71": "Écoles pour sourds et ONG au prix normal · le Fonds langue des signes est séparé de Sponsor-a-Learner",
+      "k72": "Apprentissage de la semaine — avant / après",
+      "k73": "Pré-test et post-test de fin de chapitre",
+      "k74": "9-A · Maths",
+      "k75": "9-B · Chimie",
+      "k76": "10-A · Physique",
+      "k77": "Mode sensoriel adapté",
+      "k78": "Un établissement peut l’activer pour une classe — avec d’abord l’accord du parent de chaque élève",
+      "k79": "Une préférence, pas une étiquette — aucun diagnostic n’est demandé ni conservé, et personne d’autre ne le voit.",
+      "k80": "Calendriers & circulaires de l’établissement",
+      "k81": "Gratuit pour tous",
+      "k82": "Envoyez votre calendrier de tests et les circulaires d’admission que vous partagez dans le calendrier du Hub examens & admissions de chaque élève — et dans la copie du parent pour les moins de 18 ans. Les enseignants ne voient que des nombres, jamais de noms.",
+      "k83": "Pré-test de l’école (examen modèle)",
+      "k84": "dim. 7 févr. – jeu. 11 févr. 2027 · 10-A · 62 élèves",
+      "k85": "Vérifié à la source officielle",
+      "k86": "Dans les calendriers ✓",
+      "k87": "Candidature en ligne au lycée (classe XI)",
+      "k88": "dim. 23 mai – dim. 6 juin 2027 · 10-A · 62 élèves",
+      "k89": "Vérification en attente",
+      "k90": "date d’exemple (prototype) — pas un vrai avis",
+      "k92": "Combien ont postulé où — nombres seulement",
+      "k93": "Candidature en ligne au lycée (classe XI) — 41 élèves",
+      "k94": "Candidature au diplôme polytechnique (BTEB) — Masqué · moins de 20",
+      "k95": "Résultats des bourses du conseil basées sur le SSC (attendus) — 23 élèves",
+      "k96": "Admission au collège des cadets (classe VII) — Masqué · moins de 20",
+      "k97": "D’après les élèves qui suivent ces étapes dans leur hub. Aucun nom ; les cases de moins de 20 sont masquées. Les enseignants voient les mêmes nombres.",
+      "k98": "Les informations d’une circulaire restent « Vérification en attente » jusqu’à ce qu’un relecteur NexaTute les compare au PDF officiel — alors seulement les alertes partent.",
+      "k99": "Prendre la parole en cours en direct",
+      "k100": "Cours en direct (exemple) · 9-B · Sciences générales · Cours IA 1:50 (50 élèves au plus) · 41 présents sur 46",
+      "k101": "Rafi — Main levée · 0:40",
+      "k102": "Sadia — Micro ouvert · 0:35 sur 1:00 · réponse au suivi",
+      "k103": "Tout couper",
+      "k104": "Interroger un élève au hasard",
+      "k105": "Moins de 18 ans : l’élève ne parle qu’après avoir reçu le micro ; le chat de groupe reste écrit.",
+      "k106": "Anciens sujets de notre centre",
+      "k107": "Privé · nos élèves uniquement",
+      "k108": "Uniquement pour les centres Cambridge International ou Pearson Edexcel agréés et les écoles autorisées par l’IB. NexaTute n’utilise pas mot pour mot les questions des anciens sujets Cambridge, Pearson ou IB — votre école décide si elle dépose des sujets pour ses propres élèves, au titre de ses propres droits. Gratuit.",
+      "k109": "Avant le dépôt — confirmez les six points",
+      "k110": "Nous sommes un centre Cambridge/Pearson agréé ou une école autorisée par l’IB (numéro de centre ou d’école ci-dessus).",
+      "k111": "Nous utilisons ces sujets uniquement avec nos propres élèves inscrits, pour l’entraînement, la révision ou l’enseignement.",
+      "k112": "Nous ne demandons rien pour eux.",
+      "k113": "Ils restent privés à notre établissement — jamais publics, jamais partagés avec d’autres établissements.",
+      "k114": "Nous retirons tout sujet contenant des contenus de tiers que nous ne pouvons pas partager, et nous supprimons les sujets plus anciens que la limite de l’organisme (Pearson : 5 ans après la session).",
+      "k115": "La décision et la responsabilité de leur utilisation au titre de nos droits de centre sont les nôtres, pas celles de NexaTute.",
+      "k116": "NexaTute fournit uniquement un stockage privé. Elle ne publie, ne vend ni ne réutilise ces sujets, tient un journal des dépôts (qui, quand, numéro de centre) et retire immédiatement un sujet à la demande d’un titulaire de droits.",
+      "k117": "Politique de droits d’auteur et de retrait",
+      "k118": "Déposer en privé",
+      "k119": "De ton école — réservé aux élèves de ton école",
+      "k120": "Journal des dépôts",
+      "k121": "Retiré à la demande d’un titulaire de droits · Cambridge IGCSE English 0500 · Paper 1 · mai/juin 2023 · Qui: NexaTute · Quand: lun. 1 févr. 2027, 11:34 · TD-0007 · Numéro de centre: BD123",
+      "k122": "Garantie d’apprentissage · Enseignant de l’établissement",
+      "k123": "Garantie d’apprentissage : vos enseignants donnent les exercices dans l’appli et suivent le plan de chaque apprenant ; les semaines que vous bloquez (vacances, examens) prolongent la période de 4 semaines.",
+      "k124": "Contrat d’établissement + DPA",
+      "k125": "Votre contrat avec NexaTute, avec l’accord de traitement des données (DPA) et les clauses « Supports d’examen déposés par le centre ».",
+      "k126": "Projet soumis à l’approbation de l’avocat/DPO",
+      "k127": "Lire le contrat",
+      "k128": "Donner le micro",
+      "k129": "Ce que voient les élèves en cours (valeurs par défaut NexaTute)",
+      "k130": "Cours IA 1:50 — 50 élèves max par groupe (par défaut)",
+      "k131": "Ton micro démarre coupé (par défaut)",
+      "k132": "Un tour de parole : 60 s max ; le micro se coupe tout seul quand tu as fini (par défaut)",
+      "k133": "Questions de suivi par main levée : 1 (par défaut)",
+      "k134": "Lève la main autant que tu veux — sans limite (par défaut)",
+      "k135": "Si 3 tours en 10 minutes sont hors sujet, du bruit ou pas une question, le micro fait une pause de 2 minutes avec un message bienveillant — tu peux toujours écrire (par défaut)",
+      "k158": "L’admin ne les change qu’avec l’accord de deux personnes ; chaque changement est journalisé.",
+      "k136": "Un tour de parole",
+      "k137": "1 · Question",
+      "k138": "2 · Explication",
+      "k139": "3 · Suivi",
+      "k140": "4 · Réponse",
+      "k141": "5 · Micro coupé",
+      "k142": "Tasnim — Micro suspendu · encore 1:40 · peut écrire",
+      "k144": "Nexa Teacher : « On laisse le micro se reposer 2 minutes. J’aime vraiment que tu veuilles participer ! En attendant, écris tes questions — quand le micro revient, pose-m’en une sur la leçon et on la résout ensemble. »",
+      "k145": "Numéro de centre: BD123",
+      "k146": "Maintenance prévue",
+      "k147": "Avis d’exemple · l’admin NexaTute choisit comment les avis sont envoyés (appli, SMS, e-mail, WhatsApp)",
+      "k148": "mer. 3 févr. 2027, 02:00–05:00 (heure du Bangladesh) : mise à jour logicielle prévue. Aucun cours en direct à ce moment-là, donc aucun cours n’est interrompu. Vous n’avez rien à faire.",
+      "k150": "Règle « élève à risque » de votre établissement",
+      "k151": "Valeurs par défaut 75 % · 2 semaines · 15 points · 3 (NexaTute). Votre administrateur principal peut fixer les valeurs propres à votre établissement dans ces limites ; elles ne s’appliquent qu’à votre établissement.",
+      "k152": "Présence sous (%): 75%",
+      "k153": "Sur (semaines): 2",
+      "k154": "Note d’interro sous l’habitude (points): 15",
+      "k155": "Devoirs non rendus de suite: 3",
+      "k156": "Limites de la plateforme fixées par NexaTute : Présence 60–90 % · 1–4 semaines · 10–25 points · 2–5 devoirs",
+      "k157": "Envoyer pour validation",
+      "k159": "Stockage",
+      "k160": "Réserve de stockage de l’établissement : 50 Go + 1 Go par place (par défaut)",
+      "k161": "215 Go utilisés sur 370 Go · 58%",
+      "k162": "Utilisé par les enregistrements et envois de 320 élèves",
+      "k163": "Options de stockage (par mois)",
+      "k164": "+20 Go · ৳80/mois ($1)",
+      "k165": "+50 Go · ৳180/mois ($3)",
+      "k166": "+100 Go · ৳300/mois ($4)",
+      "k167": "Acheter une option",
+      "k168": "Les fichiers sont gardés 30 jours après la fin d’un forfait — ils restent téléchargeables. Nous vous prévenons avant toute suppression.",
+      "k169": "Lancer un Team Quest",
+      "k170": "Team Quest — résoudre un problème avec sa classe",
+      "k171": "Dernière quête d’équipe — résultats par sujet",
+      "k172": "sam. 23 janv. · 12 équipes de 4 · exemple (prototype) · Résous : x² + 6 = 5x",
+      "k173": "La classe a bloqué à l’étape 3 : la factorisation",
+      "k174": "Étape 1 — écrire sous la forme ax² + bx + c = 0",
+      "k175": "100%",
+      "k176": "Étape 2 — produit 6, somme −5",
+      "k177": "92%",
+      "k178": "Étape 3 — factorisation",
+      "k179": "58%",
+      "k180": "Étape 4 — chaque facteur = 0",
+      "k181": "83%",
+      "k182": "Résultats par thème seulement — ni noms ni notes d’élèves",
+      "k183": "Équipes de 3 à 5 élèves de la même classe (par défaut 4), formées par l’IA · 2 séances par semaine, 15 min (par défaut) · en dehors des tours de la Study Hall",
+      "k184": "Assistant IA de l’enseignant",
+      "k185": "Choisissez un chapitre — l’IA rédige un plan de cours, une fiche de devoirs ou un quiz depuis la banque de questions vérifiée ; vous modifiez et validez. Rien n’atteint les élèves avant votre validation.",
+      "k186": "Plan de cours · Maths · ch. 4 : équations du second degré",
+      "k187": "1 · Échauffement (5 min) : 3 questions de rappel du dernier cours",
+      "k188": "2 · Enseigner (15 min) : exemple résolu x² − 5x + 6 = 0, puis un exemple guidé",
+      "k189": "3 · Exercices (15 min) : 6 questions de la banque vérifiée · ticket de sortie",
+      "k190": "20 brouillons sur 20 restants aujourd’hui (formule établissement)",
+      "k191": "Valider et partager avec la classe",
+      "k192": "Surveiller la salle Nexa Swap de votre classe",
+      "k193": "Salle d’échange de la 9-A — 6 élèves maintenant · tableau et boutons prédéfinis seulement · ni messages privés ni partage de contacts",
+      "k194": "Maintenant : Shapla-08 enseigne les fractions → Kodom-11 · Joba-15 enseigne la factorisation → Megh-04",
+      "k195": "Mettre la salle en pause",
+      "lp": "Langue"
+      }
+      };
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, U = this.uiText(), lang = U[s.lang] ? s.lang : 'bn', rtl = lang === 'ar' || lang === 'ur';
+    var FF = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif" };
+    var NM = {"bn": "বাংলা", "en": "English", "hi": "हिन्दी", "ur": "اردو", "ar": "العربية", "fr": "Français"};
+    return { t: U[lang], lang: lang, dir: rtl ? 'rtl' : 'ltr', ff: FF[lang] || "'Hind Siliguri','Hind',system-ui,sans-serif",
+      langs: Object.keys(NM).map(function (c) { var on = c === lang; return { code: c, name: NM[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

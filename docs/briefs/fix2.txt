@@ -1,0 +1,17 @@
+You are taking over a task a previous builder had just started before being stopped. Do it fully. SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Files
+- Work ONLY on the copies SP/s2/fix2/work/X12-Prototype-Institute.dc.html and SP/s2/fix2/work/X21-Prototype-Comms.dc.html (the X21 copy may already be partly edited — compare with SP/ntd/project/X21-Prototype-Comms.dc.html; the X12 copy should equal SP/ntd/project/X12-Prototype-Institute.dc.html). Previous builder's transcript: /root/.claude/projects/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/subagents/agent-a163d7f2263894dbe.jsonl. Do NOT write in SP/ntd/. Never publish. Never write memory. Don't touch other X files.
+- Format rules: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md. Both files: 6-language dictionaries (bn, en, hi, ur, ar, fr) with identical keys, RTL with M(), Latin digits, tooltip kit. X21 was generated from parts by SP/s2/x21/build.py — edit through parts and rebuild into your copy, or edit the copy directly; say which.
+- Tools: `python3 SP/dcverify.py FILE [TEST] [--state JSON]`, `node SP/dcrender.js FILE OUT.html '{state}'`, `python3 SP/shoot.py 1440 OUT.html`. Tests that must pass: X12 — SP/x12test.js, SP/s2/x12mf_test.js, SP/s2/x12comms_test.js; X21 — SP/s2/x21/x21test.js. Put updated test copies in SP/s2/fix2/tests/ only where the approved change makes an old expectation wrong; add checks for new behaviour.
+
+## 1. Chat summary retention = 6 months (X12 and X21) — approved
+Daily AI chat summaries are kept 6 months (full messages stay 90 days; keep the "lawyer to confirm" note; legal hold keeps anything on hold). Today X12 says summaries 2 years and X21 says 3 years (and compliance case summaries "until closed + 3 years"). Change chat summaries to 6 months everywhere (archive retention text, settings, tooltips, computed delete dates) in all 6 languages in both files. Compliance case records: kept while a legal hold or an open case exists, otherwise 6 months after the case closes — X12 and X21 must say the same.
+
+## 2. X12 seat change must go through approval — approved
+Seat changes are an approval event (maker-can't-approve; when the head is the maker → next approver in the chain head → accountant → coordinator, as X12's notifications model). The existing "Confirm seat change" button in Billing & seats still applies changes directly. Make it create a pending seat-change request (in the approvals/notifications flow with the 4 h reminder / 24 h escalation timeline), applied only after the right approver approves; maker can't approve own; rejection needs a reason; all logged. The MindForge Pro seat stepper follows the same rule if it changes seats. Update old test expectations only where required.
+
+## Done means
+- Both files: dcverify → 0 hole problems, 0 parity issues, 0 errors; all listed tests pass (or updated copies where required), with new checks for 6-month retention in all 6 languages in both files and for seat-change approval (pending until approved, maker blocked, applied after approval, rejection reason).
+- Screenshots 1440 (bn, en, ar): X12 seat change pending; X12 and X21 archive retention.
+- Reply with a short summary: what changed, test results, assumptions.

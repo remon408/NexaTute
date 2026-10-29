@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Nexa Co-Teacher and recordings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.bar{height:8px;border-radius:99px;background:#E6E9F2;overflow:hidden}
+.bar>div{height:100%;border-radius:99px;background:#3B34C9}
+.tb{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:#fff;border-top:1px solid #E2E6EF;padding:8px 6px 20px;flex:none}
+.tb a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:#59617A;text-decoration:none;font-weight:500;min-height:44px}
+.tb a.on{color:#0B6E6A;font-weight:700}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.me{align-self:flex-end;background:#3B34C9;color:#fff;border-radius:16px 4px 16px 16px;padding:10px 14px;font-size:14px;line-height:1.5;max-width:82%}
+.ai{align-self:flex-start;background:#fff;border:1px solid #E2E6EF;border-radius:4px 16px 16px 16px;padding:12px 14px;font-size:14px;line-height:1.55;max-width:88%;display:flex;flex-direction:column;gap:8px}
+.lk{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;background:#E1F4F2;color:#0B5E5A;text-decoration:none;font-size:13px;font-weight:600}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#E6E9F2;border-radius:12px;padding:4px}
+.tabs button{height:40px;border:0;border-radius:9px;background:transparent;font:600 14px 'Hind Siliguri',sans-serif;color:#59617A}
+.tabs button.on{background:#fff;color:#141A33}
+.rec{display:flex;gap:12px;align-items:center;padding:12px;background:#fff;border:1px solid #E2E6EF;border-radius:16px}
+.rec .th{width:64px;height:48px;border-radius:10px;background:#141A33;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.er{display:flex;flex-direction:column;gap:8px;padding:14px;background:#fff;border:1px solid #E2E6EF;border-radius:16px}
+.dot{width:12px;height:12px;border-radius:50%;background:#E6E9F2}
+/* fix11: shared bits for the new static frames (recording, BdSL avatar, report, settings) */
+.fst{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;line-height:1.5;white-space:nowrap}
+.fst.ok{background:#E3F5EC;color:#0F6B40}.fst.wait{background:#ECEBFD;color:#3B34C9}.fst.bad{background:#FDEDE6;color:#9A3412}.fst.off{background:#EEF0F5;color:#3F475E}
+.fsw{width:48px;height:28px;border-radius:99px;background:#8C93A8;position:relative;flex:none;display:inline-block}
+.fsw::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff}
+.fsw.on{background:#0B6E6A}.fsw.on::after{left:24px}
+.frw{display:flex;gap:10px;align-items:center;min-height:40px;padding:6px 10px;border:1px solid #E2E6EF;border-radius:12px;background:#fff;font-size:13px;line-height:1.4;box-sizing:border-box}
+.frw b{width:38px;flex:none;color:#3B34C9;font-size:12px}
+.fkn{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:#E3F5EC;color:#0F6B40;flex:none}.fkn.no{background:#FFF3DD;color:#8A4B00}
+.fsr{height:40px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:#59617A;background:#fff;flex:none}
+.fh{margin:2px 0 0;font-size:13px;font-weight:700;color:#3B34C9}
+.fpill{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid #D3D8E4;background:#fff;font-size:12.5px;font-weight:600}
+.fpill.on{background:#3B34C9;border-color:#3B34C9;color:#fff}.fpill.off{background:#F0F1F6;color:#59617A;border-style:dashed}
+.frec{background:#B42318;color:#fff}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:2636px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Nexa Co-Teacher &amp; recordings</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 7.1 Co-teacher -->
+<div class="col">
+  <div class="cap"><b>7.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div class="top" style="background:#fff;border-bottom:1px solid #E2E6EF;padding-bottom:14px">
+      <span style="width:44px;height:44px;border-radius:14px;background:#0B6E6A;color:#fff;display:flex;align-items:center;justify-content:center;flex:none"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+      <div style="flex:1"><p class="t3">Nexa Co-Teacher</p><p class="xs" style="margin:0">{{ t.k003 }}</p></div>
+      <span class="chip" style="background:#E1F4F2;color:#0B5E5A">{{ t.k004 }}</span>
+    </div>
+    <div class="bd" style="padding-top:14px;gap:10px">
+      <div class="me">{{ t.k005 }}</div>
+      <div class="ai">
+        <span>{{ t.k006 }}</span>
+        <span style="background:#F5F6FA;border-radius:10px;padding:8px 10px;font-weight:500">−3x + 6<br>= −3 × x + (−3) × (−2)<br>= −3(x − 2)</span>
+        <span>{{ t.k007 }}</span>
+        <a href="#" class="lk"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>{{ t.k008 }}</a>
+        <button aria-label="{{ t.k009 }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:0;border-radius:10px;background:#E1F4F2;color:#0B5E5A;font:600 13px 'Hind Siliguri',sans-serif"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>{{ t.k010 }}</button>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><button aria-label="{{ t.k011 }}" style="min-height:32px;min-width:40px;border:1px solid #D3D8E4;border-radius:999px;background:#fff;font-size:15px">👍</button><button aria-label="{{ t.k012 }}" style="min-height:32px;min-width:40px;border:1px solid #D3D8E4;border-radius:999px;background:#fff;font-size:15px">👎</button><span style="font-size:12.5px;font-weight:600;color:#9A3412;text-decoration:underline">{{ t.k013 }}</span></div>
+        <p style="margin:4px 0 0;font-size:12px;line-height:1.45;color:#4A5168;font-weight:500">{{ fx.ai_err }}</p>   <!-- fix18: AI fallibility line (kpi.md v1.10 section 7.2) -->
+      </div>
+      <div class="me">{{ t.k014 }}<span style="display:block;font-size:11px;opacity:.85;margin-top:2px">{{ t.k015 }}</span></div>
+      <div class="ai"><span>{{ t.k016 }}</span><button aria-label="{{ t.k017 }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:0;border-radius:10px;background:#0B6E6A;color:#fff;font:600 13px 'Hind Siliguri',sans-serif"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><path d="M9 5v14M15 5v14"/></svg>{{ t.k018 }}</button></div>
+      <div class="cd" style="padding:10px 12px;display:flex;gap:10px;align-items:center;margin-top:auto;background:#F0F1FB;border-color:#DCDDF7">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        <p class="sm" style="color:#141A33;flex:1">{{ t.k019 }}</p>
+      </div>
+      <div class="row" style="gap:8px">
+        <button class="ib" aria-label="{{ t.k020 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+        <button class="ib" aria-label="{{ t.k021 }}" style="font-weight:700;font-size:18px;color:#3B34C9">{{ t.k022 }}</button>
+        <input aria-label="{{ t.k023 }}" placeholder="{{ t.k024 }}" style="flex:1;min-width:0;height:46px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;font:500 14px 'Hind Siliguri',sans-serif">
+        <button class="ib" aria-label="{{ t.k025 }}" style="color:#0B6E6A;border-color:#BFE3DF"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+        <button class="ib" aria-label="{{ t.k026 }}" style="background:#0B6E6A;color:#fff;border:0"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-3-7z"/></svg></button>
+      </div>
+    </div>
+    <nav class="tb" aria-label="{{ t.k027 }}">
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>{{ fx.dash }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k028 }}</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/><path d="M4 18a3 3 0 0 1 3-3h11"/></svg>{{ t.k029 }}</a>
+      <a href="#" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Teacher</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>{{ t.k031 }}</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 7.2 Recordings library — fix11 (= X01 Recordings; SP/s2/fix11/shared/recording.md §5–6) -->
+<div class="col">
+  <div class="cap"><b>7.2</b>{{ t.k032 }}</div>
+  <div class="ph">
+    <div class="top"><p class="t1" style="flex:1">{{ t.k033 }}</p></div>
+    <div class="bd" style="gap:8px">
+      <p class="xs" style="margin:0">{{ t.k034 }}</p>
+      <div class="fsr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>{{ t.k035 }}</div>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fpill on">{{ t.k036 }}</span><span class="fpill">{{ t.k037 }}</span><span class="fpill">{{ t.k038 }}</span><span class="fpill">{{ t.k039 }}</span></div>
+      <div class="row" style="gap:8px"><span class="xs" style="flex:1">{{ t.k040 }} <b>{{ t.k041 }}</b></span><span class="fsw" role="img" aria-label="{{ t.k042 }}"></span></div>
+      <p class="fh">{{ t.k043 }}</p>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+        <p class="t3" style="font-size:13px">{{ t.k044 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs">1:1 · 22:10 · Nexa Teacher (AI)</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fst ok">{{ t.k045 }}</span><span class="fst ok">{{ t.k046 }}</span><span class="fpill on" style="margin-inline-start:auto">{{ t.k047 }}</span></div>
+      </div>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+        <p class="t3" style="font-size:13px">{{ t.k048 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs">1:1 · 22:10 · Nexa Teacher (AI)</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fst ok">{{ t.k045 }}</span><span class="fst ok">{{ t.k049 }}</span></div>
+        <p class="xs" style="margin:0;color:#3F475E">{{ t.k050 }}</p>
+      </div>
+      <p class="fh">{{ t.k051 }}</p>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+        <p class="t3" style="font-size:13px">{{ t.k052 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs">{{ t.k053 }}</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fst wait">{{ t.k054 }}</span><span class="fst ok">{{ t.k046 }}</span></div>
+        <p class="xs" style="margin:0;color:#3F475E">{{ t.k055 }}</p>
+      </div>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+        <p class="t3" style="font-size:13px">{{ t.k056 }}</p>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs">1:1 · 18:45</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fst bad">{{ t.k057 }}</span><span class="fst ok">{{ t.k046 }}</span><span class="fpill" style="margin-inline-start:auto">{{ t.k058 }}</span></div>
+        <p class="xs" style="margin:0;color:#3F475E">{{ t.k059 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7.3 Recording player — fix11 (= X02 replay): captions, BdSL avatar, auto-chapters, 3-min recap, skip what you know, stuck marks -->
+<div class="col">
+  <div class="cap"><b>7.3</b>{{ t.k060 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k061 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t2">{{ t.k062 }}</p><p class="xs" style="margin:0">{{ t.k123 }}</p></div>
+      <span class="fst ok">{{ t.k063 }}</span>
+    </div>
+    <div class="bd" style="gap:10px">
+      <p class="xs" style="margin:0;color:#141A33;font-weight:600">{{ t.k044 }}</p>
+      <div style="background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:14px;font-size:16px;line-height:1.8;font-weight:500;height:170px;box-sizing:border-box;position:relative;flex:none">
+        x² − 2x − 3x + 6 = 0<br>x(x − 2) <span style="color:#3B34C9">− 3(x − 2)</span> = 0
+        <div style="position:absolute;top:8px;right:8px;background:#F2FAF9;border:1px solid #BFE3DF;border-radius:12px;padding:4px"><svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true" style="flex:none"><circle cx="32" cy="32" r="31" fill="#1F7A72"/><path d="M14 64c2-14 9-21 18-21s16 7 18 21z" fill="#E1F4F2"/><circle cx="32" cy="25" r="10" fill="#E9BE98"/><path d="M22 23c0-8 5-12 10-12s10 4 10 12c-3-4-7-5-10-5s-7 1-10 5z" fill="#141A33"/><path d="M16 46l-6-12M48 46l7-13" stroke="#E9BE98" stroke-width="5" stroke-linecap="round"/><circle cx="10" cy="32" r="4" fill="#E9BE98"/><circle cx="55" cy="31" r="4" fill="#E9BE98"/></svg></div>
+        <div style="position:absolute;left:10px;right:10px;bottom:10px;background:rgba(20,26,51,.86);color:#fff;border-radius:10px;padding:6px 10px;font-size:12.5px;line-height:1.45">{{ t.k064 }}</div>
+      </div>
+      <div style="position:relative;height:8px;border-radius:99px;background:#E6E9F2;flex:none"><div style="width:64%;height:100%;border-radius:99px;background:#3B34C9"></div>
+        <span style="position:absolute;left:30%;top:-4px;width:16px;height:16px;border-radius:50%;background:#F2A93B;border:2px solid #fff"></span>
+        <span style="position:absolute;left:63%;top:-4px;width:16px;height:16px;border-radius:50%;background:#C2410C;border:2px solid #fff"></span>
+        <span style="position:absolute;left:41%;top:-4px;width:14px;height:14px;border-radius:3px;background:#3B34C9;border:2px solid #fff"></span>
+      </div>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="fpill on">{{ t.k065 }}</span><span class="fpill on">{{ t.k066 }}</span><span class="fpill">{{ t.k067 }}</span></div>
+      <div class="row" style="gap:8px"><span style="flex:1"><span class="t3" style="font-size:13px;display:block">{{ t.k068 }}</span><span class="xs">{{ t.k069 }}</span></span><span class="fsw on" role="img" aria-label="{{ t.k070 }}"></span></div>
+      <div class="frw"><b>0:00</b><span style="flex:1">{{ t.k071 }}</span><span class="fkn">{{ t.k072 }}</span></div>
+      <div class="frw"><b>4:30</b><span style="flex:1">{{ t.k073 }}</span><span class="fkn">{{ t.k072 }}</span></div>
+      <div class="frw"><b>9:10</b><span style="flex:1">{{ t.k074 }}</span><span class="fkn no">{{ t.k075 }}</span></div>
+      <div class="frw" style="border:2px solid #3B34C9"><b>14:05</b><span style="flex:1">{{ t.k076 }}</span><span class="fkn no">{{ t.k075 }}</span></div>
+      <a href="#" class="btn" style="height:44px;font-size:14px;text-decoration:none">{{ t.k077 }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- 7.4 Error notebook -->
+<div class="col">
+  <div class="cap"><b>7.4</b>{{ t.k078 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k061 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k079 }}</p>
+      <span class="chip">{{ t.k080 }}</span>
+    </div>
+    <div class="bd" style="gap:10px">
+      <p class="sm">{{ t.k081 }}</p>
+      <div class="er" style="border:2px solid #3B34C9">
+        <div class="row" style="justify-content:space-between"><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k082 }}</span><span class="xs">{{ t.k083 }}</span></div>
+        <p class="t3" style="font-size:14px">{{ t.k084 }}</p>
+        <div class="row" style="gap:6px"><span class="dot" style="background:#17804F"></span><span class="dot"></span><span class="xs" style="margin-left:4px">{{ t.k085 }}</span></div>
+      </div>
+      <div class="er">
+        <div class="row" style="justify-content:space-between"><span class="chip" style="background:#FDEDE6;color:#9A3412">{{ t.k086 }}</span><span class="xs">{{ t.k083 }}</span></div>
+        <p class="t3" style="font-size:14px">{{ t.k087 }}</p>
+        <div class="row" style="gap:6px"><span class="dot"></span><span class="dot"></span><span class="xs" style="margin-left:4px">{{ t.k088 }}</span></div>
+      </div>
+      <div class="er">
+        <div class="row" style="justify-content:space-between"><span class="chip" style="background:#ECEBFD;color:#3B34C9">{{ t.k089 }}</span><span class="xs">{{ t.k090 }}</span></div>
+        <p class="t3" style="font-size:14px">{{ t.k091 }}</p>
+        <div class="row" style="gap:6px"><span class="dot" style="background:#17804F"></span><span class="dot"></span><span class="xs" style="margin-left:4px">{{ t.k085 }}</span></div>
+      </div>
+      <div class="cd" style="padding:12px 14px;display:flex;gap:16px;justify-content:space-around;text-align:center">
+        <div><b style="font-size:18px">5</b><div class="xs">{{ t.k092 }}</div></div>
+        <div><b style="font-size:18px">4</b><div class="xs">{{ t.k093 }}</div></div>
+        <div><b style="font-size:18px">3</b><div class="xs">{{ t.k089 }}</div></div>
+      </div>
+      <button class="btn" style="margin-top:auto">{{ t.k094 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 7.5 Ask the recording, where I got stuck, private notes, one-tap clips — fix11 (= X02 replay, right column) -->
+<div class="col">
+  <div class="cap"><b>7.5</b>{{ t.k095 }}</div>
+  <div class="ph">
+    <div class="top"><button class="ib" aria-label="{{ t.k061 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><p class="t2" style="flex:1">{{ t.k096 }}</p></div>
+    <div class="bd" style="gap:10px">
+      <p class="fh">{{ t.k097 }}</p>
+      <div class="fsr" style="color:#141A33">{{ t.k098 }}</div>
+      <p class="xs" style="margin:0">{{ t.k099 }}</p>
+      <div class="frw"><b>14:05</b><span style="flex:1">{{ t.k100 }}</span></div>
+      <p class="fh">{{ t.k101 }}</p>
+      <div class="frw"><b>6:40</b><span style="flex:1">{{ t.k102 }}</span></div>
+      <div class="frw"><b>9:30</b><span style="flex:1">{{ t.k103 }}</span></div>
+      <p class="fh">{{ t.k104 }} <span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k105 }}</span></p>
+      <div class="frw"><b>14:10</b><span style="flex:1">{{ t.k106 }}</span></div>
+      <p class="fh">{{ t.k107 }}</p>
+      <div class="row" style="gap:8px"><a href="#" class="btn" style="height:44px;font-size:14px;text-decoration:none;flex:1;background:#E1F4F2;color:#0B5E5A">{{ t.k108 }}</a><a href="#" class="btn" style="height:44px;font-size:14px;text-decoration:none;flex:1;background:#fff;color:#141A33;border:1px solid #D3D8E4">{{ t.k109 }}</a></div>
+      <a href="#" class="btn" style="height:44px;font-size:14px;text-decoration:none;background:#fff;color:#141A33;border:1px solid #D3D8E4">{{ t.k110 }}</a>
+    </div>
+  </div>
+</div>
+
+<!-- 7.6 Teach the AI — fix11 (= X02 Teach the AI): runs on Nexa Co-Teacher, counts as mastery evidence -->
+<div class="col">
+  <div class="cap"><b>7.6</b>{{ t.k111 }}</div>
+  <div class="ph">
+    <div class="top"><button class="ib" aria-label="{{ t.k061 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div style="flex:1"><p class="t2">{{ t.k112 }}</p><p class="xs" style="margin:0">{{ t.k113 }}</p></div></div>
+    <div class="bd" style="gap:10px">
+      <div class="ai" style="max-width:100%">{{ t.k114 }}</div>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:16px;font-weight:500">
+        <div class="row"><span class="xs" style="width:18px">1</span>x² − 3x − 4x + 12 = 0</div>
+        <div class="row" style="background:#FFF3DD;border-radius:10px;padding:4px"><span class="xs" style="width:18px">2</span>x(x − 3) − 4(x + 3) = 0</div>
+        <div class="row"><span class="xs" style="width:18px">3</span>x = 3, x = −3</div>
+      </div>
+      <p class="t3">{{ t.k115 }}</p>
+      <div class="row" style="gap:8px"><span class="fpill" style="flex:1;justify-content:center">{{ t.k116 }}</span><span class="fpill on" style="flex:1;justify-content:center">{{ t.k117 }}</span><span class="fpill" style="flex:1;justify-content:center">{{ t.k118 }}</span></div>
+      <p class="t3">{{ t.k119 }}</p>
+      <div class="frw" style="border:2px solid #17804F;background:#E3F5EC"><b>{{ t.k120 }}</b><span style="flex:1">x(x − 3) − 4(x − 3) = 0</span></div>
+      <div class="cd" style="padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:15px;font-weight:500;border:2px solid #17804F" dir="ltr">
+        <div class="row"><span class="xs" style="width:18px">2</span>x(x − 3) − 4(x − 3) = 0</div>
+        <div class="row"><span class="xs" style="width:18px">3</span>(x − 3)(x − 4) = 0</div>
+        <div class="row"><span class="xs" style="width:18px">4</span>x = 3, x = 4</div>
+      </div>
+      <div class="cd" style="padding:10px 12px;background:#E3F5EC;border-color:#BFE6D1"><p class="sm" style="color:#0F3D27;font-weight:600">{{ t.k121 }}</p></div>
+      <p class="xs" style="margin:0">{{ t.k122 }}</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2636,"height":1100}}'>
+class Component extends DCLogic {
+  // fix16 (28 Oct 2026): dashboard-first menu label — 6 languages
+  fx16(l) { var D = {"bn": {"dash": "ড্যাশবোর্ড", "ai_err": "AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।"}, "en": {"dash": "Dashboard", "ai_err": "AI can make mistakes. If something looks wrong, check with your teacher or report it."}, "hi": {"dash": "डैशबोर्ड", "ai_err": "AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।"}, "ur": {"dash": "ڈیش بورڈ", "ai_err": "AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔"}, "ar": {"dash": "لوحة المتابعة", "ai_err": "قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه."}, "fr": {"dash": "Tableau de bord", "ai_err": "L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le."}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: 'লেখায় শেখানো, রেকর্ডিং ও সারাংশ, রিপ্লে, ভুলের খাতা',
+      k002: 'Nexa Co-Teacher — লেখা, বলে প্রশ্ন, শুনে উত্তর',
+      k003: 'Nexa Teacher যেভাবে শিখিয়েছে, সেভাবেই',
+      k004: 'আজ 7/25 টপিক',
+      k005: 'ধাপ 3-এ −3(x − 2) কেন হলো, + 2 না কেন?',
+      k006: 'ক্লাসে আমরা যেভাবে করেছিলাম, সেভাবে দেখো:',
+      k007: '−3 বাইরে নিলে ভেতরের প্রতিটি পদের চিহ্ন উল্টে যায়।',
+      k008: 'তোমার ক্লাসের রেকর্ডিং · 14:05 থেকে',
+      k009: 'উত্তরটা শোনো',
+      k010: 'শোনো',
+      k011: 'কাজে লেগেছে',
+      k012: 'কাজে লাগেনি',
+      k013: 'ভুল উত্তর রিপোর্ট করো',
+      k014: 'এবার বুঝেছি! আরেকটা অনুশীলন দাও',
+      k015: 'বলে পাঠানো · লেখায় রূপান্তরিত',
+      k016: 'ঠিক আছে — x² + x − 12 = 0 উৎপাদকে বিশ্লেষণ করো। ইঙ্গিত লাগলে বলো।',
+      k017: 'শোনানো থামাও',
+      k018: 'শোনাচ্ছে…',
+      k019: 'এখনো বুঝোনি? Nexa Teacher-কে কল করো — শুরু হবে ঠিক এই ধাপ থেকে।',
+      k020: 'ছবি তুলে প্রশ্ন',
+      k021: 'বাংলা ফোনেটিক টাইপিং',
+      k022: 'অ',
+      k023: 'প্রশ্ন লেখো',
+      k024: 'লেখো, বলো বা লিংক দাও…',
+      k025: 'বলে প্রশ্ন করো',
+      k026: 'পাঠাও',
+      k027: 'প্রধান মেনু',
+      k028: 'হোম',
+      k029: 'ক্লাস',
+      k030: 'অগ্রগতি',
+      k031: 'প্রোফাইল',
+      k032: 'রেকর্ডিং লাইব্রেরি — বিষয় → ইউনিট → টপিক → ক্লাস',
+      k033: 'রেকর্ডিং',
+      k034: 'রেকর্ডিং কখনো নিজে থেকে শুরু হয় না — প্রতিটি ক্লাসের শুরুতে তুমি বেছে নাও।',
+      k035: 'বিষয়, টপিক বা পাঠ খোঁজো',
+      k036: 'সব',
+      k037: 'সাধারণ গণিত',
+      k038: 'পদার্থবিজ্ঞান',
+      k039: 'কাজ বাকি',
+      k040: 'ক্লাসের 12 মাস পরে নিজে থেকে মুছে যায় ·',
+      k041: 'কোর্স শেষ হওয়া পর্যন্ত রাখো',
+      k042: 'বন্ধ',
+      k043: 'সাধারণ গণিত › বীজগণিত › দ্বিঘাত সমীকরণ',
+      k044: 'সাধারণ গণিত — দ্বিঘাত সমীকরণ — পাঠ 03 — 6 ডিসেম্বর 2026',
+      k045: 'তৈরি',
+      k046: 'রিপোর্ট: তৈরি',
+      k047: '▶ দেখো',
+      k048: 'সাধারণ গণিত — দ্বিঘাত সমীকরণ — পাঠ 02 — 4 ডিসেম্বর 2026',
+      k049: 'রিপোর্ট: হালনাগাদ',
+      k050: 'এই টপিকের 2য় ক্লাস · তোমার রিভিউ ইতিহাসের সঙ্গে যুক্ত',
+      k051: 'পদার্থবিজ্ঞান › বলবিদ্যা › গতি',
+      k052: 'পদার্থবিজ্ঞান — গতি — পাঠ 02 — 5 ডিসেম্বর 2026',
+      k053: 'ব্যাচ B-07 · যৌথ · 40:00',
+      k054: 'সম্মতির অপেক্ষায়',
+      k055: 'তোমার অভিভাবকের সম্মতির অপেক্ষায়',
+      k056: 'পদার্থবিজ্ঞান — গতি — পাঠ 01 — 3 ডিসেম্বর 2026',
+      k057: 'ব্যর্থ',
+      k058: '↻ আবার চেষ্টা করো',
+      k059: 'আপলোড থেমে গেছে — সংযোগ কেটে গিয়েছিল',
+      k060: 'রেকর্ডিং প্লেয়ার — অধ্যায়, রিক্যাপ, যা জানো তা বাদ',
+      k061: 'পেছনে',
+      k062: 'দ্বিঘাত সমীকরণ',
+      k063: '✓ যাচাই করা · SHA-256',
+      k064: 'Nexa Teacher: “−3 বাইরে নিলে ভেতরের চিহ্ন উল্টে যায়।”',
+      k065: 'CC · ক্যাপশন চালু',
+      k066: 'BdSL অ্যাভাটার',
+      k067: '⤓ অফলাইনের জন্য · 38 MB',
+      k068: 'যা জানো তা বাদ দাও',
+      k069: 'আয়ত্তে থাকা অধ্যায় টপকে যায় · আবার দেখলেই আয়ত্ত ধরা হয় না',
+      k070: 'চালু',
+      k071: 'ওয়ার্ম-আপ ও সমস্যা',
+      k072: 'আয়ত্তে আছে',
+      k073: 'সমীকরণ গঠন',
+      k074: 'মধ্যপদ বিভাজন',
+      k075: 'এখনো না',
+      k076: 'সাধারণ উৎপাদক ও চিহ্ন',
+      k077: '▶ 3 মিনিটের রিক্যাপ চালাও',
+      k078: 'ভুলের খাতা (স্বয়ংক্রিয়)',
+      k079: 'ভুলের খাতা',
+      k080: '12টি',
+      k081: 'পরপর 2 বার ঠিক হলে ভুলটি খাতা থেকে বাদ যাবে।',
+      k082: 'হিসাবের ভুল',
+      k083: 'রি-টেস্ট আজ',
+      k084: '−3(x + 2) বনাম −3(x − 2)',
+      k085: '1/2 ঠিক',
+      k086: 'ধারণার ভুল',
+      k087: 'ত্বরণ ও বেগের পার্থক্য',
+      k088: '0/2 ঠিক',
+      k089: 'অসাবধানতা',
+      k090: '7 দিন পরে · 28 জানু.',
+      k091: 'একক লিখতে ভুলে যাওয়া (m/s²)',
+      k092: 'ধারণা',
+      k093: 'হিসাব',
+      k094: 'আজকের রি-টেস্ট শুরু (4টি)',
+      k095: 'রেকর্ডিংকে জিজ্ঞেস করো · নোট · ক্লিপ',
+      k096: 'ফ্যাক্টরাইজেশন · 14:05',
+      k097: 'রেকর্ডিংকে জিজ্ঞেস করো',
+      k098: 'চিহ্ন',
+      k099: 'শুধু Nexa Teacher-এর নিজের কথায় খোঁজে — তোমার কণ্ঠের কোনো লিখিত রূপ তৈরি হয় না।',
+      k100: '−3 বাইরে নিলে ভেতরের চিহ্ন উল্টে যায়: −3x + 6 = −3(x − 2)।',
+      k101: 'যেখানে আটকে গিয়েছিলাম',
+      k102: 'বুঝিনি',
+      k103: 'আমার চিহ্ন',
+      k104: 'আমার নোট',
+      k105: '🔒 ব্যক্তিগত — শুধু তুমি দেখতে পাও',
+      k106: '−3 বের করলে +6 হয় −2 — মনে রাখো!',
+      k107: '30 সেকেন্ডের ক্লিপ · 13:50–14:20',
+      k108: '→ ফ্ল্যাশকার্ড',
+      k109: '→ ভুলের খাতা',
+      k110: 'ক্লাস রিপোর্ট খোলো',
+      k111: 'AI-কে শেখাও — ভুল খুঁজে ঠিক করো',
+      k112: 'AI-কে শেখাও',
+      k113: 'AI শিক্ষার্থী · Nexa Co-Teacher অভিনয় করছে',
+      k114: 'আমি x² − 7x + 12 = 0 সমাধান করেছি। আমার কাজটা একটু দেখে দেবে?',
+      k115: 'কোন লাইনটা ভুল?',
+      k116: 'লাইন 1',
+      k117: 'লাইন 2',
+      k118: 'লাইন 3',
+      k119: 'লাইনটা কী হওয়া উচিত?',
+      k120: 'ক',
+      k121: 'তুমি শিখিয়ে দিলে! “সাধারণ উৎপাদক ও চিহ্ন”-এ আয়ত্তের প্রমাণ হিসেবে গোনা হলো (AI-কে শেখাও)।',
+      k122: 'Nexa Co-Teacher-এ চলে — 1:1 মিনিট খরচ হয় না।',
+      k123: 'মধ্যপদ বিভাজন'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: 'Teaching in writing, recordings and summaries, replay, error notebook',
+      k002: 'Nexa Co-Teacher — write, ask by voice, hear the answer',
+      k003: 'Teaches the way Nexa Teacher did',
+      k004: 'Today 7/25 topics',
+      k005: 'In step 3, why did it become −3(x − 2) and not + 2?',
+      k006: 'Look at it the way we did in class:',
+      k007: 'When you take −3 out, the sign of every term inside flips.',
+      k008: 'Your class recording · from 14:05',
+      k009: 'Listen to the answer',
+      k010: 'Listen',
+      k011: 'Helpful',
+      k012: 'Not helpful',
+      k013: 'Report a wrong answer',
+      k014: 'Now I get it! Give me another practice question',
+      k015: 'Sent by voice · turned into text',
+      k016: 'Sure — factorise x² + x − 12 = 0. Tell me if you need a hint.',
+      k017: 'Stop reading aloud',
+      k018: 'Playing…',
+      k019: 'Still not clear? Call Nexa Teacher — it starts from exactly this step.',
+      k020: 'Ask with a photo',
+      k021: 'Bangla phonetic typing',
+      k022: 'G',
+      k023: 'Type a question',
+      k024: 'Type, speak or paste a link…',
+      k025: 'Ask by voice',
+      k026: 'Send',
+      k027: 'Main menu',
+      k028: 'Home',
+      k029: 'Classes',
+      k030: 'Progress',
+      k031: 'Profile',
+      k032: 'Recordings library — Subject → Unit → Topic → Class',
+      k033: 'Recordings',
+      k034: 'Recording never starts by itself — you choose at the start of every class.',
+      k035: 'Search subject, topic or lesson',
+      k036: 'All',
+      k037: 'General Mathematics',
+      k038: 'Physics',
+      k039: 'Needs action',
+      k040: 'Deleted automatically 12 months after the class ·',
+      k041: 'Keep until my course ends',
+      k042: 'Off',
+      k043: 'General Mathematics › Algebra › Quadratic Equations',
+      k044: 'General Mathematics — Quadratic Equations — Lesson 03 — 6 Dec 2026',
+      k045: 'Ready',
+      k046: 'Report: Ready',
+      k047: '▶ Watch',
+      k048: 'General Mathematics — Quadratic Equations — Lesson 02 — 4 Dec 2026',
+      k049: 'Report: Updated',
+      k050: '2nd class on this topic · linked to your review history',
+      k051: 'Physics › Mechanics › Motion',
+      k052: 'Physics — Motion — Lesson 02 — 5 Dec 2026',
+      k053: 'Batch EN-03 · shared · 40:00',
+      k054: 'Consent pending',
+      k055: 'Waiting for your guardian’s consent',
+      k056: 'Physics — Motion — Lesson 01 — 3 Dec 2026',
+      k057: 'Failed',
+      k058: '↻ Retry',
+      k059: 'Upload stopped — the connection dropped',
+      k060: 'Recording player — chapters, recap, skip what you know',
+      k061: 'Back',
+      k062: 'Quadratic Equations',
+      k063: '✓ Verified · SHA-256',
+      k064: 'Nexa Teacher: “When you take −3 out, the signs inside flip.”',
+      k065: 'CC · captions on',
+      k066: 'BdSL avatar',
+      k067: '⤓ For offline · 38 MB',
+      k068: 'Skip what you know',
+      k069: 'Jumps over chapters you have mastered · watching again never counts as mastery',
+      k070: 'Active',
+      k071: 'Warm-up and the problem',
+      k072: 'Mastered',
+      k073: 'Forming the equation',
+      k074: 'Splitting the middle term',
+      k075: 'Not yet',
+      k076: 'Common factor and signs',
+      k077: '▶ Play the 3-minute recap',
+      k078: 'Error notebook (automatic)',
+      k079: 'Error notebook',
+      k080: '12',
+      k081: 'After 2 correct in a row, the mistake leaves the notebook.',
+      k082: 'Calculation slip',
+      k083: 'Retest today',
+      k084: '−3(x + 2) vs −3(x − 2)',
+      k085: '1/2 right',
+      k086: 'Concept mistake',
+      k087: 'Difference between acceleration and velocity',
+      k088: '0/2 right',
+      k089: 'Careless',
+      k090: 'After 7 days · 28 Jan.',
+      k091: 'Forgetting to write the unit (m/s²)',
+      k092: 'Concept',
+      k093: 'Calculation',
+      k094: 'Start today’s retests (4)',
+      k095: 'Ask the recording · notes · clips',
+      k096: 'Factorisation · 14:05',
+      k097: 'Ask the recording',
+      k098: 'sign',
+      k099: 'Searches Nexa Teacher’s own words — no transcript of your voice is made.',
+      k100: 'When you take −3 out, the signs inside flip: −3x + 6 = −3(x − 2).',
+      k101: 'Where I got stuck',
+      k102: 'Didn’t get it',
+      k103: 'My mark',
+      k104: 'My notes',
+      k105: '🔒 Private — only you can see them',
+      k106: 'Taking out −3 turns +6 into −2 — remember!',
+      k107: '30-second clip · 13:50–14:20',
+      k108: '→ Flashcard',
+      k109: '→ Error notebook',
+      k110: 'Open the class report',
+      k111: 'Teach the AI — find and fix the mistake',
+      k112: 'Teach the AI',
+      k113: 'AI student · played by Nexa Co-Teacher',
+      k114: 'I solved x² − 7x + 12 = 0. Can you check my work?',
+      k115: 'Which line is wrong?',
+      k116: 'Line 1',
+      k117: 'Line 2',
+      k118: 'Line 3',
+      k119: 'What should that line be?',
+      k120: 'A',
+      k121: 'You taught it! Counted as mastery evidence for “Common factor and signs” (Teach the AI).',
+      k122: 'Runs on Nexa Co-Teacher — no 1:1 minutes are used.',
+      k123: 'Splitting the middle term'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: 'लिखकर पढ़ाना, रिकॉर्डिंग और सारांश, रीप्ले, ग़लतियों की कॉपी',
+      k002: 'Nexa Co-Teacher — लिखो, बोलकर पूछो, सुनकर जवाब',
+      k003: 'जैसे Nexa Teacher ने सिखाया, वैसे ही',
+      k004: 'आज 7/25 टॉपिक',
+      k005: 'चरण 3 में −3(x − 2) क्यों हुआ, + 2 क्यों नहीं?',
+      k006: 'जैसे क्लास में किया था, वैसे देखो:',
+      k007: '−3 बाहर निकालने पर अंदर के हर पद का चिह्न उलट जाता है।',
+      k008: 'तुम्हारी क्लास की रिकॉर्डिंग · 14:05 से',
+      k009: 'जवाब सुनो',
+      k010: 'सुनो',
+      k011: 'काम आया',
+      k012: 'काम नहीं आया',
+      k013: 'ग़लत जवाब की रिपोर्ट करो',
+      k014: 'अब समझ गया! एक और अभ्यास दो',
+      k015: 'बोलकर भेजा · टेक्स्ट में बदला',
+      k016: 'ठीक है — x² + x − 12 = 0 का गुणनखंड करो। संकेत चाहिए तो बताना।',
+      k017: 'सुनाना रोको',
+      k018: 'सुना रहा है…',
+      k019: 'अब भी समझ नहीं आया? Nexa Teacher को कॉल करो — ठीक इसी चरण से शुरू होगा।',
+      k020: 'फ़ोटो से प्रश्न',
+      k021: 'बांग्ला फ़ोनेटिक टाइपिंग',
+      k022: 'अ',
+      k023: 'प्रश्न लिखो',
+      k024: 'लिखो, बोलो या लिंक दो…',
+      k025: 'बोलकर पूछो',
+      k026: 'भेजो',
+      k027: 'मुख्य मेनू',
+      k028: 'होम',
+      k029: 'क्लास',
+      k030: 'प्रगति',
+      k031: 'प्रोफ़ाइल',
+      k032: 'रिकॉर्डिंग लाइब्रेरी — विषय → यूनिट → टॉपिक → क्लास',
+      k033: 'रिकॉर्डिंग',
+      k034: 'रिकॉर्डिंग कभी अपने आप शुरू नहीं होती — हर क्लास की शुरुआत में तुम चुनते हो।',
+      k035: 'विषय, टॉपिक या पाठ खोजो',
+      k036: 'सब',
+      k037: 'सामान्य गणित',
+      k038: 'भौतिकी',
+      k039: 'काम बाकी',
+      k040: 'क्लास के 12 महीने बाद अपने आप मिट जाती है ·',
+      k041: 'कोर्स ख़त्म होने तक रखो',
+      k042: 'बंद',
+      k043: 'सामान्य गणित › बीजगणित › द्विघात समीकरण',
+      k044: 'सामान्य गणित — द्विघात समीकरण — पाठ 03 — 6 दिसंबर 2026',
+      k045: 'तैयार',
+      k046: 'रिपोर्ट: तैयार',
+      k047: '▶ देखो',
+      k048: 'सामान्य गणित — द्विघात समीकरण — पाठ 02 — 4 दिसंबर 2026',
+      k049: 'रिपोर्ट: अपडेट हुई',
+      k050: 'इस टॉपिक की 2री क्लास · तुम्हारे रिव्यू इतिहास से जुड़ी',
+      k051: 'भौतिकी › यांत्रिकी › गति',
+      k052: 'भौतिकी — गति — पाठ 02 — 5 दिसंबर 2026',
+      k053: 'बैच EN-03 · साझा · 40:00',
+      k054: 'सहमति बाकी',
+      k055: 'तुम्हारे अभिभावक की सहमति का इंतज़ार',
+      k056: 'भौतिकी — गति — पाठ 01 — 3 दिसंबर 2026',
+      k057: 'विफल',
+      k058: '↻ फिर कोशिश करो',
+      k059: 'अपलोड रुक गया — कनेक्शन टूट गया था',
+      k060: 'रिकॉर्डिंग प्लेयर — अध्याय, रीकैप, जो आता है वह छोड़ो',
+      k061: 'पीछे',
+      k062: 'द्विघात समीकरण',
+      k063: '✓ जाँची गई · SHA-256',
+      k064: 'Nexa Teacher: “−3 बाहर निकालने पर अंदर के चिह्न उलट जाते हैं।”',
+      k065: 'CC · कैप्शन चालू',
+      k066: 'BdSL अवतार',
+      k067: '⤓ ऑफ़लाइन के लिए · 38 MB',
+      k068: 'जो आता है वह छोड़ो',
+      k069: 'महारत वाले अध्याय छोड़ देता है · दोबारा देखना कभी महारत नहीं गिना जाता',
+      k070: 'चालू',
+      k071: 'वॉर्म-अप और सवाल',
+      k072: 'महारत है',
+      k073: 'समीकरण बनाना',
+      k074: 'मध्य पद को तोड़ना',
+      k075: 'अभी नहीं',
+      k076: 'उभयनिष्ठ गुणनखंड और चिह्न',
+      k077: '▶ 3 मिनट का रीकैप चलाओ',
+      k078: 'ग़लतियों की कॉपी (अपने आप)',
+      k079: 'ग़लतियों की कॉपी',
+      k080: '12',
+      k081: 'लगातार 2 बार सही होने पर ग़लती कॉपी से हट जाएगी।',
+      k082: 'गणना की चूक',
+      k083: 'री-टेस्ट आज',
+      k084: '−3(x + 2) बनाम −3(x − 2)',
+      k085: '1/2 सही',
+      k086: 'अवधारणा की ग़लती',
+      k087: 'त्वरण और वेग का अंतर',
+      k088: '0/2 सही',
+      k089: 'लापरवाही',
+      k090: '7 दिन बाद · 28 जन.',
+      k091: 'इकाई लिखना भूल जाना (m/s²)',
+      k092: 'अवधारणा',
+      k093: 'हिसाब',
+      k094: 'आज के री-टेस्ट शुरू करो (4)',
+      k095: 'रिकॉर्डिंग से पूछो · नोट · क्लिप',
+      k096: 'गुणनखंड · 14:05',
+      k097: 'रिकॉर्डिंग से पूछो',
+      k098: 'चिह्न',
+      k099: 'सिर्फ़ Nexa Teacher के अपने शब्दों में खोजता है — तुम्हारी आवाज़ का कोई लिखित रूप नहीं बनता।',
+      k100: '−3 बाहर निकालने पर अंदर के चिह्न उलट जाते हैं: −3x + 6 = −3(x − 2)।',
+      k101: 'जहाँ मैं अटका',
+      k102: 'समझ नहीं आया',
+      k103: 'मेरा चिह्न',
+      k104: 'मेरे नोट',
+      k105: '🔒 निजी — सिर्फ़ तुम देख सकते हो',
+      k106: '−3 बाहर निकालने पर +6 बन जाता है −2 — याद रखो!',
+      k107: '30 सेकंड की क्लिप · 13:50–14:20',
+      k108: '→ फ़्लैशकार्ड',
+      k109: '→ ग़लतियों की कॉपी',
+      k110: 'क्लास रिपोर्ट खोलो',
+      k111: 'AI को सिखाओ — ग़लती ढूँढकर ठीक करो',
+      k112: 'AI को सिखाओ',
+      k113: 'AI छात्र · Nexa Co-Teacher निभा रहा है',
+      k114: 'मैंने x² − 7x + 12 = 0 हल किया। क्या तुम मेरा काम जाँच दोगे?',
+      k115: 'कौन-सी लाइन ग़लत है?',
+      k116: 'लाइन 1',
+      k117: 'लाइन 2',
+      k118: 'लाइन 3',
+      k119: 'वह लाइन क्या होनी चाहिए?',
+      k120: 'क',
+      k121: 'तुमने सिखा दिया! “उभयनिष्ठ गुणनखंड और चिह्न” में महारत का सबूत गिना गया (AI को सिखाओ)।',
+      k122: 'Nexa Co-Teacher पर चलता है — 1:1 मिनट ख़र्च नहीं होते।',
+      k123: 'मध्य पद को तोड़ना'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: 'تحریری پڑھائی، ریکارڈنگ اور خلاصے، ری پلے، غلطیوں کی کاپی',
+      k002: 'Nexa Co-Teacher — لکھو، بول کر پوچھو، سن کر جواب',
+      k003: 'جیسے Nexa Teacher نے سکھایا، ویسے ہی',
+      k004: 'آج ' + M('7/25') + ' ٹاپک',
+      k005: 'مرحلہ ' + M('3') + ' میں ' + M('−3(x − 2)') + ' کیوں ہوا، ' + M('+ 2') + ' کیوں نہیں؟',
+      k006: 'جیسے کلاس میں کیا تھا، ویسے دیکھو:',
+      k007: M('−3') + ' باہر نکالنے پر اندر کے ہر رکن کی علامت الٹ جاتی ہے۔',
+      k008: 'تمہاری کلاس کی ریکارڈنگ · ' + M('14:05') + ' سے',
+      k009: 'جواب سنو',
+      k010: 'سنو',
+      k011: 'کام آیا',
+      k012: 'کام نہیں آیا',
+      k013: 'غلط جواب کی رپورٹ کرو',
+      k014: 'اب سمجھ گیا! ایک اور مشق دو',
+      k015: 'بول کر بھیجا · تحریر میں بدلا',
+      k016: 'ٹھیک ہے — ' + M('x² + x − 12 = 0') + ' کے اجزائے ضربی نکالو۔ اشارہ چاہیے تو بتانا۔',
+      k017: 'سنانا روکو',
+      k018: 'سنا رہا ہے…',
+      k019: 'اب بھی سمجھ نہیں آیا؟ Nexa Teacher کو کال کرو — ٹھیک اسی مرحلے سے شروع ہوگا۔',
+      k020: 'تصویر سے سوال',
+      k021: 'بنگلہ فونیٹک ٹائپنگ',
+      k022: 'س',
+      k023: 'سوال لکھو',
+      k024: 'لکھو، بولو یا لنک دو…',
+      k025: 'بول کر پوچھو',
+      k026: 'بھیجو',
+      k027: 'مرکزی مینو',
+      k028: 'ہوم',
+      k029: 'کلاس',
+      k030: 'پیش رفت',
+      k031: 'پروفائل',
+      k032: 'ریکارڈنگ لائبریری — مضمون ← یونٹ ← ٹاپک ← کلاس',
+      k033: 'ریکارڈنگ',
+      k034: 'ریکارڈنگ کبھی خود بخود شروع نہیں ہوتی — ہر کلاس کے شروع میں تم چنتے ہو۔',
+      k035: 'مضمون، ٹاپک یا سبق تلاش کرو',
+      k036: 'سب',
+      k037: 'عام ریاضی',
+      k038: 'طبیعیات',
+      k039: 'کام باقی',
+      k040: 'کلاس کے ' + M('12') + ' مہینے بعد خود بخود مٹ جاتی ہے ·',
+      k041: 'کورس ختم ہونے تک رکھو',
+      k042: 'بند',
+      k043: 'عام ریاضی › الجبرا › دو درجی مساوات',
+      k044: 'عام ریاضی — دو درجی مساوات — سبق ' + M('03') + ' — ' + M('6') + ' دسمبر ' + M('2026'),
+      k045: 'تیار',
+      k046: 'رپورٹ: تیار',
+      k047: '▶ دیکھو',
+      k048: 'عام ریاضی — دو درجی مساوات — سبق ' + M('02') + ' — ' + M('4') + ' دسمبر ' + M('2026'),
+      k049: 'رپورٹ: اپ ڈیٹ ہوئی',
+      k050: 'اس ٹاپک کی دوسری کلاس · تمہاری ریویو ہسٹری سے جڑی',
+      k051: 'طبیعیات › میکانیات › حرکت',
+      k052: 'طبیعیات — حرکت — سبق ' + M('02') + ' — ' + M('5') + ' دسمبر ' + M('2026'),
+      k053: 'بیچ ' + M('EN-03') + ' · مشترکہ · ' + M('40:00'),
+      k054: 'رضامندی باقی',
+      k055: 'تمہارے سرپرست کی رضامندی کا انتظار',
+      k056: 'طبیعیات — حرکت — سبق ' + M('01') + ' — ' + M('3') + ' دسمبر ' + M('2026'),
+      k057: 'ناکام',
+      k058: '↻ دوبارہ کوشش کرو',
+      k059: 'اپ لوڈ رک گیا — کنکشن ٹوٹ گیا تھا',
+      k060: 'ریکارڈنگ پلیئر — ابواب، خلاصہ، جو آتا ہے وہ چھوڑو',
+      k061: 'پیچھے',
+      k062: 'دو درجی مساوات',
+      k063: '✓ جانچی گئی · ' + M('SHA-256'),
+      k064: 'Nexa Teacher: “' + M('−3') + ' باہر نکالنے پر اندر کی علامتیں الٹ جاتی ہیں۔”',
+      k065: 'CC · کیپشن آن',
+      k066: 'BdSL اوتار',
+      k067: '⤓ آف لائن کے لیے · ' + M('38 MB'),
+      k068: 'جو آتا ہے وہ چھوڑو',
+      k069: 'مہارت والے ابواب چھوڑ دیتا ہے · دوبارہ دیکھنا کبھی مہارت نہیں گنا جاتا',
+      k070: 'فعال',
+      k071: 'وارم اپ اور سوال',
+      k072: 'مہارت ہے',
+      k073: 'مساوات بنانا',
+      k074: 'درمیانی رکن کو توڑنا',
+      k075: 'ابھی نہیں',
+      k076: 'مشترک جزو ضربی اور علامتیں',
+      k077: '▶ ' + M('3') + ' منٹ کا خلاصہ چلاؤ',
+      k078: 'غلطیوں کی کاپی (خودکار)',
+      k079: 'غلطیوں کی کاپی',
+      k080: M('12'),
+      k081: 'لگاتار ' + M('2') + ' بار درست ہونے پر غلطی کاپی سے ہٹ جائے گی۔',
+      k082: 'حساب کی غلطی',
+      k083: 'ری ٹیسٹ آج',
+      k084: M('−3(x + 2)') + ' بمقابلہ ' + M('−3(x − 2)'),
+      k085: M('1/2') + ' درست',
+      k086: 'تصور کی غلطی',
+      k087: 'اسراع اور رفتار کا فرق',
+      k088: M('0/2') + ' درست',
+      k089: 'بے احتیاطی',
+      k090: M('7') + ' دن بعد · ' + M('28') + ' جنوری',
+      k091: 'اکائی لکھنا بھول جانا ' + M('(m/s²)'),
+      k092: 'تصور',
+      k093: 'حساب',
+      k094: 'آج کے ری ٹیسٹ شروع کرو ' + M('(4)'),
+      k095: 'ریکارڈنگ سے پوچھو · نوٹس · کلپس',
+      k096: 'تجزی · ' + M('14:05'),
+      k097: 'ریکارڈنگ سے پوچھو',
+      k098: 'علامت',
+      k099: 'صرف Nexa Teacher کے اپنے الفاظ میں تلاش کرتا ہے — تمہاری آواز کی کوئی تحریر نہیں بنتی۔',
+      k100: M('−3') + ' باہر نکالنے پر اندر کی علامتیں الٹ جاتی ہیں: ' + M('−3x + 6 = −3(x − 2)') + '۔',
+      k101: 'جہاں میں اٹکا',
+      k102: 'سمجھ نہیں آیا',
+      k103: 'میرا نشان',
+      k104: 'میرے نوٹس',
+      k105: '🔒 نجی — صرف تم دیکھ سکتے ہو',
+      k106: M('−3') + ' باہر نکالنے پر ' + M('+6') + ' بن جاتا ہے ' + M('−2') + ' — یاد رکھو!',
+      k107: M('30') + ' سیکنڈ کی کلپ · ' + M('13:50–14:20'),
+      k108: '← فلیش کارڈ',
+      k109: '← غلطیوں کی کاپی',
+      k110: 'کلاس رپورٹ کھولو',
+      k111: 'AI کو سکھاؤ — غلطی ڈھونڈ کر ٹھیک کرو',
+      k112: 'AI کو سکھاؤ',
+      k113: 'AI طالب علم · Nexa Co-Teacher کردار ادا کر رہا ہے',
+      k114: 'میں نے ' + M('x² − 7x + 12 = 0') + ' حل کیا۔ کیا تم میرا کام جانچ دو گے؟',
+      k115: 'کون سی لائن غلط ہے؟',
+      k116: 'لائن ' + M('1'),
+      k117: 'لائن ' + M('2'),
+      k118: 'لائن ' + M('3'),
+      k119: 'وہ لائن کیا ہونی چاہیے؟',
+      k120: 'ا',
+      k121: 'تم نے سکھا دیا! “مشترک جزو ضربی اور علامتیں” میں مہارت کا ثبوت گنا گیا (' + M('AI') + ' کو سکھاؤ)' + '۔',
+      k122: 'Nexa Co-Teacher پر چلتا ہے — ' + M('1:1') + ' منٹ خرچ نہیں ہوتے۔',
+      k123: 'درمیانی رکن کو توڑنا'
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: 'التدريس كتابةً، التسجيلات والملخصات، الإعادة، دفتر الأخطاء',
+      k002: 'Nexa Co-Teacher — اكتب، اسأل بصوتك، واستمع إلى الإجابة',
+      k003: 'يشرح بالطريقة التي شرح بها Nexa Teacher',
+      k004: 'اليوم ' + M('7/25') + ' موضوعًا',
+      k005: 'في الخطوة ' + M('3') + '، لماذا صارت ' + M('−3(x − 2)') + ' وليس ' + M('+ 2') + '؟',
+      k006: 'انظر إليها كما فعلنا في الحصة:',
+      k007: 'عند إخراج ' + M('−3') + ' تنقلب إشارة كل حد في الداخل.',
+      k008: 'تسجيل حصتك · من ' + M('14:05'),
+      k009: 'استمع إلى الإجابة',
+      k010: 'استمع',
+      k011: 'مفيد',
+      k012: 'غير مفيد',
+      k013: 'أبلغ عن إجابة خاطئة',
+      k014: 'فهمت الآن! أعطني تمرينًا آخر',
+      k015: 'أُرسل صوتيًا · حُوّل إلى نص',
+      k016: 'حسنًا — حلّل ' + M('x² + x − 12 = 0') + ' إلى عوامل. أخبرني إن احتجت تلميحًا.',
+      k017: 'أوقف القراءة الصوتية',
+      k018: 'يقرأ…',
+      k019: 'ما زال غير واضح؟ اتصل بـ Nexa Teacher — سيبدأ من هذه الخطوة بالضبط.',
+      k020: 'اسأل بصورة',
+      k021: 'الكتابة الصوتية بالبنغالية',
+      k022: 'و',
+      k023: 'اكتب سؤالًا',
+      k024: 'اكتب أو تحدّث أو ألصق رابطًا…',
+      k025: 'اسأل بالصوت',
+      k026: 'إرسال',
+      k027: 'القائمة الرئيسية',
+      k028: 'الرئيسية',
+      k029: 'الحصص',
+      k030: 'التقدّم',
+      k031: 'الملف',
+      k032: 'مكتبة التسجيلات — المادة ← الوحدة ← الموضوع ← الحصة',
+      k033: 'التسجيلات',
+      k034: 'لا يبدأ التسجيل أبدًا من تلقاء نفسه — تختار أنت في بداية كل حصة.',
+      k035: 'ابحث عن مادة أو موضوع أو درس',
+      k036: 'الكل',
+      k037: 'الرياضيات العامة',
+      k038: 'الفيزياء',
+      k039: 'يحتاج إجراءً',
+      k040: 'تُحذف تلقائيًا بعد ' + M('12') + ' شهرًا من الحصة ·',
+      k041: 'احتفظ بها حتى نهاية دورتي',
+      k042: 'متوقف',
+      k043: 'الرياضيات العامة › الجبر › المعادلات التربيعية',
+      k044: 'الرياضيات العامة — المعادلات التربيعية — الدرس ' + M('03') + ' — ' + M('6') + ' ديسمبر ' + M('2026'),
+      k045: 'جاهز',
+      k046: 'التقرير: جاهز',
+      k047: '▶ شاهد',
+      k048: 'الرياضيات العامة — المعادلات التربيعية — الدرس ' + M('02') + ' — ' + M('4') + ' ديسمبر ' + M('2026'),
+      k049: 'التقرير: محدَّث',
+      k050: 'الحصة الثانية في هذا الموضوع · مرتبطة بسجل مراجعتك',
+      k051: 'الفيزياء › الميكانيكا › الحركة',
+      k052: 'الفيزياء — الحركة — الدرس ' + M('02') + ' — ' + M('5') + ' ديسمبر ' + M('2026'),
+      k053: 'الدفعة ' + M('EN-03') + ' · مشترك · ' + M('40:00'),
+      k054: 'بانتظار الموافقة',
+      k055: 'بانتظار موافقة ولي أمرك',
+      k056: 'الفيزياء — الحركة — الدرس ' + M('01') + ' — ' + M('3') + ' ديسمبر ' + M('2026'),
+      k057: 'فشل',
+      k058: '↻ أعد المحاولة',
+      k059: 'توقف الرفع — انقطع الاتصال',
+      k060: 'مشغّل التسجيل — الفصول، الملخص، تخطَّ ما تعرفه',
+      k061: 'رجوع',
+      k062: 'المعادلات التربيعية',
+      k063: '✓ تم التحقق · ' + M('SHA-256'),
+      k064: 'Nexa Teacher: «عند إخراج ' + M('−3') + ' تنقلب الإشارات في الداخل.»',
+      k065: 'CC · الترجمة النصية مفعّلة',
+      k066: 'أفاتار BdSL',
+      k067: '⤓ للمشاهدة دون اتصال · ' + M('38 MB'),
+      k068: 'تخطَّ ما تعرفه',
+      k069: 'يتخطى الفصول التي أتقنتها · المشاهدة مرة أخرى لا تُحسب إتقانًا أبدًا',
+      k070: 'مفعّلة',
+      k071: 'الإحماء والمسألة',
+      k072: 'متقَن',
+      k073: 'تكوين المعادلة',
+      k074: 'تجزئة الحد الأوسط',
+      k075: 'ليس بعد',
+      k076: 'العامل المشترك والإشارات',
+      k077: '▶ شغّل ملخص الدقائق الثلاث',
+      k078: 'دفتر الأخطاء (تلقائي)',
+      k079: 'دفتر الأخطاء',
+      k080: M('12'),
+      k081: 'بعد إجابتين صحيحتين متتاليتين يخرج الخطأ من الدفتر.',
+      k082: 'خطأ حسابي',
+      k083: 'إعادة الاختبار اليوم',
+      k084: M('−3(x + 2)') + ' مقابل ' + M('−3(x − 2)'),
+      k085: M('1/2') + ' صحيحة',
+      k086: 'خطأ في المفهوم',
+      k087: 'الفرق بين التسارع والسرعة',
+      k088: M('0/2') + ' صحيحة',
+      k089: 'عدم الانتباه',
+      k090: 'بعد ' + M('7') + ' أيام · ' + M('28') + ' يناير',
+      k091: 'نسيان كتابة الوحدة ' + M('(m/s²)'),
+      k092: 'المفهوم',
+      k093: 'الحساب',
+      k094: 'ابدأ إعادات اختبار اليوم ' + M('(4)'),
+      k095: 'اسأل التسجيل · ملاحظات · مقاطع',
+      k096: 'التحليل إلى عوامل · ' + M('14:05'),
+      k097: 'اسأل التسجيل',
+      k098: 'الإشارة',
+      k099: 'يبحث في كلام Nexa Teacher نفسه فقط — لا يُنشأ أي نص مكتوب لصوتك.',
+      k100: 'عند إخراج ' + M('−3') + ' تنقلب الإشارات في الداخل: ' + M('−3x + 6 = −3(x − 2)') + '.',
+      k101: 'حيث تعثّرت',
+      k102: 'لم أفهم',
+      k103: 'علامتي',
+      k104: 'ملاحظاتي',
+      k105: '🔒 خاصة — لا يراها أحد غيرك',
+      k106: 'إخراج ' + M('−3') + ' يحوّل ' + M('+6') + ' إلى ' + M('−2') + ' — تذكّر!',
+      k107: 'مقطع من ' + M('30') + ' ثانية · ' + M('13:50–14:20'),
+      k108: '← بطاقة تعليمية',
+      k109: '← دفتر الأخطاء',
+      k110: 'افتح تقرير الحصة',
+      k111: 'علّم الذكاء الاصطناعي — اعثر على الخطأ وصحّحه',
+      k112: 'علّم الذكاء الاصطناعي',
+      k113: 'طالب آلي · يؤدي دوره Nexa Co-Teacher',
+      k114: 'حللت ' + M('x² − 7x + 12 = 0') + '. هل تراجع عملي؟',
+      k115: 'أي سطر خاطئ؟',
+      k116: 'السطر ' + M('1'),
+      k117: 'السطر ' + M('2'),
+      k118: 'السطر ' + M('3'),
+      k119: 'كيف يجب أن يكون هذا السطر؟',
+      k120: 'أ',
+      k121: 'لقد علّمته! حُسب دليلًا على إتقانك لـ“العامل المشترك والإشارات” (علّم الذكاء الاصطناعي)' + '.',
+      k122: 'يعمل على Nexa Co-Teacher — لا تُستهلك دقائق ' + M('1:1') + '.',
+      k123: 'تجزئة الحد الأوسط'
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: 'Enseignement à l’écrit, enregistrements et résumés, replay, carnet d’erreurs',
+      k002: 'Nexa Co-Teacher — écrire, demander à voix haute, écouter la réponse',
+      k003: 'Explique comme Nexa Teacher l’a fait',
+      k004: 'Aujourd’hui 7/25 sujets',
+      k005: 'À l’étape 3, pourquoi −3(x − 2) et pas + 2 ?',
+      k006: 'Regarde comme on l’a fait en cours :',
+      k007: 'Quand tu sors −3, le signe de chaque terme à l’intérieur s’inverse.',
+      k008: 'Enregistrement de ton cours · à partir de 14:05',
+      k009: 'Écouter la réponse',
+      k010: 'Écouter',
+      k011: 'Utile',
+      k012: 'Pas utile',
+      k013: 'Signaler une réponse fausse',
+      k014: 'J’ai compris ! Donne-moi un autre exercice',
+      k015: 'Envoyé à la voix · converti en texte',
+      k016: 'D’accord — factorise x² + x − 12 = 0. Dis-moi si tu veux un indice.',
+      k017: 'Arrêter la lecture',
+      k018: 'Lecture…',
+      k019: 'Toujours pas clair ? Appelle Nexa Teacher — il reprend exactement à cette étape.',
+      k020: 'Question en photo',
+      k021: 'Saisie phonétique bengali',
+      k022: 'P',
+      k023: 'Écris une question',
+      k024: 'Écris, parle ou colle un lien…',
+      k025: 'Demander à la voix',
+      k026: 'Envoyer',
+      k027: 'Menu principal',
+      k028: 'Accueil',
+      k029: 'Cours',
+      k030: 'Progrès',
+      k031: 'Profil',
+      k032: 'Bibliothèque des enregistrements — Matière → Unité → Thème → Cours',
+      k033: 'Cours enregistrés',
+      k034: 'L’enregistrement ne démarre jamais tout seul — tu choisis au début de chaque cours.',
+      k035: 'Chercher une matière, un thème ou une leçon',
+      k036: 'Tout',
+      k037: 'Mathématiques générales',
+      k038: 'Physique',
+      k039: 'À traiter',
+      k040: 'Supprimé automatiquement 12 mois après le cours ·',
+      k041: 'Garder jusqu’à la fin de mon cours',
+      k042: 'Non',
+      k043: 'Mathématiques générales › Algèbre › Équations du second degré',
+      k044: 'Mathématiques générales — Équations du second degré — Leçon 03 — 6 déc. 2026',
+      k045: 'Prêt',
+      k046: 'Rapport : Prêt',
+      k047: '▶ Regarder',
+      k048: 'Mathématiques générales — Équations du second degré — Leçon 02 — 4 déc. 2026',
+      k049: 'Rapport : Mis à jour',
+      k050: '2e cours sur ce thème · lié à ton historique de révision',
+      k051: 'Physique › Mécanique › Mouvement',
+      k052: 'Physique — Mouvement — Leçon 02 — 5 déc. 2026',
+      k053: 'Groupe EN-03 · partagé · 40:00',
+      k054: 'Accord en attente',
+      k055: 'En attente de l’accord de ton parent',
+      k056: 'Physique — Mouvement — Leçon 01 — 3 déc. 2026',
+      k057: 'Échec',
+      k058: '↻ Réessayer',
+      k059: 'Envoi interrompu — la connexion a coupé',
+      k060: 'Lecteur — chapitres, récap, passer ce que je sais',
+      k061: 'Retour',
+      k062: 'Équations du second degré',
+      k063: '✓ Vérifié · SHA-256',
+      k064: 'Nexa Teacher : « Quand tu sors −3, les signes à l’intérieur s’inversent. »',
+      k065: 'CC · sous-titres activés',
+      k066: 'Avatar BdSL',
+      k067: '⤓ Hors ligne · 38 Mo',
+      k068: 'Passer ce que je sais',
+      k069: 'Saute les chapitres maîtrisés · revoir ne compte jamais comme maîtrise',
+      k070: 'Active',
+      k071: 'Échauffement et problème',
+      k072: 'Maîtrisé',
+      k073: 'Mettre en équation',
+      k074: 'Décomposer le terme du milieu',
+      k075: 'Pas encore',
+      k076: 'Facteur commun et signes',
+      k077: '▶ Lancer le récap de 3 minutes',
+      k078: 'Carnet d’erreurs (automatique)',
+      k079: 'Carnet d’erreurs',
+      k080: '12',
+      k081: 'Après 2 bonnes réponses d’affilée, l’erreur quitte le carnet.',
+      k082: 'Erreur de calcul',
+      k083: 'Retest aujourd’hui',
+      k084: '−3(x + 2) ou −3(x − 2)',
+      k085: '1/2 juste',
+      k086: 'Erreur de notion',
+      k087: 'Différence entre accélération et vitesse',
+      k088: '0/2 juste',
+      k089: 'Inattention',
+      k090: 'Dans 7 jours · 28 janv.',
+      k091: 'Oublier d’écrire l’unité (m/s²)',
+      k092: 'Notion',
+      k093: 'Calcul',
+      k094: 'Commencer les re-tests du jour (4)',
+      k095: 'Interroger l’enregistrement · notes · extraits',
+      k096: 'Factorisation · 14:05',
+      k097: 'Interroger l’enregistrement',
+      k098: 'signe',
+      k099: 'Cherche seulement dans les mots de Nexa Teacher — aucune transcription de ta voix n’est faite.',
+      k100: 'Quand tu sors −3, les signes à l’intérieur s’inversent : −3x + 6 = −3(x − 2).',
+      k101: 'Là où j’ai bloqué',
+      k102: 'Pas compris',
+      k103: 'Ma marque',
+      k104: 'Mes notes',
+      k105: '🔒 Privées — toi seul peux les voir',
+      k106: 'Sortir −3 transforme +6 en −2 — retiens-le !',
+      k107: 'Extrait de 30 secondes · 13:50–14:20',
+      k108: '→ Fiche',
+      k109: '→ Carnet d’erreurs',
+      k110: 'Ouvrir le rapport du cours',
+      k111: 'Apprends à l’IA — trouve et corrige l’erreur',
+      k112: 'Apprends à l’IA',
+      k113: 'Élève IA · joué par Nexa Co-Teacher',
+      k114: 'J’ai résolu x² − 7x + 12 = 0. Tu peux vérifier mon travail ?',
+      k115: 'Quelle ligne est fausse ?',
+      k116: 'Ligne 1',
+      k117: 'Ligne 2',
+      k118: 'Ligne 3',
+      k119: 'Que devrait être cette ligne ?',
+      k120: 'A',
+      k121: 'Tu lui as appris ! Compté comme preuve de maîtrise pour « Facteur commun et signes » (Apprends à l’IA).',
+      k122: 'Fonctionne avec Nexa Co-Teacher — aucune minute de 1:1 utilisée.',
+      k123: 'Décomposer le terme du milieu'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, fx: this.fx16(lang), lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

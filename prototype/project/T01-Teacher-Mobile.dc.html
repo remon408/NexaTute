@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Teacher app</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.tb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#fff;border-top:1px solid #E2E6EF;padding:8px 6px 20px;flex:none}
+.tb a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:#59617A;text-decoration:none;font-weight:500;min-height:44px}
+.tb a.on{color:#3B34C9;font-weight:700}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.stp{display:flex;gap:12px;align-items:flex-start;position:relative;padding-bottom:18px}
+.stp .d{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;font-weight:700;z-index:1}
+.stp::before{content:"";position:absolute;left:14px;top:30px;bottom:0;width:2px;background:#E2E6EF}
+.stp.last::before{display:none}
+.sg{display:flex;align-items:flex-end;gap:12px;height:120px}
+.sg div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%;font-size:12px;color:#59617A}
+.sg span{width:100%;border-radius:8px 8px 2px 2px}
+/* fix11: 6-language wireframe — language picker; Urdu in Nastaliq needs a taller line; RTL mirrors back arrows */
+.wfl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.wfl span{font-size:12px;font-weight:600;color:#59617A;margin-inline-end:4px}
+.wfl button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #C9CFDC;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#141A33;cursor:pointer}
+.wfl button.on{background:#141A33;border-color:#141A33;color:#fff}
+[lang=ur] *{line-height:1.9}
+[dir=rtl] .ib svg{transform:scaleX(-1)}
+/* longer languages (fr, ur Nastaliq) must not cut the bottom of a phone screen: the phone grows instead */
+.ph{height:auto;min-height:844px}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="width:1346px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="wfl" role="group" aria-label="{{ t.lp }}"><span>{{ t.lp }}</span><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Teacher · Mobile</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k3 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- T1 Home -->
+<div class="col" id="t1-home">
+  <div class="cap"><b>T1</b>{{ t.k4 }}</div>
+  <div class="ph">
+    <div class="top">
+      <div style="flex:1"><p class="xs" style="margin:0">{{ t.k5 }}</p><p class="t2">{{ t.k6 }}</p></div>
+      <span class="chip">{{ t.k7 }}</span>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="display:flex;flex-direction:column;gap:10px">
+        <div class="row" style="justify-content:space-between"><p class="t3">{{ t.k8 }}</p><a href="#t1-report" style="font-size:13px">{{ t.k9 }}</a></div>
+        <div class="li" style="padding-top:4px"><span style="flex:1"><b>{{ t.k10 }}</b> · SSC Batch<br><span class="xs">{{ t.k11 }}</span></span><span class="chip" style="background:#E3F5EC;color:#0F6B40">4:00 pm</span></div>
+        <div class="li" style="border:0"><span style="flex:1"><b>{{ t.k12 }}</b> · SSC Batch<br><span class="xs">{{ t.k13 }}</span></span><span class="chip" style="background:#F0F1F6;color:#59617A">5:05 pm</span></div>
+        <!-- fix12 (R11-family-4, G10): the teacher only sees that the class uses Sensory-friendly mode — never who (= X09) -->
+        <p class="xs" style="margin:0;background:#E3F5EC;border-radius:10px;padding:8px 10px;color:#0F6B40"><b>{{ t.k10 }}</b> · {{ t.k59 }} · {{ t.k60 }}</p>
+      </div>
+      <div class="cd" style="border:2px solid #F2A93B;display:flex;flex-direction:column;gap:8px">
+        <div class="row"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#8A4B00"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg><p class="t3" style="flex:1">{{ t.k14 }}</p></div>
+        <p class="sm" style="color:#141A33">{{ t.k15 }}</p>
+        <button type="button" style="background:none;border:0;padding:0;font:inherit;font-size:13px;font-weight:600;color:#3B34C9;text-decoration:underline;cursor:pointer;min-height:32px">{{ t.k16 }}</button>
+      </div>
+      <div class="cd" style="display:flex;gap:12px;align-items:center">
+        <span style="width:40px;height:40px;border-radius:12px;background:#ECEBFD;color:#3B34C9;display:flex;align-items:center;justify-content:center;flex:none"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></svg></span>
+        <div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k17 }}</p><p class="xs" style="margin:0">{{ t.k18 }}</p></div>
+      </div>
+      <div class="cd" style="display:flex;gap:12px;align-items:center">
+        <span style="width:40px;height:40px;border-radius:12px;background:#E1F4F2;color:#0B6E6A;display:flex;align-items:center;justify-content:center;flex:none"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/></svg></span>
+        <div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k19 }}</p><p class="xs" style="margin:0">{{ t.k20 }}</p><p class="xs" style="margin:4px 0 0;color:#141A33">{{ t.k21 }}</p></div>
+      </div>
+      <!-- fix14: Exam & Admission Hub — counts only for teachers (= X09 / X12); no names, under 20 hidden -->
+      <div class="cd" style="display:flex;flex-direction:column;gap:3px;padding:12px 14px">
+        <p class="t3" style="font-size:14px">{{ t.k61 }}</p>
+        <p class="xs" style="margin:0">{{ t.k66 }}</p>
+        <p class="xs" style="margin:0;color:#141A33">{{ t.k62 }}</p>
+        <p class="xs" style="margin:0">{{ t.k63 }}</p>
+        <p class="xs" style="margin:0;color:#141A33">{{ t.k64 }}</p>
+        <p class="xs" style="margin:0">{{ t.k65 }}</p>
+      </div>
+    </div>
+    <nav class="tb" aria-label="{{ t.k1 }}">
+      <a href="#t1-home" class="on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k22 }}</a>
+      <a href="#t1-report"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/></svg>{{ t.k23 }}</a>
+      <a href="#t1-content"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/></svg>{{ t.k24 }}</a>
+      <a href="#t1-report"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>{{ t.k25 }}</a>
+    </nav>
+  </div>
+</div>
+
+<!-- T2 Content check -->
+<div class="col" id="t1-content">
+  <div class="cap"><b>T2</b>{{ t.k26 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k2 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k17 }}</p><p class="xs" style="margin:0">{{ t.k27 }}</p></div>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="padding:18px 16px 2px">
+        <div class="stp"><span class="d" style="background:#E3F5EC;color:#17804F">✓</span><div><p class="t3" style="font-size:14px">{{ t.k28 }}</p><p class="xs" style="margin:0">{{ t.k29 }}</p></div></div>
+        <div class="stp"><span class="d" style="background:#E3F5EC;color:#17804F">✓</span><div><p class="t3" style="font-size:14px">{{ t.k30 }}</p><p class="xs" style="margin:0">{{ t.k31 }}</p></div></div>
+        <div class="stp"><span class="d" style="background:#E3F5EC;color:#17804F">✓</span><div><p class="t3" style="font-size:14px">{{ t.k32 }}</p><p class="xs" style="margin:0">{{ t.k33 }}</p></div></div>
+        <div class="stp"><span class="d" style="background:#F0F1F6;color:#59617A">4</span><div><p class="t3" style="font-size:14px;color:#59617A">{{ t.k34 }}</p><p class="xs" style="margin:0">{{ t.k35 }}</p></div></div>
+        <div class="stp last"><span class="d" style="background:#F0F1F6;color:#59617A">5</span><div><p class="t3" style="font-size:14px;color:#59617A">{{ t.k36 }}</p></div></div>
+      </div>
+      <div class="cd" style="border:2px solid #F2A93B;display:flex;flex-direction:column;gap:8px">
+        <p class="t3" style="font-size:14px">{{ t.k37 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k38 }}</p>
+        <div class="row" style="gap:8px"><button class="chip" style="border:0;padding:8px 14px;min-height:36px">{{ t.k39 }}</button><button class="chip" style="border:0;padding:8px 14px;min-height:36px;background:#F0F1F6;color:#141A33">{{ t.k40 }}</button></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k41 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- T3 Class report -->
+<div class="col" id="t1-report">
+  <div class="cap"><b>T3</b>{{ t.k42 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k2 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k43 }}</p><p class="xs" style="margin:0">{{ t.k44 }}</p></div>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center">
+        <div><b style="font-size:20px">44/48</b><div class="xs">{{ t.k45 }}</div></div>
+        <div><b style="font-size:20px">71%</b><div class="xs">{{ t.k46 }}</div></div>
+        <div><b style="font-size:20px">93%</b><div class="xs">{{ t.k47 }}</div></div>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:10px">
+        <p class="t3" style="font-size:14px">{{ t.k48 }}</p>
+        <div class="sg">
+          <div><span style="height:22%;background:#C9C6F6"></span>{{ t.k49 }}</div>
+          <div><span style="height:38%;background:#C9C6F6"></span>{{ t.k50 }}</div>
+          <div><span style="height:86%;background:#F2A93B"></span><b style="color:#141A33">{{ t.k51 }}</b></div>
+          <div><span style="height:30%;background:#C9C6F6"></span>{{ t.k52 }}</div>
+        </div>
+        <p class="sm" style="color:#141A33">{{ t.k53 }}</p>
+      </div>
+      <div class="cd" style="padding:4px 16px">
+        <p class="t3" style="font-size:14px;padding-top:10px">{{ t.k54 }}</p>
+        <div class="li"><span style="flex:1">{{ t.k55 }}</span><b>14</b></div>
+        <div class="li"><span style="flex:1">{{ t.k56 }}</span><b>9</b></div>
+        <div class="li" style="border:0"><span style="flex:1">{{ t.k57 }}</span><b>6</b></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k58 }}</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1346,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner addendum 26 Oct 2026, 22:15): the static wireframe in 6 languages — identical keys; ur/ar with LTR isolates; static otherwise
+  uiText() {
+    return {
+      "bn": {
+      "k1": "শিক্ষক মেনু",
+      "k2": "পেছনে",
+      "k3": "শিক্ষকের হোম, কনটেন্ট যাচাইয়ের ধাপ, ক্লাস রিপোর্ট",
+      "k4": "শিক্ষকের হোম",
+      "k5": "শিক্ষক · মডেল হাই স্কুল",
+      "k6": "ফারহানা ইসলাম",
+      "k7": "গণিত",
+      "k8": "আমার ব্যাচ",
+      "k9": "সব",
+      "k10": "নবম-ক",
+      "k11": "48 জন · শেষ ক্লাসে উপস্থিত 44",
+      "k12": "নবম-খ",
+      "k13": "46 জন · শেষ ক্লাসে উপস্থিত 43 · English",
+      "k14": "নজর দরকার",
+      "k15": "নবম-ক-তে 9 জন “নিশ্চায়ক”-এ ব্যাচ গড়ের অনেক নিচে। তাদের আজকের 1:1 সময় AI এই টপিকে সেট করেছে।",
+      "k16": "শিক্ষার্থীদের দেখুন",
+      "k17": "প্রশ্নব্যাংক · অধ্যায় 4",
+      "k18": "বিষয়-বিশেষজ্ঞের পর্যালোচনায়",
+      "k19": "সাপ্তাহিক রিভিশন ক্লাস (মানব শিক্ষক)",
+      "k20": "ব্যাচের ভেতরে · পরের ক্লাস শনিবার রাত 8:00 (ডিফল্ট)",
+      "k21": "ব্রিফ — শীর্ষ 3টি ভুলের টপিক (শুধু সংখ্যা, নাম নয়): দ্বিঘাত সমীকরণের চিহ্ন 14 জন · নিশ্চায়ক 11 জন · জ্যামিতি 9 জন",
+      "k22": "হোম",
+      "k23": "ব্যাচ",
+      "k24": "কনটেন্ট",
+      "k25": "রিপোর্ট",
+      "k26": "কনটেন্ট প্রকাশের আগে যাচাই",
+      "k27": "60 প্রশ্ন · আপলোড আজ 11:20",
+      "k28": "কপিরাইট নিশ্চিত",
+      "k29": "আপনার নিজের লেখা বলে নিশ্চিত করেছেন",
+      "k30": "কনটেন্ট-সেফটি চেক",
+      "k31": "বিষয়ভিত্তিক নিয়মে — সমস্যা পাওয়া যায়নি",
+      "k32": "AI উত্তর যাচাই",
+      "k33": "58 ঠিক · 2টিতে উত্তর-চাবি সন্দেহজনক",
+      "k34": "বিষয়-বিশেষজ্ঞের পর্যালোচনা",
+      "k35": "উত্তর-চাবি ঠিক হলে শুরু · সাধারণত 48 ঘণ্টা",
+      "k36": "প্রকাশ · “NexaTute Verified”",
+      "k37": "প্রশ্ন 23 · উত্তর-চাবি দেখুন",
+      "k38": "x² − 9 = 0 এর মূল: আপনি দিয়েছেন “3”। AI-র হিসাবে “±3”।",
+      "k39": "ঠিক করুন",
+      "k40": "আমার উত্তরই ঠিক",
+      "k41": "প্রকাশের পর প্রতিটি প্রশ্নের কঠিনতা ও পার্থক্য-ক্ষমতা (item analysis) দেখা যাবে।",
+      "k42": "ক্লাস রিপোর্ট — কোন অংশে বিভ্রান্তি",
+      "k43": "নবম-ক · শনিবার, 30 জানুয়ারির ক্লাস",
+      "k44": "গণিত · দ্বিঘাত সমীকরণ",
+      "k45": "উপস্থিতি",
+      "k46": "পোলে সঠিক",
+      "k47": "শেষ পর্যন্ত ছিল",
+      "k48": "“বুঝিনি” চাপ — প্রতি 8 মিনিটের অংশে",
+      "k49": "পর্ব 1",
+      "k50": "পর্ব 2",
+      "k51": "পর্ব 3",
+      "k52": "পর্ব 4",
+      "k53": "পর্ব 3 (নিশ্চায়ক) সবচেয়ে কঠিন লেগেছে। পরের ক্লাস 5 মিনিটের রিক্যাপ দিয়ে শুরু হবে।",
+      "k54": "ক্লাসের পর Nexa Co-Teacher-কে সবচেয়ে বেশি জিজ্ঞাসা",
+      "k55": "b² − 4ac ঋণাত্মক হলে",
+      "k56": "সূত্রে ± চিহ্ন",
+      "k57": "উৎপাদকে বিশ্লেষণ বনাম সূত্র",
+      "k58": "শুধু সংখ্যা দেখানো হয় — কোন শিক্ষার্থী জিজ্ঞাসা করেছে তা নয়।",
+      "k59": "এই ক্লাসে সংবেদন-বান্ধব মোড চালু — রুটিন বোর্ড মেনে চলা আর কিছু বদলানোর আগে জানানো",
+      "k60": "কোনো নাম নেই — শুধু দেখা যায় ক্লাসটি এটি ব্যবহার করে",
+      "k61": "পরীক্ষা ও ভর্তি হাব — শুধু সংখ্যা",
+      "k62": "কলেজে (একাদশ) অনলাইন ভর্তির আবেদন — 41 জন শিক্ষার্থী",
+      "k63": "পলিটেকনিক (BTEB) ডিপ্লোমা ভর্তির আবেদন — লুকানো · 20-এর কম",
+      "k64": "SSC-ভিত্তিক শিক্ষা বোর্ড বৃত্তির ফল (প্রত্যাশিত) — 23 জন শিক্ষার্থী",
+      "k65": "ক্যাডেট কলেজে ভর্তি (সপ্তম শ্রেণি) — লুকানো · 20-এর কম",
+      "k66": "মডেল হাই স্কুল · হাবে এগুলোর খোঁজ রাখা সব শিক্ষার্থী (প্রতিষ্ঠানের অ্যাডমিন যে সংখ্যা দেখেন, সেটাই) — কোনো নাম নেই; 20-এর কম লুকানো।",
+      "lp": "ভাষা"
+      },
+      "en": {
+      "k1": "Teacher menu",
+      "k2": "Back",
+      "k3": "Teacher home, content-check steps, class report",
+      "k4": "Teacher home",
+      "k5": "Teacher · Model High School",
+      "k6": "Farhana Islam",
+      "k7": "Maths",
+      "k8": "My batches",
+      "k9": "All",
+      "k10": "9-A",
+      "k11": "48 learners · 44 present at the last class",
+      "k12": "9-B",
+      "k13": "46 learners · 43 present at the last class · English",
+      "k14": "Needs attention",
+      "k15": "In 9-A, 9 learners are well below the batch average on “discriminant”. The AI set today’s 1:1 time to this topic for them.",
+      "k16": "See the learners",
+      "k17": "Question bank · Chapter 4",
+      "k18": "With the subject expert",
+      "k19": "Weekly revision class (human teacher)",
+      "k20": "Inside the batch · next class Saturday 8:00 pm (default)",
+      "k21": "Brief — top 3 mistake topics (counts only, no names): signs in quadratic equations 14 learners · discriminant 11 · geometry 9",
+      "k22": "Home",
+      "k23": "Batches",
+      "k24": "Content",
+      "k25": "Report",
+      "k26": "Checks before content is published",
+      "k27": "60 questions · uploaded today 11:20",
+      "k28": "Copyright confirmed",
+      "k29": "You confirmed it is your own work",
+      "k30": "Content-safety check",
+      "k31": "With subject-aware rules — no problems found",
+      "k32": "AI answer check",
+      "k33": "58 correct · 2 answer keys look wrong",
+      "k34": "Subject expert review",
+      "k35": "Starts once the answer keys are fixed · usually 48 hours",
+      "k36": "Published · “NexaTute Verified”",
+      "k37": "Question 23 · check the answer key",
+      "k38": "Roots of x² − 9 = 0: you gave “3”. The AI works out “±3”.",
+      "k39": "Fix it",
+      "k40": "My answer is right",
+      "k41": "After publishing you can see each question’s difficulty and discrimination (item analysis).",
+      "k42": "Class report — where the confusion was",
+      "k43": "9-A · Sat 30 January class",
+      "k44": "Maths · quadratic equations",
+      "k45": "present",
+      "k46": "right in polls",
+      "k47": "stayed to the end",
+      "k48": "“Didn’t get it” taps — per 8-minute part",
+      "k49": "Part 1",
+      "k50": "Part 2",
+      "k51": "Part 3",
+      "k52": "Part 4",
+      "k53": "Part 3 (discriminant) felt hardest. The next class opens with a 5-minute recap.",
+      "k54": "Most asked to Nexa Co-Teacher after class",
+      "k55": "When b² − 4ac is negative",
+      "k56": "The ± sign in the formula",
+      "k57": "Factorisation vs the formula",
+      "k58": "Only counts are shown — never which learner asked.",
+      "k59": "This class uses Sensory-friendly mode — keep to the routine board and give notice before changes",
+      "k60": "No names — you only see that the class uses it",
+      "k61": "Exam & Admission Hub — counts only",
+      "k62": "College (Class XI) online admission application — 41 students",
+      "k63": "Polytechnic (BTEB) diploma admission application — Hidden · under 20",
+      "k64": "SSC-based education board scholarship results (expected) — 23 students",
+      "k65": "Cadet college admission (Class VII) — Hidden · under 20",
+      "k66": "Model High School · all students who track these in their hub (same counts as the institution admin) — no names; under 20 hidden.",
+      "lp": "Language"
+      },
+      "hi": {
+      "k1": "शिक्षक मेनू",
+      "k2": "पीछे",
+      "k3": "शिक्षक होम, सामग्री जाँच के चरण, क्लास रिपोर्ट",
+      "k4": "शिक्षक होम",
+      "k5": "शिक्षक · मॉडल हाई स्कूल",
+      "k6": "फ़रहाना इस्लाम",
+      "k7": "गणित",
+      "k8": "मेरे बैच",
+      "k9": "सब",
+      "k10": "9-A",
+      "k11": "48 विद्यार्थी · पिछली क्लास में 44 उपस्थित",
+      "k12": "9-B",
+      "k13": "46 विद्यार्थी · पिछली क्लास में 43 उपस्थित · English",
+      "k14": "ध्यान चाहिए",
+      "k15": "9-A में 9 विद्यार्थी “विविक्तकर” में बैच औसत से काफ़ी नीचे हैं। AI ने उनका आज का 1:1 समय इसी टॉपिक पर रखा है।",
+      "k16": "विद्यार्थियों को देखें",
+      "k17": "प्रश्न बैंक · अध्याय 4",
+      "k18": "विषय-विशेषज्ञ की समीक्षा में",
+      "k19": "साप्ताहिक रिवीज़न क्लास (मानव शिक्षक)",
+      "k20": "बैच के भीतर · अगली क्लास शनिवार रात 8:00 (डिफ़ॉल्ट)",
+      "k21": "ब्रीफ़ — 3 सबसे ज़्यादा ग़लती वाले टॉपिक (सिर्फ़ संख्या, नाम नहीं): द्विघात समीकरण के चिह्न 14 विद्यार्थी · विविक्तकर 11 · ज्यामिति 9",
+      "k22": "होम",
+      "k23": "बैच",
+      "k24": "सामग्री",
+      "k25": "रिपोर्ट",
+      "k26": "प्रकाशन से पहले सामग्री की जाँच",
+      "k27": "60 प्रश्न · आज 11:20 अपलोड",
+      "k28": "कॉपीराइट की पुष्टि",
+      "k29": "आपने पुष्टि की कि यह आपकी अपनी रचना है",
+      "k30": "सामग्री-सुरक्षा जाँच",
+      "k31": "विषय-आधारित नियमों से — कोई समस्या नहीं मिली",
+      "k32": "AI उत्तर जाँच",
+      "k33": "58 सही · 2 उत्तर-कुंजी संदिग्ध",
+      "k34": "विषय-विशेषज्ञ की समीक्षा",
+      "k35": "उत्तर-कुंजी ठीक होने पर शुरू · आम तौर पर 48 घंटे",
+      "k36": "प्रकाशित · “NexaTute Verified”",
+      "k37": "प्रश्न 23 · उत्तर-कुंजी देखें",
+      "k38": "x² − 9 = 0 के मूल: आपने “3” दिया। AI के हिसाब से “±3”।",
+      "k39": "ठीक करें",
+      "k40": "मेरा उत्तर ही सही है",
+      "k41": "प्रकाशन के बाद हर प्रश्न की कठिनाई और भेदन-क्षमता (item analysis) दिखेगी।",
+      "k42": "क्लास रिपोर्ट — किस हिस्से में उलझन",
+      "k43": "9-A · शनिवार, 30 जनवरी की क्लास",
+      "k44": "गणित · द्विघात समीकरण",
+      "k45": "उपस्थिति",
+      "k46": "पोल में सही",
+      "k47": "अंत तक रहे",
+      "k48": "“समझ नहीं आया” टैप — हर 8 मिनट के हिस्से में",
+      "k49": "भाग 1",
+      "k50": "भाग 2",
+      "k51": "भाग 3",
+      "k52": "भाग 4",
+      "k53": "भाग 3 (विविक्तकर) सबसे कठिन लगा। अगली क्लास 5 मिनट के रिकैप से शुरू होगी।",
+      "k54": "क्लास के बाद Nexa Co-Teacher से सबसे ज़्यादा पूछा गया",
+      "k55": "जब b² − 4ac ऋणात्मक हो",
+      "k56": "सूत्र में ± चिह्न",
+      "k57": "गुणनखंड बनाम सूत्र",
+      "k58": "सिर्फ़ संख्या दिखती है — किस विद्यार्थी ने पूछा, यह नहीं।",
+      "k59": "इस क्लास में संवेदी-अनुकूल मोड चालू है — रूटीन बोर्ड के अनुसार चलें और बदलाव से पहले बताएँ",
+      "k60": "कोई नाम नहीं — आपको सिर्फ़ यह दिखता है कि क्लास इसे इस्तेमाल करती है",
+      "k61": "परीक्षा और प्रवेश हब — सिर्फ़ संख्या",
+      "k62": "कॉलेज (कक्षा XI) ऑनलाइन प्रवेश आवेदन — 41 विद्यार्थी",
+      "k63": "पॉलिटेक्निक (BTEB) डिप्लोमा प्रवेश आवेदन — छिपा · 20 से कम",
+      "k64": "SSC आधारित शिक्षा बोर्ड छात्रवृत्ति परिणाम (अपेक्षित) — 23 विद्यार्थी",
+      "k65": "कैडेट कॉलेज प्रवेश (कक्षा VII) — छिपा · 20 से कम",
+      "k66": "मॉडल हाई स्कूल · वे सभी विद्यार्थी जो अपने हब में इन पर नज़र रखते हैं (संस्थान एडमिन वाली ही संख्या) — कोई नाम नहीं; 20 से कम छिपे।",
+      "lp": "भाषा"
+      },
+      "ur": {
+      "k1": "استاد مینو",
+      "k2": "واپس",
+      "k3": "استاد ہوم، مواد کی جانچ کے مراحل، کلاس رپورٹ",
+      "k4": "استاد ہوم",
+      "k5": "استاد · ماڈل ہائی اسکول",
+      "k6": "فرحانہ اسلام",
+      "k7": "ریاضی",
+      "k8": "میرے بیچ",
+      "k9": "سب",
+      "k10": "⁦9-A⁩",
+      "k11": "⁦48⁩ طلبہ · پچھلی کلاس میں ⁦44⁩ حاضر",
+      "k12": "⁦9-B⁩",
+      "k13": "⁦46⁩ طلبہ · پچھلی کلاس میں ⁦43⁩ حاضر · ⁦English⁩",
+      "k14": "توجہ درکار",
+      "k15": "⁦9-A⁩ میں ⁦9⁩ طلبہ “ممیز” میں بیچ کی اوسط سے کافی نیچے ہیں۔ ⁦AI⁩ نے ان کا آج کا ⁦1:1⁩ وقت اسی موضوع پر رکھا ہے۔",
+      "k16": "طلبہ دیکھیں",
+      "k17": "سوالیہ بینک · باب ⁦4⁩",
+      "k18": "مضمون کے ماہر کے جائزے میں",
+      "k19": "ہفتہ وار ریویژن کلاس (انسانی استاد)",
+      "k20": "بیچ کے اندر · اگلی کلاس ہفتہ رات ⁦8:00⁩ (ڈیفالٹ)",
+      "k21": "بریف — ⁦3⁩ سب سے زیادہ غلطی والے موضوعات (صرف تعداد، نام نہیں): دو درجی مساوات کی علامتیں ⁦14⁩ طلبہ · ممیز ⁦11⁩ · جیومیٹری ⁦9⁩",
+      "k22": "ہوم",
+      "k23": "بیچ",
+      "k24": "مواد",
+      "k25": "رپورٹ",
+      "k26": "شائع کرنے سے پہلے مواد کی جانچ",
+      "k27": "⁦60⁩ سوال · آج ⁦11:20⁩ اپ لوڈ",
+      "k28": "کاپی رائٹ کی تصدیق",
+      "k29": "آپ نے تصدیق کی کہ یہ آپ کی اپنی تحریر ہے",
+      "k30": "مواد کی حفاظت کی جانچ",
+      "k31": "مضمون کے مطابق اصولوں سے — کوئی مسئلہ نہیں ملا",
+      "k32": "⁦AI⁩ جواب کی جانچ",
+      "k33": "⁦58⁩ درست · ⁦2⁩ جوابی کلید مشکوک",
+      "k34": "مضمون کے ماہر کا جائزہ",
+      "k35": "جوابی کلید درست ہونے پر شروع · عموماً ⁦48⁩ گھنٹے",
+      "k36": "شائع · “⁦NexaTute Verified⁩”",
+      "k37": "سوال ⁦23⁩ · جوابی کلید دیکھیں",
+      "k38": "⁦x² − 9⁩ = ⁦0⁩ کے جذر: آپ نے “⁦3⁩” دیا۔ ⁦AI⁩ کے حساب سے “±⁦3⁩”۔",
+      "k39": "درست کریں",
+      "k40": "میرا جواب ہی درست ہے",
+      "k41": "شائع ہونے کے بعد ہر سوال کی مشکل اور امتیازی صلاحیت (⁦item analysis⁩) دکھے گی۔",
+      "k42": "کلاس رپورٹ — کس حصے میں الجھن",
+      "k43": "⁦9-A⁩ · ہفتہ، ⁦30⁩ جنوری کی کلاس",
+      "k44": "ریاضی · دو درجی مساوات",
+      "k45": "حاضری",
+      "k46": "پول میں درست",
+      "k47": "آخر تک رہے",
+      "k48": "“سمجھ نہیں آیا” ٹیپ — ہر ⁦8⁩ منٹ کے حصے میں",
+      "k49": "حصہ ⁦1⁩",
+      "k50": "حصہ ⁦2⁩",
+      "k51": "حصہ ⁦3⁩",
+      "k52": "حصہ ⁦4⁩",
+      "k53": "حصہ ⁦3⁩ (ممیز) سب سے مشکل لگا۔ اگلی کلاس ⁦5⁩ منٹ کے خلاصے سے شروع ہوگی۔",
+      "k54": "کلاس کے بعد ⁦Nexa Co-Teacher⁩ سے سب سے زیادہ پوچھا گیا",
+      "k55": "جب ⁦b² − 4ac⁩ منفی ہو",
+      "k56": "فارمولے میں ± کی علامت",
+      "k57": "تجزی بمقابلہ فارمولا",
+      "k58": "صرف تعداد دکھائی جاتی ہے — کس طالب علم نے پوچھا، یہ نہیں۔",
+      "k59": "اس کلاس میں حسّی دوستانہ موڈ آن ہے — روٹین بورڈ پر چلیں اور تبدیلی سے پہلے بتائیں",
+      "k60": "کوئی نام نہیں — آپ کو صرف یہ دکھتا ہے کہ کلاس اسے استعمال کرتی ہے",
+      "k61": "امتحان اور داخلہ ہب — صرف تعداد",
+      "k62": "کالج (جماعت ⁦XI⁩) آن لائن داخلہ درخواست — ⁦41⁩ طلبہ",
+      "k63": "پولی ٹیکنک (⁦BTEB⁩) ڈپلومہ داخلہ درخواست — چھپا · ⁦20⁩ سے کم",
+      "k64": "⁦SSC⁩ پر مبنی تعلیمی بورڈ وظیفہ نتائج (متوقع) — ⁦23⁩ طلبہ",
+      "k65": "کیڈٹ کالج داخلہ (جماعت ہفتم) — چھپا · ⁦20⁩ سے کم",
+      "k66": "ماڈل ہائی اسکول · وہ تمام طلبہ جو اپنے ہب میں ان پر نظر رکھتے ہیں (ادارے کے ایڈمن والی ہی تعداد) — کوئی نام نہیں؛ ⁦20⁩ سے کم چھپے۔",
+      "lp": "زبان"
+      },
+      "ar": {
+      "k1": "قائمة المعلّم",
+      "k2": "رجوع",
+      "k3": "رئيسية المعلّم، خطوات فحص المحتوى، تقرير الحصة",
+      "k4": "رئيسية المعلّم",
+      "k5": "معلّمة · ⁦Model High School⁩",
+      "k6": "فرحانة إسلام",
+      "k7": "الرياضيات",
+      "k8": "دفعاتي",
+      "k9": "الكل",
+      "k10": "⁦9-A⁩",
+      "k11": "⁦48⁩ متعلّمًا · ⁦44⁩ حاضرون في الحصة الأخيرة",
+      "k12": "⁦9-B⁩",
+      "k13": "⁦46⁩ متعلّمًا · ⁦43⁩ حاضرون في الحصة الأخيرة · ⁦English⁩",
+      "k14": "يحتاج إلى متابعة",
+      "k15": "في ⁦9-A⁩ هناك ⁦9⁩ متعلّمين أقل بكثير من متوسط الدفعة في «المميِّز». ضبط ⁦AI⁩ وقتهم الفردي ⁦1:1⁩ اليوم على هذا الموضوع.",
+      "k16": "عرض المتعلّمين",
+      "k17": "بنك الأسئلة · الفصل ⁦4⁩",
+      "k18": "لدى خبير المادة",
+      "k19": "حصة مراجعة أسبوعية (معلّم بشري)",
+      "k20": "داخل الدفعة · الحصة التالية السبت ⁦8:00⁩ مساءً (افتراضي)",
+      "k21": "موجز — أكثر ⁦3⁩ مواضيع أخطاءً (أعداد فقط، بلا أسماء): إشارات المعادلات التربيعية ⁦14⁩ متعلّمًا · المميِّز ⁦11⁩ · الهندسة ⁦9⁩",
+      "k22": "الرئيسية",
+      "k23": "الدفعات",
+      "k24": "المحتوى",
+      "k25": "التقرير",
+      "k26": "فحص المحتوى قبل النشر",
+      "k27": "⁦60⁩ سؤالًا · رُفعت اليوم ⁦11:20⁩",
+      "k28": "تأكيد حقوق النشر",
+      "k29": "أكّدتِ أنه من عملك",
+      "k30": "فحص سلامة المحتوى",
+      "k31": "وفق قواعد المادة — لم تُوجد مشكلات",
+      "k32": "فحص الإجابات بالذكاء الاصطناعي",
+      "k33": "⁦58⁩ صحيحة · مفتاحا إجابة مشكوك فيهما",
+      "k34": "مراجعة خبير المادة",
+      "k35": "تبدأ بعد تصحيح مفاتيح الإجابة · عادة ⁦48⁩ ساعة",
+      "k36": "النشر · «⁦NexaTute Verified⁩»",
+      "k37": "السؤال ⁦23⁩ · راجعي مفتاح الإجابة",
+      "k38": "جذور ⁦x² − 9⁩ = ⁦0⁩: أعطيتِ «⁦3⁩». وحساب ⁦AI⁩ يعطي «±⁦3⁩».",
+      "k39": "تصحيح",
+      "k40": "إجابتي صحيحة",
+      "k41": "بعد النشر يمكن رؤية صعوبة كل سؤال وقدرته على التمييز (⁦item analysis⁩).",
+      "k42": "تقرير الحصة — أين كان الالتباس",
+      "k43": "⁦9-A⁩ · حصة السبت ⁦30⁩ يناير",
+      "k44": "الرياضيات · المعادلات التربيعية",
+      "k45": "الحضور",
+      "k46": "صحيح في الاستطلاعات",
+      "k47": "بقوا حتى النهاية",
+      "k48": "نقرات «لم أفهم» — لكل جزء من ⁦8⁩ دقائق",
+      "k49": "الجزء ⁦1⁩",
+      "k50": "الجزء ⁦2⁩",
+      "k51": "الجزء ⁦3⁩",
+      "k52": "الجزء ⁦4⁩",
+      "k53": "كان الجزء ⁦3⁩ (المميِّز) الأصعب. تبدأ الحصة التالية بمراجعة ⁦5⁩ دقائق.",
+      "k54": "الأكثر سؤالًا لـ ⁦Nexa Co-Teacher⁩ بعد الحصة",
+      "k55": "عندما يكون ⁦b² − 4ac⁩ سالبًا",
+      "k56": "إشارة ± في القانون",
+      "k57": "التحليل إلى عوامل مقابل القانون",
+      "k58": "تُعرض الأعداد فقط — لا مَن سأل من المتعلّمين.",
+      "k59": "هذا الصف يستخدم الوضع الملائم للحواس — التزم بلوحة الروتين ونبّه قبل أي تغيير",
+      "k60": "بلا أسماء — ترى فقط أن الصف يستخدمه",
+      "k61": "مركز الامتحانات والقبول — أعداد فقط",
+      "k62": "طلب القبول الإلكتروني في الكلية (الصف ⁦XI⁩) — ⁦41⁩ طالبًا",
+      "k63": "طلب القبول في دبلوم البوليتكنيك (⁦BTEB⁩) — مخفي · أقل من ⁦20⁩",
+      "k64": "نتائج منح المجلس التعليمي المبنية على ⁦SSC⁩ (متوقعة) — ⁦23⁩ طالبًا",
+      "k65": "القبول في الكلية العسكرية (الصف السابع) — مخفي · أقل من ⁦20⁩",
+      "k66": "مدرسة موديل الثانوية · كل الطلاب الذين يتابعون هذه الخطوات في مركز الامتحانات والقبول (الأعداد نفسها لدى مسؤول المؤسسة) — بلا أسماء؛ ما دون ⁦20⁩ مخفي.",
+      "lp": "اللغة"
+      },
+      "fr": {
+      "k1": "Menu enseignant",
+      "k2": "Retour",
+      "k3": "Accueil enseignant, étapes de vérification, rapport de cours",
+      "k4": "Accueil enseignant",
+      "k5": "Enseignante · Model High School",
+      "k6": "Farhana Islam",
+      "k7": "Maths",
+      "k8": "Mes groupes",
+      "k9": "Tout",
+      "k10": "9-A",
+      "k11": "48 élèves · 44 présents au dernier cours",
+      "k12": "9-B",
+      "k13": "46 élèves · 43 présents au dernier cours · English",
+      "k14": "À surveiller",
+      "k15": "En 9-A, 9 élèves sont bien en dessous de la moyenne du groupe sur le « discriminant ». L’IA a réglé leur temps 1:1 du jour sur ce sujet.",
+      "k16": "Voir les élèves",
+      "k17": "Banque de questions · chapitre 4",
+      "k18": "Chez l’expert de la matière",
+      "k19": "Cours de révision hebdomadaire (enseignant humain)",
+      "k20": "Dans le groupe · prochain cours samedi 20 h 00 (par défaut)",
+      "k21": "Fiche — les 3 thèmes avec le plus d’erreurs (nombres seulement, aucun nom) : signes dans les équations du second degré 14 élèves · discriminant 11 · géométrie 9",
+      "k22": "Accueil",
+      "k23": "Groupes",
+      "k24": "Contenu",
+      "k25": "Rapport",
+      "k26": "Vérifications avant publication",
+      "k27": "60 questions · envoyé aujourd’hui 11:20",
+      "k28": "Droits d’auteur confirmés",
+      "k29": "Vous avez confirmé que c’est votre travail",
+      "k30": "Contrôle de sécurité du contenu",
+      "k31": "Avec des règles par matière — aucun problème",
+      "k32": "Vérification des réponses par l’IA",
+      "k33": "58 justes · 2 corrigés douteux",
+      "k34": "Relecture par l’expert de la matière",
+      "k35": "Commence quand les corrigés sont rectifiés · 48 heures en général",
+      "k36": "Publication · « NexaTute Verified »",
+      "k37": "Question 23 · vérifiez le corrigé",
+      "k38": "Racines de x² − 9 = 0 : vous avez mis « 3 ». L’IA trouve « ±3 ».",
+      "k39": "Rectifier",
+      "k40": "Ma réponse est juste",
+      "k41": "Après publication, vous verrez la difficulté et la discrimination de chaque question (item analysis).",
+      "k42": "Rapport de cours — où était la confusion",
+      "k43": "9-A · cours du samedi 30 janvier",
+      "k44": "Maths · équations du second degré",
+      "k45": "présents",
+      "k46": "justes aux sondages",
+      "k47": "restés jusqu’au bout",
+      "k48": "Appuis « pas compris » — par partie de 8 minutes",
+      "k49": "Partie 1",
+      "k50": "Partie 2",
+      "k51": "Partie 3",
+      "k52": "Partie 4",
+      "k53": "La partie 3 (discriminant) a paru la plus dure. Le prochain cours commence par un rappel de 5 minutes.",
+      "k54": "Le plus demandé à Nexa Co-Teacher après le cours",
+      "k55": "Quand b² − 4ac est négatif",
+      "k56": "Le signe ± dans la formule",
+      "k57": "Factorisation ou formule",
+      "k58": "Seuls les nombres sont affichés — jamais l’élève qui a demandé.",
+      "k59": "Cette classe utilise le Mode sensoriel adapté — suivez le tableau de routine et prévenez avant tout changement",
+      "k60": "Aucun nom — vous voyez seulement que la classe l’utilise",
+      "k61": "Hub examens & admissions — nombres seulement",
+      "k62": "Candidature en ligne au lycée (classe XI) — 41 élèves",
+      "k63": "Candidature au diplôme polytechnique (BTEB) — Masqué · moins de 20",
+      "k64": "Résultats des bourses du conseil basées sur le SSC (attendus) — 23 élèves",
+      "k65": "Admission au collège des cadets (classe VII) — Masqué · moins de 20",
+      "k66": "Model High School · tous les élèves qui suivent ces étapes dans leur hub (mêmes nombres que l’administration de l’établissement) — aucun nom ; moins de 20 masqué.",
+      "lp": "Langue"
+      }
+      };
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, U = this.uiText(), lang = U[s.lang] ? s.lang : 'bn', rtl = lang === 'ar' || lang === 'ur';
+    var FF = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif" };
+    var NM = {"bn": "বাংলা", "en": "English", "hi": "हिन्दी", "ur": "اردو", "ar": "العربية", "fr": "Français"};
+    return { t: U[lang], lang: lang, dir: rtl ? 'rtl' : 'ltr', ff: FF[lang] || "'Hind Siliguri','Hind',system-ui,sans-serif",
+      langs: Object.keys(NM).map(function (c) { var on = c === lang; return { code: c, name: NM[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

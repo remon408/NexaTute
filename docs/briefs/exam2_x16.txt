@@ -1,0 +1,13 @@
+Platform-admin side of the Exam & Assessment additions in X16-Prototype-Quality.dc.html, plus X10-Prototype-Admin.dc.html only where plan/module rows are needed (folder SP/s2/exam2/x16/). First read SP/s2/briefs/exam2_common.txt and SP/s2/exam2/spec.txt.
+X16 already has a "Tests & marking" area (marking schemes, question types per exam, recheck queue, AI marking quality, fill-in rules, error-notebook rules) — extend it with:
+- Spec 1 exam recovery settings (sync interval, practice timer pause, server-outage credit rule) — read-mostly with a change approval.
+- Spec 2 anti-cheating: shuffle defaults per test kind; similarity-flag review queue for platform tests (ranked, batch, national quiz, certificates) with decision + reason, learner notified, appeal; "never automatic penalty" lock.
+- Spec 3 adaptive (CAT): item calibration status (items with 200+ answers), stopping rule, which test kinds may be adaptive (placement, smart practice — locked off for board-style, ranks, certificates).
+- Spec 4 note text versions (6 languages) for the "not board-recognised" line.
+- Spec 5 speaking fairness: bias check results across regional Bangla accents / first languages, weekly human sample, appeals.
+- Spec 6 coding tests: problem bank with visible/hidden test cases, sandbox limits (time, memory, no network), languages, similarity flags; "own runner, no GPL Judge0" note.
+- Spec 8 certificate rules: pass marks, levels, retake rule, revocation list.
+- Spec 9 proctoring review queue (flags with evidence summary — for adults snapshots thumbnails drawn as placeholders, for under-18 only events) → reviewer decision → appeal; retention 30 days then deletion; "no emotion/attention reading" lock.
+- Spec 10 employer assessments: list of organisations using recruitment tests, ISO 10667 checklist, consent records.
+- Spec 11 institution API clients awaiting NexaTute security-owner approval (approve/reject with reason; maker ≠ approver), scopes, rate limits, revocation.
+X10 Plans & modules ("Tests & marking" group): add rows for adaptive practice, coding tests, certificate exams, proctoring, employer assessments and institution API where they belong (institution plan / organisation), following the existing table rules; keep everything else unchanged.

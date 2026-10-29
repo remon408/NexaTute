@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>PlayBoom profiles, home, counting</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Baloo+Da+2:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#DFF1FF;overflow:hidden;display:flex;flex-direction:column;border:1px solid #C3D9EC;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative;font-family:'Baloo Da 2','Hind Siliguri',sans-serif;color:#23194D}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.kid{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;border:0;border-radius:28px;padding:18px 10px;font:800 22px 'Baloo Da 2',sans-serif;color:#23194D;box-shadow:0 6px 0 #B9D7EF}
+.pin{width:64px;height:64px;border-radius:50%;background:#fff;border:0;font:700 26px 'Baloo Da 2',sans-serif;color:#23194D;box-shadow:0 4px 0 #B9D7EF}
+.world{border:0;border-radius:28px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;font-family:'Baloo Da 2',sans-serif;color:#23194D;min-height:140px;box-sizing:border-box;position:relative;overflow:hidden}
+.world b{font-size:22px;font-weight:800;line-height:1.1}
+.world span{font-size:14px;font-weight:600}
+.ans{height:84px;border-radius:26px;border:0;background:#fff;font:800 40px 'Baloo Da 2',sans-serif;color:#23194D;box-shadow:0 6px 0 #B9D7EF}
+.star{width:26px;height:26px}
+/* fix11: 6-language wireframe — language picker; Urdu in Nastaliq needs a taller line; RTL mirrors back arrows */
+.wfl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.wfl span{font-size:12px;font-weight:600;color:#59617A;margin-inline-end:4px}
+.wfl button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #C9CFDC;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#141A33;cursor:pointer}
+.wfl button.on{background:#141A33;border-color:#141A33;color:#fff}
+[lang=ur] *{line-height:1.9}
+[dir=rtl] .ib svg{transform:scaleX(-1)}
+/* longer languages (fr, ur Nastaliq) must not cut the bottom of a phone screen: the phone grows instead */
+.ph{height:auto;min-height:844px}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="width:1346px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="wfl" role="group" aria-label="{{ t.lp }}"><span>{{ t.lp }}</span><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">PlayBoom · 1</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k5 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- P1.1 Who plays -->
+<div class="col">
+  <div class="cap"><b>P1</b>{{ t.k6 }}</div>
+  <div class="ph">
+    <div style="padding:32px 24px 0;display:flex;flex-direction:column;gap:16px;flex:1">
+      <div class="row" dir="ltr" style="gap:8px"><span style="font-size:28px;font-weight:800;color:#E2572F">Play</span><span style="font-size:28px;font-weight:800;color:#3B34C9;margin-left:-8px">Boom</span><span style="margin-left:auto;font-size:14px;font-weight:600;color:#3D4B7A">NexaTute</span></div>
+      <h2 style="margin:0;font-size:32px;font-weight:800;line-height:1.15">{{ t.k7 }}</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <button class="kid"><svg viewBox="0 0 80 80" width="88" height="88" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#FFC93C"/><circle cx="40" cy="44" r="20" fill="#F3C7A0"/><path d="M20 40c0-14 9-22 20-22s20 8 20 22c-5-7-12-10-20-10s-15 3-20 10z" fill="#3A2416"/><circle cx="33" cy="46" r="2.6" fill="#23194D"/><circle cx="47" cy="46" r="2.6" fill="#23194D"/><path d="M34 54q6 5 12 0" stroke="#23194D" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>{{ t.k8 }}<span style="font-size:14px;font-weight:600;color:#3D4B7A">KG</span></button>
+        <button class="kid"><svg viewBox="0 0 80 80" width="88" height="88" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#9ED8B4"/><circle cx="40" cy="44" r="20" fill="#E2B48C"/><path d="M21 38c2-12 10-18 19-18s17 6 19 18c-6-4-12-6-19-6s-13 2-19 6z" fill="#23194D"/><circle cx="33" cy="46" r="2.6" fill="#23194D"/><circle cx="47" cy="46" r="2.6" fill="#23194D"/><path d="M34 54q6 5 12 0" stroke="#23194D" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>{{ t.k9 }}<span style="font-size:14px;font-weight:600;color:#3D4B7A">{{ t.k10 }}</span></button>
+      </div>
+      <div style="margin-top:auto;background:#fff;border-radius:28px 28px 0 0;margin-left:-24px;margin-right:-24px;padding:20px 24px 28px;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <p style="margin:0;font-size:17px;font-weight:700;font-family:'Hind Siliguri',sans-serif">{{ t.k11 }}</p>
+        <div class="row" style="gap:12px"><span style="width:16px;height:16px;border-radius:50%;background:#23194D"></span><span style="width:16px;height:16px;border-radius:50%;background:#23194D"></span><span style="width:16px;height:16px;border-radius:50%;border:2px solid #23194D;box-sizing:border-box"></span><span style="width:16px;height:16px;border-radius:50%;border:2px solid #23194D;box-sizing:border-box"></span></div>
+        <div style="display:grid;grid-template-columns:repeat(3,56px);gap:8px 26px">
+          <button class="pin" style="background:#F2F7FC;width:56px;height:56px">1</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">2</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">3</button>
+          <button class="pin" style="background:#F2F7FC;width:56px;height:56px">4</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">5</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">6</button>
+          <button class="pin" style="background:#F2F7FC;width:56px;height:56px">7</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">8</button><button class="pin" style="background:#F2F7FC;width:56px;height:56px">9</button>
+          <span></span><button class="pin" style="background:#F2F7FC;width:56px;height:56px">0</button><button class="pin" aria-label="{{ t.k1 }}" style="background:#fff;box-shadow:none;width:56px;height:56px;display:flex;align-items:center;justify-content:center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11v12H9l-5-6z"/><path d="M12 10l4 4M16 10l-4 4"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P1.2 Home -->
+<div class="col">
+  <div class="cap"><b>P2</b>{{ t.k12 }}</div>
+  <div class="ph">
+    <div style="padding:28px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div class="row">
+        <div style="width:52px;height:52px;border-radius:50%;background:#FFC93C;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px">{{ t.k13 }}</div>
+        <div style="flex:1"><p style="margin:0;font-size:22px;font-weight:800;line-height:1.1">{{ t.k14 }}</p><div class="row" style="gap:4px;margin-top:2px"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" fill="#FFC93C" stroke="#E0A800"/></svg><b style="font-size:18px">{{ t.k15 }}</b></div></div>
+        <div style="width:64px;height:64px;border-radius:50%;background:conic-gradient(#3BB273 0 72%,#fff 72% 100%);display:flex;align-items:center;justify-content:center" role="img" aria-label="{{ t.k2 }}"><div style="width:50px;height:50px;border-radius:50%;background:#DFF1FF;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1"><b style="font-size:18px">{{ t.k16 }}</b><span style="font-size:11px;font-weight:600">{{ t.k17 }}</span></div></div>
+      </div>
+      <button class="world" style="background:#FFC93C;min-height:150px">
+        <b>{{ t.k18 }}</b><span>{{ t.k19 }}</span>
+        <svg viewBox="0 0 120 90" width="130" height="98" aria-hidden="true" style="position:absolute;right:8px;bottom:6px"><circle cx="30" cy="60" r="22" fill="#3BB273"/><rect x="27" y="62" width="6" height="26" fill="#8A5A2B"/><circle cx="80" cy="44" r="30" fill="#2E9A5F"/><rect x="77" y="50" width="7" height="38" fill="#8A5A2B"/><text x="72" y="52" font-size="24" font-weight="800" fill="#fff" font-family="Baloo Da 2">{{ t.k20 }}</text></svg>
+      </button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <button class="world" style="background:#FFD7CC"><b>{{ t.k21 }}</b><span>{{ t.k22 }}</span><span style="position:absolute;right:12px;bottom:4px;font-size:46px;font-weight:800;color:#E2572F">{{ t.k23 }}</span></button>
+        <button class="world" style="background:#D6D3FB"><b>{{ t.k24 }}</b><span>Phonics</span><span style="position:absolute;right:12px;bottom:4px;font-size:46px;font-weight:800;color:#3B34C9">A</span></button>
+        <button class="world" style="background:#CDEFD9"><b>{{ t.k25 }}</b><span>{{ t.k26 }}</span><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true" style="position:absolute;right:12px;bottom:10px" fill="none" stroke="#1F7A45" stroke-width="2.4" stroke-linecap="round"><path d="M4 20l4-1L19 8l-3-3L5 16z"/></svg></button>
+        <button class="world" style="background:#fff"><b>Play Buddy</b><span>{{ t.k27 }}</span><svg viewBox="0 0 60 60" width="52" height="52" aria-hidden="true" style="position:absolute;right:10px;bottom:8px"><circle cx="30" cy="34" r="22" fill="#7C77F0"/><circle cx="22" cy="32" r="5" fill="#fff"/><circle cx="38" cy="32" r="5" fill="#fff"/><circle cx="23" cy="33" r="2.4" fill="#23194D"/><circle cx="39" cy="33" r="2.4" fill="#23194D"/><path d="M24 42q6 5 12 0" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M30 12v-6" stroke="#7C77F0" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="5" r="3.5" fill="#FFC93C"/></svg></button>
+      </div>
+      <div class="row" style="margin-top:auto;justify-content:center;gap:10px;background:#fff;border-radius:22px;padding:12px">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        <span style="font-size:16px;font-weight:600">{{ t.k28 }}</span>
+      </div>
+      <div class="row" style="gap:8px;background:#EAE8FF;border-radius:18px;padding:8px 12px"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#fff" stroke="#7C77F0" stroke-width="2"/><circle cx="20" cy="16" r="7" fill="#F3C7A0"/><path d="M11 36c1-7 5-10 9-10s8 3 9 10" fill="#7C77F0"/></svg><span style="font-size:14px;font-weight:700">{{ t.k29 }}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- P1.3 Counting -->
+<div class="col">
+  <div class="cap"><b>P3</b>{{ t.k30 }}</div>
+  <div class="ph" style="background:#FFF4D1">
+    <div style="padding:28px 20px 24px;display:flex;flex-direction:column;gap:16px;flex:1">
+      <div class="row">
+        <button aria-label="{{ t.k3 }}" style="width:56px;height:56px;border-radius:50%;border:0;background:#fff;display:flex;align-items:center;justify-content:center;color:#23194D;box-shadow:0 4px 0 #EAD9A3"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></button>
+        <div style="flex:1;display:flex;gap:6px;justify-content:center"><span style="width:28px;height:10px;border-radius:9px;background:#3BB273"></span><span style="width:28px;height:10px;border-radius:9px;background:#3BB273"></span><span style="width:28px;height:10px;border-radius:9px;background:#E2572F"></span><span style="width:28px;height:10px;border-radius:9px;background:#EAD9A3"></span><span style="width:28px;height:10px;border-radius:9px;background:#EAD9A3"></span></div>
+        <button aria-label="{{ t.k4 }}" style="width:56px;height:56px;border-radius:50%;border:0;background:#3B34C9;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #2A24A0"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg></button>
+      </div>
+      <h2 style="margin:6px 0 0;font-size:34px;font-weight:800;text-align:center;line-height:1.1">{{ t.k31 }}</h2>
+      <div style="background:#fff;border-radius:32px;padding:22px 14px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px">
+        <svg viewBox="0 0 60 64" width="74" height="78" aria-hidden="true"><path d="M24 14c12-4 26 4 28 20 2 14-6 26-20 28-12 2-22-6-22-18 0-8 6-12 8-18 1-6 0-10 6-12z" fill="#FFB020"/><path d="M24 14c10-3 20 1 25 8-8-2-16-2-24 2-2-4-3-7-1-10z" fill="#9BCB3C"/><path d="M27 13c2-6 8-9 14-8-3 5-8 8-14 8z" fill="#3BB273"/><ellipse cx="20" cy="40" rx="4" ry="8" fill="#FFD36A"/></svg>
+        <svg viewBox="0 0 60 64" width="74" height="78" aria-hidden="true"><path d="M24 14c12-4 26 4 28 20 2 14-6 26-20 28-12 2-22-6-22-18 0-8 6-12 8-18 1-6 0-10 6-12z" fill="#FFB020"/><path d="M24 14c10-3 20 1 25 8-8-2-16-2-24 2-2-4-3-7-1-10z" fill="#9BCB3C"/><path d="M27 13c2-6 8-9 14-8-3 5-8 8-14 8z" fill="#3BB273"/><ellipse cx="20" cy="40" rx="4" ry="8" fill="#FFD36A"/></svg>
+        <svg viewBox="0 0 60 64" width="74" height="78" aria-hidden="true"><path d="M24 14c12-4 26 4 28 20 2 14-6 26-20 28-12 2-22-6-22-18 0-8 6-12 8-18 1-6 0-10 6-12z" fill="#FFB020"/><path d="M24 14c10-3 20 1 25 8-8-2-16-2-24 2-2-4-3-7-1-10z" fill="#9BCB3C"/><path d="M27 13c2-6 8-9 14-8-3 5-8 8-14 8z" fill="#3BB273"/><ellipse cx="20" cy="40" rx="4" ry="8" fill="#FFD36A"/></svg>
+        <svg viewBox="0 0 60 64" width="74" height="78" aria-hidden="true"><path d="M24 14c12-4 26 4 28 20 2 14-6 26-20 28-12 2-22-6-22-18 0-8 6-12 8-18 1-6 0-10 6-12z" fill="#FFB020"/><path d="M24 14c10-3 20 1 25 8-8-2-16-2-24 2-2-4-3-7-1-10z" fill="#9BCB3C"/><path d="M27 13c2-6 8-9 14-8-3 5-8 8-14 8z" fill="#3BB273"/><ellipse cx="20" cy="40" rx="4" ry="8" fill="#FFD36A"/></svg>
+        <svg viewBox="0 0 60 64" width="74" height="78" aria-hidden="true"><path d="M24 14c12-4 26 4 28 20 2 14-6 26-20 28-12 2-22-6-22-18 0-8 6-12 8-18 1-6 0-10 6-12z" fill="#FFB020"/><path d="M24 14c10-3 20 1 25 8-8-2-16-2-24 2-2-4-3-7-1-10z" fill="#9BCB3C"/><path d="M27 13c2-6 8-9 14-8-3 5-8 8-14 8z" fill="#3BB273"/><ellipse cx="20" cy="40" rx="4" ry="8" fill="#FFD36A"/></svg>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <button class="ans">{{ t.k20 }}</button><button class="ans">{{ t.k32 }}</button>
+        <button class="ans" style="background:#17804F;color:#fff;box-shadow:0 6px 0 #0F5C38">{{ t.k33 }}</button><button class="ans">{{ t.k34 }}</button>
+      </div>
+      <div class="row" style="justify-content:center;gap:8px;margin-top:auto">
+        <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z" fill="#FFC93C" stroke="#E0A800"/></svg>
+        <span style="font-size:22px;font-weight:800;color:#1F7A45">{{ t.k35 }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1346,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner addendum 26 Oct 2026, 22:15): the static wireframe in 6 languages — identical keys; ur/ar with LTR isolates; static otherwise
+  uiText() {
+    return {
+      "bn": {
+      "k1": "মুছে ফেলো",
+      "k2": "আজ ১৮ মিনিট বাকি",
+      "k3": "হোমে ফেরো",
+      "k4": "আবার শোনো",
+      "k5": "কে খেলবে, PlayBoom হোম, সংখ্যার খেলা — বড় বোতাম, কণ্ঠে নির্দেশ",
+      "k6": "কে খেলবে? · অভিভাবক PIN",
+      "k7": "আজ কে খেলবে?",
+      "k8": "নুসাইবা",
+      "k9": "আয়ান",
+      "k10": "ক্লাস II",
+      "k11": "অভিভাবক এলাকা — PIN দিন",
+      "k12": "PlayBoom হোম — খেলার জগৎ",
+      "k13": "ন",
+      "k14": "হাই, নুসাইবা!",
+      "k15": "৪৬ তারা",
+      "k16": "১৮",
+      "k17": "মিনিট",
+      "k18": "সংখ্যার বন",
+      "k19": "গুনি, যোগ করি",
+      "k20": "৩",
+      "k21": "বর্ণমালা নদী",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "ABC পাহাড়",
+      "k25": "হাতের লেখা",
+      "k26": "আজ ৭/১০",
+      "k27": "কথা বলি",
+      "k28": "“কোন জগতে যাবে? ছুঁয়ে দাও!”",
+      "k29": "ইশারা-বন্ধু (BdSL) — আমি তোমার সাথে ইশারায় বলি!",
+      "k30": "সংখ্যার খেলা — কয়টা আম?",
+      "k31": "কয়টা আম?",
+      "k32": "৪",
+      "k33": "৫",
+      "k34": "৬",
+      "k35": "ঠিক! পাঁচটা আম!",
+      "lp": "ভাষা"
+      },
+      "en": {
+      "k1": "Delete",
+      "k2": "18 minutes left today",
+      "k3": "Back home",
+      "k4": "Listen again",
+      "k5": "Who plays, PlayBoom home, number game — big buttons, spoken instructions",
+      "k6": "Who’s playing? · guardian PIN",
+      "k7": "Who’s playing today?",
+      "k8": "Nusaiba",
+      "k9": "Ayaan",
+      "k10": "Class II",
+      "k11": "Guardian area — enter PIN",
+      "k12": "PlayBoom home — play worlds",
+      "k13": "N",
+      "k14": "Hi, Nusaiba!",
+      "k15": "46 stars",
+      "k16": "18",
+      "k17": "minutes",
+      "k18": "Number forest",
+      "k19": "count and add",
+      "k20": "3",
+      "k21": "Alphabet river",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "ABC hill",
+      "k25": "Handwriting",
+      "k26": "today 7/10",
+      "k27": "let’s talk",
+      "k28": "“Which world will you visit? Tap it!”",
+      "k29": "Sign friend (BdSL) — I sign along with you!",
+      "k30": "Number game — how many mangoes?",
+      "k31": "How many mangoes?",
+      "k32": "4",
+      "k33": "5",
+      "k34": "6",
+      "k35": "Right! Five mangoes!",
+      "lp": "Language"
+      },
+      "hi": {
+      "k1": "मिटाओ",
+      "k2": "आज 18 मिनट बाकी",
+      "k3": "होम पर लौटो",
+      "k4": "फिर सुनो",
+      "k5": "कौन खेलेगा, PlayBoom होम, संख्या का खेल — बड़े बटन, आवाज़ में निर्देश",
+      "k6": "कौन खेलेगा? · अभिभावक PIN",
+      "k7": "आज कौन खेलेगा?",
+      "k8": "नुसैबा",
+      "k9": "अयान",
+      "k10": "कक्षा II",
+      "k11": "अभिभावक क्षेत्र — PIN डालें",
+      "k12": "PlayBoom होम — खेल की दुनिया",
+      "k13": "न",
+      "k14": "हाय, नुसैबा!",
+      "k15": "46 तारे",
+      "k16": "18",
+      "k17": "मिनट",
+      "k18": "संख्या का जंगल",
+      "k19": "गिनें, जोड़ें",
+      "k20": "3",
+      "k21": "वर्णमाला नदी",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "ABC पहाड़",
+      "k25": "लिखावट",
+      "k26": "आज 7/10",
+      "k27": "बात करें",
+      "k28": "“किस दुनिया में जाओगे? छू लो!”",
+      "k29": "इशारा-दोस्त (BdSL) — मैं तुम्हारे साथ इशारों में बोलता हूँ!",
+      "k30": "संख्या का खेल — कितने आम?",
+      "k31": "कितने आम?",
+      "k32": "4",
+      "k33": "5",
+      "k34": "6",
+      "k35": "सही! पाँच आम!",
+      "lp": "भाषा"
+      },
+      "ur": {
+      "k1": "مٹاؤ",
+      "k2": "آج ⁦18⁩ منٹ باقی",
+      "k3": "ہوم پر واپس",
+      "k4": "دوبارہ سنو",
+      "k5": "کون کھیلے گا، ⁦PlayBoom⁩ ہوم، اعداد کا کھیل — بڑے بٹن، آواز میں ہدایات",
+      "k6": "کون کھیلے گا؟ · سرپرست ⁦PIN⁩",
+      "k7": "آج کون کھیلے گا؟",
+      "k8": "نسیبہ",
+      "k9": "ایان",
+      "k10": "جماعت ⁦II⁩",
+      "k11": "سرپرست کا حصہ — ⁦PIN⁩ درج کریں",
+      "k12": "⁦PlayBoom⁩ ہوم — کھیل کی دنیا",
+      "k13": "ن",
+      "k14": "ہائے، نسیبہ!",
+      "k15": "⁦46⁩ ستارے",
+      "k16": "⁦18⁩",
+      "k17": "منٹ",
+      "k18": "اعداد کا جنگل",
+      "k19": "گنیں، جوڑیں",
+      "k20": "⁦3⁩",
+      "k21": "حروفِ تہجی کا دریا",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "⁦ABC⁩ پہاڑ",
+      "k25": "لکھائی",
+      "k26": "آج ⁦7/10⁩",
+      "k27": "بات کریں",
+      "k28": "“کس دنیا میں جاؤ گے؟ چھو لو!”",
+      "k29": "اشارہ دوست (⁦BdSL⁩) — میں تمہارے ساتھ اشاروں میں بولتا ہوں!",
+      "k30": "اعداد کا کھیل — کتنے آم؟",
+      "k31": "کتنے آم؟",
+      "k32": "⁦4⁩",
+      "k33": "⁦5⁩",
+      "k34": "⁦6⁩",
+      "k35": "درست! پانچ آم!",
+      "lp": "زبان"
+      },
+      "ar": {
+      "k1": "احذف",
+      "k2": "بقي ١٨ دقيقة اليوم",
+      "k3": "العودة للرئيسية",
+      "k4": "استمع مجددًا",
+      "k5": "من سيلعب، رئيسية ⁦PlayBoom⁩، لعبة الأعداد — أزرار كبيرة وتعليمات صوتية",
+      "k6": "من سيلعب؟ · رمز ⁦PIN⁩ لولي الأمر",
+      "k7": "من سيلعب اليوم؟",
+      "k8": "نسيبة",
+      "k9": "أيان",
+      "k10": "الصف ⁦II⁩",
+      "k11": "منطقة ولي الأمر — أدخلوا ⁦PIN⁩",
+      "k12": "رئيسية ⁦PlayBoom⁩ — عوالم اللعب",
+      "k13": "ن",
+      "k14": "مرحبًا يا نسيبة!",
+      "k15": "٤٦ نجمة",
+      "k16": "١٨",
+      "k17": "دقيقة",
+      "k18": "غابة الأعداد",
+      "k19": "نعدّ ونجمع",
+      "k20": "٣",
+      "k21": "نهر الحروف",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "تلّ ⁦ABC⁩",
+      "k25": "الكتابة",
+      "k26": "اليوم ٧/١٠",
+      "k27": "لنتحدّث",
+      "k28": "«إلى أي عالم ستذهب؟ المسه!»",
+      "k29": "صديق الإشارة (⁦BdSL⁩) — أتكلّم معك بالإشارة!",
+      "k30": "لعبة الأعداد — كم مانجو؟",
+      "k31": "كم مانجو؟",
+      "k32": "٤",
+      "k33": "٥",
+      "k34": "٦",
+      "k35": "صحيح! خمس حبات مانجو!",
+      "lp": "اللغة"
+      },
+      "fr": {
+      "k1": "Effacer",
+      "k2": "Encore 18 minutes aujourd’hui",
+      "k3": "Retour à l’accueil",
+      "k4": "Réécouter",
+      "k5": "Qui joue, accueil PlayBoom, jeu des nombres — gros boutons, consignes parlées",
+      "k6": "Qui joue ? · PIN parent",
+      "k7": "Qui joue aujourd’hui ?",
+      "k8": "Nusaiba",
+      "k9": "Ayaan",
+      "k10": "Classe II",
+      "k11": "Espace parent — saisissez le PIN",
+      "k12": "Accueil PlayBoom — mondes de jeu",
+      "k13": "N",
+      "k14": "Salut, Nusaiba !",
+      "k15": "46 étoiles",
+      "k16": "18",
+      "k17": "minutes",
+      "k18": "Forêt des nombres",
+      "k19": "compter, additionner",
+      "k20": "3",
+      "k21": "Rivière de l’alphabet",
+      "k22": "অ আ ই ঈ",
+      "k23": "অ",
+      "k24": "Colline ABC",
+      "k25": "Écriture",
+      "k26": "aujourd’hui 7/10",
+      "k27": "parlons",
+      "k28": "« Quel monde veux-tu visiter ? Touche-le ! »",
+      "k29": "Ami des signes (BdSL) — je signe avec toi !",
+      "k30": "Jeu des nombres — combien de mangues ?",
+      "k31": "Combien de mangues ?",
+      "k32": "4",
+      "k33": "5",
+      "k34": "6",
+      "k35": "Bravo ! Cinq mangues !",
+      "lp": "Langue"
+      }
+      };
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, U = this.uiText(), lang = U[s.lang] ? s.lang : 'bn', rtl = lang === 'ar' || lang === 'ur';
+    var FF = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif" };
+    var NM = {"bn": "বাংলা", "en": "English", "hi": "हिन्दी", "ur": "اردو", "ar": "العربية", "fr": "Français"};
+    return { t: U[lang], lang: lang, dir: rtl ? 'rtl' : 'ltr', ff: FF[lang] || "'Hind Siliguri','Hind',system-ui,sans-serif",
+      langs: Object.keys(NM).map(function (c) { var on = c === lang; return { code: c, name: NM[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

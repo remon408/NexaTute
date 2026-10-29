@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Study Hall, group, Virtual Lab, Classroom Builder</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 var(--ff);border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 var(--ff);border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid #fff;margin-left:-8px}
+.sl{display:flex;flex-direction:column;gap:6px}
+.sl input{width:100%;accent-color:#3B34C9}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #E2E6EF;border-radius:12px;background:#fff;font:500 14px var(--ff);color:#141A33;width:100%;text-align:left;box-sizing:border-box;min-height:44px}
+.shop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.it{background:#fff;border:1px solid #E2E6EF;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.it .pv{height:84px;border-radius:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid #EEF0F5;text-align:left}
+.tbl th{color:#59617A;font-weight:600;font-size:12px}
+/* fix11 (owner 22:15): language picker for the static wireframe — 6 languages, default bn */
+.lpk{position:absolute;inset-inline-end:48px;top:16px;display:flex;gap:4px;padding:4px;background:#fff;border:1px solid #D3D8E4;border-radius:12px;z-index:5;box-shadow:0 4px 14px rgba(20,26,51,.10)}
+.lpk button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:none;font-family:var(--ff);font-size:12px;font-weight:600;color:#141A33;cursor:pointer}
+.lpk button.on{background:#3B34C9;color:#fff}
+:lang(ur){line-height:1.75}
+.btn,.btn2{height:auto!important;min-height:52px;padding-top:6px!important;padding-bottom:6px!important;line-height:1.25!important;text-align:center}
+/* longer languages (fr, ur, hi) must never lose text: phone bodies scroll (scrollbar hidden) instead of clipping */
+.ph .bd,.ph>.bd{overflow-y:auto!important;scrollbar-width:none}
+.ph .bd::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;color:#141A33;display:flex;flex-direction:column;gap:28px;--ff:{{ ff }};font-family:var(--ff)">
+<div class="lpk" role="group" aria-label="{{ t.lp }}"><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">{{ t.k001 }}</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k002 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 10.1 Study hall -->
+<div class="col">
+  <div class="cap"><b>10.1</b>{{ t.k003 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k004 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k005 }}</p>
+      <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k006 }}</span>
+    </div>
+    <div class="bd" style="align-items:center;gap:16px">
+      <div class="row" style="padding-left:8px"><span class="av" style="background:#ECEBFD;color:#3B34C9">{{ t.k007 }}</span><span class="av" style="background:#E1F4F2;color:#0B5E5A">{{ t.k008 }}</span><span class="av" style="background:#FFF3DD;color:#8A4B00">{{ t.k009 }}</span><span class="av" style="background:#FDEDE6;color:#9A3412">{{ t.k010 }}</span><span class="av" style="background:#141A33;color:#fff;font-size:11px"><bdi dir="ltr">+34</bdi></span><span class="xs" style="margin-left:6px">{{ t.k011 }}</span></div>
+      <div style="width:240px;height:240px;border-radius:50%;background:conic-gradient(#3B34C9 0 64%,#E6E9F2 64% 100%);display:flex;align-items:center;justify-content:center;margin-top:8px">
+        <div style="width:204px;height:204px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+          <span class="xs">{{ t.k012 }}</span>
+          <b style="font-size:46px;line-height:1.1"><bdi dir="ltr">09:02</bdi></b>
+          <span class="xs">{{ t.k013 }}</span>
+        </div>
+      </div>
+      <div class="row" style="gap:10px;width:100%">
+        <div class="cd" style="flex:1;padding:12px;text-align:center"><b style="font-size:18px">{{ t.k014 }}</b><div class="xs">{{ t.k015 }}</div></div>
+        <div class="cd" style="flex:1;padding:12px;text-align:center"><b style="font-size:18px"><bdi dir="ltr">2 / 4</bdi></b><div class="xs">{{ t.k016 }}</div></div>
+      </div>
+      <div class="cd" style="width:100%;box-sizing:border-box;padding:12px 14px;display:flex;gap:10px;align-items:center">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/></svg>
+        <p class="sm" style="color:#141A33;flex:1">{{ t.k017 }}</p>
+      </div>
+      <div class="cd" style="width:100%;box-sizing:border-box;padding:12px 14px;background:#F0F1FB;border-color:#DCDDF7">
+        <p class="sm" style="color:#141A33">{{ t.k018 }}</p>
+      </div>
+      <button class="btn2" style="margin-top:auto">{{ t.k019 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 10.2 Group -->
+<div class="col">
+  <div class="cap"><b>10.2</b>{{ t.k020 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k004 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k021 }}</p><p class="xs" style="margin:0">{{ t.k022 }}</p></div>
+      <button class="ib" aria-label="{{ t.k023 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></button>
+    </div>
+    <div class="bd" style="gap:10px">
+      <div style="background:#fff;border:1px solid #E2E6EF;border-radius:18px;height:250px;position:relative;padding:14px;box-sizing:border-box;font-size:16px;line-height:1.9;font-weight:500">
+        <span class="xs" style="position:absolute;top:10px;right:12px">{{ t.k024 }}</span>
+        {{ t.k025 }}<br>{{ t.k026 }}<br><span style="color:#C2410C">{{ t.k027 }}</span>
+        <span class="chip" style="position:absolute;left:150px;top:118px;background:#0B6E6A;color:#fff">{{ t.k028 }}</span>
+        <span class="chip" style="position:absolute;left:40px;top:190px;background:#3B34C9;color:#fff">{{ t.k029 }}</span>
+      </div>
+      <div class="cd" style="border:2px solid #7A2E8A;display:flex;flex-direction:column;gap:8px;padding:12px 14px">
+        <div class="row"><span class="chip" style="background:#7A2E8A;color:#fff">{{ t.k030 }}</span><span class="xs">{{ t.k031 }}</span></div>
+        <p class="sm" style="color:#141A33">{{ t.k032 }}</p>
+        <div class="row" style="gap:8px"><button class="chip" style="border:0;padding:6px 12px;min-height:34px">{{ t.k033 }}</button><button class="chip" style="border:0;padding:6px 12px;min-height:34px;background:#F0F1F6;color:#141A33">{{ t.k034 }}</button></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:14px">
+        <div><b>{{ t.k035 }}</b> {{ t.k036 }}</div>
+        <div><b>{{ t.k037 }}</b> {{ t.k038 }}</div>
+      </div>
+      <div class="row" style="margin-top:auto;gap:8px">
+        <button class="ib" aria-label="{{ t.k039 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/></svg></button>
+        <input aria-label="{{ t.k040 }}" placeholder="{{ t.k041 }}" style="flex:1;height:46px;border:1px solid #D3D8E4;border-radius:12px;padding:0 12px;font:500 14px var(--ff)">
+        <button class="ib" style="width:auto;padding:0 14px;background:#F2A93B;border:0;font:700 14px var(--ff);gap:6px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7 6 6 0 0 1-5-3l-2.5-4a1.5 1.5 0 0 1 2.5-1.6L8 15"/></svg>{{ t.k042 }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10.3 Virtual lab -->
+<div class="col">
+  <div class="cap"><b>10.3</b>{{ t.k043 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k004 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div style="flex:1"><p class="t3">{{ t.k044 }}</p><p class="xs" style="margin:0">{{ t.k045 }}</p></div>
+      <span class="chip">{{ t.k046 }}</span>
+    </div>
+    <div class="bd" style="gap:10px">
+      <div style="background:#0E1330;border-radius:18px;height:200px;position:relative;flex:none">
+        <svg viewBox="0 0 350 200" width="100%" height="200" aria-hidden="true"><rect x="115" y="16" width="120" height="8" rx="3" fill="#59617A"/><line x1="175" y1="24" x2="235" y2="150" stroke="#C9CDF0" stroke-width="2"/><line x1="175" y1="24" x2="175" y2="160" stroke="#59617A" stroke-width="1.5" stroke-dasharray="4 5"/><path d="M175 70 A 46 46 0 0 0 196 64" stroke="#F2A93B" stroke-width="2" fill="none"/><circle cx="235" cy="150" r="16" fill="#7C77F0"/><text x="186" y="94" fill="#F2A93B" font-size="13" font-family="Hind Siliguri"><bdi dir="ltr">10°</bdi></text></svg>
+        <span class="chip" style="position:absolute;right:12px;bottom:12px;background:rgba(255,255,255,.14);color:#fff">{{ t.k047 }}</span>
+      </div>
+      <div class="sl"><div class="row" style="justify-content:space-between;font-size:14px"><label for="len">{{ t.k048 }}</label><b>{{ t.k049 }}</b></div><input id="len" type="range" min="0.2" max="2" step="0.1" value="1"></div>
+      <div class="sl"><div class="row" style="justify-content:space-between;font-size:14px"><label for="ang">{{ t.k050 }}</label><b><bdi dir="ltr">10°</bdi></b></div><input id="ang" type="range" min="2" max="30" value="10"></div>
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;border:2px solid #3B34C9">
+        <p class="t3" style="font-size:14px">{{ t.k051 }}</p>
+        <button class="opt">{{ t.k052 }}</button>
+        <button class="opt" style="border:2px solid #3B34C9;background:#F7F7FF">{{ t.k053 }}</button>
+        <button class="opt">{{ t.k054 }}</button>
+      </div>
+      <table class="tbl"><thead><tr><th>{{ t.k048 }}</th><th>{{ t.k055 }}</th><th>{{ t.k056 }}</th></tr></thead><tbody><tr><td>{{ t.k057 }}</td><td>{{ t.k058 }}</td><td>4.03</td></tr><tr><td>{{ t.k049 }}</td><td>{{ t.k059 }}</td><td>4.04</td></tr></tbody></table>
+      <p class="xs" style="margin:0">{{ t.k060 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- 10.4 Classroom builder -->
+<div class="col">
+  <div class="cap"><b>10.4</b>{{ t.k061 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k004 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k062 }}</p>
+      <span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k063 }}</span>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div style="height:170px;border-radius:18px;background:#DCE8F5;position:relative;overflow:hidden;flex:none">
+        <div style="position:absolute;left:0;right:0;bottom:0;height:56px;background:#C9A77C"></div>
+        <div style="position:absolute;left:24px;top:24px;width:150px;height:92px;background:#1F3B2D;border:6px solid #8A5A2B;border-radius:6px;color:#E8F2EA;font-size:13px;padding:8px;box-sizing:border-box">{{ t.k064 }}</div>
+        <div style="position:absolute;right:28px;top:22px;width:70px;height:90px;background:#F2A93B;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;text-align:center;color:#141A33">{{ t.k065 }}<br>{{ t.k066 }}</div>
+        <div style="position:absolute;left:150px;bottom:30px;width:56px;height:56px;border-radius:50%;background:#3B34C9;border:4px solid #fff"></div>
+      </div>
+      <div class="row" style="gap:8px"><span class="chip" style="background:#141A33;color:#fff">{{ t.k067 }}</span><span class="chip">{{ t.k066 }}</span><span class="chip">{{ t.k068 }}</span></div>
+      <div class="shop">
+        <div class="it" style="border:2px solid #3B34C9"><div class="pv" style="background:#DCE8F5"></div><p class="t3" style="font-size:14px">{{ t.k069 }}</p><span class="chip" style="background:#E3F5EC;color:#0F6B40;align-self:flex-start">{{ t.k070 }}</span></div>
+        <div class="it"><div class="pv" style="background:#1B2250"></div><p class="t3" style="font-size:14px">{{ t.k071 }}</p><span class="chip" style="background:#FFF3DD;color:#8A4B00;align-self:flex-start">{{ t.k072 }}</span></div>
+        <div class="it"><div class="pv" style="background:#E3F0DA"></div><p class="t3" style="font-size:14px">{{ t.k073 }}</p><span class="chip" style="background:#FFF3DD;color:#8A4B00;align-self:flex-start">{{ t.k074 }}</span></div>
+        <div class="it"><div class="pv" style="background:#F6E2CF"></div><p class="t3" style="font-size:14px">{{ t.k075 }}</p><span class="chip" style="background:#F0F1F6;color:#59617A;align-self:flex-start">{{ t.k076 }}</span></div>
+      </div>
+      <!-- fix8 (26 Oct 2026), R8-proposal-9: builder tools (templates, editor, AI room designer, own poster with safety check), Full/Light/2D, free for everyone -->
+      <div class="shop" style="gap:8px">
+        <span class="chip" style="justify-content:center;padding:8px 6px;border-radius:10px">{{ t.k077 }}</span><span class="chip" style="justify-content:center;padding:8px 6px;border-radius:10px">{{ t.k078 }}</span>
+        <span class="chip" style="justify-content:center;padding:8px 6px;border-radius:10px;background:#3B34C9;color:#fff">{{ t.k079 }}</span><span class="chip" style="justify-content:center;padding:8px 6px;border-radius:10px">{{ t.k080 }}</span>
+      </div>
+      <div class="row" style="gap:6px;font-size:12px;color:#59617A"><span>{{ t.k081 }}</span><span class="chip" style="background:#141A33;color:#fff">{{ t.k082 }}</span><span class="chip">{{ t.k083 }}</span><span class="chip">{{ t.k084 }}</span><span style="flex:1;text-align:end">{{ t.k085 }}</span></div>
+      <p class="xs" style="margin:0">{{ t.k086 }}</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner 26 Oct 2026, 22:15): 6-language dictionary — identical keys; ur/ar numbers in LTR isolates
+  uiText() {
+    var L = {};
+    L.bn = {"k001": "Learner · Study Hall & Lab", "k002": "লাইভ স্টাডি হল, গ্রুপে ল্যাব ও বোর্ড, ভার্চুয়াল ল্যাব, Classroom Builder", "k003": "লাইভ স্টাডি হল (সবার জন্য ফ্রি)", "k004": "পেছনে", "k005": "নীরব স্টাডি হল", "k006": "লাইভ", "k007": "স", "k008": "র", "k009": "ম", "k010": "আ", "k011": "এই হলে পড়ছে", "k012": "মনোযোগ রাউন্ড 3", "k013": "তারপর 5 মিনিট বিরতি", "k014": "+25 XP", "k015": "প্রতি রাউন্ডে", "k016": "আজকের লক্ষ্য", "k017": "এখন পড়ছ: রসায়ন · মোল ধারণা", "k018": "পেইড প্ল্যানে: ক্লাসের বন্ধুদের নিয়ে গ্রুপ, একসাথে ল্যাব ও বোর্ড, আর “সাহায্য” বোতাম।", "k019": "রাউন্ড শেষ করো", "k020": "স্টাডি গ্রুপ + Nexa Study Hall Moderator", "k021": "গ্রুপ · নবম-ক বন্ধুরা", "k022": "5 জন · অভিভাবক-অনুমোদিত", "k023": "রিপোর্ট করো", "k024": "যৌথ বোর্ড", "k025": "n = m / M", "k026": "m = 18 g, M(H₂O) = 18", "k027": "n = 18 × 18 = 324 ?", "k028": "রাফি", "k029": "তুমি", "k030": "Nexa Study Hall Moderator", "k031": "এইমাত্র", "k032": "মনে হচ্ছে একই ধাপে 3 বার আটকেছ। ছোট্ট ইঙ্গিত: n বের করতে m-কে M দিয়ে ভাগ করতে হয়, গুণ নয়।", "k033": "ধন্যবাদ", "k034": "আরও বুঝতে চাই", "k035": "সাদিয়া:", "k036": "আমিও এখানে ভুল করছিলাম", "k037": "মিম:", "k038": "তাহলে n = 1 mol", "k039": "ল্যাব খোলো", "k040": "গ্রুপে লেখো", "k041": "লেখো… (শুধু টেক্সট)", "k042": "সাহায্য", "k043": "ভার্চুয়াল ল্যাব — আগে অনুমান", "k044": "সরল দোলক", "k045": "পদার্থ · ব্রাউজারেই চলে", "k046": "সব প্ল্যানে ফ্রি", "k047": "T = 2.01 s", "k048": "দৈর্ঘ্য", "k049": "1.0 m", "k050": "কোণ", "k051": "আগে অনুমান করো: দৈর্ঘ্য 4 গুণ করলে পর্যায়কাল?", "k052": "একই থাকবে", "k053": "2 গুণ হবে", "k054": "4 গুণ হবে", "k055": "পর্যায়কাল", "k056": "T²/L", "k057": "0.5 m", "k058": "1.42 s", "k059": "2.01 s", "k060": "এরপর বাসায়: সুতো আর চাবি দিয়ে একই পরীক্ষা, ছবি তুলে আপলোড।", "k061": "Classroom Builder — নিজের মতো সাজাও", "k062": "আমার ক্লাসরুম", "k063": "1,240 XP", "k064": "E = mc²", "k065": "মহাকাশ", "k066": "পোস্টার", "k067": "থিম", "k068": "অবতারের পোশাক", "k069": "আকাশি ক্লাসরুম", "k070": "ব্যবহার হচ্ছে", "k071": "রাতের মানমন্দির", "k072": "400 XP", "k073": "বাগানের ক্লাস", "k074": "300 XP", "k075": "21শে ফেব্রুয়ারি থিম", "k076": "ইভেন্টে আনলক", "k077": "টেমপ্লেট", "k078": "এডিটর · টেনে বসাও", "k079": "AI দিয়ে ঘর সাজাও", "k080": "নিজের পোস্টার ↑", "k081": "দেখাও:", "k082": "Full", "k083": "Light", "k084": "2D", "k085": "তোমার ব্রাউজারেই তৈরি", "k086": "Builder সবার জন্য ফ্রি — XP লাগে শুধু বাড়তি সাজে। নিজের পোস্টার Nexa Guard যাচাইয়ের পর দেখা যায়। XP আসে স্টাডি হল রাউন্ড, স্ট্রিক, Boss battle আর অন্যদের সাহায্য করে।", "lp": "ভাষা"};
+    L.en = {"k001": "Learner · Study Hall & Lab", "k002": "Live Study Hall, group lab and board, virtual lab, Classroom Builder", "k003": "Live Study Hall (free for everyone)", "k004": "Back", "k005": "Silent Study Hall", "k006": "Live", "k007": "S", "k008": "R", "k009": "M", "k010": "A", "k011": "studying in this hall", "k012": "Focus round 3", "k013": "Then a 5-minute break", "k014": "+25 XP", "k015": "per round", "k016": "Today’s goal", "k017": "Now studying: Chemistry · mole concept", "k018": "On paid plans: groups with classmates, lab and board together, and a “Help” button.", "k019": "End round", "k020": "Study group + Nexa Study Hall Moderator", "k021": "Group · Class 9-A friends", "k022": "5 members · approved by guardians", "k023": "Report", "k024": "Shared board", "k025": "n = m / M", "k026": "m = 18 g, M(H₂O) = 18", "k027": "n = 18 × 18 = 324 ?", "k028": "Rafi", "k029": "you", "k030": "Nexa Study Hall Moderator", "k031": "just now", "k032": "Looks like you got stuck on the same step 3 times. Small hint: to find n, divide m by M — don’t multiply.", "k033": "Thanks", "k034": "I want to understand more", "k035": "Sadia:", "k036": "I was making the same mistake here", "k037": "Mim:", "k038": "So n = 1 mol", "k039": "Open the lab", "k040": "Write to the group", "k041": "Type… (text only)", "k042": "Help", "k043": "Virtual lab — predict first", "k044": "Simple pendulum", "k045": "Physics · runs in the browser", "k046": "Free in every plan", "k047": "T = 2.01 s", "k048": "Length", "k049": "1.0 m", "k050": "Angle", "k051": "Predict first: if the length is 4 times, the period becomes?", "k052": "Stays the same", "k053": "2 times", "k054": "4 times", "k055": "Period", "k056": "T²/L", "k057": "0.5 m", "k058": "1.42 s", "k059": "2.01 s", "k060": "Next, at home: the same experiment with a string and a key — take a photo and upload it.", "k061": "Classroom Builder — decorate it your way", "k062": "My classroom", "k063": "1,240 XP", "k064": "E = mc²", "k065": "Space", "k066": "Posters", "k067": "Themes", "k068": "Avatar outfits", "k069": "Sky-blue classroom", "k070": "In use", "k071": "Night observatory", "k072": "400 XP", "k073": "Garden class", "k074": "300 XP", "k075": "21 February theme", "k076": "Unlocked at the event", "k077": "Template", "k078": "Editor · drag to place", "k079": "Decorate with AI", "k080": "My own poster ↑", "k081": "Show:", "k082": "Full", "k083": "Light", "k084": "2D", "k085": "Made in your browser", "k086": "Builder is free for everyone — XP is needed only for extra decorations. Your own poster shows after a Nexa Guard check. XP comes from Study Hall rounds, streaks, Boss battles and helping others.", "lp": "Language"};
+    L.hi = {"k001": "Learner · Study Hall & Lab", "k002": "लाइव स्टडी हॉल, ग्रुप में लैब और बोर्ड, वर्चुअल लैब, Classroom Builder", "k003": "लाइव स्टडी हॉल (सबके लिए मुफ़्त)", "k004": "पीछे", "k005": "मौन स्टडी हॉल", "k006": "लाइव", "k007": "स", "k008": "र", "k009": "म", "k010": "आ", "k011": "इस हॉल में पढ़ रहे हैं", "k012": "फ़ोकस राउंड 3", "k013": "फिर 5 मिनट का ब्रेक", "k014": "+25 XP", "k015": "हर राउंड में", "k016": "आज का लक्ष्य", "k017": "अभी पढ़ रहे हो: रसायन · मोल संकल्पना", "k018": "पेड प्लान में: क्लास के दोस्तों के साथ ग्रुप, साथ में लैब और बोर्ड, और “मदद” बटन।", "k019": "राउंड ख़त्म करो", "k020": "स्टडी ग्रुप + Nexa Study Hall Moderator", "k021": "ग्रुप · नौवीं-क के दोस्त", "k022": "5 सदस्य · अभिभावक-स्वीकृत", "k023": "रिपोर्ट करो", "k024": "साझा बोर्ड", "k025": "n = m / M", "k026": "m = 18 g, M(H₂O) = 18", "k027": "n = 18 × 18 = 324 ?", "k028": "राफ़ी", "k029": "तुम", "k030": "Nexa Study Hall Moderator", "k031": "अभी-अभी", "k032": "लगता है एक ही कदम पर 3 बार अटके। छोटा इशारा: n निकालने के लिए m को M से भाग दो, गुणा नहीं।", "k033": "धन्यवाद", "k034": "और समझना चाहता हूँ", "k035": "सादिया:", "k036": "मैं भी यहीं गलती कर रही थी", "k037": "मीम:", "k038": "तो n = 1 mol", "k039": "लैब खोलो", "k040": "ग्रुप में लिखो", "k041": "लिखो… (सिर्फ़ टेक्स्ट)", "k042": "मदद", "k043": "वर्चुअल लैब — पहले अनुमान", "k044": "सरल लोलक", "k045": "भौतिकी · ब्राउज़र में ही चलता है", "k046": "हर प्लान में मुफ़्त", "k047": "T = 2.01 s", "k048": "लंबाई", "k049": "1.0 m", "k050": "कोण", "k051": "पहले अनुमान लगाओ: लंबाई 4 गुना करने पर आवर्तकाल?", "k052": "वही रहेगा", "k053": "2 गुना होगा", "k054": "4 गुना होगा", "k055": "आवर्तकाल", "k056": "T²/L", "k057": "0.5 m", "k058": "1.42 s", "k059": "2.01 s", "k060": "फिर घर पर: धागे और चाबी से वही प्रयोग, फ़ोटो लेकर अपलोड।", "k061": "Classroom Builder — अपने ढंग से सजाओ", "k062": "मेरी क्लासरूम", "k063": "1,240 XP", "k064": "E = mc²", "k065": "अंतरिक्ष", "k066": "पोस्टर", "k067": "थीम", "k068": "अवतार के कपड़े", "k069": "आसमानी क्लासरूम", "k070": "उपयोग में", "k071": "रात की वेधशाला", "k072": "400 XP", "k073": "बगीचे की क्लास", "k074": "300 XP", "k075": "21 फ़रवरी थीम", "k076": "इवेंट में अनलॉक", "k077": "टेम्पलेट", "k078": "एडिटर · खींचकर रखो", "k079": "AI से सजाओ", "k080": "अपना पोस्टर ↑", "k081": "दिखाओ:", "k082": "Full", "k083": "Light", "k084": "2D", "k085": "तुम्हारे ब्राउज़र में ही बना", "k086": "Builder सबके लिए मुफ़्त — XP सिर्फ़ अतिरिक्त सजावट के लिए। अपना पोस्टर Nexa Guard जाँच के बाद दिखता है। XP मिलता है स्टडी हॉल राउंड, स्ट्रीक, Boss battle और दूसरों की मदद से।", "lp": "भाषा"};
+    L.ur = {"k001": "Learner · Study Hall & Lab", "k002": "لائیو اسٹڈی ہال، گروپ میں لیب اور بورڈ، ورچوئل لیب، Classroom Builder", "k003": "لائیو اسٹڈی ہال (سب کے لیے مفت)", "k004": "پیچھے", "k005": "خاموش اسٹڈی ہال", "k006": "لائیو", "k007": "س", "k008": "ر", "k009": "م", "k010": "ع", "k011": "اس ہال میں پڑھ رہے ہیں", "k012": "توجہ راؤنڈ ⁦3⁩", "k013": "پھر ⁦5⁩ منٹ کا وقفہ", "k014": "⁦+25 XP⁩", "k015": "ہر راؤنڈ میں", "k016": "آج کا ہدف", "k017": "ابھی پڑھ رہے ہو: کیمیا · مول کا تصور", "k018": "پیڈ پلان میں: کلاس کے دوستوں کے ساتھ گروپ، ساتھ لیب اور بورڈ، اور “مدد” بٹن۔", "k019": "راؤنڈ ختم کرو", "k020": "اسٹڈی گروپ + Nexa Study Hall Moderator", "k021": "گروپ · نویں-الف کے دوست", "k022": "⁦5⁩ ارکان · سرپرستوں سے منظور شدہ", "k023": "رپورٹ کرو", "k024": "مشترکہ بورڈ", "k025": "n = m / M", "k026": "⁦m = 18 g, M⁩(H₂O) ⁦= 18⁩", "k027": "⁦n = 18 × 18 = 324⁩ ?", "k028": "رافع", "k029": "تم", "k030": "Nexa Study Hall Moderator", "k031": "ابھی ابھی", "k032": "لگتا ہے ایک ہی قدم پر ⁦3⁩ بار اٹکے۔ چھوٹا اشارہ: n نکالنے کے لیے m کو M سے تقسیم کرو، ضرب نہیں۔", "k033": "شکریہ", "k034": "مزید سمجھنا چاہتا ہوں", "k035": "سعدیہ:", "k036": "میں بھی یہیں غلطی کر رہی تھی", "k037": "میم:", "k038": "تو ⁦n = 1 mol⁩", "k039": "لیب کھولو", "k040": "گروپ میں لکھو", "k041": "لکھو… (صرف تحریر)", "k042": "مدد", "k043": "ورچوئل لیب — پہلے اندازہ", "k044": "سادہ رقاص", "k045": "طبیعیات · براؤزر میں ہی چلتی ہے", "k046": "ہر پلان میں مفت", "k047": "⁦T = 2.01 s⁩", "k048": "لمبائی", "k049": "⁦1.0 m⁩", "k050": "زاویہ", "k051": "پہلے اندازہ لگاؤ: لمبائی ⁦4⁩ گنا کرنے پر دورِ حرکت؟", "k052": "ویسا ہی رہے گا", "k053": "⁦2⁩ گنا ہوگا", "k054": "⁦4⁩ گنا ہوگا", "k055": "دورِ حرکت", "k056": "T²/L", "k057": "⁦0.5 m⁩", "k058": "⁦1.42 s⁩", "k059": "⁦2.01 s⁩", "k060": "پھر گھر پر: دھاگے اور چابی سے وہی تجربہ، تصویر لے کر اپ لوڈ۔", "k061": "Classroom Builder — اپنی مرضی سے سجاؤ", "k062": "میرا کلاس روم", "k063": "⁦1,240 XP⁩", "k064": "E = mc²", "k065": "خلا", "k066": "پوسٹر", "k067": "تھیم", "k068": "اوتار کے لباس", "k069": "آسمانی کلاس روم", "k070": "استعمال میں", "k071": "رات کی رصدگاہ", "k072": "⁦400 XP⁩", "k073": "باغ کی کلاس", "k074": "⁦300 XP⁩", "k075": "⁦21⁩ فروری تھیم", "k076": "ایونٹ میں ان لاک", "k077": "ٹیمپلیٹ", "k078": "ایڈیٹر · کھینچ کر رکھو", "k079": "AI سے سجاؤ", "k080": "اپنا پوسٹر ↑", "k081": "دکھاؤ:", "k082": "Full", "k083": "Light", "k084": "⁦2D⁩", "k085": "تمہارے براؤزر میں ہی بنا", "k086": "Builder سب کے لیے مفت — XP صرف اضافی سجاوٹ کے لیے۔ اپنا پوسٹر Nexa Guard جانچ کے بعد دکھتا ہے۔ XP ملتا ہے اسٹڈی ہال راؤنڈ، سلسلے، Boss battle اور دوسروں کی مدد سے۔", "lp": "زبان"};
+    L.ar = {"k001": "Learner · Study Hall & Lab", "k002": "قاعة دراسة مباشرة، مختبر وسبورة جماعية، مختبر افتراضي، Classroom Builder", "k003": "قاعة الدراسة المباشرة (مجانية للجميع)", "k004": "رجوع", "k005": "قاعة الدراسة الصامتة", "k006": "مباشر", "k007": "س", "k008": "ر", "k009": "م", "k010": "ع", "k011": "يدرسون في هذه القاعة", "k012": "جولة التركيز ⁦3⁩", "k013": "ثم استراحة ⁦5⁩ دقائق", "k014": "⁦+25 XP⁩", "k015": "لكل جولة", "k016": "هدف اليوم", "k017": "تدرس الآن: الكيمياء · مفهوم المول", "k018": "في الخطط المدفوعة: مجموعات مع زملاء الصف، مختبر وسبورة معًا، وزر «مساعدة».", "k019": "أنهِ الجولة", "k020": "مجموعة دراسة + Nexa Study Hall Moderator", "k021": "المجموعة · أصدقاء الصف ⁦9-⁩أ", "k022": "⁦5⁩ أعضاء · بموافقة أولياء الأمور", "k023": "إبلاغ", "k024": "السبورة المشتركة", "k025": "n = m / M", "k026": "⁦m = 18 g, M⁩(H₂O) ⁦= 18⁩", "k027": "⁦n = 18 × 18 = 324⁩ ?", "k028": "رافي", "k029": "أنت", "k030": "Nexa Study Hall Moderator", "k031": "الآن", "k032": "يبدو أنك توقفت عند الخطوة نفسها ⁦3⁩ مرات. تلميح صغير: لإيجاد n اقسم m على M، لا تضرب.", "k033": "شكرًا", "k034": "أريد أن أفهم أكثر", "k035": "سعدية:", "k036": "كنت أخطئ هنا أيضًا", "k037": "ميم:", "k038": "إذن ⁦n = 1 mol⁩", "k039": "افتح المختبر", "k040": "اكتب للمجموعة", "k041": "اكتب… (نص فقط)", "k042": "مساعدة", "k043": "المختبر الافتراضي — توقّع أولًا", "k044": "البندول البسيط", "k045": "الفيزياء · يعمل في المتصفح", "k046": "مجاني في كل خطة", "k047": "⁦T = 2.01 s⁩", "k048": "الطول", "k049": "⁦1.0 m⁩", "k050": "الزاوية", "k051": "توقّع أولًا: إذا صار الطول ⁦4⁩ أضعاف فكم يصير الزمن الدوري؟", "k052": "يبقى كما هو", "k053": "يتضاعف مرتين", "k054": "يصير ⁦4⁩ أضعاف", "k055": "الزمن الدوري", "k056": "T²/L", "k057": "⁦0.5 m⁩", "k058": "⁦1.42 s⁩", "k059": "⁦2.01 s⁩", "k060": "ثم في البيت: التجربة نفسها بخيط ومفتاح، صوّرها وارفعها.", "k061": "Classroom Builder — زيّنه على طريقتك", "k062": "فصلي", "k063": "⁦1,240 XP⁩", "k064": "E = mc²", "k065": "الفضاء", "k066": "ملصقات", "k067": "السمات", "k068": "ملابس الأفاتار", "k069": "فصل بلون السماء", "k070": "المستخدم", "k071": "مرصد ليلي", "k072": "⁦400 XP⁩", "k073": "فصل الحديقة", "k074": "⁦300 XP⁩", "k075": "سمة ⁦21⁩ فبراير", "k076": "يُفتح في الفعالية", "k077": "القالب", "k078": "المحرّر · اسحب للوضع", "k079": "زيّن بالذكاء الاصطناعي", "k080": "ملصقي ↑", "k081": "اعرض:", "k082": "Full", "k083": "Light", "k084": "⁦2D⁩", "k085": "صُنع في متصفحك", "k086": "Builder مجاني للجميع — تحتاج XP فقط للزينة الإضافية. يظهر ملصقك بعد فحص Nexa Guard. تأتي XP من جولات قاعة الدراسة والسلاسل وBoss battle ومساعدة الآخرين.", "lp": "اللغة"};
+    L.fr = {"k001": "Learner · Study Hall & Lab", "k002": "Salle d’étude en direct, labo et tableau en groupe, labo virtuel, Classroom Builder", "k003": "Salle d’étude en direct (gratuite pour tous)", "k004": "Retour", "k005": "Salle d’étude silencieuse", "k006": "Direct", "k007": "S", "k008": "R", "k009": "M", "k010": "A", "k011": "étudient dans cette salle", "k012": "Session de concentration 3", "k013": "Puis 5 minutes de pause", "k014": "+25 XP", "k015": "par session", "k016": "Objectif du jour", "k017": "En ce moment : chimie · notion de mole", "k018": "Avec une formule payante : groupes avec tes camarades, labo et tableau ensemble, et un bouton « Aide ».", "k019": "Terminer la manche", "k020": "Groupe d’étude + Nexa Study Hall Moderator", "k021": "Groupe · amis de 3e A", "k022": "5 membres · approuvé par les parents", "k023": "Signaler", "k024": "Tableau partagé", "k025": "n = m / M", "k026": "m = 18 g, M(H₂O) = 18", "k027": "n = 18 × 18 = 324 ?", "k028": "Rafi", "k029": "toi", "k030": "Nexa Study Hall Moderator", "k031": "à l’instant", "k032": "On dirait que tu bloques 3 fois sur la même étape. Petit indice : pour trouver n, divise m par M — ne multiplie pas.", "k033": "Merci", "k034": "Je veux mieux comprendre", "k035": "Sadia :", "k036": "Je faisais la même erreur ici", "k037": "Mim :", "k038": "Donc n = 1 mol", "k039": "Ouvrir le labo", "k040": "Écrire au groupe", "k041": "Écris… (texte uniquement)", "k042": "Aide", "k043": "Labo virtuel — prédis d’abord", "k044": "Pendule simple", "k045": "Physique · fonctionne dans le navigateur", "k046": "Gratuit dans chaque formule", "k047": "T = 2.01 s", "k048": "Longueur", "k049": "1.0 m", "k050": "Angle", "k051": "Prédis d’abord : si la longueur est multipliée par 4, la période devient ?", "k052": "La même", "k053": "2 fois plus grande", "k054": "4 fois plus grande", "k055": "Période", "k056": "T²/L", "k057": "0.5 m", "k058": "1.42 s", "k059": "2.01 s", "k060": "Ensuite à la maison : la même expérience avec une ficelle et une clé — prends une photo et envoie-la.", "k061": "Classroom Builder — décore à ta façon", "k062": "Ma classe", "k063": "1,240 XP", "k064": "E = mc²", "k065": "Espace", "k066": "Affiches", "k067": "Thèmes", "k068": "Tenues d’avatar", "k069": "Classe bleu ciel", "k070": "Utilisées", "k071": "Observatoire de nuit", "k072": "400 XP", "k073": "Classe au jardin", "k074": "300 XP", "k075": "Thème du 21 février", "k076": "Débloqué à l’événement", "k077": "Modèle", "k078": "Éditeur · glisse pour placer", "k079": "Décorer avec l’IA", "k080": "Mon affiche ↑", "k081": "Afficher :", "k082": "Full", "k083": "Light", "k084": "2D", "k085": "Créé dans ton navigateur", "k086": "Builder est gratuit pour tous — les XP servent seulement aux décorations en plus. Ton affiche apparaît après la vérification Nexa Guard. Les XP viennent des sessions de salle d’étude, des séries, des Boss battles et de l’aide aux autres.", "lp": "Langue"};
+    return L;
+  }
+  renderVals() {
+    var self = this, s = Object.assign({ lang: 'bn' }, this.state || {}), L = this.uiText(), lang = L[s.lang] ? s.lang : 'bn';
+    var FF = { bn: "'Hind Siliguri','Hind',system-ui,sans-serif", en: "'Hind Siliguri','Hind',system-ui,sans-serif", fr: "'Hind Siliguri','Hind',system-ui,sans-serif", hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
+    var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
+    var base = this.renderVals0 ? this.renderVals0() : {};
+    return Object.assign(base, { t: Object.assign({}, L.bn, L[lang]), lang: lang, dir: (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr', ff: FF[lang],
+      langs: ['bn', 'en', 'hi', 'ur', 'ar', 'fr'].map(function (c) { var on = c === lang; return { code: c, name: NAMES[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) });
+  }
+
+  renderVals0() { return {}; }
+}
+</script>
+</body>
+</html>

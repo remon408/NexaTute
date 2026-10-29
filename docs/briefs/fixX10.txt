@@ -1,0 +1,26 @@
+Apply review fixes to NexaTute's platform-admin prototype X10. SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Files
+- Copy SP/ntd/project/X10-Prototype-Admin.dc.html to SP/s2/fixX10/work/ and edit ONLY the copy. Do NOT write in SP/ntd/. Never publish. Never write memory. Don't touch other X files (other builders are working on them).
+- The findings to fix: SP/review/R2.md, section "X10-Prototype-Admin.dc.html", IDs X10-01 … X10-28 except X10-20, X10-21 (cross-page items handled in X16 later) and X10-22 (X16 file) — but DO apply X10's own part of X10-20 (see decisions). Each finding has evidence, location and a proposed fix; verify, then apply. Approved decisions for context: mcp__memory__memory_read (read-only) /areas/nexatute.md, /areas/nexatute-admin.md, /areas/nexatute-growth.md, /areas/nexatute-learning.md, /areas/nexatute-playboom.md.
+- Format rules: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md. X10 is ~1 MB; 6-language dictionaries (bn, en, hi, ur, ar, fr) with identical keys merged via uiAdd helpers ('key+' merges into a nested dict); RTL with M(); Latin digits (Bangla digits only for PlayBoom children — not in X10); tooltip kit with kitfix watcher.
+- Tools: `python3 SP/dcverify.py FILE [TEST] [--state JSON]`, `node SP/dcrender.js FILE OUT.html '{state}'`, `python3 SP/shoot.py 1440 OUT.html` (also 390). Tests that must pass: SP/x10test.js, x10test2b.js, x10test3.js, x10test4.js, SP/s2/bell/tests/x10paddle.js, SP/s2/bell/tests/belltest.js (x10test2.js is known-outdated; ignore). Put updated copies of tests in SP/s2/fixX10/tests/ only where an approved fix makes an old expectation wrong. Write SP/s2/fixX10/tests/x10fix_test.js covering every fix in all 6 languages.
+
+## Decisions already taken (apply these)
+- X10-04 margin: compute margin on net revenue after VAT (net = price / (1 + VAT rate setting)), label "margin after VAT". Do NOT change any price or limit. Plans below the 60% target (expected: Personal, Institution) show red with a note "Below 60% target — owner decision needed (raise price ~10% or tighten limits)".
+- X10-05 plan approvals: record maker on send; approve/reject only by a different person with `plans` approve permission; give approve on plans to Super admin (founder) and Finance lead; maker sees "Waiting for a second person"; record maker + approver in version history and audit log.
+- X10-06: Marketing admin gets approve on Landing Page AI; site settings sub-row approve only for Super admin. X10-28: role name "Marketing admin".
+- X10-07: add a Products group with "PlayBoom (whole product)" switch (with reason chips); off greys out the PlayBoom plan column with "PlayBoom is paused".
+- X10-09 bell samples: (a) "21 Oct backup failed at 02:00 — retried at 02:15 and finished" (info), (b) "Nightly accounts export to Google Drive finished (02:00)" (info), (c) replace the payroll item with a real pending item "2 automatic bank entries wait for the accounts officer or finance lead" (important); keep the 4th if consistent. All 6 languages; push text never shows amounts or names.
+- X10-10 bell click: each sample has a target; clicking opens that section/tab and closes the panel (marks read).
+- X10-12: include net payroll due within 30 days in "Bills due in 30 days" with an "October salaries (net) — from payroll" row; recompute "Cash after those bills".
+- X10-15: set the sponsor row status to active.
+- X10-16: full public-holiday list for Bangladesh for the year (government holidays incl. Pohela Boishakh, May Day, Eid days, Durga Puja, Buddha Purnima, Christmas, 21 Feb, 26 Mar, 16 Dec, etc.; lunar dates marked "per moon sighting/government gazette"), editable (add/edit/remove, logged) with a country picker like Helplines (other countries show a short sample list).
+- X10-20 (X10 side): credit VAT on refunds of Bangladesh sales via credit notes (Mushak credit note) in October's VAT — show the refund credit line; X16 will be aligned to X10 later. Keep Paddle at 0%.
+- X10-11 audit log, X10-13, X10-14, X10-17 (Latin digits), X10-18, X10-19 (approval rules incl. Paddle fee rule: finance lead approves, founder if the finance lead made it; price/plan changes; refunds over ৳5,000 two approvals; data deletion; institution discounts), X10-23 … X10-27: apply the proposed fixes.
+Tooltips for every new control in all 6 languages; no horizontal scroll at 390; RTL correct.
+
+## Done means
+- dcverify → 0 hole problems, 0 parity issues, 0 errors; all listed tests pass (or updated copies where an approved fix requires); x10fix_test.js covers each fix.
+- Screenshots 1440 (bn, en, ar): plans table with margin-after-VAT and red rows, plan approval as maker (blocked) and as second person, VAT tab with refund credit, holidays editor, bell click landing on its target.
+- Reply with a short summary per finding ID (fixed / changed how), new numbers (October VAT payable after refund credit, cash after bills), test results, anything assumed.

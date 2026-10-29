@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Wellbeing, link check, any course, international</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 var(--ff);border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 var(--ff);border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.ck{display:flex;align-items:center;gap:10px;font-size:13px;padding:5px 0}
+.ck span{width:20px;height:20px;border-radius:50%;background:#E3F5EC;color:#0F6B40;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none}
+.ln{display:flex;justify-content:space-between;font-size:14px;padding:5px 0}
+.pl{border:1px solid #E2E6EF;border-radius:16px;background:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+/* fix11 (owner 22:15): language picker for the static wireframe — 6 languages, default bn */
+.lpk{position:absolute;inset-inline-end:48px;top:16px;display:flex;gap:4px;padding:4px;background:#fff;border:1px solid #D3D8E4;border-radius:12px;z-index:5;box-shadow:0 4px 14px rgba(20,26,51,.10)}
+.lpk button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:none;font-family:var(--ff);font-size:12px;font-weight:600;color:#141A33;cursor:pointer}
+.lpk button.on{background:#3B34C9;color:#fff}
+:lang(ur){line-height:1.75}
+.btn,.btn2{height:auto!important;min-height:52px;padding-top:6px!important;padding-bottom:6px!important;line-height:1.25!important;text-align:center}
+/* longer languages (fr, ur, hi) must never lose text: phone bodies scroll (scrollbar hidden) instead of clipping */
+.ph .bd,.ph>.bd{overflow-y:auto!important;scrollbar-width:none}
+.ph .bd::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;color:#141A33;display:flex;flex-direction:column;gap:28px;--ff:{{ ff }};font-family:var(--ff)">
+<div class="lpk" role="group" aria-label="{{ t.lp }}"><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">{{ t.k001 }}</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k002 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 14.1 Wellbeing -->
+<div class="col">
+  <div class="cap"><b>14.1</b>{{ t.k003 }}</div>
+  <div class="ph" style="background:#F3F1FA">
+    <div class="bd" style="padding-top:40px;gap:16px">
+      <div class="row"><span class="chip" style="background:#ECEBFD">{{ t.k004 }}</span><span class="xs">{{ t.k005 }}</span></div>
+      <h2 style="margin:0;font-size:24px;font-weight:700;line-height:1.35">{{ t.k006 }}</h2>
+      <p style="margin:0;font-size:15px;line-height:1.7;color:#2E3550">{{ t.k007 }}</p>
+      <button class="btn" style="background:#5B4FC4">{{ t.k008 }}</button>
+      <button class="btn2">{{ t.k009 }}</button>
+      <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+        <p class="t3" style="font-size:14px">{{ t.k010 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k011 }} <b>999</b> {{ t.k012 }}</p>
+        <p class="sm" style="color:#141A33">{{ t.k013 }} <b>{{ t.k014 }}</b></p>
+      </div>
+      <p class="xs" style="margin:auto 0 0">{{ t.k015 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- 14.2 Link -->
+<div class="col">
+  <div class="cap"><b>14.2</b>{{ t.k016 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k017 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k018 }}</p>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="padding:12px 14px;display:flex;gap:10px;align-items:center">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+        <p class="sm" style="color:#141A33;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ t.k019 }}</p>
+      </div>
+      <div class="cd" style="padding:10px 14px">
+        <p class="xs" style="margin:0 0 4px;font-weight:600;color:#141A33">{{ t.k020 }}</p><div class="ck"><span>✓</span>{{ t.k021 }}</div>
+        <div class="ck"><span>✓</span>{{ t.k022 }}</div>
+        <div class="ck"><span>✓</span>{{ t.k023 }}</div>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="justify-content:space-between"><p class="t3">{{ t.k024 }}</p><span class="chip">{{ t.k025 }}</span></div>
+        <p class="sm" style="color:#141A33">{{ t.k026 }}</p>
+        <div style="background:#FFF6E6;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5;color:#5C3300"><b>{{ t.k027 }}</b> {{ t.k028 }}</div>
+        <div class="row" style="gap:8px"><button class="chip" style="border:0;padding:8px 12px;min-height:36px">{{ t.k029 }}</button><button class="chip" style="border:0;padding:8px 12px;min-height:36px">{{ t.k030 }}</button></div>
+      </div>
+      <div class="cd" style="padding:10px 14px;display:flex;gap:10px;align-items:center;background:#FDEDE6;border-color:#F5C6B4">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#9A3412"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+        <p class="sm" style="color:#7A2A0E">{{ t.k031 }}</p>
+      </div>
+      <!-- fix8 (26 Oct 2026), R8-core-3: the other link types, same rules as the X11 "Paste a link" prototype -->
+      <div class="cd" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+        <p class="t3" style="font-size:14px">{{ t.k032 }}</p>
+        <div class="row" style="gap:8px;align-items:flex-start;font-size:13px;line-height:1.45"><b style="flex:none;min-width:82px">{{ t.k033 }}</b><span style="flex:1;color:#141A33">{{ t.k034 }}</span></div>
+        <div class="row" style="gap:8px;align-items:flex-start;font-size:13px;line-height:1.45"><b style="flex:none;min-width:82px">{{ t.k035 }}</b><span style="flex:1;color:#141A33">{{ t.k036 }}</span></div>
+        <div class="row" style="gap:8px;align-items:flex-start;font-size:13px;line-height:1.45"><b style="flex:none;min-width:82px">{{ t.k037 }}</b><span style="flex:1;color:#141A33">{{ t.k038 }}</span></div>
+        <div class="row" style="gap:8px;align-items:flex-start;font-size:13px;line-height:1.45"><b style="flex:none;min-width:82px">{{ t.k039 }}</b><span style="flex:1;color:#141A33">{{ t.k040 }}</span></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k041 }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- 14.3 Any course -->
+<div class="col">
+  <div class="cap"><b>14.3</b>{{ t.k042 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k017 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k043 }}</p>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="padding:12px 14px"><p class="xs" style="margin:0">{{ t.k044 }}</p><p class="t3">{{ t.k045 }}</p><p class="xs" style="margin:4px 0 0">{{ t.k046 }}</p></div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:6px">
+        <div class="row" style="justify-content:space-between"><p class="t3">{{ t.k047 }}</p><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k048 }}</span></div>
+        <p class="sm" style="color:#141A33">{{ t.k049 }}</p>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:4px;border:2px solid #3B34C9">
+        <p class="t3" style="font-size:14px;margin-bottom:4px">{{ t.k050 }}</p>
+        <div class="ln"><span>{{ t.k051 }}</span><b>{{ t.k052 }}</b></div>
+        <div class="ln"><span>{{ t.k053 }}</span><b>{{ t.k054 }}</b></div>
+        <div class="ln" style="border-top:1px solid #EEF0F5;padding-top:8px"><span>{{ t.k055 }}</span><b>৳1,000</b></div>
+        <div class="ln"><span>{{ t.k056 }}</span><b>৳1,600</b></div>
+        <div class="ln"><span>{{ t.k057 }}</span><b>৳40</b></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k058 }}</p>
+      <button class="btn" style="margin-top:auto">{{ t.k059 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 14.4 International -->
+<div class="col">
+  <div class="cap"><b>14.4</b>{{ t.k060 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k061 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1" lang="en">{{ t.k062 }}</p>
+      <span class="chip" lang="en">{{ t.k063 }}</span>
+    </div>
+    <div class="bd" style="gap:10px" lang="en">
+      <div class="cd" style="padding:12px 14px"><p class="t3">{{ t.k064 }}</p><p class="xs" style="margin:0">{{ t.k065 }}</p></div>
+      <div class="pl"><div style="flex:1"><p class="t3">{{ t.k066 }}</p><p class="xs" style="margin:0">{{ t.k067 }}</p></div><b style="font-size:18px">$9</b><span class="xs">{{ t.k068 }}</span></div>
+      <div class="pl" style="border:2px solid #3B34C9;background:#F7F7FF"><div style="flex:1"><div class="row" style="gap:6px"><p class="t3">{{ t.k069 }}</p><span class="chip" style="background:#F2A93B;color:#141A33">{{ t.k070 }}</span></div><p class="xs" style="margin:0">{{ t.k071 }}</p></div><b style="font-size:18px">$12</b><span class="xs">{{ t.k068 }}</span></div>
+      <div class="pl"><div style="flex:1"><p class="t3">{{ t.k072 }}</p><p class="xs" style="margin:0">{{ t.k073 }}</p></div><b style="font-size:18px">$15</b><span class="xs">{{ t.k068 }}</span></div>
+      <div class="cd" style="padding:12px 14px;display:flex;gap:10px;align-items:center">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+        <p class="sm" style="color:#141A33">{{ t.k074 }}</p>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k075 }}</p>
+      <button class="btn" style="margin-top:auto">{{ t.k076 }}</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner 26 Oct 2026, 22:15): 6-language dictionary — identical keys; ur/ar numbers in LTR isolates
+  uiText() {
+    var L = {};
+    L.bn = {"k001": "Learner · Care, links, any course, international", "k002": "মন খারাপের সময়ে যত্ন, লিংক যাচাই, “যেকোনো কোর্স”-এর দাম, বিদেশি শিক্ষার্থী", "k003": "শিক্ষার্থীর কষ্ট — পড়া থামিয়ে যত্ন", "k004": "Nexa Teacher · AI", "k005": "ক্লাস থামানো হয়েছে", "k006": "তানভীর, এখন পড়া থাক। তুমি কেমন আছ, সেটাই আগে।", "k007": "তোমার কথা শুনে মনে হলো তুমি খুব কষ্টে আছ। এমন লাগা ঠিক আছে, তুমি একা নও। চাইলে এমন কারো সাথে কথা বলো যাকে তুমি বিশ্বাস করো।", "k008": "আমার পরিবারের কাউকে ডাকতে চাই", "k009": "কারো সাথে কথা বলার নম্বর দেখাও", "k010": "এখনই বিপদ মনে হলে", "k011": "জাতীয় জরুরি সেবা", "k012": "— বিনা খরচে, 24 ঘণ্টা", "k013": "মানসিক সহায়তা হেল্পলাইন", "k014": "[অ্যাডমিন প্যানেলে বসানো নম্বর]", "k015": "তোমার অভিভাবককে আলতোভাবে জানানো হচ্ছে, যাতে তিনি পাশে থাকতে পারেন। পরে চাইলে আবার পড়া শুরু করা যাবে।", "k016": "লিংক দিলে — যাচাই, তারপর ব্যাখ্যা", "k017": "পেছনে", "k018": "লিংক থেকে শেখা", "k019": "science-blog.example/photosynthesis-myths", "k020": "Nexa Guard যাচাই", "k021": "নিরাপদ লিংক (ব্লকলিস্টে নেই)", "k022": "নিরাপদ স্যান্ডবক্সে খোলা — লগইন, কুকি বা স্ক্রিপ্ট ছাড়া", "k023": "লেখা ও ছবি নিরাপত্তা যাচাই", "k024": "সারাংশ ও নোট", "k025": "জীববিজ্ঞান · অধ্যায় 4", "k026": "সালোকসংশ্লেষণে আলো, পানি ও CO₂ থেকে গ্লুকোজ ও O₂ তৈরি হয়।", "k027": "1টি ভুল তথ্য:", "k028": "লেখায় আছে “উদ্ভিদ রাতে শুধু O₂ ছাড়ে”। সঠিক: রাতে শ্বসনে CO₂ ছাড়ে।", "k029": "5 প্রশ্নের কুইজ", "k030": "NexaTute পাঠে যাও", "k031": "আরেকটি লিংক খোলা হয়নি: পাইরেটেড বই। কারণ জানানো হয়েছে।", "k032": "অন্য ধরনের লিংক", "k033": "YouTube", "k034": "শুধু শিরোনাম, বিবরণ আর অধ্যায় (অফিশিয়াল API) — ভিডিও নামানো হয় না, আমাদের পাঠ দিয়ে পড়ানো", "k035": "PDF / Drive", "k036": "পাবলিক হলে আপলোডের মতোই — প্রায় 30 পাতা বা 20 MB পর্যন্ত", "k037": "সোশ্যাল পোস্ট", "k038": "শুধু পাবলিক লেখা — অথবা লেখাটা পেস্ট করো", "k039": "লগইন লাগে", "k040": "খোলা হয় না — ফাইলটা আপলোড করো", "k041": "শুধু তোমার জন্য · লিংকের কপি রাখা বা প্রকাশ করা হয় না · 1টি লিংক = 1টি Co-Teacher টপিক · ফ্রি প্ল্যানে দিনে 3টি", "k042": "“যেকোনো কোর্স” — কেন এই দাম", "k043": "নতুন কোর্স", "k044": "তুমি চেয়েছ", "k045": "“ঘর সাজানো শিখতে চাই”", "k046": "মিলেছে: Interior Design · আগে থেকেই দামের তালিকায় নেই", "k047": "AI-র তৈরি কোর্স আউটলাইন", "k048": "AI-এর তৈরি", "k049": "8টি মডিউল: রং ও আলো · জায়গার পরিকল্পনা · আসবাব · কাপড় ও টেক্সচার · ছোট ঘরের কৌশল · বাজেট · 3D প্ল্যান · প্রজেক্ট", "k050": "কেন এই দাম", "k051": "রেট ব্যান্ড (স্তর, কঠিনতা, বাজার মূল্য)", "k052": "৳2.00/মি.", "k053": "ল্যাব বা স্যান্ডবক্স", "k054": "লাগবে না", "k055": "Single · দিনে 40 মিনিট", "k056": "All-access · দিনে 75 মিনিট", "k057": "Daily Pass", "k058": "কেনার পর 3 মাস দাম বদলাবে না। মান যাচাই পাস করলে “NexaTute Verified” ব্যাজ পাবে।", "k059": "Single নাও · ৳1,000", "k060": "বিদেশি শিক্ষার্থী — দাম USD-তে, অ্যাপ তাদের বেছে নেওয়া ভাষায়", "k061": "ফিরে যাও", "k062": "প্ল্যান বেছে নাও", "k063": "EN · বাংলা", "k064": "SSC (শ্রেণি 9–10) · ইংলিশ ভার্সন", "k065": "দুবাই থেকে পড়ছ · দাম USD-তে", "k066": "Batch", "k067": "গ্রুপ ক্লাস + দিনে 5 মিনিট 1:1", "k068": "/মাস", "k069": "Combo", "k070": "সবচেয়ে জনপ্রিয়", "k071": "গ্রুপ ক্লাস + দিনে 30 মিনিট 1:1", "k072": "Personal", "k073": "দিনে 75 মিনিট 1:1 · এক বিষয় $7", "k074": "Paddle-এর মাধ্যমে নিরাপদ কার্ড পেমেন্ট।", "k075": "ব্যাচ ক্লাসের সময় তোমার স্থানীয় সময়ে দেখানো হয় (উপসাগরীয় মান সময়, GST)।", "k076": "Combo নিয়ে এগোও · $12", "lp": "ভাষা"};
+    L.en = {"k001": "Learner · Care, links, any course, international", "k002": "Care when a learner is upset, link checks, “any course” pricing, learners abroad", "k003": "A learner in distress — pause the lesson and care", "k004": "Nexa Teacher · AI", "k005": "Class paused", "k006": "Tanvir, let’s leave studying for now. How you are matters first.", "k007": "From what you said, it sounds like you are going through a lot. It’s okay to feel this way — you are not alone. If you like, talk to someone you trust.", "k008": "I want to call someone in my family", "k009": "Show me a number to talk to someone", "k010": "If you feel in danger right now", "k011": "National Emergency Service", "k012": "— free, 24 hours", "k013": "Mental health helpline", "k014": "[number set in the admin panel]", "k015": "Your guardian is being told gently so they can be with you. You can start studying again later if you want.", "k016": "When you share a link — check first, then explain", "k017": "Back", "k018": "Learning from a link", "k019": "science-blog.example/photosynthesis-myths", "k020": "Nexa Guard check", "k021": "Safe link (not on the blocklist)", "k022": "Opened in a safe sandbox — no login, cookies or scripts", "k023": "Text and image safety check", "k024": "Summary and notes", "k025": "Biology · chapter 4", "k026": "In photosynthesis, light, water and CO₂ make glucose and O₂.", "k027": "1 wrong fact:", "k028": "The text says “plants give out only O₂ at night”. Correct: at night they give out CO₂ through respiration.", "k029": "5-question quiz", "k030": "Go to the NexaTute lesson", "k031": "Another link was not opened: a pirated book. The reason was explained.", "k032": "Other kinds of links", "k033": "YouTube", "k034": "Only the title, description and chapters (official API) — the video is not downloaded; taught with our lessons", "k035": "PDF / Drive", "k036": "If public, the same as an upload — up to about 30 pages or 20 MB", "k037": "Social post", "k038": "Public text only — or paste the text", "k039": "Login-only", "k040": "Not opened — upload the file", "k041": "Only for you · the link is not kept or published · 1 link = 1 Co-Teacher topic · 3 a day on the free plan", "k042": "“Any course” — why this price", "k043": "New course", "k044": "You asked for", "k045": "“I want to learn to decorate a room”", "k046": "Matched: Interior Design · not yet on the price list", "k047": "AI-made course outline", "k048": "AI-generated", "k049": "8 modules: colour and light · space planning · furniture · fabric and texture · small-room tricks · budget · 3D plan · project", "k050": "Why this price", "k051": "Rate band (level, difficulty, market value)", "k052": "৳2.00/min", "k053": "Lab or sandbox", "k054": "Not needed", "k055": "Single · 40 minutes a day", "k056": "All-access · 75 minutes a day", "k057": "Daily Pass", "k058": "After you buy, the price won’t change for 3 months. If it passes the quality check, it gets the “NexaTute Verified” badge.", "k059": "Take Single · ৳1,000", "k060": "Learners abroad — prices in USD, in the app language they choose", "k061": "Back", "k062": "Choose a plan", "k063": "EN · Bangla", "k064": "SSC (Class 9–10) · English version", "k065": "Studying from Dubai · prices in USD", "k066": "Batch", "k067": "Group class + 5 min/day 1:1", "k068": "/mo", "k069": "Combo", "k070": "Most popular", "k071": "Group class + 30 min/day 1:1", "k072": "Personal", "k073": "75 min/day 1:1 · single subject $7", "k074": "Secure card payment through Paddle.", "k075": "Batch class times shown in your local time (Gulf Standard Time).", "k076": "Continue with Combo · $12", "lp": "Language"};
+    L.hi = {"k001": "Learner · Care, links, any course, international", "k002": "मन ख़राब होने पर देखभाल, लिंक जाँच, “कोई भी कोर्स” की कीमत, विदेशी विद्यार्थी", "k003": "विद्यार्थी परेशान — पढ़ाई रोककर देखभाल", "k004": "Nexa Teacher · AI", "k005": "क्लास रोकी गई", "k006": "तनवीर, अभी पढ़ाई रहने दो। तुम कैसे हो, वही पहले।", "k007": "तुम्हारी बात सुनकर लगा कि तुम बहुत तकलीफ़ में हो। ऐसा लगना ठीक है, तुम अकेले नहीं हो। चाहो तो किसी भरोसेमंद से बात करो।", "k008": "मैं परिवार में किसी को बुलाना चाहता हूँ", "k009": "किसी से बात करने का नंबर दिखाओ", "k010": "अगर अभी ख़तरा लगे", "k011": "राष्ट्रीय आपात सेवा", "k012": "— मुफ़्त, 24 घंटे", "k013": "मानसिक सहायता हेल्पलाइन", "k014": "[एडमिन पैनल में रखा नंबर]", "k015": "तुम्हारे अभिभावक को धीरे से बताया जा रहा है, ताकि वे पास रह सकें। बाद में चाहो तो फिर पढ़ाई शुरू कर सकते हो।", "k016": "लिंक देने पर — पहले जाँच, फिर व्याख्या", "k017": "पीछे", "k018": "लिंक से सीखना", "k019": "science-blog.example/photosynthesis-myths", "k020": "Nexa Guard जाँच", "k021": "सुरक्षित लिंक (ब्लॉकलिस्ट में नहीं)", "k022": "सुरक्षित सैंडबॉक्स में खोला — बिना लॉगिन, कुकी या स्क्रिप्ट", "k023": "टेक्स्ट और तस्वीर की सुरक्षा जाँच", "k024": "सारांश और नोट्स", "k025": "जीवविज्ञान · अध्याय 4", "k026": "प्रकाश-संश्लेषण में प्रकाश, पानी और CO₂ से ग्लूकोज़ और O₂ बनते हैं।", "k027": "1 ग़लत जानकारी:", "k028": "लेख में है “पौधे रात में सिर्फ़ O₂ छोड़ते हैं”। सही: रात में श्वसन से CO₂ छोड़ते हैं।", "k029": "5 प्रश्नों का क्विज़", "k030": "NexaTute पाठ पर जाओ", "k031": "एक और लिंक नहीं खोला गया: पायरेटेड किताब। कारण बताया गया।", "k032": "दूसरे तरह के लिंक", "k033": "YouTube", "k034": "सिर्फ़ शीर्षक, विवरण और अध्याय (आधिकारिक API) — वीडियो डाउनलोड नहीं होता, हमारे पाठ से पढ़ाया जाता है", "k035": "PDF / Drive", "k036": "पब्लिक हो तो अपलोड जैसा — लगभग 30 पन्ने या 20 MB तक", "k037": "सोशल पोस्ट", "k038": "सिर्फ़ पब्लिक लेख — या लेख पेस्ट करो", "k039": "लॉगिन ज़रूरी", "k040": "नहीं खोला जाता — फ़ाइल अपलोड करो", "k041": "सिर्फ़ तुम्हारे लिए · लिंक की कॉपी न रखी जाती है न छपती है · 1 लिंक = 1 Co-Teacher टॉपिक · फ़्री प्लान में रोज़ 3", "k042": "“कोई भी कोर्स” — यह कीमत क्यों", "k043": "नया कोर्स", "k044": "तुमने माँगा", "k045": "“मैं घर सजाना सीखना चाहता हूँ”", "k046": "मिला: Interior Design · पहले से कीमत सूची में नहीं", "k047": "AI का बनाया कोर्स ढाँचा", "k048": "AI द्वारा बनाया", "k049": "8 मॉड्यूल: रंग और रोशनी · जगह की योजना · फ़र्नीचर · कपड़ा और टेक्सचर · छोटे कमरे की तरकीबें · बजट · 3D प्लान · प्रोजेक्ट", "k050": "यह कीमत क्यों", "k051": "रेट बैंड (स्तर, कठिनाई, बाज़ार मूल्य)", "k052": "৳2.00/मि.", "k053": "लैब या सैंडबॉक्स", "k054": "नहीं चाहिए", "k055": "Single · रोज़ 40 मिनट", "k056": "All-access · रोज़ 75 मिनट", "k057": "Daily Pass", "k058": "ख़रीदने के बाद 3 महीने कीमत नहीं बदलेगी। गुणवत्ता जाँच पास करने पर “NexaTute Verified” बैज मिलेगा।", "k059": "Single लो · ৳1,000", "k060": "विदेशी विद्यार्थी — कीमत USD में, ऐप उनकी चुनी हुई भाषा में", "k061": "वापस", "k062": "प्लान चुनो", "k063": "EN · बांग्ला", "k064": "SSC (कक्षा 9–10) · इंग्लिश वर्ज़न", "k065": "दुबई से पढ़ रहे हो · कीमत USD में", "k066": "Batch", "k067": "ग्रुप क्लास + रोज़ 5 मिनट 1:1", "k068": "/माह", "k069": "Combo", "k070": "सबसे लोकप्रिय", "k071": "ग्रुप क्लास + रोज़ 30 मिनट 1:1", "k072": "Personal", "k073": "रोज़ 75 मिनट 1:1 · एक विषय $7", "k074": "Paddle के ज़रिए सुरक्षित कार्ड भुगतान।", "k075": "बैच क्लास का समय तुम्हारे स्थानीय समय में दिखता है (खाड़ी मानक समय, GST)।", "k076": "Combo के साथ आगे बढ़ो · $12", "lp": "भाषा"};
+    L.ur = {"k001": "Learner · Care, links, any course, international", "k002": "دل اداس ہونے پر دیکھ بھال، لنک کی جانچ، “کوئی بھی کورس” کی قیمت، بیرونِ ملک طلبہ", "k003": "طالب علم پریشان — پڑھائی روک کر دیکھ بھال", "k004": "Nexa Teacher · AI", "k005": "کلاس روکی گئی", "k006": "تنویر، ابھی پڑھائی رہنے دو۔ تم کیسے ہو، یہی پہلے۔", "k007": "تمہاری بات سن کر لگا کہ تم بہت تکلیف میں ہو۔ ایسا لگنا ٹھیک ہے، تم اکیلے نہیں ہو۔ چاہو تو کسی بھروسے والے سے بات کرو۔", "k008": "میں گھر میں کسی کو بلانا چاہتا ہوں", "k009": "کسی سے بات کرنے کا نمبر دکھاؤ", "k010": "اگر ابھی خطرہ محسوس ہو", "k011": "قومی ہنگامی سروس", "k012": "— مفت، ⁦24⁩ گھنٹے", "k013": "ذہنی صحت ہیلپ لائن", "k014": "[ایڈمن پینل میں رکھا نمبر]", "k015": "تمہارے سرپرست کو نرمی سے بتایا جا رہا ہے تاکہ وہ پاس رہ سکیں۔ بعد میں چاہو تو دوبارہ پڑھائی شروع کر سکتے ہو۔", "k016": "لنک دینے پر — پہلے جانچ، پھر وضاحت", "k017": "پیچھے", "k018": "لنک سے سیکھنا", "k019": "science-blog.example/photosynthesis-myths", "k020": "Nexa Guard جانچ", "k021": "محفوظ لنک (بلاک لسٹ میں نہیں)", "k022": "محفوظ سینڈ باکس میں کھولا — بغیر لاگ اِن، کوکی یا اسکرپٹ", "k023": "متن اور تصویر کی حفاظتی جانچ", "k024": "خلاصہ اور نوٹس", "k025": "حیاتیات · باب ⁦4⁩", "k026": "ضیائی تالیف میں روشنی، پانی اور CO₂ سے گلوکوز اور O₂ بنتے ہیں۔", "k027": "⁦1⁩ غلط معلومات:", "k028": "تحریر میں ہے “پودے رات کو صرف O₂ چھوڑتے ہیں”۔ درست: رات کو تنفس سے CO₂ چھوڑتے ہیں۔", "k029": "⁦5⁩ سوالوں کا کوئز", "k030": "NexaTute سبق پر جاؤ", "k031": "ایک اور لنک نہیں کھولا گیا: پائریٹڈ کتاب۔ وجہ بتا دی گئی۔", "k032": "دوسری طرح کے لنک", "k033": "YouTube", "k034": "صرف عنوان، تفصیل اور ابواب (سرکاری API) — ویڈیو ڈاؤن لوڈ نہیں ہوتی، ہمارے اسباق سے پڑھایا جاتا ہے", "k035": "PDF / Drive", "k036": "پبلک ہو تو اپ لوڈ جیسا — تقریباً ⁦30⁩ صفحات یا ⁦20 MB⁩ تک", "k037": "سوشل پوسٹ", "k038": "صرف پبلک تحریر — یا تحریر پیسٹ کرو", "k039": "لاگ اِن ضروری", "k040": "نہیں کھولا جاتا — فائل اپ لوڈ کرو", "k041": "صرف تمہارے لیے · لنک کی کاپی نہ رکھی جاتی ہے نہ شائع ہوتی ہے · ⁦1⁩ لنک ⁦= 1 Co-Teacher⁩ موضوع · مفت پلان میں روزانہ ⁦3⁩", "k042": "“کوئی بھی کورس” — یہ قیمت کیوں", "k043": "نیا کورس", "k044": "تم نے مانگا", "k045": "“میں گھر سجانا سیکھنا چاہتا ہوں”", "k046": "ملا: Interior Design · پہلے سے قیمت کی فہرست میں نہیں", "k047": "AI کا بنایا کورس خاکہ", "k048": "AI سے بنایا گیا", "k049": "⁦8⁩ ماڈیول: رنگ اور روشنی · جگہ کی منصوبہ بندی · فرنیچر · کپڑا اور ٹیکسچر · چھوٹے کمرے کی ترکیبیں · بجٹ · ⁦3D⁩ پلان · پروجیکٹ", "k050": "یہ قیمت کیوں", "k051": "ریٹ بینڈ (سطح، مشکل، بازاری قیمت)", "k052": "⁦৳2.00/⁩منٹ", "k053": "لیب یا سینڈ باکس", "k054": "درکار نہیں", "k055": "Single · روزانہ ⁦40⁩ منٹ", "k056": "All-access · روزانہ ⁦75⁩ منٹ", "k057": "Daily Pass", "k058": "خریدنے کے بعد ⁦3⁩ مہینے قیمت نہیں بدلے گی۔ معیار کی جانچ پاس کرنے پر “NexaTute Verified” بیج ملے گا۔", "k059": "Single لو · ⁦৳1,000⁩", "k060": "بیرونِ ملک طلبہ — قیمت USD میں، ایپ ان کی چنی ہوئی زبان میں", "k061": "واپس", "k062": "پلان چنو", "k063": "EN · بنگلہ", "k064": "SSC (جماعت ⁦9–10⁩) · انگلش ورژن", "k065": "دبئی سے پڑھ رہے ہو · قیمت USD میں", "k066": "Batch", "k067": "گروپ کلاس + روزانہ ⁦5⁩ منٹ ⁦1:1⁩", "k068": "/ماہ", "k069": "Combo", "k070": "سب سے مقبول", "k071": "گروپ کلاس + روزانہ ⁦30⁩ منٹ ⁦1:1⁩", "k072": "Personal", "k073": "روزانہ ⁦75⁩ منٹ ⁦1:1⁩ · ایک مضمون ⁦$7⁩", "k074": "Paddle کے ذریعے محفوظ کارڈ ادائیگی۔", "k075": "بیچ کلاس کے اوقات تمہارے مقامی وقت میں دکھائے جاتے ہیں (خلیجی معیاری وقت، GST)۔", "k076": "Combo کے ساتھ آگے بڑھو · ⁦$12⁩", "lp": "زبان"};
+    L.ar = {"k001": "Learner · Care, links, any course, international", "k002": "الرعاية عند الضيق، فحص الروابط، سعر «أي دورة»، المتعلمون في الخارج", "k003": "متعلّم في ضيق — إيقاف الدرس والرعاية", "k004": "Nexa Teacher · AI", "k005": "أُوقفت الحصة", "k006": "تنوير، لنترك الدراسة الآن. كيف حالك هو الأهم أولًا.", "k007": "يبدو من كلامك أنك تمر بوقت صعب جدًا. لا بأس أن تشعر بذلك، لست وحدك. إن أردت تحدّث مع شخص تثق به.", "k008": "أريد الاتصال بأحد من عائلتي", "k009": "أرني رقمًا للتحدث مع أحد", "k010": "إن شعرت بخطر الآن", "k011": "خدمة الطوارئ الوطنية", "k012": "— مجانًا، ⁦24⁩ ساعة", "k013": "خط دعم الصحة النفسية", "k014": "[رقم يُضبط في لوحة الإدارة]", "k015": "يُبلَّغ ولي أمرك بلطف ليكون إلى جانبك. يمكنك العودة إلى الدراسة لاحقًا إن أردت.", "k016": "عند مشاركة رابط — الفحص أولًا ثم الشرح", "k017": "رجوع", "k018": "التعلّم من رابط", "k019": "science-blog.example/photosynthesis-myths", "k020": "فحص Nexa Guard", "k021": "رابط آمن (ليس في قائمة الحظر)", "k022": "فُتح في بيئة آمنة — بلا تسجيل دخول أو ملفات تعريف أو نصوص برمجية", "k023": "فحص أمان النص والصور", "k024": "الملخّص والملاحظات", "k025": "الأحياء · الفصل ⁦4⁩", "k026": "في البناء الضوئي يتكوّن الغلوكوز وO₂ من الضوء والماء وCO₂.", "k027": "معلومة خاطئة واحدة:", "k028": "يقول النص «النباتات تطلق O₂ فقط ليلًا». الصحيح: تطلق ليلًا CO₂ بالتنفس.", "k029": "اختبار من ⁦5⁩ أسئلة", "k030": "انتقل إلى درس NexaTute", "k031": "لم يُفتح رابط آخر: كتاب مقرصن. وتم شرح السبب.", "k032": "أنواع أخرى من الروابط", "k033": "YouTube", "k034": "العنوان والوصف والفصول فقط (API رسمي) — لا يُنزَّل الفيديو، ويُدرَّس بدروسنا", "k035": "PDF / Drive", "k036": "إن كان عامًا فمثل الرفع — حتى نحو ⁦30⁩ صفحة أو ⁦20 MB⁩", "k037": "منشور اجتماعي", "k038": "النص العام فقط — أو الصق النص", "k039": "يتطلب تسجيل دخول", "k040": "لا يُفتح — ارفع الملف", "k041": "لك وحدك · لا يُحفظ الرابط ولا يُنشر · رابط واحد = موضوع Co-Teacher واحد · ⁦3⁩ يوميًا في الخطة المجانية", "k042": "«أي دورة» — لماذا هذا السعر", "k043": "دورة جديدة", "k044": "طلبتَ", "k045": "«أريد أن أتعلّم تزيين البيت»", "k046": "المطابق: Interior Design · ليس في قائمة الأسعار بعد", "k047": "مخطط دورة أعدّه AI", "k048": "مُنشأ بالذكاء الاصطناعي", "k049": "⁦8⁩ وحدات: اللون والضوء · تخطيط المساحة · الأثاث · الأقمشة والملمس · حيل الغرف الصغيرة · الميزانية · مخطط ⁦3D⁩ · مشروع", "k050": "لماذا هذا السعر", "k051": "نطاق السعر (المستوى، الصعوبة، القيمة السوقية)", "k052": "⁦৳2.00/⁩دقيقة", "k053": "مختبر أو بيئة تجريبية", "k054": "غير مطلوب", "k055": "Single · ⁦40⁩ دقيقة يوميًا", "k056": "All-access · ⁦75⁩ دقيقة يوميًا", "k057": "Daily Pass", "k058": "بعد الشراء لن يتغير السعر ⁦3⁩ أشهر. وإذا اجتاز فحص الجودة يحصل على شارة «NexaTute Verified».", "k059": "اختر Single · ⁦৳1,000⁩", "k060": "المتعلمون في الخارج — الأسعار بـUSD والتطبيق باللغة التي يختارونها", "k061": "رجوع", "k062": "اختر خطة", "k063": "EN · البنغالية", "k064": "SSC (الصف ⁦9–10⁩) · النسخة الإنجليزية", "k065": "تدرس من دبي · الأسعار بـUSD", "k066": "Batch", "k067": "حصة جماعية + ⁦5⁩ دقائق ⁦1:1⁩ يوميًا", "k068": "/شهر", "k069": "Combo", "k070": "الأكثر اختيارًا", "k071": "حصة جماعية + ⁦30⁩ دقيقة ⁦1:1⁩ يوميًا", "k072": "Personal", "k073": "⁦75⁩ دقيقة ⁦1:1⁩ يوميًا · مادة واحدة ⁦$7⁩", "k074": "دفع آمن بالبطاقة عبر Paddle.", "k075": "تظهر مواعيد الحصص الجماعية بتوقيتك المحلي (توقيت الخليج، GST).", "k076": "تابع مع Combo · ⁦$12⁩", "lp": "اللغة"};
+    L.fr = {"k001": "Learner · Care, links, any course, international", "k002": "Soin quand un élève va mal, vérification des liens, prix de « n’importe quel cours », élèves à l’étranger", "k003": "Un élève en détresse — arrêter la leçon et prendre soin", "k004": "Nexa Teacher · AI", "k005": "Cours en pause", "k006": "Tanvir, laissons l’étude pour l’instant. Comment tu vas, c’est ce qui compte d’abord.", "k007": "D’après ce que tu dis, tu traverses un moment très difficile. C’est normal de ressentir ça, tu n’es pas seul. Si tu veux, parle à quelqu’un en qui tu as confiance.", "k008": "Je veux appeler quelqu’un de ma famille", "k009": "Montre-moi un numéro pour parler à quelqu’un", "k010": "Si vous vous sentez en danger maintenant", "k011": "Service national d’urgence", "k012": "— gratuit, 24 h/24", "k013": "Ligne d’écoute en santé mentale", "k014": "[numéro saisi dans le panneau d’administration]", "k015": "Ton parent est prévenu en douceur pour être à tes côtés. Tu pourras reprendre plus tard si tu veux.", "k016": "Quand tu partages un lien — vérification, puis explication", "k017": "Retour", "k018": "Apprendre à partir d’un lien", "k019": "science-blog.example/photosynthesis-myths", "k020": "Vérification Nexa Guard", "k021": "Lien sûr (pas sur la liste noire)", "k022": "Ouvert dans un bac à sable sûr — sans connexion, cookies ni scripts", "k023": "Vérification de sécurité du texte et des images", "k024": "Résumé et notes", "k025": "Biologie · chapitre 4", "k026": "Dans la photosynthèse, la lumière, l’eau et le CO₂ donnent du glucose et de l’O₂.", "k027": "1 information fausse :", "k028": "Le texte dit « les plantes ne rejettent que de l’O₂ la nuit ». Correct : la nuit, elles rejettent du CO₂ par la respiration.", "k029": "Quiz de 5 questions", "k030": "Aller à la leçon NexaTute", "k031": "Un autre lien n’a pas été ouvert : un livre piraté. La raison a été expliquée.", "k032": "Autres types de liens", "k033": "YouTube", "k034": "Seulement le titre, la description et les chapitres (API officielle) — la vidéo n’est pas téléchargée ; on enseigne avec nos leçons", "k035": "PDF / Drive", "k036": "S’il est public, comme un envoi — jusqu’à environ 30 pages ou 20 Mo", "k037": "Publication", "k038": "Texte public seulement — ou colle le texte", "k039": "Connexion requise", "k040": "Pas ouvert — envoie le fichier", "k041": "Seulement pour toi · le lien n’est ni gardé ni publié · 1 lien = 1 thème Co-Teacher · 3 par jour en formule gratuite", "k042": "« N’importe quel cours » — pourquoi ce prix", "k043": "Nouveau cours", "k044": "Tu as demandé", "k045": "« Je veux apprendre à décorer une pièce »", "k046": "Correspondance : Interior Design · pas encore dans la liste des prix", "k047": "Plan de cours créé par l’IA", "k048": "Généré par l’IA", "k049": "8 modules : couleur et lumière · aménagement · mobilier · tissus et textures · astuces petites pièces · budget · plan 3D · projet", "k050": "Pourquoi ce prix", "k051": "Tranche de tarif (niveau, difficulté, valeur marché)", "k052": "৳2,00/min", "k053": "Labo ou bac à sable", "k054": "Non nécessaire", "k055": "Single · 40 minutes par jour", "k056": "All-access · 75 minutes par jour", "k057": "Daily Pass", "k058": "Après l’achat, le prix ne change pas pendant 3 mois. S’il passe le contrôle qualité, il reçoit le badge « NexaTute Verified ».", "k059": "Prendre Single · ৳1 000", "k060": "Élèves à l’étranger — prix en USD, l’app dans la langue choisie", "k061": "Retour", "k062": "Choisis une formule", "k063": "EN · bengali", "k064": "SSC (classes 9–10) · version anglaise", "k065": "Tu étudies depuis Dubaï · prix en USD", "k066": "Batch", "k067": "Cours en groupe + 5 min/jour en 1:1", "k068": "/mois", "k069": "Combo", "k070": "Le plus choisi", "k071": "Cours en groupe + 30 min/jour en 1:1", "k072": "Personal", "k073": "75 min/jour en 1:1 · une matière $7", "k074": "Paiement sécurisé par carte via Paddle.", "k075": "Les horaires des cours en groupe s’affichent à ton heure locale (heure du Golfe, GST).", "k076": "Continuer avec Combo · $12", "lp": "Langue"};
+    return L;
+  }
+  renderVals() {
+    var self = this, s = Object.assign({ lang: 'bn' }, this.state || {}), L = this.uiText(), lang = L[s.lang] ? s.lang : 'bn';
+    var FF = { bn: "'Hind Siliguri','Hind',system-ui,sans-serif", en: "'Hind Siliguri','Hind',system-ui,sans-serif", fr: "'Hind Siliguri','Hind',system-ui,sans-serif", hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
+    var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
+    var base = this.renderVals0 ? this.renderVals0() : {};
+    return Object.assign(base, { t: Object.assign({}, L.bn, L[lang]), lang: lang, dir: (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr', ff: FF[lang],
+      langs: ['bn', 'en', 'hi', 'ur', 'ar', 'fr'].map(function (c) { var on = c === lang; return { code: c, name: NAMES[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) });
+  }
+
+  renderVals0() { return {}; }
+}
+</script>
+</body>
+</html>

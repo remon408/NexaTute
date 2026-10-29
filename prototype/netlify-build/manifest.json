@@ -1,0 +1,638 @@
+{
+ "fonts": {
+  "Hind Siliguri": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "Hind": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "Noto Naskh Arabic": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "Noto Nastaliq Urdu": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "Baloo Da 2": [
+   500,
+   600,
+   700,
+   800
+  ],
+  "Baloo 2": [
+   500,
+   600,
+   700,
+   800
+  ],
+  "Baloo Bhaijaan 2": [
+   500,
+   600,
+   700,
+   800
+  ]
+ },
+ "pages": [
+  {
+   "stem": "D01-Learner-Desktop",
+   "page": "D01-Learner-Desktop.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1480,
+   "framed": false,
+   "interactive": false,
+   "title": "D1 · Learner home (desktop)"
+  },
+  {
+   "stem": "D02-Classroom-Desktop",
+   "page": "D02-Classroom-Desktop.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 960,
+   "framed": false,
+   "interactive": false,
+   "title": "D2 · Nexa Teacher classroom (desktop)"
+  },
+  {
+   "stem": "D03-Content-Studio",
+   "page": "D03-Content-Studio.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D3 · Teacher content studio (desktop)"
+  },
+  {
+   "stem": "D04-Institution",
+   "page": "D04-Institution.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D4 · Institution workspace (desktop)"
+  },
+  {
+   "stem": "D05-Admin-Overview",
+   "page": "D05-Admin-Overview.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D5 · Admin: overview & capacity"
+  },
+  {
+   "stem": "D06-Admin-Plans",
+   "page": "D06-Admin-Plans.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1160,
+   "framed": false,
+   "interactive": false,
+   "title": "D6 · Admin: plans, prices & course valuation"
+  },
+  {
+   "stem": "D07-Admin-Safety",
+   "page": "D07-Admin-Safety.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D7 · Admin: safety queue & human controllers"
+  },
+  {
+   "stem": "D08-Admin-Quality",
+   "page": "D08-Admin-Quality.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D8 · Admin: course quality gate"
+  },
+  {
+   "stem": "D09-Admin-Schedule",
+   "page": "D09-Admin-Schedule.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1100,
+   "framed": false,
+   "interactive": false,
+   "title": "D9 · Admin: schedule, holidays, season calendar & add controller"
+  },
+  {
+   "stem": "D10-Admin-Helpline-Sponsor",
+   "page": "D10-Admin-Helpline-Sponsor.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1200,
+   "framed": false,
+   "interactive": false,
+   "title": "D10 · Admin: helplines & Sponsor-a-Learner"
+  },
+  {
+   "stem": "G01-Guardian-1",
+   "page": "G01-Guardian-1.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "G1 · Guardian home, weekly report, purchase approval, data"
+  },
+  {
+   "stem": "G02-Guardian-2",
+   "page": "G02-Guardian-2.html",
+   "mode": "fixed",
+   "w": 1346,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "G2 · Screen time & rules, alerts, PlayBoom progress"
+  },
+  {
+   "stem": "L01-Onboarding-1",
+   "page": "L01-Onboarding-1.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L1 · Onboarding: welcome, Nexa ID, age check, face check"
+  },
+  {
+   "stem": "L02-Onboarding-2",
+   "page": "L02-Onboarding-2.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L2 · Onboarding: course, syllabus & AI plan, consent, Free Beta"
+  },
+  {
+   "stem": "L03-Home-Plans",
+   "page": "L03-Home-Plans.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1400,
+   "framed": true,
+   "interactive": false,
+   "title": "L3 · Home, catalogue, plans, checkout"
+  },
+  {
+   "stem": "L04-Account",
+   "page": "L04-Account.html",
+   "mode": "fixed",
+   "w": 2206,
+   "h": 1400,
+   "framed": true,
+   "interactive": false,
+   "title": "L4 · Wallet & Daily Pass, notifications, profile, settings"
+  },
+  {
+   "stem": "L05-AI-Teacher",
+   "page": "L05-AI-Teacher.html",
+   "mode": "fixed",
+   "w": 2636,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L5 · Nexa Teacher 1:1 class"
+  },
+  {
+   "stem": "L06-Batch-Class",
+   "page": "L06-Batch-Class.html",
+   "mode": "fixed",
+   "w": 2206,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L6 · Batch class"
+  },
+  {
+   "stem": "L07-Co-teacher",
+   "page": "L07-Co-teacher.html",
+   "mode": "fixed",
+   "w": 2636,
+   "h": 1200,
+   "framed": true,
+   "interactive": false,
+   "title": "L7 · Nexa Co-Teacher, recordings, error notebook"
+  },
+  {
+   "stem": "L08-Tests",
+   "page": "L08-Tests.html",
+   "mode": "fixed",
+   "w": 2206,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L8 · Mock test, OMR, result, exam-eve"
+  },
+  {
+   "stem": "L09-Progress",
+   "page": "L09-Progress.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L9 · Learning Insights, Thinking Profile, certificate, Shorts"
+  },
+  {
+   "stem": "L10-StudyHall-Lab",
+   "page": "L10-StudyHall-Lab.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L10 · Live Study Hall, group, Virtual Lab, Classroom Builder"
+  },
+  {
+   "stem": "L11-Moderator",
+   "page": "L11-Moderator.html",
+   "mode": "fixed",
+   "w": 1346,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L11 · Nexa Study Hall Moderator: help, handover, group safety"
+  },
+  {
+   "stem": "L12-More-Learning",
+   "page": "L12-More-Learning.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L12 · BCS viva board, practical exam, Boss battle, leaderboards & events"
+  },
+  {
+   "stem": "L13-Beyond-Syllabus",
+   "page": "L13-Beyond-Syllabus.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L13 · Beyond the syllabus: reading, explain-it, experiments & projects, curiosity & life skills"
+  },
+  {
+   "stem": "L14-Safety-Links-Global",
+   "page": "L14-Safety-Links-Global.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L14 · Wellbeing care, link check, any course, international (English + USD)"
+  },
+  {
+   "stem": "L15-Free-Growth",
+   "page": "L15-Free-Growth.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "L15 · Lifetime free tier, help ladder, Year Pass, gift cards & Sponsor-a-Learner"
+  },
+  {
+   "stem": "Main",
+   "page": "Main.html",
+   "mode": "fixed",
+   "w": 1776,
+   "h": 1180,
+   "framed": true,
+   "interactive": true,
+   "title": "NexaTute — style guide & screen index"
+  },
+  {
+   "stem": "P01-PlayBoom-1",
+   "page": "P01-PlayBoom-1.html",
+   "mode": "fixed",
+   "w": 1346,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "P1 · PlayBoom: who is playing, home, counting game"
+  },
+  {
+   "stem": "P02-PlayBoom-2",
+   "page": "P02-PlayBoom-2.html",
+   "mode": "fixed",
+   "w": 1346,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "P2 · PlayBoom: AI Play Buddy, Handwriting Studio, break"
+  },
+  {
+   "stem": "T01-Teacher-Mobile",
+   "page": "T01-Teacher-Mobile.html",
+   "mode": "fixed",
+   "w": 1346,
+   "h": 1100,
+   "framed": true,
+   "interactive": false,
+   "title": "T1 · Teacher app: home, content check, class report"
+  },
+  {
+   "stem": "W00-Website-Preview",
+   "page": "index.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 8000,
+   "framed": false,
+   "interactive": true,
+   "title": "Website preview — সব মকআপ ও প্রোটোটাইপ এক জায়গায়"
+  },
+  {
+   "stem": "X01-Prototype-Flow1",
+   "page": "X01-Prototype-Flow1.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X1 · Prototype Flow 1: নতুন শিক্ষার্থী (Play)"
+  },
+  {
+   "stem": "X02-Prototype-Flow2",
+   "page": "X02-Prototype-Flow2.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X2 · Prototype Flow 2: ক্লাস ও Nexa Co-Teacher — হোম, 1:1 ক্লাসের অপেক্ষা, Nexa Teacher-এর লাইভ ক্লাস ও স্মার্ট হোয়াইটবোর্ড, ক্লাসের ভেতরে ভুলের খাতা (সাইড প্যানেল, 3 ও 7 দিনে রিটেস্ট), এক্সিট টিকিট, ক্লাস সারাংশ, রেকর্ডিং (Play)"
+  },
+  {
+   "stem": "X03-Prototype-Flow3",
+   "page": "X03-Prototype-Flow3.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X3 · Prototype Flow 3: কেনাকাটা ও অভিভাবকের অনুমোদন — দুই ফোন (Play)"
+  },
+  {
+   "stem": "X04-Prototype-Flow4",
+   "page": "X04-Prototype-Flow4.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X4 · Prototype Flow 4: Study Hall, Q&A ও Nexa Study Hall Moderator (Play)"
+  },
+  {
+   "stem": "X05-Prototype-Flow5",
+   "page": "X05-Prototype-Flow5.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X5 · Prototype Flow 5: PlayBoom — কারিকুলাম বাছাই, 14টি নতুন জগৎ (মুদি দোকান, গল্প, কোডিং খেলা যায়), আমার বাগান ও স্টিকার, পরিবারের কণ্ঠ, অভিভাবকের অংশ, Play Buddy, হাতের লেখা (Play)"
+  },
+  {
+   "stem": "X06-Prototype-Batch",
+   "page": "X06-Prototype-Batch.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X6 · Prototype: ব্যাচ ক্লাস — পোল, জোড়ায় আলোচনা, প্রশ্ন-দেয়াল, র‍্যাঙ্ক (Play)"
+  },
+  {
+   "stem": "X07-Prototype-Test",
+   "page": "X07-Prototype-Test.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X7 · Prototype: মক টেস্ট ও OMR — মক টেস্ট, OMR, সত্য/মিথ্যা, শূন্যস্থান, মিলকরণ, লিখিত উত্তর আপলোড ও AI মার্কিং (বোর্ডের নিয়মে অংশভিত্তিক নম্বর), রিচেক, প্রক্টরিং (শুধু সার্টিফিকেট পরীক্ষা, 18+), ফলাফল, ভুলের খাতা ও পরীক্ষার আগের রাত (Play)"
+  },
+  {
+   "stem": "X08-Prototype-Guardian",
+   "page": "X08-Prototype-Guardian.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X8 · Prototype: অভিভাবক অ্যাপ — সাপ্তাহিক রিপোর্ট (সিলেবাস শেষের সম্ভাব্য তারিখ, MindForge), অনুমোদন, সম্মতি ও ডেটা, বার্তা (Play)"
+  },
+  {
+   "stem": "X09-Prototype-Teacher",
+   "page": "X09-Prototype-Teacher.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X9 · Prototype: শিক্ষক অ্যাপ — কনটেন্ট আপলোড ও যাচাই, ক্লাস রিপোর্ট, শিক্ষার্থী (Play)"
+  },
+  {
+   "stem": "X10-Prototype-Admin",
+   "page": "X10-Prototype-Admin.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X10 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — ক্যাপাসিটি, শিক্ষার্থী ও ব্যবহার, প্রতিষ্ঠান, ইভেন্ট-সার্টিফিকেট-চাকরি, হিসাব ও অর্থ (জার্নাল, লেজার, Trial Balance, বেতন, ভেন্ডর, লোন নেওয়া-দেওয়া, শেয়ার হস্তান্তর, অনুমোদন, অডিট লগ, ক্লাউড ব্যাকআপ), ভূমিকা ও অ্যাক্সেস (স্টাফের পাসকি), Nexa Guard, ছুটি, দেশভিত্তিক হেল্পলাইন ও স্পনসর — প্ল্যান ও মডিউল এখন X25 / X26-এ (Play)"
+  },
+  {
+   "stem": "X11-Prototype-Tools",
+   "page": "X11-Prototype-Tools.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X11 · Prototype: ক্যালকুলেটর ও ডিকশনারি — আসল পরীক্ষার নিয়ম, গ্রাফ, একক রূপান্তর, আমার শব্দ, ছবির ডিকশনারি (Play)"
+  },
+  {
+   "stem": "X12-Prototype-Institute",
+   "page": "X12-Prototype-Institute.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X12 · Prototype: Institute Admin — স্কুল, কলেজ, কোচিং, বিশ্ববিদ্যালয় (18+); ক্যাম্পাস, শিক্ষার্থীর অবস্থা, ক্যালেন্ডার, মেন্টর, রিপোর্ট, রিমাইন্ডার, প্লেসমেন্ট; MindForge ক্লাস সারাংশ; নোটিফিকেশন, স্টাফ চ্যাট ও কমপ্লায়েন্স সতর্কতা (Play)"
+  },
+  {
+   "stem": "X13-Prototype-LandingAI",
+   "page": "X13-Prototype-LandingAI.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X13 · Prototype: Landing Page AI — পরামর্শ, আইডিয়া ও আদেশ; প্রিভিউ ও অনুমোদন, Keyword, ভার্সন ও রোলব্যাক (Play)"
+  },
+  {
+   "stem": "X14-Prototype-Ops",
+   "page": "X14-Prototype-Ops.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X14 · Prototype: প্ল্যাটফর্ম অপারেশন — AI মডেল ও প্রম্পট ভার্সন (রোলব্যাক), API খরচের সীমা, ভুল উত্তরের এস্কেলেশন, প্রতি শিক্ষার্থীর দৈনিক খরচ, GPU লোড, ফিচার ফ্ল্যাগ ও A/B টেস্ট, মেইনটেন্যান্স পেজ, ব্যাকআপ ও রিস্টোর, ইনসিডেন্ট লগ (Play)"
+  },
+  {
+   "stem": "X15-Prototype-Accounts",
+   "page": "X15-Prototype-Accounts.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X15 · Prototype: অ্যাকাউন্ট, সাপোর্ট ও আইন — অ্যাকাউন্ট খোঁজা, রিড-অনলি সাপোর্ট ভিউ, OTP ব্যতিক্রম, একাধিক অ্যাকাউন্টের অপব্যবহার, সম্মতির রেকর্ড, ডেটা ডাউনলোড/মুছে ফেলা, T&C ভার্সন, ডেটা ফাঁসের রেজিস্টার, লিংক ব্লকলিস্ট (Play)"
+  },
+  {
+   "stem": "X16-Prototype-Quality",
+   "page": "X16-Prototype-Quality.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X16 · Prototype: কনটেন্টের মান ও টাকা — উত্তর-ক্যাশ ও ভুল উত্তর রিভিউ, লিখিত উত্তরের মার্কিং রিভিউ ও রিচেক কিউ (24 ঘণ্টায় উত্তর), প্রক্টরিং ফ্ল্যাগ রিভিউ, সার্কুলার ও পরীক্ষা-পরবর্তী সমাধান, অনুবাদ রিভিউ, গ্লসারি ও ক্যালকুলেটরের নিয়ম, ডিসকাউন্ট, Crash Pack সিট, গিফট কার্ড, রিফান্ড, পেআউট ও কর, VAT রিপোর্ট, দামের নিয়মের KPI; MindForge প্রশ্ন-ভান্ডার ও যাচাই (জেনারেটর, স্যাম্পল রিভিউ, ক্যালিব্রেশন, DIF, সাইকোমেট্রিশিয়ানের অনুমোদন) ও MindForge KPI (Play)"
+  },
+  {
+   "stem": "X17-Prototype-Growth",
+   "page": "X17-Prototype-Growth.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X17 · Prototype: প্রবৃদ্ধি — AI CMS, শিক্ষার্থী কোথায় ঝরে পড়ে (ফানেল ও সাপ্তাহিক AI বিশ্লেষণ), Marketing Hub, অ্যাফিলিয়েট, B2B CRM, রিভিউ, প্রতিষ্ঠাতা/বিনিয়োগকারী রিপোর্ট (Play)"
+  },
+  {
+   "stem": "X18-Prototype-MindForge",
+   "page": "X18-Prototype-MindForge.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X18 · Prototype: MindForge — দিনের পাজল ও আত্মবিশ্বাস যাচাই, দক্ষতার অগ্রগতি (IQ টেস্ট নয়), সিলেবাস-টপিক ম্যাপ, ডেটা কোথা থেকে আসে, সিলেবাস শেষের সম্ভাব্য তারিখ, Pro ও অভিভাবকের অনুমোদন (Play)"
+  },
+  {
+   "stem": "X19-Prototype-MarketingHub",
+   "page": "X19-Prototype-MarketingHub.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X19 · Prototype: AI Marketing Hub — তিন পণ্যের এক প্ল্যাটফর্ম (NexaTute, Motion Studio, NexaLogicDev): কনটেন্ট, প্রকাশ, SEO, ডেমো, প্রশ্নের উত্তর, অনুমোদন-লাগা ইমেইল, জার্নি, Prospects ও CRM, আউটরিচ, রিপোর্ট, বিজ্ঞাপন (Play)"
+  },
+  {
+   "stem": "X20-Prototype-Landing",
+   "page": "X20-Prototype-Landing.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X20 · Prototype: NexaTute ল্যান্ডিং পেজ (nexatute.com) — Landing Page AI-এর সঙ্গে যুক্ত, ছয় ভাষা, দেশ ও সিলেবাস বাছাই (যেকোনো দেশের সিলেবাস; দাম থাকার দেশ অনুযায়ী), প্ল্যান ও দাম, লাইভ ডেমো, কুকি সম্মতি, অ্যাডমিন প্রিভিউ, Nexa Notes (পড়ার টিপস, পরীক্ষার খবর ও ভিডিও) (Play)"
+  },
+  {
+   "stem": "X21-Prototype-Comms",
+   "page": "X21-Prototype-Comms.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X21 · Prototype: নোটিফিকেশন ও চ্যাট (প্ল্যাটফর্ম অ্যাডমিন) — বেল ও নোটিফিকেশন সেন্টার, লক-স্ক্রিন পুশ, কন্ট্রোল প্যানেল (কে কোন নোটিফিকেশন পাবেন), স্টাফ চ্যাট (1:1, অনুমোদনে গ্রুপ, ভূমিকা অনুযায়ী ভয়েস/ভিডিও), কমপ্লায়েন্স সতর্কতা, পাসওয়ার্ড-সুরক্ষিত সামারি আর্কাইভ (Play)"
+  },
+  {
+   "stem": "X22-Prototype-AvatarVoice",
+   "page": "X22-Prototype-AvatarVoice.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X22 · Prototype: অ্যাভাটার ও কণ্ঠ স্টুডিও (প্ল্যাটফর্ম অ্যাডমিন) — অ্যাভাটার লাইব্রেরি ও অনুমোদন, কণ্ঠের লাইব্রেরি, clone-এর সম্মতি, অভিযোগ ও সরানো, marketplace-এর দাম (Play)"
+  },
+  {
+   "stem": "X23-Prototype-AvatarVoice-User",
+   "page": "X23-Prototype-AvatarVoice-User.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X23 · Prototype: অ্যাভাটার ও কণ্ঠ — শিক্ষার্থী, অভিভাবক, শিক্ষক (Play)"
+  },
+  {
+   "stem": "X24-Prototype-Legal",
+   "page": "X24-Prototype-Legal.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X24 · Prototype: NexaTute আইনি পেজ (nexatute.com/legal) — X20 থেকে আলাদা করা 19টি আইনি পেজ, ছয় ভাষা, #legal/<id> ডিপ লিংক, Free Beta / লাইভ ভিউ, অ্যাডমিন প্রিভিউ (Play)"
+  },
+  {
+   "stem": "X25-Prototype-AdminPlans",
+   "page": "X25-Prototype-AdminPlans.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X25 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — প্ল্যান ও মডিউল: প্ল্যান অনুযায়ী মডিউল (রিক্রুটমেন্ট টেস্ট অ্যাড-অন, লিখিত-চেকের দৈনিক সীমা, রিচেক ও মার্কিং, MindForge), পুরো প্ল্যাটফর্মের সুইচ, প্ল্যান ও দাম (মূল দামের টেবিল, অ্যাড-অন, পাস, ছাড়, ট্রায়াল, রিফান্ড, স্টোরেজ) (Play)"
+  },
+  {
+   "stem": "X26-Prototype-AdminRules",
+   "page": "X26-Prototype-AdminRules.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X26 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — প্ল্যান ও মডিউল: ক্লাস, নিরাপত্তা ও শেখার নিয়ম (ভয়েস ও অডিও ক্যাশ, লগইন, এনগেজমেন্ট, স্টাডি বট) ও Free Beta সুরক্ষা (Play)"
+  },
+  {
+   "stem": "X27-Prototype-CoAdmin",
+   "page": "X27-Prototype-CoAdmin.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X27 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — Nexa Co-Admin: প্রত্যেক অ্যাডমিনের ভূমিকা ও অনুমতি অনুযায়ী AI সহকারী (দামের মডেল, হিসাবে বেতনের এন্ট্রি — প্রিভিউ, নিশ্চিতকরণ ও দ্বিতীয় অনুমোদন, প্রত্যাখ্যান), কাজের লগ, সেটিংস, চ্যাট অ্যাপে Co-Admin (WhatsApp, Messenger, imo) (Play)"
+  }
+ ]
+}

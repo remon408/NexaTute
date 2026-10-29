@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Teacher content studio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:16px;padding:18px;box-sizing:border-box;min-width:0}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.row{display:flex;align-items:center;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;background:#3B34C9;color:#fff;font:600 14px/1 var(--ff);border:0;text-decoration:none}
+.btn2{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;background:#fff;color:#141A33;font:600 14px/1 var(--ff);border:1px solid #D3D8E4}
+.seg{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;font-size:14px;border:1px solid transparent}
+.seg.on{background:#F0F1FB;border-color:#C9C6F6;font-weight:600}
+.seg i{font-style:normal;font-size:11px;font-weight:700;width:40px;flex:none;color:#59617A}
+.lbl{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.ta{width:100%;box-sizing:border-box;border:1px solid #D3D8E4;border-radius:12px;padding:12px;font:500 14px/1.6 var(--ff);color:#141A33;resize:none}
+.inp{width:100%;box-sizing:border-box;height:44px;border:1px solid #D3D8E4;border-radius:10px;padding:0 12px;font:500 14px var(--ff);color:#141A33}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.ck span{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:none}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;color:#59617A;font-weight:600;padding:10px 12px;border-bottom:1px solid #E2E6EF;white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid #EEF0F5;white-space:nowrap}
+/* fix11 (owner 22:15): language picker for the static wireframe — 6 languages, default bn */
+.lpk{position:absolute;inset-inline-end:16px;bottom:12px;display:flex;gap:4px;padding:4px;background:#fff;border:1px solid #D3D8E4;border-radius:12px;z-index:5;box-shadow:0 4px 14px rgba(20,26,51,.10)}
+.lpk button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:none;font-family:var(--ff);font-size:12px;font-weight:600;color:#141A33;cursor:pointer}
+.lpk button.on{background:#3B34C9;color:#fff}
+:lang(ur){line-height:1.75}
+.btn,.btn2{height:auto!important;min-height:52px;padding-top:6px!important;padding-bottom:6px!important;line-height:1.25!important;text-align:center}
+/* longer languages (fr, ur, hi) must never lose text: phone bodies scroll (scrollbar hidden) instead of clipping */
+.ph .bd,.ph>.bd{overflow-y:auto!important;scrollbar-width:none}
+.ph .bd::-webkit-scrollbar{display:none}
+.qsr{display:flex;flex-direction:column;gap:8px;background:#F7F5FF;border-color:#D9D2F5}
+.qsr .t3{margin:0;font-size:14px}
+.qsr ul{margin:0;padding-inline-start:18px;font-size:12.5px;line-height:1.5;color:#3F475E;display:flex;flex-direction:column;gap:4px}
+.qtag{align-self:flex-start;background:#FFF3DD;color:#8A4B00;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;background:#F5F6FA;color:#141A33;min-height:1100px;display:flex;flex-direction:column;--ff:{{ ff }};font-family:var(--ff)">
+<div class="lpk" role="group" aria-label="{{ t.lp }}"><sc-for list="{{ langs }}" as="l" hint-placeholder-count="6"><button class="{{ l.cls }}" aria-pressed="{{ l.on }}" lang="{{ l.code }}" onClick="{{ l.pick }}">{{ l.name }}</button></sc-for></div>
+
+<header style="background:#fff;border-bottom:1px solid #E2E6EF;padding:14px clamp(16px,3vw,32px);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+  <div class="row"><div style="width:36px;height:36px;border-radius:10px;background:#3B34C9;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px">{{ t.k001 }}</div><span style="font-weight:700;font-size:18px">{{ t.k002 }}</span></div>
+  <span class="xs" style="flex:1;min-width:200px">{{ t.k003 }}</span>
+  <span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k004 }}</span>
+  <button class="btn2">{{ t.k005 }}</button>
+  <button class="btn">{{ t.k006 }}</button>
+  <button aria-label="{{ fx.fb_btn }}" title="{{ fx.fb_btn }}" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;padding:0 12px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;color:#3B34C9;font-weight:600;font-size:13px;font-family:inherit;cursor:pointer"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H9l-5 4z"/><path d="M12 7.5v4M12 14v.01"/></svg><span>{{ fx.fb_btn_s }}</span></button>   <!-- fix18: Report a problem / Give feedback -->
+</header>
+
+<div style="display:flex;flex-wrap:wrap;gap:18px;padding:20px clamp(16px,3vw,32px);box-sizing:border-box;align-items:flex-start">
+  <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:16px;min-width:0">
+  <aside class="cd" style="display:flex;flex-direction:column;gap:4px">
+    <p class="t3" style="margin-bottom:8px">{{ t.k007 }}</p>
+    <div class="seg"><i>{{ t.k008 }}</i>{{ t.k009 }}</div>
+    <div class="seg"><i>{{ t.k010 }}</i>{{ t.k011 }}</div>
+    <div class="seg on"><i>{{ t.k012 }}</i>{{ t.k013 }}</div>
+    <div class="seg"><i>{{ t.k010 }}</i>{{ t.k014 }}</div>
+    <div class="seg"><i>{{ t.k012 }}</i>{{ t.k015 }}</div>
+    <div class="seg"><i>{{ t.k010 }}</i>{{ t.k016 }}</div>
+    <div class="seg"><i>{{ t.k012 }}</i>{{ t.k017 }}</div>
+    <div class="seg"><i>{{ t.k010 }}</i>{{ t.k018 }}</div>
+    <div class="seg"><i>{{ t.k019 }}</i>{{ t.k020 }}</div>
+    <button class="btn2" style="margin-top:10px;border-style:dashed">{{ t.k021 }}</button>
+  </aside>
+  <!-- fix17: past-question source rule (IB treated like Cambridge/Pearson) -->
+  <div class="cd qsr" role="note"><p class="t3">📚 {{ fx.qs_h }}</p><span class="qtag">{{ fx.qs_tag }}</span><ul><li>{{ fx.qs_1 }}</li><li>{{ fx.qs_2 }}</li><li>{{ fx.qs_3 }}</li></ul></div>
+  </div>
+
+  <section style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:16px">
+    <div class="cd" style="display:flex;flex-direction:column;gap:14px">
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap"><p class="t2">{{ t.k013 }}</p><span class="xs">{{ t.k022 }}</span></div>
+      <div><label class="lbl" for="sc">{{ t.k023 }}</label><textarea id="sc" class="ta" style="height:110px">{{ t.k024 }}</textarea></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+        <div class="cd" style="padding:14px;border-color:#C9C6F6"><div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="t3" style="font-size:14px">{{ t.k025 }}</span><span class="chip">{{ t.k026 }}</span></div><p class="sm">{{ t.k027 }}</p></div>
+        <div class="cd" style="padding:14px"><div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="t3" style="font-size:14px">{{ t.k028 }}</span><span class="chip" style="background:#F0F1F6;color:#59617A">{{ t.k029 }}</span></div><p class="sm">{{ t.k030 }}</p></div>
+      </div>
+      <!-- fix8 (26 Oct 2026), R8-proposal-20: who delivers the script, as-is / AI improve -->
+      <div class="row" style="gap:18px;flex-wrap:wrap;font-size:13px">
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#141A33">{{ t.k031 }}</span><span class="chip" style="background:#141A33;color:#fff">{{ t.k032 }}</span><span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k033 }}</span></div>
+        <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#141A33">{{ t.k034 }}</span><span class="chip" style="background:#F0F1F6;color:#141A33">{{ t.k035 }}</span><span class="chip" style="background:#141A33;color:#fff">{{ t.k036 }}</span><span class="xs">{{ t.k037 }}</span></div>
+      </div>
+      <p class="xs" style="margin:0">{{ t.k038 }}</p>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+      <p class="t2">{{ t.k014 }}</p>
+      <div><label class="lbl" for="pq">{{ t.k039 }}</label><input id="pq" class="inp" value="{{ t.k076 }}"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+        <input class="inp" aria-label="{{ t.k040 }}" value="{{ t.k077 }}">
+        <input class="inp" aria-label="{{ t.k041 }}" value="{{ t.k078 }}">
+        <input class="inp" aria-label="{{ t.k042 }}" value="{{ t.k079 }}" style="border:2px solid #17804F">
+        <input class="inp" aria-label="{{ t.k043 }}" value="{{ t.k080 }}">
+      </div>
+      <p class="xs" style="margin:0">{{ t.k044 }}</p>
+    </div>
+    <div class="cd" style="padding:0;overflow:hidden">
+      <div class="row" style="justify-content:space-between;padding:16px 18px 6px"><p class="t2">{{ t.k045 }}</p><button type="button" style="background:none;border:0;padding:0;font:inherit;font-size:13px;font-weight:600;color:#3B34C9;text-decoration:underline;cursor:pointer;min-height:32px">{{ t.k046 }}</button></div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>#</th><th>{{ t.k039 }}</th><th>{{ t.k047 }}</th><th>{{ t.k048 }}</th><th>{{ t.k049 }}</th><th>{{ t.k050 }}</th></tr></thead>
+          <tbody>
+            <tr><td>21</td><td>{{ t.k051 }}</td><td>0.62</td><td>0.41</td><td>1,204</td><td><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k052 }}</span></td></tr>
+            <tr><td>22</td><td>{{ t.k053 }}</td><td>0.48</td><td>0.37</td><td>1,180</td><td><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k052 }}</span></td></tr>
+            <tr><td>23</td><td>{{ t.k054 }}</td><td>0.91</td><td>0.08</td><td>1,233</td><td><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k055 }}</span></td></tr>
+            <tr><td>24</td><td>{{ t.k056 }}</td><td>0.29</td><td>0.46</td><td>998</td><td><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k052 }}</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <aside style="flex:1 1 280px;display:flex;flex-direction:column;gap:16px">
+    <div class="cd">
+      <p class="t3" style="margin-bottom:4px">{{ t.k057 }}</p>
+      <div class="ck"><span style="background:#E3F5EC;color:#0F6B40">✓</span><div>{{ t.k058 }}<div class="xs">{{ t.k059 }}</div></div></div>
+      <div class="ck"><span style="background:#E3F5EC;color:#0F6B40">✓</span><div>{{ t.k060 }}</div></div>
+      <div class="ck"><span style="background:#E3F5EC;color:#0F6B40">✓</span><div>{{ t.k061 }}</div></div>
+      <div class="ck"><span style="background:#FFF3DD;color:#8A4B00">!</span><div>{{ t.k062 }}<div class="xs">{{ t.k063 }}</div></div></div>
+      <div class="ck" style="border:0"><span style="background:#F0F1F6;color:#59617A">5</span><div>{{ t.k064 }}</div></div>
+    </div>
+    <div class="cd" style="display:flex;flex-direction:column;gap:8px;background:#F0F1FB;border-color:#DCDDF7">
+      <p class="t3" style="font-size:14px">{{ t.k065 }}</p>
+      <p class="sm" style="color:#141A33">{{ t.k066 }}</p>
+      <a href="X09-Prototype-Teacher.dc.html" style="font-size:13px;font-weight:600">{{ t.k067 }}</a>
+    </div>
+    <!-- fix8 (26 Oct 2026), R8-proposal-20: templates, Motion Studio export, upload rules -->
+    <div class="cd" style="display:flex;flex-direction:column;gap:10px">
+      <p class="t3" style="font-size:14px">{{ t.k068 }}</p>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="xs" style="font-weight:600;color:#141A33">{{ t.k069 }}</span><span class="chip">{{ t.k070 }}</span><span class="chip">{{ t.k071 }}</span><span class="chip">{{ t.k072 }}</span></div>
+      <a href="X23-Prototype-AvatarVoice-User.dc.html" style="font-size:13px;font-weight:600">{{ t.k073 }}</a>
+      <span class="chip" style="align-self:flex-start;background:#FFF3DD;color:#8A4B00;white-space:normal">{{ t.k074 }}</span>
+      <p class="xs" style="margin:0">{{ t.k075 }}</p>
+    </div>
+  </aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  // fix17 (owner 28 Oct 2026 16:38; hub.md v1.5 §4c): question-source rule in the Content Studio — 6 languages
+  fx16(l) { var D = {"bn": {"qs_h": "প্রশ্নের উৎস", "qs_1": "বাংলাদেশের বোর্ড/BCS-এর প্রশ্ন: হুবহু, বোর্ড ও সাল ট্যাগ সহ", "qs_2": "Cambridge · Pearson · IB: কখনো হুবহু নয় — সিলেবাস মিলিয়ে নিজস্ব প্রশ্ন + অফিশিয়াল সাইটের লিংক", "qs_3": "পুরো প্রশ্নপত্র কখনো একসাথে নয়", "qs_tag": "বোর্ড প্রশ্ন · ঢাকা বোর্ড · SSC 2024 (নমুনা)", "fb_btn": "সমস্যা জানান / মতামত দিন", "fb_btn_s": "মতামত"}, "en": {"qs_h": "Question sources", "qs_1": "Bangladesh board / BCS questions: word for word, tagged with board and year", "qs_2": "Cambridge · Pearson · IB: never copied — original syllabus-matched questions + official-site links", "qs_3": "Never a whole past paper", "qs_tag": "Board question · Dhaka Board · SSC 2024 (sample)", "fb_btn": "Report a problem / Give feedback", "fb_btn_s": "Feedback"}, "hi": {"qs_h": "प्रश्नों के स्रोत", "qs_1": "बांग्लादेश बोर्ड / BCS प्रश्न: ज्यों-के-त्यों, बोर्ड और साल के टैग के साथ", "qs_2": "Cambridge · Pearson · IB: कभी कॉपी नहीं — सिलेबस से मिलते अपने प्रश्न + आधिकारिक साइट के लिंक", "qs_3": "पूरा प्रश्नपत्र कभी एक साथ नहीं", "qs_tag": "बोर्ड प्रश्न · ढाका बोर्ड · SSC 2024 (नमूना)", "fb_btn": "समस्या बताएँ / सुझाव दें", "fb_btn_s": "सुझाव"}, "ur": {"qs_h": "سوالوں کے ماخذ", "qs_1": "بنگلہ دیش بورڈ / ⁦BCS⁩ سوال: ہوبہو، بورڈ اور سال کے ٹیگ کے ساتھ", "qs_2": "⁦Cambridge · Pearson · IB⁩: کبھی نقل نہیں — سلیبس سے ملتے اپنے سوال + آفیشل سائٹ کے لنک", "qs_3": "پورا پرچہ کبھی ایک ساتھ نہیں", "qs_tag": "بورڈ سوال · ڈھاکہ بورڈ · ⁦SSC 2024⁩ (نمونہ)", "fb_btn": "مسئلہ بتائیں / رائے دیں", "fb_btn_s": "رائے"}, "ar": {"qs_h": "مصادر الأسئلة", "qs_1": "أسئلة المجالس البنغلاديشية / ⁦BCS⁩: حرفيًا، مع وسم المجلس والسنة", "qs_2": "⁦Cambridge · Pearson · IB⁩: لا نسخ أبدًا — أسئلة أصلية مطابقة للمنهج + روابط المواقع الرسمية", "qs_3": "لا ورقة امتحان كاملة أبدًا", "qs_tag": "سؤال مجلس · مجلس دكا · ⁦SSC 2024⁩ (عيّنة)", "fb_btn": "الإبلاغ عن مشكلة / إبداء الرأي", "fb_btn_s": "ملاحظات"}, "fr": {"qs_h": "Sources des questions", "qs_1": "Questions des conseils du Bangladesh / BCS : telles quelles, avec conseil et année", "qs_2": "Cambridge · Pearson · IB : jamais copiées — questions originales alignées sur le programme + liens vers les sites officiels", "qs_3": "Jamais un ancien sujet complet", "qs_tag": "Question du conseil · conseil de Dhaka · SSC 2024 (exemple)", "fb_btn": "Signaler un problème / Donner votre avis", "fb_btn_s": "Avis"}}; return D[l] || D.bn; }
+  // fix11 (owner 26 Oct 2026, 22:15): 6-language dictionary — identical keys; ur/ar numbers in LTR isolates
+  uiText() {
+    var L = {};
+    L.bn = {"k001": "N", "k002": "Content Studio", "k003": "SSC গণিত › অধ্যায় 4 › পাঠ 3: দ্বিঘাত সূত্র ও নিশ্চায়ক", "k004": "খসড়া · স্বয়ংক্রিয় সংরক্ষিত", "k005": "প্রিভিউ", "k006": "যাচাইয়ে পাঠান", "k007": "পাঠের কাঠামো · 40 মিনিট", "k008": "3 মি.", "k009": "রিট্রিভাল ওয়ার্ম-আপ", "k010": "2 মি.", "k011": "সমস্যা আগে: বাগানের বেড়া", "k012": "8 মি.", "k013": "শেখানো 1: সূত্রের উৎপত্তি", "k014": "পোল 1", "k015": "শেখানো 2: নিশ্চায়ক", "k016": "পোল 2", "k017": "শেখানো 3: উদাহরণ → ফেডেড", "k018": "পোল 3", "k019": "5 মি.", "k020": "এক্সিট টিকিট ও সারাংশ", "k021": "+ অংশ যোগ করুন", "k022": "স্ক্রিপ্ট আপলোড: Word, PDF বা ছবি", "k023": "স্ক্রিপ্ট ও মূল ধারণা", "k024": "ax² + bx + c = 0 থেকে বর্গ পূর্ণ করে সূত্রে পৌঁছাব। প্রতিটি ধাপে শিক্ষার্থীকে আগে জিজ্ঞাসা করব: “এবার দুই পাশে কী যোগ করলে পূর্ণ বর্গ হবে?”", "k025": "ব্যাখ্যা A · ধাপে ধাপে", "k026": "পোলে 74%", "k027": "বীজগাণিতিক ধাপ, প্রতি ধাপে প্রশ্ন।", "k028": "ব্যাখ্যা B · ছবি", "k029": "পোলে 61%", "k030": "বর্গক্ষেত্রের টুকরো জোড়া দিয়ে পূর্ণ বর্গ।", "k031": "কে পড়াবে:", "k032": "আমার অবতার ও কণ্ঠ", "k033": "Nexa Teacher", "k034": "স্ক্রিপ্ট:", "k035": "যেমন আছে", "k036": "AI দিয়ে উন্নত", "k037": "— পরিবর্তনগুলো অনুমোদনের জন্য দেখানো হবে", "k038": "A/B পরীক্ষা: যে ব্যাখ্যায় পোলের ফল ভালো, সেটাই রাখা হবে।", "k039": "প্রশ্ন", "k040": "বিকল্প ক", "k041": "বিকল্প খ", "k042": "বিকল্প গ, সঠিক", "k043": "বিকল্প ঘ", "k044": "ভুল বিকল্পে ভুলের ধরন ট্যাগ করুন: খ = ধারণা, ক = হিসাব, ঘ = অসাবধানতা", "k045": "প্রশ্নব্যাংক · item analysis", "k046": "ইমপোর্ট: Excel · CSV · Word", "k047": "কঠিনতা", "k048": "পার্থক্য-ক্ষমতা", "k049": "উত্তর দিয়েছে", "k050": "অবস্থা", "k051": "নিশ্চায়ক শূন্য হলে মূল কেমন?", "k052": "ভালো", "k053": "2x² − 8 = 0 মূলদ্বয়ের যোগফল", "k054": "x² − 9 = 0 এর মূল", "k055": "পুনর্বিবেচনা", "k056": "b² − 4ac < 0 হলে গ্রাফ", "k057": "প্রকাশের আগে যাচাই", "k058": "শেখার ফলাফল লেখা আছে", "k059": "ISO 21001 অনুযায়ী", "k060": "কপিরাইট নিশ্চিত", "k061": "কনটেন্ট-সেফটি চেক", "k062": "রুব্রিক: “বোঝাপড়া যাচাই” 3/4", "k063": "শেখানো 2-এ একটি প্রশ্ন যোগ করুন", "k064": "বিষয়-বিশেষজ্ঞ রিভিউ", "k065": "শিক্ষকের আচরণবিধি", "k066": "প্রকাশিত প্রতিটি কনটেন্ট আচরণবিধি মেনে চলে। লঙ্ঘনে সতর্কতা → স্থগিত → নিষেধাজ্ঞা, আপিলের সুযোগসহ।", "k067": "আচরণবিধি পড়ুন", "k068": "আপলোড ও রপ্তানি", "k069": "প্রশ্নব্যাংকের টেমপ্লেট:", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "আমার অবতার ও কণ্ঠ সেট করুন", "k074": "Motion Studio এক্সপ্লেইনার ভিডিও হিসেবে রপ্তানি", "k075": "আপলোড ফ্রি, কোনো সীমা নেই। শুরুতে প্রাইভেট → ক্লাস বা প্রতিষ্ঠানে শেয়ার → পাবলিক শুধু মান যাচাইয়ের পর। বইয়ের হুবহু লেখা আটকানো হয়; ইমপোর্ট করা প্রশ্নের উত্তর AI যাচাই করে।", "k076": "x² + 6x + ___ = (x + 3)² — ফাঁকা ঘরে কী বসবে?", "k077": "ক) 3", "k078": "খ) 6", "k079": "গ) 9 ✓", "k080": "ঘ) 36", "lp": "ভাষা"};
+    L.en = {"k001": "N", "k002": "Content Studio", "k003": "SSC Maths › Chapter 4 › Lesson 3: the quadratic formula and the discriminant", "k004": "Draft · saved automatically", "k005": "Preview", "k006": "Send for checking", "k007": "Lesson structure · 40 minutes", "k008": "3 min", "k009": "Retrieval warm-up", "k010": "2 min", "k011": "Problem first: the garden fence", "k012": "8 min", "k013": "Teaching 1: where the formula comes from", "k014": "Poll 1", "k015": "Teaching 2: the discriminant", "k016": "Poll 2", "k017": "Teaching 3: example → faded", "k018": "Poll 3", "k019": "5 min", "k020": "Exit ticket and summary", "k021": "+ Add a part", "k022": "Upload a script: Word, PDF or image", "k023": "Script and key idea", "k024": "From ax² + bx + c = 0 we complete the square to reach the formula. At every step I first ask the learner: “What do we add to both sides to make a perfect square?”", "k025": "Explanation A · step by step", "k026": "74% in the poll", "k027": "Algebraic steps, a question at each step.", "k028": "Explanation B · picture", "k029": "61% in the poll", "k030": "A perfect square built by joining square pieces.", "k031": "Who teaches:", "k032": "My avatar & voice", "k033": "Nexa Teacher", "k034": "Script:", "k035": "Use as-is", "k036": "AI improve", "k037": "— changes will be shown to you for approval", "k038": "A/B test: the explanation with better poll results is kept.", "k039": "Question", "k040": "Option A", "k041": "Option B", "k042": "Option C, correct", "k043": "Option D", "k044": "Tag the mistake type on wrong options: B = concept, A = calculation, D = careless", "k045": "Question bank · item analysis", "k046": "Import: Excel · CSV · Word", "k047": "Difficulty", "k048": "Discrimination", "k049": "Answered", "k050": "Status", "k051": "What are the roots like when the discriminant is zero?", "k052": "Good", "k053": "Sum of the roots of 2x² − 8 = 0", "k054": "Roots of x² − 9 = 0", "k055": "Review again", "k056": "Graph when b² − 4ac < 0", "k057": "Checks before publishing", "k058": "Learning outcomes are written", "k059": "Per ISO 21001", "k060": "Copyright confirmed", "k061": "Content-safety check", "k062": "Rubric: “checks understanding” 3/4", "k063": "Add a question in Teaching 2", "k064": "Subject-expert review", "k065": "Teacher code of conduct", "k066": "All published content follows the code of conduct. Breaches: warning → suspension → ban, with a right to appeal.", "k067": "Read the code of conduct", "k068": "Upload and export", "k069": "Question bank template:", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "Set up my avatar and voice", "k074": "Export as a Motion Studio explainer video", "k075": "Uploads are free, with no limit. Private at first → shared with a class or institution → public only after the quality check. Verbatim book text is blocked; AI checks the answers of imported questions.", "k076": "x² + 6x + ___ = (x + 3)² — what goes in the blank?", "k077": "A) 3", "k078": "B) 6", "k079": "C) 9 ✓", "k080": "D) 36", "lp": "Language"};
+    L.hi = {"k001": "N", "k002": "Content Studio", "k003": "SSC गणित › अध्याय 4 › पाठ 3: द्विघात सूत्र और विविक्तकर", "k004": "ड्राफ़्ट · अपने आप सहेजा गया", "k005": "प्रीव्यू", "k006": "जाँच के लिए भेजें", "k007": "पाठ की संरचना · 40 मिनट", "k008": "3 मि.", "k009": "रिट्रीवल वार्म-अप", "k010": "2 मि.", "k011": "पहले समस्या: बगीचे की बाड़", "k012": "8 मि.", "k013": "पढ़ाई 1: सूत्र की उत्पत्ति", "k014": "पोल 1", "k015": "पढ़ाई 2: विविक्तकर", "k016": "पोल 2", "k017": "पढ़ाई 3: उदाहरण → फ़ेडेड", "k018": "पोल 3", "k019": "5 मि.", "k020": "एग्ज़िट टिकट और सारांश", "k021": "+ हिस्सा जोड़ें", "k022": "स्क्रिप्ट अपलोड: Word, PDF या चित्र", "k023": "स्क्रिप्ट और मुख्य विचार", "k024": "ax² + bx + c = 0 से वर्ग पूरा करके सूत्र तक पहुँचेंगे। हर कदम पर पहले विद्यार्थी से पूछूँगा: “अब दोनों तरफ़ क्या जोड़ें कि पूर्ण वर्ग बने?”", "k025": "व्याख्या A · कदम-दर-कदम", "k026": "पोल में 74%", "k027": "बीजगणितीय कदम, हर कदम पर प्रश्न।", "k028": "व्याख्या B · चित्र", "k029": "पोल में 61%", "k030": "वर्ग के टुकड़ों को जोड़कर पूर्ण वर्ग।", "k031": "कौन पढ़ाएगा:", "k032": "मेरा अवतार और आवाज़", "k033": "Nexa Teacher", "k034": "स्क्रिप्ट:", "k035": "जैसी है वैसी", "k036": "AI से बेहतर", "k037": "— बदलाव मंज़ूरी के लिए दिखाए जाएँगे", "k038": "A/B परीक्षण: जिस व्याख्या में पोल का नतीजा बेहतर, वही रखी जाएगी।", "k039": "प्रश्न", "k040": "विकल्प क", "k041": "विकल्प ख", "k042": "विकल्प ग, सही", "k043": "विकल्प घ", "k044": "ग़लत विकल्पों पर गलती का प्रकार टैग करें: ख = अवधारणा, क = गणना, घ = लापरवाही", "k045": "प्रश्न बैंक · item analysis", "k046": "इंपोर्ट: Excel · CSV · Word", "k047": "कठिनाई", "k048": "भेद-क्षमता", "k049": "उत्तर दिए", "k050": "स्थिति", "k051": "विविक्तकर शून्य हो तो मूल कैसे होते हैं?", "k052": "अच्छा", "k053": "2x² − 8 = 0 के मूलों का योग", "k054": "x² − 9 = 0 के मूल", "k055": "पुनर्विचार", "k056": "b² − 4ac < 0 हो तो ग्राफ़", "k057": "प्रकाशन से पहले जाँच", "k058": "सीखने के परिणाम लिखे हैं", "k059": "ISO 21001 के अनुसार", "k060": "कॉपीराइट की पुष्टि", "k061": "सामग्री-सुरक्षा जाँच", "k062": "रूब्रिक: “समझ की जाँच” 3/4", "k063": "पढ़ाई 2 में एक प्रश्न जोड़ें", "k064": "विषय-विशेषज्ञ समीक्षा", "k065": "शिक्षक आचार संहिता", "k066": "हर प्रकाशित सामग्री आचार संहिता मानती है। उल्लंघन पर चेतावनी → निलंबन → प्रतिबंध, अपील के अवसर के साथ।", "k067": "आचार संहिता पढ़ें", "k068": "अपलोड और एक्सपोर्ट", "k069": "प्रश्न बैंक टेम्पलेट:", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "मेरा अवतार और आवाज़ सेट करें", "k074": "Motion Studio एक्सप्लेनर वीडियो के रूप में एक्सपोर्ट", "k075": "अपलोड मुफ़्त, कोई सीमा नहीं। पहले निजी → क्लास या संस्था में शेयर → सार्वजनिक सिर्फ़ गुणवत्ता जाँच के बाद। किताब का हूबहू पाठ रोका जाता है; इंपोर्ट किए प्रश्नों के उत्तर AI जाँचता है।", "k076": "x² + 6x + ___ = (x + 3)² — ख़ाली जगह में क्या आएगा?", "k077": "क) 3", "k078": "ख) 6", "k079": "ग) 9 ✓", "k080": "घ) 36", "lp": "भाषा"};
+    L.ur = {"k001": "N", "k002": "Content Studio", "k003": "SSC ریاضی › باب ⁦4⁩ › سبق ⁦3:⁩ دو درجی فارمولا اور ممیز", "k004": "مسودہ · خودکار محفوظ", "k005": "پیش نظارہ", "k006": "جانچ کے لیے بھیجیں", "k007": "سبق کی ساخت · ⁦40⁩ منٹ", "k008": "⁦3⁩ منٹ", "k009": "ریٹریول وارم اپ", "k010": "⁦2⁩ منٹ", "k011": "پہلے مسئلہ: باغ کی باڑ", "k012": "⁦8⁩ منٹ", "k013": "تدریس ⁦1:⁩ فارمولے کی ابتدا", "k014": "پول ⁦1⁩", "k015": "تدریس ⁦2:⁩ ممیز", "k016": "پول ⁦2⁩", "k017": "تدریس ⁦3:⁩ مثال → فیڈڈ", "k018": "پول ⁦3⁩", "k019": "⁦5⁩ منٹ", "k020": "ایگزٹ ٹکٹ اور خلاصہ", "k021": "+ حصہ شامل کریں", "k022": "اسکرپٹ اپ لوڈ: Word، PDF یا تصویر", "k023": "اسکرپٹ اور بنیادی خیال", "k024": "ax² + bx + ⁦c = 0⁩ سے مربع مکمل کر کے فارمولے تک پہنچیں گے۔ ہر قدم پر پہلے طالب علم سے پوچھوں گا: “اب دونوں طرف کیا جمع کریں کہ مکمل مربع بنے؟”", "k025": "وضاحت A · قدم بہ قدم", "k026": "پول میں ⁦74%⁩", "k027": "الجبری قدم، ہر قدم پر سوال۔", "k028": "وضاحت B · تصویر", "k029": "پول میں ⁦61%⁩", "k030": "مربع کے ٹکڑے جوڑ کر مکمل مربع۔", "k031": "کون پڑھائے گا:", "k032": "میرا اوتار اور آواز", "k033": "Nexa Teacher", "k034": "اسکرپٹ:", "k035": "جیسا ہے ویسا", "k036": "AI سے بہتر", "k037": "— تبدیلیاں منظوری کے لیے دکھائی جائیں گی", "k038": "A/B ٹیسٹ: جس وضاحت میں پول کا نتیجہ بہتر ہو، وہی رکھی جائے گی۔", "k039": "سوال", "k040": "آپشن الف", "k041": "آپشن ب", "k042": "آپشن ج، درست", "k043": "آپشن د", "k044": "غلط آپشنز پر غلطی کی قسم ٹیگ کریں: ب = تصور، الف = حساب، د = لاپروائی", "k045": "سوالات کا بینک · item analysis", "k046": "امپورٹ: Excel · CSV · Word", "k047": "دشواری", "k048": "امتیازی صلاحیت", "k049": "جواب دیے", "k050": "حالت", "k051": "ممیز صفر ہو تو جذر کیسے ہوتے ہیں؟", "k052": "اچھا", "k053": "⁦2x² − 8 = 0⁩ کے جذروں کا مجموعہ", "k054": "x² − ⁦9 = 0⁩ کے جذر", "k055": "نظر ثانی", "k056": "b² − ⁦4ac⁩ < ⁦0⁩ ہو تو گراف", "k057": "اشاعت سے پہلے جانچ", "k058": "سیکھنے کے نتائج لکھے ہیں", "k059": "⁦ISO 21001⁩ کے مطابق", "k060": "کاپی رائٹ کی تصدیق", "k061": "مواد کی حفاظتی جانچ", "k062": "روبرک: “سمجھ کی جانچ” ⁦3/4⁩", "k063": "تدریس ⁦2⁩ میں ایک سوال شامل کریں", "k064": "مضمون کے ماہر کا جائزہ", "k065": "استاد کا ضابطۂ اخلاق", "k066": "ہر شائع شدہ مواد ضابطۂ اخلاق کی پابندی کرتا ہے۔ خلاف ورزی پر تنبیہ → معطلی → پابندی، اپیل کے حق کے ساتھ۔", "k067": "ضابطۂ اخلاق پڑھیں", "k068": "اپ لوڈ اور ایکسپورٹ", "k069": "سوالات کے بینک کا ٹیمپلیٹ:", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "میرا اوتار اور آواز سیٹ کریں", "k074": "Motion Studio ایکسپلینر ویڈیو کے طور پر ایکسپورٹ", "k075": "اپ لوڈ مفت، کوئی حد نہیں۔ پہلے نجی → کلاس یا ادارے میں شیئر → عوامی صرف معیار کی جانچ کے بعد۔ کتاب کا ہوبہو متن روکا جاتا ہے؛ امپورٹ کیے گئے سوالوں کے جواب AI جانچتا ہے۔", "k076": "x² + ⁦6x +⁩ ___ = (x + ⁦3⁩)² — خالی جگہ میں کیا آئے گا؟", "k077": "الف) ⁦3⁩", "k078": "ب) ⁦6⁩", "k079": "ج) ⁦9⁩ ✓", "k080": "د) ⁦36⁩", "lp": "زبان"};
+    L.ar = {"k001": "N", "k002": "Content Studio", "k003": "رياضيات SSC › الفصل ⁦4⁩ › الدرس ⁦3:⁩ القانون العام والمميِّز", "k004": "مسودة · محفوظة تلقائيًا", "k005": "المعاينة", "k006": "إرسال للتحقّق", "k007": "هيكل الدرس · ⁦40⁩ دقيقة", "k008": "⁦3⁩ د", "k009": "إحماء الاسترجاع", "k010": "⁦2⁩ د", "k011": "المسألة أولًا: سياج الحديقة", "k012": "⁦8⁩ د", "k013": "الشرح ⁦1:⁩ أصل القانون", "k014": "استطلاع ⁦1⁩", "k015": "الشرح ⁦2:⁩ المميِّز", "k016": "استطلاع ⁦2⁩", "k017": "الشرح ⁦3:⁩ مثال → متدرّج", "k018": "استطلاع ⁦3⁩", "k019": "⁦5⁩ د", "k020": "بطاقة الخروج والملخّص", "k021": "+ أضف جزءًا", "k022": "رفع نص: Word أو PDF أو صورة", "k023": "النص والفكرة الأساسية", "k024": "من ax² + bx + ⁦c = 0⁩ نُكمل المربع لنصل إلى القانون. وفي كل خطوة أسأل المتعلّم أولًا: «ماذا نضيف للطرفين ليصبح مربعًا كاملًا؟»", "k025": "الشرح A · خطوة بخطوة", "k026": "⁦74%⁩ في الاستطلاع", "k027": "خطوات جبرية مع سؤال في كل خطوة.", "k028": "الشرح B · صورة", "k029": "⁦61%⁩ في الاستطلاع", "k030": "مربع كامل بتركيب قطع مربعة.", "k031": "من يشرح:", "k032": "صورتي الرمزية وصوتي", "k033": "Nexa Teacher", "k034": "النص:", "k035": "كما هو", "k036": "تحسين بالذكاء الاصطناعي", "k037": "— ستُعرض التغييرات عليك للموافقة", "k038": "اختبار A/B: يُحتفظ بالشرح صاحب نتائج الاستطلاع الأفضل.", "k039": "سؤال", "k040": "الخيار أ", "k041": "الخيار ب", "k042": "الخيار ج، صحيح", "k043": "الخيار د", "k044": "وسِم نوع الخطأ في الخيارات الخاطئة: ب = مفهوم، أ = حساب، د = سهو", "k045": "بنك الأسئلة · item analysis", "k046": "استيراد: Excel · CSV · Word", "k047": "الصعوبة", "k048": "قوة التمييز", "k049": "أجابوا", "k050": "الحالة", "k051": "كيف تكون الجذور عندما يكون المميِّز صفرًا؟", "k052": "جيد", "k053": "مجموع جذري ⁦2x² − 8 = 0⁩", "k054": "جذرا x² − ⁦9 = 0⁩", "k055": "إعادة النظر", "k056": "الرسم عندما b² − ⁦4ac⁩ < ⁦0⁩", "k057": "الفحص قبل النشر", "k058": "نواتج التعلّم مكتوبة", "k059": "وفق ⁦ISO 21001⁩", "k060": "تأكيد حقوق النشر", "k061": "فحص سلامة المحتوى", "k062": "معيار التقييم: «التحقق من الفهم» ⁦3/4⁩", "k063": "أضف سؤالًا في الشرح ⁦2⁩", "k064": "مراجعة خبير المادة", "k065": "مدونة سلوك المعلّم", "k066": "كل محتوى منشور يلتزم بمدونة السلوك. عند المخالفة: تحذير ← إيقاف ← حظر، مع حق الاستئناف.", "k067": "اقرأ مدونة السلوك", "k068": "الرفع والتصدير", "k069": "قالب بنك الأسئلة:", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "اضبط الأفاتار والصوت", "k074": "تصدير كفيديو شرح من Motion Studio", "k075": "الرفع مجاني وبلا حدود. خاص في البداية ← مشاركة مع صف أو مؤسسة ← عام فقط بعد فحص الجودة. يُمنع نص الكتاب الحرفي؛ ويتحقق AI من إجابات الأسئلة المستوردة.", "k076": "x² + ⁦6x +⁩ ___ = (x + ⁦3⁩)² — ماذا يوضع في الفراغ؟", "k077": "أ) ⁦3⁩", "k078": "ب) ⁦6⁩", "k079": "ج) ⁦9⁩ ✓", "k080": "د) ⁦36⁩", "lp": "اللغة"};
+    L.fr = {"k001": "N", "k002": "Content Studio", "k003": "Maths SSC › Chapitre 4 › Leçon 3 : formule du second degré et discriminant", "k004": "Brouillon · enregistré automatiquement", "k005": "Aperçu", "k006": "Envoyer en vérification", "k007": "Structure de la leçon · 40 minutes", "k008": "3 min", "k009": "Échauffement de rappel", "k010": "2 min", "k011": "Problème d’abord : la clôture du jardin", "k012": "8 min", "k013": "Enseignement 1 : d’où vient la formule", "k014": "Sondage 1", "k015": "Enseignement 2 : le discriminant", "k016": "Sondage 2", "k017": "Enseignement 3 : exemple → progressif", "k018": "Sondage 3", "k019": "5 min", "k020": "Ticket de sortie et résumé", "k021": "+ Ajouter une partie", "k022": "Téléverser un script : Word, PDF ou image", "k023": "Script et idée clé", "k024": "À partir de ax² + bx + c = 0, on complète le carré pour arriver à la formule. À chaque étape, je demande d’abord à l’élève : « Qu’ajoute-t-on des deux côtés pour obtenir un carré parfait ? »", "k025": "Explication A · pas à pas", "k026": "74 % au sondage", "k027": "Étapes algébriques, une question à chaque étape.", "k028": "Explication B · image", "k029": "61 % au sondage", "k030": "Un carré parfait en assemblant des morceaux carrés.", "k031": "Qui enseigne :", "k032": "Mon avatar et ma voix", "k033": "Nexa Teacher", "k034": "Script :", "k035": "Tel quel", "k036": "Amélioré par l’IA", "k037": "— les modifications vous seront montrées pour approbation", "k038": "Test A/B : on garde l’explication qui obtient le meilleur sondage.", "k039": "Question", "k040": "Option A", "k041": "Option B", "k042": "Option C, correcte", "k043": "Option D", "k044": "Étiquetez le type d’erreur des mauvaises options : B = notion, A = calcul, D = étourderie", "k045": "Banque de questions · item analysis", "k046": "Importer : Excel · CSV · Word", "k047": "Difficulté", "k048": "Discrimination", "k049": "Ont répondu", "k050": "Statut", "k051": "Comment sont les racines quand le discriminant est nul ?", "k052": "Bon", "k053": "Somme des racines de 2x² − 8 = 0", "k054": "Racines de x² − 9 = 0", "k055": "À revoir", "k056": "Courbe quand b² − 4ac < 0", "k057": "Vérifications avant publication", "k058": "Objectifs d’apprentissage rédigés", "k059": "Selon ISO 21001", "k060": "Droits d’auteur confirmés", "k061": "Contrôle de sécurité du contenu", "k062": "Grille : « vérifie la compréhension » 3/4", "k063": "Ajoutez une question dans l’enseignement 2", "k064": "Relecture par un expert de la matière", "k065": "Code de conduite de l’enseignant", "k066": "Tout contenu publié respecte le code de conduite. En cas de manquement : avertissement → suspension → interdiction, avec droit d’appel.", "k067": "Lire le code de conduite", "k068": "Téléversement et export", "k069": "Modèle de banque de questions :", "k070": "Excel ↓", "k071": "CSV ↓", "k072": "Word ↓", "k073": "Configurer mon avatar et ma voix", "k074": "Exporter en vidéo explicative Motion Studio", "k075": "Le téléversement est gratuit et illimité. D’abord privé → partagé avec une classe ou un établissement → public seulement après le contrôle qualité. Le texte mot pour mot des manuels est bloqué ; l’IA vérifie les réponses des questions importées.", "k076": "x² + 6x + ___ = (x + 3)² — que met-on dans le blanc ?", "k077": "A) 3", "k078": "B) 6", "k079": "C) 9 ✓", "k080": "D) 36", "lp": "Langue"};
+    return L;
+  }
+  renderVals() {
+    var self = this, s = Object.assign({ lang: 'bn' }, this.state || {}), L = this.uiText(), lang = L[s.lang] ? s.lang : 'bn';
+    var FF = { bn: "'Hind Siliguri','Hind',system-ui,sans-serif", en: "'Hind Siliguri','Hind',system-ui,sans-serif", fr: "'Hind Siliguri','Hind',system-ui,sans-serif", hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
+    var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
+    var base = this.renderVals0 ? this.renderVals0() : {};
+    return Object.assign(base, { t: Object.assign({}, L.bn, L[lang]), lang: lang, dir: (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr', ff: FF[lang],
+      langs: ['bn', 'en', 'hi', 'ur', 'ar', 'fr'].map(function (c) { var on = c === lang; return { code: c, name: NAMES[c], on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; }) });
+  }
+
+  renderVals0() { var s = Object.assign({ lang: 'bn' }, this.state || {}); return { fx: this.fx16(s.lang) }; }
+}
+</script>
+</body>
+</html>

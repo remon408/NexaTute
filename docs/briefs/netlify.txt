@@ -1,0 +1,28 @@
+Export every NexaTute mockup and prototype as a standalone static website the owner can drag onto Netlify Drop (app.netlify.com/drop), keeping the prototypes fully interactive. SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Input
+- SP/ntd/project/: canvas.json + every *.dc.html board (W00-Website-Preview, Main, L01–L15, G01–G02, P01–P02, T01, D01–D10, X01–X23). Read-only — never modify SP/ntd/. Never publish. Never write memory.
+- Format spec of .dc.html: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md. Reference implementations of the semantics: SP/dcrender.js (static renderer), SP/dcverify.py and its generated harness (evaluates Component, holes, sc-if/sc-for). Do NOT copy the artifact type's own runtime (support.js) — write our own.
+- Thumbnails used by W00 (`/_blob/<id>` URLs in W00's code) correspond to the local WebP files in SP/s2/site/shots/<stem>.webp (map by the stem key next to each blob URL).
+
+## Build (work in SP/s2/netlify/)
+1. A small runtime `dc-runtime.js` built on Preact (MIT; vendor it locally from npm — `npm install preact` works — no CDN):
+   - Parse the file: <helmet> contents go into <head> (styles, font links); the <x-dc> template; the `<script type="text/x-dc" data-dc-script data-props='…'>` class (`class Component extends DCLogic`) and data-props defaults (this.props.x defaults; ignore `$preview`).
+   - Template → Preact vnodes on every render: `{{ path }}` dotted lookups (incl. `$index`, literals true/false/numbers/strings), whole-value attribute holes give raw values (functions, numbers, objects), interpolated attribute strings, class→className/for→htmlFor (Preact accepts class too), camelCase event attrs (onClick, onInput, onChange, onKeyDown, onSubmit, onFocus, onBlur, onMouseEnter, onMouseLeave, onPointer*… — map generically), boolean attrs (disabled, checked, selected, hidden, open…), `value` on inputs/selects/textareas controlled, `style` strings, `ref` holes if used, SVG elements/attributes (keep case, xlink), `<sc-if value=…>` and `<sc-for list=… as=…>` (with $index), `<dc-import name=… …>` child components if any file uses them (mount sibling file; kebab→camel props).
+   - DCLogic base: props, state, setState (merge + re-render, optional callback), forceUpdate, lifecycle componentDidMount / componentDidUpdate(prevProps, prevState) / componentWillUnmount; renderVals() called each render. Timers in the files (setInterval etc.) must work.
+   - Links: `<a href="X.dc.html">` → `X.html`; `/X.dc.html` → root; `#id` scrolls in page; https opens a new tab.
+   - Preserve input focus while typing (Preact diffing handles this — verify).
+2. One HTML page per board: `<stem>.html` loading the runtime and the board's source (embed the .dc.html content as a JSON string or a sibling .js data file). Page sizing: boards with `"expand":"fill"` render fluid full-width; phone boards (w 390) render centred at 390 px wide (with the board's corner radius) on a neutral background; other fixed-size boards render at their canvas width with horizontal scroll if the window is narrower. Each page gets a small unobtrusive floating "← সব পাতা / All pages" link to index.html (not overlapping the prototypes' own controls; hide in print).
+3. index.html = W00 (Website preview) with its card links pointing at the generated pages and `/_blob/…` thumbnails replaced by local `thumbs/<stem>.webp` (copy from SP/s2/site/shots). Main.html too.
+4. Fonts: self-host the Google Fonts the files use (find every fonts.googleapis.com link across the boards; vendor matching @fontsource packages from npm — OFL — into fonts/ with a fonts.css) so the site loads nothing from outside. If a font isn't available on npm, keep the Google Fonts link for that one only and list it.
+5. Not indexed by search engines: `robots.txt` (Disallow: /), `<meta name="robots" content="noindex,nofollow">` on every page, and a Netlify `_headers` file with `X-Robots-Tag: noindex, nofollow` for /*. Add a tiny README.txt (Bangla + English): how to drag the folder onto app.netlify.com/drop, how to rename the site, and that anyone with the link can see it.
+6. Zip the site folder as SP/s2/netlify/nexatute-mockups-netlify.zip (folder name inside: nexatute-mockups).
+
+## Verify (required)
+- Serve the folder locally (python -m http.server) and with Playwright (Chromium is pre-installed; require('playwright') / python playwright) open EVERY page: zero console errors/page errors, no unresolved `{{` text, no missing local files (404s).
+- Visual check: for each board compare the first screen against the static renderer (`node SP/dcrender.js FILE OUT.html '{}'` + screenshot) — they should look the same; view a sample of screenshots yourself (W00 index, Main, X01, X05, X10, X20, X22, X23, L05, D05).
+- Interaction check: on every X prototype click through a sample of buttons/links (e.g. up to 40 clickable elements per page, skipping external links) with no errors; type into an input and confirm focus stays; switch language on a few (bn → en → ar) and confirm RTL; follow a few artboard links and the "All pages" link.
+- Report anything that behaves differently from the canvas version and fix it.
+
+## Done means
+- SP/s2/netlify/nexatute-mockups-netlify.zip exists; total size reported; report of checks (pages, errors 0, any fonts left external). Reply with a short summary.

@@ -1,0 +1,13 @@
+Apply review fixes to two NexaTute prototypes: X13 (Landing Page AI, 1440 admin page) and X18 (learner MindForge, 390 phone). SP=/tmp/claude-0/-home-claude/9878cfdb-4647-5257-a0fe-47a0a28067df/scratchpad
+
+## Files
+- Copy SP/ntd/project/X13-Prototype-LandingAI.dc.html and SP/ntd/project/X18-Prototype-MindForge.dc.html to SP/s2/fix1318/work/ and edit ONLY the copies. Do NOT write in SP/ntd/. Never publish. Never write memory. Don't touch other X files.
+- Findings: SP/review/R2.md sections "X13-Prototype-LandingAI.dc.html" (X13-01 … X13-05) and "X18-Prototype-MindForge.dc.html (390)" (X18-01 … X18-05). Each has evidence, location and a proposed fix; verify, then apply all of them. Approved decisions: mcp__memory__memory_read (read-only) /areas/nexatute-learning.md (MindForge: ranges not single numbers; data-sharing switch starts off; "tight" = finish-date range straddles the exam date, "needs a plan" = even the earliest finish is after it; guardian rights), /areas/nexatute-growth.md (Landing Page AI: marketing admin approves page changes, super admin handles site settings), /areas/nexatute-admin.md.
+- For X13-01 copy the shared persona bar pattern from SP/ntd/project/X14-Prototype-Ops.dc.html / X16 (same people/roles; default Imran Hossain · Marketing admin). For X13-02 use the X14/X16 sidebar pattern (one "Platform admin" link) and keep the "Notifications & chat" (X21) entry and canonical labels (SP/navsync.py). For X13-03 use X20's current hero text, buttons and October banner (SP/ntd/project/X20-Prototype-Landing.dc.html) as the "Before" state. For X13-05 make each bell sample open its target (tab/section) on click and close the panel.
+- Format rules: SP/artifact-files/a252248f-f12f-4b09-b86b-294422cc293d/artifact-type/reference/format.md. 6-language dictionaries with identical keys, RTL with M(), Latin digits (X18 is not PlayBoom → Latin), tooltip kit with kitfix watcher.
+- Tools: `python3 SP/dcverify.py FILE [TEST] [--state JSON]`, `node SP/dcrender.js FILE OUT.html '{state}'`, `python3 SP/shoot.py WIDTH OUT.html`. Tests that must pass: SP/x13test.js, SP/s2/bell/tests/belltest.js (X13), SP/mf/x18test.js. Updated test copies go in SP/s2/fix1318/tests/ only where an approved fix makes an old expectation wrong; write SP/s2/fix1318/tests/fix1318_test.js covering every fix in all 6 languages.
+
+## Done means
+- Both files: dcverify → 0 hole problems, 0 parity issues, 0 errors; tests pass; new test covers each finding.
+- Screenshots: X13 at 1440 (bn, en, ar) with persona bar and preview; X18 at 390 (bn, en, ar) progress ranges, finish date (incl. RTL timeline), Pro box.
+- Reply with a short summary per finding ID, test results, assumptions.

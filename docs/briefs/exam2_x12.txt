@@ -1,0 +1,8 @@
+Institution side of the Exam & Assessment additions in X12-Prototype-Institute.dc.html (folder SP/s2/exam2/x12/). First read SP/s2/briefs/exam2_common.txt and SP/s2/exam2/spec.txt.
+Build in X12 (Institute Admin; extend its existing academics/tests, question bank, settings, approvals and log):
+- Spec 7 paper / blueprint builder: syllabus → chapters/topics → question types → marks per section → difficulty mix → sets A/B/C → draft paper from the institution's approved question bank (+ NexaTute bank) → teacher edits (swap a question) → approval by head teacher/coordinator (maker can't approve own) → publish online to a class/section and/or print PDF; answer key restricted by role.
+- Spec 2: per-test settings for shuffling and sets; post-test similarity flags list for the institution's own tests → human review decision with reason → student informed, appeal.
+- Spec 9: proctoring settings for the institution's own exams (adult colleges/universities: snapshots option with consent; school: under-18 reduced mode with guardian consent; optional live human invigilator over LiveKit, not recorded); flag review queue.
+- Spec 10: a new institution type "Company / Employer" (or organisation mode) for employee skill tests and recruitment tests — candidates 18+, consent, ISO 10667 note, "never the only basis for hiring" on every report; candidate result view with explanations.
+- Spec 11: Integrations → Institution API: create API client (scopes roster read/write, assign tests, results read), webhook URL for results, rate limit, pending approval (institution head + NexaTute security owner), key shown once, rotate/revoke, audit log; LTI 1.3 card kept.
+- Spec 8: certificate settings for the institution's own courses (pass mark, levels, retake rule).

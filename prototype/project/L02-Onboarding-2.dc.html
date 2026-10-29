@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>Onboarding: course to Free Beta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#3B34C9}a:hover{color:#2A24A0}
+.ph{width:390px;height:844px;border-radius:40px;background:#F5F6FA;overflow:hidden;display:flex;flex-direction:column;border:1px solid #D3D8E4;box-shadow:0 1px 2px rgba(20,26,51,.06),0 16px 40px rgba(20,26,51,.10);box-sizing:border-box;position:relative}
+.top{display:flex;align-items:center;gap:12px;padding:22px 20px 12px;flex:none}
+.bd{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 20px 20px;overflow:hidden;min-height:0}
+.cd{background:#fff;border:1px solid #E2E6EF;border-radius:18px;padding:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#3B34C9;color:#fff;font:600 16px/1 'Hind Siliguri',sans-serif;border:0;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;background:#fff;color:#141A33;font:600 16px/1 'Hind Siliguri',sans-serif;border:1px solid #D3D8E4;width:100%;text-decoration:none;box-sizing:border-box;flex:none}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid #E2E6EF;background:#fff;display:flex;align-items:center;justify-content:center;color:#141A33;flex:none;padding:0;box-sizing:border-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ECEBFD;color:#3B34C9;line-height:1.5;white-space:nowrap}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.t1{font-size:24px;font-weight:700;line-height:1.3;margin:0}
+.t2{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.t3{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+.sm{font-size:13px;color:#59617A;line-height:1.5;margin:0}
+.xs{font-size:12px;color:#59617A;line-height:1.4}
+.cap{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;height:28px}
+.cap b{width:28px;height:28px;border-radius:8px;background:#141A33;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.col{display:flex;flex-direction:column;gap:12px;width:390px;flex:none}
+.row{display:flex;align-items:center;gap:10px}
+.inp{height:52px;border:1px solid #D3D8E4;border-radius:14px;background:#fff;padding:0 16px;font:500 16px 'Hind Siliguri',sans-serif;color:#141A33;width:100%;box-sizing:border-box}
+.tg{width:44px;height:26px;border-radius:99px;background:#3B34C9;position:relative;border:0;padding:0;flex:none}
+.tg::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}
+.tg.off{background:#C9CFDC}
+.tg.off::after{right:auto;left:3px}
+.opt{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #E2E6EF;border-radius:16px;background:#fff;font:500 15px 'Hind Siliguri',sans-serif;color:#141A33;width:100%;text-align:left;box-sizing:border-box}
+.rad{width:22px;height:22px;border-radius:50%;border:2px solid #C9CFDC;flex:none;box-sizing:border-box}
+.rad.on{border:7px solid #3B34C9}
+.ck{width:22px;height:22px;border-radius:7px;background:#3B34C9;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EEF0F5;font-size:14px}
+.li.sl{padding:6px 0;gap:8px}.li.sl .xs{margin:0;white-space:nowrap}
+.gh{font-size:12px;font-weight:700;color:#3F475E;margin:8px 0 2px;line-height:1.45}
+.sch{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid #E2E6EF}
+.sch time{font-size:12px;font-weight:700;color:#3B34C9;width:58px;flex:none}
+/* fix11: 6 languages for the wireframe (language picker; Devanagari / Naskh / Nastaliq fonts; D15 Urdu Nastaliq) */
+.lgp{position:absolute;top:10px;right:48px;display:flex;gap:4px;flex-wrap:wrap;padding:4px;border-radius:12px;background:#141A33}
+.lgp button{min-height:32px;padding:0 10px;border-radius:8px;border:0;background:transparent;color:#E4E5F7;font:600 12.5px system-ui,sans-serif;cursor:pointer}
+.lgp button.on{background:#fff;color:#141A33}
+:lang(hi) *{font-family:'Hind','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ar) *{font-family:'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif !important}
+:lang(ur) *{font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif !important}
+:lang(ur) .sm,:lang(ur) .xs,:lang(ur) p{line-height:1.9}
+/* longer languages: a phone grows with its content instead of hiding it (Bangla keeps the 844 px phone) */
+.ph{height:auto !important;min-height:844px}
+.ph > .bd{overflow:visible !important;flex:1 0 auto !important}
+</style>
+</helmet>
+<div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:1776px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
+<div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
+<div>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Onboarding 2</p>
+  <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
+</div>
+<div style="display:flex;gap:40px">
+
+<!-- 2.1 Course -->
+<div class="col">
+  <div class="cap"><b>2.1</b>{{ t.k002 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="xs" style="margin-left:auto">{{ t.k004 }}</span>
+    </div>
+    <div class="bd">
+      <h2 class="t1">{{ t.k005 }}</h2>
+      <div style="position:relative">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="position:absolute;left:14px;top:16px;color:#59617A"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input class="inp" placeholder="{{ t.k006 }}" aria-label="{{ t.k006 }}" style="padding-left:44px">
+      </div>
+      <div class="row" style="flex-wrap:wrap;gap:8px">
+        <span class="chip" style="background:#3B34C9;color:#fff">SSC / HSC</span>
+        <span class="chip">{{ t.k007 }}</span>
+        <span class="chip">{{ t.k008 }}</span>
+        <span class="chip">BCS + Job</span>
+        <span class="chip">English medium</span>
+        <span class="chip">IELTS</span>
+      </div>
+      <button class="opt" style="border:2px solid #3B34C9"><span class="rad on"></span><span style="flex:1">{{ t.k009 }}<br><span class="xs">{{ t.k010 }}</span></span><span class="chip">{{ t.k011 }}</span></button>
+      <button class="opt"><span class="rad"></span><span style="flex:1">{{ t.k009 }}<br><span class="xs">English version</span></span><span class="chip">{{ t.k011 }}</span></button>
+      <button class="opt"><span class="rad"></span><span style="flex:1">SSC Vocational<br><span class="xs">{{ t.k012 }}</span></span></button>
+      <button class="opt"><span class="rad"></span><span style="flex:1">{{ t.k013 }}<br><span class="xs">{{ t.k014 }}</span></span></button>
+      <p class="sm">{{ t.k015 }} <a href="#">{{ t.k016 }}</a> {{ t.k017 }}</p>
+      <button class="btn" style="margin-top:auto">{{ t.k018 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 2.2 Syllabus + plan -->
+<div class="col">
+  <div class="cap"><b>2.2</b>{{ t.k019 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k020 }}</p>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="padding:6px 16px">
+        <div class="li"><span class="ck"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span style="flex:1">{{ t.k021 }}</span><span class="xs">{{ t.k022 }}</span></div>
+        <div class="li"><span class="ck"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span style="flex:1">{{ t.k023 }}</span><span class="xs">{{ t.k024 }}</span></div>
+        <div class="li"><span class="ck"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span style="flex:1">{{ t.k025 }}</span><span class="xs">{{ t.k026 }}</span></div>
+        <div class="li" style="border:0"><span class="ck"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;stroke-width:3"><path d="M5 12l5 5 9-10"/></svg></span><span style="flex:1">{{ t.k027 }}</span><span class="xs">{{ t.k028 }}</span></div>
+      </div>
+      <button class="btn2" style="height:48px;font-size:14px;border-style:dashed"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>{{ t.k029 }}</button>
+      <div class="row" style="justify-content:space-between;margin-top:4px">
+        <p class="t3">{{ t.k030 }}</p>
+        <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k031 }}</span>
+      </div>
+      <div class="sch"><time>4:00 pm</time><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k032 }}</p><p class="xs" style="margin:0">{{ t.k033 }}</p></div></div>
+      <div class="sch"><time>{{ t.k034 }}</time><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k035 }}</p><p class="xs" style="margin:0">{{ t.k036 }}</p></div></div>
+      <div class="sch"><time>{{ t.k037 }}</time><div style="flex:1"><p class="t3" style="font-size:14px">{{ t.k038 }}</p><p class="xs" style="margin:0">{{ t.k039 }}</p></div></div>
+      <p class="xs" style="margin:0">{{ t.k040 }}</p>
+      <button class="btn" style="margin-top:auto">{{ t.k041 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 2.3 Consent -->
+<div class="col">
+  <div class="cap"><b>2.3</b>{{ t.k042 }}</div>
+  <div class="ph">
+    <div class="top">
+      <button class="ib" aria-label="{{ t.k003 }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="t2" style="flex:1">{{ t.k043 }}</p>
+    </div>
+    <div class="bd" style="gap:12px">
+      <div class="cd" style="background:#F0F1FB;border-color:#DCDDF7;padding:12px 16px">
+        <p class="sm" style="color:#141A33"><b>{{ t.k044 }}</b> {{ t.k045 }}</p>
+      </div>
+      <div class="cd" style="padding:2px 16px 4px">
+        <p class="gh">{{ t.k046 }}</p>
+        <div class="li sl"><span style="flex:1">{{ t.k047 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k049 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k050 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k051 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k052 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k053 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k054 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k055 }}</span><span class="xs">{{ t.k048 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <p class="gh">{{ t.k056 }}</p>
+        <div class="li sl"><span style="flex:1">{{ t.k057 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl"><span style="flex:1">{{ t.k058 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="li sl" style="border:0"><span style="flex:1">{{ t.k059 }}</span><svg class="i" viewBox="0 0 24 24" aria-label="লক করা" role="img" style="color:#59617A;width:18px;height:18px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      </div>
+      <p class="sm">{{ t.k060 }} <a href="#">{{ t.k061 }}</a> · <a href="#">{{ t.k062 }}</a></p>
+      <button class="btn" style="margin-top:auto">{{ t.k063 }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 2.4 Free Beta -->
+<div class="col">
+  <div class="cap"><b>2.4</b>{{ t.k064 }}</div>
+  <div class="ph">
+    <div class="bd" style="padding-top:44px;gap:16px">
+      <div style="width:72px;height:72px;border-radius:22px;background:#E3F5EC;color:#0F6B40;display:flex;align-items:center;justify-content:center"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:36px;height:36px"><path d="M5 12l5 5 9-10"/></svg></div>
+      <div>
+        <h2 class="t1">{{ t.k065 }}</h2>
+        <p class="sm" style="margin-top:6px;font-size:14px">{{ t.k066 }}</p>
+      </div>
+      <div class="cd" style="display:flex;flex-direction:column;gap:12px">
+        <div class="row"><span class="chip">{{ t.k067 }}</span><span style="font-size:14px">{{ t.k068 }} <b>{{ t.k069 }}</b></span></div>
+        <div class="row"><span class="chip" style="background:#E1F4F2;color:#0B5E5A">{{ t.k070 }}</span><span style="font-size:14px">{{ t.k071 }}</span></div>
+        <div class="row"><span class="chip" style="background:#FFF3DD;color:#8A4B00">{{ t.k072 }}</span><span style="font-size:14px">{{ t.k073 }}</span></div>
+        <div class="row"><span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.k074 }}</span><span style="font-size:14px">{{ t.k075 }}</span></div>
+      </div>
+      <div class="cd" style="display:flex;gap:12px;align-items:flex-start">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#3B34C9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <p class="sm" style="color:#141A33">{{ t.k076 }}</p>
+      </div>
+      <p class="sm">{{ t.k077 }}</p>
+      <p class="xs" style="margin:0;color:#6B4B00;background:#FFF9EE;border:1px solid #F3E2BF;border-radius:12px;padding:8px 12px">{{ t.k078 }}</p>
+      <button class="btn" style="margin-top:auto">{{ t.k079 }}</button>
+      <button class="btn2">{{ t.k080 }}</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1776,"height":1100}}'>
+class Component extends DCLogic {
+  // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
+  langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
+  uiText() { return this.i18n(); }
+  i18n() {
+    var M = function (x) { return '\u2066' + x + '\u2069'; };
+    var L = {};
+    L.bn = {
+      lgp_h: 'ভাষা',
+      lgp_n: 'বাংলা',
+      k001: 'কোর্স বাছাই, সিলেবাস থেকে AI স্টাডি প্ল্যান, সম্মতি ও Free Beta',
+      k002: 'কোর্স বাছাই',
+      k003: 'পেছনে',
+      k004: 'ধাপ 4 / 4',
+      k005: 'কী পড়তে চাও?',
+      k006: 'কোর্স খোঁজো',
+      k007: 'ক্লাস 4–8',
+      k008: 'ভর্তি',
+      k009: 'SSC (ক্লাস 9–10)',
+      k010: 'বাংলা মাধ্যম · বিজ্ঞান',
+      k011: 'ব্যাচ আছে',
+      k012: '3টি সাধারণ বিষয় + ট্রেড 1:1-এ',
+      k013: 'HSC (ক্লাস 11–12)',
+      k014: 'পদার্থ, রসায়ন, উচ্চতর গণিত/জীববিজ্ঞান, ইংরেজি',
+      k015: 'তালিকায় নেই?',
+      k016: 'যেকোনো কোর্স চাও',
+      k017: '— AI দাম হিসাব করে দেখাবে।',
+      k018: 'পরবর্তী',
+      k019: 'সিলেবাস নিশ্চিত → AI স্টাডি প্ল্যান',
+      k020: 'সিলেবাস ও প্ল্যান',
+      k021: 'গণিত',
+      k022: '17 অধ্যায়',
+      k023: 'পদার্থবিজ্ঞান',
+      k024: '14 অধ্যায়',
+      k025: 'রসায়ন',
+      k026: '12 অধ্যায়',
+      k027: 'ইংরেজি',
+      k028: '1st + 2nd পত্র',
+      k029: 'স্কুলের রুটিন আপলোড (ঐচ্ছিক)',
+      k030: 'AI-র তৈরি আজকের প্ল্যান',
+      k031: 'তৈরি হয়েছে',
+      k032: 'ব্যাচ ক্লাস · গণিত',
+      k033: 'দ্বিঘাত সমীকরণ · 40 মিনিট',
+      k034: 'যেকোনো সময়',
+      k035: '1:1 Nexa Teacher · 30 মিনিট',
+      k036: 'পোলে ভুল হওয়া টপিক থেকে শুরু',
+      k037: 'রাত 8:30',
+      k038: 'হোমওয়ার্ক + ভুলের খাতা',
+      k039: '5টি প্রশ্ন · 15 মিনিট',
+      k040: 'প্রতি সপ্তাহে প্ল্যান নতুন করে সাজানো হবে। রুটিন দিলে স্কুলের সময় এড়িয়ে চলবে।',
+      k041: 'প্ল্যান ঠিক আছে',
+      k042: 'সম্মতি — প্রতিটি আলাদা সুইচ',
+      k043: 'তোমার তথ্য, তোমার সিদ্ধান্ত',
+      k044: 'সংক্ষেপে:',
+      k045: 'আমরা শুধু শেখানোর জন্য দরকারি তথ্য রাখি। কোনো বিজ্ঞাপন বা ট্র্যাকিং নেই। তোমার রেকর্ডিং ও সারাংশ শুধু তুমি আর তোমার অভিভাবক দেখবেন।',
+      k046: '18-এর কম বয়সে বন্ধ করে লক করা — আমাদের আইনজীবী নিশ্চিত না করা পর্যন্ত',
+      k047: 'শিক্ষার্থীর অবস্থা বোঝা',
+      k048: 'বন্ধ',
+      k049: 'পরের কাজ সাজানো',
+      k050: 'স্মার্ট রিমাইন্ডার',
+      k051: 'ঝরে পড়ার পূর্বাভাস',
+      k052: 'আগ্রহের মানচিত্র',
+      k053: 'নিজস্ব Shorts ফিড',
+      k054: 'A/B টেস্ট',
+      k055: 'ব্যক্তিগত অফার',
+      k056: 'অভিভাবক সিদ্ধান্ত নেবেন',
+      k057: 'সাপ্তাহিক রিপোর্ট',
+      k058: 'ব্যাচে আসল নাম',
+      k059: 'MindForge ডেটা শেয়ার',
+      k060: 'সম্পূর্ণ শর্তাবলি:',
+      k061: 'ব্যবহারের শর্ত',
+      k062: 'প্রাইভেসি নীতি',
+      k063: 'সম্মতি দিয়ে এগিয়ে যাও',
+      k064: 'Free Beta শুরু',
+      k065: 'সব প্রস্তুত, তানভীর!',
+      k066: 'তোমার Free Beta চলবে 20 নভেম্বর – 9 ডিসেম্বর 2026। পেইড প্ল্যান শুরু 1 জানুয়ারি 2027।',
+      k067: 'লাইভ',
+      k068: 'Nexa Teacher-এর সাথে 1:1 ক্লাস —',
+      k069: 'দিনে 30 মিনিট',
+      k070: 'লেখা',
+      k071: 'Nexa Co-Teacher — দিনে 25 টপিক',
+      k072: 'ফ্রি',
+      k073: 'প্রতিটি ক্লাসের সারাংশ · তুমি চাইলে রেকর্ডিং',
+      k074: 'সীমাহীন',
+      k075: 'মক টেস্ট',
+      k076: 'প্রথমে 3 প্রশ্নের ছোট্ট প্রি-টেস্ট — তুমি কোথা থেকে শুরু করবে, AI তা বুঝে নেবে।',
+      k077: 'Beta শেষে Nexa Teacher সৎভাবে জানাবে Batch, Combo না Personal — কোনটা তোমার জন্য ভালো। সিদ্ধান্ত তোমার ও অভিভাবকের।',
+      k078: '1 জানুয়ারি 2027-এর পর যোগ দিলে: 7 দিনের Free Trial, দিনে 15 মিনিট 1:1 — শেষ দিনে একই সৎ প্ল্যান-পরামর্শ।',
+      k079: 'প্রি-টেস্ট শুরু করো',
+      k080: 'পরে, হোমে যাও'
+    };
+    L.en = {
+      lgp_h: 'Language',
+      lgp_n: 'English',
+      k001: 'Course choice, AI study plan from the syllabus, consent and the Free Beta',
+      k002: 'Choose a course',
+      k003: 'Back',
+      k004: 'Step 4 / 4',
+      k005: 'What do you want to study?',
+      k006: 'Search courses',
+      k007: 'Class 4–8',
+      k008: 'Admission',
+      k009: 'SSC (Class 9–10)',
+      k010: 'Bangla medium · Science',
+      k011: 'Batch available',
+      k012: '3 common subjects + trade in 1:1',
+      k013: 'HSC (Class 11–12)',
+      k014: 'Physics, Chemistry, Higher Maths/Biology, English',
+      k015: 'Not in the list?',
+      k016: 'Ask for any course',
+      k017: '— AI works out and shows the price.',
+      k018: 'Next',
+      k019: 'Syllabus confirmed → AI study plan',
+      k020: 'Syllabus & plan',
+      k021: 'Mathematics',
+      k022: '17 chapters',
+      k023: 'Physics',
+      k024: '14 chapters',
+      k025: 'Chemistry',
+      k026: '12 chapters',
+      k027: 'English',
+      k028: '1st + 2nd paper',
+      k029: 'Upload school routine (optional)',
+      k030: 'Today’s plan by the AI',
+      k031: 'Ready',
+      k032: 'Batch class · Maths',
+      k033: 'Quadratic equations · 40 minutes',
+      k034: 'Any time',
+      k035: '1:1 Nexa Teacher · 30 min',
+      k036: 'Starts from topics you missed in polls',
+      k037: '8:30 pm',
+      k038: 'Homework + mistake notebook',
+      k039: '5 questions · 15 min',
+      k040: 'The plan is rearranged every week. With your routine, it avoids school hours.',
+      k041: 'Plan looks good',
+      k042: 'Consent — a separate switch for each',
+      k043: 'Your data, your choice',
+      k044: 'In short:',
+      k045: 'We keep only the data needed for teaching. No ads or tracking. Only you and your guardian see your recordings and summaries.',
+      k046: 'Locked off for under-18 until our lawyer confirms',
+      k047: 'Learner-state detection',
+      k048: 'Off',
+      k049: 'Next-activity ranking',
+      k050: 'Smart reminders',
+      k051: 'Drop-out prediction',
+      k052: 'Interest map',
+      k053: 'Personal Shorts feed',
+      k054: 'A/B tests',
+      k055: 'Personalised offers',
+      k056: 'Your guardian decides',
+      k057: 'Weekly report',
+      k058: 'Real name in batch',
+      k059: 'MindForge sharing',
+      k060: 'Full terms:',
+      k061: 'Terms of use',
+      k062: 'Privacy policy',
+      k063: 'Agree and continue',
+      k064: 'Free Beta starts',
+      k065: 'All set, Tanvir!',
+      k066: 'Your Free Beta runs 20 November – 9 December 2026. Paid plans start 1 January 2027.',
+      k067: 'Live',
+      k068: '1:1 class with Nexa Teacher —',
+      k069: '30 min a day',
+      k070: 'Text',
+      k071: 'Nexa Co-Teacher — 25 topics a day',
+      k072: 'Free',
+      k073: 'A summary of every class · a recording when you choose',
+      k074: 'Unlimited',
+      k075: 'Mock tests',
+      k076: 'First a short 3-question pre-test — the AI will see where you should start.',
+      k077: 'At the end of Beta, Nexa Teacher will honestly tell you whether Batch, Combo or Personal suits you best. You and your guardian decide.',
+      k078: 'Joining after 1 January 2027: a 7-day Free Trial, 15 minutes of 1:1 a day and mock tests — the same honest plan advice on the last day.',
+      k079: 'Start pre-test',
+      k080: 'Later, go home'
+    };
+    L.hi = {
+      lgp_h: 'भाषा',
+      lgp_n: 'हिन्दी',
+      k001: 'कोर्स चुनना, सिलेबस से AI स्टडी प्लान, सहमति और Free Beta',
+      k002: 'कोर्स चुनो',
+      k003: 'पीछे',
+      k004: 'चरण 4 / 4',
+      k005: 'क्या पढ़ना चाहते हो?',
+      k006: 'कोर्स खोजो',
+      k007: 'कक्षा 4–8',
+      k008: 'प्रवेश',
+      k009: 'SSC (कक्षा 9–10)',
+      k010: 'बांग्ला माध्यम · विज्ञान',
+      k011: 'बैच उपलब्ध',
+      k012: '3 सामान्य विषय + ट्रेड 1:1 में',
+      k013: 'HSC (कक्षा 11–12)',
+      k014: 'भौतिकी, रसायन, उच्च गणित/जीवविज्ञान, अंग्रेज़ी',
+      k015: 'सूची में नहीं है?',
+      k016: 'कोई भी कोर्स माँगो',
+      k017: '— AI क़ीमत निकालकर दिखाएगा।',
+      k018: 'आगे',
+      k019: 'सिलेबस पक्का → AI स्टडी प्लान',
+      k020: 'पाठ्यक्रम और योजना',
+      k021: 'गणित',
+      k022: '17 अध्याय',
+      k023: 'भौतिकी',
+      k024: '14 अध्याय',
+      k025: 'रसायन',
+      k026: '12 अध्याय',
+      k027: 'अंग्रेज़ी',
+      k028: 'पहला + दूसरा पत्र',
+      k029: 'स्कूल का टाइमटेबल अपलोड करो (वैकल्पिक)',
+      k030: 'AI की बनाई आज की योजना',
+      k031: 'तैयार',
+      k032: 'बैच क्लास · गणित',
+      k033: 'द्विघात समीकरण · 40 मिनट',
+      k034: 'कभी भी',
+      k035: '1:1 Nexa Teacher · 30 मिनट',
+      k036: 'पोल में ग़लत हुए टॉपिक से शुरुआत',
+      k037: 'रात 8:30',
+      k038: 'होमवर्क + ग़लतियों की कॉपी',
+      k039: '5 प्रश्न · 15 मिनट',
+      k040: 'हर हफ़्ते योजना नए सिरे से बनेगी। टाइमटेबल देने पर स्कूल का समय छोड़ा जाएगा।',
+      k041: 'योजना ठीक है',
+      k042: 'सहमति — हर एक का अलग स्विच',
+      k043: 'तुम्हारा डेटा, तुम्हारा फ़ैसला',
+      k044: 'संक्षेप में:',
+      k045: 'हम सिर्फ़ पढ़ाने के लिए ज़रूरी डेटा रखते हैं। कोई विज्ञापन या ट्रैकिंग नहीं। तुम्हारी रिकॉर्डिंग और सारांश सिर्फ़ तुम और तुम्हारे अभिभावक देखेंगे।',
+      k046: '18 से कम उम्र के लिए बंद और लॉक — जब तक हमारे वकील पुष्टि न करें',
+      k047: 'शिक्षार्थी की स्थिति पहचानना',
+      k048: 'बंद',
+      k049: 'अगली गतिविधि की रैंकिंग',
+      k050: 'स्मार्ट रिमाइंडर',
+      k051: 'पढ़ाई छोड़ने का पूर्वानुमान',
+      k052: 'रुचियों का नक्शा',
+      k053: 'निजी Shorts फ़ीड',
+      k054: 'A/B टेस्ट',
+      k055: 'निजी ऑफ़र',
+      k056: 'अभिभावक फ़ैसला करेंगे',
+      k057: 'साप्ताहिक रिपोर्ट',
+      k058: 'बैच में असली नाम',
+      k059: 'MindForge डेटा शेयर करना',
+      k060: 'पूरी शर्तें:',
+      k061: 'उपयोग की शर्तें',
+      k062: 'प्राइवेसी नीति',
+      k063: 'सहमति देकर आगे बढ़ो',
+      k064: 'Free Beta शुरू',
+      k065: 'सब तैयार, तनवीर!',
+      k066: 'तुम्हारा Free Beta 20 नवंबर – 9 दिसंबर 2026 तक चलेगा। पेड प्लान 1 जनवरी 2027 से शुरू।',
+      k067: 'लाइव',
+      k068: 'Nexa Teacher के साथ 1:1 क्लास —',
+      k069: 'रोज़ 30 मिनट',
+      k070: 'लिखित',
+      k071: 'Nexa Co-Teacher — रोज़ 25 टॉपिक',
+      k072: 'मुफ़्त',
+      k073: 'हर क्लास का सारांश · तुम चाहो तो रिकॉर्डिंग',
+      k074: 'असीमित',
+      k075: 'मॉक टेस्ट',
+      k076: 'पहले 3 प्रश्नों का छोटा प्री-टेस्ट — AI समझ लेगा कि तुम कहाँ से शुरू करो।',
+      k077: 'Beta के अंत में Nexa Teacher ईमानदारी से बताएगा कि Batch, Combo या Personal — तुम्हारे लिए कौन सा अच्छा है। फ़ैसला तुम्हारा और अभिभावक का।',
+      k078: '1 जनवरी 2027 के बाद जुड़ने पर: 7 दिन का Free Trial, रोज़ 15 मिनट 1:1 और मॉक टेस्ट — आख़िरी दिन वही ईमानदार प्लान-सलाह।',
+      k079: 'प्री-टेस्ट शुरू करो',
+      k080: 'बाद में, होम पर जाओ'
+    };
+    L.ur = {
+      lgp_h: 'زبان',
+      lgp_n: 'اردو',
+      k001: 'کورس کا انتخاب، سلیبس سے AI اسٹڈی پلان، رضامندی اور Free Beta',
+      k002: 'کورس چنو',
+      k003: 'پیچھے',
+      k004: 'مرحلہ ' + M('4 / 4'),
+      k005: 'کیا پڑھنا چاہتے ہو؟',
+      k006: 'کورس تلاش کرو',
+      k007: 'جماعت ' + M('4–8'),
+      k008: 'داخلہ',
+      k009: M('SSC') + ' (' + 'جماعت ' + M('9–10') + ')',
+      k010: 'بنگلہ میڈیم · سائنس',
+      k011: 'بیچ دستیاب',
+      k012: M('3') + ' عام مضامین + ٹریڈ ' + M('1:1') + ' میں',
+      k013: M('HSC') + ' (' + 'جماعت ' + M('11–12') + ')',
+      k014: 'فزکس، کیمسٹری، اعلیٰ ریاضی/حیاتیات، انگریزی',
+      k015: 'فہرست میں نہیں؟',
+      k016: 'کوئی بھی کورس مانگو',
+      k017: '— AI قیمت نکال کر دکھائے گا۔',
+      k018: 'اگلا',
+      k019: 'سلیبس کی تصدیق → AI اسٹڈی پلان',
+      k020: 'نصاب اور منصوبہ',
+      k021: 'ریاضی',
+      k022: M('17') + ' ابواب',
+      k023: 'طبیعیات',
+      k024: M('14') + ' ابواب',
+      k025: 'کیمسٹری',
+      k026: M('12') + ' ابواب',
+      k027: 'انگریزی',
+      k028: 'پہلا + دوسرا پرچہ',
+      k029: 'اسکول کا ٹائم ٹیبل اپ لوڈ کرو (اختیاری)',
+      k030: 'AI کا بنایا آج کا منصوبہ',
+      k031: 'تیار',
+      k032: 'بیچ کلاس · ریاضی',
+      k033: 'دو درجی مساوات · ' + M('40') + ' منٹ',
+      k034: 'کسی بھی وقت',
+      k035: M('1:1 Nexa Teacher') + ' · ' + M('30') + ' منٹ',
+      k036: 'پول میں غلط ہونے والے موضوع سے آغاز',
+      k037: 'رات ' + M('8:30'),
+      k038: 'ہوم ورک + غلطیوں کی کاپی',
+      k039: M('5') + ' سوال · ' + M('15') + ' منٹ',
+      k040: 'ہر ہفتے منصوبہ نئے سرے سے بنے گا۔ ٹائم ٹیبل دینے پر اسکول کا وقت چھوڑا جائے گا۔',
+      k041: 'منصوبہ ٹھیک ہے',
+      k042: 'رضامندی — ہر ایک کا الگ سوئچ',
+      k043: 'تمہارا ڈیٹا، تمہارا فیصلہ',
+      k044: 'مختصراً:',
+      k045: 'ہم صرف پڑھانے کے لیے ضروری ڈیٹا رکھتے ہیں۔ کوئی اشتہار یا ٹریکنگ نہیں۔ تمہاری ریکارڈنگ اور خلاصے صرف تم اور تمہارے سرپرست دیکھیں گے۔',
+      k046: M('18') + ' سے کم عمر کے لیے بند اور لاک — جب تک ہمارے وکیل تصدیق نہ کریں',
+      k047: 'طالب علم کی کیفیت کی پہچان',
+      k048: 'بند',
+      k049: 'اگلی سرگرمی کی ترتیب',
+      k050: 'اسمارٹ یاد دہانیاں',
+      k051: 'پڑھائی چھوڑنے کی پیش گوئی',
+      k052: 'دلچسپیوں کا نقشہ',
+      k053: 'ذاتی Shorts فیڈ',
+      k054: 'A/B ٹیسٹ',
+      k055: 'ذاتی آفرز',
+      k056: 'سرپرست فیصلہ کریں گے',
+      k057: 'ہفتہ وار رپورٹ',
+      k058: 'بیچ میں اصل نام',
+      k059: 'MindForge ڈیٹا شیئر کرنا',
+      k060: 'مکمل شرائط:',
+      k061: 'استعمال کی شرائط',
+      k062: 'پرائیویسی پالیسی',
+      k063: 'رضامندی دے کر آگے بڑھو',
+      k064: 'Free Beta شروع',
+      k065: 'سب تیار، تنویر!',
+      k066: 'تمہارا ' + M('Free Beta') + ' ' + M('20') + ' نومبر – ' + M('9') + ' دسمبر ' + M('2026') + ' تک چلے گا۔ پیڈ پلان ' + M('1') + ' جنوری ' + M('2027') + ' سے شروع۔',
+      k067: 'لائیو',
+      k068: 'Nexa Teacher کے ساتھ ' + M('1:1') + ' کلاس —',
+      k069: 'روزانہ ' + M('30') + ' منٹ',
+      k070: 'تحریری',
+      k071: 'Nexa Co-Teacher — روزانہ ' + M('25') + ' موضوعات',
+      k072: 'مفت',
+      k073: 'ہر کلاس کا خلاصہ · تم چاہو تو ریکارڈنگ',
+      k074: 'لامحدود',
+      k075: 'ماک ٹیسٹ',
+      k076: 'پہلے ' + M('3') + ' سوالوں کا مختصر پری ٹیسٹ — AI سمجھ لے گا کہ تم کہاں سے شروع کرو۔',
+      k077: 'Beta کے آخر میں Nexa Teacher ایمانداری سے بتائے گا کہ Batch، Combo یا Personal — تمہارے لیے کون سا بہتر ہے۔ فیصلہ تمہارا اور سرپرست کا۔',
+      k078: M('1') + ' جنوری ' + M('2027') + ' کے بعد شامل ہونے پر: ' + M('7') + ' دن کا Free Trial، روز ' + M('15') + ' منٹ ' + M('1:1') + ' اور ماک ٹیسٹ — آخری دن وہی دیانت دار پلان مشورہ۔',
+      k079: 'پری ٹیسٹ شروع کرو',
+      k080: 'بعد میں، ہوم پر جاؤ'
+    };
+    L.ar = {
+      lgp_h: 'اللغة',
+      lgp_n: 'العربية',
+      k001: 'اختيار الدورة، وخطة دراسة بالذكاء الاصطناعي من المنهج، والموافقة، وFree Beta',
+      k002: 'اختر دورة',
+      k003: 'رجوع',
+      k004: 'الخطوة ' + M('4 / 4'),
+      k005: 'ماذا تريد أن تدرس؟',
+      k006: 'ابحث عن دورة',
+      k007: 'الصف ' + M('4–8'),
+      k008: 'القبول الجامعي',
+      k009: M('SSC') + ' (' + 'الصف ' + M('9–10') + ')',
+      k010: 'بالبنغالية · علوم',
+      k011: 'توجد دفعة',
+      k012: M('3') + ' مواد عامة + المهنة في ' + M('1:1'),
+      k013: M('HSC') + ' (' + 'الصف ' + M('11–12') + ')',
+      k014: 'الفيزياء، الكيمياء، الرياضيات العليا/الأحياء، الإنجليزية',
+      k015: 'غير موجود في القائمة؟',
+      k016: 'اطلب أي دورة',
+      k017: '— يحسب الذكاء الاصطناعي السعر ويعرضه.',
+      k018: 'التالي',
+      k019: 'تأكيد المنهج ← خطة دراسة بالذكاء الاصطناعي',
+      k020: 'المنهج والخطة',
+      k021: 'الرياضيات',
+      k022: M('17') + ' فصلًا',
+      k023: 'الفيزياء',
+      k024: M('14') + ' فصلًا',
+      k025: 'الكيمياء',
+      k026: M('12') + ' فصلًا',
+      k027: 'الإنجليزية',
+      k028: 'الورقة الأولى + الثانية',
+      k029: 'ارفع جدول المدرسة (اختياري)',
+      k030: 'خطة اليوم من الذكاء الاصطناعي',
+      k031: 'جاهزة',
+      k032: 'حصة جماعية · الرياضيات',
+      k033: 'المعادلات التربيعية · ' + M('40') + ' دقيقة',
+      k034: 'في أي وقت',
+      k035: M('1:1') + ' مع Nexa Teacher · ' + M('30') + ' دقيقة',
+      k036: 'تبدأ من المواضيع التي أخطأت فيها في الاستطلاع',
+      k037: M('8:30') + ' م',
+      k038: 'واجب + دفتر الأخطاء',
+      k039: M('5') + ' أسئلة · ' + M('15') + ' دقيقة',
+      k040: 'تُعاد الخطة كل أسبوع. مع جدولك تتجنب أوقات المدرسة.',
+      k041: 'الخطة مناسبة',
+      k042: 'الموافقة — مفتاح منفصل لكل بند',
+      k043: 'بياناتك، قرارك',
+      k044: 'باختصار:',
+      k045: 'نحتفظ فقط بالبيانات اللازمة للتعليم. لا إعلانات ولا تتبّع. لا يرى تسجيلاتك وملخصاتك إلا أنت وولي أمرك.',
+      k046: 'مقفل على الإطفاء لمن هم دون ' + M('18') + ' حتى يؤكد محامينا',
+      k047: 'رصد حالة المتعلّم',
+      k048: 'متوقف',
+      k049: 'ترتيب النشاط التالي',
+      k050: 'التذكيرات الذكية',
+      k051: 'توقّع الانقطاع عن الدراسة',
+      k052: 'خريطة الاهتمامات',
+      k053: 'خلاصة Shorts الشخصية',
+      k054: 'اختبارات A/B',
+      k055: 'عروض شخصية',
+      k056: 'يقرّر وليّ الأمر',
+      k057: 'التقرير الأسبوعي',
+      k058: 'الاسم الحقيقي في الدفعة',
+      k059: 'مشاركة بيانات MindForge',
+      k060: 'الشروط كاملة:',
+      k061: 'شروط الاستخدام',
+      k062: 'سياسة الخصوصية',
+      k063: 'وافق وتابع',
+      k064: 'بدء Free Beta',
+      k065: 'كل شيء جاهز يا تنوير!',
+      k066: 'يستمر Free Beta من ' + M('20') + ' نوفمبر إلى ' + M('9') + ' ديسمبر ' + M('2026') + '. وتبدأ الخطط المدفوعة في ' + M('1') + ' يناير ' + M('2027') + '.',
+      k067: 'مباشر',
+      k068: 'حصة ' + M('1:1') + ' مع Nexa Teacher —',
+      k069: M('30') + ' دقيقة يوميًا',
+      k070: 'كتابة',
+      k071: 'Nexa Co-Teacher — ' + M('25') + ' موضوعًا يوميًا',
+      k072: 'مجاني',
+      k073: 'ملخص لكل حصة · وتسجيل عندما تختار',
+      k074: 'غير محدود',
+      k075: 'اختبارات تجريبية',
+      k076: 'أولًا اختبار قبلي قصير من ' + M('3') + ' أسئلة — ليعرف الذكاء الاصطناعي من أين تبدأ.',
+      k077: 'في نهاية Beta سيخبرك Nexa Teacher بصدق أيّها أنسب لك: Batch أو Combo أو Personal. القرار لك ولوليّ أمرك.',
+      k078: 'عند الانضمام بعد ' + M('1') + ' يناير ' + M('2027: Free Trial') + ' لمدة ' + M('7') + ' أيام، ' + M('15') + ' دقيقة ' + M('1:1') + ' يوميًا واختبارات تجريبية — والنصيحة الصادقة نفسها بشأن الخطة في اليوم الأخير.',
+      k079: 'ابدأ الاختبار القبلي',
+      k080: 'لاحقًا، إلى الرئيسية'
+    };
+    L.fr = {
+      lgp_h: 'Langue',
+      lgp_n: 'Français',
+      k001: 'Choix du cours, plan d’étude IA à partir du programme, consentement et Free Beta',
+      k002: 'Choisir un cours',
+      k003: 'Retour',
+      k004: 'Étape 4 / 4',
+      k005: 'Que veux-tu étudier ?',
+      k006: 'Rechercher un cours',
+      k007: 'Classes 4–8',
+      k008: 'Admission',
+      k009: 'SSC (classes 9–10)',
+      k010: 'En bengali · Sciences',
+      k011: 'Groupe disponible',
+      k012: '3 matières communes + métier en 1:1',
+      k013: 'HSC (classes 11–12)',
+      k014: 'Physique, chimie, maths sup./biologie, anglais',
+      k015: 'Pas dans la liste ?',
+      k016: 'Demande n’importe quel cours',
+      k017: '— l’IA calcule et affiche le prix.',
+      k018: 'Suivant',
+      k019: 'Programme confirmé → plan d’étude IA',
+      k020: 'Programme et plan',
+      k021: 'Mathématiques',
+      k022: '17 chapitres',
+      k023: 'Physique',
+      k024: '14 chapitres',
+      k025: 'Chimie',
+      k026: '12 chapitres',
+      k027: 'Anglais',
+      k028: '1re + 2e épreuve',
+      k029: 'Importer l’emploi du temps (facultatif)',
+      k030: 'Plan du jour par l’IA',
+      k031: 'Prêt',
+      k032: 'Cours en groupe · Maths',
+      k033: 'Équations du second degré · 40 minutes',
+      k034: 'À tout moment',
+      k035: '1:1 Nexa Teacher · 30 min',
+      k036: 'Commence par les sujets ratés aux sondages',
+      k037: '20 h 30',
+      k038: 'Devoirs + carnet d’erreurs',
+      k039: '5 questions · 15 min',
+      k040: 'Le plan est réorganisé chaque semaine. Avec ton emploi du temps, il évite les heures d’école.',
+      k041: 'Le plan me va',
+      k042: 'Consentement — un interrupteur pour chaque point',
+      k043: 'Tes données, ton choix',
+      k044: 'En bref :',
+      k045: 'Nous gardons seulement les données utiles à l’enseignement. Ni publicité ni pistage. Seuls toi et ton parent voyez tes enregistrements et résumés.',
+      k046: 'Verrouillé sur désactivé pour les moins de 18 ans jusqu’à ce que notre juriste confirme',
+      k047: 'Détection de l’état de l’apprenant',
+      k048: 'Non',
+      k049: 'Classement de l’activité suivante',
+      k050: 'Rappels intelligents',
+      k051: 'Prédiction de décrochage',
+      k052: 'Carte des centres d’intérêt',
+      k053: 'Fil Shorts personnalisé',
+      k054: 'Tests A/B',
+      k055: 'Offres personnalisées',
+      k056: 'Ton parent décide',
+      k057: 'Rapport hebdomadaire',
+      k058: 'Vrai nom dans le groupe',
+      k059: 'Partage MindForge',
+      k060: 'Conditions complètes :',
+      k061: 'Conditions d’utilisation',
+      k062: 'Politique de confidentialité',
+      k063: 'Accepter et continuer',
+      k064: 'Début de la Free Beta',
+      k065: 'Tout est prêt, Tanvir !',
+      k066: 'Ta Free Beta dure du 20 novembre au 9 décembre 2026. Les formules payantes commencent le 1er janvier 2027.',
+      k067: 'Direct',
+      k068: 'Cours 1:1 avec Nexa Teacher —',
+      k069: '30 min par jour',
+      k070: 'Écrit',
+      k071: 'Nexa Co-Teacher — 25 sujets par jour',
+      k072: 'Gratuit',
+      k073: 'Un résumé de chaque cours · un enregistrement si tu le choisis',
+      k074: 'Illimité',
+      k075: 'Examens blancs',
+      k076: 'D’abord un court pré-test de 3 questions — l’IA verra par où commencer.',
+      k077: 'À la fin de la Beta, Nexa Teacher te dira honnêtement si Batch, Combo ou Personal te convient le mieux. Toi et ton parent décidez.',
+      k078: 'Si tu rejoins après le 1er janvier 2027 : Free Trial de 7 jours, 15 minutes de 1:1 par jour et des examens blancs — le même conseil honnête sur la formule le dernier jour.',
+      k079: 'Commencer le pré-test',
+      k080: 'Plus tard, aller à l’accueil'
+    };
+    return L;
+  }
+  renderVals() {
+    var self = this, s = this.state || {}, lang = s.lang || 'bn', L = this.i18n();
+    var t = Object.assign({}, L.bn, L[lang] || {});
+    var FONT = { hi: "'Hind','Hind Siliguri',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic',system-ui,sans-serif" };
+    return {
+      t: t, lang: lang, dir: lang === 'ar' || lang === 'ur' ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
+      lgs: this.langs().map(function (c) { var on = c === lang; return { code: c, name: L[c].lgp_n, on: on, cls: on ? 'on' : '', pick: function () { self.setState({ lang: c }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

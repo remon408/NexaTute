@@ -1,0 +1,4 @@
+fix18 ADDENDUM J — free vs paid placement for addenda G/H/I features (owner approved 29 Oct 2026 02:17; memory /areas/nexatute-growth.md last line is the spec — read it). Everything in free is also in paid.
+- admin: X10 Plans & modules table gets rows for every G/H/I feature with the free / Daily Pass / Batch / Combo / Personal limits exactly as in memory (all "(default)", editable, two-person approval); Debate/Time-Travel caps separate from 1:1 minutes.
+- learner/family/site: wherever these features appear, show the user's own limit/remaining count (e.g. free user "Team Quest: 1 this week · upgrade for all sessions"; Tanvir Combo "Debates: 2 of 3 left this week"); upsell lines kind, never pushy for children (guardian sees upgrade for under-18); X20 plans "Every plan includes"/free-for-life lists updated; W00 cards.
+Fold into your current pass.
