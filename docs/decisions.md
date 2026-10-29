@@ -63,7 +63,7 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - Legal: Claude drafts the legal positions, a Bangladeshi lawyer checks them.
 
 ## 30 Oct 2026 — Legal entity and website (owner)
-- RemonLogic Private Limited is not registered with RJSC; the products move under the owner's company **Vitlous Technology** ("RemonLogic baad"). Exact scope of the renaming (company only, or also brand names/domains) — (to confirm).
+- RemonLogic Private Limited stays the company (moving to Vitlous Technology was considered and reversed); not yet registered with RJSC — owner applies on Sun 1 Nov 2026.
 - aamarPay merchant account is in Vitlous Technology's name; domains are managed in Cloudflare.
 - Logos made together on Sat 31 Oct.
 - Live website shows the approved paid prices with "free during the Free Beta".
