@@ -98,3 +98,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - Motion Studio menu: "Free Course" → free 45-minute NexaTute training on using Motion Studio (owner, 30 Oct 2026).
   - Details approved: Nexa ID single login; short lessons; NexaTute AI tutor in bn/en with hands-on practice; no learning minutes used; certificate linked to the trial/discount.
 - Motion Studio clients taking the free course in NexaTute get other courses suggested from their interests (owner, 30 Oct 2026).
+  - Details approved: interest from course activity + stated business type (with consent); no Motion Studio project content shared; 3 suggestions once at course end, "don't show again"; first-course discount for Motion Studio clients (amount by owner, editable).
