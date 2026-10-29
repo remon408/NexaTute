@@ -50,3 +50,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - Platform approvals need a live website first.
 - aamarPay merchant account exists and supports international payments → used for international payments too until the Paddle API is approved.
 - Bangla voices, question banks and quality gates prepared before launch on the night-time servers.
+- Launch readiness (approved, both products): 2-week closed pilot before the public Free Beta (NexaTute 30–50 known users; Motion Studio 10–15 businesses); Free Beta pass conditions before paid launch (≥99% crash-free sessions, AI response speed within target, satisfaction ≥4/5, all test payments successful, no open high security issue — defaults, editable); launch date moves if not met; satisfaction loop (one-tap rating + "what went wrong", top 5 complaints fixed weekly, "you said, we fixed" in What's new).
