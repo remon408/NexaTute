@@ -20,10 +20,12 @@
 - L14 learner abroad: "prices in USD, app language of their choice" (was "English UI and USD") — confirm.
 - imo business API access; lawyer/DPO check for Co-Admin on chat apps.
 
-## Next steps (owner's order)
-1. This repo is the shared home for all Claude accounts (lead / back-end / front-end).
-2. Prototypes still to build: **Remon Motion Studio** (first — Free Beta 20 Dec) and **NexaLogicDev** — separate canvases, same rules.
-3. Real NexaTute development: MVP for the Free Beta first (sign-up/OTP/guardian consent, plans & payment, 1:1 and 1:50 AI classes, Co-Teacher, recordings, guardian dashboard, core admin). There is no developer team yet — a human full-stack/DevOps reviewer is strongly recommended before anything goes live (payments, children's data).
+## Next steps (owner's order, updated 29 Oct 2026 night)
+Owner: "start properly — dates may move if needed"; new features paused until Free Beta; people for accounting, legal and developer review are available. All decisions after v32.10 are in `docs/decisions.md` (to go into the next blueprint build).
+1. **Live websites** nexatute.com and remonlogicstudio.com (home, features, prices, contact, terms, privacy, refund, children's data) — needed before aamarPay website check, Meta, YouTube API, Paddle. Open questions: show trade licence / registration? support phone + email? (reminder Sat 31 Oct 10:00 Dhaka).
+2. NexaTute MVP list + week-by-week plan → GitHub Issues for lead / back-end / front-end. 2-week closed pilot before the public Free Beta; Free Beta pass conditions decide the paid launch.
+3. **Remon Motion Studio** prototype, then **NexaLogicDev** prototype — separate canvases, same rules.
+4. Payments: aamarPay (already has a merchant account, supports international) until the Paddle API is approved.
 
 ## Known small items left
 - X12 "Open approval" on an already-open approval does nothing.
