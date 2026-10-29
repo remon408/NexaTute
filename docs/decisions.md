@@ -80,3 +80,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
   8. EUR and GBP prices besides USD (Paddle).
   9. Motion Studio API + Zapier/Make.
   10. 24-hour English support: AI first, then human; SLA for enterprise.
+- New features approved (30 Oct 2026): client review link with time-coded comments + approve (no account); own digital-twin presenter (own face only, live consent + OTP, 18+, watermark); video from a link (product page/blog/Daraz/Shopify); one-click multi-language pack (dubbing, lip-sync, on-screen text); 3 hook variants per ad with sales tracking → boost the winner; pre-publish Meta/Google ad-policy check; automatic B-roll; audio-description track (WCAG); YouTube/Facebook analytics in the dashboard with AI insights; interactive video + SCORM export (linked with NexaTute).
