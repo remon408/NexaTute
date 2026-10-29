@@ -45,7 +45,7 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 
 ## 29 Oct 2026 — Development start (owner)
 - Start properly, quality first; launch dates may move later if needed.
-- New features paused until Free Beta (owner: "solved").
+- New features are NOT paused — owner wants good ideas proposed (30 Oct 2026 correction).
 - People for accounting, legal and developer review are available.
 - Platform approvals need a live website first.
 - aamarPay merchant account exists and supports international payments → used for international payments too until the Paddle API is approved.

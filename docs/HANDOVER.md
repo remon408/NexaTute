@@ -18,7 +18,7 @@
 - Answered 29 Oct 2026 (see decisions.md): Co-Teacher Pass $1; Co-Admin log 7 years; L14 USD + own language; imo business API still to apply; Claude drafts legal positions for the lawyer to check.
 
 ## Next steps (owner's order, updated 29 Oct 2026 night)
-Owner: "start properly — dates may move if needed"; new features paused until Free Beta; people for accounting, legal and developer review are available. All decisions after v32.10 are in `docs/decisions.md` (to go into the next blueprint build).
+Owner: "start properly — dates may move if needed"; new features are not paused (good ideas welcome); people for accounting, legal and developer review are available. All decisions after v32.10 are in `docs/decisions.md` (to go into the next blueprint build).
 1. **Live websites** nexatute.com and remonlogicstudio.com (home, features, prices, contact, terms, privacy, refund, children's data) — needed before aamarPay website check, Meta, YouTube API, Paddle. Trade licence not shown; support phone + email to decide (reminder Sat 31 Oct 10:00 Dhaka).
 2. NexaTute MVP list + week-by-week plan → GitHub Issues for lead / back-end / front-end. 2-week closed pilot before the public Free Beta; Free Beta pass conditions decide the paid launch.
 3. **Remon Motion Studio** prototype, then **NexaLogicDev** prototype — separate canvases, same rules.
