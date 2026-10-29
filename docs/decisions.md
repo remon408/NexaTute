@@ -96,3 +96,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - Motion Studio admin panel: very futuristic, with the AI Nexa Co-Admin like NexaTute (own permissions only, logged, WhatsApp/Messenger/imo switchable, never second approver) (owner, 30 Oct 2026).
 - Approved 30 Oct 2026 (futuristic admin, Motion Studio AND NexaTute): Co-Admin command bar (Ctrl+K, text/voice), daily morning briefing, anomaly alerts with reasons, forecasts, "what-if" price simulator with uncertainty range, "why?" on any number, one-click fixes after admin approval; dark mode default with glass panels, live dashboard, full mobile admin with passkey approvals.
 - Motion Studio menu: "Free Course" → free 45-minute NexaTute training on using Motion Studio (owner, 30 Oct 2026).
+  - Details approved: Nexa ID single login; short lessons; NexaTute AI tutor in bn/en with hands-on practice; no learning minutes used; certificate linked to the trial/discount.
