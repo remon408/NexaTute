@@ -1,0 +1,18 @@
+{
+ "company": "RemonLogic Private Limited",
+ "title1": "Remon Motion Studio",
+ "title2": "Product Blueprint",
+ "subtitle": "AI video production for Bangladesh and the world — product, pricing, technology, safety and operations",
+ "tagline": "Idea  →  Script  →  Storyboard  →  Video  →  Publish",
+ "edition": "1.0",
+ "coverLine": "Standalone Motion Studio edition, built from Master Blueprint v32.10 and the owner decisions of 29–30 October 2026",
+ "coverRows": [
+  ["Edition", "1.0  |  30 October 2026"],
+  ["Status", "Planning baseline for owner, board, lawyer, accountant and developers"],
+  ["Classification", "Strictly Confidential — owners, board and invited investors only"],
+  ["Company", "RemonLogic Private Limited, Dhaka, Bangladesh (RJSC registration being applied for)"],
+  ["Product site", "remonlogicstudio.com"],
+  ["Related documents", "RemonLogic Ecosystem Master Blueprint, Corporate Edition v32.10; docs/decisions.md"]
+ ],
+ "disclaimer": "All capacity, cost and revenue figures are planning estimates based on decisions approved up to 30 October 2026. They are replaced by measured results (benchmarks, closed pilot, Free Beta) before any external claim is made. Legal points are positions for a lawyer to check, not legal advice. This document does not establish that any feature is built or production-ready."
+}
