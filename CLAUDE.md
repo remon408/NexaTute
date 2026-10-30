@@ -46,13 +46,13 @@ Every account and every agent follows this. When unsure which model fits, use th
 | Model | Does | Never does |
 |---|---|---|
 | **Opus** | Planning and task split; architecture, DB schema, API contract (OpenAPI), security, privacy, child-safety, money, pricing maths, legal and data-deletion logic; blueprint and legal writing; hard bugs; final review of every change before it reaches `main`; coordinating the other agents; anything ambiguous | — |
-| **Sonnet** | Building from a clear Opus spec: prototype boards, front-end and back-end feature code, tests, document chapters from a brief, first drafts of the 6-language texts, refactors | Final decisions on money, children, legal, security or pricing; merging to `main` without Opus review |
-| **Haiku** | Mechanical checks: `dcverify.py`, file sizes (≤ 1.8 MB), 6-language key parity, button/link checks, search and inventories, log summaries, simple find-and-replace | Writing features, deciding anything, final approval |
+| **Sonnet** | Building from a clear Opus spec: prototype boards, front-end and back-end feature code, tests, document chapters from a brief, first drafts of the 10-language texts, refactors | Final decisions on money, children, legal, security or pricing; merging to `main` without Opus review |
+| **Haiku** | Mechanical checks: `dcverify.py`, file sizes (≤ 1.8 MB), 10-language key parity, button/link checks, search and inventories, log summaries, simple find-and-replace | Writing features, deciding anything, final approval |
 
 Quality gates (all work):
 1. Opus writes the spec → Sonnet builds → Haiku runs the mechanical checks → Opus reviews line by line → only then commit/merge.
 2. Money, children's data, legal, security, auth, deletion and every price/number: Opus writes or Opus reviews every line; numbers re-calculated by code, not by hand.
-3. Tests and `dcverify.py` must pass (0 problems, 0 parity); text checked in all 6 languages (RTL for ar/ur); WCAG 2.2 AA.
+3. Tests and `dcverify.py` must pass (0 problems, 0 parity); text checked in all 10 languages (RTL for ar/ur); WCAG 2.2 AA.
 4. Never claim something is done or checked without actually running the check; report any failure to the owner plainly.
 5. If a cheaper model's result looks doubtful, redo it with the stronger model — quality comes before saving usage.
 
