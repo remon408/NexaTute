@@ -14,3 +14,6 @@ Names final (owner 31 Oct 2026): app "Nexa Speak" containing "Nexa Speak Pass" a
 ## Course lengths (owner approved 31 Oct 2026, admin-editable)
 - Nexa Scripts: 30 days per script. Japanese: Hiragana + Katakana + first 50 Kanji; Chinese: Pinyin + tones + first 50 characters (rest in the main course or an optional second month). "Script Ready" certificate after the final test.
 - Nexa Speak Pass: Beginner A1→A2 (120 days) → Intermediate B1 (120 days) → Advanced B2→C1 (120 days). Level test at each stage end; not passed → continue the stage 30/60 days; placement test may start higher. Show a stage progress bar (day X of 120) in the app. No "guaranteed level" wording.
+
+## Dashboards (owner approved 31 Oct 2026)
+Student "My roadmap", Parent (Bangla, weekly report, consent rules by age) and Teacher dashboards — full spec in docs/decisions.md (31 Oct 2026, "Nexa Speak + Nexa Scripts dashboards"). Build in the Nexa Speak app (phone/tablet) and in NexaTute web; same KPI engine (kpi.md); admin controls in the NexaTute admin panel; Motion Studio + growth-platform links listed in docs/tasks/cross-product-audit.md.
