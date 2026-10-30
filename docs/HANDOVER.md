@@ -32,6 +32,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 3. Remon Motion Studio prototype (5–7 days; split boards by area from the start, each ≤ 1.8 MB; Opus coordinates, Sonnet builds, Haiku checks). Put ALL features into four phases first (launch / first 3 months / 2027 / later) — the owner wants all features in the Free Beta, so the Free Beta date will move.
 4. NexaTute MVP list + week-by-week plan → GitHub Issues; then NexaLogicDev prototype.
 5. Next Master Blueprint build (v32.11) with everything in decisions.md.
+6. NexaTute prototype: add the Project & Competition Studio (approved 30 Oct 2026, see decisions.md) and highlight it on the landing page.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
