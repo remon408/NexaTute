@@ -33,3 +33,6 @@ Protection:
 - No money or coins for sharing (never for children).
 
 Admin controls: shareable item types, templates, brand mark, age rules, "Made with" card per plan.
+
+## Standing rule (owner, 31 Oct 2026)
+Share is ON by default for every user and every shareable result in all three products; every new feature, board and screen must include the Share button without being asked (see CLAUDE.md hard rules). Under-18 limits and admin controls stay as above.
