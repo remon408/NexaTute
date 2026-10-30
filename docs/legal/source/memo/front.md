@@ -1,13 +1,13 @@
 # Document Control
 
-> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. In this memo that is **Option A of chapter 2 (pay per order / per plan, no stored balance)** — note the website-pages drafts label the same choice "Option B". Credits, minute packs, reseller packs, NexaLogicDev credits and gift cards must not become a Taka balance. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
+> **Owner decision, 30 October 2026:** no stored balance or wallet. In this memo that is **P1 of chapter 2 (pay per order / per plan), decided by the owner on 30 Oct 2026**; the website-pages drafts call it "Option B". Credits, minute packs, gift cards (including Shikkha Salami), reseller packs and NexaLogicDev credits each become a named plan code or a per-order price (2.4.1). The owner's other decisions of 30 October 2026 (USA LLC via doola.com, Motion Studio under-18 mode, disputes AI → email → person, bulk messages, one marketplace, protected settings, job assignment and contact addresses set in the admin panel) are recorded in their chapters and in chapter 15.
 
 | Item | Detail |
 |---|---|
 | Document | Legal Memo for Lawyer Review — RemonLogic Private Limited, NexaTute and Remon Motion Studio |
-| Version | Draft 1, 30 October 2026 |
+| Version | Draft 1, 30 October 2026 (revised the same day for the owner's later decisions) |
 | Company | RemonLogic Private Limited, Dhaka, Bangladesh (RJSC application on Sunday 1 November 2026; not yet registered). Registered address: [to insert] |
-| Products | NexaTute (nexatute.com) with PlayBoom; Remon Motion Studio (remonlogicstudio.com); NexaLogicDev only where it shares company, wallet or entity questions |
+| Products | NexaTute (nexatute.com) with PlayBoom; Remon Motion Studio (remonlogicstudio.com); NexaLogicDev only where it shares company, payment or entity questions |
 | Prepared by | Claude (an AI assistant) at the owner's request, from the blueprints, the owner's decisions of 29–30 October 2026 and the research note of 30 October 2026; for a Bangladeshi lawyer, later an international firm |
 | Status | Working draft. Not legal advice. Every legal conclusion is a proposal for the lawyer to accept, change or reject |
 
@@ -48,7 +48,7 @@ Chapter 15 is the legal go-live checklist (item, owner, milestone).
 |---|---|
 | Before RJSC filing | Sunday 1 November 2026 |
 | Before website & approvals | November 2026, once the company exists |
-| Before Free Beta | NexaTute 20 November 2026; Motion Studio pilot about 6 December and Free Beta 20 December 2026; PlayBoom 1 January 2027 |
+| Before Free Beta | NexaTute 20 November 2026 (adults first); Motion Studio about 20 December 2026 (will move); PlayBoom 1 January 2027 |
 | Before paid launch | NexaTute 1 January 2027; PlayBoom 21 January 2027; Motion Studio date to be set |
 | Before EU-US marketing | Not dated |
 
@@ -58,11 +58,11 @@ Chapter 15 is the legal go-live checklist (item, owner, milestone).
 |---|---|---|---|---|
 | 1 | Is the objects clause wide enough for every planned activity, so no later High Court application is needed? | Changing objects needs a special resolution and High Court confirmation | Before RJSC filing | 1 |
 | 2 | Who contracts with users and controls their data before incorporation, and what may the websites say until then? | NexaTute Free Beta starts 20 November 2026, possibly before incorporation | Before website & approvals | 1, 6 |
-| 3 | Is the non-cash-out wallet a "closed Prepaid Instrument", and which of the four redesign options should be adopted? | Unapproved issue is an offence (up to 5 years and/or Tk 50 lakh); the company cannot meet the eligibility criteria | Before Free Beta (design) | 2 |
-| 4 | May NexaTute run any engagement analytics, reminders or offers for under-18 learners, even with guardian consent? Is a guardian OTP enough? | The 2026 data law reportedly bans tracking, profiling and targeted ads directed at children | Before Free Beta | 6, 8 |
+| 3 | Is the owner's choice P1 (pay per order, no stored balance) outside the prepaid-instrument rules? | Unapproved issue is an offence (up to 5 years and/or Tk 50 lakh) | Before Free Beta (design) | 2 |
+| 4 | May either product run engagement analytics or offers for under-18s, even with guardian consent? Is a guardian OTP enough? | The 2026 data law reportedly bans profiling and targeted ads directed at children | Before Free Beta | 6, 8 |
 | 5 | Is the voice and face consent framework sufficient, and should third-party and deceased-person cloning stay off at launch? | Biometric data, AI-enabled offences, US voice laws; the owner requires the lawyer's check first | Before Free Beta | 9 |
 | 6 | Are the model and asset licences safe (FLUX.1 schnell vs dev, Wan 2.2, 17 items still to verify, images, LoRA data, music)? | FLUX.1-dev cannot serve end users without a paid licence, even in a free beta | Before Free Beta | 10 |
 | 7 | Can sales be collected through Vitlous Technology's aamarPay account meanwhile, or must paid launch wait for RemonLogic's own account? | Possible unlicensed aggregation, tax and disclosure problems | Before paid launch | 1 |
-| 8 | Does the DCOG 2021 bind a SaaS provider; must refunds go to the original channel within 10 days; must terms be in Bangla? | The design refunds to the wallet and makes English prevail | Before paid launch | 3 |
+| 8 | Does the DCOG 2021 bind a SaaS provider; do its 72-hour and 10-day rules fit the design; must terms be in Bangla? | English is planned to prevail | Before paid launch | 3 |
 | 9 | Which VAT rates apply, when is VAT due on prepaid amounts, and do the ITES exemption and 0% startup VAT apply? | Prices are VAT-inclusive; a wrong rate affects every receipt | Before paid launch | 4 |
-| 10 | Sell through Paddle in the company's own name without a USA LLC? What is needed for EU/US (GDPR/UK representatives, COPPA, DMCA, NCMEC, AI Act marking)? | FX rules on foreign ownership and proceeds abroad; EU, UK and US duties from the first sale | Before EU-US marketing | 1, 5, 7, 14 |
+| 10 | What approval does the doola.com USA LLC need; may the company use Paddle itself meanwhile? What is needed for EU/US (representatives, COPPA, DMCA, NCMEC, AI Act)? | FX rules on foreign ownership; EU, UK and US duties from the first sale | Before EU-US marketing | 1, 5, 7, 14 |

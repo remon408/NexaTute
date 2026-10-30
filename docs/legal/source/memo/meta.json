@@ -4,11 +4,32 @@
  "title2": "for Lawyer Review",
  "subtitle": "Company, NexaTute and Remon Motion Studio — facts, applicable law, proposed positions, risks and questions",
  "tagline": "Drafted by Claude (AI) — to be checked by a Bangladeshi lawyer",
- "edition": "Draft 1",
+ "edition": "Draft 2",
  "editionLabel": "",
  "header": "LEGAL MEMO — DRAFT FOR LAWYER REVIEW",
  "footerLabel": "Privileged & confidential draft — not legal advice",
  "coverLine": "Prepared on 30 October 2026 from the approved plans, owner decisions and a sourced research note on current law",
- "coverRows": [["Document","Legal memo with positions and numbered questions for the lawyer, plus a legal go-live checklist"],["Company","RemonLogic Private Limited (proposed), Dhaka, Bangladesh"],["Products","NexaTute, Remon Motion Studio (NexaLogicDev where relevant)"],["Status","Draft — positions are proposals, not legal conclusions"],["Prepared","30 October 2026"]],
+ "coverRows": [
+  [
+   "Document",
+   "Legal memo with positions and numbered questions for the lawyer, plus a legal go-live checklist"
+  ],
+  [
+   "Company",
+   "RemonLogic Private Limited (proposed), Dhaka, Bangladesh"
+  ],
+  [
+   "Products",
+   "NexaTute, Remon Motion Studio (NexaLogicDev where relevant)"
+  ],
+  [
+   "Status",
+   "Draft — positions are proposals, not legal conclusions"
+  ],
+  [
+   "Prepared",
+   "30 October 2026"
+  ]
+ ],
  "disclaimer": "This memo was prepared by an AI assistant and is not legal advice. Laws and regulator guidance cited come from a research note dated 30 October 2026; items marked [lawyer to confirm] could not be confirmed from official sources and must be checked against the Gazette and regulator publications."
 }
