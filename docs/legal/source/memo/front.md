@@ -1,5 +1,7 @@
 # Document Control
 
+> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. Use **Option B** (pay per order / per plan, no stored balance) wherever two options are given; Option A is kept only for the lawyer's reference. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
+
 | Item | Detail |
 |---|---|
 | Document | Legal Memo for Lawyer Review — RemonLogic Private Limited, NexaTute and Remon Motion Studio |

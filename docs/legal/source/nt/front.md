@@ -1,5 +1,7 @@
 # Cover Note: NexaTute Website Legal Pages
 
+> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. Use **Option B** (pay per order / per plan, no stored balance) wherever two options are given; Option A is kept only for the lawyer's reference. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
+
 > **Status:** Draft 1, prepared by Claude (an AI assistant) on 30 October 2026 for RemonLogic Private Limited. These are drafts for review by a Bangladeshi lawyer, and later by an international law firm for the EU, UK and US sections. They are not legal advice and are not yet published.
 > **Do not publish** any page until the lawyer has approved it and the "[to insert]" items are filled in.
 

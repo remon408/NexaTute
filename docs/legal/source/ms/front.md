@@ -1,5 +1,7 @@
 # Cover Note
 
+> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. Use **Option B** (pay per order / per plan, no stored balance) wherever two options are given; Option A is kept only for the lawyer's reference. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
+
 > Drafts for lawyer review — not yet published. Public website legal pages for Remon Motion Studio (remonlogicstudio.com), drafted by Claude (an AI) on 30 October 2026 for RemonLogic Private Limited (RJSC application 1 November 2026; not yet registered). Claude is not a lawyer and this is not legal advice. A Bangladeshi lawyer checks every page first; an international law firm checks the EU, UK and US sections before marketing there.
 
 Sources: Motion Studio Blueprint 1.0 (chapters 7, 8, 11, 12), the owner decisions to 30 October 2026 and the legal research note of 30 October 2026. Markers: "[to insert]" = a fact the owner must supply; "[lawyer to confirm]" = a legal conclusion or reference to check (including laws the research could not confirm); "(default, editable)" = a business value chosen by Claude; "Note for the lawyer" = a choice between alternatives. A Bangla version is needed before publication (the Digital Commerce Operation Guidelines 2021 require refund, return and delivery terms in Bangla).
