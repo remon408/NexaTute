@@ -9,7 +9,7 @@ Applies to: NexaTute (web, admin, Nexa Speak app), Remon Motion Studio, NexaLogi
 4. Country language not supported → site opens in English with no prompt.
 5. English-speaking countries → English, no prompt.
 
-## Claude defaults (editable)
+## Approved defaults (owner 31 Oct 2026; admin-editable)
 - Countries with more than one of our languages: India → Hindi or English (browser language decides which is offered); Pakistan → Urdu or English; Switzerland/Belgium/Canada → French or German/English by browser language; Bangladesh → বাংলা or English. Arabic-speaking countries → Arabic (RTL) or English.
 - Browser language beats IP country when they differ (e.g. a Bangladeshi in Japan with a Bangla browser is offered বাংলা).
 - Not a full-screen popup: a small top banner/bottom sheet that does not block reading (Google treats blocking pop-ups as intrusive and lowers search ranking; also WCAG). Search-engine bots never see it; every language has its own URL with hreflang.
