@@ -15,7 +15,7 @@ Read this file fully before doing anything. Then read `docs/HANDOVER.md`.
 - Real application code (front-end, back-end, database) will be added here; it does not exist yet.
 
 ## Hard rules (prototype)
-- 6 languages everywhere: bn, en, hi, ur, ar, fr — identical keys; RTL for ar/ur; Latin digits (PlayBoom child screens are the only exception).
+- 10 languages everywhere (owner order 30 Oct 2026; was 6): bn, en, hi, ur, ar, fr, ja, de, zh (Simplified; Traditional zh-TW later only if the owner asks), ko — identical keys; RTL for ar/ur; Latin digits (PlayBoom child screens are the only exception); CJK fonts Noto Sans/Serif CJK (OFL) loaded as subsets. Adding 4 languages grows every board — split boards before any file passes 1.8 MB. Each new language goes live only after native-speaker review.
 - Responsive 390 / 834 / 1024 / 1440; touch targets ≥ 44 px; contrast ≥ 4.5:1.
 - **Every board file ≤ 1,800,000 bytes** (`wc -c`). The Design viewer silently drops any file over 2 MiB. X20 and X12 are near the limit — move a section to a new board rather than growing them.
 - Admin sidebar must stay byte-identical on all admin boards (X10, X25, X26, X27 share one; X13–X22 share the other).
