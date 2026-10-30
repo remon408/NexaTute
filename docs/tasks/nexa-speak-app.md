@@ -10,3 +10,7 @@ Names final (owner 31 Oct 2026): app "Nexa Speak" containing "Nexa Speak Pass" a
 - Release: internal testing (TestFlight / Play internal track) during the NexaTute pilot (1–14 Jan 2027) and Free Beta (from 15 Jan 2027); public store release on 5 Feb 2027 (owner confirmed) (store review takes days — submit early).
 - Needs the company developer accounts (D-U-N-S, Apple $99/year, Google $25 one-time).
 - Admin: app settings, versions, store prices and feature switches in the NexaTute admin panel; prototype: new mobile/tablet board(s) for the app (≤1.8 MB each).
+
+## Course lengths (owner approved 31 Oct 2026, admin-editable)
+- Nexa Scripts: 30 days per script. Japanese: Hiragana + Katakana + first 50 Kanji; Chinese: Pinyin + tones + first 50 characters (rest in the main course or an optional second month). "Script Ready" certificate after the final test.
+- Nexa Speak Pass: Beginner A1→A2 (120 days) → Intermediate B1 (120 days) → Advanced B2→C1 (120 days). Level test at each stage end; not passed → continue the stage 30/60 days; placement test may start higher. Show a stage progress bar (day X of 120) in the app. No "guaranteed level" wording.
