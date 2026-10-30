@@ -1,6 +1,6 @@
 # Document Control
 
-> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. Use **Option B** (pay per order / per plan, no stored balance) wherever two options are given; Option A is kept only for the lawyer's reference. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
+> **Owner decision, 30 October 2026:** the company will NOT hold customers' money as a stored balance or wallet. In this memo that is **Option A of chapter 2 (pay per order / per plan, no stored balance)** — note the website-pages drafts label the same choice "Option B". Credits, minute packs, reseller packs, NexaLogicDev credits and gift cards must not become a Taka balance. Customer disputes: AI support first, then email to a person who decides — aligned between NexaTute and Remon Motion Studio.
 
 | Item | Detail |
 |---|---|
