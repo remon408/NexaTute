@@ -189,3 +189,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - 31 Oct 2026 approved: random human sample of 2–5% (default, editable) of AI-made content is added to the content quality flow, besides AI-unsure items and learner/parent/teacher mistake reports.
 - 31 Oct 2026 approved: NexaLogicDev Free Beta 15 Apr 2027, paid version 6 May 2027 (3 weeks later); 2-week closed pilot ≈1–14 Apr 2027.
 - 31 Oct 2026 (owner): Nexa Speak Pass and the script course get a separate mobile app (phone and tablet only) for Google Play and the App Store — task docs/tasks/nexa-speak-app.md (app name and "Nexa Script" rename to confirm).
+- 31 Oct 2026 (owner, final): the mobile app is named "Nexa Speak" and contains "Nexa Speak Pass" and "Nexa Scripts" (the script course, formerly "Script Starter", ৳199/month); public release in the App Store and Google Play on 5 Feb 2027 (paid launch day); test builds during the pilot/Free Beta.
