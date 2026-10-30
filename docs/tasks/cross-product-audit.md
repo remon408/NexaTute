@@ -38,3 +38,4 @@ The owner said: connections between NexaTute, Remon Motion Studio and NexaLogicD
   5. People plan: content verification team (question banks, lessons in 10 languages), native reviewers, Conversation Club teachers (recruit, vet, train), 24/7 support, DPO / child-safety lead.
   6. Content readiness: verified question banks and lessons per curriculum (3.13 quality gate) before each course goes live.
   7. Child-safety and data-protection readiness: DPIA, guardian-consent flow tests, incident drills, Bangladesh data ordinance check by the lawyer.
+- GPU start = 2 × 8×A6000 (31 Oct 2026): run the capacity model (live classes + Nexa Speak 45 min/day + Motion Studio + Co-Tutor) against this fleet in the benchmark; set queue/ETA rules and admission caps so live classes are never degraded.
