@@ -15,7 +15,7 @@ Applies to: NexaTute (web, admin, Nexa Speak app), Remon Motion Studio, NexaLogi
 - Not a full-screen popup: a small top banner/bottom sheet that does not block reading (Google treats blocking pop-ups as intrusive and lowers search ranking; also WCAG). Search-engine bots never see it; every language has its own URL with hreflang.
 - Mobile apps (Nexa Speak etc.): use the phone's language on first launch, same prompt, same English fallback.
 - Under-18 accounts: guardian's chosen language is used for guardian screens; child screens follow the child's class/course language.
-- Country lookup with an open-licence database (DB-IP Lite, CC BY 4.0, attribution in About) or the CDN country header — no paid/closed service; add to the software register at the next blueprint build.
+- Country lookup from the Cloudflare CF-IPCountry header (owner chose Cloudflare CDN, 31 Oct 2026); DB-IP Lite (CC BY 4.0) only as fallback for apps/servers not behind Cloudflare.
 - Each new language goes live only after native-speaker review (existing rule).
 
 ## Admin panel (each product)
