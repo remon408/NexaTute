@@ -43,3 +43,9 @@ Read first: `docs/decisions.md` (30 Oct 2026 lines on the Project & Competition 
 - Institution admin (X12): competition hosting (topic, rules, deadlines, rubric, online judging, results, QR certificates).
 - Then add it to the Master Blueprint at the next build (v32.11) and to `prototype/shared/numbers.md`.
 - Check board sizes (≤ 1.8 MB) — X20/X12 are near the limit; use a new board if needed.
+
+## 5. Team option (owner decision, 30 Oct 2026)
+- "Project Studio Team" (default name, editable): up to 15 people work together in one team; different students may be on different projects inside the same team.
+- Claude's proposed defaults (awaiting owner approval): shared pool of 21 works a month (3 × the single package), video up to 5 min each; one member can be on several projects; a project can have 1–15 members; roles = team leader, members, teacher/mentor; AI judge practice per member (fair use); one competition entry per project.
+- Under-18 members: guardian consent each; the team needs an adult teacher/mentor; team chat moderated by Nexa Guard; members join only by invitation from the teacher/leader of the same institution or class.
+- Suggested prices (to confirm; GPU cost per video minute is not measured yet — re-check after the benchmark): Project Studio Pro ৳799/month ($12); Project Studio Team ৳3,999/month ($60, ≈ ৳267 per member). Videos made in Quick/Enhanced mode at 720p to keep GPU cost low.
