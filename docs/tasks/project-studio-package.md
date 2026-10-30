@@ -53,3 +53,14 @@ Read first: `docs/decisions.md` (30 Oct 2026 lines on the Project & Competition 
 ## 6. Storage for project videos (approved by the owner 30 Oct 2026; all values admin-editable)
 - Students have no Motion Studio account; Motion Studio is only the engine behind the scenes. Finished files are saved in the student's NexaTute storage, in a "My Projects" folder inside Project Studio, with the storage meter.
 - Proposed: Project Studio Pro +5 GB; Project Studio Team 30 GB shared; drafts auto-deleted after 30 days (final kept); competition entries copied to the institution's pooled storage until results; usual 30-day keep after a plan ends; download any time.
+
+## 7. Communication (approved by the owner 30 Oct 2026; all values admin-editable)
+- One "Project Room" per project (members see only their projects) + a "Team Lobby" for the whole team.
+- Members: text chat (text, images, files, threads per task, @mentions, Nexa Guard on every message); task board (to do / doing / done, owner per task); comments pinned to report lines, slides, poster and video seconds; voice huddle from the room (camera off by default, never recorded, ends after 60 min).
+- AI co-ordinator "Nexa Project Coordinator" (default name) in every room: @Coordinator or voice, 6 languages; makes the plan and timeline, proposes task split, deadline reminders, gentle nudges, discussion/meeting summaries (decisions + open tasks), asks guiding questions but never gives answers, contribution log for fair credit, sets out both sides in disagreements (team/teacher decides). Pro (single) works with the coordinator alone and can invite own teacher to review.
+- Under-18: no private member-to-member messages; teacher/mentor sees all; voice huddle only with an adult mentor in the call; first names only, no phone numbers/contacts; guardian gets a weekly summary (not the messages); the usual behaviour ladder.
+- Chats kept 180 days after the project ends, then deleted. Included in the price; coordinator runs on the Co-Teacher LLM (no new GPU).
+
+## 8. Personal KPI, AI advice and data sync (owner decision 30 Oct 2026; KPI list = Claude proposal awaiting approval)
+- Owner decision: Project Studio has a personal KPI and AI advice; Nexa Teacher, Nexa Co-Teacher and Nexa Project Coordinator sync through the one shared learner record, so each knows where a student is weak and what to teach; this appears in all dashboard reports for every student who has any package.
+- See Claude's proposed KPI list in the next owner reply / decisions.md once approved.
