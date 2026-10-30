@@ -41,6 +41,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 9. All three prototypes: Connected accounts + Share options — `docs/tasks/sharing-and-connectors.md`.
 10. All three prototypes: Internal Video Service — `docs/tasks/internal-video-service.md`.
 11. Motion Studio + NexaLogicDev prototypes: "Free class" menu and "Learn to do this" buttons into NexaTute — `docs/tasks/free-class-links.md`.
+12. Motion Studio + NexaLogicDev prototypes: blogs (Motion Notes, Build Notes), SEO and marketing automation — `docs/tasks/marketing-automation.md`.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
