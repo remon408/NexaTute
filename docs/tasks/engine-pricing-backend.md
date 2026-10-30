@@ -4,17 +4,17 @@ Owner: "these must be set in the back end". Build this into the NexaLogicDev bil
 
 ## Price formula (per task)
 - Nexa Engine credits = (input tokens ÷ 5 + output tokens) ÷ 2,500 (Heavy); Fast = ÷ 20,000.
-- External engine credits = max( API cost in USD × FX (৳122/$) × markup ÷ credit value , Nexa Engine credits × 1.10 ), rounded up.
+- External engine credits = max( API cost in USD × FX (৳122/$) × markup ÷ credit value , Nexa Engine credits × 1.10 ) × 1.10 (resource & overhead surcharge, owner 30 Oct 2026), rounded up.
   - markup default = 1 ÷ 0.70 ÷ 0.83 (≥30% margin after 15% VAT and ~2% gateway); credit value = ৳4.35 (largest Boost pack).
   - Floor rule: an external engine is never cheaper than Nexa Engine + 10% for the same task.
-- Default credits per 1M tokens (input / output): Claude Opus 5.5 193 / 965 · GPT-5.3 Codex 84 / 676 · Grok 4.6 97 / 290 (after benchmark) · Nexa Heavy 80 / 400 · Nexa Fast 10 / 50.
+- Default credits per 1M tokens (input / output, incl. the +10% surcharge): Claude Opus 5.5 212 / 1,062 · GPT-5.3 Codex 93 / 743 · Grok 4.6 106 / 319 (after benchmark) · Nexa Heavy 80 / 400 · Nexa Fast 10 / 50.
 
 ## Example prices (credits, ≈৳ at Boost-pack value)
 | Task | Nexa Engine | GPT-5.3 Codex | Grok 4.6 | Claude Opus 5.5 |
 |---|---|---|---|---|
-| Small (50k in / 10k out) | 8 (৳35) | 11 (৳48) | 9 (৳39) | 20 (৳87) |
-| Medium (200k / 40k) | 32 (৳139) | 44 (৳191) | 36 (৳157) | 78 (৳339) |
-| Large (1M / 200k) | 160 (৳696) | 220 (৳957) | 176 (৳766) | 387 (৳1,683) |
+| Small (50k in / 10k out) | 8 (৳35) | 13 (৳57) | 10 (৳44) | 22 (৳96) |
+| Medium (200k / 40k) | 32 (৳139) | 49 (৳213) | 39 (৳170) | 85 (৳370) |
+| Large (1M / 200k) | 160 (৳696) | 242 (৳1,053) | 194 (৳844) | 425 (৳1,849) |
 
 ## Backend pieces
 1. Engine price table (per engine: API input/output/cached price, long-context surcharge e.g. Grok ×2 above 200k per call, FX rate, markup, VAT %, gateway %, floor %, on/off, plans allowed) — admin page "AI Engines & Pricing"; price changes by dual approval, apply to new tasks only.
