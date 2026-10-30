@@ -28,7 +28,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 
 ## Next steps (owner's order)
 
-> **Owner decision 30 Oct 2026: finish all three prototypes first — NexaTute (all additions in `docs/tasks/` and decisions.md), Remon Motion Studio, NexaLogicDev. Real code (backend/frontend Issues) starts only after that.** Every account works on prototypes until then; split boards by area, each ≤ 1.8 MB; follow the model split in CLAUDE.md.
+> **Owner decision 30 Oct 2026: finish all three prototypes first — NexaTute (all additions in `docs/tasks/` and decisions.md), Remon Motion Studio, NexaLogicDev. Real code (backend/frontend Issues) starts only after that.** **First do the owner's ordered cross-product audit (`docs/tasks/cross-product-audit.md`) together with the requested review.** Every account works on prototypes until then; split boards by area, each ≤ 1.8 MB; follow the model split in CLAUDE.md.
 
 1. **Sat 31 Oct 10:00 Dhaka** (scheduled reminder in the old session; the new account must start it itself): logos (with the owner) + live websites nexatute.com and remonlogicstudio.com with the legal pages (use Draft 2 pages; contact emails from admin placeholders; trade licence not shown — but the lawyer should check the e-commerce display rule). Support phone/email still to be decided by the owner.
 2. Owner: RJSC filing Sun 1 Nov with the MoA draft; lawyer review of the memo (wallet, Vitlous aamarPay account, children's data first).
@@ -39,6 +39,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 7. NexaTute prototype: add the "School Homework" dashboard section — `docs/tasks/school-homework.md`.
 8. NexaTute prototype: class extra-time rule + pop-up notice (decisions.md, 30 Oct 2026) in X02/X06 class screens, guardian X08, Institute X12 and admin settings.
 9. All three prototypes: Connected accounts + Share options — `docs/tasks/sharing-and-connectors.md`.
+10. All three prototypes: Internal Video Service — `docs/tasks/internal-video-service.md`.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
