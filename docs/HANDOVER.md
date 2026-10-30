@@ -27,6 +27,9 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 3. Still-open owner decisions (front notes of the legal drafts): pre-production fee timing; annual-plan refund rule; Motion Studio first-30-days refund; minimum age for under-18 profiles outside the USA; whether the 45%/30% discount caps also apply to NexaTute (institution discount is 40%); third-party voice/face cloning at launch (review recommends own voice/face only at launch).
 
 ## Next steps (owner's order)
+
+> **Owner decision 30 Oct 2026: finish all three prototypes first — NexaTute (all additions in `docs/tasks/` and decisions.md), Remon Motion Studio, NexaLogicDev. Real code (backend/frontend Issues) starts only after that.** Every account works on prototypes until then; split boards by area, each ≤ 1.8 MB; follow the model split in CLAUDE.md.
+
 1. **Sat 31 Oct 10:00 Dhaka** (scheduled reminder in the old session; the new account must start it itself): logos (with the owner) + live websites nexatute.com and remonlogicstudio.com with the legal pages (use Draft 2 pages; contact emails from admin placeholders; trade licence not shown — but the lawyer should check the e-commerce display rule). Support phone/email still to be decided by the owner.
 2. Owner: RJSC filing Sun 1 Nov with the MoA draft; lawyer review of the memo (wallet, Vitlous aamarPay account, children's data first).
 3. Remon Motion Studio prototype (5–7 days; split boards by area from the start, each ≤ 1.8 MB; Opus coordinates, Sonnet builds, Haiku checks). Put ALL features into four phases first (launch / first 3 months / 2027 / later) — the owner wants all features in the Free Beta, so the Free Beta date will move.
