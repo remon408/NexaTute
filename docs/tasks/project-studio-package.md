@@ -14,7 +14,7 @@ Read first: `docs/decisions.md` (30 Oct 2026 lines on the Project & Competition 
 - Name: "Project Studio Pro" (default name, editable).
 - 7 project works per month; each work may have a video of up to 5 minutes.
 - Includes everything in the flow above: lab, full report, slides, poster, the video, AI judge practice, competition entry and QR certificate.
-- Price: (to confirm). Work it out from the real Motion Studio GPU cost per video minute + the NexaTute margin rule (gross margin ≥ 60%), then show it to the owner for approval. USD = BDT × 0.015, nearest dollar, exact .5 rounds down.
+- Price: ৳799/month ($12), approved 30 Oct 2026 (see section 5).
 - It can be bought on its own or added on top of any plan.
 
 ## 3. Limits in the existing paid packages (owner set the lowest; Claude set the rest — default, editable)
@@ -46,6 +46,10 @@ Read first: `docs/decisions.md` (30 Oct 2026 lines on the Project & Competition 
 
 ## 5. Team option (owner decision, 30 Oct 2026)
 - "Project Studio Team" (default name, editable): up to 15 people work together in one team; different students may be on different projects inside the same team.
-- Claude's proposed defaults (awaiting owner approval): shared pool of 21 works a month (3 × the single package), video up to 5 min each; one member can be on several projects; a project can have 1–15 members; roles = team leader, members, teacher/mentor; AI judge practice per member (fair use); one competition entry per project.
+- Approved by the owner 30 Oct 2026: shared pool of 21 works a month (3 × the single package), video up to 5 min each; one member can be on several projects; a project can have 1–15 members; roles = team leader, members, teacher/mentor; AI judge practice per member (fair use); one competition entry per project.
 - Under-18 members: guardian consent each; the team needs an adult teacher/mentor; team chat moderated by Nexa Guard; members join only by invitation from the teacher/leader of the same institution or class.
-- Suggested prices (to confirm; GPU cost per video minute is not measured yet — re-check after the benchmark): Project Studio Pro ৳799/month ($12); Project Studio Team ৳3,999/month ($60, ≈ ৳267 per member). Videos made in Quick/Enhanced mode at 720p to keep GPU cost low.
+- Prices approved by the owner 30 Oct 2026 (re-check the margin after the GPU benchmark; GPU cost per video minute is not measured yet): Project Studio Pro ৳799/month ($12); Project Studio Team ৳3,999/month ($60, ≈ ৳267 per member). Videos made in Quick/Enhanced mode at 720p to keep GPU cost low.
+
+## 6. Storage for project videos (Claude proposal, awaiting owner approval)
+- Students have no Motion Studio account; Motion Studio is only the engine behind the scenes. Finished files are saved in the student's NexaTute storage, in a "My Projects" folder inside Project Studio, with the storage meter.
+- Proposed: Project Studio Pro +5 GB; Project Studio Team 30 GB shared; drafts auto-deleted after 30 days (final kept); competition entries copied to the institution's pooled storage until results; usual 30-day keep after a plan ends; download any time.
