@@ -38,6 +38,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 6. NexaTute prototype: add the Project & Competition Studio (approved 30 Oct 2026, see decisions.md) and highlight it on the landing page — full instructions incl. the new package and per-plan limits in `docs/tasks/project-studio-package.md`.
 7. NexaTute prototype: add the "School Homework" dashboard section — `docs/tasks/school-homework.md`.
 8. NexaTute prototype: class extra-time rule + pop-up notice (decisions.md, 30 Oct 2026) in X02/X06 class screens, guardian X08, Institute X12 and admin settings.
+9. All three prototypes: Connected accounts + Share options — `docs/tasks/sharing-and-connectors.md`.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
