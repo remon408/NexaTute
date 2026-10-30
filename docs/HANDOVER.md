@@ -40,6 +40,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 8. NexaTute prototype: class extra-time rule + pop-up notice (decisions.md, 30 Oct 2026) in X02/X06 class screens, guardian X08, Institute X12 and admin settings.
 9. All three prototypes: Connected accounts + Share options — `docs/tasks/sharing-and-connectors.md`.
 10. All three prototypes: Internal Video Service — `docs/tasks/internal-video-service.md`.
+11. Motion Studio + NexaLogicDev prototypes: "Free class" menu and "Learn to do this" buttons into NexaTute — `docs/tasks/free-class-links.md`.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.

@@ -21,3 +21,4 @@ The owner said: connections between NexaTute, Remon Motion Studio and NexaLogicD
 - Shared support (AI first → email → human) and the legal pages of each site referencing the others.
 - NexaLogicDev building websites/apps for NexaTute institutions, and Motion Studio videos for those sites.
 - Internal Video Service (docs/tasks/internal-video-service.md) — check it against all of the above.
+- Free class / "Learn to do this" links between Motion Studio, NexaLogicDev and NexaTute (docs/tasks/free-class-links.md).
