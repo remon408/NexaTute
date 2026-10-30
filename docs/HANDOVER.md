@@ -33,6 +33,7 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 4. NexaTute MVP list + week-by-week plan → GitHub Issues; then NexaLogicDev prototype.
 5. Next Master Blueprint build (v32.11) with everything in decisions.md.
 6. NexaTute prototype: add the Project & Competition Studio (approved 30 Oct 2026, see decisions.md) and highlight it on the landing page — full instructions incl. the new package and per-plan limits in `docs/tasks/project-studio-package.md`.
+7. NexaTute prototype: add the "School Homework" dashboard section — `docs/tasks/school-homework.md`.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.

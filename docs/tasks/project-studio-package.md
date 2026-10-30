@@ -63,4 +63,9 @@ Read first: `docs/decisions.md` (30 Oct 2026 lines on the Project & Competition 
 
 ## 8. Personal KPI, AI advice and data sync (owner decision 30 Oct 2026; KPI list = Claude proposal awaiting approval)
 - Owner decision: Project Studio has a personal KPI and AI advice; Nexa Teacher, Nexa Co-Teacher and Nexa Project Coordinator sync through the one shared learner record, so each knows where a student is weak and what to teach; this appears in all dashboard reports for every student who has any package.
-- See Claude's proposed KPI list in the next owner reply / decisions.md once approved.
+- Approved 30 Oct 2026 (all admin-editable):
+  - Personal KPIs (each student sees only their own): science skills from the Virtual Lab log (hypothesis, variable control, data accuracy, graphs, conclusion fits data); presentation (AI judge: time, clarity, accuracy, confidence, improvement per attempt); report quality by rubric; originality and AI-help level; teamwork (own tasks done, on time, help given); competitions (entries, results, certificates); syllabus topics used and mastery change.
+  - AI advice after each work and weekly, with reason/evidence and a direct button (Co-Teacher lesson, next Nexa Teacher class, AI judge practice); "needs more practice", never "weak".
+  - Sync: Coordinator writes lab mistakes, unclear concepts, presentation gaps and contribution to the shared learner record; Nexa Teacher teaches those concepts first in the next 1:1/batch recap; Co-Teacher gives drills; Coordinator reads mastery to split tasks (within reach + a stretch); linked to MindForge problem-solving/creative skills.
+  - Shown in: Main Student Dashboard "Projects" section (KPIs + timeline), class reports, guardian weekly summary, teacher/mentor sees own team, institution counts only with consent (hidden under 5), final work and certificates in the learner passport.
+  - No member sees another's personal KPI; no ranking.
