@@ -147,3 +147,5 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - 30 Oct 2026 (owner): the pricing page must say why customers should choose NexaLogicDev — draft in docs/tasks/nexalogicdev-why-us.md.
 - 30 Oct 2026 (owner): Claude, GPT and Grok engine prices get a further +10% (our resources and overhead are used too): credits = max(API cost × markup, Nexa Engine × 1.10) × 1.10; margin after VAT/gateway ≈36%; table updated in docs/tasks/engine-pricing-backend.md. "Why choose us" drafts for NexaTute and Motion Studio pricing pages in docs/tasks/why-us-nexatute-motionstudio.md (awaiting approval).
 - 30 Oct 2026 approved: "Why choose us" sections for the NexaTute and Remon Motion Studio pricing pages (docs/tasks/why-us-nexatute-motionstudio.md), same rules as NexaLogicDev's.
+- 30 Oct 2026 approved: AI roles renamed — Nexa Teacher → Nexa Tutor, Nexa Co-Teacher → Nexa Co-Tutor ("Teacher" = human, "Tutor" = AI); task in docs/tasks/rename-nexa-tutor.md; trademark search by the lawyer.
+- 30 Oct 2026 (owner): the NexaLogicDev admin panel must be as complete as NexaTute's, from accounting onward — section list in docs/tasks/nexalogicdev-admin.md.

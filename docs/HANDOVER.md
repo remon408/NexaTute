@@ -42,6 +42,8 @@ Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines a
 10. All three prototypes: Internal Video Service — `docs/tasks/internal-video-service.md`.
 11. Motion Studio + NexaLogicDev prototypes: "Free class" menu and "Learn to do this" buttons into NexaTute — `docs/tasks/free-class-links.md`.
 12. Motion Studio + NexaLogicDev prototypes: blogs (Motion Notes, Build Notes), SEO and marketing automation — `docs/tasks/marketing-automation.md`.
+13. All boards and docs: rename Nexa Teacher → Nexa Tutor, Co-Teacher → Co-Tutor — `docs/tasks/rename-nexa-tutor.md`.
+14. NexaLogicDev prototype: full admin panel — `docs/tasks/nexalogicdev-admin.md`; all other NexaLogicDev decisions of 30 Oct in decisions.md and docs/tasks/nexalogicdev-*.md, engine-pricing-backend.md, unified-credit-governance.md.
 
 ## Advice from the previous account
 - The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
