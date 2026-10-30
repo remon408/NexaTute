@@ -55,3 +55,10 @@ Quality gates (all work):
 3. Tests and `dcverify.py` must pass (0 problems, 0 parity); text checked in all 6 languages (RTL for ar/ur); WCAG 2.2 AA.
 4. Never claim something is done or checked without actually running the check; report any failure to the owner plainly.
 5. If a cheaper model's result looks doubtful, redo it with the stronger model — quality comes before saving usage.
+
+## Cross-product thinking (owner order, 30 Oct 2026 — every account, every time)
+NexaTute, Remon Motion Studio and NexaLogicDev are ONE ecosystem. The owner expects Claude, as the expert, to find the connections and gaps itself — he should never have to point them out.
+- For every new idea or feature, before presenting it, check how it touches the other two products and say so in the proposal: user flow, technical connection, who pays / which book, priority, safety and under-18 rules, privacy/consent, storage, failure handling, and the controls in EVERY affected product's admin panel (all three panels when all three are involved).
+- Check it against newer decisions (newest lines in `docs/decisions.md` win; e.g. no stored money/credits since 30 Oct 2026) and report any contradiction you find.
+- Reuse the shared patterns already approved: one Nexa ID; Internal Video Service (`docs/tasks/internal-video-service.md`); "Free class" + "Learn to do this" links into NexaTute (`docs/tasks/free-class-links.md`); Connected accounts via OAuth only + Share options (`docs/tasks/sharing-and-connectors.md`).
+- The open cross-product audit is in `docs/tasks/cross-product-audit.md`; add every new connection you find there.
