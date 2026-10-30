@@ -6,3 +6,14 @@
 - Pages read prices and features live from each product's admin matrices (never typed by hand); every page includes the approved "Why choose us" section, legal pages (Draft 2), status page and Trust Center links; samples labelled "sample (prototype)"; no fake reviews/numbers; no scarcity wording.
 - Highlights already ordered: NexaTute — Project & Competition Studio, recruitment-test offer; Motion Studio — free course, lifetime free account; NexaLogicDev — engine choice with prices, free plan.
 - Saturday 31 Oct website work with the owner should follow this (start with nexatute.com and remonlogicstudio.com).
+
+## Update suggestions must explain WHY, in detail (owner order 30 Oct 2026, all three products)
+Every Landing Page AI suggestion is a card with:
+1. What to change (before → after preview, page/section, languages affected).
+2. Why — the evidence: which data (e.g. conversion, scroll depth, bounce, form errors, search rank/keyword volume, visitor questions, complaints, price/feature change in admin, season/event, broken link, slow speed, policy/legal change), the time window and sample size, shown as small charts/tables.
+3. Expected effect as a range with a confidence level — never a guarantee; "not enough data yet" when the sample is too small.
+4. Risks and side effects (SEO, other languages, brand, legal claims, children's pages).
+5. How it will be tested (A/B or before/after), for how long, and the stop rule.
+6. Priority (urgent / high / normal), effort, who must approve, rollback plan.
+7. Sources cited (internal reports, Search Console, competitor page snapshot with date) — no invented numbers.
+The approver can ask "why?" on any line (same "why?" explanation as the futuristic admin), and every decision (approve / reject + reason) is logged and used to improve future suggestions.
