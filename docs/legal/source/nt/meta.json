@@ -4,11 +4,28 @@
  "title2": "Website Legal Pages — Drafts",
  "subtitle": "Terms of Use, Privacy Policy, Children's Privacy & Guardian Consent, Refund, Recording, AI Transparency, Cookies, Data Deletion",
  "tagline": "For lawyer review — not yet published",
- "edition": "Draft 1",
+ "edition": "Draft 2",
  "editionLabel": "",
  "header": "NEXATUTE LEGAL PAGES — DRAFT FOR LAWYER REVIEW",
  "footerLabel": "Draft for lawyer review — not legal advice",
  "coverLine": "Prepared by Claude (AI) on 30 October 2026 from the approved NexaTute plan and the legal research note",
- "coverRows": [["Documents","8 public website pages for nexatute.com"],["Company","RemonLogic Private Limited (proposed), Dhaka, Bangladesh"],["Status","Drafts — to be checked by a Bangladeshi lawyer (and an international firm for EU/UK/US sections) before publishing"],["Prepared","30 October 2026"]],
- "disclaimer": "These drafts were prepared by an AI assistant and are not legal advice. Items marked [lawyer to confirm] or [to insert] must be checked or completed before publishing. Where two options are given (for example the wallet clause), the lawyer chooses one."
+ "coverRows": [
+  [
+   "Documents",
+   "8 public website pages for nexatute.com"
+  ],
+  [
+   "Company",
+   "RemonLogic Private Limited (proposed), Dhaka, Bangladesh"
+  ],
+  [
+   "Status",
+   "Drafts — to be checked by a Bangladeshi lawyer (and an international firm for EU/UK/US sections) before publishing"
+  ],
+  [
+   "Prepared",
+   "30 October 2026"
+  ]
+ ],
+ "disclaimer": "These drafts were prepared by an AI assistant and are not legal advice. Items marked [lawyer to confirm] or [to insert] must be checked or completed before publishing. Revision 2 (30 October 2026) follows the owner's decisions: no stored balance or wallet, under-18 rules, AI-then-person disputes, and contact emails set from the admin panel."
 }

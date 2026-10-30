@@ -1,30 +1,47 @@
-# Handover — state on 29 Oct 2026
+# Handover — state on 30 Oct 2026, 12:30 Dhaka (written for the next Claude account)
 
-## Done
-- **NexaTute prototype**: Version 156 of the Design canvas (claude.ai artifact, owner's account) = the 59 boards in `prototype/project/`. Last passes:
-  - fix20: staging load test, voice/audio cache, admin passkeys + "Report a security problem" page + pen-test before paid launch, "What's new" sheet; X20 legal pages moved to X24; X10 split into X10 / X25 (plans & prices) / X26 (rules).
-  - fix21: admission limits per class/course, waiting list, capacity guard (75 % of load-test capacity, release below 60 %), one master "All new admissions" switch with an admin message written once and AI-translated into 6 languages; Nexa Co-Admin (X27) acting within each admin's own permissions, on WhatsApp / Messenger / imo (all off until lawyer/DPO check; imo needs business API access).
-  - fix22: USD rule ".5 rounds down" with no exception (৳500 = $7).
-  - X20 header: one compact sticky bar when scrolled (≥ 1024 px).
-- **Master Blueprint** Corporate Edition v32.10 (`docs/blueprint/`).
-- **Netlify static export** of all prototypes (built from `prototype/netlify-build/`; fonts folder `ff/` and `preact-src/` are not committed — re-fetch from npm/fontsource when rebuilding).
+Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines at the bottom win). The owner writes Banglish/Bengali — reply in Bengali, plain and short. Build files only when he asks; save every decision.
 
-## Key dates
-- NexaTute Free Beta 20 Nov – 9 Dec 2026; paid launch 1 Jan 2027.
-- Remon Motion Studio Free Beta 20 Dec 2026 (paid start to be set).
-- NexaLogicDev development from March 2027, launch September 2027.
+## Where everything is
+| What | Where |
+|---|---|
+| All owner decisions after Master Blueprint v32.10 (dated; superseded lines are marked) | `docs/decisions.md` |
+| Full memory export of the previous account (the owner's durable facts and decisions, by subject) | `docs/memory/` — read `docs/memory/areas/<subject>.md` before answering about that subject. Lines are "[stated]" = the owner said it. Newer lines override older ones in the same file. |
+| Master Blueprint v32.10 (whole ecosystem, 382 pp) | `docs/blueprint/` |
+| Remon Motion Studio Blueprint, Edition 1.0 (126 pp, Word) + chapter sources | `docs/motion-studio/` (sources in `source/`) — written BEFORE most 30 Oct decisions; `docs/reviews/` lists its contradictions |
+| Legal pack (drafts for a Bangladeshi lawyer; Claude is not a lawyer) | `docs/legal/` — memo, Motion Studio pages (Draft 2), NexaTute pages (Draft 2), MoA objects clause, research note `research_2026-10-30.md`, markdown sources in `source/` |
+| Reviews | `docs/reviews/` — gaps + admin control (review 2), third review (`review3_2026-10-30.md`) |
+| Word/PDF builder used for all documents | `tools/docbuilder/` — `build.js` (docx-js; markdown → corporate Word), `pages.py` (two-pass contents page numbers), `build_doc.sh <dir> <out.docx>` (needs `meta.json`, `order.json`, `sec/front.md`, `sec/*.md`; set paths at the top of the scripts) |
+| NexaTute prototype (59 boards, artifact Version 156) | `prototype/` |
 
-## Open owner questions
-- Answered 29 Oct 2026 (see decisions.md): Co-Teacher Pass $1; Co-Admin log 7 years; L14 USD + own language; imo business API still to apply; Claude drafts legal positions for the lawyer to check.
+## What happened on 29–30 Oct 2026 (summary — details in decisions.md and docs/memory/areas/motion-studio.md)
+- Motion Studio: final per-minute rates; 4K Escalating; ~150 approved features incl. emotions, child-character voices, Voice Clone Studio, digital twin, AI Co-Director, international-standard set, package placement matrix; lifetime free account; discount caps (45% per-minute / 30% fee, one promo discount, 30% margin floor); Free Beta = all features within daily limits (clone/twin/face acting only after legal clearance); futuristic admin with Co-Admin; 19 admin pages + central settings registry; protected settings change with 3 approvals + 24 h delay (not hard-locked, laws change).
+- Company: RemonLogic Private Limited — RJSC application Sun 1 Nov 2026; MoA objects draft ready; USA LLC via doola.com (lawyer must confirm Bangladesh Bank outward-investment approval first); second payment gateway — owner's initiative.
+- **No stored money anywhere** (Bangladesh Bank 2024 prepaid-instrument rules): pay per order / per plan; credits, minute packs, gift cards, reseller packs, NexaLogicDev credits, Shikkha Salami become named plan codes or per-order prices; refunds to the original payment method.
+- Accounting: one ledger with product + funding tags; costs split by measured use (OpenCost); everything admin-controlled.
+- Every customer-facing email address is set in admin; one separate address per type of work, each routed to a team; which person/team does which job is assigned in admin ("People, teams & job assignment" page).
 
-## Next steps (owner's order, updated 29 Oct 2026 night)
-Owner: "start properly — dates may move if needed"; new features are not paused (good ideas welcome); people for accounting, legal and developer review are available. All decisions after v32.10 are in `docs/decisions.md` (to go into the next blueprint build).
-1. **Live websites** nexatute.com and remonlogicstudio.com (home, features, prices, contact, terms, privacy, refund, children's data) — needed before aamarPay website check, Meta, YouTube API, Paddle. Trade licence not shown; support phone + email to decide (reminder Sat 31 Oct 10:00 Dhaka).
-2. NexaTute MVP list + week-by-week plan → GitHub Issues for lead / back-end / front-end. 2-week closed pilot before the public Free Beta; Free Beta pass conditions decide the paid launch.
-3. **Remon Motion Studio** prototype, then **NexaLogicDev** prototype — separate canvases, same rules.
-4. Payments: aamarPay (already has a merchant account, supports international) until the Paddle API is approved.
+## In progress when the previous account stopped (check before redoing)
+1. **Legal memo update + gap solutions** were being written by a sub-agent: memo sources `docs/legal/source/memo/` may be the PREVIOUS version (Draft 1 with a corrected Option banner). If `docs/legal/source/memo/02.md` still says "Option A/B/C/D" instead of "P1–P4", redo this task: apply `docs/reviews/review3_2026-10-30.md` sections A, C, D to the memo (P1 = pay per order decided; USA LLC/doola; under-18 rules; bulk messages paid by company, 3 sends/day + recipient cap via client's sender identity; AI opinion → person decides for legal requests; AI Co-Director 180-day chats; disputes AI → email → person; EU/UK 14-day right; auto-renew consent; 30-day terms notice + re-acceptance; NexaTute Free Beta adult-only pilot first; admin-set per-purpose emails), rebuild with `tools/docbuilder/build_doc.sh`, and write `gap_solutions.md` for the 10 gaps in review3 section B (each with the controlling admin page, plus the "People, teams & job assignment" page and the per-purpose email table).
+2. The owner asked for **another review after this work finishes** (fresh agent; check the updated legal drafts and decisions for contradictions).
+3. Still-open owner decisions (front notes of the legal drafts): pre-production fee timing; annual-plan refund rule; Motion Studio first-30-days refund; minimum age for under-18 profiles outside the USA; whether the 45%/30% discount caps also apply to NexaTute (institution discount is 40%); third-party voice/face cloning at launch (review recommends own voice/face only at launch).
 
-## Known small items left
+## Next steps (owner's order)
+1. **Sat 31 Oct 10:00 Dhaka** (scheduled reminder in the old session; the new account must start it itself): logos (with the owner) + live websites nexatute.com and remonlogicstudio.com with the legal pages (use Draft 2 pages; contact emails from admin placeholders; trade licence not shown — but the lawyer should check the e-commerce display rule). Support phone/email still to be decided by the owner.
+2. Owner: RJSC filing Sun 1 Nov with the MoA draft; lawyer review of the memo (wallet, Vitlous aamarPay account, children's data first).
+3. Remon Motion Studio prototype (5–7 days; split boards by area from the start, each ≤ 1.8 MB; Opus coordinates, Sonnet builds, Haiku checks). Put ALL features into four phases first (launch / first 3 months / 2027 / later) — the owner wants all features in the Free Beta, so the Free Beta date will move.
+4. NexaTute MVP list + week-by-week plan → GitHub Issues; then NexaLogicDev prototype.
+5. Next Master Blueprint build (v32.11) with everything in decisions.md.
+
+## Advice from the previous account
+- The owner approves many ideas quickly. Before adding, check `docs/decisions.md` and `docs/memory/` for an existing decision under another name; say so when an idea already exists.
+- Be honest about limits: no fake numbers, no legal conclusions, "(default, editable)" for Claude-chosen values, "(to confirm)" for open ones. Never claim a check you did not run.
+- Keep money/children/legal items conservative: no stored balances; under-18 data rules; consent + OTP for voices/faces; AI labels and C2PA.
+- Agents are fine for big drafting/reviews ("use as many agents as needed"); use "light mode" checks (see preferences).
+- When a document is rebuilt, verify contents page numbers (pages.py) and render a few pages before sending.
+- Keep committing `docs/decisions.md` after every approval; this repo is the shared memory between accounts.
+
+## Known small items left (prototype)
 - X12 "Open approval" on an already-open approval does nothing.
 - Optional static frames not drawn: D05/D07 load test, G01/D04 What's new.
 - X20 (≈1.80 MB) and X12 (≈1.77 MB) have little room left; next X20 split: Nexa Notes → new board.
