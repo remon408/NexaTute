@@ -5,3 +5,5 @@ prototype/netlify-build/ff/
 prototype/netlify-build/preact-src/
 *.log
 .DS_Store
+# dcverify.py temp files (removed by the tool after each run)
+prototype/tools/_dcv_run_*
