@@ -18,11 +18,11 @@ Ordered by the owner (31 Oct 2026: "onek pending kaz ase valo kore check koro") 
 6. **Not built at all:** Nexa Speak, Nexa Scripts, Project & Competition Studio, School Homework section, class extra-time pop-up, first-visit language prompt, full Share sheet, Human Conversation Club, discount caps, protected settings, People/teams page.
 7. **Legal drafts out of date:** refund rule (30 Oct), third-party cloning at launch, minimum age, GPU location (Netherlands), pre-production fee; HANDOVER still lists these as open.
 8. **Admin sidebar rule:** X10/X25/X26/X27 identical; X13–X22 are not identical (8 different hashes).
-9. **Tools:** `prototype/project/support.js` (loaded by every board) is missing from the repo; build/check scripts point at the old workspace paths.
+9. **Tools:** `./support.js` in every board is the Design canvas runtime, supplied by the Design artifact type when the boards are published — not a repo file and not a defect (corrected by the lead after checking the type, 31 Oct). The Netlify build/check scripts still point at old workspace paths. `dcverify.py` now fails a board that lacks any of the 10 languages (`--langs` overrides during the transition).
 
 ## Proposed order (to approve)
 1. Owner answers the key decisions (USD rule, discount caps, NexaLogicDev age, under-18 and outside AI, Nexa Scripts in the Pass, minute/Boost packs, adult-only pilot, then-vs-now clips).
-2. Fix tools (support.js, paths, 10-language check in dcverify).
+2. Fix tools (10-language check in dcverify — done 31 Oct; Netlify script paths later).
 3. Split the 8 full boards, then text fixes on all boards (rename, dates, wallet, refund, GPU/Valkey).
 4. New NexaTute features on new boards; then the 4 new languages (text by Sonnet, marked "native review pending").
 5. Fix contradictions in task docs, memory export, legal drafts (Motion Studio blueprint fixes go with the Motion Studio prototype).
