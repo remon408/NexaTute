@@ -575,7 +575,7 @@ button[data-tip],a[data-tip],[data-tip] button,[data-tip] a{cursor:pointer}
       <p style="font-size:13px;line-height:1.5;color:#E4E2FF">{{ hbx.hub_c2 }}</p>
       <span class="hbsm">{{ hbx.hub_c3 }}</span>
       <p style="font-size:12px;line-height:1.5;color:#E4E2FF">{{ hbx.hub_gs }}</p>
-      <a href="X07-Prototype-Test.dc.html#hub">{{ hbx.hub_go }}</a>
+      <a href="X07c-Prototype-Test-Hub.dc.html#hub">{{ hbx.hub_go }}</a>
     </div>
 
     <!-- Overview -->
@@ -634,7 +634,7 @@ button[data-tip],a[data-tip],[data-tip] button,[data-tip] a{cursor:pointer}
       <div class="cd" style="display:flex;flex-direction:column;gap:8px">
         <p class="t3" style="font-size:14px">{{ d.exp_h }}</p>
         <button class="pick2" onClick="{{ makePdf }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM9 13h6M9 17h4M12 3v5h5"/></svg><span style="flex:1;min-width:0"><span style="display:block;font-weight:600">{{ d.exp_pdf }}</span><span class="xs">{{ d.exp_pdf_s }}</span></span></button>
-        <a class="pick2" href="X07-Prototype-Test.dc.html#allx"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9zM6 6h12v15H6zM9 12h6M9 16h4"/></svg><span style="flex:1;min-width:0"><span style="display:block;font-weight:600">{{ d.exp_x }}</span><span class="xs">{{ d.exp_x_s }}</span></span></a>
+        <a class="pick2" href="X07c-Prototype-Test-Hub.dc.html#allx"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9zM6 6h12v15H6zM9 12h6M9 16h4"/></svg><span style="flex:1;min-width:0"><span style="display:block;font-weight:600">{{ d.exp_x }}</span><span class="xs">{{ d.exp_x_s }}</span></span></a>
       </div>
       <button class="lev" role="switch" aria-checked="{{ calmOn }}" onClick="{{ flipCalm }}" style="border:1px solid #E2E6EF;border-radius:16px;padding:10px 14px;background:#fff">
         <span style="flex:1;min-width:0"><span class="t3" style="display:block;font-size:14px">{{ d.calm }}</span><span class="xs">{{ d.calm_s }}</span></span><span class="{{ calmTg }}"><i></i></span>
@@ -728,7 +728,7 @@ button[data-tip],a[data-tip],[data-tip] button,[data-tip] a{cursor:pointer}
         <div class="row" style="gap:8px;flex-wrap:wrap"><span class="lb n">{{ d.ned }}</span><span class="sm" style="color:#141A33">{{ d.rd_sci }}</span></div>
         <p class="sm" style="color:#141A33">{{ d.rd_eng }}</p>
         <p class="xs" style="margin:0">{{ d.hr_note }}</p>
-        <a class="lnk" href="X07-Prototype-Test.dc.html#hub/plan" style="text-decoration:none">{{ hbx.hub_rd }}</a>
+        <a class="lnk" href="X07c-Prototype-Test-Hub.dc.html#hub/plan" style="text-decoration:none">{{ hbx.hub_rd }}</a>
       </div>
     </sc-if>
     <div class="f18swr dvspan"><button class="f18sw" role="switch" aria-checked="{{ nwOffOn }}" onClick="{{ nwSimOff }}"><span class="f18k" aria-hidden="true"></span><span>{{ f18.nw_sim }}</span></button><button class="f18sw" role="switch" aria-checked="{{ nwSlowOn }}" onClick="{{ nwSimSlow }}"><span class="f18k" aria-hidden="true"></span><span>{{ f18.nw_sim2 }}</span></button><button class="f18sw" role="switch" aria-checked="{{ ltWeak }}" onClick="{{ ltSimTog }}"><span class="f18k" aria-hidden="true"></span><span>{{ f18.lt_sim }}</span></button></div>
@@ -1394,7 +1394,7 @@ button[data-tip],a[data-tip],[data-tip] button,[data-tip] a{cursor:pointer}
     <div class="f18hd"><p class="f18t" id="wn-h">✨ {{ wn.wn_title }}</p><button class="f18x" aria-label="{{ wn.wn_ok }}" data-tip="{{ wn.wn_ok }}" onClick="{{ wnOk }}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <p class="wnsub">{{ wn.wn_sub }} · {{ wn.wn_rel }}</p>
     <ul class="wnl"><li><b aria-hidden="true">🔍</b><span>{{ wn.wn_i1 }}</span></li><li><b aria-hidden="true">🔊</b><span>{{ wn.wn_i2 }}</span></li><li><b aria-hidden="true">⚔️</b><span>{{ wn.wn_i3 }}</span></li></ul>
-    <div class="f18bt"><a class="f18b2" href="X20-Prototype-Landing.dc.html#roadmap">{{ wn.wn_road }}</a><button class="f18b1" onClick="{{ wnOk }}">{{ wn.wn_ok }}</button></div>
+    <div class="f18bt"><a class="f18b2" href="X20c-Prototype-Landing-More.dc.html#roadmap">{{ wn.wn_road }}</a><button class="f18b1" onClick="{{ wnOk }}">{{ wn.wn_ok }}</button></div>
     <p class="wnoff">{{ wn.wn_off }}</p>
   </div>
 </sc-if>

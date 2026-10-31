@@ -435,6 +435,26 @@
    "title": "X7 · Prototype: মক টেস্ট ও OMR — মক টেস্ট, OMR, সত্য/মিথ্যা, শূন্যস্থান, মিলকরণ, লিখিত উত্তর আপলোড ও AI মার্কিং (বোর্ডের নিয়মে অংশভিত্তিক নম্বর), রিচেক, প্রক্টরিং (শুধু সার্টিফিকেট পরীক্ষা, 18+), ফলাফল, ভুলের খাতা ও পরীক্ষার আগের রাত (Play)"
   },
   {
+   "stem": "X07b-Prototype-Test-ExamAid",
+   "page": "X07b-Prototype-Test-ExamAid.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X7b · Prototype: Exam-aid pages: recovery, appeal, adaptive, speaking, coding, certificate, employer (Play)"
+  },
+  {
+   "stem": "X07c-Prototype-Test-Hub",
+   "page": "X07c-Prototype-Test-Hub.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X7c · Prototype: Exam & Admission Hub, merit list, Quiz Battle, past questions, All Exams, exam day (Play)"
+  },
+  {
    "stem": "X08-Prototype-Guardian",
    "page": "X08-Prototype-Guardian.html",
    "mode": "fill",
@@ -465,6 +485,16 @@
    "title": "X10 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — ক্যাপাসিটি, শিক্ষার্থী ও ব্যবহার, প্রতিষ্ঠান, ইভেন্ট-সার্টিফিকেট-চাকরি, হিসাব ও অর্থ (জার্নাল, লেজার, Trial Balance, বেতন, ভেন্ডর, লোন নেওয়া-দেওয়া, শেয়ার হস্তান্তর, অনুমোদন, অডিট লগ, ক্লাউড ব্যাকআপ), ভূমিকা ও অ্যাক্সেস (স্টাফের পাসকি), Nexa Guard, ছুটি, দেশভিত্তিক হেল্পলাইন ও স্পনসর — প্ল্যান ও মডিউল এখন X25 / X26-এ (Play)"
   },
   {
+   "stem": "X10b-Prototype-Admin-Accounts",
+   "page": "X10b-Prototype-Admin-Accounts.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X10b · Prototype: Accounts and finance, roles and access (Play)"
+  },
+  {
    "stem": "X11-Prototype-Tools",
    "page": "X11-Prototype-Tools.html",
    "mode": "fill",
@@ -483,6 +513,16 @@
    "framed": false,
    "interactive": true,
    "title": "X12 · Prototype: Institute Admin — স্কুল, কলেজ, কোচিং, বিশ্ববিদ্যালয় (18+); ক্যাম্পাস, শিক্ষার্থীর অবস্থা, ক্যালেন্ডার, মেন্টর, রিপোর্ট, রিমাইন্ডার, প্লেসমেন্ট; MindForge ক্লাস সারাংশ; নোটিফিকেশন, স্টাফ চ্যাট ও কমপ্লায়েন্স সতর্কতা (Play)"
+  },
+  {
+   "stem": "X12b-Prototype-Institute-Ops",
+   "page": "X12b-Prototype-Institute-Ops.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X12b · Prototype: Operations: staff, billing, reports, messages (Play)"
   },
   {
    "stem": "X13-Prototype-LandingAI",
@@ -505,6 +545,16 @@
    "title": "X14 · Prototype: প্ল্যাটফর্ম অপারেশন — AI মডেল ও প্রম্পট ভার্সন (রোলব্যাক), API খরচের সীমা, ভুল উত্তরের এস্কেলেশন, প্রতি শিক্ষার্থীর দৈনিক খরচ, GPU লোড, ফিচার ফ্ল্যাগ ও A/B টেস্ট, মেইনটেন্যান্স পেজ, ব্যাকআপ ও রিস্টোর, ইনসিডেন্ট লগ (Play)"
   },
   {
+   "stem": "X14b-Prototype-Ops-Infra",
+   "page": "X14b-Prototype-Ops-Infra.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X14b · Prototype: Infrastructure: GPU, servers, maintenance (Play)"
+  },
+  {
    "stem": "X15-Prototype-Accounts",
    "page": "X15-Prototype-Accounts.html",
    "mode": "fill",
@@ -523,6 +573,26 @@
    "framed": false,
    "interactive": true,
    "title": "X16 · Prototype: কনটেন্টের মান ও টাকা — উত্তর-ক্যাশ ও ভুল উত্তর রিভিউ, লিখিত উত্তরের মার্কিং রিভিউ ও রিচেক কিউ (24 ঘণ্টায় উত্তর), প্রক্টরিং ফ্ল্যাগ রিভিউ, সার্কুলার ও পরীক্ষা-পরবর্তী সমাধান, অনুবাদ রিভিউ, গ্লসারি ও ক্যালকুলেটরের নিয়ম, ডিসকাউন্ট, Crash Pack সিট, গিফট কার্ড, রিফান্ড, পেআউট ও কর, VAT রিপোর্ট, দামের নিয়মের KPI; MindForge প্রশ্ন-ভান্ডার ও যাচাই (জেনারেটর, স্যাম্পল রিভিউ, ক্যালিব্রেশন, DIF, সাইকোমেট্রিশিয়ানের অনুমোদন) ও MindForge KPI (Play)"
+  },
+  {
+   "stem": "X16b-Prototype-Quality-Money",
+   "page": "X16b-Prototype-Quality-Money.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X16b · Prototype: Money, MindForge items, tests and marking (Play)"
+  },
+  {
+   "stem": "X16c-Prototype-Quality-ExamAid",
+   "page": "X16c-Prototype-Quality-ExamAid.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X16c · Prototype: Exam rules and integrity (Play)"
   },
   {
    "stem": "X17-Prototype-Growth",
@@ -563,6 +633,36 @@
    "framed": false,
    "interactive": true,
    "title": "X20 · Prototype: NexaTute ল্যান্ডিং পেজ (nexatute.com) — Landing Page AI-এর সঙ্গে যুক্ত, ছয় ভাষা, দেশ ও সিলেবাস বাছাই (যেকোনো দেশের সিলেবাস; দাম থাকার দেশ অনুযায়ী), প্ল্যান ও দাম, লাইভ ডেমো, কুকি সম্মতি, অ্যাডমিন প্রিভিউ, Nexa Notes (পড়ার টিপস, পরীক্ষার খবর ও ভিডিও) (Play)"
+  },
+  {
+   "stem": "X20b-Prototype-Landing-Plans",
+   "page": "X20b-Prototype-Landing-Plans.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X20b · Prototype: Plans, safety, PlayBoom, MindForge, institutions (Play)"
+  },
+  {
+   "stem": "X20c-Prototype-Landing-More",
+   "page": "X20c-Prototype-Landing-More.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X20c · Prototype: Notes teaser, roadmap, FAQ, sign-up (Play)"
+  },
+  {
+   "stem": "X20d-Prototype-Landing-Blog",
+   "page": "X20d-Prototype-Landing-Blog.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X20d · Prototype: The Nexa Notes blog: list, posts, videos, newsletter (Play)"
   },
   {
    "stem": "X21-Prototype-Comms",
@@ -615,6 +715,26 @@
    "title": "X25 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — প্ল্যান ও মডিউল: প্ল্যান অনুযায়ী মডিউল (রিক্রুটমেন্ট টেস্ট অ্যাড-অন, লিখিত-চেকের দৈনিক সীমা, রিচেক ও মার্কিং, MindForge), পুরো প্ল্যাটফর্মের সুইচ, প্ল্যান ও দাম (মূল দামের টেবিল, অ্যাড-অন, পাস, ছাড়, ট্রায়াল, রিফান্ড, স্টোরেজ) (Play)"
   },
   {
+   "stem": "X25b-Prototype-AdminPlans-Platform",
+   "page": "X25b-Prototype-AdminPlans-Platform.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X25b · Prototype: Plans and modules: platform switches (Play)"
+  },
+  {
+   "stem": "X25c-Prototype-AdminPlans-Pp",
+   "page": "X25c-Prototype-AdminPlans-Pp.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X25c · Prototype: Plans and prices (price table) (Play)"
+  },
+  {
    "stem": "X26-Prototype-AdminRules",
    "page": "X26-Prototype-AdminRules.html",
    "mode": "fill",
@@ -623,6 +743,16 @@
    "framed": false,
    "interactive": true,
    "title": "X26 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — প্ল্যান ও মডিউল: ক্লাস, নিরাপত্তা ও শেখার নিয়ম (ভয়েস ও অডিও ক্যাশ, লগইন, এনগেজমেন্ট, স্টাডি বট) ও Free Beta সুরক্ষা (Play)"
+  },
+  {
+   "stem": "X26b-Prototype-AdminRules-More",
+   "page": "X26b-Prototype-AdminRules-More.html",
+   "mode": "fill",
+   "w": 1440,
+   "h": 1000,
+   "framed": false,
+   "interactive": true,
+   "title": "X26b · Prototype: Rules and settings, part 2: engagement, learning, trust (Play)"
   },
   {
    "stem": "X27-Prototype-CoAdmin",

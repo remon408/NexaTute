@@ -788,7 +788,7 @@ a.mt,a.mt:hover{color:#141A33;text-decoration:none}.mt:hover{border-color:#B9BEF
         <div role="img" aria-label="{{ hx.hx_wg }}" style="background:#141A33;color:#fff;border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;flex:0 0 auto"><span style="font-size:11px;color:#C9C6F5">{{ hx.hx_wg }}</span><b style="font-size:16px">{{ hx.hx_wgn }}</b></div>
         <button class="lnk" style="min-height:44px" onClick="{{ hxAdd }}">{{ hx.hx_add }}</button>
       </div>
-      <a class="btn2" href="X07-Prototype-Test.dc.html#hub" style="height:44px;font-size:14px;text-decoration:none">{{ hx.hx_go }}</a>
+      <a class="btn2" href="X07c-Prototype-Test-Hub.dc.html#hub" style="height:44px;font-size:14px;text-decoration:none">{{ hx.hx_go }}</a>
     </div>
     </div><div class="gc">
     <p class="t3">{{ t.h_plan }}</p>
@@ -965,9 +965,9 @@ a.mt,a.mt:hover{color:#141A33;text-decoration:none}.mt:hover{border-color:#B9BEF
         <div><p class="t2">{{ t.more_h }}</p><p class="xs" style="margin:2px 0 0">{{ t.more_sub }}</p></div>
         <div class="mg">
           <sc-for list="{{ moreTiles }}" as="m" hint-placeholder-count="7"><button class="mt" onClick="{{ m.pick }}"><b>{{ m.name }}</b><span>{{ m.sub }}</span></button></sc-for>
-          <a class="mt" href="X07-Prototype-Test.dc.html#hub" data-tip="{{ hx.hx_l2 }}"><b>{{ hx.hx_h }}</b><span>{{ hx.hx_mo }}</span></a>
-          <a class="mt" href="X07-Prototype-Test.dc.html#battle" data-tip="{{ t.mo_tests }}"><b>{{ t.mo_link.battle }}</b><span>{{ t.mo_tests }}</span></a>
-          <a class="mt" href="X07-Prototype-Test.dc.html#papers" data-tip="{{ t.mo_tests }}"><b>{{ t.mo_link.papers }}</b><span>{{ t.mo_tests }}</span></a>
+          <a class="mt" href="X07c-Prototype-Test-Hub.dc.html#hub" data-tip="{{ hx.hx_l2 }}"><b>{{ hx.hx_h }}</b><span>{{ hx.hx_mo }}</span></a>
+          <a class="mt" href="X07c-Prototype-Test-Hub.dc.html#battle" data-tip="{{ t.mo_tests }}"><b>{{ t.mo_link.battle }}</b><span>{{ t.mo_tests }}</span></a>
+          <a class="mt" href="X07c-Prototype-Test-Hub.dc.html#papers" data-tip="{{ t.mo_tests }}"><b>{{ t.mo_link.papers }}</b><span>{{ t.mo_tests }}</span></a>
           <a class="mt" href="X11-Prototype-Tools.dc.html#mindmap" data-tip="{{ t.mo_tools }}"><b>{{ t.mo_link.mindmap }}</b><span>{{ t.mo_tools }}</span></a>
           <a class="mt" href="X11-Prototype-Tools.dc.html#notebook" data-tip="{{ t.mo_tools }}"><b>{{ t.mo_link.notebook }}</b><span>{{ t.mo_tools }}</span></a>
           <a class="mt" href="X11-Prototype-Tools.dc.html#audio" data-tip="{{ t.mo_tools }}"><b>{{ t.mo_link.audio }}</b><span>{{ t.mo_tools }}</span></a>
@@ -1793,7 +1793,7 @@ class Component extends DCLogic {
     };
     // D6' (fix8): More ways to learn — small sheets here; Quiz Battle / past questions open X07, mind maps / My Notebook / audio lessons open X11 (learn2)
     var MO_SHEET = ['soc', 'buddy', 'story', 'games', 'career', 'ivr', 'pass'];
-    var MO_LINK = [['battle', 'X07-Prototype-Test.dc.html#battle', 'mo_tests'], ['papers', 'X07-Prototype-Test.dc.html#papers', 'mo_tests'], ['mindmap', 'X11-Prototype-Tools.dc.html#mindmap', 'mo_tools'], ['notebook', 'X11-Prototype-Tools.dc.html#notebook', 'mo_tools'], ['audio', 'X11-Prototype-Tools.dc.html#audio', 'mo_tools']];   // fix13 R12-learner-3: deep links
+    var MO_LINK = [['battle', 'X07c-Prototype-Test-Hub.dc.html#battle', 'mo_tests'], ['papers', 'X07c-Prototype-Test-Hub.dc.html#papers', 'mo_tests'], ['mindmap', 'X11-Prototype-Tools.dc.html#mindmap', 'mo_tools'], ['notebook', 'X11-Prototype-Tools.dc.html#notebook', 'mo_tools'], ['audio', 'X11-Prototype-Tools.dc.html#audio', 'mo_tools']];   // fix13 R12-learner-3: deep links
     var moreTiles = MO_SHEET.map(function (k) { return { key: k, name: t.mo[k][0], sub: t.mo[k][1], pick: function () { self.setState({ moreItem: k }); } }; });   // + 5 static links in the markup (MO_LINK)
     var mk0 = s.moreItem && t.mo[s.moreItem] ? s.moreItem : '';
     var mo = mk0 ? { t: t.mo[mk0][0], s: t.mo[mk0][1], b1: t.mo[mk0][2], b2: t.mo[mk0][3], toClass: mk0 === 'soc', toHall: mk0 === 'buddy' } : { t: '', s: '', b1: '', b2: '', toClass: false, toHall: false };

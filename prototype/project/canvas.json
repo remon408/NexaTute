@@ -341,13 +341,33 @@
    "y": 10740,
    "expand": "fill"
   },
+  "X07b-Prototype-Test-ExamAid.dc.html": {
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X7b · Prototype: Exam-aid pages: recovery, appeal, adaptive, speaking, coding, certificate, employer (Play)",
+   "w": 1440,
+   "x": 1520,
+   "y": 10740,
+   "expand": "fill"
+  },
+  "X07c-Prototype-Test-Hub.dc.html": {
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X7c · Prototype: Exam & Admission Hub, merit list, Quiz Battle, past questions, All Exams, exam day (Play)",
+   "w": 1440,
+   "x": 3040,
+   "y": 10740,
+   "expand": "fill"
+  },
   "X08-Prototype-Guardian.dc.html": {
    "h": 1000,
    "is_interactive": true,
    "page": "learner",
    "title": "X8 · Prototype: অভিভাবক অ্যাপ — সাপ্তাহিক রিপোর্ট (সিলেবাস শেষের সম্ভাব্য তারিখ, MindForge), অনুমোদন, সম্মতি ও ডেটা, বার্তা (Play)",
    "w": 1440,
-   "x": 1520,
+   "x": 4560,
    "y": 10740,
    "expand": "fill"
   },
@@ -357,7 +377,7 @@
    "page": "learner",
    "title": "X9 · Prototype: শিক্ষক অ্যাপ — কনটেন্ট আপলোড ও যাচাই, ক্লাস রিপোর্ট, শিক্ষার্থী (Play)",
    "w": 1440,
-   "x": 3040,
+   "x": 6080,
    "y": 10740,
    "expand": "fill"
   },
@@ -368,7 +388,17 @@
    "page": "learner",
    "title": "X10 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — ক্যাপাসিটি, শিক্ষার্থী ও ব্যবহার, প্রতিষ্ঠান, ইভেন্ট-সার্টিফিকেট-চাকরি, হিসাব ও অর্থ (জার্নাল, লেজার, Trial Balance, বেতন, ভেন্ডর, লোন নেওয়া-দেওয়া, শেয়ার হস্তান্তর, অনুমোদন, অডিট লগ, ক্লাউড ব্যাকআপ), ভূমিকা ও অ্যাক্সেস (স্টাফের পাসকি), Nexa Guard, ছুটি, দেশভিত্তিক হেল্পলাইন ও স্পনসর — প্ল্যান ও মডিউল এখন X25 / X26-এ (Play)",
    "w": 1440,
-   "x": 4560,
+   "x": 7600,
+   "y": 10740
+  },
+  "X10b-Prototype-Admin-Accounts.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X10b · Prototype: Accounts and finance, roles and access (Play)",
+   "w": 1440,
+   "x": 9120,
    "y": 10740
   },
   "X11-Prototype-Tools.dc.html": {
@@ -391,6 +421,16 @@
    "x": 1520,
    "y": 11860
   },
+  "X12b-Prototype-Institute-Ops.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X12b · Prototype: Operations: staff, billing, reports, messages (Play)",
+   "w": 1440,
+   "x": 3040,
+   "y": 11860
+  },
   "X13-Prototype-LandingAI.dc.html": {
    "expand": "fill",
    "h": 1000,
@@ -398,7 +438,7 @@
    "page": "learner",
    "title": "X13 · Prototype: Landing Page AI — পরামর্শ, আইডিয়া ও আদেশ; প্রিভিউ ও অনুমোদন, Keyword, ভার্সন ও রোলব্যাক (Play)",
    "w": 1440,
-   "x": 3040,
+   "x": 4560,
    "y": 11860
   },
   "X14-Prototype-Ops.dc.html": {
@@ -408,7 +448,17 @@
    "page": "learner",
    "title": "X14 · Prototype: প্ল্যাটফর্ম অপারেশন — AI মডেল ও প্রম্পট ভার্সন (রোলব্যাক), API খরচের সীমা, ভুল উত্তরের এস্কেলেশন, প্রতি শিক্ষার্থীর দৈনিক খরচ, GPU লোড, ফিচার ফ্ল্যাগ ও A/B টেস্ট, মেইনটেন্যান্স পেজ, ব্যাকআপ ও রিস্টোর, ইনসিডেন্ট লগ (Play)",
    "w": 1440,
-   "x": 4560,
+   "x": 6080,
+   "y": 11860
+  },
+  "X14b-Prototype-Ops-Infra.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X14b · Prototype: Infrastructure: GPU, servers, maintenance (Play)",
+   "w": 1440,
+   "x": 7600,
    "y": 11860
   },
   "X15-Prototype-Accounts.dc.html": {
@@ -431,6 +481,26 @@
    "x": 1520,
    "y": 12980
   },
+  "X16b-Prototype-Quality-Money.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X16b · Prototype: Money, MindForge items, tests and marking (Play)",
+   "w": 1440,
+   "x": 3040,
+   "y": 12980
+  },
+  "X16c-Prototype-Quality-ExamAid.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X16c · Prototype: Exam rules and integrity (Play)",
+   "w": 1440,
+   "x": 4560,
+   "y": 12980
+  },
   "X17-Prototype-Growth.dc.html": {
    "expand": "fill",
    "h": 1000,
@@ -438,7 +508,7 @@
    "page": "learner",
    "title": "X17 · Prototype: প্রবৃদ্ধি — AI CMS, শিক্ষার্থী কোথায় ঝরে পড়ে (ফানেল ও সাপ্তাহিক AI বিশ্লেষণ), Marketing Hub, অ্যাফিলিয়েট, B2B CRM, রিভিউ, প্রতিষ্ঠাতা/বিনিয়োগকারী রিপোর্ট (Play)",
    "w": 1440,
-   "x": 3040,
+   "x": 6080,
    "y": 12980
   },
   "X18-Prototype-MindForge.dc.html": {
@@ -447,7 +517,7 @@
    "page": "learner",
    "title": "X18 · Prototype: MindForge — দিনের পাজল ও আত্মবিশ্বাস যাচাই, দক্ষতার অগ্রগতি (IQ টেস্ট নয়), সিলেবাস-টপিক ম্যাপ, ডেটা কোথা থেকে আসে, সিলেবাস শেষের সম্ভাব্য তারিখ, Pro ও অভিভাবকের অনুমোদন (Play)",
    "w": 1440,
-   "x": 4560,
+   "x": 7600,
    "y": 12980,
    "expand": "fill"
   },
@@ -471,6 +541,36 @@
    "x": 1520,
    "y": 14100
   },
+  "X20b-Prototype-Landing-Plans.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X20b · Prototype: Plans, safety, PlayBoom, MindForge, institutions (Play)",
+   "w": 1440,
+   "x": 3040,
+   "y": 14100
+  },
+  "X20c-Prototype-Landing-More.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X20c · Prototype: Notes teaser, roadmap, FAQ, sign-up (Play)",
+   "w": 1440,
+   "x": 4560,
+   "y": 14100
+  },
+  "X20d-Prototype-Landing-Blog.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X20d · Prototype: The Nexa Notes blog: list, posts, videos, newsletter (Play)",
+   "w": 1440,
+   "x": 6080,
+   "y": 14100
+  },
   "X21-Prototype-Comms.dc.html": {
    "expand": "fill",
    "h": 1000,
@@ -478,7 +578,7 @@
    "page": "learner",
    "title": "X21 · Prototype: নোটিফিকেশন ও চ্যাট (প্ল্যাটফর্ম অ্যাডমিন) — বেল ও নোটিফিকেশন সেন্টার, লক-স্ক্রিন পুশ, কন্ট্রোল প্যানেল (কে কোন নোটিফিকেশন পাবেন), স্টাফ চ্যাট (1:1, অনুমোদনে গ্রুপ, ভূমিকা অনুযায়ী ভয়েস/ভিডিও), কমপ্লায়েন্স সতর্কতা, পাসওয়ার্ড-সুরক্ষিত সামারি আর্কাইভ (Play)",
    "w": 1440,
-   "x": 3040,
+   "x": 7600,
    "y": 14100
   },
   "X22-Prototype-AvatarVoice.dc.html": {
@@ -488,7 +588,7 @@
    "page": "learner",
    "title": "X22 · Prototype: অ্যাভাটার ও কণ্ঠ স্টুডিও (প্ল্যাটফর্ম অ্যাডমিন) — অ্যাভাটার লাইব্রেরি ও অনুমোদন, কণ্ঠের লাইব্রেরি, clone-এর সম্মতি, অভিযোগ ও সরানো, marketplace-এর দাম (Play)",
    "w": 1440,
-   "x": 4560,
+   "x": 9120,
    "y": 14100
   },
   "X23-Prototype-AvatarVoice-User.dc.html": {
@@ -521,6 +621,26 @@
    "x": 3040,
    "y": 15220
   },
+  "X25b-Prototype-AdminPlans-Platform.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X25b · Prototype: Plans and modules: platform switches (Play)",
+   "w": 1440,
+   "x": 4560,
+   "y": 15220
+  },
+  "X25c-Prototype-AdminPlans-Pp.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X25c · Prototype: Plans and prices (price table) (Play)",
+   "w": 1440,
+   "x": 6080,
+   "y": 15220
+  },
   "X26-Prototype-AdminRules.dc.html": {
    "expand": "fill",
    "h": 1000,
@@ -528,7 +648,17 @@
    "page": "learner",
    "title": "X26 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — প্ল্যান ও মডিউল: ক্লাস, নিরাপত্তা ও শেখার নিয়ম (ভয়েস ও অডিও ক্যাশ, লগইন, এনগেজমেন্ট, স্টাডি বট) ও Free Beta সুরক্ষা (Play)",
    "w": 1440,
-   "x": 4560,
+   "x": 7600,
+   "y": 15220
+  },
+  "X26b-Prototype-AdminRules-More.dc.html": {
+   "expand": "fill",
+   "h": 1000,
+   "is_interactive": true,
+   "page": "learner",
+   "title": "X26b · Prototype: Rules and settings, part 2: engagement, learning, trust (Play)",
+   "w": 1440,
+   "x": 9120,
    "y": 15220
   },
   "X27-Prototype-CoAdmin.dc.html": {
@@ -538,7 +668,7 @@
    "page": "learner",
    "title": "X27 · Prototype: প্ল্যাটফর্ম অ্যাডমিন — Nexa Co-Admin: প্রত্যেক অ্যাডমিনের ভূমিকা ও অনুমতি অনুযায়ী AI সহকারী (দামের মডেল, হিসাবে বেতনের এন্ট্রি — প্রিভিউ, নিশ্চিতকরণ ও দ্বিতীয় অনুমোদন, প্রত্যাখ্যান), কাজের লগ, সেটিংস, চ্যাট অ্যাপে Co-Admin (WhatsApp, Messenger, imo) (Play)",
    "w": 1440,
-   "x": 6080,
+   "x": 10640,
    "y": 15220
   }
  },
@@ -632,22 +762,35 @@
   "X05-Prototype-Flow5.dc.html",
   "X06-Prototype-Batch.dc.html",
   "X07-Prototype-Test.dc.html",
+  "X07b-Prototype-Test-ExamAid.dc.html",
+  "X07c-Prototype-Test-Hub.dc.html",
   "X08-Prototype-Guardian.dc.html",
   "X09-Prototype-Teacher.dc.html",
   "X10-Prototype-Admin.dc.html",
+  "X10b-Prototype-Admin-Accounts.dc.html",
   "X25-Prototype-AdminPlans.dc.html",
+  "X25b-Prototype-AdminPlans-Platform.dc.html",
+  "X25c-Prototype-AdminPlans-Pp.dc.html",
   "X26-Prototype-AdminRules.dc.html",
+  "X26b-Prototype-AdminRules-More.dc.html",
   "X27-Prototype-CoAdmin.dc.html",
   "X11-Prototype-Tools.dc.html",
   "X12-Prototype-Institute.dc.html",
+  "X12b-Prototype-Institute-Ops.dc.html",
   "X13-Prototype-LandingAI.dc.html",
   "X14-Prototype-Ops.dc.html",
+  "X14b-Prototype-Ops-Infra.dc.html",
   "X15-Prototype-Accounts.dc.html",
   "X16-Prototype-Quality.dc.html",
+  "X16b-Prototype-Quality-Money.dc.html",
+  "X16c-Prototype-Quality-ExamAid.dc.html",
   "X17-Prototype-Growth.dc.html",
   "X18-Prototype-MindForge.dc.html",
   "X19-Prototype-MarketingHub.dc.html",
   "X20-Prototype-Landing.dc.html",
+  "X20b-Prototype-Landing-Plans.dc.html",
+  "X20c-Prototype-Landing-More.dc.html",
+  "X20d-Prototype-Landing-Blog.dc.html",
   "X21-Prototype-Comms.dc.html",
   "X22-Prototype-AvatarVoice.dc.html",
   "X23-Prototype-AvatarVoice-User.dc.html",

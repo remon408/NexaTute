@@ -20,8 +20,8 @@ async def main():
         rec('X10#plans/rules -> X26#plans/rules', short(page.url) == 'X26-Prototype-AdminRules.html#plans/rules', short(page.url))
         s = await page.evaluate(ST); rec('  X26 opens rules tab', s.get('sec') == 'plans' and s.get('p2Tab') == 'rules', '%s/%s' % (s.get('sec'), s.get('p2Tab')))
         await go('X25-Prototype-AdminPlans.html#acct')
-        rec('X25#acct -> X10#acct', short(page.url) == 'X10-Prototype-Admin.html#acct', short(page.url))
-        s = await page.evaluate(ST); rec('  X10 opens acct section', s.get('sec') == 'acct', s.get('sec'))
+        rec('X25#acct -> X10b#acct', short(page.url) == 'X10b-Prototype-Admin-Accounts.html#acct', short(page.url))
+        s = await page.evaluate(ST); rec('  X10b opens acct section', s.get('sec') == 'acct', s.get('sec'))
         await go('X26-Prototype-AdminRules.html#plans/mx')
         rec('X26#plans/mx -> X25#plans/mx', short(page.url) == 'X25-Prototype-AdminPlans.html#plans/mx', short(page.url))
         # in-app navigation (assign, new history entry)
@@ -36,6 +36,18 @@ async def main():
             await page.evaluate(LOGIC, ['over', ''])
         await page.wait_for_timeout(1200)
         rec('X25 go20(over) -> X10#over', short(page.url) == 'X10-Prototype-Admin.html#over', short(page.url))
+        # moved routes of the 31 Oct 2026 splits: the old board forwards, the new board holds the route (no second hop)
+        for src, dst in [('X25-Prototype-AdminPlans.html#plans/prices', 'X25c-Prototype-AdminPlans-Pp.html#plans/prices'), ('X25-Prototype-AdminPlans.html#plans/adm', 'X25b-Prototype-AdminPlans-Platform.html#plans/adm'),
+                         ('X26-Prototype-AdminRules.html#plans/engage', 'X26b-Prototype-AdminRules-More.html#plans/engage'), ('X26b-Prototype-AdminRules-More.html#plans/cls', 'X26-Prototype-AdminRules.html#plans/cls'),
+                         ('X26b-Prototype-AdminRules-More.html#plans/beta', 'X26-Prototype-AdminRules.html#plans/beta'), ('X26b-Prototype-AdminRules-More.html#plans/mx', 'X25-Prototype-AdminPlans.html#plans/mx'),
+                         ('X25b-Prototype-AdminPlans-Platform.html#plans/mx', 'X25-Prototype-AdminPlans.html#plans/mx'), ('X25c-Prototype-AdminPlans-Pp.html#plans/rules', 'X26-Prototype-AdminRules.html#plans/rules'),
+                         ('X10-Prototype-Admin.html#roles/perms', 'X10b-Prototype-Admin-Accounts.html#roles/perms'), ('X10b-Prototype-Admin-Accounts.html#over', 'X10-Prototype-Admin.html#over'),
+                         ('X14-Prototype-Ops.html#gpu/cap', 'X14b-Prototype-Ops-Infra.html#gpu/cap'), ('X14b-Prototype-Ops-Infra.html#models', 'X14-Prototype-Ops.html#models'),
+                         ('X16-Prototype-Quality.html#pay', 'X16b-Prototype-Quality-Money.html#pay'), ('X16b-Prototype-Quality-Money.html#rec', 'X16c-Prototype-Quality-ExamAid.html#rec'),
+                         ('X20-Prototype-Landing.html#roadmap', 'X20c-Prototype-Landing-More.html#roadmap'), ('X20c-Prototype-Landing-More.html#notes/x', 'X20d-Prototype-Landing-Blog.html#notes/x'),
+                         ('X12-Prototype-Institute.html#staff', 'X12b-Prototype-Institute-Ops.html#staff'), ('X07-Prototype-Test.html#hub', 'X07c-Prototype-Test-Hub.html#hub'), ('X07c-Prototype-Test-Hub.html#mcq', 'X07-Prototype-Test.html#mcq')]:
+            await go(src, 1500)
+            rec('%s -> %s' % (src.split('#')[0][:4] + '#' + src.split('#')[1], dst.split('#')[0][:4]), short(page.url) == dst, short(page.url))
         # UI click in X10's side menu on the plans entry
         await go('X10-Prototype-Admin.html')
         n = await page.evaluate("""() => { const els = [...document.querySelectorAll('#dc-root button, #dc-root a')].filter(e => /প্ল্যান ও মডিউল/.test(e.textContent) && e.getBoundingClientRect().width > 3); if (!els.length) return 0; els[0].setAttribute('data-t', '1'); return els.length; }""")
@@ -89,15 +101,16 @@ async def main():
         rec('X15 renders X24 links (mapped)', all(x.startswith('X24-Prototype-Legal.html#legal/') for x in hh), str(hh) + ' (only on its legal tab if empty)')
         # X27 Nexa Co-Admin: header button on 11 admin boards -> X27#from=<stem>; back link; tab hashes
         CO = ['X10-Prototype-Admin', 'X13-Prototype-LandingAI', 'X14-Prototype-Ops', 'X15-Prototype-Accounts', 'X16-Prototype-Quality', 'X17-Prototype-Growth',
-              'X19-Prototype-MarketingHub', 'X21-Prototype-Comms', 'X22-Prototype-AvatarVoice', 'X25-Prototype-AdminPlans', 'X26-Prototype-AdminRules']
+              'X19-Prototype-MarketingHub', 'X21-Prototype-Comms', 'X22-Prototype-AvatarVoice', 'X25-Prototype-AdminPlans', 'X26-Prototype-AdminRules',
+              'X10b-Prototype-Admin-Accounts', 'X14b-Prototype-Ops-Infra', 'X16b-Prototype-Quality-Money', 'X16c-Prototype-Quality-ExamAid', 'X25b-Prototype-AdminPlans-Platform', 'X25c-Prototype-AdminPlans-Pp', 'X26b-Prototype-AdminRules-More']
         okc = []
         for st in CO:
             await go(st + '.html', 1000)
             hs = await page.evaluate("() => [...document.querySelectorAll('a[href^=\"X27-Prototype-CoAdmin\"]')].map(a => a.getAttribute('href'))")
             okc.append(('X27-Prototype-CoAdmin.html#from=' + st) in hs)
             if not okc[-1]: print('   missing Co-Admin link on', st, hs[:3])
-        rec('Co-Admin button on 11 admin boards -> X27#from=<stem>', all(okc), '%d/%d' % (sum(okc), len(okc)))
-        for st in ['X10-Prototype-Admin', 'X25-Prototype-AdminPlans', 'X21-Prototype-Comms']:
+        rec('Co-Admin button on 18 admin boards -> X27#from=<stem>', all(okc), '%d/%d' % (sum(okc), len(okc)))
+        for st in ['X10-Prototype-Admin', 'X10b-Prototype-Admin-Accounts', 'X25-Prototype-AdminPlans', 'X25c-Prototype-AdminPlans-Pp', 'X26b-Prototype-AdminRules-More', 'X21-Prototype-Comms']:
             await go(st + '.html', 1000)
             l = page.locator('a[href="X27-Prototype-CoAdmin.html#from=%s"]' % st).first
             async with page.expect_navigation():
