@@ -23,7 +23,7 @@ USD rule (31 Oct, all products): **USD = Taka × 1.35 ÷ 122, shown to the cent.
 |---|---|---|---|---|
 | Lifetime free account | ৳0 | $0 | Quick mode 3 min/month, ≤30 s each, 480p; Co-Director 10 msgs/day; 1 storyboard/day; standard voices; basic templates, captions, 360p copy; link-to-video + ad check 1/day; Brand Kit 1 logo; 1 GB | "Remix this" watermark; personal use only; no Cinematic/Enhanced, clone, twin or publishing; Upgrade button + Mini benefits page |
 | Free Trial | ৳0 | $0 | 7 days, 1 min video/day, ≤15 s/video, 480p + 720p Esc, Quick + Enhanced; 1 GB | One trial per phone + device check; then the lifetime free account |
-| Free Beta | ৳0 | $0 | ALL features within daily limits | 30 Jan → 20 Feb 2027; watermarked business-test licence; Beta length 21 days vs old 30 days (to confirm) |
+| Free Beta | ৳0 | $0 | ALL features within daily limits | 30 Jan → 20 Feb 2027; watermarked business-test licence; 21 days (owner, 31 Oct) |
 | Freelancer Mini | ৳499/month | $5.52 | 480p, 720p Esc, 720p, 1080p Native; 5–45 s per video; 5 GB; 1 seat | No 4K |
 | Freelancer Starter | ৳999/month | $11.05 | All tiers + 4K Esc; up to 2 min; 10 GB; 1 seat | |
 | Premium Starter | ৳1,999/month | $22.12 | All tiers + 4K; up to 5 min; 20 GB; 2 seats; 1 digital twin | |
