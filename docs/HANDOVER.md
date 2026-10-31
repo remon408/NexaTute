@@ -1,6 +1,6 @@
 # Handover — state on 30 Oct 2026, 12:30 Dhaka (written for the next Claude account)
 
-> **31 Oct 2026 — note for the OLD account (owner order):** the new account now builds the prototype in this repo. When `docs/STATUS.md` says the boards are ready, update your NexaTute Design canvas from GitHub exactly as described in `docs/tasks/old-account-canvas-update.md`. Latest audit: `docs/reviews/audit_2026-10-31/`.
+> **31 Oct 2026 — note for the OLD account (owner order):** the new account now builds the prototype in this repo. When `docs/STATUS.md` says the boards are ready, update your NexaTute Design canvas from GitHub exactly as described in `docs/tasks/old-account-canvas-update.md`. Latest audit: `docs/reviews/audit_2026-10-31/`. **Your main job now (owner order 31 Oct): build the Remon Motion Studio prototype in parallel — `docs/tasks/motion-studio-prototype.md`.**
 
 Read `CLAUDE.md` first, then this file, then `docs/decisions.md` (newest lines at the bottom win). The owner writes Banglish/Bengali — reply in Bengali, plain and short. Build files only when he asks; save every decision.
 
