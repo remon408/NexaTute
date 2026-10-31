@@ -1,5 +1,9 @@
-# E1 — Learning guarantee: canonical text — v3.1 (fix17, site agent, 28 Oct 2026; v3 = fix16)
+# E1 — Learning guarantee: canonical text — v3.2 (31 Oct 2026, text-fixes pass; v3.1 = fix17, 28 Oct 2026; v3 = fix16)
 
+> **v3.2 change (31 Oct 2026, text-fixes pass; owner standing rule "no stored money", D.111 / D.114 / D.132; legal Draft 2 Terms 1.7, Refund 4.4, 4.6.6):** wallet credit → minutes added back to the course (no stored money). §4, §4b, §5, §5b, §9 (6 legal-page blocks) and §10 use the W1.1–W1.8 wording: "we add the minutes back to your course" (was "we give the minutes back as wallet credit"); terms line "the minutes stay valid for 6 months" (was "the credit lasts 6 months"); "the minutes go back into your course; it is not a cash refund" (was "It is wallet credit, not a cash refund"); claim flow "are added back to the course"; claim done "the minutes are back in your course"; card note "Minutes back for lessons —"; the app menu path is Settings → Plan → Learning guarantee. The v3 / v3.1 notes below and the retired-v2 lines are kept as history. Nothing else changed.
+>
+> **v3.2 addendum (31 Oct 2026, review fixes):** §9 terms line in en/hi/ur/ar/fr now also says the minutes (not a credit) stay valid for 6 months, as bn already did; admin label `val` "Minutes validity". History lines below unchanged.
+>
 > **v3 change (owner 28 Oct 2026, memory /areas/nexatute-growth.md "approved Claude's learning-guarantee terms" + "the learning guarantee depends on the participation of students, parents and teachers"):**
 > the full terms are now drafted and approved by the owner (lawyer tag stays). What changed:
 > - §5 terms line **v3** (replaces v2): "every **paid** plan (not the Free Beta, Free Trial, free tier or Daily Pass)", participation of learner/guardian/teacher, credit 6 months, points to the new legal page "Learning guarantee terms". The v2 terms line is RETIRED (listed at the end of §5 so boards can find it).
@@ -34,7 +38,7 @@ The approved terms (memory, 28 Oct 2026) in one line: all paid plans (not Free B
 Mastery Map for topics studied in the 4 weeks, average gain under 5 points qualifies; learner — 4 straight weeks, ≥3 sessions/week of
 ≥20 active minutes, ≥80% of due reviews done, start test + end check, honest attempts; guardian (under 18) — consent given, study time
 not blocked, weekly report opened and schedule confirmed at least once; institution teacher — assigns practice in the app, doesn't
-override the plan, institution-blocked weeks extend the window; minutes used in those 4 weeks back as wallet credit (not cash), valid
+override the plan, institution-blocked weeks extend the window; minutes used in those 4 weeks added back to the course as minutes (not cash), valid
 6 months, once per course per 3 months; automatic check every 4 weeks, "Claim" button, human review of edge cases within 7 days with
 evidence and appeal; server outages extend the window; not a grade/result guarantee; all numbers editable in X10 with two-person approval.
 
@@ -73,17 +77,17 @@ evidence and appeal; server outages extend the window; not a grade/result guaran
 
 ## 4. Public line = name + ": " + rule sentence (with tag)  — the approved claim text
 
-en: Learning guarantee: if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we give the minutes back as wallet credit [to confirm with our lawyer].
+en: Learning guarantee: if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we add the minutes back to your course [to confirm with our lawyer].
 
-bn: শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
+bn: শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো তোমার কোর্সে আবার যোগ করে দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
 
-hi: सीखने की गारंटी: अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।
+hi: सीखने की गारंटी: अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट आपके कोर्स में वापस जोड़ देते हैं [हमारे वकील से पुष्टि होनी है]।
 
-ur: سیکھنے کی ضمانت: اگر 4 ہفتے باقاعدہ پڑھائی (ہفتے میں 3 یا زیادہ سیشن) کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔
+ur: سیکھنے کی ضمانت: اگر 4 ہفتے باقاعدہ پڑھائی (ہفتے میں 3 یا زیادہ سیشن) کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ آپ کے کورس میں واپس شامل کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔
 
-ar: ضمان التعلّم: إذا لم يتحسّن إتقانك بعد 4 أسابيع من الدراسة المنتظمة (3 جلسات أو أكثر أسبوعيًا)، نعيد إليك الدقائق رصيدًا في المحفظة [بانتظار تأكيد محامينا].
+ar: ضمان التعلّم: إذا لم يتحسّن إتقانك بعد 4 أسابيع من الدراسة المنتظمة (3 جلسات أو أكثر أسبوعيًا)، نعيد إضافة الدقائق إلى دورتك [بانتظار تأكيد محامينا].
 
-fr: Garantie d’apprentissage : si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous te rendons les minutes en crédit sur ton portefeuille [à confirmer avec notre avocat].
+fr: Garantie d’apprentissage : si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous rajoutons les minutes à ton cours [à confirmer avec notre avocat].
 
 (The "rule sentence" alone = the public line without "name: ". In fr the separator is " : " — French spacing.)
 
@@ -92,25 +96,25 @@ fr: Garantie d’apprentissage : si ta maîtrise ne progresse pas après 4 semai
 The legal pages address the reader formally (bn আপনি, fr vous); there the public line keeps the name, mastery word,
 numbers and tag and changes only the pronoun:
 
-bn: শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) আপনার আয়ত্ত না বাড়লে, সেই মিনিটগুলো আমরা ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
+bn: শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) আপনার আয়ত্ত না বাড়লে, সেই মিনিটগুলো আমরা আপনার কোর্সে আবার যোগ করে দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
 
-fr: Garantie d’apprentissage : si votre maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous vous rendons les minutes en crédit sur votre portefeuille [à confirmer avec notre avocat].
+fr: Garantie d’apprentissage : si votre maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous rajoutons les minutes à votre cours [à confirmer avec notre avocat].
 
-(en, hi, ur, ar: identical to §4.) Boards that address a guardian or adult formally (e.g. L04 wallet in bn আপনি) may use this variant.
+(en, hi, ur, ar: identical to §4.) Boards that address a guardian or adult formally (e.g. the L04 “Extra minutes & Daily Pass” screen in bn আপনি) may use this variant.
 
 ## 5. Terms line — v3 (shown right after the public line on plans and FAQ; boards with room add it too; the refund page uses §5b)
 
-en: Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the credit lasts 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].
+en: Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the minutes stay valid for 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].
 
-bn: সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; ক্রেডিট থাকে 6 মাস। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
+bn: সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; মিনিটগুলো 6 মাস বৈধ থাকে। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
 
-hi: हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; क्रेडिट 6 महीने चलता है। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।
+hi: हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; मिनट 6 महीने मान्य रहते हैं। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।
 
-ur: ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ کریڈٹ 6 ماہ تک رہتا ہے۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔
+ur: ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ منٹ 6 ماہ تک کارآمد رہتے ہیں۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔
 
-ar: يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ ويبقى الرصيد صالحًا 6 أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].
+ar: يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ وتبقى الدقائق صالحة 6 أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].
 
-fr: S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; le crédit est valable 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].
+fr: S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; les minutes restent valables 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].
 
 "Learning guarantee terms" (the page name inside the line, = §9 name) may be a link to the X20 legal page `legal/learning-guarantee`.
 
@@ -125,33 +129,33 @@ The v1 line ("… which plans qualify …") stays retired.
 
 ## 5b. Terms line — refund-page paragraphs — v3 (X20 refund policy, section 11 "Learning guarantee" only; formal register)
 
-Paragraph 3 (applies + wallet credit):
+Paragraph 3 (applies + minutes added back to the course):
 
-en: It applies to every paid plan — not to the Free Beta, the 7-day Free Trial, the free tier or the Daily Pass. It is wallet credit, not a cash refund.
+en: It applies to every paid plan — not to the Free Beta, the 7-day Free Trial, the free tier or the Daily Pass. The minutes go back into your course; it is not a cash refund.
 
-bn: এটি সব পেইড প্ল্যানে প্রযোজ্য — Free Beta, 7 দিনের Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়। এটি ওয়ালেট ক্রেডিট, নগদ রিফান্ড নয়।
+bn: এটি সব পেইড প্ল্যানে প্রযোজ্য — Free Beta, 7 দিনের Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়। মিনিটগুলো আপনার কোর্সে ফেরত যায়; এটি নগদ রিফান্ড নয়।
 
-hi: यह हर पेड प्लान पर लागू है — Free Beta, 7 दिन के Free Trial, फ़्री टियर या Daily Pass पर नहीं। यह वॉलेट क्रेडिट है, नक़द रिफ़ंड नहीं।
+hi: यह हर पेड प्लान पर लागू है — Free Beta, 7 दिन के Free Trial, फ़्री टियर या Daily Pass पर नहीं। मिनट आपके कोर्स में वापस जुड़ते हैं; यह नक़द रिफ़ंड नहीं है।
 
-ur: یہ ہر پیڈ پلان پر لاگو ہے — Free Beta، 7 دن کے Free Trial، فری ٹیئر یا Daily Pass پر نہیں۔ یہ والیٹ کریڈٹ ہے، نقد ریفنڈ نہیں۔
+ur: یہ ہر پیڈ پلان پر لاگو ہے — Free Beta، 7 دن کے Free Trial، فری ٹیئر یا Daily Pass پر نہیں۔ منٹ آپ کے کورس میں واپس شامل ہوتے ہیں؛ یہ نقد ریفنڈ نہیں۔
 
-ar: يسري على كل الخطط المدفوعة — لا على Free Beta ولا Free Trial لمدة 7 أيام ولا الباقة المجانية ولا Daily Pass. وهو رصيد في المحفظة، لا استرداد نقدي.
+ar: يسري على كل الخطط المدفوعة — لا على Free Beta ولا Free Trial لمدة 7 أيام ولا الباقة المجانية ولا Daily Pass. وتعود الدقائق إلى دورتك؛ وليس استردادًا نقديًا.
 
-fr: Elle s’applique à toutes les formules payantes — pas à la Free Beta, au Free Trial de 7 jours, à l’offre gratuite ni au Daily Pass. Il s’agit d’un crédit, pas d’un remboursement en espèces.
+fr: Elle s’applique à toutes les formules payantes — pas à la Free Beta, au Free Trial de 7 jours, à l’offre gratuite ni au Daily Pass. Les minutes reviennent dans votre cours ; ce n’est pas un remboursement en espèces.
 
 Paragraph 4 (where the full rules are, with the lawyer tag):
 
-en: Who has to do what, how the automatic 4-week check and the Claim button work, and how long the credit lasts (6 months) are on the Learning guarantee terms page [to confirm with our lawyer].
+en: Who has to do what, how the automatic 4-week check and the Claim button work, and how long the minutes stay valid (6 months) are on the Learning guarantee terms page [to confirm with our lawyer].
 
-bn: কাকে কী করতে হবে, 4 সপ্তাহের স্বয়ংক্রিয় যাচাই আর “দাবি করুন” বাটন কীভাবে কাজ করে, আর ক্রেডিট কতদিন থাকে (6 মাস) — সব আছে শেখার নিশ্চয়তার শর্তাবলি পেজে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
+bn: কাকে কী করতে হবে, 4 সপ্তাহের স্বয়ংক্রিয় যাচাই আর “দাবি করুন” বাটন কীভাবে কাজ করে, আর মিনিটগুলো কতদিন বৈধ থাকে (6 মাস) — সব আছে শেখার নিশ্চয়তার শর্তাবলি পেজে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।
 
-hi: किसे क्या करना है, 4 हफ़्ते की अपने-आप होने वाली जाँच और “दावा करें” बटन कैसे काम करते हैं, और क्रेडिट कितने समय तक चलता है (6 महीने) — यह सब सीखने की गारंटी की शर्तें पेज पर है [हमारे वकील से पुष्टि होनी है]।
+hi: किसे क्या करना है, 4 हफ़्ते की अपने-आप होने वाली जाँच और “दावा करें” बटन कैसे काम करते हैं, और मिनट कितने समय तक मान्य रहते हैं (6 महीने) — यह सब सीखने की गारंटी की शर्तें पेज पर है [हमारे वकील से पुष्टि होनी है]।
 
-ur: کس کو کیا کرنا ہے، 4 ہفتوں کی خودکار جانچ اور “دعویٰ کریں” کا بٹن کیسے کام کرتے ہیں، اور کریڈٹ کتنی مدت تک رہتا ہے (6 ماہ) — یہ سب سیکھنے کی ضمانت کی شرائط کے صفحے پر ہے [ہمارے وکیل سے تصدیق باقی]۔
+ur: کس کو کیا کرنا ہے، 4 ہفتوں کی خودکار جانچ اور “دعویٰ کریں” کا بٹن کیسے کام کرتے ہیں، اور منٹ کتنی مدت تک کارآمد رہتے ہیں (6 ماہ) — یہ سب سیکھنے کی ضمانت کی شرائط کے صفحے پر ہے [ہمارے وکیل سے تصدیق باقی]۔
 
-ar: من عليه أن يفعل ماذا، وكيف يعمل التحقّق التلقائي كل 4 أسابيع وزر «طالِب»، وكم يدوم الرصيد (6 أشهر) — كل ذلك في صفحة شروط ضمان التعلّم [بانتظار تأكيد محامينا].
+ar: من عليه أن يفعل ماذا، وكيف يعمل التحقّق التلقائي كل 4 أسابيع وزر «طالِب»، وكم تبقى الدقائق صالحة (6 أشهر) — كل ذلك في صفحة شروط ضمان التعلّم [بانتظار تأكيد محامينا].
 
-fr: Qui doit faire quoi, comment fonctionnent la vérification automatique toutes les 4 semaines et le bouton « Demander », et combien de temps dure le crédit (6 mois) : tout est sur la page Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].
+fr: Qui doit faire quoi, comment fonctionnent la vérification automatique toutes les 4 semaines et le bouton « Demander », et combien de temps les minutes restent valables (6 mois) : tout est sur la page Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].
 
 Retired v2 paragraphs 3 + 4 ("It applies to every plan. …" / "Still being set with our lawyer, and written here once confirmed: …") — replace them on X20 (refund page).
 
@@ -197,18 +201,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "Learning guarantee terms",
  "sum": [
-  "If a learner studies regularly for 4 weeks and their mastery doesn’t improve, we give back the minutes used in those 4 weeks as wallet credit [to confirm with our lawyer].",
+  "If a learner studies regularly for 4 weeks and their mastery doesn’t improve, we add the minutes used in those 4 weeks back to the course [to confirm with our lawyer].",
   "It applies to every paid plan — not to the Free Beta, the 7-day Free Trial, the free tier or the Daily Pass.",
   "It depends on taking part: the learner, the guardian (for learners under 18) and, for institution learners, the teacher each have a short checklist.",
   "We check automatically every 4 weeks. If you qualify, a Claim button appears; a person reviews unclear cases within 7 days, and you can appeal.",
-  "The credit is valid for 6 months. It is not a cash refund and not a guarantee of grades or exam results."
+  "The minutes stay valid for 6 months. This is not a cash refund and not a guarantee of grades or exam results."
  ],
  "secs": [
   {
    "h": "What the Learning guarantee is",
    "p": [
-    "Learning guarantee: if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we give the minutes back as wallet credit [to confirm with our lawyer].",
-    "The guarantee depends on the participation of the learner, the guardian and the teacher. It is wallet credit, not a cash refund, and it does not change your rights under the Refund policy."
+    "Learning guarantee: if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we add the minutes back to your course [to confirm with our lawyer].",
+    "The guarantee depends on the participation of the learner, the guardian and the teacher. The minutes go back into the course — not cash — and this does not change your rights under the Refund policy."
    ],
    "li": [],
    "after": []
@@ -270,8 +274,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "What comes back",
    "p": [],
    "li": [
-    "The minutes used in those 4 weeks, as wallet credit — never cash.",
-    "The credit is valid for 6 months.",
+    "The minutes used in those 4 weeks, added back to the course — never cash.",
+    "The minutes stay valid for 6 months.",
     "Once per course in any 3 months."
    ],
    "after": []
@@ -316,7 +320,7 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "Questions about a claim: the website chat, WhatsApp or Messenger, or Settings → Wallet → Learning guarantee in the app [menu names to confirm]."
+  "Questions about a claim: the website chat, WhatsApp or Messenger, or Settings → Plan → Learning guarantee in the app [menu names to confirm]."
  ]
 }
 ```
@@ -327,18 +331,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "শেখার নিশ্চয়তার শর্তাবলি",
  "sum": [
-  "কোনো শিক্ষার্থী নিয়মিত 4 সপ্তাহ পড়ার পরও তার আয়ত্ত না বাড়লে, ওই 4 সপ্তাহে ব্যবহৃত মিনিটগুলো আমরা ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।",
+  "কোনো শিক্ষার্থী নিয়মিত 4 সপ্তাহ পড়ার পরও তার আয়ত্ত না বাড়লে, ওই 4 সপ্তাহে ব্যবহৃত মিনিটগুলো আমরা আপনার কোর্সে আবার যোগ করে দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।",
   "এটি সব পেইড প্ল্যানে প্রযোজ্য — Free Beta, 7 দিনের Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়।",
   "এটি অংশগ্রহণের ওপর নির্ভর করে: শিক্ষার্থী, অভিভাবক (18-র কম বয়সী শিক্ষার্থীর ক্ষেত্রে) আর প্রতিষ্ঠানের শিক্ষার্থীর ক্ষেত্রে শিক্ষক — প্রত্যেকের একটি ছোট চেকলিস্ট আছে।",
   "প্রতি 4 সপ্তাহে আমরা নিজে থেকেই যাচাই করি। আপনি যোগ্য হলে একটি “দাবি করুন” বাটন আসে; অস্পষ্ট ক্ষেত্রে একজন মানুষ 7 দিনের মধ্যে পর্যালোচনা করেন, আর আপনি আপিল করতে পারেন।",
-  "ক্রেডিট 6 মাস বৈধ থাকে। এটি নগদ রিফান্ড নয়, আর গ্রেড বা পরীক্ষার রেজাল্টের কোনো প্রতিশ্রুতিও নয়।"
+  "মিনিট 6 মাস বৈধ থাকে। এটি নগদ রিফান্ড নয়, আর গ্রেড বা পরীক্ষার রেজাল্টের কোনো প্রতিশ্রুতিও নয়।"
  ],
  "secs": [
   {
    "h": "শেখার নিশ্চয়তা কী",
    "p": [
-    "শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) আপনার আয়ত্ত না বাড়লে, সেই মিনিটগুলো আমরা ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।",
-    "এই নিশ্চয়তা শিক্ষার্থী, অভিভাবক আর শিক্ষকের অংশগ্রহণের ওপর নির্ভর করে। এটি ওয়ালেট ক্রেডিট, নগদ রিফান্ড নয়, আর এতে রিফান্ড নীতির অধীনে আপনার অধিকার বদলায় না।"
+    "শেখার নিশ্চয়তা: নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) আপনার আয়ত্ত না বাড়লে, সেই মিনিটগুলো আমরা আপনার কোর্সে আবার যোগ করে দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।",
+    "এই নিশ্চয়তা শিক্ষার্থী, অভিভাবক আর শিক্ষকের অংশগ্রহণের ওপর নির্ভর করে। মিনিটগুলো আপনার কোর্সে ফেরত যায়; এটি নগদ রিফান্ড নয়, আর এতে রিফান্ড নীতির অধীনে আপনার অধিকার বদলায় না।"
    ],
    "li": [],
    "after": []
@@ -400,8 +404,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "কী ফেরত আসে",
    "p": [],
    "li": [
-    "ওই 4 সপ্তাহে ব্যবহৃত মিনিট, ওয়ালেট ক্রেডিট হিসেবে — কখনো নগদ নয়।",
-    "ক্রেডিট 6 মাস বৈধ থাকে।",
+    "ওই 4 সপ্তাহে ব্যবহৃত মিনিট, কোর্সে আবার যোগ করা হয় — কখনো নগদ নয়।",
+    "মিনিট 6 মাস বৈধ থাকে।",
     "প্রতি কোর্সে যেকোনো 3 মাসে একবার।"
    ],
    "after": []
@@ -446,7 +450,7 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "দাবি নিয়ে প্রশ্ন: ওয়েবসাইট চ্যাট, WhatsApp বা Messenger, অথবা অ্যাপে সেটিংস → ওয়ালেট → শেখার নিশ্চয়তা [মেনুর নাম নিশ্চিত করতে হবে]।"
+  "দাবি নিয়ে প্রশ্ন: ওয়েবসাইট চ্যাট, WhatsApp বা Messenger, অথবা অ্যাপে সেটিংস → প্ল্যান → শেখার নিশ্চয়তা [মেনুর নাম নিশ্চিত করতে হবে]।"
  ]
 }
 ```
@@ -457,18 +461,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "सीखने की गारंटी की शर्तें",
  "sum": [
-  "अगर कोई विद्यार्थी 4 हफ़्ते नियमित पढ़ाई करे और उसकी महारत न बढ़े, तो उन 4 हफ़्तों में इस्तेमाल हुए मिनट हम वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।",
+  "अगर कोई विद्यार्थी 4 हफ़्ते नियमित पढ़ाई करे और उसकी महारत न बढ़े, तो उन 4 हफ़्तों में इस्तेमाल हुए मिनट हम आपके कोर्स में वापस जोड़ देते हैं [हमारे वकील से पुष्टि होनी है]।",
   "यह हर पेड प्लान पर लागू है — Free Beta, 7 दिन के Free Trial, फ़्री टियर या Daily Pass पर नहीं।",
   "यह भागीदारी पर निर्भर है: विद्यार्थी, अभिभावक (18 से कम उम्र के विद्यार्थियों के लिए) और संस्थान के विद्यार्थियों के लिए शिक्षक — हर एक की एक छोटी चेकलिस्ट है।",
   "हम हर 4 हफ़्ते में अपने-आप जाँच करते हैं। आप योग्य हों तो “दावा करें” बटन आता है; अस्पष्ट मामलों की समीक्षा 7 दिन में एक व्यक्ति करता है, और आप अपील कर सकते हैं।",
-  "क्रेडिट 6 महीने तक मान्य है। यह नक़द रिफ़ंड नहीं है, और न ही ग्रेड या परीक्षा परिणाम की गारंटी।"
+  "मिनट 6 महीने तक मान्य रहते हैं। यह नक़द रिफ़ंड नहीं है, और न ही ग्रेड या परीक्षा परिणाम की गारंटी।"
  ],
  "secs": [
   {
    "h": "सीखने की गारंटी क्या है",
    "p": [
-    "सीखने की गारंटी: अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।",
-    "यह गारंटी विद्यार्थी, अभिभावक और शिक्षक की भागीदारी पर निर्भर है। यह वॉलेट क्रेडिट है, नक़द रिफ़ंड नहीं, और इससे रिफ़ंड नीति के तहत आपके अधिकार नहीं बदलते।"
+    "सीखने की गारंटी: अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट आपके कोर्स में वापस जोड़ देते हैं [हमारे वकील से पुष्टि होनी है]।",
+    "यह गारंटी विद्यार्थी, अभिभावक और शिक्षक की भागीदारी पर निर्भर है। मिनट आपके कोर्स में वापस जुड़ते हैं; यह नक़द रिफ़ंड नहीं है, और इससे रिफ़ंड नीति के तहत आपके अधिकार नहीं बदलते।"
    ],
    "li": [],
    "after": []
@@ -530,8 +534,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "क्या लौटता है",
    "p": [],
    "li": [
-    "उन 4 हफ़्तों में इस्तेमाल हुए मिनट, वॉलेट क्रेडिट के रूप में — कभी नक़द नहीं।",
-    "क्रेडिट 6 महीने तक मान्य है।",
+    "उन 4 हफ़्तों में इस्तेमाल हुए मिनट, कोर्स में वापस जोड़े जाते हैं — कभी नक़द नहीं।",
+    "मिनट 6 महीने तक मान्य रहते हैं।",
     "हर कोर्स में किसी भी 3 महीने में एक बार।"
    ],
    "after": []
@@ -576,7 +580,7 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "दावे के बारे में सवाल: वेबसाइट चैट, WhatsApp या Messenger, या ऐप में सेटिंग्स → वॉलेट → सीखने की गारंटी [मेनू के नाम की पुष्टि होनी है]।"
+  "दावे के बारे में सवाल: वेबसाइट चैट, WhatsApp या Messenger, या ऐप में सेटिंग्स → प्लान → सीखने की गारंटी [मेनू के नाम की पुष्टि होनी है]।"
  ]
 }
 ```
@@ -587,18 +591,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "سیکھنے کی ضمانت کی شرائط",
  "sum": [
-  "اگر کوئی طالب علم 4 ہفتے باقاعدہ پڑھے اور اس کی مہارت نہ بڑھے، تو ان 4 ہفتوں میں استعمال ہونے والے منٹ ہم والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔",
+  "اگر کوئی طالب علم 4 ہفتے باقاعدہ پڑھے اور اس کی مہارت نہ بڑھے، تو ان 4 ہفتوں میں استعمال ہونے والے منٹ ہم آپ کے کورس میں واپس شامل کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔",
   "یہ ہر پیڈ پلان پر لاگو ہے — Free Beta، 7 دن کے Free Trial، فری ٹیئر یا Daily Pass پر نہیں۔",
   "یہ شرکت پر منحصر ہے: طالب علم، سرپرست (18 سال سے کم عمر طلبہ کے لیے) اور ادارے کے طلبہ کے لیے استاد — ہر ایک کی ایک مختصر چیک لسٹ ہے۔",
   "ہم ہر 4 ہفتے بعد خود بخود جانچ کرتے ہیں۔ اگر آپ اہل ہوں تو “دعویٰ کریں” کا بٹن آتا ہے؛ غیر واضح معاملات کا جائزہ 7 دن میں ایک شخص لیتا ہے، اور آپ اپیل کر سکتے ہیں۔",
-  "کریڈٹ 6 ماہ تک کارآمد رہتا ہے۔ یہ نقد ریفنڈ نہیں، اور نہ ہی گریڈ یا امتحانی نتائج کا کوئی وعدہ۔"
+  "منٹ 6 ماہ تک کارآمد رہتے ہیں۔ یہ نقد ریفنڈ نہیں، اور نہ ہی گریڈ یا امتحانی نتائج کا کوئی وعدہ۔"
  ],
  "secs": [
   {
    "h": "سیکھنے کی ضمانت کیا ہے",
    "p": [
-    "سیکھنے کی ضمانت: اگر 4 ہفتے باقاعدہ پڑھائی (ہفتے میں 3 یا زیادہ سیشن) کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔",
-    "یہ ضمانت طالب علم، سرپرست اور استاد کی شرکت پر منحصر ہے۔ یہ والیٹ کریڈٹ ہے، نقد ریفنڈ نہیں، اور اس سے ریفنڈ پالیسی کے تحت آپ کے حقوق نہیں بدلتے۔"
+    "سیکھنے کی ضمانت: اگر 4 ہفتے باقاعدہ پڑھائی (ہفتے میں 3 یا زیادہ سیشن) کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ آپ کے کورس میں واپس شامل کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔",
+    "یہ ضمانت طالب علم، سرپرست اور استاد کی شرکت پر منحصر ہے۔ منٹ آپ کے کورس میں واپس شامل ہوتے ہیں؛ یہ نقد ریفنڈ نہیں، اور اس سے ریفنڈ پالیسی کے تحت آپ کے حقوق نہیں بدلتے۔"
    ],
    "li": [],
    "after": []
@@ -660,8 +664,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "کیا واپس آتا ہے",
    "p": [],
    "li": [
-    "ان 4 ہفتوں میں استعمال ہونے والے منٹ، والیٹ کریڈٹ کے طور پر — کبھی نقد نہیں۔",
-    "کریڈٹ 6 ماہ تک کارآمد رہتا ہے۔",
+    "ان 4 ہفتوں میں استعمال ہونے والے منٹ، کورس میں واپس شامل — کبھی نقد نہیں۔",
+    "منٹ 6 ماہ تک کارآمد رہتے ہیں۔",
     "ہر کورس میں کسی بھی 3 ماہ میں ایک بار۔"
    ],
    "after": []
@@ -706,7 +710,7 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "دعوے کے بارے میں سوال: ویب سائٹ چیٹ، WhatsApp یا Messenger، یا ایپ میں سیٹنگز ← والیٹ ← سیکھنے کی ضمانت [مینو کے نام کی تصدیق باقی]۔"
+  "دعوے کے بارے میں سوال: ویب سائٹ چیٹ، WhatsApp یا Messenger، یا ایپ میں سیٹنگز ← پلان ← سیکھنے کی ضمانت [مینو کے نام کی تصدیق باقی]۔"
  ]
 }
 ```
@@ -717,18 +721,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "شروط ضمان التعلّم",
  "sum": [
-  "إذا درس المتعلّم بانتظام 4 أسابيع ولم يتحسّن إتقانه، نعيد الدقائق المستخدمة في تلك الأسابيع الأربعة رصيدًا في المحفظة [بانتظار تأكيد محامينا].",
+  "إذا درس المتعلّم بانتظام 4 أسابيع ولم يتحسّن إتقانه، نعيد إضافة الدقائق المستخدمة في تلك الأسابيع الأربعة إلى دورتك [بانتظار تأكيد محامينا].",
   "يسري على كل الخطط المدفوعة — لا على Free Beta ولا Free Trial لمدة 7 أيام ولا الباقة المجانية ولا Daily Pass.",
   "يعتمد على المشاركة: للمتعلّم، ولوليّ الأمر (للمتعلّمين دون 18 عامًا)، وللمعلّم في حالة متعلّمي المؤسسات، قائمة تحقّق قصيرة لكلٍّ منهم.",
   "نتحقّق تلقائيًا كل 4 أسابيع. إذا كنت مؤهلًا يظهر زر «طالِب»؛ ويراجع شخصٌ الحالات غير الواضحة خلال 7 أيام، ويمكنك الاعتراض.",
-  "يبقى الرصيد صالحًا 6 أشهر. وهو ليس استردادًا نقديًا ولا ضمانًا للدرجات أو نتائج الامتحانات."
+  "تبقى الدقائق صالحة 6 أشهر. وهذا ليس استردادًا نقديًا ولا ضمانًا للدرجات أو نتائج الامتحانات."
  ],
  "secs": [
   {
    "h": "ما هو ضمان التعلّم",
    "p": [
-    "ضمان التعلّم: إذا لم يتحسّن إتقانك بعد 4 أسابيع من الدراسة المنتظمة (3 جلسات أو أكثر أسبوعيًا)، نعيد إليك الدقائق رصيدًا في المحفظة [بانتظار تأكيد محامينا].",
-    "يعتمد الضمان على مشاركة المتعلّم ووليّ الأمر والمعلّم. وهو رصيد في المحفظة، لا استرداد نقدي، ولا يغيّر حقوقك بموجب سياسة الاسترداد."
+    "ضمان التعلّم: إذا لم يتحسّن إتقانك بعد 4 أسابيع من الدراسة المنتظمة (3 جلسات أو أكثر أسبوعيًا)، نعيد إضافة الدقائق إلى دورتك [بانتظار تأكيد محامينا].",
+    "يعتمد الضمان على مشاركة المتعلّم ووليّ الأمر والمعلّم. وتعود الدقائق إلى دورتك؛ وليس استردادًا نقديًا، ولا يغيّر حقوقك بموجب سياسة الاسترداد."
    ],
    "li": [],
    "after": []
@@ -790,8 +794,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "ما الذي يُعاد",
    "p": [],
    "li": [
-    "الدقائق المستخدمة في تلك الأسابيع الأربعة، رصيدًا في المحفظة — لا نقدًا أبدًا.",
-    "يبقى الرصيد صالحًا 6 أشهر.",
+    "الدقائق المستخدمة في تلك الأسابيع الأربعة، تُضاف إلى الدورة من جديد — لا نقدًا أبدًا.",
+    "تبقى الدقائق صالحة 6 أشهر.",
     "مرة واحدة لكل دورة في أي 3 أشهر."
    ],
    "after": []
@@ -836,7 +840,7 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "أسئلة حول المطالبة: دردشة الموقع أو WhatsApp أو Messenger، أو الإعدادات ← المحفظة ← ضمان التعلّم في التطبيق [أسماء القوائم بانتظار التأكيد]."
+  "أسئلة حول المطالبة: دردشة الموقع أو WhatsApp أو Messenger، أو الإعدادات ← الخطة ← ضمان التعلّم في التطبيق [أسماء القوائم بانتظار التأكيد]."
  ]
 }
 ```
@@ -847,18 +851,18 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
 {
  "name": "Conditions de la garantie d’apprentissage",
  "sum": [
-  "Si un apprenant étudie régulièrement pendant 4 semaines et que sa maîtrise ne progresse pas, nous rendons les minutes utilisées pendant ces 4 semaines en crédit sur le portefeuille [à confirmer avec notre avocat].",
+  "Si un apprenant étudie régulièrement pendant 4 semaines et que sa maîtrise ne progresse pas, nous rajoutons au cours les minutes utilisées pendant ces 4 semaines [à confirmer avec notre avocat].",
   "Elle s’applique à toutes les formules payantes — pas à la Free Beta, au Free Trial de 7 jours, à l’offre gratuite ni au Daily Pass.",
   "Elle dépend de la participation : l’apprenant, le parent (pour les moins de 18 ans) et, pour les apprenants d’un établissement, l’enseignant ont chacun une courte liste de points.",
   "Nous vérifions automatiquement toutes les 4 semaines. Si vous y avez droit, un bouton « Demander » apparaît ; une personne examine les cas peu clairs sous 7 jours, et vous pouvez faire appel.",
-  "Le crédit est valable 6 mois. Ce n’est ni un remboursement en espèces ni une garantie de notes ou de résultats d’examen."
+  "Les minutes restent valables 6 mois. Ce n’est ni un remboursement en espèces ni une garantie de notes ou de résultats d’examen."
  ],
  "secs": [
   {
    "h": "Ce qu’est la garantie d’apprentissage",
    "p": [
-    "Garantie d’apprentissage : si votre maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous vous rendons les minutes en crédit sur votre portefeuille [à confirmer avec notre avocat].",
-    "La garantie dépend de la participation de l’apprenant, du parent et de l’enseignant. Il s’agit d’un crédit, pas d’un remboursement en espèces, et elle ne modifie pas vos droits au titre de la politique de remboursement."
+    "Garantie d’apprentissage : si votre maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous rajoutons les minutes à votre cours [à confirmer avec notre avocat].",
+    "La garantie dépend de la participation de l’apprenant, du parent et de l’enseignant. Les minutes reviennent dans votre cours ; ce n’est pas un remboursement en espèces, et elle ne modifie pas vos droits au titre de la politique de remboursement."
    ],
    "li": [],
    "after": []
@@ -920,8 +924,8 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
    "h": "Ce qui est rendu",
    "p": [],
    "li": [
-    "Les minutes utilisées pendant ces 4 semaines, en crédit sur le portefeuille — jamais en espèces.",
-    "Le crédit est valable 6 mois.",
+    "Les minutes utilisées pendant ces 4 semaines, rajoutées au cours — jamais en espèces.",
+    "Les minutes restent valables 6 mois.",
     "Une fois par cours sur toute période de 3 mois."
    ],
    "after": []
@@ -966,12 +970,12 @@ Machine-readable: one JSON object per language (keys name / sum / secs[h, p, li,
   }
  ],
  "contact": [
-  "Questions sur une demande : le chat du site, WhatsApp ou Messenger, ou Réglages → Portefeuille → Garantie d’apprentissage dans l’appli [noms des menus à confirmer]."
+  "Questions sur une demande : le chat du site, WhatsApp ou Messenger, ou Réglages → Formule → Garantie d’apprentissage dans l’appli [noms des menus à confirmer]."
  ]
 }
 ```
 
-## 10. Claim-flow strings (L04 wallet, L09 progress, X03 learner flow, X08 guardian) — 6 languages
+## 10. Claim-flow strings (L04 Extra minutes, L09 progress, X03 learner flow, X08 guardian) — 6 languages
 
 Learner boards use the public register (bn তুমি, fr tu); guardian boards (X08) may use the formal register — change only the pronoun.
 `{n}` = week number (Latin digit). Every number is a default from §11.
@@ -982,17 +986,17 @@ Learner boards use the public register (bn তুমি, fr tu); guardian boards
 | auto | Automatic check every 4 weeks | প্রতি 4 সপ্তাহে স্বয়ংক্রিয় যাচাই | हर 4 हफ़्ते में अपने-आप जाँच | ہر 4 ہفتے بعد خودکار جانچ | تحقّق تلقائي كل 4 أسابيع | Vérification automatique toutes les 4 semaines |
 | week | Week {n} of 4 | 4 সপ্তাহের {n} নম্বর সপ্তাহ | 4 में से हफ़्ता {n} | 4 میں سے ہفتہ {n} | الأسبوع {n} من 4 | Semaine {n} sur 4 |
 | claim_btn | Claim | দাবি করুন | दावा करें | دعویٰ کریں | طالِب | Demander |
-| claim_ok | You qualify: the minutes from these 4 weeks come back as wallet credit. | তুমি যোগ্য: এই 4 সপ্তাহের মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত আসবে। | आप योग्य हैं: इन 4 हफ़्तों के मिनट वॉलेट क्रेडिट के रूप में लौटेंगे। | آپ اہل ہیں: ان 4 ہفتوں کے منٹ والیٹ کریڈٹ کے طور پر واپس آئیں گے۔ | أنت مؤهل: تعود دقائق هذه الأسابيع الأربعة رصيدًا في المحفظة. | Tu y as droit : les minutes de ces 4 semaines reviennent en crédit sur le portefeuille. |
-| claim_done | Claimed — the credit is in your wallet. | দাবি সম্পন্ন — ক্রেডিট তোমার ওয়ালেটে। | दावा हो गया — क्रेडिट आपके वॉलेट में है। | دعویٰ ہو گیا — کریڈٹ آپ کے والیٹ میں ہے۔ | تمّت المطالبة — الرصيد في محفظتك. | Demande faite — le crédit est sur ton portefeuille. |
+| claim_ok | You qualify: the minutes from these 4 weeks are added back to the course. | তুমি যোগ্য: এই 4 সপ্তাহের মিনিটগুলো কোর্সে আবার যোগ হবে। | आप योग्य हैं: इन 4 हफ़्तों के मिनट कोर्स में वापस जुड़ेंगे। | آپ اہل ہیں: ان 4 ہفتوں کے منٹ کورس میں واپس شامل ہوں گے۔ | أنت مؤهل: تعود دقائق هذه الأسابيع الأربعة إلى الدورة. | Tu y as droit : les minutes de ces 4 semaines reviennent dans le cours. |
+| claim_done | Claimed — the minutes are back in your course. | দাবি সম্পন্ন — মিনিটগুলো তোমার কোর্সে যোগ হয়েছে। | दावा हो गया — मिनट आपके कोर्स में जुड़ गए। | دعویٰ ہو گیا — منٹ آپ کے کورس میں شامل ہو گئے۔ | تمّت المطالبة — أُضيفت الدقائق إلى دورتك. | Demande faite — les minutes sont dans ton cours. |
 | on_track | On track — keep going to keep the guarantee. | ঠিক পথে আছ — নিশ্চয়তা রাখতে এভাবেই চালিয়ে যাও। | सही राह पर — गारंटी बनाए रखने के लिए ऐसे ही जारी रखें। | درست سمت میں — ضمانت برقرار رکھنے کے لیے یوں ہی جاری رکھیں۔ | على المسار — واصل لتحافظ على الضمان. | Sur la bonne voie — continue pour garder la garantie. |
 | improved | Your mastery went up — no claim needed. | তোমার আয়ত্ত বেড়েছে — দাবির দরকার নেই। | आपकी महारत बढ़ी — दावे की ज़रूरत नहीं। | آپ کی مہارت بڑھی — دعوے کی ضرورت نہیں۔ | تحسّن إتقانك — لا حاجة إلى المطالبة. | Ta maîtrise a progressé — pas besoin de demande. |
-| credit | Credit valid for 6 months | ক্রেডিট 6 মাস বৈধ | क्रेडिट 6 महीने मान्य | کریڈٹ 6 ماہ کارآمد | الرصيد صالح 6 أشهر | Crédit valable 6 mois |
+| credit | Minutes valid for 6 months | মিনিট 6 মাস বৈধ | मिनट 6 महीने मान्य | منٹ 6 ماہ کارآمد | الدقائق صالحة 6 أشهر | Minutes valables 6 mois |
 | once | Once per course in any 3 months | প্রতি কোর্সে যেকোনো 3 মাসে একবার | हर कोर्स में किसी भी 3 महीने में एक बार | ہر کورس میں کسی بھی 3 ماہ میں ایک بار | مرة لكل دورة في أي 3 أشهر | Une fois par cours sur 3 mois |
 | review | Unclear cases are reviewed by a person within 7 days. | অস্পষ্ট ক্ষেত্রে একজন মানুষ 7 দিনের মধ্যে পর্যালোচনা করেন। | अस्पष्ट मामलों की समीक्षा 7 दिन में एक व्यक्ति करता है। | غیر واضح معاملات کا جائزہ 7 دن میں ایک شخص لیتا ہے۔ | يراجع شخصٌ الحالات غير الواضحة خلال 7 أيام. | Une personne examine les cas peu clairs sous 7 jours. |
 | appeal | Appeal | আপিল করুন | अपील करें | اپیل کریں | اعتراض | Faire appel |
 | extended | Window extended: {d} days (outage or institution-blocked week) | সময়সীমা বেড়েছে: {d} দিন (বিভ্রাট বা প্রতিষ্ঠানের বন্ধ সপ্তাহ) | अवधि बढ़ी: {d} दिन (आउटेज या संस्थान द्वारा रोका गया हफ़्ता) | مدت بڑھ گئی: {d} دن (بندش یا ادارے کا روکا ہوا ہفتہ) | مُدّدت المدة: {d} أيام (انقطاع أو أسبوع أوقفته المؤسسة) | Période prolongée : {d} jours (panne ou semaine bloquée par l’établissement) |
 | not_result | Not a promise of exam grades or results. | এটি পরীক্ষার গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়। | यह परीक्षा के ग्रेड या परिणाम का कोई वादा नहीं है। | یہ امتحانی گریڈ یا نتائج کا کوئی وعدہ نہیں۔ | ليس وعدًا بدرجات الامتحانات أو نتائجها. | Ce n’est pas une promesse de notes ou de résultats d’examen. |
-| card_note | Wallet credit for lessons — not a promise of grades or results. | পাঠের জন্য ওয়ালেট ক্রেডিট — গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়। | पढ़ाई के लिए वॉलेट क्रेडिट — ग्रेड या परिणाम का कोई वादा नहीं। | اسباق کے لیے والیٹ کریڈٹ — گریڈ یا نتائج کا کوئی وعدہ نہیں۔ | رصيد في المحفظة للدروس — وليس وعدًا بدرجات أو نتائج. | Crédit de cours dans le portefeuille — pas une promesse de notes ni de résultats. |
+| card_note | Minutes back for lessons — not a promise of grades or results. | পাঠের জন্য মিনিট ফেরত — গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়। | पढ़ाई के लिए मिनट वापस — ग्रेड या परिणाम का कोई वादा नहीं। | اسباق کے لیے منٹ واپس — گریڈ یا نتائج کا کوئی وعدہ نہیں۔ | دقائق تُعاد للدروس — وليس وعدًا بدرجات أو نتائج. | Minutes de cours rendues — pas une promesse de notes ni de résultats. |
 | terms_link | Learning guarantee terms | শেখার নিশ্চয়তার শর্তাবলি | सीखने की गारंटी की शर्तें | سیکھنے کی ضمانت کی شرائط | شروط ضمان التعلّم | Conditions de la garantie d’apprentissage |
 | ck_h | Who takes part | কে কী করবে | कौन क्या करता है | کون کیا کرتا ہے | من يشارك | Qui participe |
 | ck_l | Learner | শিক্ষার্থী | विद्यार्थी | طالب علم | المتعلّم | Apprenant |
@@ -1019,7 +1023,7 @@ Learner boards use the public register (bn তুমি, fr tu); guardian boards
 | min | Active minutes per session (minimum) | 20 | প্রতি সেশনে সক্রিয় মিনিট (সর্বনিম্ন) | हर सेशन में सक्रिय मिनट (न्यूनतम) | ہر سیشن میں فعال منٹ (کم از کم) | الدقائق النشطة لكل جلسة (الحد الأدنى) | Minutes actives par séance (minimum) |
 | rev | Due reviews done (minimum) | 80% | সময় হওয়া রিভিউ সম্পন্ন (সর্বনিম্ন) | समय पर आए रिव्यू पूरे (न्यूनतम) | واجب ریویوز مکمل (کم از کم) | المراجعات المستحقّة المنجزة (الحد الأدنى) | Révisions dues faites (minimum) |
 | gain | Qualifies when the average Mastery Map gain is under | 5 points | যোগ্য হয় যখন Mastery Map-এ গড় উন্নতি এর কম | योग्य जब Mastery Map पर औसत बढ़त इससे कम हो | اہل جب Mastery Map پر اوسط اضافہ اس سے کم ہو | مؤهل عندما يكون متوسط التحسّن على Mastery Map أقل من | Éligible si le gain moyen sur la Mastery Map est inférieur à |
-| val | Credit validity | 6 months | ক্রেডিটের মেয়াদ | क्रेडिट की वैधता | کریڈٹ کی مدت | صلاحية الرصيد | Validité du crédit |
+| val | Minutes validity | 6 months | মিনিটের মেয়াদ | मिनट की वैधता | منٹ کی مدت | صلاحية الدقائق | Validité des minutes |
 | freq | Claims per course | once per 3 months | প্রতি কোর্সে দাবি | हर कोर्स में दावे | ہر کورس میں دعوے | المطالبات لكل دورة | Demandes par cours |
 | hrev | Human review of unclear cases within | 7 days | অস্পষ্ট ক্ষেত্রে মানুষের পর্যালোচনা, এর মধ্যে | अस्पष्ट मामलों की मानवीय समीक्षा, इतने में | غیر واضح معاملات کا انسانی جائزہ، اتنے میں | مراجعة بشرية للحالات غير الواضحة خلال | Examen humain des cas peu clairs sous |
 | ext | Extend the window for outages and institution-blocked weeks | On | বিভ্রাট ও প্রতিষ্ঠানের বন্ধ সপ্তাহে সময়সীমা বাড়ানো | आउटेज और संस्थान के रोके हफ़्तों में अवधि बढ़ाना | بندش اور ادارے کے روکے ہفتوں میں مدت بڑھانا | تمديد المدة عند الانقطاع والأسابيع التي توقفها المؤسسة | Prolonger la période (pannes, semaines bloquées) |

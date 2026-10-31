@@ -785,13 +785,16 @@ button.tr.on{background:#F5F4FF;box-shadow:inset 0 0 0 2px #3B34C9}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+function usdCents(bdt) { var p = Math.round(Number(bdt) * 100); return Math.floor((270 * p + 12200) / 24400); } // USD = BDT x 1.35 / 122, cents half-up
+function usdNum(bdt) { return usdCents(bdt) / 100; }
+function usdTxt(bdt) { return '$' + (usdCents(bdt) / 100).toFixed(2); }
 class Component extends DCLogic {
   componentDidMount() {
     var self = this;
     this._t = setInterval(function () { self.tick(); }, 1000);
   }
   componentWillUnmount() { clearInterval(this._t); }
-  // Prototype state. "Now" is Monday 1 Feb 2027, 16:20 Dhaka — the one demo clock of every admin page (fix8 D1, 26 Oct 2026); every action moves the clock one minute (clock = minutes after 16:20).
+  // Prototype state. "Now" is Friday 25 Dec 2026, 16:20 Dhaka — the one demo clock of every admin page (fix8 D1, 26 Oct 2026); every action moves the clock one minute (clock = minutes after 16:20).
   st() {
     var I = '⁦', J = '⁩', PB = ' (PlayBoom)', PBi = ' (' + I + 'PlayBoom' + J + ')';
     var nm = function (bn, en, hi, ur, ar, fr) { return { bn: bn, en: en, hi: hi, ur: ur, ar: ar, fr: fr }; };
@@ -800,44 +803,44 @@ class Component extends DCLogic {
     var voices = [];
     ['bn', 'en', 'hi', 'ur', 'ar', 'fr'].forEach(function (l) { ['f', 'm'].forEach(function (g) { ['calm', 'energetic', 'fun'].forEach(function (y) {
       var id = 'v-' + l + '-' + g + '-' + y, v = { id: id, lang: l, g: g, sty: y, rev: 'ok', by: 'rv-' + l, maker: 'p10', eng: '2.4.1', at: '2026-12-' + (l === 'bn' ? '08' : '15') + ' 10:00' };
-      if (id === 'v-ur-f-energetic') { v.rev = 'review'; v.by = ''; v.maker = 'p14'; v.at = '2027-01-31 21:20'; }
+      if (id === 'v-ur-f-energetic') { v.rev = 'review'; v.by = ''; v.maker = 'p14'; v.at = '2027-02-14 21:20'; }
       if (id === 'v-fr-m-fun') { v.rev = 'changes'; v.noteK = 'fr_fun'; }
       voices.push(v);
     }); }); });
     var d = { lang: 'bn', sec: 'over', asP: 'p10', asOpen: false, clock: 0, toast: '', toastT: 0, rjWhy: '', rjId: '',
       // ---------- Avatars (3D, GLB/VRM, rendered in the learner's browser with lip-sync) ----------
       avatars: [
-        { id: 'a1', nm: nm('নেক্সা টিচার — ক্লাসিক', 'Nexa Teacher — Classic', 'नेक्सा टीचर — क्लासिक', 'نیکسا ٹیچر — کلاسک', 'معلّم نيكسا — كلاسيكي', 'Nexa Teacher — Classique'), age: 'adult', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-11-02 11:00', c: '#3B34C9',
-          vers: [V('1.0', '2026-11-02 11:00', 'p10', 'p1', 5.1, 1.6, 41200, 44), V('1.1', '2026-12-10 15:20', 'p14', 'p10', 5.4, 1.7, 42800, 43), V('1.2', '2027-01-13 16:25', 'p10', 'p14', 5.6, 1.8, 43900, 42)], live: 2 },
-        { id: 'a2', nm: nm('মিস নীলা', 'Ms Nila', 'मिस नीला', 'مس نیلا', 'الآنسة نيلا', 'Mme Nila'), age: 'teen', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-11-20 14:00', c: '#0B5E5A',
-          vers: [V('1.0', '2026-11-20 14:00', 'p14', 'p10', 4.6, 1.5, 36800, 47), V('1.1', '2027-01-04 14:50', 'p14', 'p10', 4.9, 1.6, 37400, 46)], live: 1 },
-        { id: 'a3', nm: nm('আরিফ স্যার', 'Mr Arif', 'आरिफ़ सर', 'سر عارف', 'الأستاذ عارف', 'M. Arif'), age: 'adult', unl: 'prem', xp: 12, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-02 12:00', c: '#8A4B00',
-          vers: [V('1.0', '2026-12-02 12:00', 'p10', 'p14', 6.8, 2.1, 52300, 38)], live: 0 },
-        { id: 'a4', nm: nm('রোবো বন্ধু' + PB, 'Robo Pal' + PB, 'रोबो दोस्त' + PB, 'روبو دوست' + PBi, 'الصديق روبو' + PBi, 'Robo Copain' + PB), age: 'kids', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-11-11 09:30', c: '#17804F',
-          vers: [V('1.0', '2026-11-11 09:30', 'p14', 'p10', 3.2, 1.1, 22400, 55), V('2.0', '2026-12-30 15:20', 'p14', 'p1', 3.9, 1.3, 26100, 52)], live: 1 },
-        { id: 'a5', nm: nm('টুনি পাখি' + PB, 'Tuni Bird' + PB, 'टुनी चिड़िया' + PB, 'ٹونی چڑیا' + PBi, 'العصفورة توني' + PBi, 'Oiseau Tuni' + PB), age: 'kids', unl: 'xp', xp: 5, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-18 16:00', c: '#C2410C',
-          vers: [V('1.0', '2026-12-18 16:00', 'p10', 'p14', 2.8, 0.9, 18900, 58)], live: 0 },
+        { id: 'a1', nm: nm('নেক্সা টিউটর — ক্লাসিক', 'Nexa Tutor — Classic', 'नेक्सा ट्यूटर — क्लासिक', 'نیکسا ٹیوٹر — کلاسک', '⁦Nexa Tutor⁩ — كلاسيكي', 'Nexa Tutor — Classique'), age: 'adult', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-07 11:00', c: '#3B34C9',
+          vers: [V('1.0', '2026-12-07 11:00', 'p10', 'p1', 5.1, 1.6, 41200, 44), V('1.1', '2026-12-11 15:20', 'p14', 'p10', 5.4, 1.7, 42800, 43), V('1.2', '2027-01-27 16:25', 'p10', 'p14', 5.6, 1.8, 43900, 42)], live: 2 },
+        { id: 'a2', nm: nm('মিস নীলা', 'Ms Nila', 'मिस नीला', 'مس نیلا', 'الآنسة نيلا', 'Mme Nila'), age: 'teen', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-25 14:00', c: '#0B5E5A',
+          vers: [V('1.0', '2026-12-25 14:00', 'p14', 'p10', 4.6, 1.5, 36800, 47), V('1.1', '2027-01-18 14:50', 'p14', 'p10', 4.9, 1.6, 37400, 46)], live: 1 },
+        { id: 'a3', nm: nm('আরিফ স্যার', 'Mr Arif', 'आरिफ़ सर', 'سر عارف', 'الأستاذ عارف', 'M. Arif'), age: 'adult', unl: 'prem', xp: 12, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2027-01-06 12:00', c: '#8A4B00',
+          vers: [V('1.0', '2027-01-06 12:00', 'p10', 'p14', 6.8, 2.1, 52300, 38)], live: 0 },
+        { id: 'a4', nm: nm('রোবো বন্ধু' + PB, 'Robo Pal' + PB, 'रोबो दोस्त' + PB, 'روبو دوست' + PBi, 'الصديق روبو' + PBi, 'Robo Copain' + PB), age: 'kids', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-16 09:30', c: '#17804F',
+          vers: [V('1.0', '2026-12-16 09:30', 'p14', 'p10', 3.2, 1.1, 22400, 55), V('2.0', '2026-12-23 15:20', 'p14', 'p1', 3.9, 1.3, 26100, 52)], live: 1 },
+        { id: 'a5', nm: nm('টুনি পাখি' + PB, 'Tuni Bird' + PB, 'टुनी चिड़िया' + PB, 'ٹونی چڑیا' + PBi, 'العصفورة توني' + PBi, 'Oiseau Tuni' + PB), age: 'kids', unl: 'xp', xp: 5, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-16 16:00', c: '#C2410C',
+          vers: [V('1.0', '2026-12-16 16:00', 'p10', 'p14', 2.8, 0.9, 18900, 58)], live: 0 },
         // the same library X23 learners choose from (Free / XP / Premium) — added 25 Oct 2026 so both files describe ONE library
-        { id: 'a9', nm: nm('রোবো নেক্সা', 'Robo Nexa', 'रोबो नेक्सा', 'روبو نیکسا', 'روبو نيكسا', 'Robo Nexa'), age: 'teen', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-11-25 10:00', c: '#59617A',
-          vers: [V('1.0', '2026-11-25 10:00', 'p14', 'p10', 3.6, 1.2, 28400, 50)], live: 0 },
-        { id: 'a10', nm: nm('ল্যাব অভিযাত্রী', 'Lab Explorer', 'लैब खोजी', 'لیب کھوجی', 'مستكشف المختبر', 'Explorateur du labo'), age: 'teen', unl: 'xp', xp: 5, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-04 11:30', c: '#17804F',
-          vers: [V('1.0', '2026-12-04 11:30', 'p10', 'p14', 4.2, 1.4, 33100, 46)], live: 0 },
-        { id: 'a11', nm: nm('ক্রিকেট কোচ', 'Cricket Coach', 'क्रिकेट कोच', 'کرکٹ کوچ', 'مدرّب الكريكيت', 'Coach de cricket'), age: 'teen', unl: 'xp', xp: 8, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-08 15:00', c: '#0F6B40',
-          vers: [V('1.0', '2026-12-08 15:00', 'p14', 'p10', 4.4, 1.4, 34800, 45)], live: 0 },
+        { id: 'a9', nm: nm('রোবো নেক্সা', 'Robo Nexa', 'रोबो नेक्सा', 'روبو نیکسا', 'روبو نيكسا', 'Robo Nexa'), age: 'teen', unl: 'free', xp: 0, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-30 10:00', c: '#59617A',
+          vers: [V('1.0', '2026-12-30 10:00', 'p14', 'p10', 3.6, 1.2, 28400, 50)], live: 0 },
+        { id: 'a10', nm: nm('ল্যাব অভিযাত্রী', 'Lab Explorer', 'लैब खोजी', 'لیب کھوجی', 'مستكشف المختبر', 'Explorateur du labo'), age: 'teen', unl: 'xp', xp: 5, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2027-01-08 11:30', c: '#17804F',
+          vers: [V('1.0', '2027-01-08 11:30', 'p10', 'p14', 4.2, 1.4, 33100, 46)], live: 0 },
+        { id: 'a11', nm: nm('ক্রিকেট কোচ', 'Cricket Coach', 'क्रिकेट कोच', 'کرکٹ کوچ', 'مدرّب الكريكيت', 'Coach de cricket'), age: 'teen', unl: 'xp', xp: 8, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2027-01-12 15:00', c: '#0F6B40',
+          vers: [V('1.0', '2027-01-12 15:00', 'p14', 'p10', 4.4, 1.4, 34800, 45)], live: 0 },
         { id: 'a12', nm: nm('কুইজ মাস্টার', 'Quiz Master', 'क्विज़ मास्टर', 'کوئز ماسٹر', 'سيّد المسابقات', 'Maître du quiz'), age: 'teen', unl: 'xp', xp: 12, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-12 10:15', c: '#1D3A8A',
           vers: [V('1.0', '2026-12-12 10:15', 'p10', 'p14', 4.0, 1.3, 31900, 47)], live: 0 },
-        { id: 'a13', nm: nm('মিস রূপা — শিল্পী', 'Ms Rupa — Artist', 'मिस रूपा — कलाकार', 'مس روپا — آرٹسٹ', 'الآنسة روبا — الفنّانة', 'Mme Rupa — Artiste'), age: 'adult', unl: 'prem', xp: 14, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-20 12:40', c: '#C2185B',
-          vers: [V('1.0', '2026-12-20 12:40', 'p14', 'p10', 6.3, 2.0, 47200, 39)], live: 0 },
-        { id: 'a14', nm: nm('মিস তিশা — গল্প-বলিয়ে', 'Ms Tisha — Storyteller', 'मिस तिशा — कहानीकार', 'مس تشا — داستان گو', 'الآنسة تيشا — راوية القصص', 'Mme Tisha — Conteuse'), age: 'adult', unl: 'prem', xp: 18, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-27 16:10', c: '#B45309',
-          vers: [V('1.0', '2026-12-27 16:10', 'p10', 'p14', 6.0, 1.9, 45600, 40)], live: 0 },
-        { id: 'a15', nm: nm('নভোচারী নোভা', 'Astronaut Nova', 'अंतरिक्ष यात्री नोवा', 'خلاباز نووا', 'رائدة الفضاء نوفا', 'Astronaute Nova'), age: 'teen', unl: 'prem', xp: 22, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2027-01-02 14:10', c: '#0369A1',
-          vers: [V('1.0', '2027-01-02 14:10', 'p14', 'p1', 6.9, 2.2, 51800, 37)], live: 0 },
-        { id: 'a6', nm: nm('মিস সারা — স্কলার', 'Ms Sara — Scholar', 'मिस सारा — स्कॉलर', 'مس سارہ — اسکالر', 'الآنسة سارة — الباحثة', 'Mme Sara — Érudite'), age: 'adult', unl: 'prem', xp: 10, ctry: ['bd', 'pk', 'sa', 'ae'], st: 'review', official: true, maker: 'p10', at: '2027-02-01 14:40', c: '#7C3AED',
-          vers: [V('1.0', '2027-02-01 14:40', 'p10', '', 6.1, 1.9, 44800, 40)], live: -1 },
-        { id: 'a7', nm: nm('মহাকাশ ক্যাডেট রাফি', 'Space Cadet Rafi', 'अंतरिक्ष कैडेट रफ़ी', 'خلائی کیڈٹ رافع', 'طالب الفضاء رافي', 'Rafi, cadet de l’espace'), age: 'teen', unl: 'xp', xp: 8, ctry: ['all'], st: 'draft', official: true, maker: 'p14', at: '2027-01-30 20:10', c: '#0369A1',
+        { id: 'a13', nm: nm('মিস রূপা — শিল্পী', 'Ms Rupa — Artist', 'मिस रूपा — कलाकार', 'مس روپا — آرٹسٹ', 'الآنسة روبا — الفنّانة', 'Mme Rupa — Artiste'), age: 'adult', unl: 'prem', xp: 14, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2026-12-17 12:40', c: '#C2185B',
+          vers: [V('1.0', '2026-12-17 12:40', 'p14', 'p10', 6.3, 2.0, 47200, 39)], live: 0 },
+        { id: 'a14', nm: nm('মিস তিশা — গল্প-বলিয়ে', 'Ms Tisha — Storyteller', 'मिस तिशा — कहानीकार', 'مس تشا — داستان گو', 'الآنسة تيشا — راوية القصص', 'Mme Tisha — Conteuse'), age: 'adult', unl: 'prem', xp: 18, ctry: ['all'], st: 'live', official: true, maker: 'p10', at: '2026-12-22 16:10', c: '#B45309',
+          vers: [V('1.0', '2026-12-22 16:10', 'p10', 'p14', 6.0, 1.9, 45600, 40)], live: 0 },
+        { id: 'a15', nm: nm('নভোচারী নোভা', 'Astronaut Nova', 'अंतरिक्ष यात्री नोवा', 'خلاباز نووا', 'رائدة الفضاء نوفا', 'Astronaute Nova'), age: 'teen', unl: 'prem', xp: 22, ctry: ['all'], st: 'live', official: true, maker: 'p14', at: '2027-01-16 14:10', c: '#0369A1',
+          vers: [V('1.0', '2027-01-16 14:10', 'p14', 'p1', 6.9, 2.2, 51800, 37)], live: 0 },
+        { id: 'a6', nm: nm('মিস সারা — স্কলার', 'Ms Sara — Scholar', 'मिस सारा — स्कॉलर', 'مس سارہ — اسکالر', 'الآنسة سارة — الباحثة', 'Mme Sara — Érudite'), age: 'adult', unl: 'prem', xp: 10, ctry: ['bd', 'pk', 'sa', 'ae'], st: 'review', official: true, maker: 'p10', at: '2026-12-25 14:40', c: '#7C3AED',
+          vers: [V('1.0', '2027-02-15 14:40', 'p10', '', 6.1, 1.9, 44800, 40)], live: -1 },
+        { id: 'a7', nm: nm('মহাকাশ ক্যাডেট রাফি', 'Space Cadet Rafi', 'अंतरिक्ष कैडेट रफ़ी', 'خلائی کیڈٹ رافع', 'طالب الفضاء رافي', 'Rafi, cadet de l’espace'), age: 'teen', unl: 'xp', xp: 8, ctry: ['all'], st: 'draft', official: true, maker: 'p14', at: '2026-12-23 20:10', c: '#0369A1',
           vers: [], live: -1 },
-        { id: 'a8', nm: nm('কোচ লিও', 'Coach Leo', 'कोच लियो', 'کوچ لیو', 'المدرّب ليو', 'Coach Léo'), age: 'teen', unl: 'prem', xp: 9, ctry: ['in', 'fr', 'gb'], st: 'off', official: true, maker: 'p14', at: '2026-12-25 13:00', c: '#BE185D', offK: 'a8',
-          vers: [V('1.0', '2026-12-25 13:00', 'p14', 'p10', 5.2, 1.7, 40100, 43)], live: 0 }],
+        { id: 'a8', nm: nm('কোচ লিও', 'Coach Leo', 'कोच लियो', 'کوچ لیو', 'المدرّب ليو', 'Coach Léo'), age: 'teen', unl: 'prem', xp: 9, ctry: ['in', 'fr', 'gb'], st: 'off', official: true, maker: 'p14', at: '2026-12-20 13:00', c: '#BE185D', offK: 'a8',
+          vers: [V('1.0', '2026-12-20 13:00', 'p14', 'p10', 5.2, 1.7, 40100, 43)], live: 0 }],
       avN: 16, avSel: 'a6', avAge: 'all', avUnl: 'all', avSt: 'all', avCk: {},
       up: null,
       // ---------- Stock voices ----------
@@ -845,44 +848,44 @@ class Component extends DCLogic {
       // ---------- Clone requests (Nexa Guard controller decides; the maker can't approve their own) ----------
       // ck: spk = speaker-verification score; otp: 'na' own voice | 'wait' | 'ok'; age; pub: 'ok' | 'hit' (proof missing); live/face for a photo avatar
       crs: [
-        { id: 'CR-2041', type: 'guard', who: 'u1', acct: ['G-55120', 'guard'], at: '2027-02-01 13:05', st: 'pend', ck: { spk: 0.93, otp: 'na', age: 34, pub: 'ok' }, code: '4821', sl: 'bn' },
-        { id: 'CR-2042', type: 'fam', who: 'u2', acct: ['G-55120', 'guard'], at: '2027-02-01 13:22', st: 'pend', ck: { spk: 0.88, otp: 'wait', ph: '+971 •• ••• 4417', age: 61, pub: 'ok' }, code: '7306', sl: 'bn', rel: 'gm' },
-        { id: 'CR-2043', type: 'teach', who: 'p15', acct: ['T-30772', 'teach'], at: '2027-02-01 14:02', st: 'pend', ck: { spk: 0.95, otp: 'na', age: 38, pub: 'ok' }, code: '5190', sl: 'en', maker: 'p15' },
-        { id: 'CR-2044', type: 'tav', who: 'u4', acct: ['T-28815', 'inst'], at: '2027-02-01 14:30', st: 'pend', ck: { live: true, face: 0.94, age: 41, pub: 'ok' }, code: '2264', sl: 'bn' },
-        { id: 'CR-2045', type: 'adult', who: 'u5', acct: ['L-90233', 'learner'], at: '2027-02-01 15:12', st: 'pend', ck: { spk: 0.63, otp: 'na', age: 19, pub: 'ok' }, code: '6648', sl: 'bn' },
-        { id: 'CR-2046', type: 'adult', who: 'u6', acct: ['L-91857', 'learner'], at: '2027-02-01 15:40', st: 'pend', ck: { spk: 0.91, otp: 'na', age: 16, pub: 'ok' }, code: '3017', sl: 'bn' },
-        { id: 'CR-2047', type: 'teach', who: 'u7', acct: ['T-31104', 'teach'], at: '2027-02-01 16:02', st: 'pend', ck: { spk: 0.92, otp: 'na', age: 45, pub: 'hit' }, code: '8452', sl: 'bn' },
-        { id: 'CR-2035', type: 'teach', who: 'u14', acct: ['T-29960', 'teach'], at: '2027-01-30 15:20', st: 'ok', ck: { spk: 0.94, otp: 'na', age: 36, pub: 'ok' }, code: '1187', sl: 'bn', by: 'p6', dAt: '2027-01-30 17:10' },
-        { id: 'CR-2038', type: 'guard', who: 'u15', acct: ['G-53390', 'guard'], at: '2027-01-30 20:05', st: 'rej', ck: { spk: 0.58, otp: 'na', age: 42, pub: 'ok' }, code: '9921', sl: 'bn', by: 'p15', dAt: '2027-01-30 22:30', whyK: 'cr2038' }],
+        { id: 'CR-2041', type: 'guard', who: 'u1', acct: ['G-55120', 'guard'], at: '2026-12-25 13:05', st: 'pend', ck: { spk: 0.93, otp: 'na', age: 34, pub: 'ok' }, code: '4821', sl: 'bn' },
+        { id: 'CR-2042', type: 'fam', who: 'u2', acct: ['G-55120', 'guard'], at: '2026-12-25 13:22', st: 'pend', ck: { spk: 0.88, otp: 'wait', ph: '+971 •• ••• 4417', age: 61, pub: 'ok' }, code: '7306', sl: 'bn', rel: 'gm' },
+        { id: 'CR-2043', type: 'teach', who: 'p15', acct: ['T-30772', 'teach'], at: '2026-12-25 14:02', st: 'pend', ck: { spk: 0.95, otp: 'na', age: 38, pub: 'ok' }, code: '5190', sl: 'en', maker: 'p15' },
+        { id: 'CR-2044', type: 'tav', who: 'u4', acct: ['T-28815', 'inst'], at: '2026-12-25 14:30', st: 'pend', ck: { live: true, face: 0.94, age: 41, pub: 'ok' }, code: '2264', sl: 'bn' },
+        { id: 'CR-2045', type: 'adult', who: 'u5', acct: ['L-90233', 'learner'], at: '2026-12-25 15:12', st: 'pend', ck: { spk: 0.63, otp: 'na', age: 19, pub: 'ok' }, code: '6648', sl: 'bn' },
+        { id: 'CR-2046', type: 'adult', who: 'u6', acct: ['L-91857', 'learner'], at: '2026-12-25 15:40', st: 'pend', ck: { spk: 0.91, otp: 'na', age: 16, pub: 'ok' }, code: '3017', sl: 'bn' },
+        { id: 'CR-2047', type: 'teach', who: 'u7', acct: ['T-31104', 'teach'], at: '2026-12-25 16:02', st: 'pend', ck: { spk: 0.92, otp: 'na', age: 45, pub: 'hit' }, code: '8452', sl: 'bn' },
+        { id: 'CR-2035', type: 'teach', who: 'u14', acct: ['T-29960', 'teach'], at: '2026-12-23 15:20', st: 'ok', ck: { spk: 0.94, otp: 'na', age: 36, pub: 'ok' }, code: '1187', sl: 'bn', by: 'p6', dAt: '2027-02-13 17:10' },
+        { id: 'CR-2038', type: 'guard', who: 'u15', acct: ['G-53390', 'guard'], at: '2026-12-23 20:05', st: 'rej', ck: { spk: 0.58, otp: 'na', age: 42, pub: 'ok' }, code: '9921', sl: 'bn', by: 'p15', dAt: '2027-02-13 22:30', whyK: 'cr2038' }],
       crSel: 'CR-2041', clTab: 'queue',
       // ---------- Cloned voices / photo avatars in use, withdrawals, complaints ----------
       cv: [
-        { id: 'VC-097', who: 'u19', type: 'adult', since: '2026-12-21 08:00', st: 'down' },
-        { id: 'VC-101', who: 'u14', type: 'teach', since: '2027-01-30 17:10', st: 'live' },
-        { id: 'VC-104', who: 'u13', type: 'guard', since: '2026-12-30 10:00', st: 'del', delAt: '2027-01-28 08:10' },
-        { id: 'VC-109', who: 'u11', type: 'teach', since: '2027-01-01 19:20', st: 'stop', stopAt: '2027-01-29 19:00' },
-        { id: 'VC-112', who: 'u12', type: 'adult', since: '2027-01-07 22:50', st: 'stop', stopAt: '2027-02-01 00:30' },
-        { id: 'VC-115', who: 'u17', type: 'guard', since: '2027-01-10 13:20', st: 'live' },
-        { id: 'VC-118', who: 'u18', type: 'guard', since: '2027-01-15 00:35', st: 'live' },
-        { id: 'VC-121', who: 'u10', type: 'teach', since: '2027-01-26 16:45', st: 'live' },
-        { id: 'TA-019', who: 'u16', type: 'tav', since: '2027-01-27 18:00', st: 'live' }],
+        { id: 'VC-097', who: 'u19', type: 'adult', since: '2026-12-18 08:00', st: 'down' },
+        { id: 'VC-101', who: 'u14', type: 'teach', since: '2026-12-23 17:10', st: 'live' },
+        { id: 'VC-104', who: 'u13', type: 'guard', since: '2026-12-23 10:00', st: 'del', delAt: '2027-02-11 08:10' },
+        { id: 'VC-109', who: 'u11', type: 'teach', since: '2027-01-15 19:20', st: 'stop', stopAt: '2027-02-12 19:00' },
+        { id: 'VC-112', who: 'u12', type: 'adult', since: '2027-01-21 22:50', st: 'stop', stopAt: '2027-02-15 00:30' },
+        { id: 'VC-115', who: 'u17', type: 'guard', since: '2027-01-24 13:20', st: 'live' },
+        { id: 'VC-118', who: 'u18', type: 'guard', since: '2027-01-29 00:35', st: 'live' },
+        { id: 'VC-121', who: 'u10', type: 'teach', since: '2026-12-19 16:45', st: 'live' },
+        { id: 'TA-019', who: 'u16', type: 'tav', since: '2026-12-20 18:00', st: 'live' }],
       cvN: 122,
       wds: [
-        { id: 'WD-309', vc: 'VC-109', at: '2027-01-29 19:00', st: 'wait' },
-        { id: 'WD-310', vc: 'VC-112', at: '2027-02-01 00:30', st: 'wait' },
-        { id: 'WD-305', vc: 'VC-104', at: '2027-01-26 14:00', st: 'del', delAt: '2027-01-28 08:10', by: 'sys' }],
+        { id: 'WD-309', vc: 'VC-109', at: '2026-12-22 19:00', st: 'wait' },
+        { id: 'WD-310', vc: 'VC-112', at: '2026-12-25 00:30', st: 'wait' },
+        { id: 'WD-305', vc: 'VC-104', at: '2026-12-19 14:00', st: 'del', delAt: '2027-02-11 08:10', by: 'sys' }],
       cps: [
-        { id: 'CP-081', kind: 'voice', from: 'u8', item: 'VC-121', at: '2027-02-01 12:05', st: 'open', susp: false, saidK: 'cp81', ev: [{ at: '2027-02-01 12:05', who: 'sys', k: 'recv' }] },
-        { id: 'CP-080', kind: 'face', from: 'u9', item: 'TA-019', at: '2027-01-31 19:30', st: 'open', susp: false, saidK: 'cp80', ev: [{ at: '2027-01-31 19:30', who: 'sys', k: 'recv' }] },
-        { id: 'CP-076', kind: 'voice', from: 'u20', item: 'VC-097', at: '2027-01-29 23:00', st: 'down', susp: true, downAt: '2027-01-30 02:00', saidK: 'cp76', ev: [{ at: '2027-01-29 23:00', who: 'sys', k: 'recv' }, { at: '2027-01-30 02:00', who: 'p6', k: 'down' }] },
-        { id: 'CP-072', kind: 'voice', from: 'u21', item: 'VC-088', at: '2027-01-15 14:35', st: 'dismissed', susp: false, downAt: '2027-01-15 17:20', saidK: 'cp72', decK: 'cp72',
-          ev: [{ at: '2027-01-15 14:35', who: 'sys', k: 'recv' }, { at: '2027-01-15 17:20', who: 'p15', k: 'down' }, { at: '2027-01-25 21:40', who: 'p15', k: 'dismissed', whyK: 'cp72' }] }],
+        { id: 'CP-081', kind: 'voice', from: 'u8', item: 'VC-121', at: '2026-12-25 12:05', st: 'open', susp: false, saidK: 'cp81', ev: [{ at: '2026-12-25 12:05', who: 'sys', k: 'recv' }] },
+        { id: 'CP-080', kind: 'face', from: 'u9', item: 'TA-019', at: '2026-12-24 19:30', st: 'open', susp: false, saidK: 'cp80', ev: [{ at: '2026-12-24 19:30', who: 'sys', k: 'recv' }] },
+        { id: 'CP-076', kind: 'voice', from: 'u20', item: 'VC-097', at: '2026-12-22 23:00', st: 'down', susp: true, downAt: '2027-02-13 02:00', saidK: 'cp76', ev: [{ at: '2026-12-22 23:00', who: 'sys', k: 'recv' }, { at: '2026-12-23 02:00', who: 'p6', k: 'down' }] },
+        { id: 'CP-072', kind: 'voice', from: 'u21', item: 'VC-088', at: '2027-01-29 14:35', st: 'dismissed', susp: false, downAt: '2027-01-29 17:20', saidK: 'cp72', decK: 'cp72',
+          ev: [{ at: '2027-01-29 14:35', who: 'sys', k: 'recv' }, { at: '2027-01-29 17:20', who: 'p15', k: 'down' }, { at: '2026-12-18 21:40', who: 'p15', k: 'dismissed', whyK: 'cp72' }] }],
       cpSel: 'CP-080', cpWhy: '',
-      // ---------- Marketplace: BDT prices (USD = BDT × 0.015, rounded); 1 free per account in each category ----------
+      // ---------- Marketplace: BDT prices (USD = BDT × 1.35 ÷ 122, to the cent); 1 free per account in each category ----------
       prices: { prem: 149, gvoice: 299, tvoice: 299, tav: 149, lvoice: 299 },
       pcs: [
-        { id: 'PC-09', cat: 'prem', from: 199, to: 149, whyK: 'pc09', maker: 'p3', at: '2027-01-11 20:20', st: 'ok', signs: [{ who: 'p1', slot: 1 }] },
-        { id: 'PC-12', cat: 'tvoice', from: 299, to: 249, whyK: 'pc12', maker: 'p3', at: '2027-02-01 14:15', st: 'pend', signs: [] }],
+        { id: 'PC-09', cat: 'prem', from: 199, to: 149, whyK: 'pc09', maker: 'p3', at: '2027-01-25 20:20', st: 'ok', signs: [{ who: 'p1', slot: 1 }] },
+        { id: 'PC-12', cat: 'tvoice', from: 299, to: 249, whyK: 'pc12', maker: 'p3', at: '2026-12-25 14:15', st: 'pend', signs: [] }],
       pcN: 13, pcCat: '', pcVal: '', pcWhy: '',
       sales: { prem: [28, 6], gvoice: [6, 1], tvoice: [3, 1], tav: [1, 0], lvoice: [2, 3] }, xpUnlocks: 410, // January 2027 (fix8 D1)
       // ---------- Settings ----------
@@ -890,18 +893,18 @@ class Component extends DCLogic {
       stGpu: '', stAv: '', stLbl: '',
       // ---------- Log: who / when / where / what (before → after) ----------
       log: [
-        { who: 'p3', at: '2027-01-11 20:20', area: 'mk', k: 'pcreq', p: { cat: 'prem', from: 199, to: 149 } },
-        { who: 'p1', at: '2027-01-11 22:40', area: 'mk', k: 'pcap', p: { cat: 'prem' }, b: 199, af: 149, fmt: 'tk' },
-        { who: 'p14', at: '2027-01-13 16:25', area: 'av', k: 'avap', p: { av: 'a1', v: '1.2' }, b: 'v1.1', af: 'v1.2' },
-        { who: 'sys', at: '2027-01-28 08:10', area: 'cl', k: 'wddel', p: { id: 'WD-305', vc: 'VC-104' } },
-        { who: 'p6', at: '2027-01-30 02:00', area: 'cp', k: 'cpdown', p: { id: 'CP-076', item: 'VC-097' } },
-        { who: 'p6', at: '2027-01-30 17:10', area: 'cl', k: 'clap', p: { id: 'CR-2035', type: 'teach' } },
-        { who: 'p15', at: '2027-01-30 22:30', area: 'cl', k: 'clrj', p: { id: 'CR-2038', type: 'guard', whyK: 'cr2038' } },
-        { who: 'p10', at: '2027-01-31 15:00', area: 'av', k: 'dis', p: { av: 'a8' }, b: 'live', af: 'off', fmt: 'ast' },
-        { who: 'p1', at: '2027-01-31 16:30', area: 'set', k: 'set', p: { f: 'gpu' }, b: 180, af: 240, fmt: 'min' },
-        { who: 'p14', at: '2027-01-31 21:20', area: 'vo', k: 'voadd', p: { vo: 'v-ur-f-energetic' } },
-        { who: 'p3', at: '2027-02-01 14:15', area: 'mk', k: 'pcreq', p: { cat: 'tvoice', from: 299, to: 249 } },
-        { who: 'p10', at: '2027-02-01 14:40', area: 'av', k: 'avup', p: { av: 'a6' } }],
+        { who: 'p3', at: '2027-01-25 20:20', area: 'mk', k: 'pcreq', p: { cat: 'prem', from: 199, to: 149 } },
+        { who: 'p1', at: '2027-01-25 22:40', area: 'mk', k: 'pcap', p: { cat: 'prem' }, b: 199, af: 149, fmt: 'tk' },
+        { who: 'p14', at: '2027-01-27 16:25', area: 'av', k: 'avap', p: { av: 'a1', v: '1.2' }, b: 'v1.1', af: 'v1.2' },
+        { who: 'sys', at: '2026-12-21 08:10', area: 'cl', k: 'wddel', p: { id: 'WD-305', vc: 'VC-104' } },
+        { who: 'p6', at: '2026-12-23 02:00', area: 'cp', k: 'cpdown', p: { id: 'CP-076', item: 'VC-097' } },
+        { who: 'p6', at: '2026-12-23 17:10', area: 'cl', k: 'clap', p: { id: 'CR-2035', type: 'teach' } },
+        { who: 'p15', at: '2026-12-23 22:30', area: 'cl', k: 'clrj', p: { id: 'CR-2038', type: 'guard', whyK: 'cr2038' } },
+        { who: 'p10', at: '2026-12-24 15:00', area: 'av', k: 'dis', p: { av: 'a8' }, b: 'live', af: 'off', fmt: 'ast' },
+        { who: 'p1', at: '2026-12-24 16:30', area: 'set', k: 'set', p: { f: 'gpu' }, b: 180, af: 240, fmt: 'min' },
+        { who: 'p14', at: '2026-12-24 21:20', area: 'vo', k: 'voadd', p: { vo: 'v-ur-f-energetic' } },
+        { who: 'p3', at: '2026-12-25 14:15', area: 'mk', k: 'pcreq', p: { cat: 'tvoice', from: 299, to: 249 } },
+        { who: 'p10', at: '2026-12-25 14:40', area: 'av', k: 'avup', p: { av: 'a6' } }],
       logF: 'all' };
     // fix12 (G5): deep link — X22-Prototype-AvatarVoice.dc.html#<section> opens that section
     var hs = ''; try { hs = typeof location !== 'undefined' && location && location.hash ? String(location.hash).slice(1) : ''; } catch (e) { hs = ''; }
@@ -918,7 +921,7 @@ class Component extends DCLogic {
     L.en = { langName: 'English', dl: 'en-GB', menu: 'Admin menu', arrow: '→', or: ' or ', sep: ', ',
       nav: { x10: 'Platform admin', x14: 'Platform operations', x15: 'Accounts, support & legal', x16: 'Content quality & money', x17: 'Growth', x19: 'AI Marketing Hub', admin: 'Platform admin', ops: 'Platform operations', acc: 'Accounts, support & legal', qual: 'Content quality & money', grow: 'Growth', mh: 'AI Marketing Hub', x21: 'Notifications & chat', x22: 'Avatar & Voice Studio' },
       sec: { over: 'Overview', av: 'Avatar library', vo: 'Voice library', cl: 'Clone requests & consent', cp: 'Complaints & takedown', mk: 'Marketplace & prices', set: 'Settings', log: 'Log' },
-      l_admin: 'Panel language', foot: 'Every change is logged · 2-step login', kicker: 'Avatar & Voice Studio · NexaTute', now: 'Dhaka · Mon 1 Feb 2027, 16:20 · servers in the USA',
+      l_admin: 'Panel language', foot: 'Every change is logged · 2-step login', kicker: 'Avatar & Voice Studio · NexaTute', now: 'Dhaka · Fri 25 Dec 2026, 16:20 · app servers USA · GPU Netherlands',
       as_l: 'Signed in as', as_btn: 'Switch person', as_note: 'Prototype: pick a person — you see exactly what their role may change or approve on this page.',
       roles: { super: 'Super admin', board: 'Founder / board', prog: 'Content & programs', guard: 'Nexa Guard controller', fin_lead: 'Finance lead' },
       city: 'Dhaka', city_ctg: 'Chattogram', city_us: 'USA (server)', by_sys: 'System (automatic)',
@@ -942,7 +945,7 @@ class Component extends DCLogic {
       who_h: 'Who adds what',
       who: [['Learners', 'Only choose from the library. No clone and no photo avatar under 18.'], ['Guardians', 'May clone their OWN voice so the PlayBoom Play Buddy reads stories in it — never the child’s voice. Grandparents or other family members each give their own live consent on their own phone with OTP.'],
         ['Verified teachers', 'Marketplace and institution teachers may clone their own voice and make an avatar from their own face photo (liveness check, matched to their verified face) — used only in their own content.'],
-        ['Learners 18+', 'May clone their own voice for pronunciation practice: hear correct English in your own voice.'], ['Admin', 'Content & programs adds the official Nexa Teacher avatars and voices; a second person approves.']],
+        ['Learners 18+', 'May clone their own voice for pronunciation practice: hear correct English in your own voice.'], ['Admin', 'Content & programs adds the official Nexa Tutor avatars and voices; a second person approves.']],
       // Avatar library
       av_note: 'GLB or VRM avatars. Upload → automatic checks → details → cultural & attire review → a second approver → live. Every version is kept for one-click rollback.',
       av_up: 'Upload avatar', av_f: { age: 'Age group', unlock: 'Unlock', st: 'Status' },
@@ -950,7 +953,7 @@ class Component extends DCLogic {
       xp_lv: function (n) { return 'XP level ' + n; }, prem_txt: function (p, u, x) { return 'Premium ' + p + ' / ' + u + ' · under 18: XP level ' + x; },
       ctry_all: 'All countries', ctry: { bd: 'Bangladesh', in: 'India', pk: 'Pakistan', sa: 'Saudi Arabia', ae: 'UAE', fr: 'France', gb: 'United Kingdom' },
       ac: { name: 'Avatar', age: 'Age group', unlock: 'Unlock', ver: 'Version', ctry: 'Countries', st: 'Status' },
-      official: 'Official Nexa Teacher', av_none: 'No avatar matches these filters.',
+      official: 'Official Nexa Tutor', av_none: 'No avatar matches these filters.',
       av_by: 'Uploaded by', av_by_txt: function (n, at) { return n + ' · ' + at; }, av_live: 'Live version', av_notlive: 'Not live yet', av_names: 'Name in 6 languages',
       av_off_h: 'Disabled — learners can’t pick it', off_why: { a8: 'Sleeveless sports kit — the attire check failed for school use in India and the UK. Kept for a new version.' }, off_none: 'Disabled by Content & programs.',
       off_man: function (n) { return 'Disabled by ' + n + '.'; }, av_draft: 'Draft — not sent for review yet.', av_sentback: function (w) { return 'Sent back: “' + w + '”'; },
@@ -1027,7 +1030,7 @@ class Component extends DCLogic {
       susp_on: 'suspended', susp_off: 'active',
       // Marketplace & prices
       mk_rules_h: 'Rules',
-      mk_rules: ['For each category, 1 is free per account; the rest are bought from the marketplace.', 'USD = BDT × 0.015, rounded. Taka via aamarPay in Bangladesh; USD via Paddle abroad (Paddle adds tax by the customer’s country).',
+      mk_rules: ['For each category, 1 is free per account; the rest are bought from the marketplace.', 'USD = BDT × 1.35 ÷ 122, to the cent. Taka via aamarPay in Bangladesh; USD via Paddle abroad (Paddle adds tax by the customer’s country).',
         'At launch NexaTute sells only its own items.', 'Cloned voices are never sold or transferred.'],
       mk_kid_h: 'Under-18 learners: XP only, never money', mk_kid_note: '1 free Premium pick; the rest unlock with XP. PlayBoom has no child purchases.', mk_locked: 'Locked safety rule — can’t be switched off',
       mk_creator: 'Creator-made avatars (20% commission)', mk_creator_note: 'Creators selling their own avatars comes later.', mk_later: 'Off — later',
@@ -1041,7 +1044,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (asked)'; }, ap_own: 'You asked for this — someone else approves.', ap_cant: 'Your role doesn’t approve this.',
       ap_st: { ok: 'Approved', rej: 'Rejected' }, ap_rjby: function (n, w) { return 'Rejected by ' + n + ': “' + w + '”'; },
       t_pc: 'Sent for approval: finance lead + founder', t_pc_ap: 'Approved — the new price is live', t_ap_part: 'Approved — waiting for the second approver', t_pc_rj: 'Price change rejected',
-      sales_h: 'Sales last month (January 2027)', sales_note: 'Counts per item sold; under-18 unlocks with XP are not sales.',
+      sales_h: 'Sales last month (January 2027) · Sample (prototype)', sales_note: 'Counts per item sold; under-18 unlocks with XP are not sales.',
       slc: { item: 'Category', bd: 'Sold in BDT', ab: 'Sold in USD', bdt: 'Revenue (BDT)', usd: 'Revenue (USD)', tot: 'Total' }, sl_xp: function (n) { return n + ' Premium looks unlocked with XP by under-18 learners in January — no money.'; },
       // Settings
       set_h: 'Settings', set_note: 'Claude’s defaults — the owner can change them. Changes are logged with before → after.',
@@ -1073,7 +1076,7 @@ class Component extends DCLogic {
         vo_pass: 'A native speaker listened to the samples and passed the voice.', sent: 'A new sentence with today’s date and the account name is made for each request, so old recordings can’t be reused.',
         otp_demo: 'Prototype only: pretend the third person typed the OTP on their own phone.', cl_ap: 'Only when every check has passed. The voice model is made in off-peak GPU time.',
         wd: 'Use already stopped at withdrawal; the model must be deleted within 72 hours.', down: 'Stops the clone everywhere at once and suspends the uploader’s account in the same step; the 24-hour clock stops.', susp: 'Logged. Use it only when the review or the appeal allows it.',
-        locked: 'This safety rule is locked. Children never pay money for looks.', creator: 'Not available at launch.', usd: 'USD = BDT × 0.015, rounded to a whole dollar (at least $1).', pc_ap: 'Needs the finance lead and the founder; the maker can’t approve.',
+        locked: 'This safety rule is locked. Children never pay money for looks.', creator: 'Not available at launch.', usd: 'USD = BDT × 1.35 ÷ 122, to the cent.', pc_ap: 'Needs the finance lead and the founder; the maker can’t approve.',
         gpu: 'When the cap is reached, new clones wait for the next day or the off-peak window.', offp: 'Clones are made at night when the GPUs are free.', pol: 'Fixed by the voice-cloning policy; not editable here.',
         x10: 'Opens Platform admin; Plans & modules is one of its sections.', log_where: 'Device · IP address · city of the person who acted.',
         chk: { size: 'Big files load slowly on mobile data.', lite: 'A smaller copy for phones with little memory.', lips: 'Mouth shapes the lip-sync needs (15 visemes).', fps: 'Measured on a low-end Android test phone; needs 30 fps or more.', poly: 'Too many polygons make weak phones lag.' },
@@ -1082,7 +1085,7 @@ class Component extends DCLogic {
     L.bn = { langName: 'বাংলা', dl: 'bn-BD-u-nu-latn', menu: 'অ্যাডমিন মেনু', arrow: '→', or: ' বা ', sep: ', ',
       nav: { x10: 'প্ল্যাটফর্ম অ্যাডমিন', x14: 'প্ল্যাটফর্ম অপারেশন', x15: 'অ্যাকাউন্ট, সাপোর্ট ও আইন', x16: 'কনটেন্টের মান ও টাকা', x17: 'প্রবৃদ্ধি', x19: 'AI Marketing Hub', admin: 'প্ল্যাটফর্ম অ্যাডমিন', ops: 'প্ল্যাটফর্ম অপারেশন', acc: 'অ্যাকাউন্ট, সাপোর্ট ও আইন', qual: 'কনটেন্টের মান ও টাকা', grow: 'প্রবৃদ্ধি', mh: 'AI Marketing Hub', x21: 'নোটিফিকেশন ও চ্যাট', x22: 'অ্যাভাটার ও কণ্ঠ স্টুডিও' },
       sec: { over: 'সারসংক্ষেপ', av: 'অ্যাভাটার লাইব্রেরি', vo: 'কণ্ঠ লাইব্রেরি', cl: 'ক্লোন অনুরোধ ও সম্মতি', cp: 'অভিযোগ ও সরিয়ে নেওয়া', mk: 'মার্কেটপ্লেস ও দাম', set: 'সেটিংস', log: 'লগ' },
-      l_admin: 'প্যানেলের ভাষা', foot: 'সব পরিবর্তন লগ হয় · লগ-ইন 2-ধাপে', kicker: 'অ্যাভাটার ও কণ্ঠ স্টুডিও · NexaTute', now: 'ঢাকা · সোমবার, 1 ফেব্রুয়ারি 2027, 16:20 · সার্ভার যুক্তরাষ্ট্রে',
+      l_admin: 'প্যানেলের ভাষা', foot: 'সব পরিবর্তন লগ হয় · লগ-ইন 2-ধাপে', kicker: 'অ্যাভাটার ও কণ্ঠ স্টুডিও · NexaTute', now: 'ঢাকা · শুক্রবার, 25 ডিসেম্বর 2026, 16:20 · অ্যাপ সার্ভার যুক্তরাষ্ট্র · GPU নেদারল্যান্ডস',
       as_l: 'যে হিসেবে দেখছেন', as_btn: 'মানুষ বদলান', as_note: 'প্রোটোটাইপ: একজন মানুষ বাছুন — এই পাতায় তাঁর ভূমিকা কী বদলাতে আর অনুমোদন দিতে পারে, ঠিক তা-ই দেখবেন।',
       roles: { super: 'সুপার অ্যাডমিন', board: 'প্রতিষ্ঠাতা / বোর্ড', prog: 'কনটেন্ট ও প্রোগ্রাম', guard: 'Nexa Guard কন্ট্রোলার', fin_lead: 'ফিন্যান্স লিড' },
       city: 'ঢাকা', city_ctg: 'চট্টগ্রাম', city_us: 'যুক্তরাষ্ট্র (সার্ভার)', by_sys: 'সিস্টেম (নিজে থেকে)',
@@ -1105,14 +1108,14 @@ class Component extends DCLogic {
       who_h: 'কে কী যোগ করতে পারে',
       who: [['শিক্ষার্থী', 'শুধু লাইব্রেরি থেকে বেছে নেয়। 18 বছরের কম হলে ক্লোন বা ছবির অ্যাভাটার নেই।'], ['অভিভাবক', 'শুধু নিজের কণ্ঠ ক্লোন করতে পারেন, যাতে PlayBoom-এর Play Buddy সেই কণ্ঠে গল্প পড়ে — শিশুর কণ্ঠ কখনো নয়। দাদা-দাদি বা পরিবারের অন্যরা প্রত্যেকে নিজের ফোনে OTP দিয়ে নিজে লাইভ সম্মতি দেন।'],
         ['যাচাই করা শিক্ষক', 'মার্কেটপ্লেস ও প্রতিষ্ঠানের শিক্ষক নিজের কণ্ঠ ক্লোন আর নিজের মুখের ছবি থেকে অ্যাভাটার বানাতে পারেন (লাইভনেস চেক, যাচাই করা মুখের সাথে মেলানো) — শুধু নিজের কনটেন্টে।'],
-        ['18+ শিক্ষার্থী', 'উচ্চারণ অনুশীলনের জন্য নিজের কণ্ঠ ক্লোন করতে পারেন: নিজের কণ্ঠেই সঠিক ইংরেজি শুনুন।'], ['অ্যাডমিন', 'কনটেন্ট ও প্রোগ্রাম অফিসিয়াল Nexa Teacher অ্যাভাটার ও কণ্ঠ যোগ করে; দ্বিতীয় একজন অনুমোদন দেন।']],
+        ['18+ শিক্ষার্থী', 'উচ্চারণ অনুশীলনের জন্য নিজের কণ্ঠ ক্লোন করতে পারেন: নিজের কণ্ঠেই সঠিক ইংরেজি শুনুন।'], ['অ্যাডমিন', 'কনটেন্ট ও প্রোগ্রাম অফিসিয়াল Nexa Tutor অ্যাভাটার ও কণ্ঠ যোগ করে; দ্বিতীয় একজন অনুমোদন দেন।']],
       av_note: 'GLB বা VRM অ্যাভাটার। আপলোড → স্বয়ংক্রিয় যাচাই → বিবরণ → সংস্কৃতি ও পোশাক রিভিউ → দ্বিতীয় অনুমোদনকারী → লাইভ। এক ক্লিকে ফেরানোর জন্য প্রতিটি ভার্সন রাখা থাকে।',
       av_up: 'অ্যাভাটার আপলোড', av_f: { age: 'বয়সের দল', unlock: 'যেভাবে খোলে', st: 'অবস্থা' },
       age: { kids: 'শিশু / PlayBoom (কার্টুন)', teen: 'কিশোর', adult: 'প্রাপ্তবয়স্ক' }, unl: { free: 'ফ্রি', xp: 'XP লেভেল', prem: 'প্রিমিয়াম' }, ast: { draft: 'খসড়া', review: 'রিভিউতে', live: 'লাইভ', off: 'বন্ধ' },
       xp_lv: function (n) { return 'XP লেভেল ' + n; }, prem_txt: function (p, u, x) { return 'প্রিমিয়াম ' + p + ' / ' + u + ' · 18-এর কম: XP লেভেল ' + x; },
       ctry_all: 'সব দেশ', ctry: { bd: 'বাংলাদেশ', in: 'ভারত', pk: 'পাকিস্তান', sa: 'সৌদি আরব', ae: 'সংযুক্ত আরব আমিরাত', fr: 'ফ্রান্স', gb: 'যুক্তরাজ্য' },
       ac: { name: 'অ্যাভাটার', age: 'বয়সের দল', unlock: 'যেভাবে খোলে', ver: 'ভার্সন', ctry: 'দেশ', st: 'অবস্থা' },
-      official: 'অফিসিয়াল Nexa Teacher', av_none: 'এই ফিল্টারে কোনো অ্যাভাটার নেই।',
+      official: 'অফিসিয়াল Nexa Tutor', av_none: 'এই ফিল্টারে কোনো অ্যাভাটার নেই।',
       av_by: 'আপলোড করেছেন', av_by_txt: function (n, at) { return n + ' · ' + at; }, av_live: 'লাইভ ভার্সন', av_notlive: 'এখনো লাইভ নয়', av_names: '6 ভাষায় নাম',
       av_off_h: 'বন্ধ — শিক্ষার্থীরা বাছতে পারবে না', off_why: { a8: 'হাতাকাটা খেলার পোশাক — ভারত আর যুক্তরাজ্যে স্কুলের জন্য পোশাক যাচাইয়ে ফেল। নতুন ভার্সনের জন্য রাখা আছে।' }, off_none: 'কনটেন্ট ও প্রোগ্রাম বন্ধ করেছে।',
       off_man: function (n) { return n + ' বন্ধ করেছেন।'; }, av_draft: 'খসড়া — এখনো রিভিউতে পাঠানো হয়নি।', av_sentback: function (w) { return 'ফেরত পাঠানো হয়েছে: “' + w + '”'; },
@@ -1185,7 +1188,7 @@ class Component extends DCLogic {
       t_cp_down: 'সরানো হলো, রিভিউ পর্যন্ত অ্যাকাউন্ট স্থগিত — মালিক আপিল করতে পারেন', t_cp_susp: 'রিভিউ পর্যন্ত অ্যাকাউন্ট স্থগিত', t_cp_unsusp: 'স্থগিতাদেশ তোলা হলো', t_cp_up: 'অভিযোগ সত্য — ক্লোন মোছা হলো', t_cp_dis: 'অভিযোগ খারিজ — ক্লোন ফেরানো, স্থগিতাদেশ তোলা হলো',
       susp_on: 'স্থগিত', susp_off: 'চালু',
       mk_rules_h: 'নিয়ম',
-      mk_rules: ['প্রতিটি ধরনে প্রতি অ্যাকাউন্টে 1টি ফ্রি; বাকিগুলো মার্কেটপ্লেস থেকে কিনতে হয়।', 'USD = BDT × 0.015, রাউন্ড করে। বাংলাদেশে টাকা aamarPay দিয়ে; বিদেশে USD Paddle দিয়ে (গ্রাহকের দেশ অনুযায়ী ট্যাক্স যোগ করে Paddle)।',
+      mk_rules: ['প্রতিটি ধরনে প্রতি অ্যাকাউন্টে 1টি ফ্রি; বাকিগুলো মার্কেটপ্লেস থেকে কিনতে হয়।', 'USD = BDT × 1.35 ÷ 122, সেন্ট পর্যন্ত। বাংলাদেশে টাকা aamarPay দিয়ে; বিদেশে USD Paddle দিয়ে (গ্রাহকের দেশ অনুযায়ী ট্যাক্স যোগ করে Paddle)।',
         'চালুর সময় NexaTute শুধু নিজের আইটেম বিক্রি করে।', 'ক্লোন কণ্ঠ কখনো বিক্রি বা হস্তান্তর হয় না।'],
       mk_kid_h: '18-এর কম শিক্ষার্থী: শুধু XP, কখনো টাকা নয়', mk_kid_note: '1টি প্রিমিয়াম ফ্রি বাছাই; বাকিগুলো খোলে XP দিয়ে। PlayBoom-এ শিশুর কোনো কেনাকাটা নেই।', mk_locked: 'তালাবদ্ধ নিরাপত্তা নিয়ম — বন্ধ করা যায় না',
       mk_creator: 'ক্রিয়েটরের বানানো অ্যাভাটার (20% কমিশন)', mk_creator_note: 'ক্রিয়েটররা নিজের অ্যাভাটার বিক্রি করবেন পরে।', mk_later: 'বন্ধ — পরে',
@@ -1199,7 +1202,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (চেয়েছেন)'; }, ap_own: 'এটি আপনি চেয়েছেন — অনুমোদন দেবেন অন্য কেউ।', ap_cant: 'আপনার ভূমিকা এটি অনুমোদন করে না।',
       ap_st: { ok: 'অনুমোদিত', rej: 'বাতিল' }, ap_rjby: function (n, w) { return n + ' বাতিল করেছেন: “' + w + '”'; },
       t_pc: 'অনুমোদনে পাঠানো হলো: ফিন্যান্স লিড + প্রতিষ্ঠাতা', t_pc_ap: 'অনুমোদিত — নতুন দাম চালু', t_ap_part: 'অনুমোদিত — দ্বিতীয় অনুমোদনের অপেক্ষা', t_pc_rj: 'দাম বদল বাতিল',
-      sales_h: 'গত মাসের বিক্রি (জানুয়ারি 2027)', sales_note: 'প্রতিটি বিক্রি হওয়া আইটেম গোনা; 18-এর কমদের XP দিয়ে খোলা বিক্রি নয়।',
+      sales_h: 'গত মাসের বিক্রি (জানুয়ারি 2027) · নমুনা (প্রোটোটাইপ)', sales_note: 'প্রতিটি বিক্রি হওয়া আইটেম গোনা; 18-এর কমদের XP দিয়ে খোলা বিক্রি নয়।',
       slc: { item: 'ধরন', bd: 'BDT-তে বিক্রি', ab: 'USD-তে বিক্রি', bdt: 'আয় (BDT)', usd: 'আয় (USD)', tot: 'মোট' }, sl_xp: function (n) { return 'জানুয়ারিতে 18-এর কম শিক্ষার্থীরা XP দিয়ে ' + n + 'টি প্রিমিয়াম লুক খুলেছে — কোনো টাকা নয়।'; },
       set_h: 'সেটিংস', set_note: 'Claude-এর ডিফল্ট — মালিক বদলাতে পারেন। আগে → পরে সহ সব বদল লগ হয়।',
       st_gpu: 'দিনে ক্লোনিংয়ের GPU মিনিট (সীমা)', gpu_now: function (a, p) { return 'আজ ব্যবহার: ' + a + ' (' + p + ')'; },
@@ -1229,7 +1232,7 @@ class Component extends DCLogic {
         vo_pass: 'একজন মাতৃভাষী নমুনা শুনে কণ্ঠটি পাস করেছেন।', sent: 'প্রতিটি অনুরোধে আজকের তারিখ আর অ্যাকাউন্টের নাম দিয়ে নতুন বাক্য বানানো হয়, তাই পুরোনো রেকর্ডিং আবার চালানো যায় না।',
         otp_demo: 'শুধু প্রোটোটাইপ: ধরে নিন তৃতীয় জন নিজের ফোনে OTP লিখেছেন।', cl_ap: 'শুধু সব যাচাই পাস হলে। কণ্ঠ মডেল তৈরি হয় অফ-পিক GPU সময়ে।',
         wd: 'প্রত্যাহারের সাথেই ব্যবহার বন্ধ; 72 ঘণ্টার মধ্যে মডেল মুছতে হবে।', down: 'ক্লোনটি সব জায়গায় সাথে সাথে থামায় আর একই ধাপে আপলোডকারীর অ্যাকাউন্ট স্থগিত করে; 24 ঘণ্টার ঘড়ি থামে।', susp: 'লগ হয়। রিভিউ বা আপিল অনুমতি দিলে তবেই ব্যবহার করুন।',
-        locked: 'এই নিরাপত্তা নিয়ম তালাবদ্ধ। শিশুরা লুকের জন্য কখনো টাকা দেয় না।', creator: 'চালুর সময় পাওয়া যাবে না।', usd: 'USD = BDT × 0.015, পূর্ণ ডলারে রাউন্ড (কমপক্ষে $1)।', pc_ap: 'ফিন্যান্স লিড আর প্রতিষ্ঠাতা দুজনকেই লাগবে; যিনি চেয়েছেন তিনি অনুমোদন দিতে পারেন না।',
+        locked: 'এই নিরাপত্তা নিয়ম তালাবদ্ধ। শিশুরা লুকের জন্য কখনো টাকা দেয় না।', creator: 'চালুর সময় পাওয়া যাবে না।', usd: 'USD = BDT × 1.35 ÷ 122, সেন্ট পর্যন্ত।', pc_ap: 'ফিন্যান্স লিড আর প্রতিষ্ঠাতা দুজনকেই লাগবে; যিনি চেয়েছেন তিনি অনুমোদন দিতে পারেন না।',
         gpu: 'সীমায় পৌঁছালে নতুন ক্লোন পরের দিন বা অফ-পিক সময়ের অপেক্ষায় থাকে।', offp: 'রাতে GPU খালি থাকলে ক্লোন তৈরি হয়।', pol: 'কণ্ঠ ক্লোনের নীতিতে স্থির; এখানে বদলানো যায় না।',
         x10: 'প্ল্যাটফর্ম অ্যাডমিন খোলে; প্ল্যান ও মডিউল তার একটি অংশ।', log_where: 'যিনি কাজটি করেছেন তাঁর ডিভাইস · IP ঠিকানা · শহর।',
         chk: { size: 'বড় ফাইল মোবাইল ডেটায় ধীরে লোড হয়।', lite: 'কম মেমরির ফোনের জন্য ছোট একটি কপি।', lips: 'লিপ-সিংকের জন্য দরকারি মুখের আকৃতি (15টি viseme)।', fps: 'কম দামি একটি Android টেস্ট ফোনে মাপা; 30 fps বা বেশি লাগবে।', poly: 'বেশি পলিগন হলে দুর্বল ফোন আটকে যায়।' },
@@ -1238,7 +1241,7 @@ class Component extends DCLogic {
     L.hi = { langName: 'हिन्दी', dl: 'hi-IN-u-nu-latn', menu: 'एडमिन मेनू', arrow: '→', or: ' या ', sep: ', ',
       nav: { x10: 'प्लेटफ़ॉर्म एडमिन', x14: 'प्लेटफ़ॉर्म ऑपरेशंस', x15: 'अकाउंट, सपोर्ट और क़ानूनी', x16: 'कंटेंट की गुणवत्ता और पैसा', x17: 'ग्रोथ', x19: 'AI Marketing Hub', admin: 'प्लेटफ़ॉर्म एडमिन', ops: 'प्लेटफ़ॉर्म ऑपरेशंस', acc: 'अकाउंट, सपोर्ट और क़ानूनी', qual: 'कंटेंट की गुणवत्ता और पैसा', grow: 'ग्रोथ', mh: 'AI Marketing Hub', x21: 'नोटिफ़िकेशन और चैट', x22: 'अवतार और वॉइस स्टूडियो' },
       sec: { over: 'सारांश', av: 'अवतार लाइब्रेरी', vo: 'वॉइस लाइब्रेरी', cl: 'क्लोन अनुरोध और सहमति', cp: 'शिकायतें और हटाना', mk: 'मार्केटप्लेस और दाम', set: 'सेटिंग्स', log: 'लॉग' },
-      l_admin: 'पैनल की भाषा', foot: 'हर बदलाव लॉग होता है · 2-चरण लॉगिन', kicker: 'अवतार और वॉइस स्टूडियो · NexaTute', now: 'ढाका · सोमवार, 1 फ़रवरी 2027, 16:20 · सर्वर अमेरिका में',
+      l_admin: 'पैनल की भाषा', foot: 'हर बदलाव लॉग होता है · 2-चरण लॉगिन', kicker: 'अवतार और वॉइस स्टूडियो · NexaTute', now: 'ढाका · शुक्रवार, 25 दिसंबर 2026, 16:20 · ऐप सर्वर अमेरिका · GPU नीदरलैंड्स',
       as_l: 'इस रूप में लॉगिन', as_btn: 'व्यक्ति बदलें', as_note: 'प्रोटोटाइप: एक व्यक्ति चुनें — इस पेज पर उनकी भूमिका क्या बदल या मंज़ूर कर सकती है, ठीक वही दिखेगा।',
       roles: { super: 'सुपर एडमिन', board: 'संस्थापक / बोर्ड', prog: 'कंटेंट और कार्यक्रम', guard: 'Nexa Guard नियंत्रक', fin_lead: 'वित्त प्रमुख' },
       city: 'ढाका', city_ctg: 'चटगाँव', city_us: 'अमेरिका (सर्वर)', by_sys: 'सिस्टम (अपने-आप)',
@@ -1261,14 +1264,14 @@ class Component extends DCLogic {
       who_h: 'कौन क्या जोड़ सकता है',
       who: [['लर्नर', 'सिर्फ़ लाइब्रेरी से चुनते हैं। 18 से कम उम्र में न क्लोन, न फ़ोटो अवतार।'], ['अभिभावक', 'सिर्फ़ अपनी आवाज़ क्लोन कर सकते हैं ताकि PlayBoom का Play Buddy उसी आवाज़ में कहानियाँ पढ़े — बच्चे की आवाज़ कभी नहीं। दादा-दादी या परिवार के दूसरे सदस्य अपने-अपने फ़ोन पर OTP से ख़ुद लाइव सहमति देते हैं।'],
         ['सत्यापित शिक्षक', 'मार्केटप्लेस और संस्थान के शिक्षक अपनी आवाज़ क्लोन और अपने चेहरे की फ़ोटो से अवतार बना सकते हैं (लाइवनेस जाँच, सत्यापित चेहरे से मिलान) — सिर्फ़ अपने कंटेंट में।'],
-        ['18+ लर्नर', 'उच्चारण अभ्यास के लिए अपनी आवाज़ क्लोन कर सकते हैं: अपनी ही आवाज़ में सही अंग्रेज़ी सुनें।'], ['एडमिन', 'कंटेंट और कार्यक्रम आधिकारिक Nexa Teacher अवतार और आवाज़ें जोड़ता है; दूसरा व्यक्ति मंज़ूरी देता है।']],
+        ['18+ लर्नर', 'उच्चारण अभ्यास के लिए अपनी आवाज़ क्लोन कर सकते हैं: अपनी ही आवाज़ में सही अंग्रेज़ी सुनें।'], ['एडमिन', 'कंटेंट और कार्यक्रम आधिकारिक Nexa Tutor अवतार और आवाज़ें जोड़ता है; दूसरा व्यक्ति मंज़ूरी देता है।']],
       av_note: 'GLB या VRM अवतार। अपलोड → अपने-आप जाँच → विवरण → संस्कृति और पोशाक समीक्षा → दूसरा मंज़ूरी देने वाला → लाइव। एक क्लिक में वापस जाने के लिए हर वर्शन रखा जाता है।',
       av_up: 'अवतार अपलोड करें', av_f: { age: 'आयु समूह', unlock: 'कैसे खुलता है', st: 'स्थिति' },
       age: { kids: 'बच्चे / PlayBoom (कार्टून)', teen: 'किशोर', adult: 'वयस्क' }, unl: { free: 'मुफ़्त', xp: 'XP लेवल', prem: 'प्रीमियम' }, ast: { draft: 'ड्राफ़्ट', review: 'समीक्षा में', live: 'लाइव', off: 'बंद' },
       xp_lv: function (n) { return 'XP लेवल ' + n; }, prem_txt: function (p, u, x) { return 'प्रीमियम ' + p + ' / ' + u + ' · 18 से कम: XP लेवल ' + x; },
       ctry_all: 'सभी देश', ctry: { bd: 'बांग्लादेश', in: 'भारत', pk: 'पाकिस्तान', sa: 'सऊदी अरब', ae: 'यूएई', fr: 'फ़्रांस', gb: 'ब्रिटेन' },
       ac: { name: 'अवतार', age: 'आयु समूह', unlock: 'कैसे खुलता है', ver: 'वर्शन', ctry: 'देश', st: 'स्थिति' },
-      official: 'आधिकारिक Nexa Teacher', av_none: 'इन फ़िल्टर में कोई अवतार नहीं।',
+      official: 'आधिकारिक Nexa Tutor', av_none: 'इन फ़िल्टर में कोई अवतार नहीं।',
       av_by: 'अपलोड किया', av_by_txt: function (n, at) { return n + ' · ' + at; }, av_live: 'लाइव वर्शन', av_notlive: 'अभी लाइव नहीं', av_names: '6 भाषाओं में नाम',
       av_off_h: 'बंद — लर्नर इसे नहीं चुन सकते', off_why: { a8: 'बिना आस्तीन की खेल पोशाक — भारत और ब्रिटेन में स्कूल के लिए पोशाक जाँच में फ़ेल। नए वर्शन के लिए रखा गया।' }, off_none: 'कंटेंट और कार्यक्रम ने बंद किया।',
       off_man: function (n) { return n + ' ने बंद किया।'; }, av_draft: 'ड्राफ़्ट — अभी समीक्षा के लिए नहीं भेजा।', av_sentback: function (w) { return 'वापस भेजा: “' + w + '”'; },
@@ -1341,7 +1344,7 @@ class Component extends DCLogic {
       t_cp_down: 'हटाया गया और समीक्षा तक अकाउंट निलंबित — मालिक अपील कर सकता है', t_cp_susp: 'समीक्षा तक अकाउंट निलंबित', t_cp_unsusp: 'निलंबन हटाया', t_cp_up: 'शिकायत सही — क्लोन मिटाया', t_cp_dis: 'शिकायत ख़ारिज — क्लोन बहाल, निलंबन हटाया',
       susp_on: 'निलंबित', susp_off: 'चालू',
       mk_rules_h: 'नियम',
-      mk_rules: ['हर श्रेणी में प्रति अकाउंट 1 मुफ़्त; बाक़ी मार्केटप्लेस से ख़रीदे जाते हैं।', 'USD = BDT × 0.015, राउंड करके। बांग्लादेश में टका aamarPay से; विदेश में USD Paddle से (ग्राहक के देश के अनुसार टैक्स Paddle जोड़ता है)।',
+      mk_rules: ['हर श्रेणी में प्रति अकाउंट 1 मुफ़्त; बाक़ी मार्केटप्लेस से ख़रीदे जाते हैं।', 'USD = BDT × 1.35 ÷ 122, सेंट तक। बांग्लादेश में टका aamarPay से; विदेश में USD Paddle से (ग्राहक के देश के अनुसार टैक्स Paddle जोड़ता है)।',
         'लॉन्च पर NexaTute सिर्फ़ अपने आइटम बेचता है।', 'क्लोन आवाज़ें कभी बेची या ट्रांसफ़र नहीं होतीं।'],
       mk_kid_h: '18 से कम लर्नर: सिर्फ़ XP, पैसा कभी नहीं', mk_kid_note: '1 प्रीमियम मुफ़्त चुनाव; बाक़ी XP से खुलते हैं। PlayBoom में बच्चों की कोई ख़रीदारी नहीं।', mk_locked: 'लॉक सुरक्षा नियम — बंद नहीं हो सकता',
       mk_creator: 'क्रिएटर के बनाए अवतार (20% कमीशन)', mk_creator_note: 'क्रिएटर अपने अवतार बाद में बेचेंगे।', mk_later: 'बंद — बाद में',
@@ -1355,7 +1358,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (माँगा)'; }, ap_own: 'यह आपने माँगा — मंज़ूरी कोई और देगा।', ap_cant: 'आपकी भूमिका इसे मंज़ूर नहीं करती।',
       ap_st: { ok: 'मंज़ूर', rej: 'अस्वीकार' }, ap_rjby: function (n, w) { return n + ' ने अस्वीकार किया: “' + w + '”'; },
       t_pc: 'मंज़ूरी के लिए भेजा: वित्त प्रमुख + संस्थापक', t_pc_ap: 'मंज़ूर — नया दाम चालू', t_ap_part: 'मंज़ूर — दूसरी मंज़ूरी की प्रतीक्षा', t_pc_rj: 'दाम बदलाव अस्वीकार',
-      sales_h: 'पिछले महीने की बिक्री (जनवरी 2027)', sales_note: 'हर बिका आइटम गिना गया; 18 से कम के XP से खुले लुक बिक्री नहीं।',
+      sales_h: 'पिछले महीने की बिक्री (जनवरी 2027) · नमूना (प्रोटोटाइप)', sales_note: 'हर बिका आइटम गिना गया; 18 से कम के XP से खुले लुक बिक्री नहीं।',
       slc: { item: 'श्रेणी', bd: 'BDT में बिके', ab: 'USD में बिके', bdt: 'आय (BDT)', usd: 'आय (USD)', tot: 'कुल' }, sl_xp: function (n) { return 'जनवरी में 18 से कम लर्नर ने XP से ' + n + ' प्रीमियम लुक खोले — कोई पैसा नहीं।'; },
       set_h: 'सेटिंग्स', set_note: 'Claude के डिफ़ॉल्ट — मालिक बदल सकते हैं। हर बदलाव पहले → बाद के साथ लॉग होता है।',
       st_gpu: 'प्रति दिन क्लोनिंग GPU मिनट (सीमा)', gpu_now: function (a, p) { return 'आज इस्तेमाल: ' + a + ' (' + p + ')'; },
@@ -1385,7 +1388,7 @@ class Component extends DCLogic {
         vo_pass: 'एक मूल भाषी ने नमूने सुनकर आवाज़ पास की।', sent: 'हर अनुरोध के लिए आज की तारीख़ और अकाउंट के नाम से नया वाक्य बनता है, ताकि पुरानी रिकॉर्डिंग दोबारा न चल सके।',
         otp_demo: 'सिर्फ़ प्रोटोटाइप: मान लें तीसरे व्यक्ति ने अपने फ़ोन पर OTP डाला।', cl_ap: 'सिर्फ़ जब हर जाँच पास हो। वॉइस मॉडल ऑफ़-पीक GPU समय में बनता है।',
         wd: 'वापसी के साथ ही इस्तेमाल बंद; 72 घंटे में मॉडल मिटाना ज़रूरी।', down: 'क्लोन को हर जगह तुरंत रोकता है और उसी कदम में अपलोड करने वाले का अकाउंट निलंबित करता है; 24 घंटे की घड़ी रुकती है।', susp: 'लॉग होता है। समीक्षा या अपील की अनुमति के बाद ही इस्तेमाल करें।',
-        locked: 'यह सुरक्षा नियम लॉक है। बच्चे लुक के लिए कभी पैसे नहीं देते।', creator: 'लॉन्च पर उपलब्ध नहीं।', usd: 'USD = BDT × 0.015, पूरे डॉलर में राउंड (कम से कम $1)।', pc_ap: 'वित्त प्रमुख और संस्थापक दोनों चाहिए; माँगने वाला मंज़ूर नहीं कर सकता।',
+        locked: 'यह सुरक्षा नियम लॉक है। बच्चे लुक के लिए कभी पैसे नहीं देते।', creator: 'लॉन्च पर उपलब्ध नहीं।', usd: 'USD = BDT × 1.35 ÷ 122, सेंट तक।', pc_ap: 'वित्त प्रमुख और संस्थापक दोनों चाहिए; माँगने वाला मंज़ूर नहीं कर सकता।',
         gpu: 'सीमा पूरी होने पर नए क्लोन अगले दिन या ऑफ़-पीक समय का इंतज़ार करते हैं।', offp: 'रात में GPU ख़ाली होने पर क्लोन बनते हैं।', pol: 'आवाज़ क्लोन नीति से तय; यहाँ नहीं बदलता।',
         x10: 'प्लेटफ़ॉर्म एडमिन खोलता है; प्लान और मॉड्यूल उसका एक हिस्सा है।', log_where: 'कार्रवाई करने वाले का डिवाइस · IP पता · शहर।',
         chk: { size: 'बड़ी फ़ाइलें मोबाइल डेटा पर धीरे लोड होती हैं।', lite: 'कम मेमोरी वाले फ़ोन के लिए छोटी कॉपी।', lips: 'लिप-सिंक के लिए ज़रूरी मुँह के आकार (15 viseme)।', fps: 'एक सस्ते Android टेस्ट फ़ोन पर मापा; 30 fps या ज़्यादा चाहिए।', poly: 'ज़्यादा पॉलीगॉन से कमज़ोर फ़ोन अटकते हैं।' },
@@ -1394,7 +1397,7 @@ class Component extends DCLogic {
     L.ur = { langName: 'اردو', dl: 'ur-PK-u-nu-latn', menu: 'ایڈمن مینو', arrow: '←', or: ' یا ', sep: '، ',
       nav: { x10: 'پلیٹ فارم ایڈمن', x14: 'پلیٹ فارم آپریشنز', x15: 'اکاؤنٹس، سپورٹ اور قانونی', x16: 'مواد کا معیار اور رقم', x17: 'ترقی', x19: 'AI Marketing Hub', admin: 'پلیٹ فارم ایڈمن', ops: 'پلیٹ فارم آپریشنز', acc: 'اکاؤنٹس، سپورٹ اور قانونی', qual: 'مواد کا معیار اور رقم', grow: 'ترقی', mh: 'AI Marketing Hub', x21: 'نوٹیفکیشنز اور چیٹ', x22: 'اوتار اور آواز اسٹوڈیو' },
       sec: { over: 'جائزہ', av: 'اوتار لائبریری', vo: 'آواز لائبریری', cl: 'کلون درخواستیں اور رضامندی', cp: 'شکایات اور ہٹانا', mk: 'مارکیٹ پلیس اور قیمتیں', set: 'ترتیبات', log: 'لاگ' },
-      l_admin: 'پینل کی زبان', foot: 'ہر تبدیلی لاگ ہوتی ہے · ' + M('2') + ' مرحلوں والا لاگ اِن', kicker: 'اوتار اور آواز اسٹوڈیو · ' + M('NexaTute'), now: 'ڈھاکہ · پیر، ' + M('1') + ' فروری ' + M('2027') + '، ' + M('16:20') + ' · سرور امریکہ میں',
+      l_admin: 'پینل کی زبان', foot: 'ہر تبدیلی لاگ ہوتی ہے · ' + M('2') + ' مرحلوں والا لاگ اِن', kicker: 'اوتار اور آواز اسٹوڈیو · ' + M('NexaTute'), now: 'ڈھاکہ · جمعہ، ' + M('25') + ' دسمبر ' + M('2026') + '، ' + M('16:20') + ' · ایپ سرور امریکہ · ' + M('GPU') + ' نیدرلینڈز',
       as_l: 'اس حیثیت سے لاگ اِن', as_btn: 'شخص بدلیں', as_note: 'پروٹوٹائپ: ایک شخص چنیں — اس صفحے پر ان کا کردار کیا بدل یا منظور کر سکتا ہے، بالکل وہی نظر آئے گا۔',
       roles: { super: 'سپر ایڈمن', board: 'بانی / بورڈ', prog: 'مواد اور پروگرام', guard: M('Nexa Guard') + ' کنٹرولر', fin_lead: 'فنانس لیڈ' },
       city: 'ڈھاکہ', city_ctg: 'چٹاگانگ', city_us: 'امریکہ (سرور)', by_sys: 'سسٹم (خودکار)',
@@ -1417,14 +1420,14 @@ class Component extends DCLogic {
       who_h: 'کون کیا شامل کر سکتا ہے',
       who: [['طلبہ', 'صرف لائبریری سے چنتے ہیں۔ ' + M('18') + ' سال سے کم ہوں تو نہ کلون نہ تصویری اوتار۔'], ['سرپرست', 'صرف اپنی آواز کلون کر سکتے ہیں تاکہ ' + M('PlayBoom') + ' کا ' + M('Play Buddy') + ' اسی آواز میں کہانیاں پڑھے — بچے کی آواز کبھی نہیں۔ دادا دادی یا خاندان کے دوسرے افراد اپنے اپنے فون پر ' + M('OTP') + ' سے خود لائیو رضامندی دیتے ہیں۔'],
         ['تصدیق شدہ اساتذہ', 'مارکیٹ پلیس اور اداروں کے اساتذہ اپنی آواز کلون اور اپنے چہرے کی تصویر سے اوتار بنا سکتے ہیں (لائیونس جانچ، تصدیق شدہ چہرے سے مماثلت) — صرف اپنے مواد میں۔'],
-        [M('18+') + ' طلبہ', 'تلفظ کی مشق کے لیے اپنی آواز کلون کر سکتے ہیں: اپنی ہی آواز میں درست انگریزی سنیں۔'], ['ایڈمن', 'مواد اور پروگرام سرکاری ' + M('Nexa Teacher') + ' اوتار اور آوازیں شامل کرتا ہے؛ دوسرا شخص منظوری دیتا ہے۔']],
+        [M('18+') + ' طلبہ', 'تلفظ کی مشق کے لیے اپنی آواز کلون کر سکتے ہیں: اپنی ہی آواز میں درست انگریزی سنیں۔'], ['ایڈمن', 'مواد اور پروگرام سرکاری ' + M('Nexa Tutor') + ' اوتار اور آوازیں شامل کرتا ہے؛ دوسرا شخص منظوری دیتا ہے۔']],
       av_note: M('GLB') + ' یا ' + M('VRM') + ' اوتار۔ اپ لوڈ ← خودکار جانچ ← تفصیل ← ثقافت اور لباس کا جائزہ ← دوسرا منظور کنندہ ← لائیو۔ ایک کلک میں واپسی کے لیے ہر ورژن رکھا جاتا ہے۔',
       av_up: 'اوتار اپ لوڈ کریں', av_f: { age: 'عمر کا گروپ', unlock: 'کیسے کھلتا ہے', st: 'حالت' },
       age: { kids: 'بچے / ' + M('PlayBoom') + ' (کارٹون)', teen: 'نوعمر', adult: 'بالغ' }, unl: { free: 'مفت', xp: M('XP') + ' لیول', prem: 'پریمیم' }, ast: { draft: 'مسودہ', review: 'جائزے میں', live: 'لائیو', off: 'بند' },
       xp_lv: function (n) { return M('XP') + ' لیول ' + M(n); }, prem_txt: function (p, u, x) { return 'پریمیم ' + M(p + ' / ' + u) + ' · ' + M('18') + ' سے کم: ' + M('XP') + ' لیول ' + M(x); },
       ctry_all: 'تمام ممالک', ctry: { bd: 'بنگلہ دیش', in: 'بھارت', pk: 'پاکستان', sa: 'سعودی عرب', ae: 'متحدہ عرب امارات', fr: 'فرانس', gb: 'برطانیہ' },
       ac: { name: 'اوتار', age: 'عمر کا گروپ', unlock: 'کیسے کھلتا ہے', ver: 'ورژن', ctry: 'ممالک', st: 'حالت' },
-      official: 'سرکاری ' + M('Nexa Teacher'), av_none: 'ان فلٹرز میں کوئی اوتار نہیں۔',
+      official: 'سرکاری ' + M('Nexa Tutor'), av_none: 'ان فلٹرز میں کوئی اوتار نہیں۔',
       av_by: 'اپ لوڈ کیا', av_by_txt: function (n, at) { return n + ' · ' + M(at); }, av_live: 'لائیو ورژن', av_notlive: 'ابھی لائیو نہیں', av_names: M('6') + ' زبانوں میں نام',
       av_off_h: 'بند — طلبہ اسے نہیں چن سکتے', off_why: { a8: 'بغیر آستین کا کھیلوں کا لباس — بھارت اور برطانیہ میں اسکول کے لیے لباس کی جانچ میں فیل۔ نئے ورژن کے لیے رکھا گیا۔' }, off_none: 'مواد اور پروگرام نے بند کیا۔',
       off_man: function (n) { return n + ' نے بند کیا۔'; }, av_draft: 'مسودہ — ابھی جائزے کے لیے نہیں بھیجا۔', av_sentback: function (w) { return 'واپس بھیجا: “' + w + '”'; },
@@ -1497,7 +1500,7 @@ class Component extends DCLogic {
       t_cp_down: 'ہٹا دیا اور جائزے تک اکاؤنٹ معطل — مالک اپیل کر سکتا ہے', t_cp_susp: 'جائزے تک اکاؤنٹ معطل', t_cp_unsusp: 'معطلی ختم', t_cp_up: 'شکایت درست — کلون مٹا دیا', t_cp_dis: 'شکایت خارج — کلون بحال، معطلی ختم',
       susp_on: 'معطل', susp_off: 'فعال',
       mk_rules_h: 'اصول',
-      mk_rules: ['ہر زمرے میں فی اکاؤنٹ ' + M('1') + ' مفت؛ باقی مارکیٹ پلیس سے خریدے جاتے ہیں۔', M('USD = BDT × 0.015') + '، راؤنڈ کر کے۔ بنگلہ دیش میں ٹکا ' + M('aamarPay') + ' سے؛ بیرون ملک ' + M('USD') + '، ' + M('Paddle') + ' سے (گاہک کے ملک کے مطابق ٹیکس ' + M('Paddle') + ' لگاتا ہے)۔',
+      mk_rules: ['ہر زمرے میں فی اکاؤنٹ ' + M('1') + ' مفت؛ باقی مارکیٹ پلیس سے خریدے جاتے ہیں۔', M('USD = BDT × 1.35 ÷ 122') + '، سینٹ تک۔ بنگلہ دیش میں ٹکا ' + M('aamarPay') + ' سے؛ بیرون ملک ' + M('USD') + '، ' + M('Paddle') + ' سے (گاہک کے ملک کے مطابق ٹیکس ' + M('Paddle') + ' لگاتا ہے)۔',
         'آغاز پر ' + M('NexaTute') + ' صرف اپنی اشیا بیچتا ہے۔', 'کلون آوازیں کبھی فروخت یا منتقل نہیں ہوتیں۔'],
       mk_kid_h: M('18') + ' سال سے کم طلبہ: صرف ' + M('XP') + '، پیسہ کبھی نہیں', mk_kid_note: M('1') + ' پریمیم مفت انتخاب؛ باقی ' + M('XP') + ' سے کھلتے ہیں۔ ' + M('PlayBoom') + ' میں بچوں کی کوئی خریداری نہیں۔', mk_locked: 'مقفل حفاظتی اصول — بند نہیں ہو سکتا',
       mk_creator: 'تخلیق کاروں کے بنائے اوتار (' + M('20%') + ' کمیشن)', mk_creator_note: 'تخلیق کار اپنے اوتار بعد میں بیچیں گے۔', mk_later: 'بند — بعد میں',
@@ -1511,7 +1514,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (مانگا)'; }, ap_own: 'یہ آپ نے مانگا — منظوری کوئی اور دے گا۔', ap_cant: 'آپ کا کردار اسے منظور نہیں کرتا۔',
       ap_st: { ok: 'منظور', rej: 'مسترد' }, ap_rjby: function (n, w) { return n + ' نے مسترد کیا: “' + w + '”'; },
       t_pc: 'منظوری کے لیے بھیجا: فنانس لیڈ + بانی', t_pc_ap: 'منظور — نئی قیمت نافذ', t_ap_part: 'منظور — دوسری منظوری کا انتظار', t_pc_rj: 'قیمت کی تبدیلی مسترد',
-      sales_h: 'پچھلے ماہ کی فروخت (جنوری ' + M('2027') + ')', sales_note: 'ہر فروخت شدہ چیز گنی گئی؛ ' + M('18') + ' سے کم کے ' + M('XP') + ' سے کھلے لُک فروخت نہیں۔',
+      sales_h: 'پچھلے ماہ کی فروخت (جنوری ' + M('2027') + ') · نمونہ (پروٹوٹائپ)', sales_note: 'ہر فروخت شدہ چیز گنی گئی؛ ' + M('18') + ' سے کم کے ' + M('XP') + ' سے کھلے لُک فروخت نہیں۔',
       slc: { item: 'زمرہ', bd: M('BDT') + ' میں فروخت', ab: M('USD') + ' میں فروخت', bdt: 'آمدنی (' + M('BDT') + ')', usd: 'آمدنی (' + M('USD') + ')', tot: 'کل' }, sl_xp: function (n) { return 'جنوری میں ' + M('18') + ' سے کم طلبہ نے ' + M('XP') + ' سے ' + M(n) + ' پریمیم لُک کھولے — کوئی پیسہ نہیں۔'; },
       set_h: 'ترتیبات', set_note: M('Claude') + ' کی ڈیفالٹ — مالک بدل سکتے ہیں۔ ہر تبدیلی پہلے ← بعد کے ساتھ لاگ ہوتی ہے۔',
       st_gpu: 'روزانہ کلوننگ ' + M('GPU') + ' منٹ (حد)', gpu_now: function (a, p) { return 'آج استعمال: ' + a + ' (' + M(p) + ')'; },
@@ -1541,7 +1544,7 @@ class Component extends DCLogic {
         vo_pass: 'ایک اہلِ زبان نے نمونے سن کر آواز پاس کی۔', sent: 'ہر درخواست کے لیے آج کی تاریخ اور اکاؤنٹ کے نام سے نیا جملہ بنتا ہے، تاکہ پرانی ریکارڈنگ دوبارہ نہ چل سکے۔',
         otp_demo: 'صرف پروٹوٹائپ: فرض کریں تیسرے شخص نے اپنے فون پر ' + M('OTP') + ' درج کیا۔', cl_ap: 'صرف جب ہر جانچ پاس ہو۔ آواز ماڈل آف پیک ' + M('GPU') + ' وقت میں بنتا ہے۔',
         wd: 'واپسی کے ساتھ ہی استعمال بند؛ ' + M('72') + ' گھنٹوں میں ماڈل مٹانا لازمی۔', down: 'کلون کو ہر جگہ فوراً روکتا ہے اور اسی قدم میں اپ لوڈ کرنے والے کا اکاؤنٹ معطل کرتا ہے؛ ' + M('24') + ' گھنٹے کی گھڑی رکتی ہے۔', susp: 'لاگ ہوتا ہے۔ جائزے یا اپیل کی اجازت کے بعد ہی استعمال کریں۔',
-        locked: 'یہ حفاظتی اصول مقفل ہے۔ بچے لُک کے لیے کبھی پیسے نہیں دیتے۔', creator: 'آغاز پر دستیاب نہیں۔', usd: M('USD = BDT × 0.015') + '، پورے ڈالر میں راؤنڈ (کم از کم ' + M('$1') + ')۔', pc_ap: 'فنانس لیڈ اور بانی دونوں درکار؛ مانگنے والا منظور نہیں کر سکتا۔',
+        locked: 'یہ حفاظتی اصول مقفل ہے۔ بچے لُک کے لیے کبھی پیسے نہیں دیتے۔', creator: 'آغاز پر دستیاب نہیں۔', usd: M('USD = BDT × 1.35 ÷ 122') + '، سینٹ تک۔', pc_ap: 'فنانس لیڈ اور بانی دونوں درکار؛ مانگنے والا منظور نہیں کر سکتا۔',
         gpu: 'حد پوری ہونے پر نئے کلون اگلے دن یا آف پیک وقت کا انتظار کرتے ہیں۔', offp: 'رات کو ' + M('GPU') + ' خالی ہوں تو کلون بنتے ہیں۔', pol: 'آواز کلون پالیسی سے مقرر؛ یہاں نہیں بدلتی۔',
         x10: 'پلیٹ فارم ایڈمن کھولتا ہے؛ پلان اور ماڈیول اس کا ایک حصہ ہے۔', log_where: 'کارروائی کرنے والے کی ڈیوائس · ' + M('IP') + ' پتا · شہر۔',
         chk: { size: 'بڑی فائلیں موبائل ڈیٹا پر آہستہ لوڈ ہوتی ہیں۔', lite: 'کم میموری والے فون کے لیے چھوٹی نقل۔', lips: 'لِپ سنک کے لیے ضروری منہ کی شکلیں (' + M('15 visemes') + ')۔', fps: 'ایک سستے ' + M('Android') + ' ٹیسٹ فون پر ناپا؛ ' + M('30 fps') + ' یا زیادہ درکار۔', poly: 'زیادہ پولیگون سے کمزور فون اٹکتے ہیں۔' },
@@ -1550,7 +1553,7 @@ class Component extends DCLogic {
     L.ar = { langName: 'العربية', dl: 'ar-u-nu-latn', menu: 'قائمة الإدارة', arrow: '←', or: ' أو ', sep: '، ',
       nav: { x10: 'إدارة المنصة', x14: 'عمليات المنصة', x15: 'الحسابات والدعم والشؤون القانونية', x16: 'جودة المحتوى والمال', x17: 'النمو', x19: 'AI Marketing Hub', admin: 'إدارة المنصة', ops: 'عمليات المنصة', acc: 'الحسابات والدعم والشؤون القانونية', qual: 'جودة المحتوى والمال', grow: 'النمو', mh: 'AI Marketing Hub', x21: 'الإشعارات والدردشة', x22: 'استوديو الأفاتار والصوت' },
       sec: { over: 'نظرة عامة', av: 'مكتبة الأفاتار', vo: 'مكتبة الأصوات', cl: 'طلبات الاستنساخ والموافقة', cp: 'الشكاوى والإزالة', mk: 'المتجر والأسعار', set: 'الإعدادات', log: 'السجل' },
-      l_admin: 'لغة اللوحة', foot: 'كل تغيير مسجَّل · دخول بخطوتين', kicker: 'استوديو الأفاتار والصوت · ' + M('NexaTute'), now: 'دكا · الاثنين ' + M('1') + ' فبراير ' + M('2027') + '، ' + M('16:20') + ' · الخوادم في الولايات المتحدة',
+      l_admin: 'لغة اللوحة', foot: 'كل تغيير مسجَّل · دخول بخطوتين', kicker: 'استوديو الأفاتار والصوت · ' + M('NexaTute'), now: 'دكا · الجمعة ' + M('25') + ' ديسمبر ' + M('2026') + '، ' + M('16:20') + ' · خوادم التطبيق: الولايات المتحدة · ' + M('GPU') + ': هولندا',
       as_l: 'مسجَّل الدخول باسم', as_btn: 'تبديل الشخص', as_note: 'نموذج أولي: اختر شخصًا — سترى بالضبط ما يستطيع دوره تغييره أو اعتماده في هذه الصفحة.',
       roles: { super: 'المشرف الأعلى', board: 'المؤسس / المجلس', prog: 'المحتوى والبرامج', guard: 'مشرف ' + M('Nexa Guard'), fin_lead: 'رئيس المالية' },
       city: 'دكا', city_ctg: 'شيتاغونغ', city_us: 'الولايات المتحدة (خادم)', by_sys: 'النظام (تلقائي)',
@@ -1573,14 +1576,14 @@ class Component extends DCLogic {
       who_h: 'من يضيف ماذا',
       who: [['المتعلّمون', 'يختارون من المكتبة فقط. لا استنساخ ولا أفاتار من صورة دون ' + M('18') + ' سنة.'], ['أولياء الأمور', 'يمكنهم استنساخ أصواتهم هم فقط ليقرأ ' + M('Play Buddy') + ' في ' + M('PlayBoom') + ' القصص بها — لا صوت الطفل أبدًا. الأجداد أو أفراد العائلة الآخرون يعطي كلٌّ منهم موافقته المباشرة على هاتفه برمز ' + M('OTP') + '.'],
         ['المعلّمون الموثَّقون', 'معلّمو المتجر والمؤسسات يمكنهم استنساخ أصواتهم وصنع أفاتار من صورة وجوههم (فحص الحيوية، ومطابقة الوجه الموثَّق) — داخل محتواهم فقط.'],
-        ['متعلّمون ' + M('18+'), 'يمكنهم استنساخ أصواتهم لتمرين النطق: اسمع الإنجليزية الصحيحة بصوتك.'], ['الإدارة', 'يضيف فريق المحتوى والبرامج أفاتار وأصوات ' + M('Nexa Teacher') + ' الرسمية؛ ويعتمدها شخص ثانٍ.']],
+        ['متعلّمون ' + M('18+'), 'يمكنهم استنساخ أصواتهم لتمرين النطق: اسمع الإنجليزية الصحيحة بصوتك.'], ['الإدارة', 'يضيف فريق المحتوى والبرامج أفاتار وأصوات ' + M('Nexa Tutor') + ' الرسمية؛ ويعتمدها شخص ثانٍ.']],
       av_note: 'أفاتار ' + M('GLB') + ' أو ' + M('VRM') + '. رفع ← فحوص تلقائية ← التفاصيل ← مراجعة الثقافة واللباس ← معتمِد ثانٍ ← مباشر. تُحفظ كل نسخة للرجوع إليها بنقرة.',
       av_up: 'رفع أفاتار', av_f: { age: 'الفئة العمرية', unlock: 'طريقة الفتح', st: 'الحالة' },
       age: { kids: 'أطفال / ' + M('PlayBoom') + ' (كرتون)', teen: 'مراهقون', adult: 'بالغون' }, unl: { free: 'مجاني', xp: 'مستوى ' + M('XP'), prem: 'مميّز' }, ast: { draft: 'مسودة', review: 'قيد المراجعة', live: 'مباشر', off: 'معطَّل' },
       xp_lv: function (n) { return 'مستوى ' + M('XP') + ' ' + M(n); }, prem_txt: function (p, u, x) { return 'مميّز ' + M(p + ' / ' + u) + ' · دون ' + M('18') + ': مستوى ' + M('XP') + ' ' + M(x); },
       ctry_all: 'كل الدول', ctry: { bd: 'بنغلاديش', in: 'الهند', pk: 'باكستان', sa: 'السعودية', ae: 'الإمارات', fr: 'فرنسا', gb: 'المملكة المتحدة' },
       ac: { name: 'الأفاتار', age: 'الفئة العمرية', unlock: 'طريقة الفتح', ver: 'النسخة', ctry: 'الدول', st: 'الحالة' },
-      official: M('Nexa Teacher') + ' رسمي', av_none: 'لا أفاتار يطابق هذه المرشحات.',
+      official: M('Nexa Tutor') + ' رسمي', av_none: 'لا أفاتار يطابق هذه المرشحات.',
       av_by: 'رفعه', av_by_txt: function (n, at) { return n + ' · ' + M(at); }, av_live: 'النسخة المباشرة', av_notlive: 'ليس مباشرًا بعد', av_names: 'الاسم بـ' + M('6') + ' لغات',
       av_off_h: 'معطَّل — لا يستطيع المتعلّمون اختياره', off_why: { a8: 'زي رياضي بلا أكمام — فشل فحص اللباس للاستخدام المدرسي في الهند والمملكة المتحدة. محفوظ لنسخة جديدة.' }, off_none: 'عطّله فريق المحتوى والبرامج.',
       off_man: function (n) { return 'عطّله ' + n + '.'; }, av_draft: 'مسودة — لم تُرسل للمراجعة بعد.', av_sentback: function (w) { return 'أُعيد: «' + w + '»'; },
@@ -1653,7 +1656,7 @@ class Component extends DCLogic {
       t_cp_down: 'أُزيلت وعُلّق الحساب حتى المراجعة — يمكن للمالك الاعتراض', t_cp_susp: 'عُلّق الحساب حتى المراجعة', t_cp_unsusp: 'رُفع التعليق', t_cp_up: 'أُثبتت الشكوى — حُذفت النسخة', t_cp_dis: 'رُفضت الشكوى — أُعيدت النسخة ورُفع التعليق',
       susp_on: 'معلَّق', susp_off: 'فعّال',
       mk_rules_h: 'القواعد',
-      mk_rules: ['في كل فئة، واحد مجاني لكل حساب؛ والباقي يُشترى من المتجر.', M('USD = BDT × 0.015') + ' مع التقريب. التاكا عبر ' + M('aamarPay') + ' في بنغلاديش؛ والدولار عبر ' + M('Paddle') + ' في الخارج (يضيف ' + M('Paddle') + ' الضريبة حسب بلد العميل).',
+      mk_rules: ['في كل فئة، واحد مجاني لكل حساب؛ والباقي يُشترى من المتجر.', M('USD = BDT × 1.35 ÷ 122') + ' لأقرب سنت. التاكا عبر ' + M('aamarPay') + ' في بنغلاديش؛ والدولار عبر ' + M('Paddle') + ' في الخارج (يضيف ' + M('Paddle') + ' الضريبة حسب بلد العميل).',
         'عند الإطلاق تبيع ' + M('NexaTute') + ' عناصرها فقط.', 'الأصوات المستنسخة لا تُباع ولا تُنقل أبدًا.'],
       mk_kid_h: 'المتعلّمون دون ' + M('18') + ': ' + M('XP') + ' فقط، لا مال أبدًا', mk_kid_note: 'اختيار مميّز واحد مجاني؛ والباقي يُفتح بـ' + M('XP') + '. لا مشتريات للأطفال في ' + M('PlayBoom') + '.', mk_locked: 'قاعدة أمان مقفلة — لا يمكن إيقافها',
       mk_creator: 'أفاتار يصنعها المبدعون (عمولة ' + M('20%') + ')', mk_creator_note: 'بيع المبدعين لأفاتارهم لاحقًا.', mk_later: 'متوقف — لاحقًا',
@@ -1667,7 +1670,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (مقدّم الطلب)'; }, ap_own: 'أنت طلبت هذا — يعتمده شخص آخر.', ap_cant: 'دورك لا يعتمد هذا.',
       ap_st: { ok: 'معتمَد', rej: 'مرفوض' }, ap_rjby: function (n, w) { return 'رفضه ' + n + ': «' + w + '»'; },
       t_pc: 'أُرسل للاعتماد: رئيس المالية + المؤسس', t_pc_ap: 'اعتُمد — السعر الجديد نافذ', t_ap_part: 'اعتُمد — بانتظار المعتمِد الثاني', t_pc_rj: 'رُفض تغيير السعر',
-      sales_h: 'مبيعات الشهر الماضي (يناير ' + M('2027') + ')', sales_note: 'عدد العناصر المبيعة؛ ما يفتحه من هم دون ' + M('18') + ' بـ' + M('XP') + ' ليس مبيعات.',
+      sales_h: 'مبيعات الشهر الماضي (يناير ' + M('2027') + ') · عيّنة (نموذج أولي)', sales_note: 'عدد العناصر المبيعة؛ ما يفتحه من هم دون ' + M('18') + ' بـ' + M('XP') + ' ليس مبيعات.',
       slc: { item: 'الفئة', bd: 'مبيع بـ' + M('BDT'), ab: 'مبيع بـ' + M('USD'), bdt: 'الإيراد (' + M('BDT') + ')', usd: 'الإيراد (' + M('USD') + ')', tot: 'الإجمالي' }, sl_xp: function (n) { return 'فتح المتعلّمون دون ' + M('18') + ' في يناير ' + M(n) + ' إطلالة مميّزة بـ' + M('XP') + ' — بلا مال.'; },
       set_h: 'الإعدادات', set_note: 'القيم الافتراضية من ' + M('Claude') + ' — يمكن للمالك تغييرها. كل تغيير مسجَّل مع قبل ← بعد.',
       st_gpu: 'دقائق ' + M('GPU') + ' للاستنساخ يوميًا (الحد)', gpu_now: function (a, p) { return 'المستخدم اليوم: ' + a + ' (' + M(p) + ')'; },
@@ -1697,7 +1700,7 @@ class Component extends DCLogic {
         vo_pass: 'استمع متحدث أصلي إلى العيّنات وأجاز الصوت.', sent: 'تُصنع لكل طلب جملة جديدة بتاريخ اليوم واسم الحساب، فلا يمكن إعادة استخدام تسجيلات قديمة.',
         otp_demo: 'للنموذج فقط: افترض أن الشخص الثالث أدخل الرمز على هاتفه.', cl_ap: 'فقط عندما تنجح كل الفحوص. يُصنع نموذج الصوت في وقت ' + M('GPU') + ' خارج الذروة.',
         wd: 'توقف الاستخدام عند السحب؛ ويجب حذف النموذج خلال ' + M('72') + ' ساعة.', down: 'يوقف النسخة في كل مكان فورًا ويعلّق حساب من رفعها في الخطوة نفسها؛ وتتوقف ساعة الـ' + M('24') + ' ساعة.', susp: 'يُسجَّل. استخدمه فقط بعد أن تسمح المراجعة أو الاعتراض.',
-        locked: 'قاعدة الأمان هذه مقفلة. لا يدفع الأطفال مالًا مقابل الإطلالات أبدًا.', creator: 'غير متاح عند الإطلاق.', usd: M('USD = BDT × 0.015') + '، مقرّبًا إلى دولار كامل (' + M('$1') + ' على الأقل).', pc_ap: 'يلزم رئيس المالية والمؤسس؛ ولا يستطيع مقدّم الطلب الاعتماد.',
+        locked: 'قاعدة الأمان هذه مقفلة. لا يدفع الأطفال مالًا مقابل الإطلالات أبدًا.', creator: 'غير متاح عند الإطلاق.', usd: M('USD = BDT × 1.35 ÷ 122') + '، لأقرب سنت.', pc_ap: 'يلزم رئيس المالية والمؤسس؛ ولا يستطيع مقدّم الطلب الاعتماد.',
         gpu: 'عند بلوغ الحد تنتظر النسخ الجديدة اليوم التالي أو نافذة خارج الذروة.', offp: 'تُصنع النسخ ليلًا حين تكون وحدات ' + M('GPU') + ' متاحة.', pol: 'ثابت بسياسة استنساخ الصوت؛ لا يُعدَّل هنا.',
         x10: 'يفتح إدارة المنصة؛ و«الخطط والوحدات» أحد أقسامها.', log_where: 'الجهاز · عنوان ' + M('IP') + ' · مدينة من قام بالإجراء.',
         chk: { size: 'الملفات الكبيرة بطيئة التحميل على بيانات الجوال.', lite: 'نسخة أصغر للهواتف ذات الذاكرة القليلة.', lips: 'أشكال الفم التي تحتاجها مزامنة الشفاه (' + M('15 visemes') + ').', fps: 'مقيس على هاتف ' + M('Android') + ' بسيط؛ يلزم ' + M('30 fps') + ' أو أكثر.', poly: 'كثرة المضلّعات تُبطئ الهواتف الضعيفة.' },
@@ -1706,7 +1709,7 @@ class Component extends DCLogic {
     L.fr = { langName: 'Français', dl: 'fr-FR', menu: 'Menu d’administration', arrow: '→', or: ' ou ', sep: ', ',
       nav: { x10: 'Administration de la plateforme', x14: 'Opérations de la plateforme', x15: 'Comptes, support et juridique', x16: 'Qualité des contenus et argent', x17: 'Croissance', x19: 'AI Marketing Hub', admin: 'Administration de la plateforme', ops: 'Opérations de la plateforme', acc: 'Comptes, support et juridique', qual: 'Qualité des contenus et argent', grow: 'Croissance', mh: 'AI Marketing Hub', x21: 'Notifications et discussion', x22: 'Studio avatars et voix' },
       sec: { over: 'Vue d’ensemble', av: 'Bibliothèque d’avatars', vo: 'Bibliothèque de voix', cl: 'Demandes de clonage et consentement', cp: 'Plaintes et retrait', mk: 'Boutique et prix', set: 'Paramètres', log: 'Journal' },
-      l_admin: 'Langue du panneau', foot: 'Chaque changement est journalisé · connexion en 2 étapes', kicker: 'Studio avatars et voix · NexaTute', now: 'Dacca · lun. 1 févr. 2027, 16:20 · serveurs aux États-Unis',
+      l_admin: 'Langue du panneau', foot: 'Chaque changement est journalisé · connexion en 2 étapes', kicker: 'Studio avatars et voix · NexaTute', now: 'Dacca · ven. 25 déc. 2026, 16:20 · serveurs d’appli É.-U. · GPU Pays-Bas',
       as_l: 'Connecté en tant que', as_btn: 'Changer de personne', as_note: 'Prototype : choisissez une personne — vous voyez exactement ce que son rôle peut modifier ou valider sur cette page.',
       roles: { super: 'Super admin', board: 'Fondateur / conseil', prog: 'Contenus et programmes', guard: 'Contrôleur Nexa Guard', fin_lead: 'Responsable financier' },
       city: 'Dacca', city_ctg: 'Chittagong', city_us: 'États-Unis (serveur)', by_sys: 'Système (automatique)',
@@ -1729,14 +1732,14 @@ class Component extends DCLogic {
       who_h: 'Qui ajoute quoi',
       who: [['Apprenants', 'Choisissent seulement dans la bibliothèque. Ni clone ni avatar photo avant 18 ans.'], ['Parents', 'Peuvent cloner LEUR PROPRE voix pour que le Play Buddy de PlayBoom lise des histoires avec — jamais la voix de l’enfant. Les grands-parents ou autres proches donnent chacun leur consentement en direct sur leur propre téléphone par OTP.'],
         ['Enseignants vérifiés', 'Les enseignants de la boutique et des établissements peuvent cloner leur voix et créer un avatar depuis une photo de leur visage (test de vivacité, comparé à leur visage vérifié) — uniquement dans leurs propres contenus.'],
-        ['Apprenants de 18 ans et plus', 'Peuvent cloner leur voix pour travailler la prononciation : entendre un anglais correct avec sa propre voix.'], ['Administration', 'Contenus et programmes ajoute les avatars et voix officiels Nexa Teacher ; une seconde personne valide.']],
+        ['Apprenants de 18 ans et plus', 'Peuvent cloner leur voix pour travailler la prononciation : entendre un anglais correct avec sa propre voix.'], ['Administration', 'Contenus et programmes ajoute les avatars et voix officiels Nexa Tutor ; une seconde personne valide.']],
       av_note: 'Avatars GLB ou VRM. Import → contrôles automatiques → détails → revue culturelle et vestimentaire → second validateur → en ligne. Chaque version est conservée pour un retour en un clic.',
       av_up: 'Importer un avatar', av_f: { age: 'Tranche d’âge', unlock: 'Déblocage', st: 'Statut' },
       age: { kids: 'Enfants / PlayBoom (dessin animé)', teen: 'Ados', adult: 'Adultes' }, unl: { free: 'Gratuit', xp: 'Niveau XP', prem: 'Premium' }, ast: { draft: 'Brouillon', review: 'En revue', live: 'En ligne', off: 'Désactivé' },
       xp_lv: function (n) { return 'Niveau XP ' + n; }, prem_txt: function (p, u, x) { return 'Premium ' + p + ' / ' + u + ' · moins de 18 ans : niveau XP ' + x; },
       ctry_all: 'Tous les pays', ctry: { bd: 'Bangladesh', in: 'Inde', pk: 'Pakistan', sa: 'Arabie saoudite', ae: 'Émirats arabes unis', fr: 'France', gb: 'Royaume-Uni' },
       ac: { name: 'Avatar', age: 'Tranche d’âge', unlock: 'Déblocage', ver: 'Version', ctry: 'Pays', st: 'Statut' },
-      official: 'Nexa Teacher officiel', av_none: 'Aucun avatar ne correspond à ces filtres.',
+      official: 'Nexa Tutor officiel', av_none: 'Aucun avatar ne correspond à ces filtres.',
       av_by: 'Importé par', av_by_txt: function (n, at) { return n + ' · ' + at; }, av_live: 'Version en ligne', av_notlive: 'Pas encore en ligne', av_names: 'Nom dans les 6 langues',
       av_off_h: 'Désactivé — les apprenants ne peuvent pas le choisir', off_why: { a8: 'Tenue de sport sans manches — échec du contrôle vestimentaire pour l’école en Inde et au Royaume-Uni. Conservé pour une nouvelle version.' }, off_none: 'Désactivé par Contenus et programmes.',
       off_man: function (n) { return 'Désactivé par ' + n + '.'; }, av_draft: 'Brouillon — pas encore envoyé en revue.', av_sentback: function (w) { return 'Renvoyé : « ' + w + ' »'; },
@@ -1809,7 +1812,7 @@ class Component extends DCLogic {
       t_cp_down: 'Retiré et compte suspendu pendant l’examen — le titulaire peut faire appel', t_cp_susp: 'Compte suspendu pendant l’examen', t_cp_unsusp: 'Suspension levée', t_cp_up: 'Plainte fondée — clone supprimé', t_cp_dis: 'Plainte rejetée — clone rétabli, suspension levée',
       susp_on: 'suspendu', susp_off: 'actif',
       mk_rules_h: 'Règles',
-      mk_rules: ['Dans chaque catégorie, 1 est gratuit par compte ; les suivants s’achètent dans la boutique.', 'USD = BDT × 0,015, arrondi. Takas via aamarPay au Bangladesh ; USD via Paddle à l’étranger (Paddle ajoute la taxe selon le pays du client).',
+      mk_rules: ['Dans chaque catégorie, 1 est gratuit par compte ; les suivants s’achètent dans la boutique.', 'USD = BDT × 1,35 ÷ 122, au centime près. Takas via aamarPay au Bangladesh ; USD via Paddle à l’étranger (Paddle ajoute la taxe selon le pays du client).',
         'Au lancement, NexaTute ne vend que ses propres articles.', 'Les voix clonées ne sont jamais vendues ni transférées.'],
       mk_kid_h: 'Moins de 18 ans : XP seulement, jamais d’argent', mk_kid_note: '1 choix Premium gratuit ; les autres se débloquent avec de l’XP. Aucun achat d’enfant dans PlayBoom.', mk_locked: 'Règle de sécurité verrouillée — impossible à désactiver',
       mk_creator: 'Avatars de créateurs (commission de 20 %)', mk_creator_note: 'La vente d’avatars par des créateurs viendra plus tard.', mk_later: 'Désactivé — plus tard',
@@ -1823,7 +1826,7 @@ class Component extends DCLogic {
       ap_sig: function (r, n) { return r + ' ✓ ' + n; }, ap_auto: function (r, n) { return r + ' ✓ ' + n + ' (demandeur)'; }, ap_own: 'Vous l’avez demandé — quelqu’un d’autre valide.', ap_cant: 'Votre rôle ne valide pas ceci.',
       ap_st: { ok: 'Validé', rej: 'Refusé' }, ap_rjby: function (n, w) { return 'Refusé par ' + n + ' : « ' + w + ' »'; },
       t_pc: 'Envoyé pour validation : responsable financier + fondateur', t_pc_ap: 'Validé — le nouveau prix est en vigueur', t_ap_part: 'Validé — en attente du second validateur', t_pc_rj: 'Changement de prix refusé',
-      sales_h: 'Ventes du mois dernier (janvier 2027)', sales_note: 'Nombre d’articles vendus ; les déblocages par XP des moins de 18 ans ne sont pas des ventes.',
+      sales_h: 'Ventes du mois dernier (janvier 2027) · Exemple (prototype)', sales_note: 'Nombre d’articles vendus ; les déblocages par XP des moins de 18 ans ne sont pas des ventes.',
       slc: { item: 'Catégorie', bd: 'Vendus en BDT', ab: 'Vendus en USD', bdt: 'Recettes (BDT)', usd: 'Recettes (USD)', tot: 'Total' }, sl_xp: function (n) { return n + ' looks Premium débloqués avec de l’XP par des moins de 18 ans en janvier — sans argent.'; },
       set_h: 'Paramètres', set_note: 'Valeurs par défaut de Claude — le propriétaire peut les modifier. Chaque changement est journalisé avec avant → après.',
       st_gpu: 'Minutes GPU de clonage par jour (plafond)', gpu_now: function (a, p) { return 'utilisé aujourd’hui : ' + a + ' (' + p + ')'; },
@@ -1853,7 +1856,7 @@ class Component extends DCLogic {
         vo_pass: 'Un locuteur natif a écouté les échantillons et validé la voix.', sent: 'Une nouvelle phrase avec la date du jour et le nom du compte est créée pour chaque demande : un ancien enregistrement ne peut pas resservir.',
         otp_demo: 'Prototype seulement : on fait comme si la tierce personne avait saisi l’OTP sur son téléphone.', cl_ap: 'Seulement quand tous les contrôles sont OK. Le modèle vocal est créé aux heures creuses GPU.',
         wd: 'Utilisation déjà arrêtée au retrait ; le modèle doit être supprimé sous 72 heures.', down: 'Arrête le clone partout immédiatement et suspend le compte de l’auteur dans la même étape ; le chrono de 24 heures s’arrête.', susp: 'Journalisé. À utiliser seulement si l’examen ou l’appel le permet.',
-        locked: 'Cette règle de sécurité est verrouillée. Les enfants ne paient jamais pour des looks.', creator: 'Indisponible au lancement.', usd: 'USD = BDT × 0,015, arrondi au dollar (1 $ minimum).', pc_ap: 'Il faut le responsable financier et le fondateur ; le demandeur ne peut pas valider.',
+        locked: 'Cette règle de sécurité est verrouillée. Les enfants ne paient jamais pour des looks.', creator: 'Indisponible au lancement.', usd: 'USD = BDT × 1,35 ÷ 122, au centime près.', pc_ap: 'Il faut le responsable financier et le fondateur ; le demandeur ne peut pas valider.',
         gpu: 'Une fois le plafond atteint, les nouveaux clones attendent le lendemain ou les heures creuses.', offp: 'Les clones sont créés la nuit, quand les GPU sont libres.', pol: 'Fixé par la politique de clonage vocal ; non modifiable ici.',
         x10: 'Ouvre l’administration de la plateforme ; Formules et modules en est une section.', log_where: 'Appareil · adresse IP · ville de la personne qui a agi.',
         chk: { size: 'Les gros fichiers se chargent lentement en données mobiles.', lite: 'Une copie plus petite pour les téléphones avec peu de mémoire.', lips: 'Formes de bouche nécessaires à la synchro labiale (15 visèmes).', fps: 'Mesuré sur un téléphone Android d’entrée de gamme ; 30 i/s minimum.', poly: 'Trop de polygones font ramer les téléphones modestes.' },
@@ -2032,7 +2035,7 @@ class Component extends DCLogic {
   // Notification bell: sample notifications for this page; full list, filters and chat live in X21 (Notifications & chat)
   bellVals(r) {
     var self = this, s = this.state || {}, B = r.t.ntf, rd = s.ntfRead || {}, my = r._meRoles || [];
-    // Sample notifications for this page, newest first (now = 1 Feb 2027 16:20). to: roles that receive it. go: what one click opens; the click also marks it read.
+    // Sample notifications for this page, newest first (now = 25 Dec 2026 16:20). to: roles that receive it. go: what one click opens; the click also marks it read.
     var N = [
       { id: 'cr', lv: 'important', cat: 'appr', m: 18, u: 1, to: ['guard'], go: { sec: 'cl', clTab: 'queue', crSel: 'CR-2047' } },
       { id: 'gpu', lv: 'info', cat: 'ops', m: 35, u: 0, to: ['prog', 'guard', 'super'], go: { sec: 'set' } },
@@ -2219,15 +2222,15 @@ class Component extends DCLogic {
     var chips = function (keys, cur, label, pick) { return keys.map(function (k) { var on = cur === k; return { name: label(k), code: String(k), on: on, cls: on ? 'on' : '', pick: function () { pick(k); } }; }); };
     var fN = function (n) { return Number(n).toLocaleString('en-US'); };
     var tk = function (n) { return '৳' + Number(n).toLocaleString('en-IN'); };
-    var usdOf = function (bdt) { return Math.max(1, Math.floor((Math.round(Number(bdt)) * 15 + 499) / 1000)); }; // fix22: .5 rounds down
-    var ud = function (n) { return '$' + Number(n).toLocaleString('en-US'); };
+    var usdOf = usdNum; // owner 31 Oct 2026: to the cent, exact half-cents round up (usdCents)
+    var ud = function (n) { return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
     var iso = function (x) { return rtl(s.lang) ? '⁦' + x + '⁩' : x; };
     var GREEN = ['#E3F5EC', '#0F6B40'], AMBER = ['#FFF3DD', '#8A4B00'], RED = ['#FDEDE6', '#9A3412'], BLUE = ['#ECEBFD', '#3B34C9'], GREY = ['#F0F1F6', '#59617A'], TEAL = ['#E1F4F2', '#0B5E5A'];
 
     // ---------- Time ----------
     var NOWM = 16 * 60 + 20;
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
-    var stamp = function (k) { return new Date(Date.UTC(2027, 1, 1, 0, NOWM + k)).toISOString().slice(0, 16).replace('T', ' '); }; // fix8 D1: minutes after Mon 1 Feb 2027 00:00
+    var stamp = function (k) { return new Date(Date.UTC(2026, 11, 25, 0, NOWM + k)).toISOString().slice(0, 16).replace('T', ' '); }; // fix8 D1: minutes after Fri 25 Dec 2026 00:00
     var toDate = function (str) { var p = String(str).split(/[- :]/); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2], +(p[3] || 0), +(p[4] || 0))); };
     var fmtAt = function (str) { try { return toDate(str).toLocaleString(t.dl, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'UTC' }).replace(/জানুয়ারী/g, 'জানুয়ারি').replace(/ফেব্রুয়ারী/g, 'ফেব্রুয়ারি'); } catch (e) { return String(str); } };
     var fmtDay = function (str, y) { try { var o = { day: 'numeric', month: 'long', timeZone: 'UTC' }; if (y) o.year = 'numeric'; return toDate(str).toLocaleDateString(t.dl, o).replace(/জানুয়ারী/g, 'জানুয়ারি').replace(/ফেব্রুয়ারী/g, 'ফেব্রুয়ারি'); } catch (e) { return String(str); } };
@@ -2277,7 +2280,7 @@ class Component extends DCLogic {
     var ctryList = function (c) { return c.indexOf('all') >= 0 ? CTRY.slice() : c.slice(); };
     var ctryTxt = function (c) { return c.indexOf('all') >= 0 ? t.ctry_all : c.map(function (k) { return t.ctry[k]; }).join(t.sep); };
     var avName = function (a) { return (a.nm && (a.nm[s.lang] || a.nm.en)) || a.id; };
-    var iniOf = function (a) { var w = String(a.nm.en || '').replace(/^(Ms|Mr|Coach|Space Cadet|Nexa Teacher)\s+/, '').split(/[\s—(]+/).filter(function (x) { return x; }); return ((w[0] || '?')[0] + (w[1] && /^[A-Z]/.test(w[1]) ? w[1][0] : '')).toUpperCase(); };
+    var iniOf = function (a) { var w = String(a.nm.en || '').replace(/^(Ms|Mr|Coach|Space Cadet|Nexa Tutor)\s+/, '').split(/[\s—(]+/).filter(function (x) { return x; }); return ((w[0] || '?')[0] + (w[1] && /^[A-Z]/.test(w[1]) ? w[1][0] : '')).toUpperCase(); };
     var unlTxt = function (a) {
       if (a.unl === 'free') return t.unl.free;
       if (a.unl === 'xp') return t.xp_lv(a.xp);

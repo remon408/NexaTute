@@ -151,7 +151,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
         <span class="chip">Combo</span>
         <span class="chip" style="background:#FFF3DD;color:#8A4B00">+25 XP</span>
         <span class="chip" style="background:#E3F5EC;color:#0F6B40">{{ t.live }}</span>
-        <span class="chip" style="background:#E1F4F2;color:#0B5E5A">Nexa Co-Teacher</span>
+        <span class="chip" style="background:#E1F4F2;color:#0B5E5A">Nexa Co-Tutor</span>
       </div>
       <div class="mntg"><button class="tg" aria-pressed="true" aria-label="{{ t.on }}"></button>{{ t.on }} <button class="tg off" aria-pressed="false" aria-label="{{ t.off }}"></button>{{ t.off }}</div>
       <div class="mnpr"><div class="r"><span>{{ t.pl }}</span><b>{{ t.pv }}</b></div><div class="t"><div></div></div></div>
@@ -181,7 +181,7 @@ class Component extends DCLogic {
     return {
      "bn": {
       "k": "হাই-ফাই মকআপ · সম্পূর্ণ প্রোডাক্ট",
-      "h1": "AI শিক্ষক, সত্যিকারের শেখা",
+      "h1": "AI টিউটর, সত্যিকারের শেখা",
       "os": "একটি AI-চালিত লার্নিং অপারেটিং সিস্টেম",
       "p": "শিক্ষার্থী, অভিভাবক, PlayBoom, শিক্ষক ও প্রতিষ্ঠান এবং অ্যাডমিন প্যানেল — সব স্ক্রিন এক জায়গায়। প্রতিটি প্রোটোটাইপ মোবাইল, ট্যাব ও ডেস্কটপে চলে।",
       "st": [
@@ -194,7 +194,7 @@ class Component extends DCLogic {
       "w0": "ওয়েবসাইট প্রিভিউ — সব মকআপ ও প্রোটোটাইপ এক জায়গায়",
       "links": [
        "নতুন শিক্ষার্থী",
-       "ক্লাস ও Co-Teacher",
+       "ক্লাস ও Co-Tutor",
        "কেনাকাটা ও অনুমোদন",
        "Study Hall",
        "PlayBoom",
@@ -261,7 +261,7 @@ class Component extends DCLogic {
       "off": "বন্ধ",
       "pl": "আজকের 1:1 সময়",
       "pv": "18 / 30 মিনিট",
-      "rule": "নকশার নিয়ম: Nexa Teacher-এর পাশে সবসময় “AI” লেখা থাকে (AI স্বচ্ছতা) · টাচ টার্গেট ≥ 44px · লেখার কনট্রাস্ট ≥ 4.5:1 (WCAG 2.2 AA) · বুঝলাম/বুঝিনি শুধু রঙে নয়, লেখাতেও আলাদা · কোনো স্ক্রিনে বিজ্ঞাপন নেই; শিশুদের কোনো ট্র্যাকিং নেই, আর সম্মতি ছাড়া কারও ট্র্যাকিং নেই (অ্যানালিটিক্স ও মার্কেটিং কুকি শুধু 18+ বয়সীদের সম্মতিতে)। Free Beta: প্রতিটি শিক্ষার্থী, অভিভাবক ও প্রতিষ্ঠানের স্ক্রিনে “সমস্যা জানাও / মতামত দাও” · প্রতিটি AI উত্তরের নিচে “AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।” · কোনো ফিচার বন্ধ থাকলে এরর নয়, দেখায় “এই ফিচারটি আপাতত বন্ধ আছে — শিগগিরই আবার চালু হবে।”।",
+      "rule": "নকশার নিয়ম: Nexa Tutor-এর পাশে সবসময় “AI” লেখা থাকে (AI স্বচ্ছতা) · টাচ টার্গেট ≥ 44px · লেখার কনট্রাস্ট ≥ 4.5:1 (WCAG 2.2 AA) · বুঝলাম/বুঝিনি শুধু রঙে নয়, লেখাতেও আলাদা · কোনো স্ক্রিনে বিজ্ঞাপন নেই; শিশুদের কোনো ট্র্যাকিং নেই, আর সম্মতি ছাড়া কারও ট্র্যাকিং নেই (অ্যানালিটিক্স ও মার্কেটিং কুকি শুধু 18+ বয়সীদের সম্মতিতে)। Free Beta: প্রতিটি শিক্ষার্থী, অভিভাবক ও প্রতিষ্ঠানের স্ক্রিনে “সমস্যা জানাও / মতামত দাও” · প্রতিটি AI উত্তরের নিচে “AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।” · কোনো ফিচার বন্ধ থাকলে এরর নয়, দেখায় “এই ফিচারটি আপাতত বন্ধ আছে — শিগগিরই আবার চালু হবে।”।",
       "lh": "স্ক্রিন তালিকা",
       "rows": [
        {
@@ -278,10 +278,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · অ্যাকাউন্ট",
-        "v": "ওয়ালেট, নোটিফিকেশন, প্রোফাইল, সেটিংস"
+        "v": "বাড়তি মিনিট ও Daily Pass, নোটিফিকেশন, প্রোফাইল, সেটিংস"
        },
        {
-        "k": "L5 · Nexa Teacher 1:1",
+        "k": "L5 · Nexa Tutor 1:1",
         "v": "ক্লাস, ধাপ যাচাই, রেকর্ডিং বাছাই, ETA"
        },
        {
@@ -289,7 +289,7 @@ class Component extends DCLogic {
         "v": "লাইভ, পোল, প্রশ্ন-দেয়াল, র‍্যাঙ্ক"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "চ্যাট, রেকর্ডিং প্লেয়ার, ভুলের খাতা"
        },
        {
@@ -362,7 +362,7 @@ class Component extends DCLogic {
      },
      "en": {
       "k": "Hi-fi mockup · The whole product",
-      "h1": "AI teacher, real learning",
+      "h1": "AI tutor, real learning",
       "os": "An AI-Powered Learning Operating System",
       "p": "Learner, guardian, PlayBoom, teacher and institution, and the admin panels — every screen in one place. Every prototype runs on mobile, tablet and desktop.",
       "st": [
@@ -375,7 +375,7 @@ class Component extends DCLogic {
       "w0": "Website preview — every mockup and prototype in one place",
       "links": [
        "New learner",
-       "Class & Co-Teacher",
+       "Class & Co-Tutor",
        "Purchase & approval",
        "Study Hall",
        "PlayBoom",
@@ -442,7 +442,7 @@ class Component extends DCLogic {
       "off": "Off",
       "pl": "Today’s 1:1 time",
       "pv": "18 / 30 min",
-      "rule": "Design rules: Nexa Teacher always carries an “AI” label (AI transparency) · touch targets ≥ 44px · text contrast ≥ 4.5:1 (WCAG 2.2 AA) · “got it / didn’t get it” differ in words, not only colour · no ads on any screen; no tracking of children, and no tracking of anyone without consent (analytics and marketing cookies only with the consent of people aged 18+). Free Beta: “Report a problem / Give feedback” on every learner, guardian and institution screen · “AI can make mistakes. If something looks wrong, check with your teacher or report it.” under every AI answer · a paused feature shows “This feature is paused for now — it will be back soon.”, never an error.",
+      "rule": "Design rules: Nexa Tutor always carries an “AI” label (AI transparency) · touch targets ≥ 44px · text contrast ≥ 4.5:1 (WCAG 2.2 AA) · “got it / didn’t get it” differ in words, not only colour · no ads on any screen; no tracking of children, and no tracking of anyone without consent (analytics and marketing cookies only with the consent of people aged 18+). Free Beta: “Report a problem / Give feedback” on every learner, guardian and institution screen · “AI can make mistakes. If something looks wrong, check with your teacher or report it.” under every AI answer · a paused feature shows “This feature is paused for now — it will be back soon.”, never an error.",
       "lh": "Screen index",
       "rows": [
        {
@@ -459,10 +459,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · Account",
-        "v": "Wallet, notifications, profile, settings"
+        "v": "Extra minutes & Daily Pass, notifications, profile, settings"
        },
        {
-        "k": "L5 · Nexa Teacher 1:1",
+        "k": "L5 · Nexa Tutor 1:1",
         "v": "Class, step check, recording choice, ETA"
        },
        {
@@ -470,7 +470,7 @@ class Component extends DCLogic {
         "v": "Live, polls, question wall, rank"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "Chat, recording player, error notebook"
        },
        {
@@ -543,7 +543,7 @@ class Component extends DCLogic {
      },
      "hi": {
       "k": "हाई-फ़ाई मॉकअप · पूरा प्रोडक्ट",
-      "h1": "AI शिक्षक, असली सीखना",
+      "h1": "AI ट्यूटर, असली सीखना",
       "os": "एक AI-संचालित लर्निंग ऑपरेटिंग सिस्टम",
       "p": "विद्यार्थी, अभिभावक, PlayBoom, शिक्षक और संस्थान, और एडमिन पैनल — हर स्क्रीन एक जगह। हर प्रोटोटाइप मोबाइल, टैबलेट और डेस्कटॉप पर चलता है।",
       "st": [
@@ -556,7 +556,7 @@ class Component extends DCLogic {
       "w0": "वेबसाइट प्रीव्यू — हर मॉकअप और प्रोटोटाइप एक जगह",
       "links": [
        "नया विद्यार्थी",
-       "क्लास और Co-Teacher",
+       "क्लास और Co-Tutor",
        "ख़रीद और मंज़ूरी",
        "Study Hall",
        "PlayBoom",
@@ -623,7 +623,7 @@ class Component extends DCLogic {
       "off": "बंद",
       "pl": "आज का 1:1 समय",
       "pv": "18 / 30 मिनट",
-      "rule": "डिज़ाइन के नियम: Nexa Teacher के साथ हमेशा “AI” लिखा रहता है (AI पारदर्शिता) · टच टारगेट ≥ 44px · टेक्स्ट कंट्रास्ट ≥ 4.5:1 (WCAG 2.2 AA) · “समझ गया / नहीं समझा” सिर्फ़ रंग से नहीं, शब्दों से भी अलग · किसी स्क्रीन पर विज्ञापन नहीं; बच्चों की कोई ट्रैकिंग नहीं, और सहमति के बिना किसी की ट्रैकिंग नहीं (एनालिटिक्स और मार्केटिंग कुकी सिर्फ़ 18+ उम्र वालों की सहमति से)। Free Beta: हर शिक्षार्थी, अभिभावक और संस्थान की स्क्रीन पर “समस्या बताओ / सुझाव दो” · हर AI जवाब के नीचे “AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।” · कोई सुविधा रुकी हो तो एरर नहीं, दिखता है “यह सुविधा अभी के लिए रुकी है — जल्द ही वापस आएगी।”।",
+      "rule": "डिज़ाइन के नियम: Nexa Tutor के साथ हमेशा “AI” लिखा रहता है (AI पारदर्शिता) · टच टारगेट ≥ 44px · टेक्स्ट कंट्रास्ट ≥ 4.5:1 (WCAG 2.2 AA) · “समझ गया / नहीं समझा” सिर्फ़ रंग से नहीं, शब्दों से भी अलग · किसी स्क्रीन पर विज्ञापन नहीं; बच्चों की कोई ट्रैकिंग नहीं, और सहमति के बिना किसी की ट्रैकिंग नहीं (एनालिटिक्स और मार्केटिंग कुकी सिर्फ़ 18+ उम्र वालों की सहमति से)। Free Beta: हर शिक्षार्थी, अभिभावक और संस्थान की स्क्रीन पर “समस्या बताओ / सुझाव दो” · हर AI जवाब के नीचे “AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।” · कोई सुविधा रुकी हो तो एरर नहीं, दिखता है “यह सुविधा अभी के लिए रुकी है — जल्द ही वापस आएगी।”।",
       "lh": "स्क्रीन सूची",
       "rows": [
        {
@@ -640,10 +640,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · अकाउंट",
-        "v": "वॉलेट, नोटिफ़िकेशन, प्रोफ़ाइल, सेटिंग्स"
+        "v": "अतिरिक्त मिनट और Daily Pass, नोटिफ़िकेशन, प्रोफ़ाइल, सेटिंग्स"
        },
        {
-        "k": "L5 · Nexa Teacher 1:1",
+        "k": "L5 · Nexa Tutor 1:1",
         "v": "क्लास, चरण जाँच, रिकॉर्डिंग चुनाव, ETA"
        },
        {
@@ -651,7 +651,7 @@ class Component extends DCLogic {
         "v": "लाइव, पोल, सवालों की दीवार, रैंक"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "चैट, रिकॉर्डिंग प्लेयर, ग़लतियों की कॉपी"
        },
        {
@@ -724,7 +724,7 @@ class Component extends DCLogic {
      },
      "ur": {
       "k": "ہائی فائی ماک اپ · مکمل پروڈکٹ",
-      "h1": "AI استاد، حقیقی سیکھنا",
+      "h1": "AI ٹیوٹر، حقیقی سیکھنا",
       "os": "ایک AI سے چلنے والا لرننگ آپریٹنگ سسٹم",
       "p": "طالب علم، سرپرست، PlayBoom، استاد اور ادارہ، اور ایڈمن پینل — ہر اسکرین ایک جگہ۔ ہر پروٹوٹائپ موبائل، ٹیبلٹ اور ڈیسک ٹاپ پر چلتا ہے۔",
       "st": [
@@ -737,7 +737,7 @@ class Component extends DCLogic {
       "w0": "ویب سائٹ پریویو — ہر ماک اپ اور پروٹوٹائپ ایک جگہ",
       "links": [
        "نیا طالب علم",
-       "کلاس اور Co-Teacher",
+       "کلاس اور Co-Tutor",
        "خریداری اور منظوری",
        "Study Hall",
        "PlayBoom",
@@ -804,7 +804,7 @@ class Component extends DCLogic {
       "off": "بند",
       "pl": "آج کا ⁦1:1⁩ وقت",
       "pv": "⁦18 / 30⁩ منٹ",
-      "rule": "ڈیزائن کے اصول: Nexa Teacher کے ساتھ ہمیشہ “AI” لکھا ہوتا ہے (AI شفافیت) · ٹچ ٹارگٹ ⁦≥ 44px⁩ · متن کا کنٹراسٹ ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · “سمجھ گیا / نہیں سمجھا” صرف رنگ سے نہیں، الفاظ سے بھی الگ · کسی اسکرین پر اشتہار نہیں؛ بچوں کی کوئی ٹریکنگ نہیں، اور رضامندی کے بغیر کسی کی ٹریکنگ نہیں (اینالیٹکس اور مارکیٹنگ کوکیز صرف ⁦18+⁩ عمر والوں کی رضامندی سے)۔ Free Beta: ہر طالب علم، سرپرست اور ادارے کی اسکرین پر “مسئلہ بتاؤ / رائے دو” · ہر AI جواب کے نیچے “AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔” · کوئی فیچر رکا ہو تو ایرر نہیں، دکھتا ہے “یہ فیچر فی الحال رکا ہوا ہے — جلد واپس آئے گا۔”۔",
+      "rule": "ڈیزائن کے اصول: Nexa Tutor کے ساتھ ہمیشہ “AI” لکھا ہوتا ہے (AI شفافیت) · ٹچ ٹارگٹ ⁦≥ 44px⁩ · متن کا کنٹراسٹ ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · “سمجھ گیا / نہیں سمجھا” صرف رنگ سے نہیں، الفاظ سے بھی الگ · کسی اسکرین پر اشتہار نہیں؛ بچوں کی کوئی ٹریکنگ نہیں، اور رضامندی کے بغیر کسی کی ٹریکنگ نہیں (اینالیٹکس اور مارکیٹنگ کوکیز صرف ⁦18+⁩ عمر والوں کی رضامندی سے)۔ Free Beta: ہر طالب علم، سرپرست اور ادارے کی اسکرین پر “مسئلہ بتاؤ / رائے دو” · ہر AI جواب کے نیچے “AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔” · کوئی فیچر رکا ہو تو ایرر نہیں، دکھتا ہے “یہ فیچر فی الحال رکا ہوا ہے — جلد واپس آئے گا۔”۔",
       "lh": "اسکرینوں کی فہرست",
       "rows": [
        {
@@ -821,10 +821,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · اکاؤنٹ",
-        "v": "والیٹ، نوٹیفکیشن، پروفائل، سیٹنگز"
+        "v": "اضافی منٹ اور Daily Pass، نوٹیفکیشن، پروفائل، سیٹنگز"
        },
        {
-        "k": "⁦L5 · Nexa Teacher 1:1⁩",
+        "k": "⁦L5 · Nexa Tutor 1:1⁩",
         "v": "کلاس، مرحلے کی جانچ، ریکارڈنگ کا انتخاب، ETA"
        },
        {
@@ -832,7 +832,7 @@ class Component extends DCLogic {
         "v": "لائیو، پول، سوالوں کی دیوار، رینک"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "چیٹ، ریکارڈنگ پلیئر، غلطیوں کی کاپی"
        },
        {
@@ -905,7 +905,7 @@ class Component extends DCLogic {
      },
      "ar": {
       "k": "نموذج تصميم عالي الدقة · المنتج كاملًا",
-      "h1": "معلّم AI، وتعلّم حقيقي",
+      "h1": "مدرّس خصوصي بالذكاء الاصطناعي، وتعلّم حقيقي",
       "os": "نظام تشغيل للتعلّم مدعوم بالذكاء الاصطناعي",
       "p": "المتعلّم، ووليّ الأمر، وPlayBoom، والمعلّم والمؤسسة، ولوحات الإدارة — كل الشاشات في مكان واحد. يعمل كل نموذج أولي على الجوال والجهاز اللوحي وسطح المكتب.",
       "st": [
@@ -918,7 +918,7 @@ class Component extends DCLogic {
       "w0": "معاينة الموقع — كل النماذج والشاشات في مكان واحد",
       "links": [
        "متعلّم جديد",
-       "الحصة وCo-Teacher",
+       "الحصة وCo-Tutor",
        "الشراء والموافقة",
        "Study Hall",
        "PlayBoom",
@@ -985,7 +985,7 @@ class Component extends DCLogic {
       "off": "متوقف",
       "pl": "وقت ⁦1:1⁩ اليوم",
       "pv": "⁦18 / 30⁩ دقيقة",
-      "rule": "قواعد التصميم: يحمل Nexa Teacher دائمًا وسم «AI» (شفافية الذكاء الاصطناعي) · أهداف اللمس ⁦≥ 44px⁩ · تباين النص ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · «فهمت / لم أفهم» يختلفان بالكلمات لا باللون فقط · لا إعلانات في أي شاشة؛ ولا تتبّع للأطفال، ولا تتبّع لأحد دون موافقته (ملفات التحليلات والتسويق فقط بموافقة من هم ⁦18+⁩). Free Beta: «أبلِغ عن مشكلة / شارك رأيك» في كل شاشة للمتعلّم ووليّ الأمر والمؤسسة · «قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه.» تحت كل إجابة للذكاء الاصطناعي · الميزة المتوقفة تعرض «هذه الميزة متوقفة مؤقتًا — وستعود قريبًا.» وليس خطأً.",
+      "rule": "قواعد التصميم: يحمل Nexa Tutor دائمًا وسم «AI» (شفافية الذكاء الاصطناعي) · أهداف اللمس ⁦≥ 44px⁩ · تباين النص ⁦≥ 4.5:1⁩ (WCAG 2.2 AA) · «فهمت / لم أفهم» يختلفان بالكلمات لا باللون فقط · لا إعلانات في أي شاشة؛ ولا تتبّع للأطفال، ولا تتبّع لأحد دون موافقته (ملفات التحليلات والتسويق فقط بموافقة من هم ⁦18+⁩). Free Beta: «أبلِغ عن مشكلة / شارك رأيك» في كل شاشة للمتعلّم ووليّ الأمر والمؤسسة · «قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه.» تحت كل إجابة للذكاء الاصطناعي · الميزة المتوقفة تعرض «هذه الميزة متوقفة مؤقتًا — وستعود قريبًا.» وليس خطأً.",
       "lh": "فهرس الشاشات",
       "rows": [
        {
@@ -1002,10 +1002,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · الحساب",
-        "v": "المحفظة، الإشعارات، الملف الشخصي، الإعدادات"
+        "v": "دقائق إضافية وDaily Pass، الإشعارات، الملف الشخصي، الإعدادات"
        },
        {
-        "k": "⁦L5 · Nexa Teacher 1:1⁩",
+        "k": "⁦L5 · Nexa Tutor 1:1⁩",
         "v": "الحصة، فحص الخطوات، اختيار التسجيل، الوقت المتوقّع"
        },
        {
@@ -1013,7 +1013,7 @@ class Component extends DCLogic {
         "v": "مباشر، استطلاعات، جدار الأسئلة، الترتيب"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "الدردشة، مشغّل التسجيلات، دفتر الأخطاء"
        },
        {
@@ -1099,7 +1099,7 @@ class Component extends DCLogic {
       "w0": "Aperçu du site — toutes les maquettes et tous les prototypes au même endroit",
       "links": [
        "Nouvel élève",
-       "Cours et Co-Teacher",
+       "Cours et Co-Tutor",
        "Achat et validation",
        "Study Hall",
        "PlayBoom",
@@ -1166,7 +1166,7 @@ class Component extends DCLogic {
       "off": "Désactivé",
       "pl": "Temps de 1:1 du jour",
       "pv": "18 / 30 min",
-      "rule": "Règles de design : Nexa Teacher porte toujours la mention « IA » (transparence de l’IA) · cibles tactiles ≥ 44 px · contraste du texte ≥ 4,5:1 (WCAG 2.2 AA) · « compris / pas compris » se distinguent par les mots, pas seulement par la couleur · aucune publicité sur aucun écran ; aucun suivi des enfants, et aucun suivi de quiconque sans consentement (cookies d’analyse et de marketing uniquement avec le consentement des 18 ans et plus). Free Beta : « Signaler un problème / Donner ton avis » sur chaque écran élève, parent et établissement · « L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le. » sous chaque réponse de l’IA · une fonction en pause affiche « Cette fonction est en pause pour le moment — elle revient bientôt. », jamais une erreur.",
+      "rule": "Règles de design : Nexa Tutor porte toujours la mention « IA » (transparence de l’IA) · cibles tactiles ≥ 44 px · contraste du texte ≥ 4,5:1 (WCAG 2.2 AA) · « compris / pas compris » se distinguent par les mots, pas seulement par la couleur · aucune publicité sur aucun écran ; aucun suivi des enfants, et aucun suivi de quiconque sans consentement (cookies d’analyse et de marketing uniquement avec le consentement des 18 ans et plus). Free Beta : « Signaler un problème / Donner ton avis » sur chaque écran élève, parent et établissement · « L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le. » sous chaque réponse de l’IA · une fonction en pause affiche « Cette fonction est en pause pour le moment — elle revient bientôt. », jamais une erreur.",
       "lh": "Index des écrans",
       "rows": [
        {
@@ -1183,10 +1183,10 @@ class Component extends DCLogic {
        },
        {
         "k": "L4 · Compte",
-        "v": "Portefeuille, notifications, profil, réglages"
+        "v": "Minutes en plus et Daily Pass, notifications, profil, réglages"
        },
        {
-        "k": "L5 · Nexa Teacher 1:1",
+        "k": "L5 · Nexa Tutor 1:1",
         "v": "Cours, étapes, choix d’enregistrement, délai"
        },
        {
@@ -1194,7 +1194,7 @@ class Component extends DCLogic {
         "v": "Direct, sondages, mur de questions, rang"
        },
        {
-        "k": "L7 · Nexa Co-Teacher",
+        "k": "L7 · Nexa Co-Tutor",
         "v": "Chat, lecteur d’enregistrements, cahier d’erreurs"
        },
        {
@@ -1301,7 +1301,7 @@ class Component extends DCLogic {
     var DV = s.dev === 'm' || s.dev === 't' || s.dev === 'd' ? s.dev : this.devInit();
     var FONT = { hi: "'Hind','Hind Siliguri','Noto Naskh Arabic',system-ui,sans-serif", ar: "'Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif", ur: "'Noto Nastaliq Urdu','Noto Naskh Arabic','Hind Siliguri','Hind',system-ui,sans-serif" };
     var NAMES = { bn: 'বাংলা', en: 'English', hi: 'हिन्दी', ur: 'اردو', ar: 'العربية', fr: 'Français' };
-    var STEMS = ["X01-Prototype-Flow1", "X02-Prototype-Flow2", "X03-Prototype-Flow3", "X04-Prototype-Flow4", "X05-Prototype-Flow5", "X06-Prototype-Batch", "X07-Prototype-Test", "X07b-Prototype-Test-ExamAid", "X07c-Prototype-Test-Hub", "X08-Prototype-Guardian", "X09-Prototype-Teacher", "X10-Prototype-Admin", "X10b-Prototype-Admin-Accounts", "X11-Prototype-Tools", "X12-Prototype-Institute", "X12b-Prototype-Institute-Ops", "X13-Prototype-LandingAI", "X14-Prototype-Ops", "X14b-Prototype-Ops-Infra", "X15-Prototype-Accounts", "X16-Prototype-Quality", "X16b-Prototype-Quality-Money", "X16c-Prototype-Quality-ExamAid", "X17-Prototype-Growth", "X18-Prototype-MindForge", "X19-Prototype-MarketingHub", "X20-Prototype-Landing", "X20b-Prototype-Landing-Plans", "X20c-Prototype-Landing-More", "X20d-Prototype-Landing-Blog", "X21-Prototype-Comms", "X22-Prototype-AvatarVoice", "X23-Prototype-AvatarVoice-User", "X24-Prototype-Legal", "X25-Prototype-AdminPlans", "X25b-Prototype-AdminPlans-Platform", "X25c-Prototype-AdminPlans-Pp", "X26-Prototype-AdminRules", "X26b-Prototype-AdminRules-More", "X27-Prototype-CoAdmin"], SW = [["#3B34C9", "Nexa Indigo", "#3B34C9"], ["#141A33", "Ink", "#141A33"], ["#F2A93B", "Saffron", "#F2A93B"], ["#0B6E6A", "Co-Teacher Teal", "#0B6E6A"], ["#17804F", "Success", "#17804F"], ["#C2410C", "Alert", "#C2410C"], ["#F5F6FA", "Ground", "#F5F6FA"], ["#FFC93C", "PlayBoom Sun", "#FFC93C"]], NUM = ['75', '10', '5', 'v32.5'];
+    var STEMS = ["X01-Prototype-Flow1", "X02-Prototype-Flow2", "X03-Prototype-Flow3", "X04-Prototype-Flow4", "X05-Prototype-Flow5", "X06-Prototype-Batch", "X07-Prototype-Test", "X07b-Prototype-Test-ExamAid", "X07c-Prototype-Test-Hub", "X08-Prototype-Guardian", "X09-Prototype-Teacher", "X10-Prototype-Admin", "X10b-Prototype-Admin-Accounts", "X11-Prototype-Tools", "X12-Prototype-Institute", "X12b-Prototype-Institute-Ops", "X13-Prototype-LandingAI", "X14-Prototype-Ops", "X14b-Prototype-Ops-Infra", "X15-Prototype-Accounts", "X16-Prototype-Quality", "X16b-Prototype-Quality-Money", "X16c-Prototype-Quality-ExamAid", "X17-Prototype-Growth", "X18-Prototype-MindForge", "X19-Prototype-MarketingHub", "X20-Prototype-Landing", "X20b-Prototype-Landing-Plans", "X20c-Prototype-Landing-More", "X20d-Prototype-Landing-Blog", "X21-Prototype-Comms", "X22-Prototype-AvatarVoice", "X23-Prototype-AvatarVoice-User", "X24-Prototype-Legal", "X25-Prototype-AdminPlans", "X25b-Prototype-AdminPlans-Platform", "X25c-Prototype-AdminPlans-Pp", "X26-Prototype-AdminRules", "X26b-Prototype-AdminRules-More", "X27-Prototype-CoAdmin"], SW = [["#3B34C9", "Nexa Indigo", "#3B34C9"], ["#141A33", "Ink", "#141A33"], ["#F2A93B", "Saffron", "#F2A93B"], ["#0B6E6A", "Co-Tutor Teal", "#0B6E6A"], ["#17804F", "Success", "#17804F"], ["#C2410C", "Alert", "#C2410C"], ["#F5F6FA", "Ground", "#F5F6FA"], ["#FFC93C", "PlayBoom Sun", "#FFC93C"]], NUM = ['75', '10', '5', 'v32.5'];
     return {
       t: t, lang: lang, dir: isR ? 'rtl' : 'ltr', ff: FONT[lang] || "'Hind Siliguri',system-ui,sans-serif",
       rootCls: 'mn dv-' + DV,

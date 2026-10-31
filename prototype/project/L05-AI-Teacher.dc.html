@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<title>Nexa Teacher 1:1 class</title>
+<title>Nexa Tutor 1:1 class</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -77,7 +77,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
 <div dir="{{ dir }}" lang="{{ lang }}" style="position:relative;width:2636px;min-height:1100px;box-sizing:border-box;padding:48px;background:#E8EBF2;font-family:{{ ff }};color:#141A33;display:flex;flex-direction:column;gap:28px">
 <div class="lgp" role="group" aria-label="{{ t.lgp_h }}"><sc-for list="{{ lgs }}" as="g" hint-placeholder-count="6"><button class="{{ g.cls }}" aria-pressed="{{ g.on }}" lang="{{ g.code }}" onClick="{{ g.pick }}">{{ g.name }}</button></sc-for></div>
 <div>
-  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Nexa Teacher 1:1</p>
+  <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#59617A">Learner · Nexa Tutor 1:1</p>
   <h1 style="margin:4px 0 0;font-size:30px;font-weight:700;line-height:1.3">{{ t.k001 }}</h1>
 </div>
 <div style="display:flex;gap:40px">
@@ -95,7 +95,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
       <div class="row" style="gap:14px;align-items:flex-end">
         <div style="position:relative;flex:none">
           <svg viewBox="0 0 160 160" width="112" height="112" aria-hidden="true"><circle cx="80" cy="80" r="78" fill="#2B3473"/><path d="M30 160c4-34 24-52 50-52s46 18 50 52z" fill="#7C77F0"/><circle cx="80" cy="70" r="30" fill="#E9BE98"/><path d="M50 68c0-22 14-34 30-34s30 12 30 34c-8-10-20-15-30-15s-22 5-30 15z" fill="#141A33"/><circle cx="70" cy="74" r="3" fill="#141A33"/><circle cx="90" cy="74" r="3" fill="#141A33"/><path d="M72 86q8 6 16 0" stroke="#141A33" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-          <span class="chip" style="position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:#F2A93B;color:#141A33">Nexa Teacher · AI</span>
+          <span class="chip" style="position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:#F2A93B;color:#141A33">Nexa Tutor · AI</span>
         </div>
         <div style="flex:1;background:rgba(255,255,255,.08);border-radius:14px;padding:12px;font-size:14px;line-height:1.5">{{ t.k006 }}</div>
       </div>
@@ -144,7 +144,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
         <div class="stp" style="color:#59617A"><span class="mk" style="background:#E6E9F2;color:#3F475E">4</span>…</div>
       </div>
       <div style="display:flex;gap:10px;align-items:flex-start">
-        <span class="chip" style="background:#F2A93B;color:#141A33;flex:none">Nexa Teacher</span>
+        <span class="chip" style="background:#F2A93B;color:#141A33;flex:none">Nexa Tutor</span>
         <div class="cd" style="padding:12px 14px;border-radius:4px 18px 18px 18px">
           <p style="margin:0;font-size:14px;line-height:1.55">{{ t.k019 }} <b>{{ t.k020 }}</b> {{ t.k021 }}</p>
           <p style="margin:4px 0 0;font-size:12px;line-height:1.45;color:#4A5168;font-weight:500">{{ fx.ai_err }}</p>   <!-- fix18: AI fallibility line (kpi.md v1.10 section 7.2) -->
@@ -271,7 +271,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2636,"height":1100}}'>
 class Component extends DCLogic {
   // fix16 (28 Oct 2026): LiveKit class features / learning-guarantee claim flow — 6 languages, identical keys
-  fx16(l) { var D = {"bn": {"cq_good": "সংযোগ: ভালো", "int_b": "হাত তোলো", "int_tip": "হাত না তোলা পর্যন্ত তোমার মাইক বন্ধ থাকে। Nexa Teacher থামে, একটি পালার জন্য মাইক চালু করে (সর্বোচ্চ 60 সেকেন্ড) আর শোনে; কথা থামালে মাইক নিজেই বন্ধ হয় (টার্ন ডিটেকশন)।", "ns_n": "শব্দ কমানো (তোমার ব্রাউজারে)", "rc_back": "আবার যুক্ত হয়েছ — 42 সেকেন্ড বাইরে ছিলে (নমুনা); আজকের 1:1 সময়ে 1 মিনিট ফেরত দেওয়া হলো", "vt_off": "মাইক বন্ধ", "ai_err": "AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।", "mt9_h": "ভুলের টাইমলাইন", "mt9_concept": "ধারণা", "mt9_rule": "সঠিক নিয়ম", "mt9_watch": "▶ ভিডিওতে দেখো", "mt9_open": "এখনো ঠিক হয়নি", "r8_s4": "−3 বাইরে নিলে ভেতরের সব চিহ্ন বদলায়: −3x + 6 = −3(x − 2)।", "im9_v": "দ্বিঘাত সমীকরণ-এ আয়ত্ত: ক্লাসের আগে 42% → পরে 61% (+19%)"}, "en": {"cq_good": "Connection: good", "int_b": "Raise hand", "int_tip": "Your mic is off until you raise your hand. Nexa Teacher pauses, turns your mic on for one turn (max 60 s) and listens; the mic turns off by itself when you stop speaking (turn detection).", "ns_n": "Noise suppression (in your browser)", "rc_back": "Reconnected — you were away 42 s (sample); 1 min added back to today’s 1:1 time", "vt_off": "Mic off", "ai_err": "AI can make mistakes. If something looks wrong, check with your teacher or report it.", "mt9_h": "Mistake timeline", "mt9_concept": "Concept", "mt9_rule": "Correct rule", "mt9_watch": "▶ Watch in video", "mt9_open": "Not corrected yet", "r8_s4": "Taking out −3 changes every sign inside: −3x + 6 = −3(x − 2).", "im9_v": "Mastery of Quadratic Equations: before the class 42% → after 61% (+19%)"}, "hi": {"cq_good": "कनेक्शन: अच्छा", "int_b": "हाथ उठाओ", "int_tip": "हाथ उठाने तक तुम्हारा माइक बंद रहता है। Nexa Teacher रुकता है, एक बारी के लिए माइक चालू करता है (ज़्यादा से ज़्यादा 60 सेकंड) और सुनता है; बोलना रुकते ही माइक अपने आप बंद (टर्न डिटेक्शन)।", "ns_n": "शोर कम करना (तुम्हारे ब्राउज़र में)", "rc_back": "फिर से जुड़ गए — 42 सेकंड बाहर रहे (नमूना); आज के 1:1 समय में 1 मिनट वापस जोड़ा गया", "vt_off": "माइक बंद", "ai_err": "AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।", "mt9_h": "ग़लतियों की टाइमलाइन", "mt9_concept": "अवधारणा", "mt9_rule": "सही नियम", "mt9_watch": "▶ वीडियो में देखो", "mt9_open": "अभी सुधरी नहीं", "r8_s4": "−3 बाहर निकालने पर अंदर के सारे चिह्न बदलते हैं: −3x + 6 = −3(x − 2)।", "im9_v": "द्विघात समीकरण में महारत: क्लास से पहले 42% → बाद में 61% (+19%)"}, "ur": {"cq_good": "کنکشن: اچھا", "int_b": "ہاتھ اٹھاؤ", "int_tip": "ہاتھ اٹھانے تک تمہارا مائیک بند رہتا ہے۔ Nexa Teacher رکتا ہے، ایک باری کے لیے مائیک آن کرتا ہے (زیادہ سے زیادہ ⁦60⁩ سیکنڈ) اور سنتا ہے؛ بولنا رکتے ہی مائیک خود بند (ٹرن ڈیٹیکشن)۔", "ns_n": "شور کم کرنا (تمہارے براؤزر میں)", "rc_back": "دوبارہ جڑ گئے — ⁦42⁩ سیکنڈ باہر رہے (نمونہ)؛ آج کے ⁦1:1⁩ وقت میں ⁦1⁩ منٹ واپس جوڑا گیا", "vt_off": "مائیک بند", "ai_err": "AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔", "mt9_h": "غلطیوں کی ٹائم لائن", "mt9_concept": "تصور", "mt9_rule": "درست قاعدہ", "mt9_watch": "▶ ویڈیو میں دیکھو", "mt9_open": "ابھی درست نہیں ہوئی", "r8_s4": "⁦−3⁩ باہر نکالنے پر اندر کی سب علامتیں بدلتی ہیں: ⁦−3x + 6 = −3(x − 2)⁩۔", "im9_v": "دو درجی مساوات میں مہارت: کلاس سے پہلے ⁦42%⁩ ← بعد میں ⁦61%⁩ (⁦+19%⁩)"}, "ar": {"cq_good": "الاتصال: جيد", "int_b": "ارفع يدك", "int_tip": "يبقى ميكروفونك مغلقًا حتى ترفع يدك. يتوقف Nexa Teacher ويفتح ميكروفونك لدور واحد (حتى ⁦60⁩ ثانية) ويستمع؛ ويُغلق الميكروفون وحده حين تتوقف عن الكلام (رصد الدور).", "ns_n": "كتم الضوضاء (في متصفحك)", "rc_back": "عدت إلى الاتصال — غبت ⁦42⁩ ثانية (عيّنة)؛ وأُعيدت ⁦1⁩ دقيقة إلى وقت ⁦1:1⁩ اليوم", "vt_off": "الميكروفون مغلق", "ai_err": "قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه.", "mt9_h": "الخط الزمني للأخطاء", "mt9_concept": "المفهوم", "mt9_rule": "القاعدة الصحيحة", "mt9_watch": "▶ شاهد في الفيديو", "mt9_open": "لم يُصحَّح بعد", "r8_s4": "إخراج ⁦−3⁩ يغيّر كل الإشارات في الداخل: ⁦−3x + 6 = −3(x − 2)⁩.", "im9_v": "إتقان المعادلات التربيعية: قبل الحصة ⁦42%⁩ ← بعدها ⁦61%⁩ (⁦+19%⁩)"}, "fr": {"cq_good": "Connexion : bonne", "int_b": "Lever la main", "int_tip": "Ton micro reste coupé tant que tu ne lèves pas la main. Nexa Teacher s’arrête, ouvre ton micro pour un tour (60 s max) et écoute ; le micro se coupe tout seul quand tu arrêtes de parler (détection de tour de parole).", "ns_n": "Réduction du bruit (dans ton navigateur)", "rc_back": "Reconnecté — absent 42 s (exemple) ; 1 min rendue sur ton temps 1:1 du jour", "vt_off": "Micro coupé", "ai_err": "L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le.", "mt9_h": "Chronologie des erreurs", "mt9_concept": "Notion", "mt9_rule": "Règle correcte", "mt9_watch": "▶ Voir dans la vidéo", "mt9_open": "Pas encore corrigée", "r8_s4": "Sortir −3 change tous les signes à l’intérieur : −3x + 6 = −3(x − 2).", "im9_v": "Maîtrise de Équations du second degré : avant le cours 42 % → après 61 % (+19 %)"}}; return D[l] || D.bn; }
+  fx16(l) { var D = {"bn": {"cq_good": "সংযোগ: ভালো", "int_b": "হাত তোলো", "int_tip": "হাত না তোলা পর্যন্ত তোমার মাইক বন্ধ থাকে। Nexa Tutor থামে, একটি পালার জন্য মাইক চালু করে (সর্বোচ্চ 60 সেকেন্ড) আর শোনে; কথা থামালে মাইক নিজেই বন্ধ হয় (টার্ন ডিটেকশন)।", "ns_n": "শব্দ কমানো (তোমার ব্রাউজারে)", "rc_back": "আবার যুক্ত হয়েছ — 42 সেকেন্ড বাইরে ছিলে (নমুনা); আজকের 1:1 সময়ে 1 মিনিট ফেরত দেওয়া হলো", "vt_off": "মাইক বন্ধ", "ai_err": "AI ভুল করতে পারে। কিছু ভুল মনে হলে তোমার শিক্ষকের সাথে মিলিয়ে নাও বা রিপোর্ট করো।", "mt9_h": "ভুলের টাইমলাইন", "mt9_concept": "ধারণা", "mt9_rule": "সঠিক নিয়ম", "mt9_watch": "▶ ভিডিওতে দেখো", "mt9_open": "এখনো ঠিক হয়নি", "r8_s4": "−3 বাইরে নিলে ভেতরের সব চিহ্ন বদলায়: −3x + 6 = −3(x − 2)।", "im9_v": "দ্বিঘাত সমীকরণ-এ আয়ত্ত: ক্লাসের আগে 42% → পরে 61% (+19%)"}, "en": {"cq_good": "Connection: good", "int_b": "Raise hand", "int_tip": "Your mic is off until you raise your hand. Nexa Tutor pauses, turns your mic on for one turn (max 60 s) and listens; the mic turns off by itself when you stop speaking (turn detection).", "ns_n": "Noise suppression (in your browser)", "rc_back": "Reconnected — you were away 42 s (sample); 1 min added back to today’s 1:1 time", "vt_off": "Mic off", "ai_err": "AI can make mistakes. If something looks wrong, check with your teacher or report it.", "mt9_h": "Mistake timeline", "mt9_concept": "Concept", "mt9_rule": "Correct rule", "mt9_watch": "▶ Watch in video", "mt9_open": "Not corrected yet", "r8_s4": "Taking out −3 changes every sign inside: −3x + 6 = −3(x − 2).", "im9_v": "Mastery of Quadratic Equations: before the class 42% → after 61% (+19%)"}, "hi": {"cq_good": "कनेक्शन: अच्छा", "int_b": "हाथ उठाओ", "int_tip": "हाथ उठाने तक तुम्हारा माइक बंद रहता है। Nexa Tutor रुकता है, एक बारी के लिए माइक चालू करता है (ज़्यादा से ज़्यादा 60 सेकंड) और सुनता है; बोलना रुकते ही माइक अपने आप बंद (टर्न डिटेक्शन)।", "ns_n": "शोर कम करना (तुम्हारे ब्राउज़र में)", "rc_back": "फिर से जुड़ गए — 42 सेकंड बाहर रहे (नमूना); आज के 1:1 समय में 1 मिनट वापस जोड़ा गया", "vt_off": "माइक बंद", "ai_err": "AI ग़लती कर सकता है। कुछ ग़लत लगे तो अपने शिक्षक से पूछ लो या रिपोर्ट करो।", "mt9_h": "ग़लतियों की टाइमलाइन", "mt9_concept": "अवधारणा", "mt9_rule": "सही नियम", "mt9_watch": "▶ वीडियो में देखो", "mt9_open": "अभी सुधरी नहीं", "r8_s4": "−3 बाहर निकालने पर अंदर के सारे चिह्न बदलते हैं: −3x + 6 = −3(x − 2)।", "im9_v": "द्विघात समीकरण में महारत: क्लास से पहले 42% → बाद में 61% (+19%)"}, "ur": {"cq_good": "کنکشن: اچھا", "int_b": "ہاتھ اٹھاؤ", "int_tip": "ہاتھ اٹھانے تک تمہارا مائیک بند رہتا ہے۔ Nexa Tutor رکتا ہے، ایک باری کے لیے مائیک آن کرتا ہے (زیادہ سے زیادہ ⁦60⁩ سیکنڈ) اور سنتا ہے؛ بولنا رکتے ہی مائیک خود بند (ٹرن ڈیٹیکشن)۔", "ns_n": "شور کم کرنا (تمہارے براؤزر میں)", "rc_back": "دوبارہ جڑ گئے — ⁦42⁩ سیکنڈ باہر رہے (نمونہ)؛ آج کے ⁦1:1⁩ وقت میں ⁦1⁩ منٹ واپس جوڑا گیا", "vt_off": "مائیک بند", "ai_err": "AI غلطی کر سکتا ہے۔ کچھ غلط لگے تو اپنے استاد سے پوچھ لو یا رپورٹ کرو۔", "mt9_h": "غلطیوں کی ٹائم لائن", "mt9_concept": "تصور", "mt9_rule": "درست قاعدہ", "mt9_watch": "▶ ویڈیو میں دیکھو", "mt9_open": "ابھی درست نہیں ہوئی", "r8_s4": "⁦−3⁩ باہر نکالنے پر اندر کی سب علامتیں بدلتی ہیں: ⁦−3x + 6 = −3(x − 2)⁩۔", "im9_v": "دو درجی مساوات میں مہارت: کلاس سے پہلے ⁦42%⁩ ← بعد میں ⁦61%⁩ (⁦+19%⁩)"}, "ar": {"cq_good": "الاتصال: جيد", "int_b": "ارفع يدك", "int_tip": "يبقى ميكروفونك مغلقًا حتى ترفع يدك. يتوقف Nexa Tutor ويفتح ميكروفونك لدور واحد (حتى ⁦60⁩ ثانية) ويستمع؛ ويُغلق الميكروفون وحده حين تتوقف عن الكلام (رصد الدور).", "ns_n": "كتم الضوضاء (في متصفحك)", "rc_back": "عدت إلى الاتصال — غبت ⁦42⁩ ثانية (عيّنة)؛ وأُعيدت ⁦1⁩ دقيقة إلى وقت ⁦1:1⁩ اليوم", "vt_off": "الميكروفون مغلق", "ai_err": "قد يخطئ الذكاء الاصطناعي. إن بدا لك شيء خاطئًا فتحقّق منه مع معلّمك أو أبلِغ عنه.", "mt9_h": "الخط الزمني للأخطاء", "mt9_concept": "المفهوم", "mt9_rule": "القاعدة الصحيحة", "mt9_watch": "▶ شاهد في الفيديو", "mt9_open": "لم يُصحَّح بعد", "r8_s4": "إخراج ⁦−3⁩ يغيّر كل الإشارات في الداخل: ⁦−3x + 6 = −3(x − 2)⁩.", "im9_v": "إتقان المعادلات التربيعية: قبل الحصة ⁦42%⁩ ← بعدها ⁦61%⁩ (⁦+19%⁩)"}, "fr": {"cq_good": "Connexion : bonne", "int_b": "Lever la main", "int_tip": "Ton micro reste coupé tant que tu ne lèves pas la main. Nexa Tutor s’arrête, ouvre ton micro pour un tour (60 s max) et écoute ; le micro se coupe tout seul quand tu arrêtes de parler (détection de tour de parole).", "ns_n": "Réduction du bruit (dans ton navigateur)", "rc_back": "Reconnecté — absent 42 s (exemple) ; 1 min rendue sur ton temps 1:1 du jour", "vt_off": "Micro coupé", "ai_err": "L’IA peut se tromper. Si quelque chose te paraît faux, vérifie avec ton professeur ou signale-le.", "mt9_h": "Chronologie des erreurs", "mt9_concept": "Notion", "mt9_rule": "Règle correcte", "mt9_watch": "▶ Voir dans la vidéo", "mt9_open": "Pas encore corrigée", "r8_s4": "Sortir −3 change tous les signes à l’intérieur : −3x + 6 = −3(x − 2).", "im9_v": "Maîtrise de Équations du second degré : avant le cours 42 % → après 61 % (+19 %)"}}; return D[l] || D.bn; }
   // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
   langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
   uiText() { return this.i18n(); }
@@ -327,7 +327,7 @@ class Component extends DCLogic {
       k044: 'প্রায় 1–2 মিনিটে তৈরি হবে — নোটিফিকেশন পাবে।',
       k045: 'শিখেছ: মধ্যপদ বিভাজন · ভুল: চিহ্ন (ধাপ 3) · পরের ক্লাস শুরু হবে চিহ্নের অনুশীলন দিয়ে।',
       k046: 'জমা দাও',
-      k047: 'Nexa Teacher ব্যস্ত — ETA ও বিকল্প',
+      k047: 'Nexa Tutor ব্যস্ত — ETA ও বিকল্প',
       k048: '1:1 ক্লাস',
       k049: 'মিনিট',
       k050: 'এখন অনেকে ক্লাস করছে',
@@ -340,8 +340,8 @@ class Component extends DCLogic {
       k057: '2 মিনিট',
       k058: '5টি সত্য/মিথ্যা',
       k059: 'ব্রাউজারেই সাথে সাথে ফল',
-      k060: 'সার্ভার সমস্যায় Nexa Teacher থামলে হারানো মিনিট ফেরত পাবে। Nexa Co-Teacher সবসময় চালু থাকে।',
-      k061: 'Nexa Co-Teacher-কে লিখে জিজ্ঞাসা করো',
+      k060: 'সার্ভার সমস্যায় Nexa Tutor থামলে হারানো মিনিট ফেরত পাবে। Nexa Co-Tutor সবসময় চালু থাকে।',
+      k061: 'Nexa Co-Tutor-কে লিখে জিজ্ঞাসা করো',
       k062: 'রেকর্ড করবে? — শুরুতে বেছে নাও · BdSL অ্যাভাটার',
       k063: 'BdSL · 1.5 মিনিট = 1 মিনিট',
       k064: '● রেকর্ড হচ্ছে · শুধু তোমার অ্যাকাউন্টে',
@@ -363,7 +363,7 @@ class Component extends DCLogic {
       k080: 'রেকর্ডিং কখনো নিজে থেকে শুরু হয় না। ক্লাস শেষে: সারিতে আছে → প্রসেস হচ্ছে → আপলোড হচ্ছে → যাচাই হচ্ছে → তৈরি',
       k081: 'ক্লাস রিপোর্ট — প্রতিটি ক্লাসের পর',
       k082: 'ক্লাস রিপোর্ট',
-      k083: 'সাধারণ গণিত — দ্বিঘাত সমীকরণ — পাঠ 03 — 6 ডিসেম্বর 2026',
+      k083: 'সাধারণ গণিত — দ্বিঘাত সমীকরণ — পাঠ 03 — 10 জানুয়ারি 2027',
       k084: 'তৈরি',
       k085: 'টপিক কভারেজ',
       k086: '✓ সমীকরণ গঠন · ✓ মধ্যপদ বিভাজন · ! সাধারণ উৎপাদক ও চিহ্ন (সংকেত নিয়ে) · → নিশ্চায়ক b² − 4ac পরের ক্লাসে',
@@ -377,11 +377,11 @@ class Component extends DCLogic {
       k094: '“সম্ভাব্য কারণ” — নিশ্চিত নয়; শুধু এই ক্লাসের তথ্যের ভিত্তিতে।',
       k095: 'জ্ঞানের ঘাটতি · রিভিউয়ের ইতিহাস',
       k096: 'ঋণাত্মক সাধারণ উৎপাদক বাইরে নেওয়ার সময় চিহ্ন',
-      k097: 'দ্বিঘাত সমীকরণ · 2টি ক্লাস: 4 ও 6 ডিসেম্বর 2026 · আগে: 5টির মধ্যে 2টি (40%)',
+      k097: 'দ্বিঘাত সমীকরণ · 2টি ক্লাস: 4 ও 10 জানুয়ারি 2027 · আগে: 5টির মধ্যে 2টি (40%)',
       k098: 'যথেষ্ট তথ্য নেই',
-      k099: 'পরে: তুলনীয় 5 প্রশ্নের কুইজ বুধবার 9 ডিসেম্বর',
+      k099: 'পরে: তুলনীয় 5 প্রশ্নের কুইজ বৃহস্পতিবার 14 জানুয়ারি',
       k100: 'পরের ধাপ · প্রমাণ',
-      k101: '• চিহ্নের অনুশীলন · বুধবার 9 ডিসেম্বর রিভিউ (3 দিন পর) · AI-কে শেখাও',
+      k101: '• চিহ্নের অনুশীলন · বৃহস্পতিবার 14 জানুয়ারি রিভিউ (3 দিন পর) · AI-কে শেখাও',
       k102: 'রেকর্ডিং 14:05-এ · তোমার ভুল',
       k103: 'এই রিপোর্ট শুধু তুমি আর তোমার অভিভাবক দেখতে পাও। রেকর্ডিং আবার দেখলেই আয়ত্ত ধরা হয় না।'
     };
@@ -434,7 +434,7 @@ class Component extends DCLogic {
       k044: 'Ready in about 1–2 minutes — you’ll get a notification.',
       k045: 'Learned: splitting the middle term · Mistake: sign (step 3) · The next class starts with sign practice.',
       k046: 'Submit',
-      k047: 'Nexa Teacher busy — ETA and options',
+      k047: 'Nexa Tutor busy — ETA and options',
       k048: '1:1 class',
       k049: 'min',
       k050: 'Lots of learners are in class right now',
@@ -447,8 +447,8 @@ class Component extends DCLogic {
       k057: '2 minutes',
       k058: '5 true/false questions',
       k059: 'Instant results in your browser',
-      k060: 'If Nexa Teacher stops because of a server problem, you get the lost minutes back. Nexa Co-Teacher is always on.',
-      k061: 'Ask Nexa Co-Teacher in writing',
+      k060: 'If Nexa Tutor stops because of a server problem, you get the lost minutes back. Nexa Co-Tutor is always on.',
+      k061: 'Ask Nexa Co-Tutor in writing',
       k062: 'Record this class? — choose at the start · BdSL avatar',
       k063: 'BdSL · 1.5 min = 1 min',
       k064: '● Recording · only in your account',
@@ -470,7 +470,7 @@ class Component extends DCLogic {
       k080: 'Recording never starts by itself. After class: Queued → Processing → Uploading → Verifying → Ready',
       k081: 'Class report — after every class',
       k082: 'Class report',
-      k083: 'General Mathematics — Quadratic Equations — Lesson 03 — 6 Dec 2026',
+      k083: 'General Mathematics — Quadratic Equations — Lesson 03 — 10 Jan 2027',
       k084: 'Ready',
       k085: 'Topic coverage',
       k086: '✓ Forming the equation · ✓ splitting the middle term · ! common factor and signs (with hints) · → the discriminant b² − 4ac next class',
@@ -484,11 +484,11 @@ class Component extends DCLogic {
       k094: '“Possible cause” — not certain; it is based on this class only.',
       k095: 'Knowledge gaps · review history',
       k096: 'Signs when taking out a negative common factor',
-      k097: 'Quadratic equations · 2 classes: 4 and 6 December 2026 · before: 2 of 5 (40%)',
+      k097: 'Quadratic equations · 2 classes: 4 and 10 January 2027 · before: 2 of 5 (40%)',
       k098: 'Not enough data',
-      k099: 'After: a comparable 5-question quiz on Wednesday 9 December',
+      k099: 'After: a comparable 5-question quiz on Thursday 14 January',
       k100: 'Next steps · evidence',
-      k101: '• Sign practice · review on Wednesday 9 December (after 3 days) · Teach the AI',
+      k101: '• Sign practice · review on Thursday 14 January (after 3 days) · Teach the AI',
       k102: 'Recording at 14:05 · your mistake',
       k103: 'Only you and your guardian can see this report. Watching a recording again never counts as mastery.'
     };
@@ -541,7 +541,7 @@ class Component extends DCLogic {
       k044: 'लगभग 1–2 मिनट में तैयार — सूचना मिलेगी।',
       k045: 'सीखा: मध्य पद को तोड़ना · ग़लती: चिह्न (चरण 3) · अगली क्लास चिह्न के अभ्यास से शुरू होगी।',
       k046: 'जमा करो',
-      k047: 'Nexa Teacher व्यस्त — ETA और विकल्प',
+      k047: 'Nexa Tutor व्यस्त — ETA और विकल्प',
       k048: '1:1 क्लास',
       k049: 'मिनट',
       k050: 'अभी बहुत लोग क्लास कर रहे हैं',
@@ -554,8 +554,8 @@ class Component extends DCLogic {
       k057: '2 मिनट',
       k058: '5 सही/ग़लत प्रश्न',
       k059: 'ब्राउज़र में ही तुरंत नतीजा',
-      k060: 'सर्वर की दिक़्क़त से Nexa Teacher रुके तो खोए मिनट वापस मिलेंगे। Nexa Co-Teacher हमेशा चालू रहता है।',
-      k061: 'Nexa Co-Teacher से लिखकर पूछो',
+      k060: 'सर्वर की दिक़्क़त से Nexa Tutor रुके तो खोए मिनट वापस मिलेंगे। Nexa Co-Tutor हमेशा चालू रहता है।',
+      k061: 'Nexa Co-Tutor से लिखकर पूछो',
       k062: 'रिकॉर्ड करें? — शुरुआत में चुनो · BdSL अवतार',
       k063: 'BdSL · 1.5 मिनट = 1 मिनट',
       k064: '● रिकॉर्ड हो रहा है · सिर्फ़ तुम्हारे अकाउंट में',
@@ -577,7 +577,7 @@ class Component extends DCLogic {
       k080: 'रिकॉर्डिंग कभी अपने आप शुरू नहीं होती। क्लास के बाद: कतार में → प्रोसेस हो रही है → अपलोड हो रही है → जाँच हो रही है → तैयार',
       k081: 'क्लास रिपोर्ट — हर क्लास के बाद',
       k082: 'क्लास रिपोर्ट',
-      k083: 'सामान्य गणित — द्विघात समीकरण — पाठ 03 — 6 दिसंबर 2026',
+      k083: 'सामान्य गणित — द्विघात समीकरण — पाठ 03 — 10 जनवरी 2027',
       k084: 'तैयार',
       k085: 'टॉपिक कवरेज',
       k086: '✓ समीकरण बनाना · ✓ मध्य पद को तोड़ना · ! उभयनिष्ठ गुणनखंड और चिह्न (संकेतों के साथ) · → विविक्तकर b² − 4ac अगली क्लास में',
@@ -591,11 +591,11 @@ class Component extends DCLogic {
       k094: '“संभावित कारण” — पक्का नहीं; सिर्फ़ इस क्लास पर आधारित।',
       k095: 'ज्ञान की कमियाँ · रिव्यू का इतिहास',
       k096: 'ऋणात्मक उभयनिष्ठ गुणनखंड बाहर निकालते समय चिह्न',
-      k097: 'द्विघात समीकरण · 2 क्लास: 4 और 6 दिसंबर 2026 · पहले: 5 में से 2 (40%)',
+      k097: 'द्विघात समीकरण · 2 क्लास: 4 और 10 जनवरी 2027 · पहले: 5 में से 2 (40%)',
       k098: 'पर्याप्त डेटा नहीं',
-      k099: 'बाद में: तुलना योग्य 5 सवालों का क्विज़ बुधवार 9 दिसंबर को',
+      k099: 'बाद में: तुलना योग्य 5 सवालों का क्विज़ गुरुवार 14 जनवरी को',
       k100: 'अगले कदम · सबूत',
-      k101: '• चिह्न का अभ्यास · बुधवार 9 दिसंबर को रिव्यू (3 दिन बाद) · AI को सिखाओ',
+      k101: '• चिह्न का अभ्यास · गुरुवार 14 जनवरी को रिव्यू (3 दिन बाद) · AI को सिखाओ',
       k102: 'रिकॉर्डिंग 14:05 पर · तुम्हारी ग़लती',
       k103: 'यह रिपोर्ट सिर्फ़ तुम और तुम्हारे अभिभावक देख सकते हैं। रिकॉर्डिंग दोबारा देखना कभी महारत नहीं गिना जाता।'
     };
@@ -648,7 +648,7 @@ class Component extends DCLogic {
       k044: 'تقریباً ' + M('1–2') + ' منٹ میں تیار — اطلاع ملے گی۔',
       k045: 'سیکھا: درمیانی رکن کو توڑنا · غلطی: علامت (مرحلہ ' + M('3') + ')' + ' · اگلی کلاس علامت کی مشق سے شروع ہوگی۔',
       k046: 'جمع کرو',
-      k047: 'Nexa Teacher مصروف — ETA اور متبادل',
+      k047: 'Nexa Tutor مصروف — ETA اور متبادل',
       k048: M('1:1') + ' کلاس',
       k049: 'منٹ',
       k050: 'ابھی بہت سے لوگ کلاس کر رہے ہیں',
@@ -661,8 +661,8 @@ class Component extends DCLogic {
       k057: M('2') + ' منٹ',
       k058: M('5') + ' صحیح/غلط سوال',
       k059: 'براؤزر میں فوراً نتیجہ',
-      k060: 'سرور کی خرابی سے Nexa Teacher رکے تو ضائع منٹ واپس ملیں گے۔ Nexa Co-Teacher ہمیشہ چالو رہتا ہے۔',
-      k061: 'Nexa Co-Teacher سے لکھ کر پوچھو',
+      k060: 'سرور کی خرابی سے Nexa Tutor رکے تو ضائع منٹ واپس ملیں گے۔ Nexa Co-Tutor ہمیشہ چالو رہتا ہے۔',
+      k061: 'Nexa Co-Tutor سے لکھ کر پوچھو',
       k062: 'ریکارڈ کریں؟ — شروع میں چنو · BdSL اوتار',
       k063: 'BdSL · ' + M('1.5') + ' منٹ ' + M('= 1') + ' منٹ',
       k064: '● ریکارڈ ہو رہا ہے · صرف تمہارے اکاؤنٹ میں',
@@ -684,7 +684,7 @@ class Component extends DCLogic {
       k080: 'ریکارڈنگ کبھی خود بخود شروع نہیں ہوتی۔ کلاس کے بعد: قطار میں ← پروسیس ہو رہی ہے ← اپ لوڈ ہو رہی ہے ← جانچ ہو رہی ہے ← تیار',
       k081: 'کلاس رپورٹ — ہر کلاس کے بعد',
       k082: 'کلاس رپورٹ',
-      k083: 'عام ریاضی — دو درجی مساوات — سبق ' + M('03') + ' — ' + M('6') + ' دسمبر ' + M('2026'),
+      k083: 'عام ریاضی — دو درجی مساوات — سبق ' + M('03') + ' — ' + M('10') + ' جنوری ' + M('2027'),
       k084: 'تیار',
       k085: 'ٹاپک کوریج',
       k086: '✓ مساوات بنانا · ✓ درمیانی رکن کو توڑنا · ! مشترک جزو ضربی اور علامتیں (اشاروں کے ساتھ)' + ' · ← ممیز ' + M('b² − 4ac') + ' اگلی کلاس میں',
@@ -698,11 +698,11 @@ class Component extends DCLogic {
       k094: '“ممکنہ وجہ” — یقینی نہیں؛ صرف اس کلاس پر مبنی۔',
       k095: 'علم کی کمیاں · ریویو کی تاریخ',
       k096: 'منفی مشترک جزو ضربی باہر نکالتے وقت علامتیں',
-      k097: 'دو درجی مساوات · ' + M('2') + ' کلاسیں: ' + M('4') + ' اور ' + M('6') + ' دسمبر ' + M('2026') + ' · پہلے: ' + M('5') + ' میں سے ' + M('2 (40%)'),
+      k097: 'دو درجی مساوات · ' + M('2') + ' کلاسیں: ' + M('4') + ' اور ' + M('10') + ' جنوری ' + M('2027') + ' · پہلے: ' + M('5') + ' میں سے ' + M('2 (40%)'),
       k098: 'کافی ڈیٹا نہیں',
-      k099: 'بعد میں: موازنے کے قابل ' + M('5') + ' سوالوں کا کوئز بدھ ' + M('9') + ' دسمبر کو',
+      k099: 'بعد میں: موازنے کے قابل ' + M('5') + ' سوالوں کا کوئز جمعرات ' + M('14') + ' جنوری کو',
       k100: 'اگلے قدم · ثبوت',
-      k101: '• علامت کی مشق · بدھ ' + M('9') + ' دسمبر کو ریویو (' + M('3') + ' دن بعد)' + ' · AI کو سکھاؤ',
+      k101: '• علامت کی مشق · جمعرات ' + M('14') + ' جنوری کو ریویو (' + M('3') + ' دن بعد)' + ' · AI کو سکھاؤ',
       k102: 'ریکارڈنگ ' + M('14:05') + ' پر · تمہاری غلطی',
       k103: 'یہ رپورٹ صرف تم اور تمہارے سرپرست دیکھ سکتے ہیں۔ ریکارڈنگ دوبارہ دیکھنا کبھی مہارت نہیں گنا جاتا۔'
     };
@@ -755,7 +755,7 @@ class Component extends DCLogic {
       k044: 'يجهز خلال ' + M('1–2') + ' دقيقة تقريبًا — سيصلك إشعار.',
       k045: 'تعلّمت: تجزئة الحد الأوسط · الخطأ: الإشارة (الخطوة ' + M('3') + ')' + ' · تبدأ الحصة القادمة بتدريب على الإشارات.',
       k046: 'إرسال',
-      k047: 'Nexa Teacher مشغول — وقت الانتظار والبدائل',
+      k047: 'Nexa Tutor مشغول — وقت الانتظار والبدائل',
       k048: 'حصة ' + M('1:1'),
       k049: 'دقيقة',
       k050: 'كثيرون في الحصص الآن',
@@ -768,8 +768,8 @@ class Component extends DCLogic {
       k057: 'دقيقتان',
       k058: M('5') + ' أسئلة صح/خطأ',
       k059: 'نتيجة فورية في متصفحك',
-      k060: 'إذا توقف Nexa Teacher بسبب مشكلة في الخادم تُعاد إليك الدقائق الضائعة. Nexa Co-Teacher يعمل دائمًا.',
-      k061: 'اسأل Nexa Co-Teacher كتابةً',
+      k060: 'إذا توقف Nexa Tutor بسبب مشكلة في الخادم تُعاد إليك الدقائق الضائعة. Nexa Co-Tutor يعمل دائمًا.',
+      k061: 'اسأل Nexa Co-Tutor كتابةً',
       k062: 'هل تسجّل؟ — اختر في البداية · أفاتار BdSL',
       k063: 'BdSL · ' + M('1.5') + ' دقيقة ' + M('= 1') + ' دقيقة',
       k064: '● جارٍ التسجيل · في حسابك فقط',
@@ -791,7 +791,7 @@ class Component extends DCLogic {
       k080: 'لا يبدأ التسجيل أبدًا من تلقاء نفسه. بعد الحصة: في قائمة الانتظار ← قيد المعالجة ← جارٍ الرفع ← جارٍ التحقق ← جاهز',
       k081: 'تقرير الحصة — بعد كل حصة',
       k082: 'تقرير الحصة',
-      k083: 'الرياضيات العامة — المعادلات التربيعية — الدرس ' + M('03') + ' — ' + M('6') + ' ديسمبر ' + M('2026'),
+      k083: 'الرياضيات العامة — المعادلات التربيعية — الدرس ' + M('03') + ' — ' + M('10') + ' يناير ' + M('2027'),
       k084: 'جاهز',
       k085: 'تغطية الموضوع',
       k086: '✓ تكوين المعادلة · ✓ تجزئة الحد الأوسط · ! العامل المشترك والإشارات (مع تلميحات)' + ' · ← المميِّز ' + M('b² − 4ac') + ' في الحصة القادمة',
@@ -805,11 +805,11 @@ class Component extends DCLogic {
       k094: '“سبب محتمل” — غير مؤكد؛ مبني على هذه الحصة فقط.',
       k095: 'فجوات المعرفة · سجل المراجعة',
       k096: 'الإشارات عند إخراج عامل مشترك سالب',
-      k097: 'المعادلات التربيعية · حصتان: ' + M('4') + ' و' + M('6') + ' ديسمبر ' + M('2026') + ' · قبل: ' + M('2') + ' من ' + M('5 (40%)'),
+      k097: 'المعادلات التربيعية · حصتان: ' + M('4') + ' و' + M('10') + ' يناير ' + M('2027') + ' · قبل: ' + M('2') + ' من ' + M('5 (40%)'),
       k098: 'لا توجد بيانات كافية',
-      k099: 'بعد: اختبار مماثل من ' + M('5') + ' أسئلة يوم الأربعاء ' + M('9') + ' ديسمبر',
+      k099: 'بعد: اختبار مماثل من ' + M('5') + ' أسئلة يوم الخميس ' + M('14') + ' يناير',
       k100: 'الخطوات التالية · الأدلة',
-      k101: '• تدريب على الإشارات · مراجعة يوم الأربعاء ' + M('9') + ' ديسمبر (بعد ' + M('3') + ' أيام)' + ' · علّم الذكاء الاصطناعي',
+      k101: '• تدريب على الإشارات · مراجعة يوم الخميس ' + M('14') + ' يناير (بعد ' + M('3') + ' أيام)' + ' · علّم الذكاء الاصطناعي',
       k102: 'التسجيل عند ' + M('14:05') + ' · خطؤك',
       k103: 'لا يرى هذا التقرير إلا أنت وولي أمرك. مشاهدة التسجيل مرة أخرى لا تُحسب إتقانًا أبدًا.'
     };
@@ -862,7 +862,7 @@ class Component extends DCLogic {
       k044: 'Prêt dans 1–2 minutes environ — tu recevras une notification.',
       k045: 'Appris : décomposer le terme du milieu · Erreur : signe (étape 3) · Le prochain cours commence par un exercice sur les signes.',
       k046: 'Envoyer',
-      k047: 'Nexa Teacher occupé — attente et options',
+      k047: 'Nexa Tutor occupé — attente et options',
       k048: 'Cours 1:1',
       k049: 'min',
       k050: 'Beaucoup d’élèves sont en cours en ce moment',
@@ -875,8 +875,8 @@ class Component extends DCLogic {
       k057: '2 minutes',
       k058: '5 questions vrai/faux',
       k059: 'Résultat immédiat dans ton navigateur',
-      k060: 'Si Nexa Teacher s’arrête à cause d’un problème de serveur, tes minutes perdues te sont rendues. Nexa Co-Teacher reste toujours disponible.',
-      k061: 'Demander à Nexa Co-Teacher par écrit',
+      k060: 'Si Nexa Tutor s’arrête à cause d’un problème de serveur, tes minutes perdues te sont rendues. Nexa Co-Tutor reste toujours disponible.',
+      k061: 'Demander à Nexa Co-Tutor par écrit',
       k062: 'Enregistrer ? — choisir au début · avatar BdSL',
       k063: 'BdSL · 1,5 min = 1 min',
       k064: '● Enregistrement · seulement dans ton compte',
@@ -898,7 +898,7 @@ class Component extends DCLogic {
       k080: 'L’enregistrement ne démarre jamais tout seul. Après le cours : En file d’attente → En traitement → Envoi en cours → Vérification → Prêt',
       k081: 'Rapport du cours — après chaque cours',
       k082: 'Rapport du cours',
-      k083: 'Mathématiques générales — Équations du second degré — Leçon 03 — 6 déc. 2026',
+      k083: 'Mathématiques générales — Équations du second degré — Leçon 03 — 10 janv. 2027',
       k084: 'Prêt',
       k085: 'Couverture du thème',
       k086: '✓ Mettre en équation · ✓ décomposer le terme du milieu · ! facteur commun et signes (avec indices) · → le discriminant b² − 4ac au prochain cours',
@@ -912,11 +912,11 @@ class Component extends DCLogic {
       k094: '« Cause possible » — pas certain ; basé seulement sur ce cours.',
       k095: 'Lacunes · historique de révision',
       k096: 'Les signes quand on sort un facteur commun négatif',
-      k097: 'Équations du second degré · 2 cours : 4 et 6 décembre 2026 · avant : 2 sur 5 (40 %)',
+      k097: 'Équations du second degré · 2 cours : 4 et 10 janvier 2027 · avant : 2 sur 5 (40 %)',
       k098: 'Pas assez de données',
-      k099: 'Après : un quiz comparable de 5 questions le mercredi 9 décembre',
+      k099: 'Après : un quiz comparable de 5 questions le jeudi 14 janvier',
       k100: 'Prochaines étapes · preuves',
-      k101: '• Exercice sur les signes · révision le mercredi 9 décembre (après 3 jours) · Apprends à l’IA',
+      k101: '• Exercice sur les signes · révision le jeudi 14 janvier (après 3 jours) · Apprends à l’IA',
       k102: 'Enregistrement à 14:05 · ton erreur',
       k103: 'Seuls toi et ton parent pouvez voir ce rapport. Revoir un enregistrement ne compte jamais comme maîtrise.'
     };

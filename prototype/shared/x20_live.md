@@ -64,7 +64,7 @@ PlayBoom "Last change v39", footer: no change since launch.
 
 | key | en | bn | hi | ur | ar | fr |
 |---|---|---|---|---|---|---|
-| headline (h1) | AI teacher, real learning | AI শিক্ষক, সত্যিকারের শেখা | AI शिक्षक, सच्ची पढ़ाई | AI استاد، حقیقی سیکھنا | معلّم AI، وتعلّم حقيقي | Un prof IA, un vrai apprentissage |
+| headline (h1) | AI tutor, real learning | AI টিউটর, সত্যিকারের শেখা | AI ट्यूटर, सच्ची पढ़ाई | AI ٹیوٹر، حقیقی سیکھنا | مدرّس خصوصي بالذكاء الاصطناعي، وتعلّم حقيقي | Un tuteur IA, un vrai apprentissage |
 | main CTA | Start the 7-day Free Trial | 7 দিনের Free Trial শুরু করো | 7 दिन का Free Trial शुरू करें | 7 دن کا Free Trial شروع کریں | ابدأ Free Trial لمدة 7 أيام | Commencer le Free Trial de 7 jours |
 | 2nd CTA | Try the live demo | লাইভ ডেমো চেষ্টা করো | लाइव डेमो आज़माएँ | لائیو ڈیمو آزمائیں | جرّب العرض المباشر | Essayer la démo |
 | pill | Paid plans since 1 January 2027 · 7-day Free Trial | পেইড প্ল্যান 1 জানুয়ারি 2027 থেকে · 7 দিনের Free Trial | पेड प्लान 1 जनवरी 2027 से · 7 दिन का Free Trial | پیڈ پلان 1 جنوری 2027 سے · 7 دن کا Free Trial | الخطط المدفوعة منذ 1 يناير 2027 · Free Trial لمدة 7 أيام | Offres payantes depuis le 1er janvier 2027 · Free Trial de 7 jours |
@@ -241,7 +241,7 @@ behaviour changes carry no version text). If the owner wants the redesign announ
 
 Owner 28 Oct 2026 18:11 ("more beautiful and more standard, no empty space") — what changed on X20 (live and the 26 Oct beta snapshot; ids, links and test hooks kept):
 - Section rhythm: eyebrow + title + one-line subtitle (centred), 88 px section padding (56 px on phones), 1280 px container, alternating bands. Eyebrow texts (6 languages) are site copy (`f17.eb`).
-- Hero: headline, sub-line, the two CTAs, trust facts; the class window (demo) gets a bar "1:1 class · Nexa Teacher" + "Mic off — raise your hand to speak" (owner 16:46–16:55 mic rule);
+- Hero: headline, sub-line, the two CTAs, trust facts; the class window (demo) gets a bar "1:1 class · Nexa Tutor" + "Mic off — raise your hand to speak" (owner 16:46–16:55 mic rule);
   the syllabus picker is one row under the hero; the "Works on weak internet" card moved into "How it works".
 - Sticky section nav (desktop ≥ 1024 px): appears in the header once the hero has scrolled away (How it works · Autism support · Courses · Exam hub · Plans · Guardians ·
   PlayBoom & MindForge · For institutions · FAQ), marks the section being read.
@@ -293,7 +293,7 @@ and the status line do not change (same rule as §8/§10). If the owner wants th
 - **Prototype switch "Free Beta view"** in the X20 top prototype bar (next to "Maintenance notice"): the same era switch as the admin preview — pressed = the 26 Oct 2026
   Free Beta snapshot, not pressed = live (1 Feb 2027). On phones the switch is icon-only and the device buttons that are not selected show only their icon (one row in all 6 languages).
 - **"In the Free Beta / Coming later" card** (id `beta-list`) in the FAQ side column, **Beta view only** (the Beta is over in the live view). Site copy `f18.bl`, 6 languages; en:
-  - In the Free Beta: Nexa Teacher 1:1 by voice on the whiteboard — 30 minutes a day · Lessons, practice and tests for the syllabus you choose · Batch classes — the 1:50 AI class ·
+  - In the Free Beta: Nexa Tutor 1:1 by voice on the whiteboard — 30 minutes a day · Lessons, practice and tests for the syllabus you choose · Batch classes — the 1:50 AI class ·
     Class recordings — only if you choose to record · Guardian app — consent, progress and the weekly report · Live Study Hall and the in-app Beta community · MindForge Pro, open to everyone
   - Coming later: Paid plans and Crash Packs — from 1 January 2027 · Learning guarantee — with paid plans (not in the Free Beta) · PlayBoom (Play class–Class III) — its own Free Beta,
     1–20 January 2027 · Links to Remon Motion Studio and NexaLogicDev — after launch

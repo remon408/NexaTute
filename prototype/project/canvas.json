@@ -15,7 +15,7 @@
    "expand": "fill",
    "h": 960,
    "page": "learner",
-   "title": "D2 · Nexa Teacher classroom (desktop)",
+   "title": "D2 · Nexa Tutor classroom (desktop)",
    "w": 1440,
    "x": 1520,
    "y": 5580
@@ -135,7 +135,7 @@
   "L04-Account.dc.html": {
    "h": 1400,
    "page": "learner",
-   "title": "L4 · Wallet & Daily Pass, notifications, profile, settings",
+   "title": "L4 · Extra minutes & Daily Pass, notifications, profile, settings",
    "w": 2206,
    "x": 0,
    "y": 1520
@@ -143,7 +143,7 @@
   "L05-AI-Teacher.dc.html": {
    "h": 1100,
    "page": "learner",
-   "title": "L5 · Nexa Teacher 1:1 class",
+   "title": "L5 · Nexa Tutor 1:1 class",
    "w": 2636,
    "x": 2286,
    "y": 1520
@@ -159,7 +159,7 @@
   "L07-Co-teacher.dc.html": {
    "h": 1200,
    "page": "learner",
-   "title": "L7 · Nexa Co-Teacher, recordings, error notebook",
+   "title": "L7 · Nexa Co-Tutor, recordings, error notebook",
    "w": 2636,
    "x": 2286,
    "y": 3040
@@ -285,7 +285,7 @@
    "h": 1000,
    "is_interactive": true,
    "page": "learner",
-   "title": "X2 · Prototype Flow 2: ক্লাস ও Nexa Co-Teacher — হোম, 1:1 ক্লাসের অপেক্ষা, Nexa Teacher-এর লাইভ ক্লাস ও স্মার্ট হোয়াইটবোর্ড, ক্লাসের ভেতরে ভুলের খাতা (সাইড প্যানেল, 3 ও 7 দিনে রিটেস্ট), এক্সিট টিকিট, ক্লাস সারাংশ, রেকর্ডিং (Play)",
+   "title": "X2 · Prototype Flow 2: ক্লাস ও Nexa Co-Tutor — হোম, 1:1 ক্লাসের অপেক্ষা, Nexa Tutor-এর লাইভ ক্লাস ও স্মার্ট হোয়াইটবোর্ড, ক্লাসের ভেতরে ভুলের খাতা (সাইড প্যানেল, 3 ও 7 দিনে রিটেস্ট), এক্সিট টিকিট, ক্লাস সারাংশ, রেকর্ডিং (Play)",
    "w": 1440,
    "x": 3376,
    "y": 8400,

@@ -707,6 +707,9 @@ button[data-tip],a[data-tip],[data-tip] button,[data-tip] a{cursor:pointer}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+function usdCents(bdt) { var p = Math.round(Number(bdt) * 100); return Math.floor((270 * p + 12200) / 24400); } // USD = BDT x 1.35 / 122, cents half-up
+function usdNum(bdt) { return usdCents(bdt) / 100; }
+function usdTxt(bdt) { return '$' + (usdCents(bdt) / 100).toFixed(2); }
 class Component extends DCLogic {
 componentDidMount() {
 var self = this;
@@ -760,48 +763,48 @@ verif: [{ id: 1, nk: 0, type: 'school', doc: 'eiin', num: '108234', br: 1, ok: [
 { id: 3, nk: 2, type: 'uni', doc: 'eiin', num: '135790', br: 1, ok: ['eiin', 'phone', 'addr'], bad: [], st: 'pending' }],
 onboard: [{ ref: 'o0', done: 3, stuck: 9 }, { ref: 'o1', done: 5 }],
 insts: [{ id: 0, type: 'school', br: 1, seats: 320, used: 312, base: 600, inv: ['paid'], over: 0, st: 'active' },
-{ id: 1, type: 'college', br: 2, seats: 200, used: 180, base: 700, inv: ['over'], over: 27, st: 'active' }, // fix11 (numbers.md v7): HSC Batch list ৳700, 40% off at 100+ = ৳420 a seat → ৳84,000
+{ id: 1, type: 'college', br: 2, seats: 200, used: 180, base: 700, inv: ['over'], over: 27, st: 'active' }, // fix11 (numbers.md v7): HSC Batch list ৳700, institution price 30% off (total-discount cap, owner 31 Oct 2026) = ৳490 a seat → ৳98,000; the invoice amounts below keep their sample numbers (owner a0c67a8)
 { id: 2, type: 'coaching', br: 3, seats: 80, used: 74, base: 600, inv: ['paid'], over: 0, st: 'active' },
 { id: 3, type: 'coaching', br: 1, seats: 40, used: 31, base: 600, inv: ['over'], over: 7, st: 'active' }], selInst: 3, susReason: null,
 tickets: [{ id: 'T-1042', ik: 1, tp: 'imp', pri: 'high', left: 3, st: 'open' }, { id: 'T-1040', ik: 2, tp: 'sc', pri: 'normal', left: 19, st: 'open' },
 { id: 'T-1038', ik: 0, tp: 'bill', pri: 'low', left: 50, st: 'mine' }, { id: 'T-1031', ik: 3, tp: 'login', pri: 'normal', left: 0, st: 'done' }],
-events: [{ id: 1, k: 'olym', kind: 'olym', d: '2027-03-12', aud: 'school', reg: 2140, st: 'open' }, { id: 2, k: 'web', kind: 'web', d: '2027-02-05', aud: 'guard', reg: 380, st: 'open' },
-{ id: 3, k: 'ws', kind: 'ws', d: '2027-01-10', aud: 'teach', reg: 212, st: 'done' }], nextEv: 4, evTitle: '', evKind: 'web', evAud: 'all', evDate: '',
+events: [{ id: 1, k: 'olym', kind: 'olym', d: '2027-03-26', aud: 'school', reg: 2140, st: 'open' }, { id: 2, k: 'web', kind: 'web', d: '2027-02-19', aud: 'guard', reg: 380, st: 'open' },
+{ id: 3, k: 'ws', kind: 'ws', d: '2027-01-24', aud: 'teach', reg: 212, st: 'done' }], nextEv: 4, evTitle: '', evKind: 'web', evAud: 'all', evDate: '',
 certs: [{ id: 1, k: 'course', n: 1284, st: 'live' }, { id: 2, k: 'olym', n: 0, st: 'draft' }, { id: 3, k: 'ws', n: 212, st: 'live' }],
-rvId: '', rvReason: null, revoked: [{ id: 'NT-2027-000214', r: 'mistake', d: '2027-01-02' }],
+rvId: '', rvReason: null, revoked: [{ id: 'NT-2027-000214', r: 'mistake', d: '2027-01-16' }],
 jobs: [{ id: 1, k: 'dev', e: 0, loc: 'dhk', kind: 'local', chk: ['emp', 'pay', 'nofee'], st: 'pending' }, { id: 2, k: 'sup', e: 1, loc: 'ctg', kind: 'local', chk: ['emp', 'pay', 'nofee'], st: 'live', apps: 46 },
 { id: 3, k: 'care', e: 2, loc: 'jp', kind: 'abroad', chk: ['emp', 'gov', 'nofee'], st: 'pending' }, { id: 4, k: 'sales', e: 3, loc: 'dhk', kind: 'local', chk: ['fee'], st: 'blocked' }],
 subCls: 'ssc', showDiv: false, aTab: 'pl', bank: 3840000,
-recv: [{ id: 1, k: 'inst', inst: 1, amt: 84000, due: '2027-01-05', st: 'open' }, // fix11 v7: HSC Batch 200 × ৳420
-{ id: 2, k: 'inst', inst: 3, amt: 16800, due: '2027-01-25', st: 'open', parts: [['2027-01', 8400, '2027-01-25'], ['2027-02', 8400, '2027-02-10']] }, { id: 3, k: 'inst', ob: 0, amt: 33600, due: '2027-02-08', st: 'open' },
-{ id: 4, k: 'aamar', who: 'aamarPay', amt: 46500, due: '2027-02-03', st: 'open' }, { id: 5, k: 'paddle', who: 'Paddle', amt: 312000, due: '2027-02-02', st: 'open' }],
-bills: [{ id: 1, k: 'sms', amt: 14000, due: '2027-02-06', rep: true, st: 'open' }, { id: 2, k: 'rent', amt: 85000, due: '2027-02-08', rep: true, st: 'open' },
-{ id: 3, k: 'gpu', usd: 4800, due: '2027-02-01', rep: true, auto: true, st: 'open' }, { id: 4, k: 'infra', usd: 1100, due: '2027-02-01', rep: true, auto: true, st: 'open' },
-{ id: 5, k: 'r2', usd: 80, due: '2027-02-03', rep: true, auto: true, st: 'open' }, { id: 6, k: 'claude', usd: 60, due: '2027-02-05', rep: true, auto: true, st: 'open' },
-{ id: 7, k: 'mistral', usd: 35, due: '2027-02-05', rep: true, auto: true, st: 'open' }, { id: 8, k: 'aff', amt: 4800, due: '2027-02-10', rep: true, st: 'open' },
-{ id: 9, k: 'mkt', amt: 9985, due: '2027-02-10', rep: true, st: 'open' }, { id: 10, k: 'emi', due: '2027-02-15', rep: true, auto: true, st: 'open' },
-{ id: 11, k: 'vat', amt: 453400, due: '2027-02-15', rep: true, st: 'open' }, { id: 12, k: 'tds', due: '2027-02-15', rep: true, st: 'open' }], nextBill: 20, nbName: '', nbAmt: '', nbDue: '', nbRep: true,
+recv: [{ id: 1, k: 'inst', inst: 1, amt: 84000, due: '2027-01-19', st: 'open' }, // fix11 v7: HSC Batch 200 × ৳420 (now ৳490 at the 30% cap; this sample amount is kept, owner a0c67a8)
+{ id: 2, k: 'inst', inst: 3, amt: 16800, due: '2027-02-08', st: 'open', parts: [['2027-01', 8400, '2027-02-08'], ['2027-02', 8400, '2027-02-24']] }, { id: 3, k: 'inst', ob: 0, amt: 33600, due: '2027-02-22', st: 'open' },
+{ id: 4, k: 'aamar', who: 'aamarPay', amt: 46500, due: '2027-02-17', st: 'open' }, { id: 5, k: 'paddle', who: 'Paddle', amt: 312000, due: '2027-02-16', st: 'open' }],
+bills: [{ id: 1, k: 'sms', amt: 14000, due: '2027-02-20', rep: true, st: 'open' }, { id: 2, k: 'rent', amt: 85000, due: '2027-02-22', rep: true, st: 'open' },
+{ id: 3, k: 'gpu', usd: 3237.84, due: '2027-02-15', rep: true, auto: true, st: 'open' }, { id: 4, k: 'infra', usd: 1100, due: '2027-02-15', rep: true, auto: true, st: 'open' },
+{ id: 5, k: 'r2', usd: 80, due: '2027-02-17', rep: true, auto: true, st: 'open' }, { id: 6, k: 'claude', usd: 60, due: '2027-02-19', rep: true, auto: true, st: 'open' },
+{ id: 7, k: 'mistral', usd: 35, due: '2027-02-19', rep: true, auto: true, st: 'open' }, { id: 8, k: 'aff', amt: 4800, due: '2027-02-24', rep: true, st: 'open' },
+{ id: 9, k: 'mkt', amt: 9985, due: '2027-02-24', rep: true, st: 'open' }, { id: 10, k: 'emi', due: '2027-03-01', rep: true, auto: true, st: 'open' },
+{ id: 11, k: 'vat', amt: 453400, due: '2027-03-01', rep: true, st: 'open' }, { id: 12, k: 'tds', due: '2027-03-01', rep: true, st: 'open' }], nextBill: 20, nbName: '', nbAmt: '', nbDue: '', nbRep: true,
 issues: [], niName: '', niSh: '', niPrice: '',
 nx: 1, asP: 'p1', asOpen: false, rjId: null, rjWhy: '',
-tx: [{ id: 't-2', n: -2, kind: 'auto', a: 1150, data: { k: 'bankchg', lines: [['exp_oth', '', 1150, 0], ['bank', '', 0, 1150]] }, maker: 'sys', at: '2027-02-01 06:40', st: 'pend', appr: [] },
-{ id: 't-1', n: -1, kind: 'auto', a: 10000, data: { k: 'petty', lines: [['cash', '', 10000, 0], ['bank', '', 0, 10000]] }, maker: 'sys', at: '2027-02-01 06:40', st: 'pend', appr: [] }],
-alog: [{ n: -4, at: '2027-02-01 15:50', p: 'p11', act: 'export', k: 'auditexp', a: ['Trial balance · Excel'] }, { n: -5, at: '2027-02-01 14:52', p: 'p2', act: 'approve', k: 'perm', a: ['mkt', 'usage', 'p1'], from: 'v', to: 'vx' }, { n: -11, at: '2027-02-01 14:45', p: 'p1', act: 'create', k: 'perm', a: ['mkt', 'usage'], from: 'v', to: 'vx' },
-{ n: -6, at: '2027-02-01 12:10', p: 'p1', act: 'view', k: 'vsalall', a: [] }, { n: -7, at: '2027-02-01 10:45', p: 'p4', act: 'create', k: 'remindold', a: [3] },
-{ n: -8, at: '2027-02-01 10:00', p: 'p3', act: 'approve', k: 'batch', a: [14, '2027-01-31'] }, { n: -9, at: '2027-02-01 09:52', p: 'p3', act: 'login', k: 'login', a: [] }, { n: -10, at: '2027-02-01 02:00', p: 'sys', act: 'export', k: 'cloudauto', a: ['gd'] }],
+tx: [{ id: 't-2', n: -2, kind: 'auto', a: 1150, data: { k: 'bankchg', lines: [['exp_oth', '', 1150, 0], ['bank', '', 0, 1150]] }, maker: 'sys', at: '2026-12-25 06:40', st: 'pend', appr: [] },
+{ id: 't-1', n: -1, kind: 'auto', a: 10000, data: { k: 'petty', lines: [['cash', '', 10000, 0], ['bank', '', 0, 10000]] }, maker: 'sys', at: '2026-12-25 06:40', st: 'pend', appr: [] }],
+alog: [{ n: -4, at: '2026-12-25 15:50', p: 'p11', act: 'export', k: 'auditexp', a: ['Trial balance · Excel'] }, { n: -5, at: '2026-12-25 14:52', p: 'p2', act: 'approve', k: 'perm', a: ['mkt', 'usage', 'p1'], from: 'v', to: 'vx' }, { n: -11, at: '2026-12-25 14:45', p: 'p1', act: 'create', k: 'perm', a: ['mkt', 'usage'], from: 'v', to: 'vx' },
+{ n: -6, at: '2026-12-25 12:10', p: 'p1', act: 'view', k: 'vsalall', a: [] }, { n: -7, at: '2026-12-25 10:45', p: 'p4', act: 'create', k: 'remindold', a: [3] },
+{ n: -8, at: '2026-12-25 10:00', p: 'p3', act: 'approve', k: 'batch', a: [14, '2027-02-14'] }, { n: -9, at: '2026-12-25 09:52', p: 'p3', act: 'login', k: 'login', a: [] }, { n: -10, at: '2026-12-25 02:00', p: 'sys', act: 'export', k: 'cloudauto', a: ['gd'] }],
 plPer: '2027-01', jrPer: 'all', jrSrc: 'all', jrLim: 15, jrOpen: null, meOpen: false, meTxt: '', mePer: '2027-02', meL: [{ a: 'exp_oth', dr: '', cr: '' }, { a: 'bank', dr: '', cr: '' }], mePick: null,
-ledAcc: 'bank', ledSub: 'all', ledAll: false, rpId: null, rpAmt: '', rpDate: '2027-02-01', rpMeth: 'bank', rpRef: '', bpId: null, bpAmt: '', bpDate: '2027-02-01', bpMeth: 'bank', bpRef: '', nbAcc: 'exp_oth',
+ledAcc: 'bank', ledSub: 'all', ledAll: false, rpId: null, rpAmt: '', rpDate: '2027-02-15', rpMeth: 'bank', rpRef: '', bpId: null, bpAmt: '', bpDate: '2027-02-15', bpMeth: 'bank', bpRef: '', nbAcc: 'exp_oth',
 empSel: 'e1', empsNew: [], prSel: '2027-01', prNov: null, neName: '', neRole: '', neJoin: '', neGross: '', neBasic: '', neHr: '', neMed: '', neConv: '', neAcct: '', neTin: '', nePay: 'bank', vSel: 'landlord',
-lnSel: null, lpId: null, lpAmt: '', lpMode: 'auto', nlDir: 'give', nlWho: 'inst', nlName: '', nlAmt: '', nlDate: '2027-02-01', nlRate: '10', nlMeth: 'daily', nlType: 'bullet', nlTen: '6', nlDoc: false, nlContact: '', nlAgr: false, nlAcct: 'bank',
+lnSel: null, lpId: null, lpAmt: '', lpMode: 'auto', nlDir: 'give', nlWho: 'inst', nlName: '', nlAmt: '', nlDate: '2027-02-15', nlRate: '10', nlMeth: 'daily', nlType: 'bullet', nlTen: '6', nlDoc: false, nlContact: '', nlAgr: false, nlAcct: 'bank',
 xf: { st: 'edit', from: 'seed', sh: '', price: '', buyer: '', nrb: false, chk: {} }, xfDone: [],
 cdK: null, cdAcct: '', cdFolder: 'NexaTute Accounts', clTime: '02:00', clRep: true, clTally: true,
-expHist: [{ at: '2027-02-01 02:00', dests: ['gd'], files: 11, size: '18.4 MB', sum: '7f3a91c2…c21e', ok: true }, { at: '2027-01-31 02:00', dests: ['gd'], files: 11, size: '18.3 MB', sum: '1b8e04d7…9a40', ok: true },
-{ at: '2027-01-30 02:00', dests: ['gd'], files: 11, size: '18.1 MB', sum: 'c90d6e13…77b2', ok: false, retry: '02:15' }, { at: '2027-01-29 02:00', dests: ['gd'], files: 11, size: '18.0 MB', sum: '4e2fa8b0…05cd', ok: true }],
-vrPer: '2027-01', pfOpen: false, pfPkg: 'std', pfPct: '5', pfFix: '0.50', pfFrom: '2027-02-01',
+expHist: [{ at: '2026-12-25 02:00', dests: ['gd'], files: 11, size: '18.4 MB', sum: '7f3a91c2…c21e', ok: true }, { at: '2026-12-24 02:00', dests: ['gd'], files: 11, size: '18.3 MB', sum: '1b8e04d7…9a40', ok: true },
+{ at: '2026-12-23 02:00', dests: ['gd'], files: 11, size: '18.1 MB', sum: 'c90d6e13…77b2', ok: false, retry: '02:15' }, { at: '2026-12-22 02:00', dests: ['gd'], files: 11, size: '18.0 MB', sum: '4e2fa8b0…05cd', ok: true }],
+vrPer: '2027-01', pfOpen: false, pfPkg: 'std', pfPct: '5', pfFix: '0.50', pfFrom: '2027-02-15',
 roTab: 'people', permRole: 'acc_off', permDraft: {}, ruleT1: '', ruleT2: '', npName: '', npEmail: '', npRoles: [], npScope: '', npExp: '', lgAct: 'all', bgWhy: '',
 p2Tab: 'mx', mxLive: null, mxDraft: null, mxStage: 'edit', mxSel: null, mxPlan: 'combo', mxOpen: { teach: true }, pVers: [{ v: 10, k: 'v10' }, { v: 11, k: 'v11' }, { v: 12, k: 'v12' }],
 platOff: {}, plSel: null, plReason: null, hlc: 'bd', hlEd: {}, hlLive: {}, mxSent: null, vatRate: 15,
 holc: 'bd', holX: {}, holEdit: null, holE: { d: '', n: '' }, holNew: { d: '', n: '', lunar: false },
-// Season calendar (growth decisions 18 Oct 2026): January Year Pass · 30 days before board exams Crash Pack & Smart Suggestion · after SSC HSC Head Start · Eid gift cards · December Head Start; dates follow board announcements
+// Season calendar (growth decisions 18 Oct 2026): January Year Pass · 30 days before board exams Crash Pack & Smart Suggestion · after SSC HSC Head Start · Eid gift vouchers · December Head Start; dates follow board announcements
 scDates: { jan: ['2026-12-01', '2027-01-31'], exam: ['2027-01-30', '2027-02-28'], ssc: ['2027-03-28', '2027-06-30'], /* fix10 F1: Crash Pack opens 30 days before the first SSC paper (1 Mar); HSC Head Start from Sun 28 Mar */ eid: ['2027-02-24', '2027-03-10'], dec: ['2026-12-01', '2026-12-31'] }, scDraft: null,
 toast: '', toastT: 0,
 mnRail: false, mnOpen: false, mnG: {}, mnS: {},
@@ -869,7 +872,7 @@ timer: function (l) { return 'স্বীকার করার সময় �
 t_add_ctrl: function (n) { return n + ' যোগ হয়েছেন — রোটায় যুক্ত'; },
 t_esc: 'স্বীকার হয়নি — দ্বিতীয় নিয়ন্ত্রককে SMS পাঠানো হয়েছে',
 to: 'শেষ', ram_h: 'রমজান সময়সূচি', ram_school: 'স্কুলের ব্যাচ', ram_adult: 'প্রাপ্তবয়স্ক (BCS, ভর্তি)', t_sched: 'সংরক্ষিত — শিক্ষার্থী ও অভিভাবকের অ্যাপে এখনই দেখাচ্ছে',
-eid_pv: function (a, b) { return 'ঈদুল ফিতরের ছুটি: ' + a + ' – ' + b + ' · ব্যাচ ক্লাস বন্ধ, 1:1 ও Nexa Co-Teacher চালু।'; }, adha_pv: function (a, b) { return ' ঈদুল আযহা: ' + a + ' – ' + b + '।'; }, eid_none: 'ঈদের তারিখ এখনো বসানো হয়নি — চাঁদ দেখার পর বসান।',
+eid_pv: function (a, b) { return 'ঈদুল ফিতরের ছুটি: ' + a + ' – ' + b + ' · ব্যাচ ক্লাস বন্ধ, 1:1 ও Nexa Co-Tutor চালু।'; }, adha_pv: function (a, b) { return ' ঈদুল আযহা: ' + a + ' – ' + b + '।'; }, eid_none: 'ঈদের তারিখ এখনো বসানো হয়নি — চাঁদ দেখার পর বসান।',
 ram_pv: function (s, a) { return 'রমজানে ব্যাচ ক্লাস: স্কুল ' + s + ' · প্রাপ্তবয়স্ক ' + a; }, norm_pv: 'ব্যাচ ক্লাস: স্কুল 4:00–6:10 pm · প্রাপ্তবয়স্ক 7:00–9:00 am', th: ['নাম', 'নম্বর', 'সময়', 'কোথায় দেখাবে', 'চালু'],
 hl_999: 'জাতীয় জরুরি সেবা', on: 'চালু', hl_mh: 'মানসিক সহায়তা হেল্পলাইন', time_aria: 'সময়', time_ph: 'যেমন: 3–9 pm', hl_ch: 'শিশু সহায়তা', t_hl: 'সংরক্ষিত — অ্যাপের হেল্পলাইন এখনই বদলে গেছে',
 t_sp: function (m) { return 'স্পনসর যোগ হয়েছে — প্রতি শিক্ষার্থী সর্বোচ্চ ৳' + m + '/মাস নিয়মে বরাদ্দ হবে'; },
@@ -881,7 +884,7 @@ timer: function (l) { return l + ' left to acknowledge — then SMS to the secon
 t_add_ctrl: function (n) { return n + ' added — now in the rota'; },
 t_esc: 'Not acknowledged — SMS sent to the second controller',
 to: 'To', ram_h: 'Ramadan schedule', ram_school: 'School batches', ram_adult: 'Adults (BCS, admission)', t_sched: 'Saved — showing now in learner and guardian apps',
-eid_pv: function (a, b) { return 'Eid al-Fitr holiday: ' + a + ' – ' + b + ' · batch classes off, 1:1 and Nexa Co-Teacher on.'; }, adha_pv: function (a, b) { return ' Eid al-Adha: ' + a + ' – ' + b + '.'; }, eid_none: 'Eid dates aren’t set yet — enter them after the moon sighting.',
+eid_pv: function (a, b) { return 'Eid al-Fitr holiday: ' + a + ' – ' + b + ' · batch classes off, 1:1 and Nexa Co-Tutor on.'; }, adha_pv: function (a, b) { return ' Eid al-Adha: ' + a + ' – ' + b + '.'; }, eid_none: 'Eid dates aren’t set yet — enter them after the moon sighting.',
 ram_pv: function (s, a) { return 'Batch classes in Ramadan: school ' + s + ' · adults ' + a; }, norm_pv: 'Batch classes: school 4:00–6:10 pm · adults 7:00–9:00 am', th: ['Name', 'Number', 'Hours', 'Where it shows', 'On'],
 hl_999: 'National Emergency Service', on: 'On', hl_mh: 'Mental health helpline', time_aria: 'Hours', time_ph: 'e.g. 3–9 pm', hl_ch: 'Child helpline', t_hl: 'Saved — the app’s helplines changed right away',
 t_sp: function (m) { return 'Sponsor added — allocated at most ৳' + m + '/month per learner'; },
@@ -893,7 +896,7 @@ timer: function (l) { return 'स्वीकार करने को ' + l + 
 t_add_ctrl: function (n) { return n + ' जुड़ गए — रोटा में शामिल'; },
 t_esc: 'स्वीकार नहीं हुआ — दूसरे नियंत्रक को SMS भेजा गया',
 to: 'अंत', ram_h: 'रमज़ान समय-सारिणी', ram_school: 'स्कूल के बैच', ram_adult: 'वयस्क (BCS, दाख़िला)', t_sched: 'सहेजा गया — विद्यार्थी और अभिभावक के ऐप में अभी दिख रहा है',
-eid_pv: function (a, b) { return 'ईद-उल-फ़ित्र की छुट्टी: ' + a + ' – ' + b + ' · बैच क्लास बंद, 1:1 और Nexa Co-Teacher चालू।'; }, adha_pv: function (a, b) { return ' ईद-उल-अज़हा: ' + a + ' – ' + b + '।'; }, eid_none: 'ईद की तारीख़ अभी नहीं डाली गई — चाँद दिखने के बाद डालें।',
+eid_pv: function (a, b) { return 'ईद-उल-फ़ित्र की छुट्टी: ' + a + ' – ' + b + ' · बैच क्लास बंद, 1:1 और Nexa Co-Tutor चालू।'; }, adha_pv: function (a, b) { return ' ईद-उल-अज़हा: ' + a + ' – ' + b + '।'; }, eid_none: 'ईद की तारीख़ अभी नहीं डाली गई — चाँद दिखने के बाद डालें।',
 ram_pv: function (s, a) { return 'रमज़ान में बैच क्लास: स्कूल ' + s + ' · वयस्क ' + a; }, norm_pv: 'बैच क्लास: स्कूल 4:00–6:10 pm · वयस्क 7:00–9:00 am', th: ['नाम', 'नंबर', 'समय', 'कहाँ दिखेगा', 'चालू'],
 hl_999: 'राष्ट्रीय आपात सेवा', on: 'चालू', hl_mh: 'मानसिक सहायता हेल्पलाइन', time_aria: 'समय', time_ph: 'जैसे: 3–9 pm', hl_ch: 'बाल सहायता', t_hl: 'सहेजा गया — ऐप की हेल्पलाइन तुरंत बदल गई',
 t_sp: function (m) { return 'स्पॉन्सर जुड़ गया — प्रति विद्यार्थी अधिकतम ৳' + m + '/महीना के नियम से आवंटन होगा'; },
@@ -905,7 +908,7 @@ timer: function (l) { return 'تسلیم کرنے کے لیے ' + M(l) + ' با�
 t_add_ctrl: function (n) { return n + ' شامل ہو گئے — روٹا میں'; },
 t_esc: 'تسلیم نہیں ہوا — دوسرے نگران کو SMS بھیجا گیا',
 to: 'اختتام', ram_h: 'رمضان نظام الاوقات', ram_school: 'اسکول کے بیچ', ram_adult: 'بالغ (BCS، داخلہ)', t_sched: 'محفوظ — طلبہ اور سرپرستوں کی ایپ میں ابھی نظر آ رہا ہے',
-eid_pv: function (a, b) { return 'عید الفطر کی چھٹی: ' + a + ' – ' + b + ' · بیچ کلاسیں بند، 1:1 اور Nexa Co-Teacher جاری۔'; }, adha_pv: function (a, b) { return ' عید الاضحیٰ: ' + a + ' – ' + b + '۔'; }, eid_none: 'عید کی تاریخیں ابھی درج نہیں — چاند دیکھنے کے بعد درج کریں۔',
+eid_pv: function (a, b) { return 'عید الفطر کی چھٹی: ' + a + ' – ' + b + ' · بیچ کلاسیں بند، 1:1 اور Nexa Co-Tutor جاری۔'; }, adha_pv: function (a, b) { return ' عید الاضحیٰ: ' + a + ' – ' + b + '۔'; }, eid_none: 'عید کی تاریخیں ابھی درج نہیں — چاند دیکھنے کے بعد درج کریں۔',
 ram_pv: function (s, a) { return 'رمضان میں بیچ کلاسیں: اسکول ' + M(s) + ' · بالغ ' + M(a); }, norm_pv: 'بیچ کلاسیں: اسکول ' + M('4:00–6:10 pm') + ' · بالغ ' + M('7:00–9:00 am'), th: ['نام', 'نمبر', 'اوقات', 'کہاں دکھے گا', 'آن'],
 hl_999: 'قومی ہنگامی سروس', on: 'آن', hl_mh: 'ذہنی صحت ہیلپ لائن', time_aria: 'اوقات', time_ph: 'مثلاً: 3–9 pm', hl_ch: 'بچوں کی ہیلپ لائن', t_hl: 'محفوظ — ایپ کی ہیلپ لائن فوراً بدل گئی',
 t_sp: function (m) { return 'اسپانسر شامل ہو گیا — فی طالب علم زیادہ سے زیادہ ' + M('৳' + m) + ' ماہانہ کے اصول پر تقسیم ہوگی'; },
@@ -917,7 +920,7 @@ timer: function (l) { return 'متبقٍّ للإقرار ' + M(l) + ' — بع�
 t_add_ctrl: function (n) { return 'أُضيف ' + n + ' — ضمن المناوبة'; },
 t_esc: 'لم يُقَرّ — أُرسلت SMS إلى المشرف الثاني',
 to: 'إلى', ram_h: 'جدول رمضان', ram_school: 'دفعات المدارس', ram_adult: 'البالغون (BCS، القبول)', t_sched: 'حُفظ — يظهر الآن في تطبيقات المتعلّمين وأولياء الأمور',
-eid_pv: function (a, b) { return 'عطلة عيد الفطر: ' + a + ' – ' + b + ' · حصص الدفعات متوقفة، و1:1 وNexa Co-Teacher متاحان.'; }, adha_pv: function (a, b) { return ' عيد الأضحى: ' + a + ' – ' + b + '.'; }, eid_none: 'لم تُدخل تواريخ العيد بعد — أدخلها بعد رؤية الهلال.',
+eid_pv: function (a, b) { return 'عطلة عيد الفطر: ' + a + ' – ' + b + ' · حصص الدفعات متوقفة، و1:1 وNexa Co-Tutor متاحان.'; }, adha_pv: function (a, b) { return ' عيد الأضحى: ' + a + ' – ' + b + '.'; }, eid_none: 'لم تُدخل تواريخ العيد بعد — أدخلها بعد رؤية الهلال.',
 ram_pv: function (s, a) { return 'حصص الدفعات في رمضان: المدارس ' + M(s) + ' · البالغون ' + M(a); }, norm_pv: 'حصص الدفعات: المدارس ' + M('4:00–6:10 pm') + ' · البالغون ' + M('7:00–9:00 am'), th: ['الاسم', 'الرقم', 'الأوقات', 'أين يظهر', 'مُفعّل'],
 hl_999: 'خدمة الطوارئ الوطنية', on: 'مُفعّل', hl_mh: 'خط دعم الصحة النفسية', time_aria: 'الأوقات', time_ph: 'مثلًا: 3–9 م', hl_ch: 'خط مساعدة الطفل', t_hl: 'حُفظ — تغيّرت خطوط المساعدة في التطبيق فورًا',
 t_sp: function (m) { return 'أُضيف الراعي — يُوزَّع بحدّ أقصى ' + M('৳' + m) + ' شهريًا لكل متعلّم'; },
@@ -929,7 +932,7 @@ timer: function (l) { return l + ' restantes pour la prise en charge — puis SM
 t_add_ctrl: function (n) { return n + ' ajouté(e) — dans la rotation'; },
 t_esc: 'Pas de prise en charge — SMS envoyé au second contrôleur',
 to: 'Fin', ram_h: 'Horaires du Ramadan', ram_school: 'Groupes scolaires', ram_adult: 'Adultes (BCS, admission)', t_sched: 'Enregistré — visible dès maintenant dans les applis des élèves et des parents',
-eid_pv: function (a, b) { return 'Congé de l’Aïd el-Fitr : ' + a + ' – ' + b + ' · cours de groupe suspendus, 1:1 et Nexa Co-Teacher actifs.'; }, adha_pv: function (a, b) { return ' Aïd el-Adha : ' + a + ' – ' + b + '.'; }, eid_none: 'Les dates de l’Aïd ne sont pas encore saisies — à faire après l’observation de la lune.',
+eid_pv: function (a, b) { return 'Congé de l’Aïd el-Fitr : ' + a + ' – ' + b + ' · cours de groupe suspendus, 1:1 et Nexa Co-Tutor actifs.'; }, adha_pv: function (a, b) { return ' Aïd el-Adha : ' + a + ' – ' + b + '.'; }, eid_none: 'Les dates de l’Aïd ne sont pas encore saisies — à faire après l’observation de la lune.',
 ram_pv: function (s, a) { return 'Cours de groupe pendant le Ramadan : école ' + s + ' · adultes ' + a; }, norm_pv: 'Cours de groupe : école 16:00–18:10 · adultes 7:00–9:00', th: ['Nom', 'Numéro', 'Horaires', 'Où c’est affiché', 'Actif'],
 hl_999: 'Service national d’urgence', on: 'Actif', hl_mh: 'Ligne d’écoute en santé mentale', time_aria: 'Horaires', time_ph: 'ex. 15h–21h', hl_ch: 'Ligne d’aide à l’enfance', t_hl: 'Enregistré — les lignes d’aide de l’appli ont changé aussitôt',
 t_sp: function (m) { return 'Parrain ajouté — attribution de ৳' + m + '/mois maximum par élève'; },
@@ -965,7 +968,7 @@ return L;
 uiAdd(L, M) {
 var A = {};
 A.bn = { nav_inst: 'প্রতিষ্ঠান', nav_prog: 'ইভেন্ট, সার্টিফিকেট ও চাকরি',
-tot_h: 'প্ল্যাটফর্মের মোট', tot_note: 'কার্ডে ক্লিক করলে খুলবে',
+tot_h: 'প্ল্যাটফর্মের মোট · নমুনা (প্রোটোটাইপ)', tot_note: 'কার্ডে ক্লিক করলে খুলবে',
 tot: { inst: 'প্রতিষ্ঠান', inst_s: function (n) { return n + 'টি যাচাইয়ের অপেক্ষায়'; }, subs: 'পেইড সাবস্ক্রিপশন', subs_s: 'ব্যক্তিগত 508 · প্রতিষ্ঠানের সিট 720', courses: 'চালু কোর্স', courses_s: 'বাংলাদেশের কোর্স বাংলা ও ইংরেজিতে, বাকিগুলো 6 ভাষায়', tk: 'খোলা সাপোর্ট টিকিট', tk_s: function (n) { return n + 'টির উত্তরের সময় প্রায় শেষ'; } },
 v_h: 'যাচাইয়ের কিউ', v_rule: 'EIIN বা ট্রেড লাইসেন্স যাচাইয়ের পরই অনুমোদন',
 v_chk: { eiin: 'EIIN সরকারি তালিকার সাথে মিলেছে', trade: 'ট্রেড লাইসেন্স বৈধ', phone: 'প্রধানের ফোন যাচাই হয়েছে', addr: 'ঠিকানা ম্যাপ-পিনের সাথে মিলেছে', blur: 'লাইসেন্সের ছবি অস্পষ্ট' },
@@ -984,7 +987,7 @@ t_ev: function (n) { return n + ' তৈরি হয়েছে — ঘোষ�
 t_ce_pub: function (n) { return n + ' প্রকাশিত — নিয়ম পূরণ হলে নিজে থেকে দেওয়া হবে'; },
 t_rv: function (id) { return id + ' বাতিল — যাচাই পেজে এখন “বাতিল” দেখাচ্ছে, আর ধারককে কারণ জানানো হয়েছে'; }, t_jb_ok: function (n) { return n + ' লাইভ — শুধু যে 18+ শিক্ষার্থীরা চেয়েছেন তাঁরা দেখবেন'; }, t_jb_rej: function (n) { return n + ' বাতিল — নিয়োগকর্তাকে কারণ জানানো হয়েছে'; } };
 A.en = { nav_inst: 'Institutions', nav_prog: 'Events, certificates & jobs',
-tot_h: 'Platform totals', tot_note: 'Click a card to open it',
+tot_h: 'Platform totals · Sample (prototype)', tot_note: 'Click a card to open it',
 tot: { inst: 'Institutions', inst_s: function (n) { return n + ' awaiting verification'; }, subs: 'Paid subscriptions', subs_s: 'individual 508 · institution seats 720', courses: 'Active courses', courses_s: 'Bangladesh courses in Bangla & English, others in 6 languages', tk: 'Open support tickets', tk_s: function (n) { return n + ' close to the reply deadline'; } },
 v_h: 'Verification queue', v_rule: 'Approve only after the EIIN or trade licence is checked',
 v_chk: { eiin: 'EIIN matches the government list', trade: 'Trade licence valid', phone: 'Head’s phone verified', addr: 'Address matches the map pin', blur: 'Licence photo unclear' },
@@ -1003,7 +1006,7 @@ t_ev: function (n) { return n + ' created — the announcement goes to each pers
 t_ce_pub: function (n) { return n + ' published — issued automatically when the rule is met'; },
 t_rv: function (id) { return id + ' revoked — its verify page now says “revoked”, and the holder was told why'; }, t_jb_ok: function (n) { return n + ' is live — only learners 18+ who opted in will see it'; }, t_jb_rej: function (n) { return n + ' rejected — the employer was told why'; } };
 A.hi = { nav_inst: 'संस्थान', nav_prog: 'इवेंट, प्रमाणपत्र और नौकरियाँ',
-tot_h: 'प्लेटफ़ॉर्म का कुल', tot_note: 'खोलने के लिए कार्ड पर क्लिक करें',
+tot_h: 'प्लेटफ़ॉर्म का कुल · नमूना (प्रोटोटाइप)', tot_note: 'खोलने के लिए कार्ड पर क्लिक करें',
 tot: { inst: 'संस्थान', inst_s: function (n) { return n + ' सत्यापन की प्रतीक्षा में'; }, subs: 'पेड सब्सक्रिप्शन', subs_s: 'व्यक्तिगत 508 · संस्थानों की सीटें 720', courses: 'सक्रिय कोर्स', courses_s: 'बांग्लादेश के कोर्स बांग्ला और अंग्रेज़ी में, बाक़ी 6 भाषाओं में', tk: 'खुले सपोर्ट टिकट', tk_s: function (n) { return n + ' का जवाब-समय लगभग ख़त्म'; } },
 v_h: 'सत्यापन कतार', v_rule: 'EIIN या ट्रेड लाइसेंस जाँचने के बाद ही मंज़ूरी',
 v_chk: { eiin: 'EIIN सरकारी सूची से मेल खाता है', trade: 'ट्रेड लाइसेंस वैध', phone: 'प्रमुख का फ़ोन सत्यापित', addr: 'पता मैप-पिन से मेल खाता है', blur: 'लाइसेंस की फ़ोटो धुंधली' },
@@ -1023,7 +1026,7 @@ t_ce_pub: function (n) { return n + ' प्रकाशित — नियम 
 t_rv: function (id) { return id + ' रद्द — सत्यापन पेज पर अब “रद्द” दिखता है और धारक को कारण बताया गया'; }, t_jb_ok: function (n) { return n + ' लाइव — सिर्फ़ चुनने वाले 18+ विद्यार्थी देखेंगे'; }, t_jb_rej: function (n) { return n + ' अस्वीकृत — नियोक्ता को कारण बताया गया'; } };
 var P = M('18+');
 A.ur = { nav_inst: 'ادارے', nav_prog: 'ایونٹس، سرٹیفکیٹ اور ملازمتیں',
-tot_h: 'پلیٹ فارم کا مجموعہ', tot_note: 'کھولنے کے لیے کارڈ پر کلک کریں',
+tot_h: 'پلیٹ فارم کا مجموعہ · نمونہ (پروٹوٹائپ)', tot_note: 'کھولنے کے لیے کارڈ پر کلک کریں',
 tot: { inst: 'ادارے', inst_s: function (n) { return n + ' تصدیق کے منتظر'; }, subs: 'ادائیگی والی سبسکرپشن', subs_s: 'انفرادی ' + M('508') + ' · اداروں کی نشستیں ' + M('720'), courses: 'فعال کورس', courses_s: 'بنگلہ دیش کے کورس بنگلہ اور انگریزی میں، باقی ' + M('6') + ' زبانوں میں', tk: 'کھلے سپورٹ ٹکٹ', tk_s: function (n) { return n + ' کے جواب کا وقت تقریباً ختم'; } },
 v_h: 'تصدیق کی قطار', v_rule: 'EIIN یا ٹریڈ لائسنس جانچنے کے بعد ہی منظوری',
 v_chk: { eiin: 'EIIN سرکاری فہرست سے ملتا ہے', trade: 'ٹریڈ لائسنس درست', phone: 'سربراہ کا فون تصدیق شدہ', addr: 'پتہ نقشے کے پن سے ملتا ہے', blur: 'لائسنس کی تصویر دھندلی' },
@@ -1042,7 +1045,7 @@ t_ev: function (n) { return n + ' بن گیا — اعلان ہر شخص کو ا
 t_ce_pub: function (n) { return n + ' شائع — اصول پورا ہونے پر خود جاری ہوگا'; },
 t_rv: function (id) { return M(id) + ' منسوخ — تصدیقی صفحے پر اب “منسوخ” دکھتا ہے اور حامل کو وجہ بتائی گئی'; }, t_jb_ok: function (n) { return n + ' لائیو — صرف چننے والے ' + P + ' طلبہ دیکھیں گے'; }, t_jb_rej: function (n) { return n + ' مسترد — آجر کو وجہ بتائی گئی'; } };
 A.ar = { nav_inst: 'المؤسسات', nav_prog: 'الفعاليات والشهادات والوظائف',
-tot_h: 'إجماليات المنصة', tot_note: 'انقر على بطاقة لفتحها',
+tot_h: 'إجماليات المنصة · عيّنة (نموذج أولي)', tot_note: 'انقر على بطاقة لفتحها',
 tot: { inst: 'المؤسسات', inst_s: function (n) { return n + ' بانتظار التحقق'; }, subs: 'الاشتراكات المدفوعة', subs_s: 'أفراد ' + M('508') + ' · مقاعد المؤسسات ' + M('720'), courses: 'الدورات النشطة', courses_s: 'مقررات بنغلاديش بالبنغالية والإنجليزية، والباقي بـ' + M('6') + ' لغات', tk: 'تذاكر الدعم المفتوحة', tk_s: function (n) { return n + ' قارب موعد الرد عليها على الانتهاء'; } },
 v_h: 'قائمة التحقق', v_rule: 'لا موافقة إلا بعد التحقق من EIIN أو الرخصة التجارية',
 v_chk: { eiin: 'EIIN مطابق للقائمة الحكومية', trade: 'الرخصة التجارية سارية', phone: 'هاتف المدير موثّق', addr: 'العنوان مطابق لدبوس الخريطة', blur: 'صورة الرخصة غير واضحة' },
@@ -1061,7 +1064,7 @@ t_ev: function (n) { return 'أُنشئت: ' + n + ' — يصل الإعلان �
 t_ce_pub: function (n) { return 'نُشرت: ' + n + ' — تُمنح تلقائيًا عند تحقق الشرط'; },
 t_rv: function (id) { return 'أُلغيت ' + M(id) + ' — صفحة التحقق تُظهر الآن «ملغاة» وأُبلغ حاملها بالسبب'; }, t_jb_ok: function (n) { return 'نُشر: ' + n + ' — يراه فقط المتعلمون ' + P + ' الذين اختاروا ذلك'; }, t_jb_rej: function (n) { return 'رُفض: ' + n + ' — أُبلغ صاحب العمل بالسبب'; } };
 A.fr = { nav_inst: 'Établissements', nav_prog: 'Événements, certificats et emplois',
-tot_h: 'Totaux de la plateforme', tot_note: 'Cliquez sur une carte pour l’ouvrir',
+tot_h: 'Totaux de la plateforme · Exemple (prototype)', tot_note: 'Cliquez sur une carte pour l’ouvrir',
 tot: { inst: 'Établissements', inst_s: function (n) { return n + ' en attente de vérification'; }, subs: 'Abonnements payants', subs_s: 'individuels 508 · places d’établissements 720', courses: 'Cours actifs', courses_s: 'cours du Bangladesh en bangla et en anglais, les autres en 6 langues', tk: 'Tickets de support ouverts', tk_s: function (n) { return n + ' proche(s) du délai de réponse'; } },
 v_h: 'File de vérification', v_rule: 'Valider seulement après contrôle de l’EIIN ou de la licence commerciale',
 v_chk: { eiin: 'EIIN conforme à la liste officielle', trade: 'Licence commerciale valide', phone: 'Téléphone du directeur vérifié', addr: 'Adresse conforme au repère de la carte', blur: 'Photo de la licence illisible' },
@@ -1145,8 +1148,8 @@ uiAdd3(L, M) {
 var A = {};
 A.en = { nav_plans: 'Plans & modules', p2_tabs: { mx: 'Modules per plan', plat: 'Platform switches' },
 plans: { free: 'Free', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'Institution' },
-grp: { teach: 'Teaching', cot: 'Nexa Co-Teacher', test: 'Tests', hall: 'Study Hall', tools: 'Tools', family: 'Family', events: 'Events & careers', instm: 'Institution add-ons', safety: 'Safety — always on' },
-subm: { one: 'Nexa Teacher 1:1', avatar: '3D avatar & lip-sync', wb: 'Whiteboard', batch: 'Batch class', poll: 'Polls & pair discussion', rec: 'Auto-recording',
+grp: { teach: 'Teaching', cot: 'Nexa Co-Tutor', test: 'Tests', hall: 'Study Hall', tools: 'Tools', family: 'Family', events: 'Events & careers', instm: 'Institution add-ons', safety: 'Safety — always on' },
+subm: { one: 'Nexa Tutor 1:1', avatar: '3D avatar & lip-sync', wb: 'Whiteboard', batch: 'Batch class', poll: 'Polls & pair discussion', rec: 'Auto-recording',
 chat: 'Questions & explanations', notes: 'Notes & summaries', errbook: 'Error notebook', links: 'Link explainer',
 mock: 'Mock tests', omr: 'OMR practice', rank: 'Virtual Batch rank', crash: 'Exam Crash Pack (add-on)',
 silent: 'Silent hall', group: 'Groups of 2–10', lab: 'Lab & shared whiteboard', mod: 'Nexa Study Hall Moderator',
@@ -1161,8 +1164,8 @@ plat_on: 'On', plat_off: 'Off for everyone', reasons: { maint: 'Maintenance', qu
 };
 A.bn = { nav_plans: 'প্ল্যান ও মডিউল', p2_tabs: { mx: 'প্ল্যান অনুযায়ী মডিউল', plat: 'পুরো প্ল্যাটফর্মের সুইচ' },
 plans: { free: 'ফ্রি', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'প্রতিষ্ঠান' },
-grp: { teach: 'পড়ানো', cot: 'Nexa Co-Teacher', test: 'টেস্ট', hall: 'Study Hall', tools: 'টুলস', family: 'পরিবার', events: 'ইভেন্ট ও ক্যারিয়ার', instm: 'প্রতিষ্ঠানের অ্যাড-অন', safety: 'নিরাপত্তা — সবসময় চালু' },
-subm: { one: 'Nexa Teacher 1:1', avatar: '3D অ্যাভাটার ও লিপ-সিঙ্ক', wb: 'হোয়াইটবোর্ড', batch: 'ব্যাচ ক্লাস', poll: 'পোল ও জোড়ায় আলোচনা', rec: 'অটো-রেকর্ডিং',
+grp: { teach: 'পড়ানো', cot: 'Nexa Co-Tutor', test: 'টেস্ট', hall: 'Study Hall', tools: 'টুলস', family: 'পরিবার', events: 'ইভেন্ট ও ক্যারিয়ার', instm: 'প্রতিষ্ঠানের অ্যাড-অন', safety: 'নিরাপত্তা — সবসময় চালু' },
+subm: { one: 'Nexa Tutor 1:1', avatar: '3D অ্যাভাটার ও লিপ-সিঙ্ক', wb: 'হোয়াইটবোর্ড', batch: 'ব্যাচ ক্লাস', poll: 'পোল ও জোড়ায় আলোচনা', rec: 'অটো-রেকর্ডিং',
 chat: 'প্রশ্ন ও ব্যাখ্যা', notes: 'নোট ও সারাংশ', errbook: 'ভুলের খাতা', links: 'লিংক বোঝানো',
 mock: 'মক টেস্ট', omr: 'OMR অনুশীলন', rank: 'Virtual Batch র‍্যাঙ্ক', crash: 'Exam Crash Pack (অ্যাড-অন)',
 silent: 'নীরব হল', group: '2–10 জনের গ্রুপ', lab: 'ল্যাব ও শেয়ার্ড হোয়াইটবোর্ড', mod: 'Nexa Study Hall Moderator',
@@ -1177,8 +1180,8 @@ plat_on: 'চালু', plat_off: 'সবার জন্য বন্ধ', rea
 };
 A.hi = { nav_plans: 'प्लान और मॉड्यूल', p2_tabs: { mx: 'प्लान के अनुसार मॉड्यूल', plat: 'पूरे प्लेटफ़ॉर्म के स्विच' },
 plans: { free: 'मुफ़्त', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'संस्थान' },
-grp: { teach: 'पढ़ाई', cot: 'Nexa Co-Teacher', test: 'टेस्ट', hall: 'Study Hall', tools: 'टूल्स', family: 'परिवार', events: 'इवेंट और करियर', instm: 'संस्थान के ऐड-ऑन', safety: 'सुरक्षा — हमेशा चालू' },
-subm: { one: 'Nexa Teacher 1:1', avatar: '3D अवतार और लिप-सिंक', wb: 'व्हाइटबोर्ड', batch: 'बैच क्लास', poll: 'पोल और जोड़ी में चर्चा', rec: 'ऑटो-रिकॉर्डिंग',
+grp: { teach: 'पढ़ाई', cot: 'Nexa Co-Tutor', test: 'टेस्ट', hall: 'Study Hall', tools: 'टूल्स', family: 'परिवार', events: 'इवेंट और करियर', instm: 'संस्थान के ऐड-ऑन', safety: 'सुरक्षा — हमेशा चालू' },
+subm: { one: 'Nexa Tutor 1:1', avatar: '3D अवतार और लिप-सिंक', wb: 'व्हाइटबोर्ड', batch: 'बैच क्लास', poll: 'पोल और जोड़ी में चर्चा', rec: 'ऑटो-रिकॉर्डिंग',
 chat: 'सवाल और व्याख्या', notes: 'नोट्स और सारांश', errbook: 'ग़लतियों की कॉपी', links: 'लिंक समझाना',
 mock: 'मॉक टेस्ट', omr: 'OMR अभ्यास', rank: 'Virtual Batch रैंक', crash: 'Exam Crash Pack (ऐड-ऑन)',
 silent: 'शांत हॉल', group: '2–10 लोगों के समूह', lab: 'लैब और साझा व्हाइटबोर्ड', mod: 'Nexa Study Hall Moderator',
@@ -1194,8 +1197,8 @@ plat_on: 'चालू', plat_off: 'सबके लिए बंद', reasons: 
 var P = M('18+');
 A.ur = { nav_plans: 'پلان اور ماڈیول', p2_tabs: { mx: 'پلان کے لحاظ سے ماڈیول', plat: 'پورے پلیٹ فارم کے سوئچ' },
 plans: { free: 'مفت', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'ادارہ' },
-grp: { teach: 'تدریس', cot: 'Nexa Co-Teacher', test: 'ٹیسٹ', hall: 'Study Hall', tools: 'ٹولز', family: 'خاندان', events: 'ایونٹس اور کیریئر', instm: 'ادارے کے ایڈ آن', safety: 'حفاظت — ہمیشہ آن' },
-subm: { one: 'Nexa Teacher 1:1', avatar: '3D اوتار اور لِپ سنک', wb: 'وائٹ بورڈ', batch: 'بیچ کلاس', poll: 'پول اور جوڑی میں بحث', rec: 'آٹو ریکارڈنگ',
+grp: { teach: 'تدریس', cot: 'Nexa Co-Tutor', test: 'ٹیسٹ', hall: 'Study Hall', tools: 'ٹولز', family: 'خاندان', events: 'ایونٹس اور کیریئر', instm: 'ادارے کے ایڈ آن', safety: 'حفاظت — ہمیشہ آن' },
+subm: { one: 'Nexa Tutor 1:1', avatar: '3D اوتار اور لِپ سنک', wb: 'وائٹ بورڈ', batch: 'بیچ کلاس', poll: 'پول اور جوڑی میں بحث', rec: 'آٹو ریکارڈنگ',
 chat: 'سوال اور وضاحت', notes: 'نوٹس اور خلاصے', errbook: 'غلطیوں کی کاپی', links: 'لنک کی وضاحت',
 mock: 'ماڈل ٹیسٹ', omr: 'OMR مشق', rank: 'Virtual Batch رینک', crash: 'Exam Crash Pack (ایڈ آن)',
 silent: 'خاموش ہال', group: '2–10 افراد کے گروپ', lab: 'لیب اور مشترکہ وائٹ بورڈ', mod: 'Nexa Study Hall Moderator',
@@ -1210,8 +1213,8 @@ plat_on: 'آن', plat_off: 'سب کے لیے بند', reasons: { maint: 'دیک�
 };
 A.ar = { nav_plans: 'الخطط والوحدات', p2_tabs: { mx: 'الوحدات حسب الخطة', plat: 'مفاتيح المنصة كلها' },
 plans: { free: 'مجاني', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'مؤسسة' },
-grp: { teach: 'التدريس', cot: 'Nexa Co-Teacher', test: 'الاختبارات', hall: 'Study Hall', tools: 'الأدوات', family: 'الأسرة', events: 'الفعاليات والمسار المهني', instm: 'إضافات المؤسسات', safety: 'السلامة — مفعّلة دائمًا' },
-subm: { one: 'Nexa Teacher 1:1', avatar: 'أفاتار ثلاثي الأبعاد ومزامنة الشفاه', wb: 'السبورة', batch: 'الحصة الجماعية', poll: 'الاستطلاعات والنقاش الثنائي', rec: 'التسجيل التلقائي',
+grp: { teach: 'التدريس', cot: 'Nexa Co-Tutor', test: 'الاختبارات', hall: 'Study Hall', tools: 'الأدوات', family: 'الأسرة', events: 'الفعاليات والمسار المهني', instm: 'إضافات المؤسسات', safety: 'السلامة — مفعّلة دائمًا' },
+subm: { one: 'Nexa Tutor 1:1', avatar: 'أفاتار ثلاثي الأبعاد ومزامنة الشفاه', wb: 'السبورة', batch: 'الحصة الجماعية', poll: 'الاستطلاعات والنقاش الثنائي', rec: 'التسجيل التلقائي',
 chat: 'الأسئلة والشرح', notes: 'الملاحظات والملخصات', errbook: 'دفتر الأخطاء', links: 'شرح الروابط',
 mock: 'اختبارات تجريبية', omr: 'تدريب OMR', rank: 'ترتيب Virtual Batch', crash: 'Exam Crash Pack (إضافة)',
 silent: 'القاعة الهادئة', group: 'مجموعات من 2 إلى 10', lab: 'المختبر والسبورة المشتركة', mod: 'Nexa Study Hall Moderator',
@@ -1226,8 +1229,8 @@ plat_on: 'مفعّل', plat_off: 'متوقف للجميع', reasons: { maint: '�
 };
 A.fr = { nav_plans: 'Formules et modules', p2_tabs: { mx: 'Modules par formule', plat: 'Interrupteurs de la plateforme' },
 plans: { free: 'Gratuit', pass: 'Daily Pass', batch: 'Batch', combo: 'Combo', personal: 'Personal', pb: 'PlayBoom', inst: 'Établissement' },
-grp: { teach: 'Enseignement', cot: 'Nexa Co-Teacher', test: 'Tests', hall: 'Study Hall', tools: 'Outils', family: 'Famille', events: 'Événements et carrière', instm: 'Options établissement', safety: 'Sécurité — toujours active' },
-subm: { one: 'Nexa Teacher 1:1', avatar: 'Avatar 3D et synchro labiale', wb: 'Tableau blanc', batch: 'Cours en groupe', poll: 'Sondages et discussion en binôme', rec: 'Enregistrement auto',
+grp: { teach: 'Enseignement', cot: 'Nexa Co-Tutor', test: 'Tests', hall: 'Study Hall', tools: 'Outils', family: 'Famille', events: 'Événements et carrière', instm: 'Options établissement', safety: 'Sécurité — toujours active' },
+subm: { one: 'Nexa Tutor 1:1', avatar: 'Avatar 3D et synchro labiale', wb: 'Tableau blanc', batch: 'Cours en groupe', poll: 'Sondages et discussion en binôme', rec: 'Enregistrement auto',
 chat: 'Questions et explications', notes: 'Notes et résumés', errbook: 'Carnet d’erreurs', links: 'Explication de liens',
 mock: 'Examens blancs', omr: 'Entraînement OMR', rank: 'Classement Virtual Batch', crash: 'Exam Crash Pack (option)',
 silent: 'Salle silencieuse', group: 'Groupes de 2 à 10', lab: 'Labo et tableau partagé', mod: 'Nexa Study Hall Moderator',
@@ -1250,8 +1253,8 @@ var MF2 = ['mfdaily', 'mfpro'], MF4 = ['mfdaily', 'mfpro', 'mfeta', 'mfshare'];
 var SAFE = ['guard', 'helpl', 'consent', 'data', 'a11y'];
 var BASE = ['avatar', 'wb', 'batch', 'poll', 'rec', 'notes', 'errbook', 'links', 'quiz', 'omr', 'tf', 'fill', 'match', 'short', 'mixed', 'rank', 'crash', 'silent', 'group', 'lab', 'mod', 'dict', 'calc', 'plan', 'report', 'meet', 'olym', 'cert', 'jobs'].concat(MF4);
 var mk = function (onList, extra) { var o = {}; ALL.forEach(function (k) { o[k] = false; }); SAFE.forEach(function (k) { o[k] = true; }); onList.forEach(function (k) { o[k] = true; }); return Object.assign(o, extra || {}); };
-// Free for life (18 Oct 2026): Co-Teacher lite 3 topics a day, weekly national quiz, fixed study plan only (AI study plan and full mock tests are not free).
-// Paid plans: Nexa Co-Teacher 25 topics a day (follow-ups on one topic count as one).
+// Free for life (18 Oct 2026): Co-Tutor lite 3 topics a day, weekly national quiz, fixed study plan only (AI study plan and full mock tests are not free).
+// Paid plans: Nexa Co-Tutor 25 topics a day (follow-ups on one topic count as one).
 // Tests & marking (approved 25 Oct 2026): true/false, fill-in and matching unlimited for everyone; written checks free 1 a week, Daily Pass 2, Batch 4, Combo 7, Personal 10 a day;
 // recheck free once per test, then 2 more a day (Claude's default — the owner approved "limited per day"); institutions 4 a day (Claude's default); not for PlayBoom.
 // Exam & Assessment additions (owner, 25 Oct 2026): adaptive smart practice, certificate exams and (limited) proctoring on every plan except PlayBoom; coding tests in skill courses (paid plans);
@@ -1296,9 +1299,9 @@ uiAdd5(L, M) {
 var A = {};
 A.en = { tt: {
 online: 'Learners using NexaTute at this moment, across all apps.',
-live11: 'One-to-one live classes running now, each taught by Nexa Teacher.',
-batch: 'Live batch classes running now. One Nexa Teacher teaches up to 50 learners.',
-beta: 'The Free Beta ran 20 November – 9 December 2026 with about 2,000 seats; 1,764 joined. It is closed — 318 of them bought a plan in January.',
+live11: 'One-to-one live classes running now, each taught by Nexa Tutor.',
+batch: 'Live batch classes running now. One Nexa Tutor teaches up to 50 learners.',
+beta: 'The Free Beta runs 25 December 2026 – 14 January 2027 with about 2,000 seats; today is day 1 of 21 and 1,764 have signed up (sample, prototype).',
 tot: 'Whole-platform totals at a glance. Click a card to open its page.',
 load: 'Share of the AI teaching capacity in use on the GPU servers right now.',
 gauge: 'The mark shows 60%. Past it, add a server before learners have to wait.',
@@ -1354,9 +1357,9 @@ bg: 'Full access for 4 hours in a real emergency, with a reason. The security ow
 } };
 A.bn = { tt: {
 online: 'এই মুহূর্তে সব অ্যাপ মিলিয়ে যত শিক্ষার্থী NexaTute ব্যবহার করছে।',
-live11: 'এখন চলা ওয়ান-টু-ওয়ান লাইভ ক্লাস; প্রতিটি পড়াচ্ছে Nexa Teacher।',
-batch: 'এখন চলা লাইভ ব্যাচ ক্লাস। একজন Nexa Teacher সর্বোচ্চ 50 জনকে পড়ায়।',
-beta: 'Free Beta চলেছিল 20 নভেম্বর – 9 ডিসেম্বর 2026, প্রায় 2,000 আসন; যোগ দিয়েছিল 1,764 জন। এটি শেষ — তাদের 318 জন জানুয়ারিতে প্ল্যান কিনেছে।',
+live11: 'এখন চলা ওয়ান-টু-ওয়ান লাইভ ক্লাস; প্রতিটি পড়াচ্ছে Nexa Tutor।',
+batch: 'এখন চলা লাইভ ব্যাচ ক্লাস। একজন Nexa Tutor সর্বোচ্চ 50 জনকে পড়ায়।',
+beta: 'Free Beta চলছে 25 ডিসেম্বর 2026 – 14 জানুয়ারি 2027, প্রায় 2,000 আসন; আজ 21 দিনের প্রথম দিন, সাইন আপ করেছে 1,764 জন (নমুনা, প্রোটোটাইপ)।',
 tot: 'পুরো প্ল্যাটফর্মের মোট হিসাব এক নজরে। কার্ডে ক্লিক করলে সেই পাতা খুলবে।',
 load: 'এই মুহূর্তে GPU সার্ভারগুলোর AI পড়ানোর ক্ষমতার কতটা ব্যবহার হচ্ছে।',
 gauge: 'দাগটা 60%। এর বেশি হলে শিক্ষার্থীদের অপেক্ষা করার আগেই সার্ভার বাড়ান।',
@@ -1412,9 +1415,9 @@ bg: 'সত্যিকারের জরুরি অবস্থায় ক
 } };
 A.hi = { tt: {
 online: 'इस समय सभी ऐप्स पर NexaTute इस्तेमाल कर रहे शिक्षार्थी।',
-live11: 'अभी चल रही वन-टू-वन लाइव क्लासें; हर क्लास में Nexa Teacher पढ़ा रहा है।',
-batch: 'अभी चल रही लाइव बैच क्लासें। एक Nexa Teacher अधिकतम 50 शिक्षार्थियों को पढ़ाता है।',
-beta: 'Free Beta 20 नवंबर – 9 दिसंबर 2026 तक चला, लगभग 2,000 सीटें; 1,764 शामिल हुए। यह ख़त्म हो चुका है — उनमें से 318 ने जनवरी में प्लान ख़रीदा।',
+live11: 'अभी चल रही वन-टू-वन लाइव क्लासें; हर क्लास में Nexa Tutor पढ़ा रहा है।',
+batch: 'अभी चल रही लाइव बैच क्लासें। एक Nexa Tutor अधिकतम 50 शिक्षार्थियों को पढ़ाता है।',
+beta: 'Free Beta 25 दिसंबर 2026 – 14 जनवरी 2027 तक चल रहा है, लगभग 2,000 सीटें; आज 21 में से पहला दिन है और 1,764 साइन-अप हुए हैं (नमूना, प्रोटोटाइप)।',
 tot: 'पूरे प्लेटफ़ॉर्म के कुल आँकड़े एक नज़र में। किसी कार्ड पर क्लिक करके उसका पेज खोलें।',
 load: 'इस समय GPU सर्वरों पर AI से पढ़ाने की क्षमता का कितना हिस्सा इस्तेमाल हो रहा है।',
 gauge: 'निशान 60% पर है। इससे ऊपर जाए तो शिक्षार्थियों को इंतज़ार करना पड़े, उससे पहले एक सर्वर जोड़ें।',
@@ -1470,9 +1473,9 @@ bg: 'असली आपात स्थिति में, कारण बत
 } };
 A.ur = { tt: {
 online: 'اس وقت تمام ایپس پر ' + M('NexaTute') + ' استعمال کرنے والے طلبہ۔',
-live11: 'اس وقت جاری ون ٹو ون لائیو کلاسیں؛ ہر کلاس میں ' + M('Nexa Teacher') + ' پڑھا رہا ہے۔',
-batch: 'اس وقت جاری لائیو بیچ کلاسیں۔ ایک ' + M('Nexa Teacher') + ' زیادہ سے زیادہ 50 طلبہ کو پڑھاتا ہے۔',
-beta: M('Free Beta') + ' ' + M('20') + ' نومبر – ' + M('9') + ' دسمبر ' + M('2026') + ' تک چلا، تقریباً ' + M('2,000') + ' نشستیں؛ ' + M('1,764') + ' شامل ہوئے۔ یہ ختم ہو چکا ہے — ان میں سے ' + M('318') + ' نے جنوری میں پلان خریدا۔',
+live11: 'اس وقت جاری ون ٹو ون لائیو کلاسیں؛ ہر کلاس میں ' + M('Nexa Tutor') + ' پڑھا رہا ہے۔',
+batch: 'اس وقت جاری لائیو بیچ کلاسیں۔ ایک ' + M('Nexa Tutor') + ' زیادہ سے زیادہ 50 طلبہ کو پڑھاتا ہے۔',
+beta: M('Free Beta') + ' ' + M('25') + ' دسمبر ⁦2026⁩ – ' + M('14') + ' جنوری ' + M('2027') + ' تک جاری ہے، تقریباً ' + M('2,000') + ' نشستیں؛ آج ' + M('21') + ' میں سے پہلا دن ہے اور ' + M('1,764') + ' سائن اپ ہوئے ہیں (نمونہ، پروٹوٹائپ)۔',
 tot: 'پورے پلیٹ فارم کے مجموعی اعداد ایک نظر میں۔ کسی کارڈ پر کلک کر کے اس کا صفحہ کھولیں۔',
 load: 'اس وقت ' + M('GPU') + ' سرورز پر اے آئی تدریس کی گنجائش کا کتنا حصہ استعمال ہو رہا ہے۔',
 gauge: 'نشان ' + M('60%') + ' پر ہے۔ اس سے اوپر جائے تو طلبہ کو انتظار کرنا پڑے، اس سے پہلے ایک سرور شامل کریں۔',
@@ -1528,9 +1531,9 @@ bg: 'حقیقی ہنگامی صورت میں، وجہ بتا کر، 4 گھنٹے
 } };
 A.ar = { tt: {
 online: 'المتعلمون الذين يستخدمون ' + M('NexaTute') + ' الآن عبر جميع التطبيقات.',
-live11: 'الحصص الفردية المباشرة الجارية الآن، ويقدّم كلًّا منها ' + M('Nexa Teacher') + '.',
-batch: 'الحصص الجماعية المباشرة الجارية الآن. يدرّس ' + M('Nexa Teacher') + ' الواحد حتى 50 متعلمًا.',
-beta: 'جرى ' + M('Free Beta') + ' من ' + M('20') + ' نوفمبر – ' + M('9') + ' ديسمبر ' + M('2026') + ' بنحو ' + M('2,000') + ' مقعد؛ انضم ' + M('1,764') + ' متعلمًا. انتهى — واشترى ' + M('318') + ' منهم خطة في يناير.',
+live11: 'الحصص الفردية المباشرة الجارية الآن، ويقدّم كلًّا منها ' + M('Nexa Tutor') + '.',
+batch: 'الحصص الجماعية المباشرة الجارية الآن. يدرّس ' + M('Nexa Tutor') + ' الواحد حتى 50 متعلمًا.',
+beta: 'تمتد ' + M('Free Beta') + ' من ' + M('25') + ' ديسمبر ⁦2026⁩ – ' + M('14') + ' يناير ' + M('2027') + ' بنحو ' + M('2,000') + ' مقعد؛ اليوم هو اليوم الأول من ' + M('21') + ' وقد سجّل ' + M('1,764') + ' متعلمًا (عيّنة، نموذج أولي).',
 tot: 'إجماليات المنصة كاملةً في لمحة. انقر على بطاقة لفتح صفحتها.',
 load: 'نسبة سعة التدريس بالذكاء الاصطناعي المستخدمة الآن على خوادم ' + M('GPU') + '.',
 gauge: 'العلامة عند ' + M('60%') + '. عند تجاوزها، أضف خادمًا قبل أن يضطر المتعلمون إلى الانتظار.',
@@ -1586,9 +1589,9 @@ bg: 'وصول كامل لمدة 4 ساعات في حالة طوارئ حقيقي
 } };
 A.fr = { tt: {
 online: 'Apprenants qui utilisent NexaTute en ce moment, toutes applis confondues.',
-live11: 'Cours individuels en direct en ce moment, chacun donné par Nexa Teacher.',
-batch: 'Cours en groupe en direct en ce moment. Un Nexa Teacher enseigne à 50 apprenants maximum.',
-beta: 'La Free Beta a eu lieu du 20 novembre au 9 décembre 2026, avec environ 2 000 places ; 1 764 inscrits. Elle est terminée — 318 d’entre eux ont acheté une formule en janvier.',
+live11: 'Cours individuels en direct en ce moment, chacun donné par Nexa Tutor.',
+batch: 'Cours en groupe en direct en ce moment. Un Nexa Tutor enseigne à 50 apprenants maximum.',
+beta: 'La Free Beta a lieu du 25 décembre 2026 au 14 janvier 2027, avec environ 2 000 places ; aujourd’hui est le jour 1 sur 21 et 1 764 personnes se sont inscrites (exemple, prototype).',
 tot: 'Totaux de toute la plateforme en un coup d’œil. Cliquez sur une carte pour ouvrir sa page.',
 load: 'Part de la capacité d’enseignement IA utilisée en ce moment sur les serveurs GPU.',
 gauge: 'Le repère est à 60 %. Au-delà, ajoutez un serveur avant que les apprenants n’aient à attendre.',
@@ -1679,7 +1682,7 @@ F.en = {
 grp: { rcd: 'Recordings & class reports', dsh: 'Student dashboard & All Exams', wb11: 'Wellbeing, reminders & report modes', sign: 'Sign language (BdSL)', gdn: 'Guardian & teacher views' },
 subm: { rec: 'Recording — the learner chooses (never automatic)', data: 'Download all my data (one click) & delete',
 rlib: 'Recordings library (Subject → Unit → Topic → Class)', rask: 'Ask-the-recording search', rchap: 'Auto-chapters + 3-min recap', rstuck: '“Where I got stuck” bookmarks', rnotes: 'Private timestamped notes',
-rclip: 'One-tap clip → flashcard / error notebook', rskip: '“Skip what you know” replay', roffl: 'Offline download (small recordings)', creport: 'Class learning report (every class)', teachai: 'Teach the AI (on the Co-Teacher)',
+rclip: 'One-tap clip → flashcard / error notebook', rskip: '“Skip what you know” replay', roffl: 'Offline download (small recordings)', creport: 'Class learning report (every class)', teachai: 'Teach the AI (on the Co-Tutor)',
 dash: 'Main Student Dashboard (KPIs, timeline, total vs active minutes)', mmap: 'Mastery Map (range, target grade, cross-subject links)', fsrs: 'Spaced reviews (FSRS) & overdue reviews', ready: 'Exam Readiness with what-if',
 advice: 'Explainable advice cards', selfacc: 'Self-assessment accuracy', allex: 'All Exams (history, heatmap, answer changes, lost marks)', hwprog: 'Handwriting & presentation progress', voicerep: 'Listen to my report (Bangla voice)',
 badges: 'Chapter micro-badges (Open Badges 3.0)', portf: 'Portfolio PDF & verifiable certificates', exday: 'Exam-day mode',
@@ -1694,7 +1697,7 @@ rate_h: 'Minute rate with the avatar on (1:1): 1.5 minutes used = 1 minute charg
 sch_h: 'Most Improved scholarship — a free month for the biggest improvers (not top scorers)', sch_v: function (n) { return 'Top ' + n; }, sch_s: 'per course, each month',
 dl_h: 'Download-all-my-data link valid for', dl_v: function (n) { return n + ' days'; },
 locked_h: 'Fixed rules (approved — not changeable here)',
-locked: ['No stored transcript of the learner’s own voice — only the Nexa Teacher’s text', 'Daily question from my mistakes: at a time the learner picks, nothing after 9 pm; no AI timing for under-18', 'Learning Atlas: cells under 20 learners are hidden', 'Live classes come first on the GPUs — recording processing and Motion Studio use only spare time (Platform operations)'],
+locked: ['No stored transcript of the learner’s own voice — only the Nexa Tutor’s text', 'Daily question from my mistakes: at a time the learner picks, nothing after 9 pm; no AI timing for under-18', 'Learning Atlas: cells under 20 learners are hidden', 'Live classes come first on the GPUs — recording processing and Motion Studio use only spare time (Platform operations)'],
 live: function (r, k, x, n, d) { return 'Live: recordings ' + r + ' months' + (k ? ' (keep until the course ends: on)' : '') + ' · BdSL ' + x + ' min = 1 min' + (n ? ' · Most Improved top ' + n : ' · Most Improved: off') + ' · data link ' + d + ' days'; },
 send: 'Send for approval', sent: function (n) { return 'Waiting for a second person · sent by ' + n; }, ap: 'Approve', rj: 'Reject', mk: 'You made this change — someone else with Approve on Plans must approve it.',
 t_sent: 'Settings change sent for approval', t_ok: 'Recording and sign-language settings updated', t_rj: 'Settings change rejected',
@@ -1708,7 +1711,7 @@ F.bn = {
 grp: { rcd: 'রেকর্ডিং ও ক্লাস রিপোর্ট', dsh: 'শিক্ষার্থীর ড্যাশবোর্ড ও সব পরীক্ষা', wb11: 'সুস্থতা, রিমাইন্ডার ও রিপোর্ট মোড', sign: 'সাংকেতিক ভাষা (BdSL)', gdn: 'অভিভাবক ও শিক্ষকের ভিউ' },
 subm: { rec: 'রেকর্ডিং — শিক্ষার্থী বেছে নেয় (কখনো নিজে থেকে নয়)', data: 'আমার সব ডেটা ডাউনলোড (এক ক্লিকে) ও মুছে ফেলা',
 rlib: 'রেকর্ডিং লাইব্রেরি (বিষয় → ইউনিট → টপিক → ক্লাস)', rask: 'রেকর্ডিংকে প্রশ্ন করে খোঁজা', rchap: 'স্বয়ংক্রিয় চ্যাপ্টার + 3 মিনিটের রিক্যাপ', rstuck: '“যেখানে আটকে গিয়েছিলাম” বুকমার্ক', rnotes: 'সময়সহ নিজের গোপন নোট',
-rclip: 'এক ট্যাপে ক্লিপ → ফ্ল্যাশকার্ড / ভুলের খাতা', rskip: '“যা জানি তা বাদ দাও” রিপ্লে', roffl: 'অফলাইন ডাউনলোড (ছোট রেকর্ডিং)', creport: 'ক্লাসের শেখার রিপোর্ট (প্রতিটি ক্লাস)', teachai: 'AI-কে শেখাও (Co-Teacher-এ)',
+rclip: 'এক ট্যাপে ক্লিপ → ফ্ল্যাশকার্ড / ভুলের খাতা', rskip: '“যা জানি তা বাদ দাও” রিপ্লে', roffl: 'অফলাইন ডাউনলোড (ছোট রেকর্ডিং)', creport: 'ক্লাসের শেখার রিপোর্ট (প্রতিটি ক্লাস)', teachai: 'AI-কে শেখাও (Co-Tutor-এ)',
 dash: 'মূল শিক্ষার্থী ড্যাশবোর্ড (KPI, টাইমলাইন, মোট বনাম সক্রিয় মিনিট)', mmap: 'Mastery Map (সীমা, লক্ষ্য গ্রেড, বিষয়ের মধ্যে যোগসূত্র)', fsrs: 'ব্যবধানে রিভিউ (FSRS) ও বাকি রিভিউ', ready: 'পরীক্ষার প্রস্তুতি — “যদি…” হিসাবসহ',
 advice: 'কারণসহ পরামর্শ কার্ড', selfacc: 'নিজের মূল্যায়নের নির্ভুলতা', allex: 'সব পরীক্ষা (ইতিহাস, হিটম্যাপ, উত্তর বদল, নম্বর কাটা)', hwprog: 'হাতের লেখা ও উপস্থাপনার অগ্রগতি', voicerep: 'আমার রিপোর্ট শুনি (বাংলা কণ্ঠে)',
 badges: 'চ্যাপ্টারের ছোট ব্যাজ (Open Badges 3.0)', portf: 'পোর্টফোলিও PDF ও যাচাইযোগ্য সার্টিফিকেট', exday: 'পরীক্ষার দিনের মোড',
@@ -1723,7 +1726,7 @@ rate_h: 'অ্যাভাটার চালু থাকলে মিনি�
 sch_h: 'Most Improved বৃত্তি — সবচেয়ে বেশি উন্নতি করা শিক্ষার্থীরা (সর্বোচ্চ নম্বর নয়) এক মাস ফ্রি পায়', sch_v: function (n) { return 'শীর্ষ ' + n; }, sch_s: 'প্রতি কোর্সে, প্রতি মাসে',
 dl_h: 'আমার সব ডেটা ডাউনলোডের লিংক বৈধ থাকে', dl_v: function (n) { return n + ' দিন'; },
 locked_h: 'স্থির নিয়ম (অনুমোদিত — এখানে বদলানো যায় না)',
-locked: ['শিক্ষার্থীর নিজের কণ্ঠের কোনো ট্রান্সক্রিপ্ট রাখা হয় না — শুধু Nexa Teacher-এর লেখা', 'ভুল থেকে দৈনিক প্রশ্ন: শিক্ষার্থীর বেছে নেওয়া সময়ে, রাত 9টার পরে কিছু নয়; 18-এর কম হলে AI-এর ঠিক করা সময় নয়', 'Learning Atlas: 20 জনের কম শিক্ষার্থীর ঘর লুকানো', 'GPU-তে লাইভ ক্লাস আগে — রেকর্ডিং প্রসেসিং ও Motion Studio শুধু খালি সময় নেয় (প্ল্যাটফর্ম অপারেশন)'],
+locked: ['শিক্ষার্থীর নিজের কণ্ঠের কোনো ট্রান্সক্রিপ্ট রাখা হয় না — শুধু Nexa Tutor-এর লেখা', 'ভুল থেকে দৈনিক প্রশ্ন: শিক্ষার্থীর বেছে নেওয়া সময়ে, রাত 9টার পরে কিছু নয়; 18-এর কম হলে AI-এর ঠিক করা সময় নয়', 'Learning Atlas: 20 জনের কম শিক্ষার্থীর ঘর লুকানো', 'GPU-তে লাইভ ক্লাস আগে — রেকর্ডিং প্রসেসিং ও Motion Studio শুধু খালি সময় নেয় (প্ল্যাটফর্ম অপারেশন)'],
 live: function (r, k, x, n, d) { return 'চালু: রেকর্ডিং ' + r + ' মাস' + (k ? ' (কোর্স শেষ পর্যন্ত রাখা: চালু)' : '') + ' · BdSL ' + x + ' মিনিট = 1 মিনিট' + (n ? ' · Most Improved শীর্ষ ' + n : ' · Most Improved: বন্ধ') + ' · ডেটা লিংক ' + d + ' দিন'; },
 send: 'অনুমোদনে পাঠান', sent: function (n) { return 'দ্বিতীয় একজনের অপেক্ষায় · পাঠিয়েছেন ' + n; }, ap: 'অনুমোদন', rj: 'বাতিল', mk: 'বদলটি আপনার — Plans-এ Approve আছে এমন অন্য কেউ অনুমোদন করবেন।',
 t_sent: 'সেটিংসের বদল অনুমোদনে পাঠানো হলো', t_ok: 'রেকর্ডিং ও সাংকেতিক ভাষার সেটিংস হালনাগাদ হয়েছে', t_rj: 'সেটিংসের বদল বাতিল',
@@ -1737,7 +1740,7 @@ F.hi = {
 grp: { rcd: 'रिकॉर्डिंग और क्लास रिपोर्ट', dsh: 'छात्र डैशबोर्ड और सभी परीक्षाएँ', wb11: 'सेहत, रिमाइंडर और रिपोर्ट मोड', sign: 'सांकेतिक भाषा (BdSL)', gdn: 'अभिभावक और शिक्षक व्यू' },
 subm: { rec: 'रिकॉर्डिंग — शिक्षार्थी चुनता है (कभी अपने आप नहीं)', data: 'मेरा सारा डेटा डाउनलोड (एक क्लिक) और मिटाना',
 rlib: 'रिकॉर्डिंग लाइब्रेरी (विषय → यूनिट → टॉपिक → क्लास)', rask: 'रिकॉर्डिंग से पूछकर खोज', rchap: 'अपने आप चैप्टर + 3 मिनट का रिकैप', rstuck: '“जहाँ अटका था” बुकमार्क', rnotes: 'समय के साथ निजी नोट्स',
-rclip: 'एक टैप में क्लिप → फ़्लैशकार्ड / ग़लतियों की कॉपी', rskip: '“जो आता है उसे छोड़ो” रीप्ले', roffl: 'ऑफ़लाइन डाउनलोड (छोटी रिकॉर्डिंग)', creport: 'क्लास की सीखने की रिपोर्ट (हर क्लास)', teachai: 'AI को सिखाओ (Co-Teacher पर)',
+rclip: 'एक टैप में क्लिप → फ़्लैशकार्ड / ग़लतियों की कॉपी', rskip: '“जो आता है उसे छोड़ो” रीप्ले', roffl: 'ऑफ़लाइन डाउनलोड (छोटी रिकॉर्डिंग)', creport: 'क्लास की सीखने की रिपोर्ट (हर क्लास)', teachai: 'AI को सिखाओ (Co-Tutor पर)',
 dash: 'मुख्य छात्र डैशबोर्ड (KPI, टाइमलाइन, कुल बनाम सक्रिय मिनट)', mmap: 'Mastery Map (दायरा, लक्ष्य ग्रेड, विषयों के बीच कड़ियाँ)', fsrs: 'अंतराल पर रिव्यू (FSRS) और बाकी रिव्यू', ready: 'परीक्षा तैयारी — “अगर…” के साथ',
 advice: 'कारण सहित सलाह कार्ड', selfacc: 'स्व-मूल्यांकन की सटीकता', allex: 'सभी परीक्षाएँ (इतिहास, हीटमैप, उत्तर बदलना, कटे अंक)', hwprog: 'लिखावट और प्रस्तुति की प्रगति', voicerep: 'मेरी रिपोर्ट सुनो (बांग्ला आवाज़)',
 badges: 'चैप्टर के छोटे बैज (Open Badges 3.0)', portf: 'पोर्टफ़ोलियो PDF और सत्यापन योग्य प्रमाणपत्र', exday: 'परीक्षा के दिन का मोड',
@@ -1752,7 +1755,7 @@ rate_h: 'अवतार चालू होने पर मिनट दर (1
 sch_h: 'Most Improved छात्रवृत्ति — सबसे ज़्यादा सुधार करने वालों (टॉपर नहीं) को एक महीना मुफ़्त', sch_v: function (n) { return 'शीर्ष ' + n; }, sch_s: 'हर कोर्स में, हर महीने',
 dl_h: 'मेरा सारा डेटा डाउनलोड लिंक मान्य रहता है', dl_v: function (n) { return n + ' दिन'; },
 locked_h: 'तय नियम (मंज़ूर — यहाँ नहीं बदलते)',
-locked: ['शिक्षार्थी की अपनी आवाज़ का कोई ट्रांसक्रिप्ट नहीं रखा जाता — सिर्फ़ Nexa Teacher का टेक्स्ट', 'ग़लतियों से रोज़ का प्रश्न: शिक्षार्थी के चुने समय पर, रात 9 बजे के बाद कुछ नहीं; 18 से कम के लिए AI का तय समय नहीं', 'Learning Atlas: 20 से कम शिक्षार्थियों वाले ख़ाने छिपे', 'GPU पर लाइव क्लास पहले — रिकॉर्डिंग प्रोसेसिंग और Motion Studio सिर्फ़ खाली समय लेते हैं (प्लेटफ़ॉर्म ऑपरेशंस)'],
+locked: ['शिक्षार्थी की अपनी आवाज़ का कोई ट्रांसक्रिप्ट नहीं रखा जाता — सिर्फ़ Nexa Tutor का टेक्स्ट', 'ग़लतियों से रोज़ का प्रश्न: शिक्षार्थी के चुने समय पर, रात 9 बजे के बाद कुछ नहीं; 18 से कम के लिए AI का तय समय नहीं', 'Learning Atlas: 20 से कम शिक्षार्थियों वाले ख़ाने छिपे', 'GPU पर लाइव क्लास पहले — रिकॉर्डिंग प्रोसेसिंग और Motion Studio सिर्फ़ खाली समय लेते हैं (प्लेटफ़ॉर्म ऑपरेशंस)'],
 live: function (r, k, x, n, d) { return 'लाइव: रिकॉर्डिंग ' + r + ' महीने' + (k ? ' (कोर्स ख़त्म होने तक रखना: चालू)' : '') + ' · BdSL ' + x + ' मिनट = 1 मिनट' + (n ? ' · Most Improved शीर्ष ' + n : ' · Most Improved: बंद') + ' · डेटा लिंक ' + d + ' दिन'; },
 send: 'मंज़ूरी के लिए भेजें', sent: function (n) { return 'दूसरे व्यक्ति की प्रतीक्षा · भेजा ' + n + ' ने'; }, ap: 'मंज़ूर करें', rj: 'अस्वीकार', mk: 'यह बदलाव आपका है — Plans पर Approve वाला कोई और मंज़ूर करेगा।',
 t_sent: 'सेटिंग्स का बदलाव मंज़ूरी के लिए भेजा गया', t_ok: 'रिकॉर्डिंग और सांकेतिक भाषा सेटिंग्स अपडेट हुईं', t_rj: 'सेटिंग्स का बदलाव अस्वीकार',
@@ -1766,7 +1769,7 @@ F.ur = {
 grp: { rcd: 'ریکارڈنگز اور کلاس رپورٹس', dsh: 'طالب علم ڈیش بورڈ اور تمام امتحانات', wb11: 'صحت، یاد دہانیاں اور رپورٹ موڈ', sign: 'اشاروں کی زبان (' + M('BdSL') + ')', gdn: 'سرپرست اور استاد ویو' },
 subm: { rec: 'ریکارڈنگ — طالب علم خود چنتا ہے (کبھی خودکار نہیں)', data: 'میرا سارا ڈیٹا ڈاؤن لوڈ (ایک کلک) اور حذف',
 rlib: 'ریکارڈنگ لائبریری (مضمون ← یونٹ ← ٹاپک ← کلاس)', rask: 'ریکارڈنگ سے پوچھ کر تلاش', rchap: 'خودکار چیپٹر + ' + M('3') + ' منٹ کا خلاصہ', rstuck: '“جہاں اٹکا تھا” بک مارک', rnotes: 'وقت کے ساتھ نجی نوٹس',
-rclip: 'ایک ٹیپ میں کلپ ← فلیش کارڈ / غلطیوں کی کاپی', rskip: '“جو آتا ہے وہ چھوڑو” ری پلے', roffl: 'آف لائن ڈاؤن لوڈ (چھوٹی ریکارڈنگز)', creport: 'کلاس کی سیکھنے کی رپورٹ (ہر کلاس)', teachai: M('AI') + ' کو سکھاؤ (' + M('Co-Teacher') + ' پر)',
+rclip: 'ایک ٹیپ میں کلپ ← فلیش کارڈ / غلطیوں کی کاپی', rskip: '“جو آتا ہے وہ چھوڑو” ری پلے', roffl: 'آف لائن ڈاؤن لوڈ (چھوٹی ریکارڈنگز)', creport: 'کلاس کی سیکھنے کی رپورٹ (ہر کلاس)', teachai: M('AI') + ' کو سکھاؤ (' + M('Co-Tutor') + ' پر)',
 dash: 'مرکزی طالب علم ڈیش بورڈ (' + M('KPI') + '، ٹائم لائن، کل بمقابلہ فعال منٹ)', mmap: M('Mastery Map') + ' (حد، ہدف گریڈ، مضامین کے درمیان ربط)', fsrs: 'وقفے سے ریویو (' + M('FSRS') + ') اور باقی ریویو', ready: 'امتحان کی تیاری — “اگر…” کے ساتھ',
 advice: 'وجہ کے ساتھ مشورہ کارڈ', selfacc: 'خود جائزے کی درستگی', allex: 'تمام امتحانات (تاریخ، ہیٹ میپ، جواب کی تبدیلی، کٹے نمبر)', hwprog: 'لکھائی اور پیشکش کی پیش رفت', voicerep: 'میری رپورٹ سنو (بنگلہ آواز)',
 badges: 'چیپٹر کے چھوٹے بیج (' + M('Open Badges 3.0') + ')', portf: 'پورٹ فولیو ' + M('PDF') + ' اور قابلِ تصدیق سرٹیفکیٹ', exday: 'امتحان کے دن کا موڈ',
@@ -1781,7 +1784,7 @@ rate_h: 'اوتار آن ہونے پر منٹ کی شرح (' + M('1:1') + '): ' 
 sch_h: M('Most Improved') + ' وظیفہ — سب سے زیادہ بہتری والوں (ٹاپ نمبر والوں کو نہیں) کو ایک مہینہ مفت', sch_v: function (n) { return 'سرفہرست ' + M(n); }, sch_s: 'ہر کورس میں، ہر مہینے',
 dl_h: 'میرا سارا ڈیٹا ڈاؤن لوڈ لنک کارآمد رہتا ہے', dl_v: function (n) { return M(n) + ' دن'; },
 locked_h: 'طے شدہ اصول (منظور شدہ — یہاں نہیں بدلتے)',
-locked: ['طالب علم کی اپنی آواز کا کوئی ٹرانسکرپٹ نہیں رکھا جاتا — صرف ' + M('Nexa Teacher') + ' کا متن', 'غلطیوں سے روزانہ سوال: طالب علم کے چنے وقت پر، رات ' + M('9') + ' بجے کے بعد کچھ نہیں؛ 18 سے کم کے لیے ' + M('AI') + ' کا طے کردہ وقت نہیں', M('Learning Atlas') + ': ' + M('20') + ' سے کم طلبہ والے خانے چھپے', M('GPU') + ' پر لائیو کلاس پہلے — ریکارڈنگ پروسیسنگ اور ' + M('Motion Studio') + ' صرف خالی وقت لیتے ہیں (پلیٹ فارم آپریشنز)'],
+locked: ['طالب علم کی اپنی آواز کا کوئی ٹرانسکرپٹ نہیں رکھا جاتا — صرف ' + M('Nexa Tutor') + ' کا متن', 'غلطیوں سے روزانہ سوال: طالب علم کے چنے وقت پر، رات ' + M('9') + ' بجے کے بعد کچھ نہیں؛ 18 سے کم کے لیے ' + M('AI') + ' کا طے کردہ وقت نہیں', M('Learning Atlas') + ': ' + M('20') + ' سے کم طلبہ والے خانے چھپے', M('GPU') + ' پر لائیو کلاس پہلے — ریکارڈنگ پروسیسنگ اور ' + M('Motion Studio') + ' صرف خالی وقت لیتے ہیں (پلیٹ فارم آپریشنز)'],
 live: function (r, k, x, n, d) { return 'لائیو: ریکارڈنگز ' + M(r) + ' مہینے' + (k ? ' (کورس ختم ہونے تک رکھنا: آن)' : '') + ' · ' + M('BdSL') + ' ' + M(x) + ' منٹ = ' + M('1') + ' منٹ · ' + M('Most Improved') + (n ? ' سرفہرست ' + M(n) : ': بند') + ' · ڈیٹا لنک ' + M(d) + ' دن'; },
 send: 'منظوری کے لیے بھیجیں', sent: function (n) { return 'دوسرے شخص کا انتظار · بھیجا: ' + n; }, ap: 'منظور کریں', rj: 'مسترد', mk: 'یہ تبدیلی آپ کی ہے — پلانز پر ' + M('Approve') + ' والا کوئی اور منظور کرے گا۔',
 t_sent: 'سیٹنگز کی تبدیلی منظوری کے لیے بھیجی گئی', t_ok: 'ریکارڈنگ اور اشاروں کی زبان کی سیٹنگز اپ ڈیٹ ہو گئیں', t_rj: 'سیٹنگز کی تبدیلی مسترد',
@@ -1795,7 +1798,7 @@ F.ar = {
 grp: { rcd: 'التسجيلات وتقارير الحصص', dsh: 'لوحة الطالب وكل الامتحانات', wb11: 'الراحة والتذكيرات وأوضاع التقارير', sign: 'لغة الإشارة (' + M('BdSL') + ')', gdn: 'عرض ولي الأمر والمعلم' },
 subm: { rec: 'التسجيل — يختاره المتعلّم (لا يبدأ تلقائيًا أبدًا)', data: 'تنزيل كل بياناتي (بنقرة واحدة) والحذف',
 rlib: 'مكتبة التسجيلات (المادة ← الوحدة ← الموضوع ← الحصة)', rask: 'البحث بسؤال التسجيل', rchap: 'فصول تلقائية + ملخّص ' + M('3') + ' دقائق', rstuck: 'إشارات “هنا توقفت”', rnotes: 'ملاحظات خاصة مع الوقت',
-rclip: 'مقطع بلمسة ← بطاقة مراجعة / دفتر الأخطاء', rskip: 'إعادة “تخطَّ ما تعرفه”', roffl: 'تنزيل دون اتصال (تسجيلات صغيرة)', creport: 'تقرير التعلّم لكل حصة', teachai: 'علِّم الـ' + M('AI') + ' (على ' + M('Co-Teacher') + ')',
+rclip: 'مقطع بلمسة ← بطاقة مراجعة / دفتر الأخطاء', rskip: 'إعادة “تخطَّ ما تعرفه”', roffl: 'تنزيل دون اتصال (تسجيلات صغيرة)', creport: 'تقرير التعلّم لكل حصة', teachai: 'علِّم الـ' + M('AI') + ' (على ' + M('Co-Tutor') + ')',
 dash: 'لوحة الطالب الرئيسية (' + M('KPI') + '، الخط الزمني، الوقت الكلي مقابل دقائق التعلّم الفعلي)', mmap: M('Mastery Map') + ' (نطاق، درجة مستهدفة، روابط بين المواد)', fsrs: 'مراجعات متباعدة (' + M('FSRS') + ') والمراجعات المتأخرة', ready: 'الجاهزية للامتحان مع “ماذا لو”',
 advice: 'بطاقات نصائح مع السبب', selfacc: 'دقة التقييم الذاتي', allex: 'كل الامتحانات (السجل، خريطة حرارية، تغيير الإجابات، الدرجات الضائعة)', hwprog: 'تقدّم الخط والعرض', voicerep: 'استمع إلى تقريري (بصوت بنغالي)',
 badges: 'شارات صغيرة للفصول (' + M('Open Badges 3.0') + ')', portf: 'ملف إنجاز ' + M('PDF') + ' وشهادات قابلة للتحقق', exday: 'وضع يوم الامتحان',
@@ -1810,7 +1813,7 @@ rate_h: 'معدل الدقائق مع تفعيل الأفاتار (' + M('1:1') 
 sch_h: 'منحة ' + M('Most Improved') + ' — شهر مجاني لأكثر المتحسّنين (لا لأصحاب أعلى الدرجات)', sch_v: function (n) { return 'أفضل ' + M(n); }, sch_s: 'لكل دورة، كل شهر',
 dl_h: 'صلاحية رابط تنزيل كل بياناتي', dl_v: function (n) { return M(n) + ' أيام'; },
 locked_h: 'قواعد ثابتة (معتمدة — لا تُغيَّر هنا)',
-locked: ['لا يُحفظ أي نص مكتوب لصوت المتعلّم — نص ' + M('Nexa Teacher') + ' فقط', 'سؤال يومي من أخطائي: في وقت يختاره المتعلّم، ولا شيء بعد ' + M('9') + ' مساءً؛ لا توقيت بالـ' + M('AI') + ' لمن هم دون 18', M('Learning Atlas') + ': تُخفى الخانات التي فيها أقل من ' + M('20') + ' متعلّمًا', 'الحصص المباشرة أولًا على ' + M('GPU') + ' — معالجة التسجيلات و' + M('Motion Studio') + ' تستخدم الوقت الفارغ فقط (عمليات المنصة)'],
+locked: ['لا يُحفظ أي نص مكتوب لصوت المتعلّم — نص ' + M('Nexa Tutor') + ' فقط', 'سؤال يومي من أخطائي: في وقت يختاره المتعلّم، ولا شيء بعد ' + M('9') + ' مساءً؛ لا توقيت بالـ' + M('AI') + ' لمن هم دون 18', M('Learning Atlas') + ': تُخفى الخانات التي فيها أقل من ' + M('20') + ' متعلّمًا', 'الحصص المباشرة أولًا على ' + M('GPU') + ' — معالجة التسجيلات و' + M('Motion Studio') + ' تستخدم الوقت الفارغ فقط (عمليات المنصة)'],
 live: function (r, k, x, n, d) { return 'المعمول به: التسجيلات ' + M(r) + ' شهرًا' + (k ? ' (الإبقاء حتى نهاية الدورة: مفعّل)' : '') + ' · ' + M('BdSL') + ' ' + M(x) + ' دقيقة = ' + M('1') + ' دقيقة · ' + M('Most Improved') + (n ? ' أفضل ' + M(n) : ': متوقفة') + ' · رابط البيانات ' + M(d) + ' أيام'; },
 send: 'أرسل للاعتماد', sent: function (n) { return 'بانتظار شخص ثانٍ · أرسله ' + n; }, ap: 'اعتماد', rj: 'رفض', mk: 'أنت من أجرى هذا التغيير — يعتمده شخص آخر لديه صلاحية الاعتماد في الخطط.',
 t_sent: 'أُرسل تغيير الإعدادات للاعتماد', t_ok: 'تم تحديث إعدادات التسجيل ولغة الإشارة', t_rj: 'رُفض تغيير الإعدادات',
@@ -1824,7 +1827,7 @@ F.fr = {
 grp: { rcd: 'Enregistrements et rapports de cours', dsh: 'Tableau de bord élève et tous les examens', wb11: 'Bien-être, rappels et modes de rapport', sign: 'Langue des signes (BdSL)', gdn: 'Vues parent et enseignant' },
 subm: { rec: 'Enregistrement — l’élève choisit (jamais automatique)', data: 'Télécharger toutes mes données (un clic) et supprimer',
 rlib: 'Bibliothèque d’enregistrements (Matière → Unité → Thème → Cours)', rask: 'Recherche en interrogeant l’enregistrement', rchap: 'Chapitres auto + récap de 3 min', rstuck: 'Signets « là où j’ai bloqué »', rnotes: 'Notes privées horodatées',
-rclip: 'Extrait en un geste → fiche / carnet d’erreurs', rskip: 'Relecture « sauter ce que je sais »', roffl: 'Téléchargement hors ligne (petits enregistrements)', creport: 'Rapport d’apprentissage (chaque cours)', teachai: 'Enseigne à l’IA (sur le Co-Teacher)',
+rclip: 'Extrait en un geste → fiche / carnet d’erreurs', rskip: 'Relecture « sauter ce que je sais »', roffl: 'Téléchargement hors ligne (petits enregistrements)', creport: 'Rapport d’apprentissage (chaque cours)', teachai: 'Enseigne à l’IA (sur le Co-Tutor)',
 dash: 'Tableau de bord principal (KPI, chronologie, temps total vs minutes actives)', mmap: 'Mastery Map (fourchette, note visée, liens entre matières)', fsrs: 'Révisions espacées (FSRS) et révisions en retard', ready: 'Préparation à l’examen avec « et si »',
 advice: 'Cartes de conseils expliqués', selfacc: 'Justesse de l’auto-évaluation', allex: 'Tous les examens (historique, carte de chaleur, réponses changées, points perdus)', hwprog: 'Progrès d’écriture et de présentation', voicerep: 'Écouter mon rapport (voix bengalie)',
 badges: 'Micro-badges de chapitre (Open Badges 3.0)', portf: 'Portfolio PDF et certificats vérifiables', exday: 'Mode jour d’examen',
@@ -1839,7 +1842,7 @@ rate_h: 'Taux de minutes avec l’avatar (1:1) : 1,5 minute utilisée = 1 minute
 sch_h: 'Bourse Most Improved — un mois gratuit pour les plus grands progrès (pas les meilleures notes)', sch_v: function (n) { return 'Top ' + n; }, sch_s: 'par cours, chaque mois',
 dl_h: 'Lien « télécharger toutes mes données » valable', dl_v: function (n) { return n + ' jours'; },
 locked_h: 'Règles fixes (validées — non modifiables ici)',
-locked: ['Aucune transcription de la voix de l’élève — seulement le texte du Nexa Teacher', 'Question quotidienne tirée de mes erreurs : à l’heure choisie par l’élève, rien après 21 h ; pas d’horaire choisi par l’IA avant 18 ans', 'Learning Atlas : cases de moins de 20 élèves masquées', 'Les cours en direct d’abord sur les GPU — traitement des enregistrements et Motion Studio n’utilisent que le temps libre (Opérations)'],
+locked: ['Aucune transcription de la voix de l’élève — seulement le texte du Nexa Tutor', 'Question quotidienne tirée de mes erreurs : à l’heure choisie par l’élève, rien après 21 h ; pas d’horaire choisi par l’IA avant 18 ans', 'Learning Atlas : cases de moins de 20 élèves masquées', 'Les cours en direct d’abord sur les GPU — traitement des enregistrements et Motion Studio n’utilisent que le temps libre (Opérations)'],
 live: function (r, k, x, n, d) { return 'En vigueur : enregistrements ' + r + ' mois' + (k ? ' (garder jusqu’à la fin du cours : activé)' : '') + ' · BdSL ' + String(x).replace('.', ',') + ' min = 1 min' + (n ? ' · Most Improved top ' + n : ' · Most Improved : désactivé') + ' · lien des données ' + d + ' jours'; },
 send: 'Envoyer pour validation', sent: function (n) { return 'En attente d’une seconde personne · envoyé par ' + n; }, ap: 'Valider', rj: 'Refuser', mk: 'Vous avez fait ce changement — une autre personne ayant le droit de valider les formules doit le valider.',
 t_sent: 'Changement des réglages envoyé pour validation', t_ok: 'Réglages d’enregistrement et de langue des signes mis à jour', t_rj: 'Changement des réglages refusé',
@@ -1919,12 +1922,12 @@ Object.keys(F).forEach(function (c) { var x = L[c], f = F[c]; if (!x) return; x.
 }
 uiAdd16(L, M) {
 var F = {};
-F.bn = { og_terms: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; ক্রেডিট থাকে 6 মাস। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',  };
-F.en = { og_terms: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the credit lasts 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',  };
-F.hi = { og_terms: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; क्रेडिट 6 महीने चलता है। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',  };
-F.ur = { og_terms: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ کریڈٹ 6 ماہ تک رہتا ہے۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',  };
-F.ar = { og_terms: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ ويبقى الرصيد صالحًا 6 أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',  };
-F.fr = { og_terms: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; le crédit est valable 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',  };
+F.bn = { og_terms: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; মিনিটগুলো 6 মাস বৈধ থাকে। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',  };
+F.en = { og_terms: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the minutes stay valid for 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',  };
+F.hi = { og_terms: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; मिनट 6 महीने मान्य रहते हैं। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',  };
+F.ur = { og_terms: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ منٹ 6 ماہ تک کارآمد رہتے ہیں۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',  };
+F.ar = { og_terms: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ وتبقى الدقائق صالحة 6 أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',  };
+F.fr = { og_terms: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; les minutes restent valables 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',  };
 Object.keys(F).forEach(function (c) { var x = L[c], f = F[c]; if (!x) return; x.f16 = f; x.lg = Object.assign({}, x.lg, f.lg); x.h14 = Object.assign({}, x.h14, f.law); x.f8 = Object.assign({}, x.f8, { og_terms: f.og_terms }); });
 }
 uiAdd15(L, M) {
@@ -2139,7 +2142,7 @@ hol_lunar: 'This date depends on the moon. Confirm it when the moon-sighting com
 hol_edit: 'Change the date or name of this holiday. The change is logged.', hol_del: 'Removes this holiday from the list. The change is logged.', hol_save: 'Saves the change at once and writes it to the audit log.',
 hol_add: 'Adds the day to this country’s list. Batch classes skip it; the change is logged.',
 vr_rate: 'Set by the chartered accountant, not fixed in the code. Plans & modules uses the same rate for margins after VAT.', vr_cr0: 'Credit notes on refunds start with the January 2027 return. Earlier returns stay as filed.',
-pl_vcr: 'VAT on refunded Bangladesh sales, taken back through credit notes (Mushak 6.7) in this month’s return.', bill_sal: 'Net January salaries from Staff & payroll, to be paid by 1 February. Pay them in Staff & payroll.',
+pl_vcr: 'VAT on refunded Bangladesh sales, taken back through credit notes (Mushak 6.7) in this month’s return.', bill_sal: 'Net January salaries from Staff & payroll, to be paid by 15 February. Pay them in Staff & payroll.',
 pm: { plans: 'Plan and module changes need a second person with Approve: Super admin or finance lead.', lp: 'Landing Page AI page changes. The marketing admin approves them.',
 lp_site: 'Landing Page AI site settings (domain, menus, tracking). Only the Super admin approves.', x14: 'Platform operations: AI models, fallback spend limits, flags, servers and incidents.',
 x15: 'Accounts, support & legal: account lookups, consent, data requests and T&C versions.', x15_del: 'Data download and delete requests. Deletion needs two people: the DPO and the security owner.',
@@ -2166,7 +2169,7 @@ hol_lunar: 'এই তারিখ চাঁদের ওপর নির্ভ�
 hol_edit: 'এই ছুটির তারিখ বা নাম বদলান। পরিবর্তন লগ হয়।', hol_del: 'এই ছুটি তালিকা থেকে সরায়। পরিবর্তন লগ হয়।', hol_save: 'পরিবর্তন সাথে সাথে সংরক্ষণ করে আর অডিট লগে লেখে।',
 hol_add: 'দিনটা এই দেশের তালিকায় যোগ করে। সেদিন ব্যাচ ক্লাস হবে না; পরিবর্তন লগ হয়।',
 vr_rate: 'চার্টার্ড অ্যাকাউন্ট্যান্ট সেট করেন, কোডে স্থির নয়। প্ল্যান ও মডিউলে VAT বাদে মার্জিনের জন্যও এই হার ব্যবহার হয়।', vr_cr0: 'ফেরতের ক্রেডিট নোট জানুয়ারি 2027-এর রিটার্ন থেকে শুরু। আগের রিটার্ন যেমন জমা হয়েছে তেমনই থাকবে।',
-pl_vcr: 'বাংলাদেশে ফেরত দেওয়া বিক্রির VAT, এ মাসের রিটার্নে ক্রেডিট নোট (মূসক 6.7) দিয়ে ফেরত নেওয়া।', bill_sal: 'কর্মী ও বেতন থেকে জানুয়ারির নিট বেতন, 1 ফেব্রুয়ারির মধ্যে দিতে হবে। কর্মী ও বেতন অংশ থেকে দিন।',
+pl_vcr: 'বাংলাদেশে ফেরত দেওয়া বিক্রির VAT, এ মাসের রিটার্নে ক্রেডিট নোট (মূসক 6.7) দিয়ে ফেরত নেওয়া।', bill_sal: 'কর্মী ও বেতন থেকে জানুয়ারির নিট বেতন, 15 ফেব্রুয়ারির মধ্যে দিতে হবে। কর্মী ও বেতন অংশ থেকে দিন।',
 pm: { plans: 'প্ল্যান ও মডিউল বদলাতে অনুমোদনের অধিকারসহ দ্বিতীয় একজন লাগে: সুপার অ্যাডমিন বা ফিন্যান্স লিড।', lp: 'Landing Page AI-এর পাতার পরিবর্তন। মার্কেটিং অ্যাডমিন অনুমোদন দেন।',
 lp_site: 'Landing Page AI-এর সাইট সেটিং (ডোমেইন, মেনু, ট্র্যাকিং)। শুধু সুপার অ্যাডমিন অনুমোদন দেন।', x14: 'প্ল্যাটফর্ম অপারেশন: AI মডেল, ফলব্যাক খরচের সীমা, ফ্ল্যাগ, সার্ভার ও ঘটনা।',
 x15: 'অ্যাকাউন্ট, সাপোর্ট ও আইন: অ্যাকাউন্ট খোঁজা, সম্মতি, ডেটার অনুরোধ ও T&C ভার্সন।', x15_del: 'ডেটা ডাউনলোড ও মুছে ফেলার অনুরোধ। মুছতে দুজন লাগে: DPO ও নিরাপত্তা দায়িত্বপ্রাপ্ত।',
@@ -2193,7 +2196,7 @@ hol_lunar: 'यह तारीख़ चाँद पर निर्भर ह
 hol_edit: 'इस छुट्टी की तारीख़ या नाम बदलें। बदलाव लॉग होता है।', hol_del: 'इस छुट्टी को सूची से हटाता है। बदलाव लॉग होता है।', hol_save: 'बदलाव तुरंत सहेजता है और ऑडिट लॉग में लिखता है।',
 hol_add: 'दिन को इस देश की सूची में जोड़ता है। उस दिन बैच क्लास नहीं होगी; बदलाव लॉग होता है।',
 vr_rate: 'चार्टर्ड अकाउंटेंट सेट करते हैं, कोड में तय नहीं। प्लान और मॉड्यूल VAT के बाद मार्जिन के लिए यही दर लेता है।', vr_cr0: 'रिफ़ंड के क्रेडिट नोट जनवरी 2027 के रिटर्न से शुरू। पुराने रिटर्न जैसे जमा हुए वैसे ही रहेंगे।',
-pl_vcr: 'बांग्लादेश में लौटाई गई बिक्री का VAT, इस महीने के रिटर्न में क्रेडिट नोट (मूसक 6.7) से वापस लिया गया।', bill_sal: 'कर्मचारी और वेतन से जनवरी का शुद्ध वेतन, 1 फ़रवरी तक देना है। इसे कर्मचारी और वेतन में चुकाएँ।',
+pl_vcr: 'बांग्लादेश में लौटाई गई बिक्री का VAT, इस महीने के रिटर्न में क्रेडिट नोट (मूसक 6.7) से वापस लिया गया।', bill_sal: 'कर्मचारी और वेतन से जनवरी का शुद्ध वेतन, 15 फ़रवरी तक देना है। इसे कर्मचारी और वेतन में चुकाएँ।',
 pm: { plans: 'प्लान और मॉड्यूल के बदलाव के लिए मंज़ूरी के अधिकार वाला दूसरा व्यक्ति चाहिए: सुपर एडमिन या वित्त प्रमुख।', lp: 'Landing Page AI के पेज बदलाव। मार्केटिंग एडमिन मंज़ूर करते हैं।',
 lp_site: 'Landing Page AI की साइट सेटिंग (डोमेन, मेनू, ट्रैकिंग)। सिर्फ़ सुपर एडमिन मंज़ूर करते हैं।', x14: 'प्लेटफ़ॉर्म ऑपरेशंस: AI मॉडल, फ़ॉलबैक ख़र्च की सीमा, फ़्लैग, सर्वर और घटनाएँ।',
 x15: 'अकाउंट, सपोर्ट और क़ानूनी: अकाउंट खोज, सहमति, डेटा अनुरोध और T&C वर्ज़न।', x15_del: 'डेटा डाउनलोड और मिटाने के अनुरोध। मिटाने के लिए दो लोग: DPO और सुरक्षा प्रभारी।',
@@ -2220,7 +2223,7 @@ hol_lunar: 'یہ تاریخ چاند پر منحصر ہے۔ رویتِ ہلال 
 hol_edit: 'اس چھٹی کی تاریخ یا نام بدلیں۔ تبدیلی لاگ ہوتی ہے۔', hol_del: 'اس چھٹی کو فہرست سے ہٹاتا ہے۔ تبدیلی لاگ ہوتی ہے۔', hol_save: 'تبدیلی فوراً محفوظ کرتا ہے اور آڈٹ لاگ میں لکھتا ہے۔',
 hol_add: 'دن کو اس ملک کی فہرست میں شامل کرتا ہے۔ اس دن بیچ کلاس نہیں ہوگی؛ تبدیلی لاگ ہوتی ہے۔',
 vr_rate: 'چارٹرڈ اکاؤنٹنٹ سیٹ کرتا ہے، کوڈ میں طے نہیں۔ پلان اور ماڈیول ' + M('VAT') + ' کے بعد مارجن کے لیے یہی شرح لیتا ہے۔', vr_cr0: 'واپسی کے کریڈٹ نوٹ جنوری ' + M('2027') + ' کے ریٹرن سے شروع۔ پچھلے ریٹرن جیسے جمع ہوئے ویسے ہی رہیں گے۔',
-pl_vcr: 'بنگلہ دیش میں واپس کی گئی فروخت کا ' + M('VAT') + '، اس مہینے کے ریٹرن میں کریڈٹ نوٹ (مُسک ' + M('6.7') + ') سے واپس لیا گیا۔', bill_sal: 'عملہ اور تنخواہ سے جنوری کی خالص تنخواہیں، ' + M('1') + ' فروری تک ادا کرنی ہیں۔ انہیں عملہ اور تنخواہ میں ادا کریں۔',
+pl_vcr: 'بنگلہ دیش میں واپس کی گئی فروخت کا ' + M('VAT') + '، اس مہینے کے ریٹرن میں کریڈٹ نوٹ (مُسک ' + M('6.7') + ') سے واپس لیا گیا۔', bill_sal: 'عملہ اور تنخواہ سے جنوری کی خالص تنخواہیں، ' + M('15') + ' فروری تک ادا کرنی ہیں۔ انہیں عملہ اور تنخواہ میں ادا کریں۔',
 pm: { plans: 'پلان اور ماڈیول کی تبدیلی کے لیے منظوری کے اختیار والا دوسرا شخص چاہیے: سپر ایڈمن یا فنانس لیڈ۔', lp: M('Landing Page AI') + ' کے صفحات کی تبدیلیاں۔ مارکیٹنگ ایڈمن منظور کرتا ہے۔',
 lp_site: M('Landing Page AI') + ' کی سائٹ سیٹنگز (ڈومین، مینو، ٹریکنگ)۔ صرف سپر ایڈمن منظور کرتا ہے۔', x14: 'پلیٹ فارم آپریشنز: ' + M('AI') + ' ماڈلز، فال بیک خرچ کی حد، فلیگز، سرورز اور واقعات۔',
 x15: 'اکاؤنٹس، سپورٹ اور قانونی: اکاؤنٹ تلاش، رضامندی، ڈیٹا کی درخواستیں اور ' + M('T&C') + ' ورژن۔', x15_del: 'ڈیٹا ڈاؤن لوڈ اور حذف کی درخواستیں۔ حذف کے لیے دو افراد: ' + M('DPO') + ' اور سیکیورٹی ذمہ دار۔',
@@ -2247,7 +2250,7 @@ hol_lunar: 'هذا التاريخ يعتمد على القمر. أكّده عن�
 hol_edit: 'غيّر تاريخ هذه العطلة أو اسمها. التغيير يُسجَّل.', hol_del: 'يزيل هذه العطلة من القائمة. التغيير يُسجَّل.', hol_save: 'يحفظ التغيير فورًا ويكتبه في سجل التدقيق.',
 hol_add: 'يضيف اليوم إلى قائمة هذا البلد. لا حصص جماعية فيه؛ التغيير يُسجَّل.',
 vr_rate: 'يحددها المحاسب القانوني وليست ثابتة في الكود. تستخدم الخطط والوحدات النسبة نفسها لهوامش ما بعد الضريبة.', vr_cr0: 'تبدأ الإشعارات الدائنة على الاستردادات مع إقرار يناير ' + M('2027') + '. تبقى الإقرارات السابقة كما قُدّمت.',
-pl_vcr: 'ضريبة مبيعات بنغلاديش المستردة، تُستعاد بإشعارات دائنة (' + M('Mushak 6.7') + ') في إقرار هذا الشهر.', bill_sal: 'صافي رواتب يناير من الموظفون والرواتب، تُدفع قبل ' + M('1') + ' فبراير. ادفعها من الموظفون والرواتب.',
+pl_vcr: 'ضريبة مبيعات بنغلاديش المستردة، تُستعاد بإشعارات دائنة (' + M('Mushak 6.7') + ') في إقرار هذا الشهر.', bill_sal: 'صافي رواتب يناير من الموظفون والرواتب، تُدفع قبل ' + M('15') + ' فبراير. ادفعها من الموظفون والرواتب.',
 pm: { plans: 'تغييرات الخطط والوحدات تحتاج شخصًا ثانيًا له صلاحية الاعتماد: المشرف الأعلى أو رئيس المالية.', lp: 'تغييرات صفحات ' + M('Landing Page AI') + '. يعتمدها مسؤول التسويق.',
 lp_site: 'إعدادات موقع ' + M('Landing Page AI') + ' (النطاق والقوائم والتتبع). لا يعتمدها إلا المشرف الأعلى.', x14: 'عمليات المنصة: نماذج ' + M('AI') + ' وحدود الإنفاق الاحتياطي والمفاتيح والخوادم والحوادث.',
 x15: 'الحسابات والدعم والشؤون القانونية: البحث عن الحسابات والموافقات وطلبات البيانات وإصدارات ' + M('T&C') + '.', x15_del: 'طلبات تنزيل البيانات وحذفها. الحذف يحتاج شخصين: ' + M('DPO') + ' ومسؤول الأمن.',
@@ -2274,7 +2277,7 @@ hol_lunar: 'Cette date dépend de la lune. Confirmez-la à l’annonce du comit�
 hol_edit: 'Modifiez la date ou le nom de ce jour férié. La modification est journalisée.', hol_del: 'Retire ce jour férié de la liste. La modification est journalisée.', hol_save: 'Enregistre tout de suite et l’inscrit au journal d’audit.',
 hol_add: 'Ajoute le jour à la liste de ce pays. Pas de cours en groupe ce jour-là ; la modification est journalisée.',
 vr_rate: 'Fixé par l’expert-comptable, pas dans le code. Forfaits et modules utilise le même taux pour les marges après TVA.', vr_cr0: 'Les notes de crédit sur remboursements commencent avec la déclaration d’janvier 2027. Les déclarations précédentes restent telles que déposées.',
-pl_vcr: 'TVA des ventes remboursées au Bangladesh, récupérée par des notes de crédit (Mushak 6.7) dans la déclaration du mois.', bill_sal: 'Salaires nets d’janvier issus de Personnel et paie, à verser avant le 1er février. À payer dans Personnel et paie.',
+pl_vcr: 'TVA des ventes remboursées au Bangladesh, récupérée par des notes de crédit (Mushak 6.7) dans la déclaration du mois.', bill_sal: 'Salaires nets d’janvier issus de Personnel et paie, à verser avant le 15 février. À payer dans Personnel et paie.',
 pm: { plans: 'Les modifications de forfaits et modules exigent une deuxième personne avec Approuver : Super admin ou responsable financier.', lp: 'Modifications des pages de Landing Page AI. L’admin marketing les approuve.',
 lp_site: 'Réglages du site Landing Page AI (domaine, menus, suivi). Seul le Super admin approuve.', x14: 'Opérations plateforme : modèles IA, plafonds des API de secours, flags, serveurs et incidents.',
 x15: 'Comptes, support et juridique : recherche de comptes, consentements, demandes de données et versions des CGU.', x15_del: 'Demandes de téléchargement et de suppression. La suppression exige deux personnes : le DPO et le responsable sécurité.',
@@ -2303,7 +2306,7 @@ made_by: function (n, at) { return n + ' at ' + at; }, need_step: function (r, k
 wn_self: 'You made this — someone else must approve it', wn_twice: 'You already approved this step', wn_role: function (r) { return 'Only ' + r + ' can approve this step'; },
 t_slip: function (n, m) { return 'Payslip for ' + m + ' — ' + n + ' — is ready'; }, t_slips: function (m) { return 'Payslips for ' + m + ' are ready and emailed'; },
 t_ne: function (n) { return n + ' added — included from the next payroll run'; },
-vend_h: 'Vendors', terms: { landlord: 'Monthly · due on the 30th', sms: 'Monthly · due on the 28th', gpu: 'Monthly · auto-pay on the 1st', infra: 'Monthly · auto-pay on the 1st', r2: 'Monthly · auto-pay on the 3rd', claude: 'Monthly · auto-pay on the 5th', mistral: 'Monthly · auto-pay on the 5th', aff: 'Monthly · 10th, tax withheld', once: 'One bill', monthly: 'Every month' },
+vend_h: 'Vendors', terms: { landlord: 'Monthly · due on the 30th', sms: 'Monthly · due on the 28th', gpu: 'Monthly · auto-pay on the 15th', infra: 'Monthly · auto-pay on the 15th', r2: 'Monthly · auto-pay on the 3rd', claude: 'Monthly · auto-pay on the 5th', mistral: 'Monthly · auto-pay on the 5th', aff: 'Monthly · 10th, tax withheld', once: 'One bill', monthly: 'Every month' },
 vc: { billed: 'Billed', paid: 'Paid', bal: 'Owed' },
 t_ls_pdf: function (n) { return n + ' — PDF ready to send'; },
 via_xf: 'by transfer',
@@ -2344,7 +2347,7 @@ made_by: function (n, at) { return n + ', ' + at; }, need_step: function (r, k, 
 wn_self: 'এটা আপনি তৈরি করেছেন — অন্য কাউকে অনুমোদন দিতে হবে', wn_twice: 'এই ধাপে আপনি আগেই অনুমোদন দিয়েছেন', wn_role: function (r) { return 'এই ধাপ শুধু ' + r + ' অনুমোদন দিতে পারেন'; },
 t_slip: function (n, m) { return n + '-এর ' + m + '-এর পে-স্লিপ তৈরি'; }, t_slips: function (m) { return m + '-এর পে-স্লিপ তৈরি ও ইমেইলে পাঠানো হয়েছে'; },
 t_ne: function (n) { return n + ' যোগ হয়েছেন — পরের বেতন রান থেকে থাকবেন'; },
-vend_h: 'ভেন্ডর', terms: { landlord: 'প্রতি মাসে · শেষ তারিখ 30', sms: 'প্রতি মাসে · শেষ তারিখ 28', gpu: 'প্রতি মাসে · 1 তারিখে অটো-পে', infra: 'প্রতি মাসে · 1 তারিখে অটো-পে', r2: 'প্রতি মাসে · 3 তারিখে অটো-পে', claude: 'প্রতি মাসে · 5 তারিখে অটো-পে', mistral: 'প্রতি মাসে · 5 তারিখে অটো-পে', aff: 'প্রতি মাসে · 10 তারিখ, কর কেটে', once: 'একবারের বিল', monthly: 'প্রতি মাসে' },
+vend_h: 'ভেন্ডর', terms: { landlord: 'প্রতি মাসে · শেষ তারিখ 30', sms: 'প্রতি মাসে · শেষ তারিখ 28', gpu: 'প্রতি মাসে · 15 তারিখে অটো-পে', infra: 'প্রতি মাসে · 15 তারিখে অটো-পে', r2: 'প্রতি মাসে · 3 তারিখে অটো-পে', claude: 'প্রতি মাসে · 5 তারিখে অটো-পে', mistral: 'প্রতি মাসে · 5 তারিখে অটো-পে', aff: 'প্রতি মাসে · 10 তারিখ, কর কেটে', once: 'একবারের বিল', monthly: 'প্রতি মাসে' },
 vc: { billed: 'বিল', paid: 'দেওয়া', bal: 'দেনা' },
 t_ls_pdf: function (n) { return n + ' — PDF পাঠানোর জন্য তৈরি'; },
 via_xf: 'হস্তান্তরে পাওয়া',
@@ -2385,7 +2388,7 @@ made_by: function (n, at) { return n + ', ' + at + ' बजे'; }, need_step: f
 wn_self: 'यह आपने बनाया है — किसी और को मंज़ूर करना होगा', wn_twice: 'आप यह चरण पहले ही मंज़ूर कर चुके हैं', wn_role: function (r) { return 'यह चरण सिर्फ़ ' + r + ' मंज़ूर कर सकते हैं'; },
 t_slip: function (n, m) { return m + ' की वेतन पर्ची — ' + n + ' — तैयार है'; }, t_slips: function (m) { return m + ' की वेतन पर्चियाँ तैयार हैं और ईमेल कर दी गईं'; },
 t_ne: function (n) { return n + ' जोड़े गए — अगले पेरोल से शामिल'; },
-vend_h: 'वेंडर', terms: { landlord: 'मासिक · 30 तारीख़ को देय', sms: 'मासिक · 28 तारीख़ को देय', gpu: 'मासिक · 1 तारीख़ को ऑटो-पे', infra: 'मासिक · 1 तारीख़ को ऑटो-पे', r2: 'मासिक · 3 तारीख़ को ऑटो-पे', claude: 'मासिक · 5 तारीख़ को ऑटो-पे', mistral: 'मासिक · 5 तारीख़ को ऑटो-पे', aff: 'मासिक · 10 तारीख़, कर काटकर', once: 'एक बिल', monthly: 'हर महीने' },
+vend_h: 'वेंडर', terms: { landlord: 'मासिक · 30 तारीख़ को देय', sms: 'मासिक · 28 तारीख़ को देय', gpu: 'मासिक · 15 तारीख़ को ऑटो-पे', infra: 'मासिक · 15 तारीख़ को ऑटो-पे', r2: 'मासिक · 3 तारीख़ को ऑटो-पे', claude: 'मासिक · 5 तारीख़ को ऑटो-पे', mistral: 'मासिक · 5 तारीख़ को ऑटो-पे', aff: 'मासिक · 10 तारीख़, कर काटकर', once: 'एक बिल', monthly: 'हर महीने' },
 vc: { billed: 'बिल की गई', paid: 'चुकाया', bal: 'बकाया' },
 t_ls_pdf: function (n) { return n + ' — PDF भेजने के लिए तैयार'; },
 via_xf: 'हस्तांतरण से',
@@ -2426,7 +2429,7 @@ made_by: function (n, at) { return M(n) + '، ' + at + ' بجے'; }, need_step: 
 wn_self: 'یہ آپ نے بنایا ہے — کوئی اور منظور کرے', wn_twice: 'یہ مرحلہ آپ پہلے ہی منظور کر چکے ہیں', wn_role: function (r) { return 'یہ مرحلہ صرف ' + r + ' منظور کر سکتا ہے'; },
 t_slip: function (n, m) { return m + ' کی پے سلپ — ' + M(n) + ' — تیار ہے'; }, t_slips: function (m) { return m + ' کی پے سلپس تیار اور ای میل کر دی گئیں'; },
 t_ne: function (n) { return M(n) + ' شامل — اگلے پے رول سے شامل ہوں گے'; },
-vend_h: 'وینڈر', terms: { landlord: 'ماہانہ · 30 تاریخ کو واجب', sms: 'ماہانہ · 28 تاریخ کو واجب', gpu: 'ماہانہ · 1 تاریخ کو آٹو پے', infra: 'ماہانہ · 1 تاریخ کو آٹو پے', r2: 'ماہانہ · 3 تاریخ کو آٹو پے', claude: 'ماہانہ · 5 تاریخ کو آٹو پے', mistral: 'ماہانہ · 5 تاریخ کو آٹو پے', aff: 'ماہانہ · 10 تاریخ، ٹیکس کاٹ کر', once: 'ایک بل', monthly: 'ہر مہینے' },
+vend_h: 'وینڈر', terms: { landlord: 'ماہانہ · 30 تاریخ کو واجب', sms: 'ماہانہ · 28 تاریخ کو واجب', gpu: 'ماہانہ · 15 تاریخ کو آٹو پے', infra: 'ماہانہ · 15 تاریخ کو آٹو پے', r2: 'ماہانہ · 3 تاریخ کو آٹو پے', claude: 'ماہانہ · 5 تاریخ کو آٹو پے', mistral: 'ماہانہ · 5 تاریخ کو آٹو پے', aff: 'ماہانہ · 10 تاریخ، ٹیکس کاٹ کر', once: 'ایک بل', monthly: 'ہر مہینے' },
 vc: { billed: 'بل کی رقم', paid: 'ادا شدہ', bal: 'واجب' },
 t_ls_pdf: function (n) { return n + ' — ' + M('PDF') + ' بھیجنے کے لیے تیار'; },
 via_xf: 'منتقلی سے',
@@ -2467,7 +2470,7 @@ made_by: function (n, at) { return M(n) + ' الساعة ' + at; }, need_step: f
 wn_self: 'أنت أنشأت هذا — يجب أن يعتمده شخص آخر', wn_twice: 'لقد اعتمدت هذه الخطوة من قبل', wn_role: function (r) { return 'لا يعتمد هذه الخطوة إلا ' + r; },
 t_slip: function (n, m) { return 'قسيمة راتب ' + m + ' — ' + M(n) + ' — جاهزة'; }, t_slips: function (m) { return 'قسائم رواتب ' + m + ' جاهزة وأُرسلت بالبريد'; },
 t_ne: function (n) { return 'أُضيف ' + M(n) + ' — يُدرج من دورة الرواتب القادمة'; },
-vend_h: 'الموردون', terms: { landlord: 'شهريًا · يُستحق يوم 30', sms: 'شهريًا · يُستحق يوم 28', gpu: 'شهريًا · دفع تلقائي يوم 1', infra: 'شهريًا · دفع تلقائي يوم 1', r2: 'شهريًا · دفع تلقائي يوم 3', claude: 'شهريًا · دفع تلقائي يوم 5', mistral: 'شهريًا · دفع تلقائي يوم 5', aff: 'شهريًا · يوم 10، بعد خصم الضريبة', once: 'فاتورة واحدة', monthly: 'كل شهر' },
+vend_h: 'الموردون', terms: { landlord: 'شهريًا · يُستحق يوم 30', sms: 'شهريًا · يُستحق يوم 28', gpu: 'شهريًا · دفع تلقائي يوم 15', infra: 'شهريًا · دفع تلقائي يوم 15', r2: 'شهريًا · دفع تلقائي يوم 3', claude: 'شهريًا · دفع تلقائي يوم 5', mistral: 'شهريًا · دفع تلقائي يوم 5', aff: 'شهريًا · يوم 10، بعد خصم الضريبة', once: 'فاتورة واحدة', monthly: 'كل شهر' },
 vc: { billed: 'المفوتر', paid: 'المدفوع', bal: 'المستحق' },
 t_ls_pdf: function (n) { return n + ' — ملف ' + M('PDF') + ' جاهز للإرسال'; },
 via_xf: 'بالنقل',
@@ -2508,7 +2511,7 @@ made_by: function (n, at) { return n + ' à ' + at; }, need_step: function (r, k
 wn_self: 'Vous en êtes l’auteur — une autre personne doit valider', wn_twice: 'Vous avez déjà validé cette étape', wn_role: function (r) { return 'Cette étape ne peut être validée que par : ' + r; },
 t_slip: function (n, m) { return 'Bulletin de paie pour ' + m + ' — ' + n + ' — prêt'; }, t_slips: function (m) { return 'Bulletins de paie pour ' + m + ' prêts et envoyés par e-mail'; },
 t_ne: function (n) { return 'Nouveau membre du personnel : ' + n + ' — pris en compte dès la prochaine paie'; },
-vend_h: 'Fournisseurs', terms: { landlord: 'Mensuel · échéance le 30', sms: 'Mensuel · échéance le 28', gpu: 'Mensuel · prélèvement auto le 1er', infra: 'Mensuel · prélèvement auto le 1er', r2: 'Mensuel · prélèvement auto le 3', claude: 'Mensuel · prélèvement auto le 5', mistral: 'Mensuel · prélèvement auto le 5', aff: 'Mensuel · le 10, impôt retenu', once: 'Facture unique', monthly: 'Chaque mois' },
+vend_h: 'Fournisseurs', terms: { landlord: 'Mensuel · échéance le 30', sms: 'Mensuel · échéance le 28', gpu: 'Mensuel · prélèvement auto le 15', infra: 'Mensuel · prélèvement auto le 15', r2: 'Mensuel · prélèvement auto le 3', claude: 'Mensuel · prélèvement auto le 5', mistral: 'Mensuel · prélèvement auto le 5', aff: 'Mensuel · le 10, impôt retenu', once: 'Facture unique', monthly: 'Chaque mois' },
 vc: { billed: 'Facturé', paid: 'Payé', bal: 'Dû' },
 t_ls_pdf: function (n) { return n + ' — PDF prêt à envoyer'; },
 via_xf: 'par cession',
@@ -2778,7 +2781,7 @@ code: 'Problems with visible and hidden test cases, run in our own runner in the
 certx: 'Pass mark per course, levels Foundation / Proficient / Advanced, retake after 7 days, at most 3 attempts in 30 days, best result counts.',
 proct: 'Only in certificate exams and an institution’s own exams — never in practice tests. Adults consent first; under 18 only face check, presence checks and focus events.',
 rtjob: 'Employer recruitment tests for adults, free for learners on BCS + Job Test Preparation and the other job-test courses. Results shared only with the learner’s consent.',
-rtadd: 'For everyone else (18+): the “Recruitment tests” add-on, up to 3 tests a day. Price in taka; USD by the BDT × 0.015 rule.',
+rtadd: 'For everyone else (18+): the “Recruitment tests” add-on, up to 3 tests a day. Price in taka; USD by the BDT × 1.35 ÷ 122 rule.',
 orgt: 'Companies and agencies run employee skill tests and recruitment tests (adults only, ISO 10667). Results are never the only basis for hiring.',
 iapi: 'OAuth keys with scopes (roster, assign tests, results), results webhooks and rate limits. The institution head and NexaTute’s security owner approve each key.' },
 n: { adapt: 'Runs only for the placement test and smart practice; the stopping rule and item calibration are in Content quality & money › Tests & marking.', code: 'Problem bank, sandbox limits and code-similarity reviews: Content quality & money › Tests & marking.',
@@ -2799,7 +2802,7 @@ code: 'দৃশ্যমান ও লুকানো টেস্ট কেস
 certx: 'কোর্সভিত্তিক পাস নম্বর, লেভেল ফাউন্ডেশন / প্রফিশিয়েন্ট / অ্যাডভান্সড, 7 দিন পর আবার, 30 দিনে সর্বোচ্চ 3 বার, সেরা ফলটি গণ্য।',
 proct: 'শুধু সার্টিফিকেট পরীক্ষা ও প্রতিষ্ঠানের নিজের পরীক্ষায় — অনুশীলনী টেস্টে কখনো নয়। প্রাপ্তবয়স্করা আগে সম্মতি দেন; 18-এর নিচে শুধু মুখ, উপস্থিতি ও ফোকাস যাচাই।',
 rtjob: 'প্রাপ্তবয়স্কদের জন্য নিয়োগকর্তার নিয়োগ পরীক্ষা, BCS + চাকরির পরীক্ষার প্রস্তুতি ও অন্যান্য চাকরির পরীক্ষার কোর্সে বিনা খরচে। ফল শুধু শিক্ষার্থীর সম্মতিতে শেয়ার।',
-rtadd: 'বাকি সবার জন্য (18+): “নিয়োগ পরীক্ষা” অ্যাড-অন, দিনে সর্বোচ্চ 3টি টেস্ট। দাম টাকায়; USD = টাকা × 0.015 নিয়মে।',
+rtadd: 'বাকি সবার জন্য (18+): “নিয়োগ পরীক্ষা” অ্যাড-অন, দিনে সর্বোচ্চ 3টি টেস্ট। দাম টাকায়; USD = টাকা × 1.35 ÷ 122 নিয়মে।',
 orgt: 'কোম্পানি ও এজেন্সি কর্মীর দক্ষতা ও নিয়োগ পরীক্ষা নেয় (শুধু প্রাপ্তবয়স্ক, ISO 10667)। ফল কখনো নিয়োগের একমাত্র ভিত্তি নয়।',
 iapi: 'স্কোপসহ OAuth কি (তালিকা, টেস্ট দেওয়া, ফলাফল), ফলাফলের webhook ও রেট লিমিট। প্রতিটি কি অনুমোদন করেন প্রতিষ্ঠানপ্রধান ও NexaTute-এর সিকিউরিটি ওনার।' },
 n: { adapt: 'শুধু প্লেসমেন্ট টেস্ট ও স্মার্ট অনুশীলনে চলে; থামার নিয়ম ও আইটেম ক্যালিব্রেশন Content quality & money › Tests & marking-এ।', code: 'সমস্যার ব্যাংক, স্যান্ডবক্সের সীমা ও কোডের মিল যাচাই: Content quality & money › Tests & marking।',
@@ -2820,7 +2823,7 @@ code: 'दिखने और छिपे टेस्ट केस वाल�
 certx: 'हर कोर्स का पास अंक, स्तर फ़ाउंडेशन / प्रोफ़िशिएंट / एडवांस्ड, 7 दिन बाद दोबारा, 30 दिनों में अधिकतम 3 प्रयास, सबसे अच्छा परिणाम गिना जाता है।',
 proct: 'सिर्फ़ सर्टिफ़िकेट परीक्षा और संस्थान की अपनी परीक्षा में — अभ्यास टेस्ट में कभी नहीं। वयस्क पहले सहमति देते हैं; 18 से कम के लिए सिर्फ़ चेहरा, उपस्थिति और फ़ोकस जाँच।',
 rtjob: 'वयस्कों के लिए नियोक्ता भर्ती टेस्ट, BCS + नौकरी परीक्षा तैयारी और अन्य नौकरी परीक्षा कोर्स पर मुफ़्त। परिणाम सिर्फ़ शिक्षार्थी की सहमति से साझा।',
-rtadd: 'बाक़ी सबके लिए (18+): “भर्ती टेस्ट” ऐड-ऑन, दिन में 3 टेस्ट तक। कीमत टाका में; USD = टाका × 0.015 नियम से।',
+rtadd: 'बाक़ी सबके लिए (18+): “भर्ती टेस्ट” ऐड-ऑन, दिन में 3 टेस्ट तक। कीमत टाका में; USD = टाका × 1.35 ÷ 122 नियम से।',
 orgt: 'कंपनियाँ और एजेंसियाँ कर्मचारी कौशल और भर्ती टेस्ट लेती हैं (सिर्फ़ वयस्क, ISO 10667)। परिणाम कभी भर्ती का एकमात्र आधार नहीं।',
 iapi: 'स्कोप वाली OAuth कुंजियाँ (सूची, टेस्ट देना, परिणाम), परिणाम webhook और रेट लिमिट। हर कुंजी संस्थान प्रमुख और NexaTute का सिक्योरिटी ओनर मंज़ूर करते हैं।' },
 n: { adapt: 'सिर्फ़ प्लेसमेंट टेस्ट और स्मार्ट अभ्यास में चलता है; रुकने का नियम और आइटम कैलिब्रेशन Content quality & money › Tests & marking में।', code: 'समस्या बैंक, सैंडबॉक्स सीमाएँ और कोड-समानता समीक्षा: Content quality & money › Tests & marking।',
@@ -2841,7 +2844,7 @@ code: 'نظر آنے والے اور چھپے ٹیسٹ کیس والے سوال�
 certx: 'ہر کورس کا پاس نمبر، سطحیں فاؤنڈیشن / پروفیشینٹ / ایڈوانسڈ، ' + M('7') + ' دن بعد دوبارہ، ' + M('30') + ' دن میں زیادہ سے زیادہ ' + M('3') + ' کوششیں، بہترین نتیجہ شمار۔',
 proct: 'صرف سرٹیفکیٹ امتحان اور ادارے کے اپنے امتحان میں — مشقی ٹیسٹ میں کبھی نہیں۔ بالغ پہلے رضامندی دیتے ہیں؛ ' + M('18') + ' سے کم کے لیے صرف چہرہ، حاضری اور فوکس جانچ۔',
 rtjob: 'بالغوں کے لیے آجر کے بھرتی ٹیسٹ، ' + M('BCS') + ' + ملازمتی امتحان کی تیاری اور دوسرے ملازمتی امتحان کورسز پر مفت۔ نتائج صرف طالب علم کی رضامندی سے شیئر۔',
-rtadd: 'باقی سب کے لیے (' + M('18+') + '): “بھرتی ٹیسٹ” ایڈ آن، دن میں ' + M('3') + ' ٹیسٹ تک۔ قیمت ٹکا میں؛ ' + M('USD') + ' = ٹکا × ' + M('0.015') + ' اصول سے۔',
+rtadd: 'باقی سب کے لیے (' + M('18+') + '): “بھرتی ٹیسٹ” ایڈ آن، دن میں ' + M('3') + ' ٹیسٹ تک۔ قیمت ٹکا میں؛ ' + M('USD') + ' = ٹکا × ' + M('1.35 ÷ 122') + ' اصول سے۔',
 orgt: 'کمپنیاں اور ایجنسیاں ملازمین کی مہارت اور بھرتی کے ٹیسٹ لیتی ہیں (صرف بالغ، ' + M('ISO 10667') + ')۔ نتائج کبھی بھرتی کی واحد بنیاد نہیں۔',
 iapi: 'اسکوپ والی ' + M('OAuth') + ' کلیدیں (فہرست، ٹیسٹ دینا، نتائج)، نتائج کے ' + M('webhook') + ' اور ریٹ لمٹ۔ ہر کلید ادارے کے سربراہ اور ' + M('NexaTute') + ' کے سیکیورٹی اونر منظور کرتے ہیں۔' },
 n: { adapt: 'صرف پلیسمنٹ ٹیسٹ اور اسمارٹ مشق میں چلتا ہے؛ رکنے کا اصول اور آئٹم کیلیبریشن ' + M('Content quality & money › Tests & marking') + ' میں۔', code: 'سوالات کا بینک، سینڈ باکس کی حدیں اور کوڈ مماثلت کا جائزہ: ' + M('Content quality & money › Tests & marking') + '۔',
@@ -2862,7 +2865,7 @@ code: 'مسائل بحالات اختبار ظاهرة ومخفية، تعمل �
 certx: 'درجة نجاح لكل دورة، ومستويات تأسيسي / متمكّن / متقدم، وإعادة بعد ' + M('7') + ' أيام، وبحد أقصى ' + M('3') + ' محاولات خلال ' + M('30') + ' يومًا، وتُحتسب أفضل نتيجة.',
 proct: 'فقط في امتحانات الشهادات وامتحانات المؤسسة الخاصة — لا تكون في الاختبارات التدريبية أبدًا. يوافق البالغون أولًا؛ ودون ' + M('18') + ' فحص الوجه والحضور والتركيز فقط.',
 rtjob: 'اختبارات توظيف لأصحاب العمل للبالغين، مجانًا لمتعلمي ' + M('BCS') + ' + التحضير لاختبارات الوظائف ودورات الوظائف الأخرى. تُشارك النتائج بموافقة المتعلم فقط.',
-rtadd: 'للجميع غيرهم (' + M('18+') + '): إضافة «اختبارات التوظيف»، حتى ' + M('3') + ' اختبارات يوميًا. السعر بالتاكا؛ والدولار وفق قاعدة التاكا × ' + M('0.015') + '.',
+rtadd: 'للجميع غيرهم (' + M('18+') + '): إضافة «اختبارات التوظيف»، حتى ' + M('3') + ' اختبارات يوميًا. السعر بالتاكا؛ والدولار وفق قاعدة التاكا × ' + M('1.35 ÷ 122') + '.',
 orgt: 'تجري الشركات والوكالات اختبارات مهارات الموظفين والتوظيف (للبالغين فقط، ' + M('ISO 10667') + '). النتائج ليست أبدًا الأساس الوحيد للتوظيف.',
 iapi: 'مفاتيح ' + M('OAuth') + ' بنطاقات (القائمة، إسناد الاختبارات، النتائج)، و' + M('webhook') + ' للنتائج وحدود للمعدل. يوافق على كل مفتاح رئيس المؤسسة ومسؤول الأمن في ' + M('NexaTute') + '.' },
 n: { adapt: 'يعمل في اختبار تحديد المستوى والتدريب الذكي فقط؛ قاعدة التوقف ومعايرة البنود في ' + M('Content quality & money › Tests & marking') + '.', code: 'بنك المسائل وحدود البيئة المعزولة ومراجعة تشابه الشيفرة: ' + M('Content quality & money › Tests & marking') + '.',
@@ -2883,7 +2886,7 @@ code: 'Problèmes avec cas de test visibles et cachés, exécutés dans notre pr
 certx: 'Note de réussite par cours, niveaux Fondamental / Confirmé / Avancé, reprise après 7 jours, au plus 3 tentatives sur 30 jours, le meilleur résultat compte.',
 proct: 'Seulement pour les examens de certificat et les examens propres d’un établissement — jamais en entraînement. Les adultes consentent d’abord ; moins de 18 ans : visage, présence et focus seulement.',
 rtjob: 'Tests de recrutement d’employeurs pour adultes, gratuits pour les apprenants en BCS + préparation aux concours et autres cours de concours. Résultats partagés seulement avec leur consentement.',
-rtadd: 'Pour tous les autres (18+) : l’option « Tests de recrutement », jusqu’à 3 tests par jour. Prix en taka ; USD selon la règle BDT × 0,015.',
+rtadd: 'Pour tous les autres (18+) : l’option « Tests de recrutement », jusqu’à 3 tests par jour. Prix en taka ; USD selon la règle BDT × 1,35 ÷ 122.',
 orgt: 'Entreprises et agences évaluent compétences et candidats (adultes seulement, ISO 10667). Les résultats ne sont jamais la seule base d’un recrutement.',
 iapi: 'Clés OAuth avec portées (liste, attribution de tests, résultats), webhooks de résultats et limites d’appels. Chaque clé est validée par le chef d’établissement et le responsable sécurité de NexaTute.' },
 n: { adapt: 'Seulement pour le test de positionnement et l’entraînement intelligent ; règle d’arrêt et calibrage dans Content quality & money › Tests & marking.', code: 'Banque de problèmes, limites du bac à sable et revue des codes similaires : Content quality & money › Tests & marking.',
@@ -2918,7 +2921,7 @@ c_l: function (p, u) { return '18+ learner’s own voice for pronunciation pract
 c_g: function (p, u) { return 'Guardian’s own voice for Play Buddy stories: 1 free, then ' + p + ' (' + u + ') each. Never the child’s voice.'; },
 c_t: function (p, a) { return 'Verified teacher: own voice clone and photo avatar (face check), 1 free each, then ' + p + ' / ' + a + '. Used only in their own content.'; },
 note: 'Mirrored in Avatar & Voice Studio › Settings. Prices, library and the clone queue live there.', open: 'Open Avatar & Voice Studio' },
-sc: { jan: 'January — Academic Year Pass', exam: '30 days before board exams — Crash Pack & Smart Suggestion', ssc: 'After SSC — HSC Head Start', eid: 'Eid — Shikkha Salami gift cards', dec: 'December — Head Start camp' },
+sc: { jan: 'January — Academic Year Pass', exam: '30 days before board exams — Crash Pack & Smart Suggestion', ssc: 'After SSC — HSC Head Start', eid: 'Eid — Shikkha Salami vouchers (free minutes)', dec: 'December — Head Start camp' },
 t_sc_sync: 'Education boards checked — no new announcement, dates unchanged.', t_sc_saved: 'Season dates saved — Landing Page AI proposals and Crash Pack sales use them from now.',
 roles2: { sre: 'Operations / SRE owner', dpo: 'Data Protection Officer', partner: 'Partnership manager', legal: 'Lawyer / DPO reviewer', subject: 'Subject reviewer' },
 mods: { x22_clone: 'Clone requests & consent (Nexa Guard controller approves)' },
@@ -2937,7 +2940,7 @@ c_l: function (p, u) { return 'উচ্চারণ অনুশীলনে 18
 c_g: function (p, u) { return 'Play Buddy গল্পের জন্য অভিভাবকের নিজের কণ্ঠ: 1টি ফ্রি, তারপর প্রতিটি ' + p + ' (' + u + ')। শিশুর কণ্ঠ কখনো নয়।'; },
 c_t: function (p, a) { return 'যাচাই করা শিক্ষক: নিজের কণ্ঠ ক্লোন ও ছবির অ্যাভাটার (মুখ যাচাই), প্রতিটির 1টি ফ্রি, তারপর ' + p + ' / ' + a + '। শুধু নিজের কনটেন্টে।'; },
 note: 'অ্যাভাটার ও কণ্ঠ স্টুডিও › সেটিংসে এর প্রতিফলন দেখায়। দাম, লাইব্রেরি ও ক্লোন কিউ সেখানেই।', open: 'অ্যাভাটার ও কণ্ঠ স্টুডিও খুলুন' },
-sc: { jan: 'জানুয়ারি — Academic Year Pass', exam: 'বোর্ড পরীক্ষার 30 দিন আগে — Crash Pack ও Smart Suggestion', ssc: 'SSC-র পরে — HSC Head Start', eid: 'ঈদ — শিক্ষা সালামি গিফট কার্ড', dec: 'ডিসেম্বর — Head Start ক্যাম্প' },
+sc: { jan: 'জানুয়ারি — Academic Year Pass', exam: 'বোর্ড পরীক্ষার 30 দিন আগে — Crash Pack ও Smart Suggestion', ssc: 'SSC-র পরে — HSC Head Start', eid: 'ঈদ — শিক্ষা সালামি ভাউচার (ফ্রি মিনিট)', dec: 'ডিসেম্বর — Head Start ক্যাম্প' },
 t_sc_sync: 'শিক্ষা বোর্ড দেখা হয়েছে — নতুন ঘোষণা নেই, তারিখ অপরিবর্তিত।', t_sc_saved: 'সিজনের তারিখ সংরক্ষিত — Landing Page AI-র প্রস্তাব ও Crash Pack বিক্রি এখন থেকে এগুলো ব্যবহার করবে।',
 roles2: { sre: 'অপারেশন / SRE দায়িত্বপ্রাপ্ত', dpo: 'ডেটা সুরক্ষা কর্মকর্তা (DPO)', partner: 'পার্টনারশিপ ম্যানেজার', legal: 'আইনজীবী / DPO পর্যালোচক', subject: 'বিষয় পর্যালোচক' },
 mods: { x22_clone: 'ক্লোন অনুরোধ ও সম্মতি (Nexa Guard কন্ট্রোলার অনুমোদন করেন)' },
@@ -2956,7 +2959,7 @@ c_l: function (p, u) { return 'उच्चारण अभ्यास के �
 c_g: function (p, u) { return 'Play Buddy कहानियों के लिए अभिभावक की अपनी आवाज़: 1 मुफ़्त, फिर हर एक ' + p + ' (' + u + ')। बच्चे की आवाज़ कभी नहीं।'; },
 c_t: function (p, a) { return 'सत्यापित शिक्षक: अपनी आवाज़ का क्लोन और फ़ोटो अवतार (चेहरा जाँच), हर एक का 1 मुफ़्त, फिर ' + p + ' / ' + a + '। सिर्फ़ अपने कंटेंट में।'; },
 note: 'अवतार और वॉइस स्टूडियो › सेटिंग में इसकी प्रतिलिपि दिखती है। दाम, लाइब्रेरी और क्लोन कतार वहीं हैं।', open: 'अवतार और वॉइस स्टूडियो खोलें' },
-sc: { jan: 'जनवरी — Academic Year Pass', exam: 'बोर्ड परीक्षा से 30 दिन पहले — Crash Pack और Smart Suggestion', ssc: 'SSC के बाद — HSC Head Start', eid: 'ईद — शिक्षा सलामी गिफ़्ट कार्ड', dec: 'दिसंबर — Head Start कैंप' },
+sc: { jan: 'जनवरी — Academic Year Pass', exam: 'बोर्ड परीक्षा से 30 दिन पहले — Crash Pack और Smart Suggestion', ssc: 'SSC के बाद — HSC Head Start', eid: 'ईद — शिक्षा सलामी वाउचर (मुफ़्त मिनट)', dec: 'दिसंबर — Head Start कैंप' },
 t_sc_sync: 'शिक्षा बोर्ड जाँचे — कोई नई घोषणा नहीं, तारीख़ें वैसी ही।', t_sc_saved: 'सीज़न तारीख़ें सेव — Landing Page AI प्रस्ताव और Crash Pack बिक्री अब इन्हें इस्तेमाल करेंगे।',
 roles2: { sre: 'ऑपरेशन / SRE प्रभारी', dpo: 'डेटा सुरक्षा अधिकारी (DPO)', partner: 'पार्टनरशिप मैनेजर', legal: 'वकील / DPO समीक्षक', subject: 'विषय समीक्षक' },
 mods: { x22_clone: 'क्लोन अनुरोध और सहमति (Nexa Guard कंट्रोलर मंज़ूर करता है)' },
@@ -2975,7 +2978,7 @@ c_l: function (p, u) { return 'تلفظ کی مشق کے لیے ' + M('18+') + '
 c_g: function (p, u) { return 'Play Buddy کہانیوں کے لیے سرپرست کی اپنی آواز: ' + M('1') + ' مفت، پھر ہر ایک ' + M(p) + ' (' + M(u) + ')۔ بچے کی آواز کبھی نہیں۔'; },
 c_t: function (p, a) { return 'تصدیق شدہ استاد: اپنی آواز کا کلون اور تصویر کا اوتار (چہرے کی جانچ)، ہر ایک کا ' + M('1') + ' مفت، پھر ' + M(p) + ' / ' + M(a) + '۔ صرف اپنے مواد میں۔'; },
 note: 'اوتار اور آواز اسٹوڈیو › سیٹنگز میں اس کا عکس دکھتا ہے۔ قیمتیں، لائبریری اور کلون قطار وہیں ہیں۔', open: 'اوتار اور آواز اسٹوڈیو کھولیں' },
-sc: { jan: 'جنوری — Academic Year Pass', exam: 'بورڈ امتحان سے ' + M('30') + ' دن پہلے — Crash Pack اور Smart Suggestion', ssc: 'SSC کے بعد — HSC Head Start', eid: 'عید — شکشا سلامی گفٹ کارڈ', dec: 'دسمبر — Head Start کیمپ' },
+sc: { jan: 'جنوری — Academic Year Pass', exam: 'بورڈ امتحان سے ' + M('30') + ' دن پہلے — Crash Pack اور Smart Suggestion', ssc: 'SSC کے بعد — HSC Head Start', eid: 'عید — شکشا سلامی واؤچر (مفت منٹ)', dec: 'دسمبر — Head Start کیمپ' },
 t_sc_sync: 'تعلیمی بورڈ دیکھے گئے — کوئی نیا اعلان نہیں، تاریخیں ویسی ہی۔', t_sc_saved: 'سیزن تاریخیں محفوظ — Landing Page AI تجاویز اور Crash Pack کی فروخت اب انہیں استعمال کرے گی۔',
 roles2: { sre: 'آپریشنز / SRE ذمہ دار', dpo: 'ڈیٹا پروٹیکشن افسر (DPO)', partner: 'پارٹنرشپ مینیجر', legal: 'وکیل / DPO جائزہ کار', subject: 'مضمون جائزہ کار' },
 mods: { x22_clone: 'کلون درخواستیں اور رضامندی (Nexa Guard کنٹرولر منظور کرتا ہے)' },
@@ -2994,7 +2997,7 @@ c_l: function (p, u) { return 'صوت المتعلّم ' + M('18+') + ' لتدر
 c_g: function (p, u) { return 'صوت ولي الأمر لقصص Play Buddy: ' + M('1') + ' مجاني، ثم ' + M(p) + ' (' + M(u) + ') لكل واحد. لا صوت الطفل أبدًا.'; },
 c_t: function (p, a) { return 'المعلّم الموثَّق: استنساخ صوته وأفاتار من صورته (فحص الوجه)، ' + M('1') + ' مجاني لكل منهما، ثم ' + M(p) + ' / ' + M(a) + '. في محتواه فقط.'; },
 note: 'تظهر نسخة منه في استوديو الأفاتار والصوت › الإعدادات. الأسعار والمكتبة وطابور الاستنساخ هناك.', open: 'افتح استوديو الأفاتار والصوت' },
-sc: { jan: 'يناير — Academic Year Pass', exam: 'قبل امتحانات المجلس بـ ' + M('30') + ' يومًا — Crash Pack وSmart Suggestion', ssc: 'بعد SSC — HSC Head Start', eid: 'العيد — بطاقات هدايا شيكشا سلامي', dec: 'ديسمبر — معسكر Head Start' },
+sc: { jan: 'يناير — Academic Year Pass', exam: 'قبل امتحانات المجلس بـ ' + M('30') + ' يومًا — Crash Pack وSmart Suggestion', ssc: 'بعد SSC — HSC Head Start', eid: 'العيد — قسائم شيكشا سلامي (دقائق مجانية)', dec: 'ديسمبر — معسكر Head Start' },
 t_sc_sync: 'فُحصت مجالس التعليم — لا إعلان جديد، التواريخ كما هي.', t_sc_saved: 'حُفظت تواريخ المواسم — تستخدمها اقتراحات Landing Page AI ومبيعات Crash Pack من الآن.',
 roles2: { sre: 'مسؤول العمليات / SRE', dpo: 'مسؤول حماية البيانات (DPO)', partner: 'مدير الشراكات', legal: 'المحامي / مراجع DPO', subject: 'مراجع المادة' },
 mods: { x22_clone: 'طلبات الاستنساخ والموافقة (يعتمدها مراقب Nexa Guard)' },
@@ -3013,7 +3016,7 @@ c_l: function (p, u) { return 'Propre voix de l’apprenant 18+ pour la prononci
 c_g: function (p, u) { return 'Propre voix du parent pour les histoires Play Buddy : 1 gratuit, puis ' + p + ' (' + u + ') chacun. Jamais la voix de l’enfant.'; },
 c_t: function (p, a) { return 'Enseignant vérifié : clone de sa voix et avatar photo (contrôle du visage), 1 gratuit chacun, puis ' + p + ' / ' + a + '. Dans son contenu seulement.'; },
 note: 'Reflété dans Studio avatars et voix › Réglages. Les prix, la bibliothèque et la file des clones y sont.', open: 'Ouvrir le Studio avatars et voix' },
-sc: { jan: 'Janvier — Academic Year Pass', exam: '30 jours avant les examens du board — Crash Pack et Smart Suggestion', ssc: 'Après le SSC — HSC Head Start', eid: 'Aïd — cartes cadeaux Shikkha Salami', dec: 'Décembre — camp Head Start' },
+sc: { jan: 'Janvier — Academic Year Pass', exam: '30 jours avant les examens du board — Crash Pack et Smart Suggestion', ssc: 'Après le SSC — HSC Head Start', eid: 'Aïd — bons Shikkha Salami (minutes gratuites)', dec: 'Décembre — camp Head Start' },
 t_sc_sync: 'Boards consultés — aucune nouvelle annonce, dates inchangées.', t_sc_saved: 'Dates de saison enregistrées — les propositions du Landing Page AI et les ventes Crash Pack les utilisent désormais.',
 roles2: { sre: 'Responsable opérations / SRE', dpo: 'Délégué à la protection des données (DPO)', partner: 'Responsable partenariats', legal: 'Avocat / relecteur DPO', subject: 'Relecteur de matière' },
 mods: { x22_clone: 'Demandes de clone et consentement (validées par le contrôleur Nexa Guard)' },
@@ -3255,10 +3258,10 @@ req_btn: 'অ্যাক্সেসের অনুরোধ', req_ok: 'অ্
 roles_lnk: 'ভূমিকা ও অ্যাক্সেস — ভূমিকা বদলের অনুরোধ', key_lnk: 'অপারেশন (X14)', open_x25: 'প্ল্যান ও দাম (X25)-এ খুলুন',
 p_h: 'বর্তমান দামের মডেল — মূল দামের টেবিল v1 (মাসে, ভ্যাটসহ)', p_cols: { course: 'কোর্স', b: 'ব্যাচ', c: 'কম্বো', pa: 'পার্সোনাল' },
 p_cr: { c68: 'ক্লাস 6–8', ssc: 'ক্লাস 9–10 / SSC', hsc: 'HSC', adm: 'ভর্তি পরীক্ষার প্রস্তুতি', ol: 'O-Level / IGCSE', al: 'A-Level' },
-p_usd: 'USD = টাকা × 0.015, কাছের ডলারে, .5 হলে নিচে (হিসাব করা)। মানগুলো প্ল্যান ও দাম (X25) থেকে নেওয়া।', p_add_h: 'অ্যাড-অন',
-p_add: { cotp: 'Co-Teacher Pass (মাসে, প্রতি কোর্স)', mfp: 'MindForge Pro (মাসে)', rec: 'নিয়োগ পরীক্ষার অ্যাড-অন', pbm: 'PlayBoom (মাসে)', pby: 'PlayBoom (বছরে)', sab: 'Study Abroad প্যাক', hs: 'Head Start', dpass: 'Doubt Pass (20টি প্রশ্ন, 30 দিন)' },
+p_usd: 'USD = টাকা × 1.35 ÷ 122, সেন্ট পর্যন্ত, .5 হলে ওপরে (হিসাব করা)। মানগুলো প্ল্যান ও দাম (X25) থেকে নেওয়া।', p_add_h: 'অ্যাড-অন',
+p_add: { cotp: 'Co-Tutor Pass (মাসে, প্রতি কোর্স)', mfp: 'MindForge Pro (মাসে)', rec: 'নিয়োগ পরীক্ষার অ্যাড-অন', pbm: 'PlayBoom (মাসে)', pby: 'PlayBoom (বছরে)', sab: 'Study Abroad প্যাক', hs: 'Head Start', dpass: 'Doubt Pass (20টি প্রশ্ন, 30 দিন)' },
 p_full: 'প্ল্যান ও দাম-এ আপনি পরিবর্তনের প্রস্তাব দিতে পারেন — প্রতিটি পরিবর্তনে দ্বিতীয় একজন লাগে।', p_ro: 'আপনার ভূমিকার জন্য শুধু-পড়ার সারাংশ — পরিবর্তন করে ফাইন্যান্স, প্ল্যান ও দাম-এ।',
-beta_h: 'Free Beta সাইন আপ', beta_today: 'আজ ({0}) Free Beta এখনো খোলেনি — চলবে শুক্র 20 নভেম্বর – বুধ 9 ডিসেম্বর 2026। উদ্বোধনের দিনের নমুনা:', beta_tot: 'উদ্বোধনের দিন শুক্র 20 নভেম্বর 2026, 08:00–13:00: {0}টি সাইন আপ',
+beta_h: 'Free Beta সাইন আপ', beta_today: 'আজ ({0}) Free Beta-র প্রথম দিন — চলবে শুক্র 25 ডিসেম্বর 2026 – বৃহস্পতি 14 জানুয়ারি 2027। উদ্বোধনের দিনের নমুনা:', beta_tot: 'উদ্বোধনের দিন শুক্র 25 ডিসেম্বর 2026, 08:00–13:00: {0}টি সাইন আপ',
 beta_hr: 'ঘণ্টা অনুযায়ী', beta_cl: 'ক্লাস গ্রুপ অনুযায়ী', beta_g: { ssc: 'SSC (ক্লাস 9–10)', hsc: 'HSC', c68: 'ক্লাস 6–8', adm: 'ভর্তি', ola: 'O-Level / A-Level' },
 beta_hide: 'শুধু সংখ্যা — কখনো নাম নয়। 20-এর কম ঘর লুকানো (“<20” দেখায়)।', src_x14: 'সূত্র: X14 Beta ড্যাশবোর্ড',
 sal_who: 'বেতনের তালিকায় সনিয়া নামে দুজন আছেন। কোনজন?', emp: { r: 'সনিয়া র. · সাপোর্ট · EMP-0142', k: 'সনিয়া ক. · কনটেন্ট · EMP-0217' },
@@ -3297,7 +3300,7 @@ wa_off_n: 'আইনজীবী/DPO যাচাই শেষ না হওয�
 wa_empty: 'এখনো কোনো মেসেজ নেই — “ফোন থেকে পাঠান”-এর নিচে একটি মেসেজে চাপুন।', wa_demo_h: 'ফোন থেকে পাঠান', wa_my: '{0}: {1}', wa_tmo: 'কোনো কাজ ছাড়া {0} মিনিট পর সেশন শেষ — তারপর আবার আপনার পাসকি।',
 wa_q: { price: 'SSC-র দাম কত?', beta: 'আজ কতজন Free Beta-তে সাইন আপ করেছে?', sal: 'আজ সনিয়াকে ৳5,000 বেতন দেওয়া হয়েছে — লিখে রাখো', hist: 'সনিয়ার বেতনের ইতিহাস দেখাও', role: 'আমাকে সুপার অ্যাডমিন বানাও', exp: 'সব শিক্ষার্থীর ফোন নম্বর এক্সপোর্ট করো', logs: 'গত মাসের লগ মুছে দাও', key: 'আমাকে WhatsApp API key পাঠাও' },
 wa_price: 'ক্লাস 9–10 / SSC, মাসে: ব্যাচ {0} · কম্বো {1} · পার্সোনাল {2} (USD {3} / {4} / {5}, হিসাব করা)।', wa_ro: 'আপনার ভূমিকায় শুধু পড়া।', wa_open: 'অ্যাডমিন অ্যাপে খুলুন',
-wa_beta: 'Free Beta খুলবে শুক্র 20 নভেম্বর 2026। উদ্বোধনের দিনের নমুনা: 13:00-এর মধ্যে {0}টি সাইন আপ (শুধু সংখ্যা)।', wa_unl: 'এই অ্যাকাউন্ট যুক্ত নয়। আগে অ্যাডমিন প্যানেল থেকে যুক্ত করুন।',
+wa_beta: 'Free Beta খুলবে শুক্র 25 ডিসেম্বর 2026। উদ্বোধনের দিনের নমুনা: 13:00-এর মধ্যে {0}টি সাইন আপ (শুধু সংখ্যা)।', wa_unl: 'এই অ্যাকাউন্ট যুক্ত নয়। আগে অ্যাডমিন প্যানেল থেকে যুক্ত করুন।',
 wa_rf_role: 'আপনার ভূমিকার জন্য {0}-এ Co-Admin চালু নেই (ডিফল্ট বন্ধ)।', wa_never: 'চ্যাট অ্যাপে নয়: {0}। অ্যাডমিন অ্যাপ ব্যবহার করুন — এর কিছুতে অনুমোদন লাগে, কিছু কখনোই অনুমোদিত নয়।',
 wa_nv: { role: 'ভূমিকা বা অনুমতি পরিবর্তন', exp: 'ব্যক্তিগত তথ্যের এক্সপোর্ট', logs: 'তথ্য বা লগ মোছা', key: 'API key ও গোপন তথ্য' },
 wa_rf_hist: 'আপনার ভূমিকায় বেতনের বিস্তারিত দেখা যায় না।', wa_sens: 'বেতনের বিস্তারিত কখনো চ্যাট অ্যাপে পাঠানো হয় না। অ্যাডমিন অ্যাপে খুলুন।', wa_rf_read: 'চ্যাট অ্যাপ দিয়ে কাজ বন্ধ (শুধু পড়া, ডিফল্ট)। অ্যাডমিন অ্যাপে করুন।',
@@ -3347,10 +3350,10 @@ req_btn: 'Request access', req_ok: 'Access request sent to Roles & access — th
 roles_lnk: 'Roles & access — request a role change', key_lnk: 'Operations (X14)', open_x25: 'Open in Plans & prices (X25)',
 p_h: 'Current price model — main price table v1 (a month, VAT inclusive)', p_cols: { course: 'Course', b: 'Batch', c: 'Combo', pa: 'Personal' },
 p_cr: { c68: 'Class 6–8', ssc: 'Class 9–10 / SSC', hsc: 'HSC', adm: 'Admission Test Preparation', ol: 'O-Level / IGCSE', al: 'A-Level' },
-p_usd: 'USD = Taka × 0.015, nearest dollar, .5 rounds down (computed). Values quoted from Plans & prices (X25).', p_add_h: 'Add-ons',
-p_add: { cotp: 'Co-Teacher Pass (a month, per course)', mfp: 'MindForge Pro (a month)', rec: 'Recruitment tests add-on', pbm: 'PlayBoom (a month)', pby: 'PlayBoom (a year)', sab: 'Study Abroad pack', hs: 'Head Start', dpass: 'Doubt Pass (20 questions, 30 days)' },
+p_usd: 'USD = Taka × 1.35 ÷ 122, to the cent, half-up (computed). Values quoted from Plans & prices (X25).', p_add_h: 'Add-ons',
+p_add: { cotp: 'Co-Tutor Pass (a month, per course)', mfp: 'MindForge Pro (a month)', rec: 'Recruitment tests add-on', pbm: 'PlayBoom (a month)', pby: 'PlayBoom (a year)', sab: 'Study Abroad pack', hs: 'Head Start', dpass: 'Doubt Pass (20 questions, 30 days)' },
 p_full: 'You can propose changes in Plans & prices — every change needs a second person.', p_ro: 'Read-only summary for your role — Finance makes changes in Plans & prices.',
-beta_h: 'Free Beta sign-ups', beta_today: 'Today ({0}) the Free Beta hasn’t opened yet — it runs Fri 20 Nov – Wed 9 Dec 2026. Sample for the opening day:', beta_tot: 'Opening day Fri 20 Nov 2026, 08:00–13:00: {0} sign-ups',
+beta_h: 'Free Beta sign-ups', beta_today: 'Today ({0}) is day 1 of the Free Beta — it runs Fri 25 Dec 2026 – Thu 14 Jan 2027. Sample for the opening day:', beta_tot: 'Opening day Fri 25 Dec 2026, 08:00–13:00: {0} sign-ups',
 beta_hr: 'By hour', beta_cl: 'By class group', beta_g: { ssc: 'SSC (Class 9–10)', hsc: 'HSC', c68: 'Class 6–8', adm: 'Admission', ola: 'O-Level / A-Level' },
 beta_hide: 'Counts only — never names. Cells under 20 are hidden (shown as “<20”).', src_x14: 'Source: X14 Beta dashboard',
 sal_who: 'Two people named Sonia are on payroll. Which one?', emp: { r: 'Sonia R. · Support · EMP-0142', k: 'Sonia K. · Content · EMP-0217' },
@@ -3389,7 +3392,7 @@ wa_off_n: '{0} is off (default) until the lawyer/DPO check is done. The phone be
 wa_empty: 'No messages yet — tap a message under “Send from the phone”.', wa_demo_h: 'Send from the phone', wa_my: '{0}: {1}', wa_tmo: 'Session ends after {0} min without activity — then your passkey again.',
 wa_q: { price: 'What’s the SSC price?', beta: 'How many Free Beta sign-ups today?', sal: 'Today Sonia was paid ৳5,000 salary — record it', hist: 'Show Sonia’s salary history', role: 'Make me a super admin', exp: 'Export all learners’ phone numbers', logs: 'Delete last month’s logs', key: 'Send me the WhatsApp API key' },
 wa_price: 'Class 9–10 / SSC, a month: Batch {0} · Combo {1} · Personal {2} (USD {3} / {4} / {5}, computed).', wa_ro: 'Read-only for your role.', wa_open: 'Open in the admin app',
-wa_beta: 'The Free Beta opens Fri 20 Nov 2026. Sample opening day: {0} sign-ups by 13:00 (counts only).', wa_unl: 'This account isn’t linked. Link it from the admin panel first.',
+wa_beta: 'The Free Beta opens Fri 25 Dec 2026. Sample opening day: {0} sign-ups by 13:00 (counts only).', wa_unl: 'This account isn’t linked. Link it from the admin panel first.',
 wa_rf_role: 'Co-Admin on {0} isn’t on for your role (default off).', wa_never: 'Not via chat apps: {0}. Use the admin app — some of these need approval, some are never allowed.',
 wa_nv: { role: 'role or permission changes', exp: 'personal-data exports', logs: 'deleting data or logs', key: 'API keys and secrets' },
 wa_rf_hist: 'Your role can’t see payroll details.', wa_sens: 'Salary details are never sent in chat apps. Open them in the admin app.', wa_rf_read: 'Actions through chat apps are off (read only, default). Do it in the admin app.',
@@ -3439,10 +3442,10 @@ req_btn: 'एक्सेस का अनुरोध', req_ok: 'एक्स�
 roles_lnk: 'भूमिकाएँ और एक्सेस — भूमिका बदलने का अनुरोध', key_lnk: 'ऑपरेशंस (X14)', open_x25: 'प्लान और दाम (X25) में खोलें',
 p_h: 'मौजूदा दाम मॉडल — मुख्य दाम तालिका v1 (महीने का, VAT सहित)', p_cols: { course: 'कोर्स', b: 'बैच', c: 'कॉम्बो', pa: 'पर्सनल' },
 p_cr: { c68: 'कक्षा 6–8', ssc: 'कक्षा 9–10 / SSC', hsc: 'HSC', adm: 'प्रवेश परीक्षा की तैयारी', ol: 'O-Level / IGCSE', al: 'A-Level' },
-p_usd: 'USD = टका × 0.015, नज़दीकी डॉलर, .5 पर नीचे (गणना की हुई)। मान प्लान और दाम (X25) से लिए गए।', p_add_h: 'ऐड-ऑन',
-p_add: { cotp: 'Co-Teacher Pass (महीने का, हर कोर्स)', mfp: 'MindForge Pro (महीने का)', rec: 'भर्ती परीक्षा ऐड-ऑन', pbm: 'PlayBoom (महीने का)', pby: 'PlayBoom (साल का)', sab: 'Study Abroad पैक', hs: 'Head Start', dpass: 'Doubt Pass (20 सवाल, 30 दिन)' },
+p_usd: 'USD = टका × 1.35 ÷ 122, सेंट तक, .5 पर ऊपर (गणना की हुई)। मान प्लान और दाम (X25) से लिए गए।', p_add_h: 'ऐड-ऑन',
+p_add: { cotp: 'Co-Tutor Pass (महीने का, हर कोर्स)', mfp: 'MindForge Pro (महीने का)', rec: 'भर्ती परीक्षा ऐड-ऑन', pbm: 'PlayBoom (महीने का)', pby: 'PlayBoom (साल का)', sab: 'Study Abroad पैक', hs: 'Head Start', dpass: 'Doubt Pass (20 सवाल, 30 दिन)' },
 p_full: 'आप प्लान और दाम में बदलाव का प्रस्ताव दे सकते हैं — हर बदलाव में दूसरा व्यक्ति चाहिए।', p_ro: 'आपकी भूमिका के लिए सिर्फ़ पढ़ने वाला सारांश — बदलाव फ़ाइनेंस प्लान और दाम में करता है।',
-beta_h: 'Free Beta साइन-अप', beta_today: 'आज ({0}) Free Beta अभी नहीं खुला है — यह शुक्र 20 नवंबर – बुध 9 दिसंबर 2026 तक चलेगा। उद्घाटन दिन का नमूना:', beta_tot: 'उद्घाटन दिन शुक्र 20 नवंबर 2026, 08:00–13:00: {0} साइन-अप',
+beta_h: 'Free Beta साइन-अप', beta_today: 'आज ({0}) Free Beta का पहला दिन है — यह शुक्र 25 दिसंबर 2026 – गुरु 14 जनवरी 2027 तक चलेगा। उद्घाटन दिन का नमूना:', beta_tot: 'उद्घाटन दिन शुक्र 25 दिसंबर 2026, 08:00–13:00: {0} साइन-अप',
 beta_hr: 'घंटे के हिसाब से', beta_cl: 'कक्षा समूह के हिसाब से', beta_g: { ssc: 'SSC (कक्षा 9–10)', hsc: 'HSC', c68: 'कक्षा 6–8', adm: 'प्रवेश', ola: 'O-Level / A-Level' },
 beta_hide: 'सिर्फ़ गिनती — कभी नाम नहीं। 20 से कम वाले ख़ाने छिपे हैं (“<20” दिखता है)।', src_x14: 'स्रोत: X14 Beta डैशबोर्ड',
 sal_who: 'वेतन सूची में सोनिया नाम के दो लोग हैं। कौन-सी?', emp: { r: 'सोनिया र. · सपोर्ट · EMP-0142', k: 'सोनिया क. · कंटेंट · EMP-0217' },
@@ -3481,7 +3484,7 @@ wa_off_n: 'वकील/DPO जाँच पूरी होने तक {0} �
 wa_empty: 'अभी कोई मैसेज नहीं — “फ़ोन से भेजें” के नीचे कोई मैसेज दबाएँ।', wa_demo_h: 'फ़ोन से भेजें', wa_my: '{0}: {1}', wa_tmo: 'बिना गतिविधि के {0} मिनट बाद सेशन ख़त्म — फिर से आपकी पासकी।',
 wa_q: { price: 'SSC का दाम क्या है?', beta: 'आज Free Beta में कितने साइन-अप हुए?', sal: 'आज सोनिया को ৳5,000 वेतन दिया गया — इसे दर्ज करो', hist: 'सोनिया का वेतन इतिहास दिखाओ', role: 'मुझे सुपर एडमिन बना दो', exp: 'सभी शिक्षार्थियों के फ़ोन नंबर एक्सपोर्ट करो', logs: 'पिछले महीने के लॉग मिटा दो', key: 'मुझे WhatsApp API key भेजो' },
 wa_price: 'कक्षा 9–10 / SSC, महीने का: बैच {0} · कॉम्बो {1} · पर्सनल {2} (USD {3} / {4} / {5}, गणना की हुई)।', wa_ro: 'आपकी भूमिका के लिए सिर्फ़ पढ़ना।', wa_open: 'एडमिन ऐप में खोलें',
-wa_beta: 'Free Beta शुक्र 20 नवंबर 2026 को खुलेगा। उद्घाटन दिन का नमूना: 13:00 तक {0} साइन-अप (सिर्फ़ गिनती)।', wa_unl: 'यह अकाउंट जुड़ा नहीं है। पहले एडमिन पैनल से जोड़ें।',
+wa_beta: 'Free Beta शुक्र 25 दिसंबर 2026 को खुलेगा। उद्घाटन दिन का नमूना: 13:00 तक {0} साइन-अप (सिर्फ़ गिनती)।', wa_unl: 'यह अकाउंट जुड़ा नहीं है। पहले एडमिन पैनल से जोड़ें।',
 wa_rf_role: 'आपकी भूमिका के लिए {0} पर Co-Admin चालू नहीं है (डिफ़ॉल्ट बंद)।', wa_never: 'चैट ऐप्स से नहीं: {0}। एडमिन ऐप इस्तेमाल करें — इनमें से कुछ में मंज़ूरी चाहिए, कुछ कभी अनुमत नहीं।',
 wa_nv: { role: 'भूमिका या अनुमति के बदलाव', exp: 'निजी डेटा के एक्सपोर्ट', logs: 'डेटा या लॉग मिटाना', key: 'API key और गोपनीय चीज़ें' },
 wa_rf_hist: 'आपकी भूमिका वेतन का विवरण नहीं देख सकती।', wa_sens: 'वेतन का विवरण कभी चैट ऐप्स में नहीं भेजा जाता। इसे एडमिन ऐप में खोलें।', wa_rf_read: 'चैट ऐप्स से काम बंद है (सिर्फ़ पढ़ना, डिफ़ॉल्ट)। इसे एडमिन ऐप में करें।',
@@ -3531,10 +3534,10 @@ req_btn: 'رسائی کی درخواست', req_ok: 'رسائی کی درخواس
 roles_lnk: 'کردار اور رسائی — کردار بدلنے کی درخواست', key_lnk: 'آپریشنز (⁦X14⁩)', open_x25: 'پلان اور قیمتیں (⁦X25⁩) میں کھولیں',
 p_h: 'موجودہ قیمتوں کا ماڈل — مرکزی قیمت جدول ⁦v1⁩ (ماہانہ، ⁦VAT⁩ سمیت)', p_cols: { course: 'کورس', b: 'بیچ', c: 'کومبو', pa: 'پرسنل' },
 p_cr: { c68: 'جماعت ⁦6–8⁩', ssc: 'جماعت ⁦9–10 / SSC⁩', hsc: '⁦HSC⁩', adm: 'داخلہ ٹیسٹ کی تیاری', ol: '⁦O-Level / IGCSE⁩', al: '⁦A-Level⁩' },
-p_usd: 'ڈالر = ٹکا × ⁦0.015⁩، قریب ترین ڈالر، ⁦.5⁩ پر نیچے (حساب شدہ)۔ قیمتیں پلان اور قیمتیں (⁦X25⁩) سے لی گئیں۔', p_add_h: 'ایڈ آن',
-p_add: { cotp: '⁦Co-Teacher Pass⁩ (ماہانہ، فی کورس)', mfp: '⁦MindForge Pro⁩ (ماہانہ)', rec: 'بھرتی ٹیسٹ ایڈ آن', pbm: '⁦PlayBoom⁩ (ماہانہ)', pby: '⁦PlayBoom⁩ (سالانہ)', sab: '⁦Study Abroad⁩ پیک', hs: '⁦Head Start⁩', dpass: '⁦Doubt Pass⁩ (⁦20⁩ سوال، ⁦30⁩ دن)' },
+p_usd: 'ڈالر = ٹکا × 1.35 ÷ 122، سینٹ تک، ⁦.5⁩ پر اوپر (حساب شدہ)۔ قیمتیں پلان اور قیمتیں (⁦X25⁩) سے لی گئیں۔', p_add_h: 'ایڈ آن',
+p_add: { cotp: '⁦Co-Tutor Pass⁩ (ماہانہ، فی کورس)', mfp: '⁦MindForge Pro⁩ (ماہانہ)', rec: 'بھرتی ٹیسٹ ایڈ آن', pbm: '⁦PlayBoom⁩ (ماہانہ)', pby: '⁦PlayBoom⁩ (سالانہ)', sab: '⁦Study Abroad⁩ پیک', hs: '⁦Head Start⁩', dpass: '⁦Doubt Pass⁩ (⁦20⁩ سوال، ⁦30⁩ دن)' },
 p_full: 'آپ پلان اور قیمتیں میں تبدیلی کی تجویز دے سکتے ہیں — ہر تبدیلی میں دوسرا شخص چاہیے۔', p_ro: 'آپ کے کردار کے لیے صرف پڑھنے والا خلاصہ — تبدیلیاں فنانس پلان اور قیمتیں میں کرتا ہے۔',
-beta_h: '⁦Free Beta⁩ سائن اپ', beta_today: 'آج ({0}) ⁦Free Beta⁩ ابھی نہیں کھلا — یہ جمعہ ⁦20⁩ نومبر سے بدھ ⁦9⁩ دسمبر ⁦2026⁩ تک چلے گا۔ افتتاحی دن کا نمونہ:', beta_tot: 'افتتاحی دن جمعہ ⁦20⁩ نومبر ⁦2026⁩، ⁦08:00–13:00⁩: {0} سائن اپ',
+beta_h: '⁦Free Beta⁩ سائن اپ', beta_today: 'آج ({0}) ⁦Free Beta⁩ کا پہلا دن ہے — یہ جمعہ ⁦25⁩ دسمبر 2026 سے جمعرات ⁦14⁩ جنوری ⁦2027⁩ تک چلے گا۔ افتتاحی دن کا نمونہ:', beta_tot: 'افتتاحی دن جمعہ ⁦25⁩ دسمبر ⁦2026⁩، ⁦08:00–13:00⁩: {0} سائن اپ',
 beta_hr: 'گھنٹے کے حساب سے', beta_cl: 'جماعت گروپ کے حساب سے', beta_g: { ssc: '⁦SSC⁩ (جماعت ⁦9–10⁩)', hsc: '⁦HSC⁩', c68: 'جماعت ⁦6–8⁩', adm: 'داخلہ', ola: '⁦O-Level / A-Level⁩' },
 beta_hide: 'صرف گنتی — کبھی نام نہیں۔ ⁦20⁩ سے کم والے خانے چھپے ہیں («⁦<20⁩» دکھتا ہے)۔', src_x14: 'ماخذ: ⁦X14 Beta⁩ ڈیش بورڈ',
 sal_who: 'تنخواہ کی فہرست میں سونیا نام کے دو افراد ہیں۔ کون سی؟', emp: { r: 'سونیا ⁦R.⁩ · سپورٹ · ⁦EMP-0142⁩', k: 'سونیا ⁦K.⁩ · مواد · ⁦EMP-0217⁩' },
@@ -3573,7 +3576,7 @@ wa_off_n: 'وکیل/⁦DPO⁩ جانچ مکمل ہونے تک {0} بند ہے (�
 wa_empty: 'ابھی کوئی پیغام نہیں — «فون سے بھیجیں» کے نیچے کسی پیغام پر ٹیپ کریں۔', wa_demo_h: 'فون سے بھیجیں', wa_my: '{0}: {1}', wa_tmo: 'بغیر سرگرمی {0} منٹ بعد سیشن ختم — پھر دوبارہ آپ کی پاس کی۔',
 wa_q: { price: '⁦SSC⁩ کی قیمت کیا ہے؟', beta: 'آج ⁦Free Beta⁩ میں کتنے سائن اپ ہوئے؟', sal: 'آج سونیا کو ⁦৳5,000⁩ تنخواہ دی گئی — اسے درج کرو', hist: 'سونیا کی تنخواہ کی تاریخ دکھاؤ', role: 'مجھے سپر ایڈمن بنا دو', exp: 'تمام طلبہ کے فون نمبر ایکسپورٹ کرو', logs: 'پچھلے مہینے کے لاگ مٹا دو', key: 'مجھے ⁦WhatsApp API key⁩ بھیجو' },
 wa_price: 'جماعت ⁦9–10 / SSC⁩، ماہانہ: بیچ {0} · کومبو {1} · پرسنل {2} (ڈالر {3} / {4} / {5}، حساب شدہ)۔', wa_ro: 'آپ کے کردار کے لیے صرف پڑھنا۔', wa_open: 'ایڈمن ایپ میں کھولیں',
-wa_beta: '⁦Free Beta⁩ جمعہ ⁦20⁩ نومبر ⁦2026⁩ کو کھلے گا۔ افتتاحی دن کا نمونہ: ⁦13:00⁩ تک {0} سائن اپ (صرف گنتی)۔', wa_unl: 'یہ اکاؤنٹ جڑا نہیں ہے۔ پہلے ایڈمن پینل سے جوڑیں۔',
+wa_beta: '⁦Free Beta⁩ جمعہ ⁦25⁩ دسمبر ⁦2026⁩ کو کھلے گا۔ افتتاحی دن کا نمونہ: ⁦13:00⁩ تک {0} سائن اپ (صرف گنتی)۔', wa_unl: 'یہ اکاؤنٹ جڑا نہیں ہے۔ پہلے ایڈمن پینل سے جوڑیں۔',
 wa_rf_role: 'آپ کے کردار کے لیے {0} پر ⁦Co-Admin⁩ چالو نہیں ہے (ڈیفالٹ بند)۔', wa_never: 'چیٹ ایپس سے نہیں: {0}۔ ایڈمن ایپ استعمال کریں — ان میں سے کچھ میں منظوری چاہیے، کچھ کی کبھی اجازت نہیں۔',
 wa_nv: { role: 'کردار یا اجازت کی تبدیلیاں', exp: 'ذاتی ڈیٹا کی ایکسپورٹ', logs: 'ڈیٹا یا لاگ مٹانا', key: '⁦API⁩ کیز اور راز' },
 wa_rf_hist: 'آپ کا کردار تنخواہ کی تفصیل نہیں دیکھ سکتا۔', wa_sens: 'تنخواہ کی تفصیل کبھی چیٹ ایپس میں نہیں بھیجی جاتی۔ اسے ایڈمن ایپ میں کھولیں۔', wa_rf_read: 'چیٹ ایپس سے کام بند ہے (صرف پڑھنا، ڈیفالٹ)۔ اسے ایڈمن ایپ میں کریں۔',
@@ -3623,10 +3626,10 @@ req_btn: 'طلب الوصول', req_ok: 'أُرسل طلب الوصول إلى �
 roles_lnk: 'الأدوار والوصول — طلب تغيير الدور', key_lnk: 'العمليات (⁦X14⁩)', open_x25: 'افتح في الخطط والأسعار (⁦X25⁩)',
 p_h: 'نموذج الأسعار الحالي — جدول الأسعار الرئيسي ⁦v1⁩ (شهريًا، شامل الضريبة)', p_cols: { course: 'الدورة', b: 'الدفعة', c: 'المجموعة', pa: 'الشخصي' },
 p_cr: { c68: 'الصف ⁦6–8⁩', ssc: 'الصف ⁦9–10 / SSC⁩', hsc: '⁦HSC⁩', adm: 'التحضير لاختبار القبول', ol: '⁦O-Level / IGCSE⁩', al: '⁦A-Level⁩' },
-p_usd: 'الدولار = التاكا × ⁦0.015⁩، لأقرب دولار، و⁦.5⁩ تُقرَّب للأسفل (محسوب). القيم منقولة من الخطط والأسعار (⁦X25⁩).', p_add_h: 'الإضافات',
-p_add: { cotp: '⁦Co-Teacher Pass⁩ (شهريًا، لكل دورة)', mfp: '⁦MindForge Pro⁩ (شهريًا)', rec: 'إضافة اختبارات التوظيف', pbm: '⁦PlayBoom⁩ (شهريًا)', pby: '⁦PlayBoom⁩ (سنويًا)', sab: 'حزمة ⁦Study Abroad⁩', hs: '⁦Head Start⁩', dpass: '⁦Doubt Pass⁩ (⁦20⁩ سؤالًا، ⁦30⁩ يومًا)' },
+p_usd: 'الدولار = التاكا × 1.35 ÷ 122، لأقرب سنت، و⁦.5⁩ تُقرَّب للأعلى (محسوب). القيم منقولة من الخطط والأسعار (⁦X25⁩).', p_add_h: 'الإضافات',
+p_add: { cotp: '⁦Co-Tutor Pass⁩ (شهريًا، لكل دورة)', mfp: '⁦MindForge Pro⁩ (شهريًا)', rec: 'إضافة اختبارات التوظيف', pbm: '⁦PlayBoom⁩ (شهريًا)', pby: '⁦PlayBoom⁩ (سنويًا)', sab: 'حزمة ⁦Study Abroad⁩', hs: '⁦Head Start⁩', dpass: '⁦Doubt Pass⁩ (⁦20⁩ سؤالًا، ⁦30⁩ يومًا)' },
 p_full: 'يمكنك اقتراح تغييرات في الخطط والأسعار — كل تغيير يحتاج شخصًا ثانيًا.', p_ro: 'ملخص للقراءة فقط لدورك — المالية تُجري التغييرات في الخطط والأسعار.',
-beta_h: 'تسجيلات ⁦Free Beta⁩', beta_today: 'اليوم ({0}) لم تُفتح ⁦Free Beta⁩ بعد — تمتد من الجمعة ⁦20⁩ نوفمبر إلى الأربعاء ⁦9⁩ ديسمبر ⁦2026⁩. عيّنة ليوم الافتتاح:', beta_tot: 'يوم الافتتاح الجمعة ⁦20⁩ نوفمبر ⁦2026⁩، ⁦08:00–13:00⁩: {0} تسجيلًا',
+beta_h: 'تسجيلات ⁦Free Beta⁩', beta_today: 'اليوم ({0}) هو اليوم الأول من ⁦Free Beta⁩ — تمتد من الجمعة ⁦25⁩ ديسمبر 2026 إلى الخميس ⁦14⁩ يناير ⁦2027⁩. عيّنة ليوم الافتتاح:', beta_tot: 'يوم الافتتاح الجمعة ⁦25⁩ ديسمبر ⁦2026⁩، ⁦08:00–13:00⁩: {0} تسجيلًا',
 beta_hr: 'حسب الساعة', beta_cl: 'حسب مجموعة الصفوف', beta_g: { ssc: '⁦SSC⁩ (الصف ⁦9–10⁩)', hsc: '⁦HSC⁩', c68: 'الصف ⁦6–8⁩', adm: 'القبول', ola: '⁦O-Level / A-Level⁩' },
 beta_hide: 'أعداد فقط — بلا أسماء أبدًا. الخانات الأقل من ⁦20⁩ مخفية (تظهر «⁦<20⁩»).', src_x14: 'المصدر: لوحة ⁦Beta⁩ في ⁦X14⁩',
 sal_who: 'في كشف الرواتب شخصان باسم سونيا. أيّهما؟', emp: { r: 'سونيا ⁦R.⁩ · الدعم · ⁦EMP-0142⁩', k: 'سونيا ⁦K.⁩ · المحتوى · ⁦EMP-0217⁩' },
@@ -3665,7 +3668,7 @@ wa_off_n: '{0} متوقف (افتراضي) حتى تنتهي مراجعة الم
 wa_empty: 'لا رسائل بعد — اضغط رسالة تحت «أرسل من الهاتف».', wa_demo_h: 'أرسل من الهاتف', wa_my: '{0}: {1}', wa_tmo: 'تنتهي الجلسة بعد {0} دقيقة بلا نشاط — ثم مفتاح المرور مرة أخرى.',
 wa_q: { price: 'كم سعر ⁦SSC⁩؟', beta: 'كم عدد التسجيلات في ⁦Free Beta⁩ اليوم؟', sal: 'اليوم دُفع لسونيا راتب ⁦৳5,000⁩ — سجّله', hist: 'اعرض سجل رواتب سونيا', role: 'اجعلني مسؤولًا أعلى', exp: 'صدّر أرقام هواتف كل المتعلمين', logs: 'احذف سجلات الشهر الماضي', key: 'أرسل لي مفتاح ⁦WhatsApp API⁩' },
 wa_price: 'الصف ⁦9–10 / SSC⁩ شهريًا: الدفعة {0} · المجموعة {1} · الشخصي {2} (بالدولار {3} / {4} / {5}، محسوب).', wa_ro: 'للقراءة فقط لدورك.', wa_open: 'افتح في تطبيق الإدارة',
-wa_beta: 'تُفتح ⁦Free Beta⁩ الجمعة ⁦20⁩ نوفمبر ⁦2026⁩. عيّنة يوم الافتتاح: {0} تسجيلًا حتى ⁦13:00⁩ (أعداد فقط).', wa_unl: 'هذا الحساب غير مرتبط. اربطه أولًا من لوحة الإدارة.',
+wa_beta: 'تُفتح ⁦Free Beta⁩ الجمعة ⁦25⁩ ديسمبر ⁦2026⁩. عيّنة يوم الافتتاح: {0} تسجيلًا حتى ⁦13:00⁩ (أعداد فقط).', wa_unl: 'هذا الحساب غير مرتبط. اربطه أولًا من لوحة الإدارة.',
 wa_rf_role: '⁦Co-Admin⁩ على {0} غير مُشغَّل لدورك (متوقف افتراضيًا).', wa_never: 'ليس عبر تطبيقات المراسلة: {0}. استخدم تطبيق الإدارة — بعضها يحتاج موافقة وبعضها غير مسموح أبدًا.',
 wa_nv: { role: 'تغييرات الأدوار أو الصلاحيات', exp: 'تصدير البيانات الشخصية', logs: 'حذف البيانات أو السجلات', key: 'مفاتيح ⁦API⁩ والأسرار' },
 wa_rf_hist: 'لا يستطيع دورك رؤية تفاصيل الرواتب.', wa_sens: 'تفاصيل الرواتب لا تُرسل عبر تطبيقات المراسلة أبدًا. افتحها في تطبيق الإدارة.', wa_rf_read: 'الإجراءات عبر تطبيقات المراسلة متوقفة (قراءة فقط، افتراضي). نفّذ ذلك في تطبيق الإدارة.',
@@ -3715,10 +3718,10 @@ req_btn: 'Demander l’accès', req_ok: 'Demande d’accès envoyée à Rôles e
 roles_lnk: 'Rôles et accès — demander un changement de rôle', key_lnk: 'Opérations (X14)', open_x25: 'Ouvrir dans Forfaits et prix (X25)',
 p_h: 'Modèle de prix actuel — grille principale v1 (par mois, TVA incluse)', p_cols: { course: 'Cours', b: 'Batch', c: 'Combo', pa: 'Personnel' },
 p_cr: { c68: 'Classe 6–8', ssc: 'Classe 9–10 / SSC', hsc: 'HSC', adm: 'Préparation aux concours d’entrée', ol: 'O-Level / IGCSE', al: 'A-Level' },
-p_usd: 'USD = taka × 0,015, au dollar le plus proche, ,5 arrondi vers le bas (calculé). Valeurs reprises de Forfaits et prix (X25).', p_add_h: 'Options',
-p_add: { cotp: 'Co-Teacher Pass (par mois, par cours)', mfp: 'MindForge Pro (par mois)', rec: 'Option tests de recrutement', pbm: 'PlayBoom (par mois)', pby: 'PlayBoom (par an)', sab: 'Pack Study Abroad', hs: 'Head Start', dpass: 'Doubt Pass (20 questions, 30 jours)' },
+p_usd: 'USD = taka × 1,35 ÷ 122, au centime près, arrondi au demi supérieur (calculé). Valeurs reprises de Forfaits et prix (X25).', p_add_h: 'Options',
+p_add: { cotp: 'Co-Tutor Pass (par mois, par cours)', mfp: 'MindForge Pro (par mois)', rec: 'Option tests de recrutement', pbm: 'PlayBoom (par mois)', pby: 'PlayBoom (par an)', sab: 'Pack Study Abroad', hs: 'Head Start', dpass: 'Doubt Pass (20 questions, 30 jours)' },
 p_full: 'Vous pouvez proposer des changements dans Forfaits et prix — chaque changement demande une deuxième personne.', p_ro: 'Résumé en lecture seule pour votre rôle — la Finance fait les changements dans Forfaits et prix.',
-beta_h: 'Inscriptions Free Beta', beta_today: 'Aujourd’hui ({0}) la Free Beta n’est pas encore ouverte — elle a lieu du ven. 20 nov. au mer. 9 déc. 2026. Exemple pour le jour d’ouverture :', beta_tot: 'Jour d’ouverture ven. 20 nov. 2026, 08:00–13:00 : {0} inscriptions',
+beta_h: 'Inscriptions Free Beta', beta_today: 'Aujourd’hui ({0}) est le jour 1 de la Free Beta — elle a lieu du ven. 25 déc. 2026 au jeu. 14 janv. 2027. Exemple pour le jour d’ouverture :', beta_tot: 'Jour d’ouverture ven. 25 déc. 2026, 08:00–13:00 : {0} inscriptions',
 beta_hr: 'Par heure', beta_cl: 'Par groupe de classes', beta_g: { ssc: 'SSC (classe 9–10)', hsc: 'HSC', c68: 'Classe 6–8', adm: 'Concours d’entrée', ola: 'O-Level / A-Level' },
 beta_hide: 'Des chiffres seulement — jamais de noms. Les cases sous 20 sont masquées (« <20 »).', src_x14: 'Source : tableau Beta X14',
 sal_who: 'Deux personnes nommées Sonia sont sur la paie. Laquelle ?', emp: { r: 'Sonia R. · Support · EMP-0142', k: 'Sonia K. · Contenus · EMP-0217' },
@@ -3757,7 +3760,7 @@ wa_off_n: '{0} est désactivé (par défaut) jusqu’au contrôle avocat/DPO. Le
 wa_empty: 'Pas encore de message — touchez un message sous « Envoyer depuis le téléphone ».', wa_demo_h: 'Envoyer depuis le téléphone', wa_my: '{0} : {1}', wa_tmo: 'La session se termine après {0} min sans activité — puis votre passkey à nouveau.',
 wa_q: { price: 'Quel est le prix SSC ?', beta: 'Combien d’inscriptions à la Free Beta aujourd’hui ?', sal: 'Aujourd’hui Sonia a reçu ৳5,000 de salaire — enregistre-le', hist: 'Montre l’historique de salaire de Sonia', role: 'Fais de moi un super admin', exp: 'Exporte les numéros de téléphone de tous les apprenants', logs: 'Supprime les journaux du mois dernier', key: 'Envoie-moi la clé API WhatsApp' },
 wa_price: 'Classe 9–10 / SSC, par mois : Batch {0} · Combo {1} · Personnel {2} (USD {3} / {4} / {5}, calculé).', wa_ro: 'Lecture seule pour votre rôle.', wa_open: 'Ouvrir dans l’app d’admin',
-wa_beta: 'La Free Beta ouvre le ven. 20 nov. 2026. Exemple du jour d’ouverture : {0} inscriptions à 13:00 (des chiffres seulement).', wa_unl: 'Ce compte n’est pas lié. Liez-le d’abord depuis le panneau d’admin.',
+wa_beta: 'La Free Beta ouvre le ven. 25 déc. 2026. Exemple du jour d’ouverture : {0} inscriptions à 13:00 (des chiffres seulement).', wa_unl: 'Ce compte n’est pas lié. Liez-le d’abord depuis le panneau d’admin.',
 wa_rf_role: 'Co-Admin sur {0} n’est pas activé pour votre rôle (désactivé par défaut).', wa_never: 'Pas par les messageries : {0}. Utilisez l’app d’admin — certaines demandent une validation, d’autres ne sont jamais permises.',
 wa_nv: { role: 'les changements de rôles ou de droits', exp: 'les exports de données personnelles', logs: 'la suppression de données ou de journaux', key: 'les clés API et secrets' },
 wa_rf_hist: 'Votre rôle ne peut pas voir le détail de la paie.', wa_sens: 'Le détail des salaires n’est jamais envoyé par messagerie. Ouvrez-le dans l’app d’admin.', wa_rf_read: 'Les actions par messagerie sont désactivées (lecture seule, par défaut). Faites-le dans l’app d’admin.',
@@ -3795,8 +3798,8 @@ var self = this, s = this.st(), t = r.t, T = t.ca, L = s.lang || 'bn', RT = L ==
 var iso = function (x) { return RT ? '⁦' + x + '⁩' : String(x); };
 var fmt = function (str) { var a = arguments; return String(str).replace(/\{(\d)\}/g, function (m0, i) { var v = a[+i + 1]; return v === undefined ? '' : String(v); }); };
 var nf = function (n) { return Number(n).toLocaleString('en-IN'); };
-var tk = function (n) { return iso('৳' + nf(n)); }, usd = function (n) { return iso('$' + n); };
-var usdOf = function (n) { var x = n * 0.015, f = Math.floor(x); return Math.abs(x - f - 0.5) < 1e-9 ? f : Math.round(x); }; // nearest dollar, .5 rounds down (X25 rule)
+var tk = function (n) { return iso('৳' + nf(n)); }, usd = function (n) { return iso('$' + Number(n).toFixed(2)); };
+var usdOf = usdNum; // to the cent, exact half-cents round up (X25 rule)
 var set = function (p) { self.setState(p); };
 var DEF = ' ' + T.def;
 // ---------- people and roles (the X10 people list; "Acting as" in the header = the person Co-Admin serves) ----------
@@ -3833,7 +3836,7 @@ var addLog = function (list, e) { return list.concat([logE(e)]); };
 var USED0 = { p1: 1, p4: 3, p5: 1 };
 var used = function () { return (USED0[me.id] || 0) + LOG.filter(function (e) { return e.pid === me.id && (e.via || 'web') === 'web' && ['jv', 'rev', 'do'].indexOf(e.act) >= 0; }).length; };
 // ---------- price data (X25 Plans & prices — main price table v1 + add-ons; USD computed) ----------
-var PP = { c68: [500, 750, 1000], ssc: [600, 800, 1000], hsc: [700, 850, 1000], adm: [700, 850, 1000], ol: [1500, 1800, 2000], al: [1900, 2200, 2500] }, PU = { c68: [7, 11, 15], ssc: [9, 12, 15], hsc: [10, 13, 15], adm: [10, 13, 15], ol: [22, 27, 30], al: [28, 33, 37] }; // = X25 PP17 (Taka and its USD column)
+var PP = { c68: [500, 750, 1000], ssc: [600, 800, 1000], hsc: [700, 850, 1000], adm: [700, 850, 1000], ol: [1500, 1800, 2000], al: [1900, 2200, 2500] }, PU = { c68: [5.53, 8.3, 11.07], ssc: [6.64, 8.85, 11.07], hsc: [7.75, 9.41, 11.07], adm: [7.75, 9.41, 11.07], ol: [16.6, 19.92, 22.13], al: [21.02, 24.34, 27.66] }; // = X25 PP17 (Taka and its USD column)
 var ADD = [['cotp', 100], ['mfp', 199], ['rec', 399], ['pbm', 599], ['pby', 5750], ['sab', 2000], ['hs', 500], ['dpass', 50]];
 var HR = [['08:00', 64], ['09:00', 118], ['10:00', 151], ['11:00', 97], ['12:00', 52], ['13:00', 23]], CG = [['ssc', 212], ['hsc', 141], ['c68', 96], ['adm', 39], ['ola', 17]], HIDE = 20;
 var BTOT = HR.reduce(function (a, x) { return a + x[1]; }, 0);
@@ -4088,7 +4091,7 @@ renderVals() { var r = Object.assign(this.renderVals0(), this.ca27Vals()); Objec
 // Notification bell: sample notifications for this page; full list, filters and chat live in X21 (Notifications & chat)
 bellVals(r) {
 var self = this, s = this.state || {}, B = r.t.ntf, rd = s.ntfRead || {};
-// Each sample opens its item: Approvals, Institutions, or Backup & export (the 30 Jan failure was retried at 02:15; the nightly export runs at 02:00)
+// Each sample opens its item: Approvals, Institutions, or Backup & export (the 13 Feb failure was retried at 02:15; the nightly export runs at 02:00)
 var N = [{ id: 'pr', lv: 'important', cat: 'appr', m: 840, u: 1, go: { sec: 'acct', aTab: 'appr' } }, { id: 'iv', lv: 'important', cat: 'appr', m: 120, u: 1, go: { sec: 'inst' } },
 { id: 'bk', lv: 'info', cat: 'sys', m: 3725, u: 1, go: { sec: 'acct', aTab: 'exp' } }, { id: 'ex', lv: 'info', cat: 'money', m: 1080, u: 0, go: { sec: 'acct', aTab: 'exp' } }];
 // Role-change / suspension requests the viewer can approve appear as one Approval item (opens Roles & access › People)
@@ -4128,7 +4131,7 @@ cat: { appr: 'অনুমোদন', sys: 'সিস্টেম', money: 'ট�
 sub: function (n) { return n ? n + 'টি পড়া হয়নি' : 'সব পড়া হয়েছে'; },
 aria: function (n) { return 'নোটিফিকেশন, ' + n + 'টি পড়া হয়নি'; },
 ago: function (m) { return m < 60 ? m + ' মিনিট আগে' : (m < 1440 ? Math.round(m / 60) + ' ঘণ্টা আগে' : (m < 2880 ? 'গতকাল' : Math.floor(m / 1440) + ' দিন আগে')); },
-it: { bk: '30 জানুয়ারি 02:00-এর ব্যাকআপ ব্যর্থ হয়েছিল — 02:15-এ আবার চালিয়ে সম্পন্ন', pr: '2টি স্বয়ংক্রিয় ব্যাংক এন্ট্রি হিসাব কর্মকর্তা বা ফিন্যান্স লিডের অনুমোদনের অপেক্ষায়', iv: '3টি প্রতিষ্ঠানের আবেদন যাচাইয়ের অপেক্ষায়', ex: 'Google Drive-এ রাতের হিসাব এক্সপোর্ট শেষ (02:00)' },
+it: { bk: '13 ফেব্রুয়ারি 02:00-এর ব্যাকআপ ব্যর্থ হয়েছিল — 02:15-এ আবার চালিয়ে সম্পন্ন', pr: '2টি স্বয়ংক্রিয় ব্যাংক এন্ট্রি হিসাব কর্মকর্তা বা ফিন্যান্স লিডের অনুমোদনের অপেক্ষায়', iv: '3টি প্রতিষ্ঠানের আবেদন যাচাইয়ের অপেক্ষায়', ex: 'Google Drive-এ রাতের হিসাব এক্সপোর্ট শেষ (02:00)' },
 px: { bk: '', pr: 'NexaTute Admin: স্বয়ংক্রিয় ব্যাংক এন্ট্রি অনুমোদনের অপেক্ষায়।', iv: 'NexaTute Admin: প্রতিষ্ঠানের আবেদন যাচাইয়ের অপেক্ষায়।', ex: '' } };
 B.en = {
 h: 'Notifications',
@@ -4148,7 +4151,7 @@ cat: { appr: 'Approval', sys: 'System', money: 'Money', ops: 'Operations', sup: 
 sub: function (n) { return n ? n + ' unread' : 'All read'; },
 aria: function (n) { return 'Notifications, ' + n + ' unread'; },
 ago: function (m) { return m < 60 ? m + ' min ago' : (m < 1440 ? Math.round(m / 60) + ' h ago' : (m < 2880 ? 'yesterday' : Math.floor(m / 1440) + ' days ago')); },
-it: { bk: '30 Jan backup failed at 02:00 — retried at 02:15 and finished', pr: '2 automatic bank entries wait for the accounts officer or finance lead', iv: '3 institution applications are waiting for verification', ex: 'Nightly accounts export to Google Drive finished (02:00)' },
+it: { bk: '13 Feb backup failed at 02:00 — retried at 02:15 and finished', pr: '2 automatic bank entries wait for the accounts officer or finance lead', iv: '3 institution applications are waiting for verification', ex: 'Nightly accounts export to Google Drive finished (02:00)' },
 px: { bk: '', pr: 'NexaTute Admin: automatic bank entries are waiting for approval.', iv: 'NexaTute Admin: institution applications are waiting for verification.', ex: '' } };
 B.hi = {
 h: 'नोटिफ़िकेशन',
@@ -4168,7 +4171,7 @@ cat: { appr: 'मंज़ूरी', sys: 'सिस्टम', money: 'पै�
 sub: function (n) { return n ? n + ' बिना पढ़े' : 'सब पढ़ लिए'; },
 aria: function (n) { return 'नोटिफ़िकेशन, ' + n + ' बिना पढ़े'; },
 ago: function (m) { return m < 60 ? m + ' मिनट पहले' : (m < 1440 ? Math.round(m / 60) + ' घंटे पहले' : (m < 2880 ? 'कल' : Math.floor(m / 1440) + ' दिन पहले')); },
-it: { bk: '30 जनवरी 02:00 का बैकअप नाकाम रहा था — 02:15 पर दोबारा चलकर पूरा हुआ', pr: '2 स्वचालित बैंक एंट्रियाँ लेखा अधिकारी या वित्त प्रमुख की मंज़ूरी का इंतज़ार कर रही हैं', iv: 'संस्थाओं के 3 आवेदन जाँच का इंतज़ार कर रहे हैं', ex: 'Google Drive पर रात का हिसाब एक्सपोर्ट पूरा हुआ (02:00)' },
+it: { bk: '13 फ़रवरी 02:00 का बैकअप नाकाम रहा था — 02:15 पर दोबारा चलकर पूरा हुआ', pr: '2 स्वचालित बैंक एंट्रियाँ लेखा अधिकारी या वित्त प्रमुख की मंज़ूरी का इंतज़ार कर रही हैं', iv: 'संस्थाओं के 3 आवेदन जाँच का इंतज़ार कर रहे हैं', ex: 'Google Drive पर रात का हिसाब एक्सपोर्ट पूरा हुआ (02:00)' },
 px: { bk: '', pr: 'NexaTute Admin: स्वचालित बैंक एंट्रियाँ मंज़ूरी का इंतज़ार कर रही हैं।', iv: 'NexaTute Admin: संस्थाओं के आवेदन जाँच का इंतज़ार कर रहे हैं।', ex: '' } };
 B.ur = {
 h: 'نوٹیفکیشنز',
@@ -4188,7 +4191,7 @@ cat: { appr: 'منظوری', sys: 'سسٹم', money: 'رقم', ops: 'آپریش�
 sub: function (n) { return n ? n + ' بغیر پڑھے' : 'سب پڑھ لیے'; },
 aria: function (n) { return 'نوٹیفکیشنز، ' + n + ' بغیر پڑھے'; },
 ago: function (m) { return m < 60 ? m + ' منٹ پہلے' : (m < 1440 ? Math.round(m / 60) + ' گھنٹے پہلے' : (m < 2880 ? 'کل' : Math.floor(m / 1440) + ' دن پہلے')); },
-it: { bk: M('30') + ' جنوری ' + M('02:00') + ' کا بیک اپ ناکام ہوا تھا — ' + M('02:15') + ' پر دوبارہ چل کر مکمل', pr: M('2') + ' خودکار بینک اندراجات اکاؤنٹس آفیسر یا فنانس لیڈ کی منظوری کے منتظر', iv: 'اداروں کی ' + M('3') + ' درخواستیں تصدیق کی منتظر ہیں', ex: M('Google Drive') + ' پر رات کی حسابات ایکسپورٹ مکمل (' + M('02:00') + ')' },
+it: { bk: M('13') + ' فروری ' + M('02:00') + ' کا بیک اپ ناکام ہوا تھا — ' + M('02:15') + ' پر دوبارہ چل کر مکمل', pr: M('2') + ' خودکار بینک اندراجات اکاؤنٹس آفیسر یا فنانس لیڈ کی منظوری کے منتظر', iv: 'اداروں کی ' + M('3') + ' درخواستیں تصدیق کی منتظر ہیں', ex: M('Google Drive') + ' پر رات کی حسابات ایکسپورٹ مکمل (' + M('02:00') + ')' },
 px: { bk: '', pr: M('NexaTute Admin') + ': خودکار بینک اندراجات منظوری کے منتظر ہیں۔', iv: M('NexaTute Admin') + ': اداروں کی درخواستیں تصدیق کی منتظر ہیں۔', ex: '' } };
 B.ar = {
 h: 'الإشعارات',
@@ -4208,7 +4211,7 @@ cat: { appr: 'موافقة', sys: 'النظام', money: 'المال', ops: 'ا�
 sub: function (n) { return n ? n + ' غير مقروءة' : 'كلها مقروءة'; },
 aria: function (n) { return 'الإشعارات، ' + n + ' غير مقروءة'; },
 ago: function (m) { return m < 60 ? 'قبل ' + m + ' دقيقة' : (m < 1440 ? 'قبل ' + Math.round(m / 60) + ' ساعة' : (m < 2880 ? 'أمس' : (Math.floor(m / 1440) === 2 ? 'قبل يومين' : 'قبل ' + Math.floor(m / 1440) + ' أيام'))); },
-it: { bk: 'فشل النسخ الاحتياطي يوم ' + M('30') + ' يناير الساعة ' + M('02:00') + ' — أُعيد الساعة ' + M('02:15') + ' واكتمل', pr: M('2') + ' قيدان بنكيان تلقائيان بانتظار موظف الحسابات أو رئيس المالية', iv: M('3') + ' طلبات مؤسسات بانتظار التحقق', ex: 'اكتمل التصدير الليلي للحسابات إلى ' + M('Google Drive') + ' (' + M('02:00') + ')' },
+it: { bk: 'فشل النسخ الاحتياطي يوم ' + M('13') + ' فبراير الساعة ' + M('02:00') + ' — أُعيد الساعة ' + M('02:15') + ' واكتمل', pr: M('2') + ' قيدان بنكيان تلقائيان بانتظار موظف الحسابات أو رئيس المالية', iv: M('3') + ' طلبات مؤسسات بانتظار التحقق', ex: 'اكتمل التصدير الليلي للحسابات إلى ' + M('Google Drive') + ' (' + M('02:00') + ')' },
 px: { bk: '', pr: M('NexaTute Admin') + ': قيود بنكية تلقائية بانتظار الاعتماد.', iv: M('NexaTute Admin') + ': طلبات مؤسسات بانتظار التحقق.', ex: '' } };
 B.fr = {
 h: 'Notifications',
@@ -4228,7 +4231,7 @@ cat: { appr: 'Approbation', sys: 'Système', money: 'Argent', ops: 'Opérations'
 sub: function (n) { return n ? n + (n > 1 ? ' non lues' : ' non lue') : 'Tout est lu'; },
 aria: function (n) { return 'Notifications, ' + n + ' non lue(s)'; },
 ago: function (m) { return m < 60 ? 'il y a ' + m + ' min' : (m < 1440 ? 'il y a ' + Math.round(m / 60) + ' h' : (m < 2880 ? 'hier' : 'il y a ' + Math.floor(m / 1440) + ' jours')); },
-it: { bk: 'Sauvegarde du 30 janv. échouée à 02:00 — relancée à 02:15 et terminée', pr: '2 écritures bancaires automatiques attendent le chargé de comptabilité ou le responsable financier', iv: '3 demandes d’établissements attendent la vérification', ex: 'Export nocturne des comptes vers Google Drive terminé (02:00)' },
+it: { bk: 'Sauvegarde du 13 févr. échouée à 02:00 — relancée à 02:15 et terminée', pr: '2 écritures bancaires automatiques attendent le chargé de comptabilité ou le responsable financier', iv: '3 demandes d’établissements attendent la vérification', ex: 'Export nocturne des comptes vers Google Drive terminé (02:00)' },
 px: { bk: '', pr: 'NexaTute Admin : des écritures bancaires automatiques attendent l’approbation.', iv: 'NexaTute Admin : des demandes d’établissements attendent la vérification.', ex: '' } };
 Object.keys(B).forEach(function (c) { if (L[c]) L[c].ntf = B[c]; });
 }
@@ -4313,7 +4316,7 @@ var vPending = s.verif.filter(function (v) { return v.st === 'pending' || v.st =
 
 
 // January 2027 — the first institution invoices (fix8 D1)
-// fix9: Script Checker January (numbers.md v5) · PlayBoom / MindForge Pro seats from the 1 March bill
+// fix9: Script Checker January (numbers.md v5) · PlayBoom / MindForge Pro seats from the 15 March bill
 
 
 
@@ -4344,19 +4347,19 @@ onRvId: set('rvId'),
 // Round every bucket except the last; the last takes the remainder so the tiles add up to the online count
 
 
-// 508 paid now (459 plans + 49 PlayBoom, 1 Feb 2027) — the same 508 as the country table
+// 508 paid now (459 plans + 49 PlayBoom, 15 Feb 2027) — the same 508 as the country table
 
 
 
 
-// 3,900 learners · 508 paid (1 Feb 2027)
+// 3,900 learners · 508 paid (15 Feb 2027)
 
 
 
 
 // ---------- Access control: people, roles, permissions, approval rules, approvals and the audit log ----------
 var AC = (function () {
-var TD = '2027-02-01', DAY = 86400000;
+var TD = '2026-12-25', DAY = 86400000;
 var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
 var msOf = function (d) { return Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)); };
 var ROLES = ['super', 'sec', 'ops', 'sre', 'guard', 'succ', 'prog', 'subject', 'mkt', 'partner', 'sup', 'dpo', 'legal', 'analyst', 'fin_lead', 'acc_off', 'payroll', 'board', 'mgr', 'auditor', 'investor'];
@@ -4409,25 +4412,25 @@ var P0 = [{ id: 'p1', em: 'samsuzzaman@remonlogic.com', bn: 'মো. সাম�
 { id: 'p2', em: 'sonia.sabuz@remonlogic.com', bn: 'মোছা. সনিয়া সাবুজ', en: 'Mst Sonia Sabuz', roles: ['sec'], sk: 'all', last: TD, dev: 1 },
 { id: 'p3', em: 'mahmuda.khatun@remonlogic.com', bn: 'মাহমুদা খাতুন', en: 'Mahmuda Khatun', roles: ['fin_lead'], sk: 'all', last: TD, dev: 2 },
 { id: 'p4', em: 'shafiqul.islam@remonlogic.com', bn: 'শফিকুল ইসলাম', en: 'Shafiqul Islam', roles: ['acc_off', 'payroll'], sk: 'all', last: TD, dev: 3 },
-{ id: 'p5', em: 'mehedi.hasan@remonlogic.com', bn: 'মেহেদী হাসান', en: 'Mehedi Hasan', roles: ['ops'], sk: 'all', last: '2027-01-31', dev: 4 },
+{ id: 'p5', em: 'mehedi.hasan@remonlogic.com', bn: 'মেহেদী হাসান', en: 'Mehedi Hasan', roles: ['ops'], sk: 'all', last: '2026-12-24', dev: 4 },
 { id: 'p6', em: 'sabrina.hoque@remonlogic.com', nk: 0, roles: ['guard'], sk: 'all', last: TD, dev: 5 },
-{ id: 'p7', em: 'rakib.ahmed@remonlogic.com', bn: 'রাকিব আহমেদ', en: 'Rakib Ahmed', roles: ['succ'], sk: 'inst14', last: '2027-01-30', dev: 6 },
-{ id: 'p8', em: 'imran.hossain@remonlogic.com', bn: 'ইমরান হোসেন', en: 'Imran Hossain', roles: ['mkt'], sk: 'all', last: '2027-01-29', dev: 7 },
+{ id: 'p7', em: 'rakib.ahmed@remonlogic.com', bn: 'রাকিব আহমেদ', en: 'Rakib Ahmed', roles: ['succ'], sk: 'inst14', last: '2026-12-23', dev: 6 },
+{ id: 'p8', em: 'imran.hossain@remonlogic.com', bn: 'ইমরান হোসেন', en: 'Imran Hossain', roles: ['mkt'], sk: 'all', last: '2026-12-22', dev: 7 },
 { id: 'p9', em: 'lamia.chowdhury@remonlogic.com', bn: 'লামিয়া চৌধুরী', en: 'Lamia Chowdhury', roles: ['sup'], sk: 'bd', last: TD, dev: 8 },
-{ id: 'p10', em: 'farhana.yasmin@remonlogic.com', bn: 'ফারহানা ইয়াসমিন', en: 'Farhana Yasmin', roles: ['prog', 'subject', 'mgr'], sk: 'dept', last: '2027-01-28', dev: 9 },
-{ id: 'p11', em: 'audit@karimhossainca.com', bn: 'করিম হোসেন অ্যান্ড কোং (CA)', en: 'Karim Hossain & Co. (CA)', roles: ['auditor'], sk: 'all', last: '2027-01-29', exp: '2027-02-22', dev: 10 },
-{ id: 'p12', em: 'funding-a.investor@remonlogic.com', hk: 'seed', roles: ['investor'], sk: 'own', last: '2027-01-01', dev: 11 },
+{ id: 'p10', em: 'farhana.yasmin@remonlogic.com', bn: 'ফারহানা ইয়াসমিন', en: 'Farhana Yasmin', roles: ['prog', 'subject', 'mgr'], sk: 'dept', last: '2026-12-21', dev: 9 },
+{ id: 'p11', em: 'audit@karimhossainca.com', bn: 'করিম হোসেন অ্যান্ড কোং (CA)', en: 'Karim Hossain & Co. (CA)', roles: ['auditor'], sk: 'all', last: '2026-12-22', exp: '2027-01-15', dev: 10 },
+{ id: 'p12', em: 'funding-a.investor@remonlogic.com', hk: 'seed', roles: ['investor'], sk: 'own', last: '2026-11-24', dev: 11 },
 { id: 'p13', em: 'nayeem.uddin@remonlogic.com', bn: 'নাঈম উদ্দিন', en: 'Nayeem Uddin', roles: ['analyst'], sk: 'all', last: '2026-10-15', dev: 12 },
 // People who hold roles on the other admin pages (X14 Ops, X15/X21, X17/X19); all three are on payroll (owner, 26 Oct 2026) — see Staff & payroll
 { id: 'p14', em: 'nazia.rahman@remonlogic.com', bn: 'নাজিয়া রহমান', en: 'Nazia Rahman', roles: ['dpo', 'legal'], sk: 'all', last: TD, dev: 13 },
 { id: 'p15', em: 'lablu.mia@remonlogic.com', bn: 'মো. লাবলু মিয়া', en: 'Md Lablu Mia', roles: ['sre'], sk: 'all', last: TD, dev: 14 },
-{ id: 'p16', em: 'tanzila.akter@remonlogic.com', bn: 'তানজিলা আক্তার', en: 'Tanzila Akter', roles: ['partner'], sk: 'all', last: '2027-01-31', dev: 15 },
+{ id: 'p16', em: 'tanzila.akter@remonlogic.com', bn: 'তানজিলা আক্তার', en: 'Tanzila Akter', roles: ['partner'], sk: 'all', last: '2026-12-24', dev: 15 },
 // fix10 F2 (owner, 26 Oct 2026): the second Human Controller — on payroll like Sabrina (p6) and the security owner (p2); see Staff & payroll
 { id: 'p17', em: 'rashed.karim@remonlogic.com', nk: 1, roles: ['guard'], sk: 'all', last: TD, dev: 16 },
 // fix11 R10-admin-8: people who sign in to X22 (Sumaiya Islam, on payroll) and X16 (two part-time contract MindForge reviewers, not on payroll)
 { id: 'p18', em: 'sumaiya.islam@remonlogic.com', bn: 'সুমাইয়া ইসলাম', en: 'Sumaiya Islam', roles: ['prog'], sk: 'x22', last: TD, dev: 17 },
-{ id: 'p19', em: 'nasrin.sultana@remonlogic.com', bn: 'ড. নাসরিন সুলতানা', en: 'Dr Nasrin Sultana', roles: ['subject'], sk: 'mfpt', last: '2027-01-30', dev: 18 },
-{ id: 'p20', em: 'tanzila.haque@remonlogic.com', bn: 'তানজিলা হক', en: 'Tanzila Haque', roles: ['subject'], sk: 'mfpt', last: '2027-01-31', dev: 19 }];
+{ id: 'p19', em: 'nasrin.sultana@remonlogic.com', bn: 'ড. নাসরিন সুলতানা', en: 'Dr Nasrin Sultana', roles: ['subject'], sk: 'mfpt', last: '2026-12-23', dev: 18 },
+{ id: 'p20', em: 'tanzila.haque@remonlogic.com', bn: 'তানজিলা হক', en: 'Tanzila Haque', roles: ['subject'], sk: 'mfpt', last: '2026-12-24', dev: 19 }];
 var removed = {}, added = [];
 TX.forEach(function (x) { if (x.kind !== 'role' || !okx(x)) return; if (x.data.op === 'add') added.push(Object.assign({ id: 'q' + x.n, last: '', dev: 12 }, x.data.p)); else removed[x.data.pid] = 1; });
 var nameOf = function (p) { return p.nm || (p.nk !== undefined ? t.ctrl_names[p.nk] : (p.hk ? t.holders[p.hk] : (s.lang === 'bn' ? p.bn : p.en))); };
@@ -4492,7 +4495,7 @@ if ((x.kind === 'rolechg' || x.kind === 'susp') && x.data.pid === me.id) return 
 return t.wn_role(stepRoles(x).map(rName).join(t.or_));
 };
 var NX = s.nx;
-var nowAt = function (n) { var mm = 16 * 60 + 20 + n; // one demo clock on every admin page: Mon 1 Feb 2027, 16:20 (fix8 D1, 26 Oct 2026)
+var nowAt = function (n) { var mm = 16 * 60 + 20 + n; // one demo clock on every admin page: Fri 25 Dec 2026, 16:20 (fix8 D1, 26 Oct 2026)
 return TD + ' ' + pad2(Math.floor(mm / 60) % 24) + ':' + pad2(mm % 60); };
 // fix8 R8-security-4: a fresh one-time code before approving money, before any role / permission change (request or approval) and before every export
 var OTPK = { recv: 'money', wo: 'money', billpay: 'money', newbill: 'money', prepay: 'money', salpay: 'money', payroll: 'money', loanpay: 'money', newloan: 'money', issue: 'money', manual: 'money', rev: 'money', auto: 'money', pfee: 'money',
@@ -4546,7 +4549,7 @@ return { TD: TD, me: me, can: can, has: has, PX: PX, people: people, pName: pNam
 nowAt: nowAt, T1: T1, T2: T2, PERM: PERM, PERM0: PERM0, ROLES: ROLES, MODS: MODS, PMODS: PMODS, AMODS: AMODS, SUBM: SUBM, KMOD: KMOD, whereTxt: whereTxt, descCore: descCore, apRow: apRow, idle: idle,
 ui: { asName: me.name, asRoles: roleNames(me.roles), asWhere: whereTxt(me.id), asOpen: !!s.asOpen, asToggle: function () { self.setState({ asOpen: !s.asOpen }); }, asList: asList } };
 })();
-// ---------- Accounts & finance: double-entry books (financial year 2026–27; these books opened 1 Oct 2026; sample figures; today Mon 1 Feb 2027, 16:20) ----------
+// ---------- Accounts & finance: double-entry books (financial year 2026–27; these books opened 1 Oct 2026; sample figures; today Fri 25 Dec 2026, 16:20) ----------
 var added2 = { _descTx: function (x) { return AC.descCore(x) || ''; }, _pfShort: function () { return ''; } }; // fix20 split: Accounts & finance and Learners & usage live on X10
 
 // ---------- Plans & modules: module → sub-module × plan, with limits, approval and platform-wide switches ----------
@@ -4559,7 +4562,7 @@ var LIMU = { one: ['min', 5, 5, 120], chat: ['topics', 1, 1, 50], mock: ['tests'
 // Cost model: a written check ≈ 0.25 GPU-min on our own GPU at ৳2.53 a GPU-min (the AI fleet's ৳14,600 a day ÷ 4 servers × 1,440 min, Platform operations), ~20% of the limit used on average;
 // a human recheck ≈ ৳12 of reviewer time, ~1% of the extra allowance used (Claude's estimates). Short answers, written answers and the written part of a mixed test each use 1 written check (as in X07), so their cost is inside the written-check usage.
 // The approved 25 Oct limits (QDEF) are not yet inside the plan margins: the margin moves only by the change from them; the Effect card shows the margin with written checks included.
-// Exam & Assessment additions (25 Oct 2026): EA rows (not for PlayBoom); EAI = institution-only rows (organisation tests 1, API 2); rtjob = free tests a day, rtadd = add-on price a month (৳, USD by BDT × 0.015)
+// Exam & Assessment additions (25 Oct 2026): EA rows (not for PlayBoom); EAI = institution-only rows (organisation tests 1, API 2); rtjob = free tests a day, rtadd = add-on price a month (৳, USD by BDT × 1.35 ÷ 122)
 var EA = { adapt: 1, code: 1, certx: 1, proct: 1, rtjob: 1, rtadd: 1, orgt: 1, iapi: 1 }, EAI = { orgt: 1, iapi: 2 };
 var QA = { tf: 1, fill: 1, match: 1, short: 1, written: 1, mixed: 1, recheck: 1, adapt: 1, code: 1, certx: 1, proct: 1, rtjob: 1, rtadd: 1, orgt: 1, iapi: 1 }, QB = { written: 1, recheck: 1, rtjob: 1, rtadd: 1 }, QUNL = { tf: 1, fill: 1, match: 1 }, QDEF = this.mx0();
 var W_SCRIPT = 0.25 * 2.53, W_USE = 0.2, RC_COST = 12, RC_USE = 0.01;
@@ -4606,7 +4609,7 @@ var planName = function (p) { return t.plans[p]; };
 
 
 // Cell tooltips: PlayBoom's teacher is the Play Buddy; the free tier has help minutes and a fixed study plan
-var usd = function (v) { return '$' + Math.round(v * 0.015); }; // BDT × 0.015 rule (৳399 → $6)
+var usd = usdTxt; // BDT × 1.35 ÷ 122 rule (৳399 → $4.42)
 
 
 // fix14
@@ -4716,7 +4719,7 @@ GROUP_OF.pball = 'products';
 
 
 
-// ---------- Public holidays per country: no batch classes on these days (1:1 and Nexa Co-Teacher continue). Editable; every change is logged ----------
+// ---------- Public holidays per country: no batch classes on these days (1:1 and Nexa Co-Tutor continue). Editable; every change is logged ----------
 // Bangladesh: the government holidays of 2026 (gazette); lunar dates follow the moon sighting / gazette. Other countries: a short sample list.
 
 
@@ -4734,7 +4737,7 @@ var holV = {
 };
 // fix15 (R14-admin-9, decision J6; memory 23 Oct 2026 two-person approval for price changes + 3-month lock, 27 Oct 2026 "everything about crash programs … prices"):
 // every crash-program price (1 / 3 / 6 months, ৳ and $) and every English-medium Class 4–8 price is changed here by a proposal → a second person with Approve on Plans
-// approves → a new price version; new subscribers only. J1 (owner 28 Oct 2026, option ক): USD = the Taka price × 0.015, nearest dollar, .5 rounds down.
+// approves → a new price version; new subscribers only. J1 (owner 28 Oct 2026, option ক) superseded 31 Oct 2026: USD = the Taka price × 1.35 ÷ 122, to the cent, exact half-cents round up (owner 31 Oct 2026; replaces J1 nearest dollar).
 // Live price changes: s.pr15Live = { 'c:<pack>:<1|3|6>:<bdt|usd>': n, 'e:<item>:<bdt|usd>': n } (the Checkpoint Crash Pack is 'c:chk:1:…' in both cards).
 
 
@@ -4745,7 +4748,7 @@ var holV = {
 // memory 27 Oct 2026 (৳, $)
 
 
-// margin on the net price: ৳ prices include VAT (VATR); $ prices go through Paddle (5% + $0.50) and are counted at ৳1 = $0.015
+// margin on the net price: ৳ prices include VAT (VATR); $ prices go through Paddle (5% + $0.50) and are counted at $1 = ৳122 (sample rate)
 
 
 // ---------- fix17 (owner 28 Oct 2026 16:38–18:51): settings kit + Plans & prices ----------
@@ -4770,7 +4773,7 @@ var holV = {
 
 
 
-// fix17 (owner 28 Oct 2026 18:07): Plans & prices — main price table editor. s.pp17L = { '<course>.<col>': Taka } live overrides; USD of a changed cell is recomputed (× 0.015, nearest dollar, .5 down).
+// fix17 (owner 28 Oct 2026 18:07): Plans & prices — main price table editor. s.pp17L = { '<course>.<col>': Taka } live overrides; USD of a changed cell is recomputed (× 1.35 ÷ 122, to the cent, half-cents round up).
 
 
 var added3 = {

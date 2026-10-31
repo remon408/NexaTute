@@ -1032,7 +1032,7 @@ class Component extends DCLogic {
       wa: { w1: 'wait', w2: 'wait', w3: 'wait', w4: 'wait' }, wSel: 'w1', wTxt: {}, wKb: {}, wTags: { w1: ['calc'], w2: ['old'], w3: ['ctx'], w4: ['calc'] }, kb: 18, rc: { calc: 9, old: 6, ctx: 4, formula: 3, tr: 3, read: 2 },
       cSub: 'circ', circ: { ci1: 'wait', ci2: 'wait', ci3: 'wait', ci4: 'wait' }, chk: {},
       // fix14: the hub's AI circular reader queue — q1 verified by the reviewer at 10:05 today, the rest waiting; hqEd = the item being edited, hqIn = edited field values
-      hq: { q1: 'ver', q2: 'ver', q3: 'wait', q4: 'wait', q5: 'wait', q6: 'wait' } /* fix15 J3 (R14-admin-1): q2 verified Mon 1 Feb 10:05 like hub.md */, hqEd: '', hqIn: {},
+      hq: { q1: 'ver', q2: 'ver', q3: 'wait', q4: 'wait', q5: 'wait', q6: 'wait' } /* fix15 J3 (R14-admin-1): q2 verified Fri 25 Dec 10:05 like hub.md */, hqEd: '', hqIn: {},
       ps: { ps1: { st: 'wait', pick: {} }, ps2: { st: 'wait', pick: {} }, ps3: { st: 'pub', at: 708, pick: {} } },
       trf: 'all', tr: { t1: 'ai', t2: 'review', t3: 'ai', t4: 'ai', t5: 'review', t6: 'ai' },
       gl: {}, calc: { c8: 'simple', ssc: 'sci', hsc: 'sci', du: 'none', bcsp: 'none', bcsw: 'none', bank: 'none', ielts: 'none', sat: 'graph', gre: 'simple', gmat: 'simple' }, calcSel: 'ssc',
@@ -1040,8 +1040,8 @@ class Component extends DCLogic {
       seatX: {}, spare: 1450,
       gb: [], gNew: { ch: 'bkash', val: 800, qty: '500' },
       refs: { r1: 'new', r2: 'new', r3: 'new', r4: 'new', r5: 'sent' }, rSel: 'r1', jvN: 118,
-      // a1: Mirpur Ideal School, 120 seats on Combo (SSC ৳800): discount 40% = ৳38,400 a month, the school pays ৳57,600
-      aps: [{ id: 'a1', kind: 'inst', amt: 38400, pays: 57600, maker: 'x_rakib', m: 610, ok: [], st: 'wait' }, { id: 'a2', kind: 'ref', ref: 'r5', amt: 800, two: true, maker: 'p9', m: 552, ok: [], st: 'wait' },
+      // a1: Mirpur Ideal School, 120 seats on Combo (SSC ৳800): discount 30% (cap) = ৳28,800 a month, the school pays ৳67,200
+      aps: [{ id: 'a1', kind: 'inst', amt: 28800, pays: 67200, maker: 'x_rakib', m: 610, ok: [], st: 'wait' }, { id: 'a2', kind: 'ref', ref: 'r5', amt: 800, two: true, maker: 'p9', m: 552, ok: [], st: 'wait' },
         { id: 'a4', kind: 'kpi', ref: 'k2', maker: 'sys', m: 760, ok: [], st: 'wait' },
         { id: 'a5', kind: 'mfset', ref: 'v1.1', n: 12, ids: [], maker: 'p12', m: 742, ok: [], st: 'wait' }], apN: 6,
       rjFor: '', rjWhy: '',
@@ -1102,9 +1102,9 @@ class Component extends DCLogic {
     var L = {};
     L.en = { langName: 'English', dl: 'en-GB', l_admin: 'Panel language', 
       nav: { x10: 'Platform admin', x14: 'Platform operations', x15: 'Accounts, support & legal', x16: 'Content quality & money', x17: 'Growth', x19: 'AI Marketing Hub', x21: 'Notifications & chat', x22: 'Avatar & Voice Studio' },
-      kicker: 'Admin · NexaTute', h1: 'Content quality & money', today: function (h) { return 'Mon 1 Feb 2027 · ' + h + ' · Dhaka'; },
+      kicker: 'Admin · NexaTute', h1: 'Content quality & money', today: function (h) { return 'Mon 15 Feb 2027 · ' + h + ' · Dhaka'; },
       areas: { q: 'Content quality', m: 'Money', log: 'Approvals & log' },
-      tabs: { cache: 'Answer cache', wrong: 'Wrong answers', circ: 'Circulars & solutions', tr: 'Translations', gloss: 'Glossary & calculators', disc: 'Discounts', seats: 'Crash Pack sales', gift: 'Gift cards', ref: 'Refunds', pay: 'Payouts & tax', vat: 'VAT (Mushak 9.1)', kpi: 'Price rules', ap: 'Approvals', log: 'Activity log' },
+      tabs: { cache: 'Answer cache', wrong: 'Wrong answers', circ: 'Circulars & solutions', tr: 'Translations', gloss: 'Glossary & calculators', disc: 'Discounts', seats: 'Crash Pack sales', gift: 'Gift vouchers', ref: 'Refunds', pay: 'Payouts & tax', vat: 'VAT (Mushak 9.1)', kpi: 'Price rules', ap: 'Approvals', log: 'Activity log' },
       as_l: 'Viewing as', as_btn: 'Switch person', as_note: 'Prototype: pick a person to see exactly what their role can open, change and approve.',
       roles: { prog: 'Content & programs (curriculum lead)', fin_lead: 'Finance lead', acc_off: 'Accounts officer', sup: 'Support agent', super: 'Super admin', board: 'Founder / board', succ: 'Institution success', sys: 'Automatic' },
       sys_name: 'NexaTute system', cities: { dhk: 'Dhaka', syl: 'Sylhet', us: 'USA (server)' },
@@ -1114,21 +1114,21 @@ class Component extends DCLogic {
       ap_sec_h: 'Waiting for approval on this page', rl_short: 'Rule table: up to ৳1,00,000 one approver · ৳1–10 lakh finance lead · above that + a founder',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'Online', bkash: 'bKash agents', recharge: 'Mobile-recharge shops', book: 'Bookshops' }, 
-      rk: { year: 'Year Pass', olymp: 'Olympiad course', mkt: 'Marketplace notes', gift: 'Shikkha Salami card', over: 'Overpayment' },
+      rk: { year: 'Year Pass', olymp: 'Olympiad course', mkt: 'Marketplace notes', gift: 'Shikkha Salami voucher', over: 'Overpayment' },
       kp: { up: function (x) { return 'HSC, all subjects +10% for new subscribers: ' + x; }, one: function (x) { return 'HSC Physics single subject +10% for new subscribers: ' + x; }, b1: 'Batch per subject', p1: 'Personal single' },
       ap_btn: 'Approve', rj_open: 'Reject', rj_why: 'Reason (required)', rj_btn: 'Confirm reject',
       ap_need: function (x) { return 'Needs: ' + x; }, ap_why: { own: 'You made this — someone else must approve.', already: 'You approved already — the next step needs another person.' },
       ap_role: function (x) { return 'Your role can’t approve this step — it needs ' + x + '.'; }, 
-      ad: { inst: function (n, k) { return 'Institution discount — ' + n + ', ' + k + ' seats on Combo (SSC), 40%'; }, ref: function (p, n) { return 'Refund — ' + p + ' · ' + n; }, gift: function (c, q, v, ch) { return 'Gift-card batch ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'Institution discount — ' + n + ', ' + k + ' seats on Combo (SSC), 30%'; }, ref: function (p, n) { return 'Refund — ' + p + ' · ' + n; }, min_u: 'min', gift: function (c, q, v, ch) { return 'Gift-voucher batch ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
         pay: function (n) { return 'February payout batch (January sales) — ' + n + ' payees via aamarPay'; }, kpi: function (x) { return 'Price change — ' + x; } }, ap_disc: function (d, p) { return 'discount ' + d + '/month (pays ' + p + ')'; },
       t_ap_step: function (a, b) { return 'Approved (' + a + ' of ' + b + ') — waiting for the next person'; }, t_ap_full: 'Approved — done and logged', t_rj: 'Rejected — the maker is told why',
       tip: { as: 'See exactly what each role can open, change and approve.',
         ap_need: 'Who must approve, in order. The maker never approves their own item.' } };
     L.bn = { langName: 'বাংলা', dl: 'bn-BD-u-nu-latn', l_admin: 'প্যানেলের ভাষা', 
       nav: { x10: 'প্ল্যাটফর্ম অ্যাডমিন', x14: 'প্ল্যাটফর্ম অপারেশন', x15: 'অ্যাকাউন্ট, সাপোর্ট ও আইন', x16: 'কনটেন্টের মান ও টাকা', x17: 'প্রবৃদ্ধি', x19: 'AI Marketing Hub', x21: 'নোটিফিকেশন ও চ্যাট', x22: 'অ্যাভাটার ও কণ্ঠ স্টুডিও' },
-      kicker: 'অ্যাডমিন · NexaTute', h1: 'কনটেন্টের মান ও টাকা', today: function (h) { return 'সোমবার, 1 ফেব্রুয়ারি 2027 · ' + h + ' · ঢাকা'; },
+      kicker: 'অ্যাডমিন · NexaTute', h1: 'কনটেন্টের মান ও টাকা', today: function (h) { return 'সোমবার, 15 ফেব্রুয়ারি 2027 · ' + h + ' · ঢাকা'; },
       areas: { q: 'কনটেন্টের মান', m: 'টাকা-পয়সা', log: 'অনুমোদন ও লগ' },
-      tabs: { cache: 'উত্তর-ক্যাশ', wrong: 'ভুল উত্তর', circ: 'বিজ্ঞপ্তি ও সমাধান', tr: 'অনুবাদ', gloss: 'শব্দকোষ ও ক্যালকুলেটর', disc: 'ছাড়', seats: 'Crash Pack বিক্রি', gift: 'গিফট কার্ড', ref: 'রিফান্ড', pay: 'পেমেন্ট ও কর', vat: 'ভ্যাট (Mushak 9.1)', kpi: 'দামের নিয়ম', ap: 'অনুমোদন', log: 'কার্যক্রম লগ' },
+      tabs: { cache: 'উত্তর-ক্যাশ', wrong: 'ভুল উত্তর', circ: 'বিজ্ঞপ্তি ও সমাধান', tr: 'অনুবাদ', gloss: 'শব্দকোষ ও ক্যালকুলেটর', disc: 'ছাড়', seats: 'Crash Pack বিক্রি', gift: 'গিফট ভাউচার', ref: 'রিফান্ড', pay: 'পেমেন্ট ও কর', vat: 'ভ্যাট (Mushak 9.1)', kpi: 'দামের নিয়ম', ap: 'অনুমোদন', log: 'কার্যক্রম লগ' },
       as_l: 'যে হিসেবে দেখছেন', as_btn: 'মানুষ বদলান', as_note: 'প্রোটোটাইপ: একজন মানুষ বাছুন — তাঁর ভূমিকা কী খুলতে, বদলাতে আর অনুমোদন দিতে পারে, ঠিক তা-ই দেখবেন।',
       roles: { prog: 'কনটেন্ট ও প্রোগ্রাম (কারিকুলাম লিড)', fin_lead: 'ফিন্যান্স লিড', acc_off: 'হিসাব কর্মকর্তা', sup: 'সাপোর্ট এজেন্ট', super: 'সুপার অ্যাডমিন', board: 'প্রতিষ্ঠাতা / বোর্ড', succ: 'প্রতিষ্ঠান সাকসেস', sys: 'স্বয়ংক্রিয়' },
       sys_name: 'NexaTute সিস্টেম', cities: { dhk: 'ঢাকা', syl: 'সিলেট', us: 'যুক্তরাষ্ট্র (সার্ভার)' },
@@ -1138,21 +1138,21 @@ class Component extends DCLogic {
       ap_sec_h: 'এই পাতায় অনুমোদনের অপেক্ষায়', rl_short: 'নিয়ম: ৳1,00,000 পর্যন্ত একজন অনুমোদক · ৳1–10 লাখ ফিন্যান্স লিড · তার বেশি হলে সাথে একজন প্রতিষ্ঠাতা',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'অনলাইন', bkash: 'bKash এজেন্ট', recharge: 'মোবাইল রিচার্জের দোকান', book: 'বইয়ের দোকান' }, 
-      rk: { year: 'Year Pass', olymp: 'Olympiad কোর্স', mkt: 'মার্কেটপ্লেসের নোট', gift: 'Shikkha Salami কার্ড', over: 'বাড়তি পেমেন্ট' },
+      rk: { year: 'Year Pass', olymp: 'Olympiad কোর্স', mkt: 'মার্কেটপ্লেসের নোট', gift: 'Shikkha Salami ভাউচার', over: 'বাড়তি পেমেন্ট' },
       kp: { up: function (x) { return 'নতুন সাবস্ক্রাইবারদের জন্য HSC সব বিষয় +10%: ' + x; }, one: function (x) { return 'নতুন সাবস্ক্রাইবারদের জন্য HSC পদার্থবিজ্ঞান একক বিষয় +10%: ' + x; }, b1: 'Batch (প্রতি বিষয়)', p1: 'Personal (একক বিষয়)' },
       ap_btn: 'অনুমোদন', rj_open: 'বাতিল', rj_why: 'কারণ (আবশ্যক)', rj_btn: 'বাতিল নিশ্চিত করুন',
       ap_need: function (x) { return 'লাগবে: ' + x; }, ap_why: { own: 'এটি আপনার তৈরি — অন্য কাউকে অনুমোদন দিতে হবে।', already: 'আপনি আগেই অনুমোদন দিয়েছেন — পরের ধাপে অন্য একজন লাগবে।' },
       ap_role: function (x) { return 'এই ধাপ আপনার ভূমিকা অনুমোদন দিতে পারে না — লাগবে ' + x + '।'; }, 
-      ad: { inst: function (n, k) { return 'প্রতিষ্ঠানের ছাড় — ' + n + ', Combo (SSC)-তে ' + k + ' সিট, 40%'; }, ref: function (p, n) { return 'রিফান্ড — ' + p + ' · ' + n; }, gift: function (c, q, v, ch) { return 'গিফট কার্ড ব্যাচ ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'প্রতিষ্ঠানের ছাড় — ' + n + ', Combo (SSC)-তে ' + k + ' সিট, 30%'; }, ref: function (p, n) { return 'রিফান্ড — ' + p + ' · ' + n; }, min_u: 'মিনিট', gift: function (c, q, v, ch) { return 'গিফট ভাউচার ব্যাচ ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
         pay: function (n) { return 'ফেব্রুয়ারির পেমেন্ট ব্যাচ (জানুয়ারির বিক্রি) — aamarPay দিয়ে ' + n + ' জন প্রাপক'; }, kpi: function (x) { return 'দাম পরিবর্তন — ' + x; } }, ap_disc: function (d, p) { return 'ছাড় ' + d + '/মাস (দেবে ' + p + ')'; },
       t_ap_step: function (a, b) { return 'অনুমোদিত (' + b + 'টির ' + a + ') — পরের জনের অপেক্ষায়'; }, t_ap_full: 'অনুমোদিত — সম্পন্ন ও লগ হয়েছে', t_rj: 'বাতিল — তৈরিকারীকে কারণ জানানো হয়েছে',
       tip: { as: 'প্রতিটি ভূমিকা ঠিক কী খুলতে, বদলাতে ও অনুমোদন দিতে পারে, দেখুন।',
         ap_need: 'কে কে, কোন ক্রমে অনুমোদন দেবেন। তৈরিকারী কখনো নিজের কাজ অনুমোদন দেন না।' } };
     L.hi = { langName: 'हिन्दी', dl: 'hi-IN-u-nu-latn', l_admin: 'पैनल की भाषा', 
       nav: { x10: 'प्लेटफ़ॉर्म एडमिन', x14: 'प्लेटफ़ॉर्म ऑपरेशंस', x15: 'अकाउंट, सपोर्ट और क़ानूनी', x16: 'कंटेंट की गुणवत्ता और पैसा', x17: 'ग्रोथ', x19: 'AI Marketing Hub', x21: 'नोटिफ़िकेशन और चैट', x22: 'अवतार और वॉइस स्टूडियो' },
-      kicker: 'एडमिन · NexaTute', h1: 'कंटेंट की गुणवत्ता और पैसा', today: function (h) { return 'सोमवार, 1 फ़रवरी 2027 · ' + h + ' · ढाका'; },
+      kicker: 'एडमिन · NexaTute', h1: 'कंटेंट की गुणवत्ता और पैसा', today: function (h) { return 'सोमवार, 15 फ़रवरी 2027 · ' + h + ' · ढाका'; },
       areas: { q: 'कंटेंट की गुणवत्ता', m: 'पैसा', log: 'मंज़ूरी और लॉग' },
-      tabs: { cache: 'उत्तर-कैश', wrong: 'गलत उत्तर', circ: 'सूचनाएँ और हल', tr: 'अनुवाद', gloss: 'शब्दकोश और कैलकुलेटर', disc: 'छूट', seats: 'Crash Pack बिक्री', gift: 'गिफ़्ट कार्ड', ref: 'रिफ़ंड', pay: 'भुगतान और कर', vat: 'VAT (Mushak 9.1)', kpi: 'कीमत के नियम', ap: 'मंज़ूरियाँ', log: 'गतिविधि लॉग' },
+      tabs: { cache: 'उत्तर-कैश', wrong: 'गलत उत्तर', circ: 'सूचनाएँ और हल', tr: 'अनुवाद', gloss: 'शब्दकोश और कैलकुलेटर', disc: 'छूट', seats: 'Crash Pack बिक्री', gift: 'गिफ़्ट वाउचर', ref: 'रिफ़ंड', pay: 'भुगतान और कर', vat: 'VAT (Mushak 9.1)', kpi: 'कीमत के नियम', ap: 'मंज़ूरियाँ', log: 'गतिविधि लॉग' },
       as_l: 'इस रूप में देख रहे हैं', as_btn: 'व्यक्ति बदलें', as_note: 'प्रोटोटाइप: कोई व्यक्ति चुनें और देखें कि उसका रोल ठीक-ठीक क्या खोल, बदल और मंज़ूर कर सकता है।',
       roles: { prog: 'कंटेंट और कार्यक्रम (करिकुलम लीड)', fin_lead: 'वित्त प्रमुख', acc_off: 'लेखा अधिकारी', sup: 'सपोर्ट एजेंट', super: 'सुपर एडमिन', board: 'संस्थापक / बोर्ड', succ: 'संस्थान सक्सेस', sys: 'स्वचालित' },
       sys_name: 'NexaTute सिस्टम', cities: { dhk: 'ढाका', syl: 'सिलहट', us: 'अमेरिका (सर्वर)' },
@@ -1162,21 +1162,21 @@ class Component extends DCLogic {
       ap_sec_h: 'इस पेज पर मंज़ूरी का इंतज़ार', rl_short: 'नियम: ৳1,00,000 तक एक मंज़ूरकर्ता · ৳1–10 लाख वित्त प्रमुख · उससे ऊपर साथ में एक संस्थापक',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'ऑनलाइन', bkash: 'bKash एजेंट', recharge: 'मोबाइल रिचार्ज दुकानें', book: 'किताब की दुकानें' }, 
-      rk: { year: 'Year Pass', olymp: 'Olympiad कोर्स', mkt: 'मार्केटप्लेस नोट्स', gift: 'Shikkha Salami कार्ड', over: 'अधिक भुगतान' },
+      rk: { year: 'Year Pass', olymp: 'Olympiad कोर्स', mkt: 'मार्केटप्लेस नोट्स', gift: 'Shikkha Salami वाउचर', over: 'अधिक भुगतान' },
       kp: { up: function (x) { return 'नए सब्सक्राइबरों के लिए HSC सभी विषय +10%: ' + x; }, one: function (x) { return 'नए सब्सक्राइबरों के लिए HSC भौतिकी एकल विषय +10%: ' + x; }, b1: 'Batch (प्रति विषय)', p1: 'Personal (एकल विषय)' },
       ap_btn: 'मंज़ूर करें', rj_open: 'अस्वीकार', rj_why: 'कारण (ज़रूरी)', rj_btn: 'अस्वीकार की पुष्टि करें',
       ap_need: function (x) { return 'ज़रूरी: ' + x; }, ap_why: { own: 'यह आपने बनाया है — किसी और को मंज़ूर करना होगा।', already: 'आप पहले ही मंज़ूर कर चुके — अगले चरण के लिए दूसरा व्यक्ति चाहिए।' },
       ap_role: function (x) { return 'आपका रोल यह चरण मंज़ूर नहीं कर सकता — इसके लिए ' + x + ' चाहिए।'; }, 
-      ad: { inst: function (n, k) { return 'संस्थान छूट — ' + n + ', Combo (SSC) पर ' + k + ' सीटें, 40%'; }, ref: function (p, n) { return 'रिफ़ंड — ' + p + ' · ' + n; }, gift: function (c, q, v, ch) { return 'गिफ़्ट कार्ड बैच ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'संस्थान छूट — ' + n + ', Combo (SSC) पर ' + k + ' सीटें, 30%'; }, ref: function (p, n) { return 'रिफ़ंड — ' + p + ' · ' + n; }, min_u: 'मिनट', gift: function (c, q, v, ch) { return 'गिफ़्ट वाउचर बैच ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
         pay: function (n) { return 'फ़रवरी का भुगतान बैच (जनवरी की बिक्री) — aamarPay से ' + n + ' प्राप्तकर्ता'; }, kpi: function (x) { return 'कीमत बदलाव — ' + x; } }, ap_disc: function (d, p) { return 'छूट ' + d + '/माह (देगा ' + p + ')'; },
       t_ap_step: function (a, b) { return 'मंज़ूर (' + b + ' में से ' + a + ') — अगले व्यक्ति का इंतज़ार'; }, t_ap_full: 'मंज़ूर — पूरा और लॉग हुआ', t_rj: 'अस्वीकृत — बनाने वाले को कारण बताया गया',
       tip: { as: 'देखें कि हर रोल ठीक-ठीक क्या खोल, बदल और मंज़ूर कर सकता है।',
         ap_need: 'किसे और किस क्रम में मंज़ूर करना है। बनाने वाला अपना काम कभी मंज़ूर नहीं करता।' } };
     L.ur = { langName: 'اردو', dl: 'ur-PK-u-nu-latn', l_admin: 'پینل کی زبان', 
       nav: { x10: 'پلیٹ فارم ایڈمن', x14: 'پلیٹ فارم آپریشنز', x15: 'اکاؤنٹس، سپورٹ اور قانونی', x16: 'مواد کا معیار اور رقم', x17: 'ترقی', x19: 'AI Marketing Hub', x21: 'نوٹیفکیشنز اور چیٹ', x22: 'اوتار اور آواز اسٹوڈیو' },
-      kicker: 'ایڈمن · ' + M('NexaTute'), h1: 'مواد کا معیار اور رقم', today: function (h) { return 'پیر، 1 فروری 2027 · ' + M(h) + ' · ڈھاکہ'; },
+      kicker: 'ایڈمن · ' + M('NexaTute'), h1: 'مواد کا معیار اور رقم', today: function (h) { return 'پیر، 15 فروری 2027 · ' + M(h) + ' · ڈھاکہ'; },
       areas: { q: 'مواد کا معیار', m: 'رقم', log: 'منظوریاں اور لاگ' },
-      tabs: { cache: 'جوابات کا کیش', wrong: 'غلط جوابات', circ: 'سرکلر اور حل', tr: 'تراجم', gloss: 'فرہنگ اور کیلکولیٹر', disc: 'رعایتیں', seats: M('Crash Pack') + ' کی فروخت', gift: 'گفٹ کارڈ', ref: 'رقم واپسی', pay: 'ادائیگیاں اور ٹیکس', vat: 'VAT ' + M('(Mushak 9.1)'), kpi: 'قیمت کے اصول', ap: 'منظوریاں', log: 'سرگرمی لاگ' },
+      tabs: { cache: 'جوابات کا کیش', wrong: 'غلط جوابات', circ: 'سرکلر اور حل', tr: 'تراجم', gloss: 'فرہنگ اور کیلکولیٹر', disc: 'رعایتیں', seats: M('Crash Pack') + ' کی فروخت', gift: 'گفٹ واؤچر', ref: 'رقم واپسی', pay: 'ادائیگیاں اور ٹیکس', vat: 'VAT ' + M('(Mushak 9.1)'), kpi: 'قیمت کے اصول', ap: 'منظوریاں', log: 'سرگرمی لاگ' },
       as_l: 'دیکھ رہے ہیں بطور', as_btn: 'فرد بدلیں', as_note: 'پروٹوٹائپ: کوئی فرد چنیں اور دیکھیں کہ ان کا کردار بالکل کیا کھول، بدل اور منظور کر سکتا ہے۔',
       roles: { prog: 'مواد اور پروگرام (نصاب کی سربراہ)', fin_lead: 'فنانس لیڈ', acc_off: 'اکاؤنٹس آفیسر', sup: 'سپورٹ ایجنٹ', super: 'سپر ایڈمن', board: 'بانی / بورڈ', succ: 'اداروں کی کامیابی', sys: 'خودکار' },
       sys_name: M('NexaTute') + ' سسٹم', cities: { dhk: 'ڈھاکہ', syl: 'سلہٹ', us: 'امریکہ (سرور)' },
@@ -1186,21 +1186,21 @@ class Component extends DCLogic {
       ap_sec_h: 'اس صفحے پر منظوری کے منتظر', rl_short: 'اصول: ' + M('৳1,00,000') + ' تک ایک منظور کنندہ · ' + M('৳1–10') + ' لاکھ فنانس لیڈ · اس سے اوپر ساتھ میں ایک بانی',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'آن لائن', bkash: M('bKash') + ' ایجنٹ', recharge: 'موبائل ری چارج دکانیں', book: 'کتابوں کی دکانیں' }, 
-      rk: { year: 'Year Pass', olymp: M('Olympiad') + ' کورس', mkt: 'مارکیٹ پلیس نوٹس', gift: M('Shikkha Salami') + ' کارڈ', over: 'زائد ادائیگی' },
+      rk: { year: 'Year Pass', olymp: M('Olympiad') + ' کورس', mkt: 'مارکیٹ پلیس نوٹس', gift: M('Shikkha Salami') + ' واؤچر', over: 'زائد ادائیگی' },
       kp: { up: function (x) { return 'نئے سبسکرائبرز کے لیے ' + M('HSC') + ' تمام مضامین ' + M('+10%') + ': ' + M(x); }, one: function (x) { return 'نئے سبسکرائبرز کے لیے ' + M('HSC') + ' طبیعیات واحد مضمون ' + M('+10%') + ': ' + M(x); }, b1: M('Batch') + ' فی مضمون', p1: M('Personal') + ' واحد مضمون' },
       ap_btn: 'منظور کریں', rj_open: 'مسترد کریں', rj_why: 'وجہ (ضروری)', rj_btn: 'مسترد کرنے کی تصدیق',
       ap_need: function (x) { return 'درکار: ' + x; }, ap_why: { own: 'یہ آپ نے بنایا — کسی اور کو منظوری دینی ہوگی۔', already: 'آپ پہلے ہی منظوری دے چکے — اگلے مرحلے کے لیے کوئی اور فرد چاہیے۔' },
       ap_role: function (x) { return 'آپ کا کردار یہ مرحلہ منظور نہیں کر سکتا — اس کے لیے ' + x + ' چاہیے۔'; }, 
-      ad: { inst: function (n, k) { return 'ادارے کی رعایت — ' + M(n) + '، ' + M('Combo (SSC)') + ' پر ' + k + ' نشستیں، ' + M('40%'); }, ref: function (p, n) { return 'رقم واپسی — ' + p + ' · ' + M(n); }, gift: function (c, q, v, ch) { return 'گفٹ کارڈ بیچ ' + M(c) + ' — ' + M(q + ' × ' + v) + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'ادارے کی رعایت — ' + M(n) + '، ' + M('Combo (SSC)') + ' پر ' + k + ' نشستیں، ' + M('30%'); }, ref: function (p, n) { return 'رقم واپسی — ' + p + ' · ' + M(n); }, min_u: 'منٹ', gift: function (c, q, v, ch) { return 'گفٹ واؤچر بیچ ' + M(c) + ' — ' + M(q + ' × ' + v) + ' (' + ch + ')'; },
         pay: function (n) { return 'فروری کا ادائیگی بیچ (جنوری کی فروخت) — ' + M('aamarPay') + ' سے ' + n + ' وصول کنندگان'; }, kpi: function (x) { return 'قیمت میں تبدیلی — ' + x; } }, ap_disc: function (d, p) { return 'رعایت ' + M(d) + ' ماہانہ (ادا کرے گا ' + M(p) + ')'; },
       t_ap_step: function (a, b) { return 'منظور (' + b + ' میں سے ' + a + ') — اگلے فرد کا انتظار'; }, t_ap_full: 'منظور — مکمل اور لاگ ہو گیا', t_rj: 'مسترد — بنانے والے کو وجہ بتا دی گئی',
       tip: { as: 'دیکھیں کہ ہر کردار بالکل کیا کھول، بدل اور منظور کر سکتا ہے۔',
         ap_need: 'کس کو اور کس ترتیب میں منظوری دینی ہے۔ بنانے والا کبھی اپنا کام منظور نہیں کرتا۔' } };
     L.ar = { langName: 'العربية', dl: 'ar-u-nu-latn', l_admin: 'لغة اللوحة', 
       nav: { x10: 'إدارة المنصة', x14: 'عمليات المنصة', x15: 'الحسابات والدعم والشؤون القانونية', x16: 'جودة المحتوى والمال', x17: 'النمو', x19: 'AI Marketing Hub', x21: 'الإشعارات والدردشة', x22: 'استوديو الأفاتار والصوت' },
-      kicker: 'الإدارة · ' + M('NexaTute'), h1: 'جودة المحتوى والمال', today: function (h) { return 'الاثنين 1 فبراير 2027 · ' + M(h) + ' · دكا'; },
+      kicker: 'الإدارة · ' + M('NexaTute'), h1: 'جودة المحتوى والمال', today: function (h) { return 'الاثنين 15 فبراير 2027 · ' + M(h) + ' · دكا'; },
       areas: { q: 'جودة المحتوى', m: 'المال', log: 'الموافقات والسجل' },
-      tabs: { cache: 'ذاكرة الإجابات', wrong: 'إجابات خاطئة', circ: 'الإعلانات والحلول', tr: 'الترجمات', gloss: 'المسرد والآلات الحاسبة', disc: 'الخصومات', seats: 'مبيعات ' + M('Crash Pack'), gift: 'بطاقات الهدايا', ref: 'المبالغ المستردة', pay: 'الدفعات والضريبة', vat: 'ضريبة القيمة المضافة ' + M('(Mushak 9.1)'), kpi: 'قواعد الأسعار', ap: 'الموافقات', log: 'سجل النشاط' },
+      tabs: { cache: 'ذاكرة الإجابات', wrong: 'إجابات خاطئة', circ: 'الإعلانات والحلول', tr: 'الترجمات', gloss: 'المسرد والآلات الحاسبة', disc: 'الخصومات', seats: 'مبيعات ' + M('Crash Pack'), gift: 'قسائم الهدايا', ref: 'المبالغ المستردة', pay: 'الدفعات والضريبة', vat: 'ضريبة القيمة المضافة ' + M('(Mushak 9.1)'), kpi: 'قواعد الأسعار', ap: 'الموافقات', log: 'سجل النشاط' },
       as_l: 'تعرض بصفة', as_btn: 'بدّل الشخص', as_note: 'نموذج أولي: اختر شخصًا لترى بالضبط ما يستطيع دوره فتحه وتغييره واعتماده.',
       roles: { prog: 'المحتوى والبرامج (مسؤولة المناهج)', fin_lead: 'رئيس المالية', acc_off: 'موظف الحسابات', sup: 'موظف الدعم', super: 'المشرف الأعلى', board: 'المؤسس / المجلس', succ: 'نجاح المؤسسات', sys: 'تلقائي' },
       sys_name: 'نظام ' + M('NexaTute'), cities: { dhk: 'دكا', syl: 'سيلهيت', us: 'الولايات المتحدة (خادم)' },
@@ -1210,21 +1210,21 @@ class Component extends DCLogic {
       ap_sec_h: 'بانتظار الموافقة في هذه الصفحة', rl_short: 'القاعدة: حتى ' + M('৳1,00,000') + ' معتمد واحد · حتى ' + M('৳10,00,000') + ' رئيس المالية · وما فوق ذلك يُضاف أحد المؤسسين',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'عبر الإنترنت', bkash: 'وكلاء ' + M('bKash'), recharge: 'محلات شحن الجوال', book: 'المكتبات' }, 
-      rk: { year: 'Year Pass', olymp: 'دورة ' + M('Olympiad'), mkt: 'ملاحظات من السوق', gift: 'بطاقة ' + M('Shikkha Salami'), over: 'دفعة زائدة' },
+      rk: { year: 'Year Pass', olymp: 'دورة ' + M('Olympiad'), mkt: 'ملاحظات من السوق', gift: 'قسيمة ' + M('Shikkha Salami'), over: 'دفعة زائدة' },
       kp: { up: function (x) { return M('HSC') + ' لكل المواد ' + M('+10%') + ' للمشتركين الجدد: ' + M(x); }, one: function (x) { return 'فيزياء ' + M('HSC') + ' مادة منفردة ' + M('+10%') + ' للمشتركين الجدد: ' + M(x); }, b1: M('Batch') + ' لكل مادة', p1: M('Personal') + ' لمادة منفردة' },
       ap_btn: 'اعتمد', rj_open: 'ارفض', rj_why: 'السبب (مطلوب)', rj_btn: 'تأكيد الرفض',
       ap_need: function (x) { return 'يلزم: ' + x; }, ap_why: { own: 'أنت أنشأت هذا — يجب أن يعتمده شخص آخر.', already: 'اعتمدته بالفعل — الخطوة التالية تحتاج شخصًا آخر.' },
       ap_role: function (x) { return 'لا يستطيع دورك اعتماد هذه الخطوة — تحتاج ' + x + '.'; }, 
-      ad: { inst: function (n, k) { return 'خصم مؤسسة — ' + M(n) + '، ' + k + ' مقعدًا على ' + M('Combo (SSC)') + '، ' + M('40%'); }, ref: function (p, n) { return 'استرداد — ' + p + ' · ' + M(n); }, gift: function (c, q, v, ch) { return 'دفعة بطاقات هدايا ' + M(c) + ' — ' + M(q + ' × ' + v) + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'خصم مؤسسة — ' + M(n) + '، ' + k + ' مقعدًا على ' + M('Combo (SSC)') + '، ' + M('30%'); }, ref: function (p, n) { return 'استرداد — ' + p + ' · ' + M(n); }, min_u: 'دقيقة', gift: function (c, q, v, ch) { return 'دفعة قسائم هدايا ' + M(c) + ' — ' + M(q + ' × ' + v) + ' (' + ch + ')'; },
         pay: function (n) { return 'دفعة مستحقات فبراير (مبيعات يناير) — ' + n + ' مستفيدين عبر ' + M('aamarPay'); }, kpi: function (x) { return 'تغيير سعر — ' + x; } }, ap_disc: function (d, p) { return 'خصم ' + M(d) + ' شهريًا (يدفع ' + M(p) + ')'; },
       t_ap_step: function (a, b) { return 'اعتُمد (' + a + ' من ' + b + ') — بانتظار الشخص التالي'; }, t_ap_full: 'اعتُمد — اكتمل وسُجّل', t_rj: 'رُفض — أُبلغ المُنشئ بالسبب',
       tip: { as: 'شاهد بالضبط ما يستطيع كل دور فتحه وتغييره واعتماده.',
         ap_need: 'من يجب أن يعتمد وبأي ترتيب. المُنشئ لا يعتمد ما أنشأه أبدًا.' } };
     L.fr = { langName: 'Français', dl: 'fr-FR', l_admin: 'Langue du panneau', 
       nav: { x10: 'Administration de la plateforme', x14: 'Opérations de la plateforme', x15: 'Comptes, support et juridique', x16: 'Qualité des contenus et argent', x17: 'Croissance', x19: 'AI Marketing Hub', x21: 'Notifications et discussion', x22: 'Studio avatars et voix' },
-      kicker: 'Admin · NexaTute', h1: 'Qualité des contenus et argent', today: function (h) { return 'Lundi 1er février 2027 · ' + h + ' · Dacca'; },
+      kicker: 'Admin · NexaTute', h1: 'Qualité des contenus et argent', today: function (h) { return 'Lundi 15 février 2027 · ' + h + ' · Dacca'; },
       areas: { q: 'Qualité des contenus', m: 'Argent', log: 'Validations et journal' },
-      tabs: { cache: 'Cache de réponses', wrong: 'Réponses erronées', circ: 'Avis et corrigés', tr: 'Traductions', gloss: 'Glossaire et calculatrices', disc: 'Remises', seats: 'Ventes Crash Pack', gift: 'Cartes cadeaux', ref: 'Remboursements', pay: 'Versements et impôt', vat: 'TVA (Mushak 9.1)', kpi: 'Règles de prix', ap: 'Validations', log: 'Journal d’activité' },
+      tabs: { cache: 'Cache de réponses', wrong: 'Réponses erronées', circ: 'Avis et corrigés', tr: 'Traductions', gloss: 'Glossaire et calculatrices', disc: 'Remises', seats: 'Ventes Crash Pack', gift: 'Bons cadeaux', ref: 'Remboursements', pay: 'Versements et impôt', vat: 'TVA (Mushak 9.1)', kpi: 'Règles de prix', ap: 'Validations', log: 'Journal d’activité' },
       as_l: 'Vue en tant que', as_btn: 'Changer de personne', as_note: 'Prototype : choisissez une personne pour voir exactement ce que son rôle peut ouvrir, modifier et valider.',
       roles: { prog: 'Contenus et programmes (responsable pédagogique)', fin_lead: 'Responsable financier', acc_off: 'Chargé de comptabilité', sup: 'Agent de support', super: 'Super admin', board: 'Fondateur / conseil', succ: 'Accompagnement des établissements', sys: 'Automatique' },
       sys_name: 'Système NexaTute', cities: { dhk: 'Dacca', syl: 'Sylhet', us: 'États-Unis (serveur)' },
@@ -1234,12 +1234,12 @@ class Component extends DCLogic {
       ap_sec_h: 'En attente de validation sur cette page', rl_short: 'Règle : jusqu’à ৳1,00,000 un valideur · ৳1–10 lakh le responsable financier · au-delà, plus un fondateur',
       plan: { batch: 'Batch', combo: 'Combo', personal: 'Personal' }, 
       gch: { online: 'En ligne', bkash: 'Agents bKash', recharge: 'Boutiques de recharge mobile', book: 'Librairies' }, 
-      rk: { year: 'Year Pass', olymp: 'Cours Olympiad', mkt: 'Fiches de la marketplace', gift: 'Carte Shikkha Salami', over: 'Paiement en double' },
+      rk: { year: 'Year Pass', olymp: 'Cours Olympiad', mkt: 'Fiches de la marketplace', gift: 'Bon Shikkha Salami', over: 'Paiement en double' },
       kp: { up: function (x) { return 'HSC toutes matières +10 % pour les nouveaux abonnés : ' + x; }, one: function (x) { return 'Physique HSC en matière seule +10 % pour les nouveaux abonnés : ' + x; }, b1: 'Batch par matière', p1: 'Personal matière seule' },
       ap_btn: 'Valider', rj_open: 'Refuser', rj_why: 'Motif (obligatoire)', rj_btn: 'Confirmer le refus',
       ap_need: function (x) { return 'Requis : ' + x; }, ap_why: { own: 'Vous en êtes l’auteur — quelqu’un d’autre doit valider.', already: 'Vous avez déjà validé — l’étape suivante exige une autre personne.' },
       ap_role: function (x) { return 'Votre rôle ne peut pas valider cette étape — il faut : ' + x + '.'; }, 
-      ad: { inst: function (n, k) { return 'Remise établissement — ' + n + ', ' + k + ' places en Combo (SSC), 40 %'; }, ref: function (p, n) { return 'Remboursement — ' + p + ' · ' + n; }, gift: function (c, q, v, ch) { return 'Lot de cartes cadeaux ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
+      ad: { inst: function (n, k) { return 'Remise établissement — ' + n + ', ' + k + ' places en Combo (SSC), 30 %'; }, ref: function (p, n) { return 'Remboursement — ' + p + ' · ' + n; }, min_u: 'min', gift: function (c, q, v, ch) { return 'Lot de bons cadeaux ' + c + ' — ' + q + ' × ' + v + ' (' + ch + ')'; },
         pay: function (n) { return 'Lot de versements de février (ventes de janvier) — ' + n + ' bénéficiaires via aamarPay'; }, kpi: function (x) { return 'Changement de prix — ' + x; } }, ap_disc: function (d, p) { return 'remise ' + d + '/mois (paie ' + p + ')'; },
       t_ap_step: function (a, b) { return 'Validé (' + a + ' sur ' + b + ') — en attente de la personne suivante'; }, t_ap_full: 'Validé — terminé et journalisé', t_rj: 'Refusé — l’auteur est informé du motif',
       tip: { as: 'Voyez exactement ce que chaque rôle peut ouvrir, modifier et valider.',
@@ -1477,7 +1477,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'Test kind', q: 'Question order', o: 'Option order', abc: 'Sets A/B/C' }, sh_on: 'Always', sh_real: 'Exam order',
       sf_h: 'Answer-similarity review', sf_lock: 'Never an automatic penalty: the check only flags a pair. A person decides with a reason, the learner is told and can appeal, and every step is logged.',
       sf_list: 'Flagged pairs (platform tests)', sf_score: 'Match',
-      sf_ses: { sf1: 'SSC batch B-07 · monthly mock test · Physics · 30 Jan 2027, 19:00', sf2: 'HSC Chemistry · national ranked test 18 · 31 Jan 2027, 20:00', sf3: 'Weekly national quiz 42 · 27 Jan 2027, 21:00', sf4: 'Spoken English certificate · written part · 15 Jan 2027, 11:00' },
+      sf_ses: { sf1: 'SSC batch B-07 · monthly mock test · Physics · 23 Dec 2026, 19:00', sf2: 'HSC Chemistry · national ranked test 18 · 24 Dec 2026, 20:00', sf3: 'Weekly national quiz 42 · 20 Dec 2026, 21:00', sf4: 'Spoken English certificate · written part · 29 Jan 2027, 11:00' },
       sf_ev: { same: function (a, b) { return 'Same wrong option in ' + a + ' of ' + b + ' wrong answers'; }, gap: function (s) { return 'Answers given on average ' + s + ' s apart'; }, odds: function (x) { return 'Expected by chance: about 1 in ' + x; }, dev: 'Different devices and networks', wifi: 'Same Wi-Fi network' },
       sf_n: { sf3: 'Very close timing on 6 of 7 wrong answers. Result not counted for the quiz rank; a free retake was offered.', sf4: 'Both use the same coaching notes; matches are on common mistakes. No action.' },
       sf_app: { sf3: '“We are cousins and studied the same chapter together that evening, but we answered on our own phones in different rooms.”' },
@@ -1540,7 +1540,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'Score = test cases passed out of ' + n + '.'; }, t_cp_pub: 'Published — the problem can be used in tests',
       sb_h: 'Sandbox limits per run', sb_time: 'Time limit', sb_mem: 'Memory limit', sb_net: 'Network', sb_out: 'Output limit', cs: function (v) { return v + ' s'; }, cl_h: 'Languages at launch',
       cf_h: 'Code-similarity review', cf_lock: 'A similarity flag is not proof. A person decides with a reason; the learner can explain and appeal.', cf_list: 'Flagged submissions', cf_score: 'Similar',
-      cf_ses: { cf1: 'Python basics course · coding test 3 · 31 Jan 2027', cf2: 'JavaScript course · coding test 2 · 25 Jan 2027' },
+      cf_ses: { cf1: 'Python basics course · coding test 3 · 14 Feb 2027', cf2: 'JavaScript course · coding test 2 · 8 Feb 2027' },
       cf_ev: { tok: 'Same structure line by line after removing names and spaces', ren: 'Only the variable names differ', time: function (m) { return 'Submitted ' + m + ' min apart'; }, short: 'Short solution (9 lines) — few ways to write it', book: 'Matches the course’s own worked example' },
       cf_n: { cf2: 'The task has a standard short answer taught in lesson 4. No action.' },
       // 8 · certificates
@@ -1564,7 +1564,7 @@ class Component extends DCLogic {
       pfq_h: 'Proctoring flags', pf_lock: 'Flags go to a person. The decision needs a reason, the learner can appeal, and AI flags alone never prove cheating.', pf_list: 'Flags to review', pf_score: 'Score',
       pf_th_h: 'Snapshots (adult, with consent) — only reviewers can open them; deleted after 6 months with the consent record', pf_face: 'face seen', pf_noface: 'no face',
       pf_age: function (n) { return 'adult, ' + n; }, pf_u18l: 'under 18 · Class 10', pf_u18: 'Under 18: no snapshots or video were taken — only events are shown. Guardian consent on file.',
-      pf_ses: { pf1: 'Certificate exam · 1 Feb 2027, 14:00 · consent given 13:58', pf2: 'Institution exam · 1 Feb 2027, 10:00 · guardian consent 27 Jan', pf3: 'Certificate exam · 31 Jan 2027, 10:15 · consent given 10:12', pf4: 'Certificate exam · 30 Jan 2027, 16:00 · consent given 15:57' },
+      pf_ses: { pf1: 'Certificate exam · 25 Dec 2026, 14:00 · consent given 13:58', pf2: 'Institution exam · 25 Dec 2026, 10:00 · guardian consent 10 Feb', pf3: 'Certificate exam · 24 Dec 2026, 10:15 · consent given 10:12', pf4: 'Certificate exam · 23 Dec 2026, 16:00 · consent given 15:57' },
       pf_ev: { face: function (a, b) { return 'Face not found in ' + a + ' of ' + b + ' presence checks'; }, tab: function (n, s) { return 'Left the exam tab ' + n + (n === 1 ? ' time' : ' times') + ' (' + s + ' s in total)'; }, cons: 'Consent to snapshots given before the start',
         foc: function (n, d) { return n + ' focus losses (' + d + ' in total)'; }, pres: function (n) { return n + ' random presence check missed'; }, gcons: 'Guardian consent; no images taken (under 18)', gap: function (m) { return 'No answers for ' + m + ' minutes'; } },
       pf_n: { pf3: 'Face missing in 3 checks and a 6-minute gap. Result not counted; a free retake was offered.', pf4: 'One short tab switch to the course page. No issue.' },
@@ -1631,7 +1631,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'টেস্টের ধরন', q: 'প্রশ্নের ক্রম', o: 'অপশনের ক্রম', abc: 'A/B/C সেট' }, sh_on: 'সবসময়', sh_real: 'পরীক্ষার ক্রম',
       sf_h: 'উত্তরের মিল যাচাই', sf_lock: 'কখনো স্বয়ংক্রিয় শাস্তি নয়: চেক শুধু একটি জোড়া চিহ্নিত করে। একজন মানুষ কারণসহ সিদ্ধান্ত নেন, শিক্ষার্থীকে জানানো হয় ও আপিল করতে পারে, প্রতিটি ধাপ লগে থাকে।',
       sf_list: 'চিহ্নিত জোড়া (প্ল্যাটফর্মের টেস্ট)', sf_score: 'মিল',
-      sf_ses: { sf1: 'SSC ব্যাচ B-07 · মাসিক মক টেস্ট · পদার্থবিজ্ঞান · 30 জানুয়ারি 2027, 19:00', sf2: 'HSC রসায়ন · জাতীয় র‍্যাংক টেস্ট 18 · 31 জানুয়ারি 2027, 20:00', sf3: 'সাপ্তাহিক জাতীয় কুইজ 42 · 27 জানুয়ারি 2027, 21:00', sf4: 'স্পোকেন ইংলিশ সার্টিফিকেট · লিখিত অংশ · 15 জানুয়ারি 2027, 11:00' },
+      sf_ses: { sf1: 'SSC ব্যাচ B-07 · মাসিক মক টেস্ট · পদার্থবিজ্ঞান · 23 ডিসেম্বর 2026, 19:00', sf2: 'HSC রসায়ন · জাতীয় র‍্যাংক টেস্ট 18 · 24 ডিসেম্বর 2026, 20:00', sf3: 'সাপ্তাহিক জাতীয় কুইজ 42 · 20 ডিসেম্বর 2026, 21:00', sf4: 'স্পোকেন ইংলিশ সার্টিফিকেট · লিখিত অংশ · 29 জানুয়ারি 2027, 11:00' },
       sf_ev: { same: function (a, b) { return b + 'টি ভুল উত্তরের ' + a + 'টিতে একই ভুল অপশন'; }, gap: function (s) { return 'উত্তর গড়ে ' + s + ' সেকেন্ড ব্যবধানে'; }, odds: function (x) { return 'কাকতালীয় হওয়ার সম্ভাবনা: প্রায় ' + x + '-এ 1'; }, dev: 'আলাদা ডিভাইস ও নেটওয়ার্ক', wifi: 'একই Wi-Fi নেটওয়ার্ক' },
       sf_n: { sf3: '7টি ভুলের 6টিতে প্রায় একই সময়। কুইজ র‍্যাংকে ফল গণ্য হয়নি; বিনা খরচে আবার দেওয়ার সুযোগ দেওয়া হয়েছে।', sf4: 'দুজনেই একই কোচিং নোট পড়ে; মিল সাধারণ ভুলে। কোনো ব্যবস্থা নয়।' },
       sf_app: { sf3: '“আমরা চাচাতো ভাইবোন, সেদিন সন্ধ্যায় একসাথে একই অধ্যায় পড়েছিলাম, কিন্তু আলাদা ঘরে নিজের নিজের ফোনে উত্তর দিয়েছি।”' },
@@ -1690,7 +1690,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'নম্বর = ' + n + 'টির মধ্যে পাস করা টেস্ট কেস।'; }, t_cp_pub: 'প্রকাশিত — সমস্যাটি টেস্টে ব্যবহার করা যাবে',
       sb_h: 'প্রতি রানে স্যান্ডবক্সের সীমা', sb_time: 'সময়সীমা', sb_mem: 'মেমরি সীমা', sb_net: 'নেটওয়ার্ক', sb_out: 'আউটপুট সীমা', cs: function (v) { return v + ' সেকেন্ড'; }, cl_h: 'চালুর সময়ের ভাষা',
       cf_h: 'কোডের মিল যাচাই', cf_lock: 'মিলের চিহ্ন প্রমাণ নয়। একজন মানুষ কারণসহ সিদ্ধান্ত নেন; শিক্ষার্থী ব্যাখ্যা ও আপিল করতে পারে।', cf_list: 'চিহ্নিত জমা', cf_score: 'মিল',
-      cf_ses: { cf1: 'Python বেসিক কোর্স · কোডিং টেস্ট 3 · 31 জানুয়ারি 2027', cf2: 'JavaScript কোর্স · কোডিং টেস্ট 2 · 25 জানুয়ারি 2027' },
+      cf_ses: { cf1: 'Python বেসিক কোর্স · কোডিং টেস্ট 3 · 14 ফেব্রুয়ারি 2027', cf2: 'JavaScript কোর্স · কোডিং টেস্ট 2 · 8 ফেব্রুয়ারি 2027' },
       cf_ev: { tok: 'নাম ও স্পেস বাদ দিলে লাইনে লাইনে একই গঠন', ren: 'শুধু ভেরিয়েবলের নাম আলাদা', time: function (m) { return m + ' মিনিটের ব্যবধানে জমা'; }, short: 'ছোট সমাধান (9 লাইন) — লেখার উপায় কম', book: 'কোর্সের নিজের উদাহরণের সাথে মেলে' },
       cf_n: { cf2: 'কাজটির একটি প্রচলিত ছোট উত্তর পাঠ 4-এ শেখানো হয়। কোনো ব্যবস্থা নয়।' },
       cr_acc: 'NexaTute সার্টিফিকেট দেখায় NexaTute-এ শেখা দক্ষতা — এটি কোনো বোর্ড, বিশ্ববিদ্যালয় বা সরকারি সংস্থার স্বীকৃতি (অ্যাক্রেডিটেশন) নয়।',
@@ -1712,7 +1712,7 @@ class Component extends DCLogic {
       pfq_h: 'প্রক্টরিংয়ের চিহ্ন', pf_lock: 'চিহ্ন একজন মানুষের কাছে যায়। সিদ্ধান্তে কারণ লাগে, শিক্ষার্থী আপিল করতে পারে, আর শুধু AI-এর চিহ্ন কখনো অসততা প্রমাণ করে না।', pf_list: 'দেখার বাকি চিহ্ন', pf_score: 'স্কোর',
       pf_th_h: 'স্ন্যাপশট (প্রাপ্তবয়স্ক, সম্মতিতে) — শুধু রিভিউয়াররা খুলতে পারেন; 6 মাস পর সম্মতির রেকর্ডসহ মুছে যায়', pf_face: 'মুখ দেখা গেছে', pf_noface: 'মুখ নেই',
       pf_age: function (n) { return 'প্রাপ্তবয়স্ক, ' + n; }, pf_u18l: '18-এর নিচে · দশম শ্রেণি', pf_u18: '18-এর নিচে: কোনো স্ন্যাপশট বা ভিডিও নেওয়া হয়নি — শুধু ইভেন্ট দেখানো হচ্ছে। অভিভাবকের সম্মতি সংরক্ষিত।',
-      pf_ses: { pf1: 'সার্টিফিকেট পরীক্ষা · 1 ফেব্রুয়ারি 2027, 14:00 · সম্মতি 13:58', pf2: 'প্রতিষ্ঠানের পরীক্ষা · 1 ফেব্রুয়ারি 2027, 10:00 · অভিভাবকের সম্মতি 27 জানুয়ারি', pf3: 'সার্টিফিকেট পরীক্ষা · 31 জানুয়ারি 2027, 10:15 · সম্মতি 10:12', pf4: 'সার্টিফিকেট পরীক্ষা · 30 জানুয়ারি 2027, 16:00 · সম্মতি 15:57' },
+      pf_ses: { pf1: 'সার্টিফিকেট পরীক্ষা · 25 ডিসেম্বর 2026, 14:00 · সম্মতি 13:58', pf2: 'প্রতিষ্ঠানের পরীক্ষা · 25 ডিসেম্বর 2026, 10:00 · অভিভাবকের সম্মতি 10 ফেব্রুয়ারি', pf3: 'সার্টিফিকেট পরীক্ষা · 24 ডিসেম্বর 2026, 10:15 · সম্মতি 10:12', pf4: 'সার্টিফিকেট পরীক্ষা · 23 ডিসেম্বর 2026, 16:00 · সম্মতি 15:57' },
       pf_ev: { face: function (a, b) { return b + 'টি উপস্থিতি যাচাইয়ের ' + a + 'টিতে মুখ পাওয়া যায়নি'; }, tab: function (n, s) { return 'পরীক্ষার ট্যাব ছেড়েছে ' + n + ' বার (মোট ' + s + ' সেকেন্ড)'; }, cons: 'শুরুর আগে স্ন্যাপশটে সম্মতি দেওয়া',
         foc: function (n, d) { return n + ' বার ফোকাস হারানো (মোট ' + d + ')'; }, pres: function (n) { return n + 'টি এলোমেলো উপস্থিতি যাচাই বাদ'; }, gcons: 'অভিভাবকের সম্মতি; কোনো ছবি নেওয়া হয়নি (18-এর নিচে)', gap: function (m) { return m + ' মিনিট কোনো উত্তর নেই'; } },
       pf_n: { pf3: '3টি যাচাইয়ে মুখ নেই আর 6 মিনিটের বিরতি। ফল গণ্য হয়নি; বিনা খরচে আবার দেওয়ার সুযোগ দেওয়া হয়েছে।', pf4: 'কোর্সের পাতায় একবার অল্প সময়ের ট্যাব বদল। কোনো সমস্যা নেই।' },
@@ -1777,7 +1777,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'टेस्ट का प्रकार', q: 'प्रश्नों का क्रम', o: 'विकल्पों का क्रम', abc: 'A/B/C सेट' }, sh_on: 'हमेशा', sh_real: 'परीक्षा का क्रम',
       sf_h: 'उत्तर-समानता समीक्षा', sf_lock: 'कभी अपने-आप सज़ा नहीं: जाँच सिर्फ़ एक जोड़ी को चिह्नित करती है। एक व्यक्ति कारण सहित फ़ैसला करता है, शिक्षार्थी को बताया जाता है और वह अपील कर सकता है, हर कदम लॉग होता है।',
       sf_list: 'चिह्नित जोड़ियाँ (प्लेटफ़ॉर्म टेस्ट)', sf_score: 'मेल',
-      sf_ses: { sf1: 'SSC बैच B-07 · मासिक मॉक टेस्ट · भौतिकी · 30 जनवरी 2027, 19:00', sf2: 'HSC रसायन · राष्ट्रीय रैंक टेस्ट 18 · 31 जनवरी 2027, 20:00', sf3: 'साप्ताहिक राष्ट्रीय क्विज़ 42 · 27 जनवरी 2027, 21:00', sf4: 'स्पोकन इंग्लिश सर्टिफ़िकेट · लिखित भाग · 15 जनवरी 2027, 11:00' },
+      sf_ses: { sf1: 'SSC बैच B-07 · मासिक मॉक टेस्ट · भौतिकी · 23 दिसंबर 2026, 19:00', sf2: 'HSC रसायन · राष्ट्रीय रैंक टेस्ट 18 · 24 दिसंबर 2026, 20:00', sf3: 'साप्ताहिक राष्ट्रीय क्विज़ 42 · 20 दिसंबर 2026, 21:00', sf4: 'स्पोकन इंग्लिश सर्टिफ़िकेट · लिखित भाग · 29 जनवरी 2027, 11:00' },
       sf_ev: { same: function (a, b) { return b + ' ग़लत उत्तरों में से ' + a + ' में एक ही ग़लत विकल्प'; }, gap: function (s) { return 'उत्तर औसतन ' + s + ' सेकंड के अंतर पर'; }, odds: function (x) { return 'संयोग की संभावना: लगभग ' + x + ' में 1'; }, dev: 'अलग डिवाइस और नेटवर्क', wifi: 'एक ही Wi-Fi नेटवर्क' },
       sf_n: { sf3: '7 में से 6 ग़लत उत्तरों में लगभग एक ही समय। क्विज़ रैंक में परिणाम नहीं गिना गया; मुफ़्त दोबारा परीक्षा का मौका दिया गया।', sf4: 'दोनों एक ही कोचिंग नोट्स पढ़ते हैं; मेल आम ग़लतियों में है। कोई कार्रवाई नहीं।' },
       sf_app: { sf3: '“हम चचेरे भाई-बहन हैं, उस शाम साथ में वही अध्याय पढ़ा था, पर अलग कमरों में अपने-अपने फ़ोन पर उत्तर दिए।”' },
@@ -1836,7 +1836,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'अंक = ' + n + ' में से पास हुए टेस्ट केस।'; }, t_cp_pub: 'प्रकाशित — समस्या टेस्ट में इस्तेमाल हो सकती है',
       sb_h: 'हर रन पर सैंडबॉक्स सीमाएँ', sb_time: 'समय सीमा', sb_mem: 'मेमोरी सीमा', sb_net: 'नेटवर्क', sb_out: 'आउटपुट सीमा', cs: function (v) { return v + ' सेकंड'; }, cl_h: 'लॉन्च पर भाषाएँ',
       cf_h: 'कोड-समानता समीक्षा', cf_lock: 'समानता का निशान सबूत नहीं है। एक व्यक्ति कारण सहित फ़ैसला करता है; शिक्षार्थी समझा और अपील कर सकता है।', cf_list: 'चिह्नित सबमिशन', cf_score: 'समान',
-      cf_ses: { cf1: 'Python बेसिक्स कोर्स · कोडिंग टेस्ट 3 · 31 जनवरी 2027', cf2: 'JavaScript कोर्स · कोडिंग टेस्ट 2 · 25 जनवरी 2027' },
+      cf_ses: { cf1: 'Python बेसिक्स कोर्स · कोडिंग टेस्ट 3 · 14 फ़रवरी 2027', cf2: 'JavaScript कोर्स · कोडिंग टेस्ट 2 · 8 फ़रवरी 2027' },
       cf_ev: { tok: 'नाम और खाली जगह हटाने पर पंक्ति-दर-पंक्ति वही ढाँचा', ren: 'सिर्फ़ वेरिएबल के नाम अलग', time: function (m) { return m + ' मिनट के अंतर पर जमा'; }, short: 'छोटा हल (9 पंक्तियाँ) — लिखने के तरीके कम', book: 'कोर्स के अपने हल किए उदाहरण से मेल' },
       cf_n: { cf2: 'इस काम का एक आम छोटा उत्तर पाठ 4 में सिखाया जाता है। कोई कार्रवाई नहीं।' },
       cr_acc: 'NexaTute सर्टिफ़िकेट NexaTute पर सीखे कौशल दिखाते हैं — ये किसी बोर्ड, विश्वविद्यालय या सरकारी संस्था की मान्यता (एक्रेडिटेशन) नहीं हैं।',
@@ -1858,7 +1858,7 @@ class Component extends DCLogic {
       pfq_h: 'प्रॉक्टरिंग निशान', pf_lock: 'निशान एक व्यक्ति के पास जाते हैं। फ़ैसले में कारण चाहिए, शिक्षार्थी अपील कर सकता है, और सिर्फ़ AI निशान कभी नक़ल साबित नहीं करते।', pf_list: 'समीक्षा के निशान', pf_score: 'स्कोर',
       pf_th_h: 'स्नैपशॉट (वयस्क, सहमति से) — सिर्फ़ समीक्षक खोल सकते हैं; 6 महीने बाद सहमति रिकॉर्ड के साथ मिटते हैं', pf_face: 'चेहरा दिखा', pf_noface: 'चेहरा नहीं',
       pf_age: function (n) { return 'वयस्क, ' + n; }, pf_u18l: '18 से कम · कक्षा 10', pf_u18: '18 से कम: कोई स्नैपशॉट या वीडियो नहीं लिया गया — सिर्फ़ घटनाएँ दिख रही हैं। अभिभावक की सहमति दर्ज।',
-      pf_ses: { pf1: 'सर्टिफ़िकेट परीक्षा · 1 फ़रवरी 2027, 14:00 · सहमति 13:58', pf2: 'संस्थान परीक्षा · 1 फ़रवरी 2027, 10:00 · अभिभावक सहमति 27 जनवरी', pf3: 'सर्टिफ़िकेट परीक्षा · 31 जनवरी 2027, 10:15 · सहमति 10:12', pf4: 'सर्टिफ़िकेट परीक्षा · 30 जनवरी 2027, 16:00 · सहमति 15:57' },
+      pf_ses: { pf1: 'सर्टिफ़िकेट परीक्षा · 25 दिसंबर 2026, 14:00 · सहमति 13:58', pf2: 'संस्थान परीक्षा · 25 दिसंबर 2026, 10:00 · अभिभावक सहमति 10 फ़रवरी', pf3: 'सर्टिफ़िकेट परीक्षा · 24 दिसंबर 2026, 10:15 · सहमति 10:12', pf4: 'सर्टिफ़िकेट परीक्षा · 23 दिसंबर 2026, 16:00 · सहमति 15:57' },
       pf_ev: { face: function (a, b) { return b + ' उपस्थिति जाँचों में से ' + a + ' में चेहरा नहीं मिला'; }, tab: function (n, s) { return 'परीक्षा टैब ' + n + ' बार छोड़ा (कुल ' + s + ' सेकंड)'; }, cons: 'शुरू से पहले स्नैपशॉट की सहमति दी',
         foc: function (n, d) { return n + ' बार फ़ोकस हटा (कुल ' + d + ')'; }, pres: function (n) { return n + ' बीच की उपस्थिति जाँच छूटी'; }, gcons: 'अभिभावक की सहमति; कोई तस्वीर नहीं ली (18 से कम)', gap: function (m) { return m + ' मिनट तक कोई उत्तर नहीं'; } },
       pf_n: { pf3: '3 जाँचों में चेहरा नहीं और 6 मिनट का अंतराल। परिणाम नहीं गिना गया; मुफ़्त दोबारा परीक्षा का मौका दिया गया।', pf4: 'कोर्स पेज पर एक छोटा टैब बदलाव। कोई समस्या नहीं।' },
@@ -1923,7 +1923,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'ٹیسٹ کی قسم', q: 'سوالات کی ترتیب', o: 'آپشنز کی ترتیب', abc: M('A/B/C') + ' سیٹ' }, sh_on: 'ہمیشہ', sh_real: 'امتحان کی ترتیب',
       sf_h: 'جوابات کی مماثلت کا جائزہ', sf_lock: 'کبھی خودکار سزا نہیں: جانچ صرف ایک جوڑی نشان زد کرتی ہے۔ ایک شخص وجہ کے ساتھ فیصلہ کرتا ہے، طالب علم کو بتایا جاتا ہے اور وہ اپیل کر سکتا ہے، ہر قدم لاگ ہوتا ہے۔',
       sf_list: 'نشان زد جوڑیاں (پلیٹ فارم ٹیسٹ)', sf_score: 'مماثلت',
-      sf_ses: { sf1: M('SSC') + ' بیچ ' + M('B-07') + ' · ماہانہ ماک ٹیسٹ · طبیعیات · ' + M('30') + ' جنوری ' + M('2027، 19:00'), sf2: M('HSC') + ' کیمسٹری · قومی رینک ٹیسٹ ' + M('18') + ' · ' + M('31') + ' جنوری ' + M('2027، 20:00'), sf3: 'ہفتہ وار قومی کوئز ' + M('42') + ' · ' + M('27') + ' جنوری ' + M('2027، 21:00'), sf4: 'اسپوکن انگلش سرٹیفکیٹ · تحریری حصہ · ' + M('15') + ' جنوری ' + M('2027، 11:00') },
+      sf_ses: { sf1: M('SSC') + ' بیچ ' + M('B-07') + ' · ماہانہ ماک ٹیسٹ · طبیعیات · ' + M('23') + ' دسمبر ' + M('2026، 19:00'), sf2: M('HSC') + ' کیمسٹری · قومی رینک ٹیسٹ ' + M('18') + ' · ' + M('24') + ' دسمبر ' + M('2026، 20:00'), sf3: 'ہفتہ وار قومی کوئز ' + M('42') + ' · ' + M('20') + ' دسمبر ' + M('2026، 21:00'), sf4: 'اسپوکن انگلش سرٹیفکیٹ · تحریری حصہ · ' + M('29') + ' جنوری ' + M('2027، 11:00') },
       sf_ev: { same: function (a, b) { return M(b) + ' غلط جوابات میں سے ' + M(a) + ' میں ایک ہی غلط آپشن'; }, gap: function (s) { return 'جوابات اوسطاً ' + M(s + ' s') + ' کے فرق سے'; }, odds: function (x) { return 'اتفاق کا امکان: تقریباً ' + M(x) + ' میں ' + M('1'); }, dev: 'الگ ڈیوائس اور نیٹ ورک', wifi: 'ایک ہی ' + M('Wi-Fi') + ' نیٹ ورک' },
       sf_n: { sf3: M('7') + ' میں سے ' + M('6') + ' غلط جوابات میں تقریباً ایک ہی وقت۔ کوئز رینک میں نتیجہ شمار نہیں ہوا؛ مفت دوبارہ امتحان کا موقع دیا گیا۔', sf4: 'دونوں ایک ہی کوچنگ نوٹس پڑھتے ہیں؛ مماثلت عام غلطیوں میں ہے۔ کوئی کارروائی نہیں۔' },
       sf_app: { sf3: '“ہم کزن ہیں، اس شام ساتھ میں وہی باب پڑھا تھا، مگر الگ کمروں میں اپنے اپنے فون پر جواب دیے۔”' },
@@ -1982,7 +1982,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'اسکور = ' + M(n) + ' میں سے پاس ہوئے ٹیسٹ کیس۔'; }, t_cp_pub: 'شائع — سوال ٹیسٹ میں استعمال ہو سکتا ہے',
       sb_h: 'ہر رن پر سینڈ باکس کی حدیں', sb_time: 'وقت کی حد', sb_mem: 'میموری کی حد', sb_net: 'نیٹ ورک', sb_out: 'آؤٹ پٹ کی حد', cs: function (v) { return M(v + ' s'); }, cl_h: 'لانچ پر زبانیں',
       cf_h: 'کوڈ مماثلت کا جائزہ', cf_lock: 'مماثلت کا نشان ثبوت نہیں۔ ایک شخص وجہ کے ساتھ فیصلہ کرتا ہے؛ طالب علم وضاحت اور اپیل کر سکتا ہے۔', cf_list: 'نشان زد جمع شدہ کوڈ', cf_score: 'مماثل',
-      cf_ses: { cf1: M('Python') + ' بنیادی کورس · کوڈنگ ٹیسٹ ' + M('3') + ' · ' + M('31') + ' جنوری ' + M('2027'), cf2: M('JavaScript') + ' کورس · کوڈنگ ٹیسٹ ' + M('2') + ' · ' + M('25') + ' جنوری ' + M('2027') },
+      cf_ses: { cf1: M('Python') + ' بنیادی کورس · کوڈنگ ٹیسٹ ' + M('3') + ' · ' + M('14') + ' فروری ' + M('2027'), cf2: M('JavaScript') + ' کورس · کوڈنگ ٹیسٹ ' + M('2') + ' · ' + M('8') + ' فروری ' + M('2027') },
       cf_ev: { tok: 'نام اور خالی جگہ ہٹانے پر سطر بہ سطر وہی ڈھانچہ', ren: 'صرف ویری ایبل کے نام مختلف', time: function (m) { return M(m) + ' منٹ کے فرق سے جمع'; }, short: 'مختصر حل (' + M('9') + ' سطریں) — لکھنے کے طریقے کم', book: 'کورس کی اپنی حل شدہ مثال سے مماثل' },
       cf_n: { cf2: 'اس کام کا ایک عام مختصر جواب سبق ' + M('4') + ' میں سکھایا جاتا ہے۔ کوئی کارروائی نہیں۔' },
       cr_acc: M('NexaTute') + ' سرٹیفکیٹ ' + M('NexaTute') + ' پر سیکھی مہارت دکھاتے ہیں — یہ کسی بورڈ، یونیورسٹی یا سرکاری ادارے کی منظوری (ایکریڈیٹیشن) نہیں۔',
@@ -2004,7 +2004,7 @@ class Component extends DCLogic {
       pfq_h: 'پراکٹرنگ کے نشان', pf_lock: 'نشان ایک شخص کے پاس جاتے ہیں۔ فیصلے میں وجہ ضروری، طالب علم اپیل کر سکتا ہے، اور صرف ' + M('AI') + ' کے نشان کبھی نقل ثابت نہیں کرتے۔', pf_list: 'جائزے کے نشان', pf_score: 'اسکور',
       pf_th_h: 'اسنیپ شاٹ (بالغ، رضامندی سے) — صرف جائزہ کار کھول سکتے ہیں؛ ' + M('6') + ' مہینے بعد رضامندی کے ریکارڈ سمیت مٹ جاتے ہیں', pf_face: 'چہرہ نظر آیا', pf_noface: 'چہرہ نہیں',
       pf_age: function (n) { return 'بالغ، ' + M(n); }, pf_u18l: M('18') + ' سے کم · جماعت ' + M('10'), pf_u18: M('18') + ' سے کم: کوئی اسنیپ شاٹ یا ویڈیو نہیں لی گئی — صرف واقعات دکھائے جا رہے ہیں۔ سرپرست کی رضامندی درج ہے۔',
-      pf_ses: { pf1: 'سرٹیفکیٹ امتحان · ' + M('1') + ' فروری ' + M('2027، 14:00') + ' · رضامندی ' + M('13:58'), pf2: 'ادارے کا امتحان · ' + M('1') + ' فروری ' + M('2027، 10:00') + ' · سرپرست کی رضامندی ' + M('27') + ' جنوری', pf3: 'سرٹیفکیٹ امتحان · ' + M('31') + ' جنوری ' + M('2027، 10:15') + ' · رضامندی ' + M('10:12'), pf4: 'سرٹیفکیٹ امتحان · ' + M('30') + ' جنوری ' + M('2027، 16:00') + ' · رضامندی ' + M('15:57') },
+      pf_ses: { pf1: 'سرٹیفکیٹ امتحان · ' + M('25') + ' دسمبر ' + M('2026، 14:00') + ' · رضامندی ' + M('13:58'), pf2: 'ادارے کا امتحان · ' + M('25') + ' دسمبر ' + M('2026، 10:00') + ' · سرپرست کی رضامندی ' + M('10') + ' فروری', pf3: 'سرٹیفکیٹ امتحان · ' + M('24') + ' دسمبر ' + M('2026، 10:15') + ' · رضامندی ' + M('10:12'), pf4: 'سرٹیفکیٹ امتحان · ' + M('23') + ' دسمبر ' + M('2026، 16:00') + ' · رضامندی ' + M('15:57') },
       pf_ev: { face: function (a, b) { return M(b) + ' حاضری جانچوں میں سے ' + M(a) + ' میں چہرہ نہیں ملا'; }, tab: function (n, s) { return 'امتحان کا ٹیب ' + M(n) + ' بار چھوڑا (کل ' + M(s + ' s') + ')'; }, cons: 'شروع سے پہلے اسنیپ شاٹ کی رضامندی دی',
         foc: function (n, d) { return M(n) + ' بار فوکس ہٹا (کل ' + M(d) + ')'; }, pres: function (n) { return M(n) + ' بے ترتیب حاضری کی جانچ رہ گئی'; }, gcons: 'سرپرست کی رضامندی؛ کوئی تصویر نہیں لی گئی (' + M('18') + ' سے کم)', gap: function (m) { return M(m) + ' منٹ تک کوئی جواب نہیں'; } },
       pf_n: { pf3: M('3') + ' جانچوں میں چہرہ نہیں اور ' + M('6') + ' منٹ کا وقفہ۔ نتیجہ شمار نہیں ہوا؛ مفت دوبارہ امتحان کا موقع دیا گیا۔', pf4: 'کورس کے صفحے پر ایک مختصر ٹیب تبدیلی۔ کوئی مسئلہ نہیں۔' },
@@ -2069,7 +2069,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'نوع الاختبار', q: 'ترتيب الأسئلة', o: 'ترتيب الخيارات', abc: 'نماذج ' + M('A/B/C') }, sh_on: 'دائمًا', sh_real: 'ترتيب الامتحان',
       sf_h: 'مراجعة تشابه الإجابات', sf_lock: 'لا عقوبة تلقائية أبدًا: الفحص يعلّم زوجًا فقط. يقرر شخص مع ذكر السبب، ويُبلَّغ المتعلم ويحق له الاعتراض، وتُسجَّل كل خطوة.',
       sf_list: 'أزواج معلَّمة (اختبارات المنصة)', sf_score: 'تطابق',
-      sf_ses: { sf1: M('SSC') + ' الدفعة ' + M('B-07') + ' · امتحان تجريبي شهري · فيزياء · ' + M('30') + ' يناير ' + M('2027، 19:00'), sf2: M('HSC') + ' كيمياء · اختبار ترتيب وطني ' + M('18') + ' · ' + M('31') + ' يناير ' + M('2027، 20:00'), sf3: 'المسابقة الوطنية الأسبوعية ' + M('42') + ' · ' + M('27') + ' يناير ' + M('2027، 21:00'), sf4: 'شهادة الإنجليزية المحكية · الجزء الكتابي · ' + M('15') + ' يناير ' + M('2027، 11:00') },
+      sf_ses: { sf1: M('SSC') + ' الدفعة ' + M('B-07') + ' · امتحان تجريبي شهري · فيزياء · ' + M('23') + ' ديسمبر ' + M('2026، 19:00'), sf2: M('HSC') + ' كيمياء · اختبار ترتيب وطني ' + M('18') + ' · ' + M('24') + ' ديسمبر ' + M('2026، 20:00'), sf3: 'المسابقة الوطنية الأسبوعية ' + M('42') + ' · ' + M('20') + ' ديسمبر ' + M('2026، 21:00'), sf4: 'شهادة الإنجليزية المحكية · الجزء الكتابي · ' + M('29') + ' يناير ' + M('2027، 11:00') },
       sf_ev: { same: function (a, b) { return 'الخيار الخاطئ نفسه في ' + M(a) + ' من ' + M(b) + ' إجابات خاطئة'; }, gap: function (s) { return 'إجابات بفارق ' + M(s + ' s') + ' في المتوسط'; }, odds: function (x) { return 'احتمال المصادفة: نحو ' + M('1') + ' من ' + M(x); }, dev: 'أجهزة وشبكات مختلفة', wifi: 'شبكة ' + M('Wi-Fi') + ' نفسها' },
       sf_n: { sf3: 'توقيت متقارب جدًا في ' + M('6') + ' من ' + M('7') + ' إجابات خاطئة. لم تُحتسب النتيجة في ترتيب المسابقة؛ وعُرضت إعادة مجانية.', sf4: 'كلاهما يدرس من مذكرات المركز نفسها؛ التشابه في أخطاء شائعة. لا إجراء.' },
       sf_app: { sf3: '«نحن أبناء عمومة وذاكرنا الفصل نفسه معًا تلك الليلة، لكن كل منا أجاب من هاتفه في غرفة مختلفة.»' },
@@ -2128,7 +2128,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'الدرجة = حالات الاختبار الناجحة من ' + M(n) + '.'; }, t_cp_pub: 'نُشرت — يمكن استخدام المسألة في الاختبارات',
       sb_h: 'حدود البيئة المعزولة لكل تشغيل', sb_time: 'حد الوقت', sb_mem: 'حد الذاكرة', sb_net: 'الشبكة', sb_out: 'حد المخرجات', cs: function (v) { return M(v + ' s'); }, cl_h: 'اللغات عند الإطلاق',
       cf_h: 'مراجعة تشابه الشيفرة', cf_lock: 'علامة التشابه ليست دليلًا. يقرر شخصٌ مع السبب؛ ويمكن للمتعلم أن يشرح ويعترض.', cf_list: 'تسليمات معلَّمة', cf_score: 'تشابه',
-      cf_ses: { cf1: 'دورة أساسيات ' + M('Python') + ' · اختبار برمجة ' + M('3') + ' · ' + M('31') + ' يناير ' + M('2027'), cf2: 'دورة ' + M('JavaScript') + ' · اختبار برمجة ' + M('2') + ' · ' + M('25') + ' يناير ' + M('2027') },
+      cf_ses: { cf1: 'دورة أساسيات ' + M('Python') + ' · اختبار برمجة ' + M('3') + ' · ' + M('14') + ' فبراير ' + M('2027'), cf2: 'دورة ' + M('JavaScript') + ' · اختبار برمجة ' + M('2') + ' · ' + M('8') + ' فبراير ' + M('2027') },
       cf_ev: { tok: 'البنية نفسها سطرًا بسطر بعد إزالة الأسماء والمسافات', ren: 'لا تختلف إلا أسماء المتغيرات', time: function (m) { return 'سُلّمت بفارق ' + M(m) + ' دقائق'; }, short: 'حل قصير (' + M('9') + ' أسطر) — طرق كتابته قليلة', book: 'يطابق المثال المحلول في الدورة' },
       cf_n: { cf2: 'للمهمة إجابة قصيرة معتادة تُدرَّس في الدرس ' + M('4') + '. لا إجراء.' },
       cr_acc: 'شهادات ' + M('NexaTute') + ' تُظهر مهارات تعلّمها المتعلم على ' + M('NexaTute') + ' — وليست اعتمادًا من مجلس أو جامعة أو جهة حكومية.',
@@ -2150,7 +2150,7 @@ class Component extends DCLogic {
       pfq_h: 'علامات المراقبة', pf_lock: 'تذهب العلامات إلى شخص. يحتاج القرار إلى سبب، ويحق للمتعلم الاعتراض، وعلامات ' + M('AI') + ' وحدها لا تثبت الغش أبدًا.', pf_list: 'علامات للمراجعة', pf_score: 'الدرجة',
       pf_th_h: 'لقطات (بالغ، بموافقته) — لا يفتحها إلا المراجعون؛ تُحذف بعد ' + M('6') + ' أشهر مع سجل الموافقة', pf_face: 'الوجه ظاهر', pf_noface: 'لا وجه',
       pf_age: function (n) { return 'بالغ، ' + M(n); }, pf_u18l: 'دون ' + M('18') + ' · الصف ' + M('10'), pf_u18: 'دون ' + M('18') + ': لم تُلتقط صور أو فيديو — تُعرض الأحداث فقط. موافقة وليّ الأمر مسجّلة.',
-      pf_ses: { pf1: 'امتحان شهادة · ' + M('1') + ' فبراير ' + M('2027، 14:00') + ' · الموافقة ' + M('13:58'), pf2: 'امتحان مؤسسة · ' + M('1') + ' فبراير ' + M('2027، 10:00') + ' · موافقة وليّ الأمر ' + M('27') + ' يناير', pf3: 'امتحان شهادة · ' + M('31') + ' يناير ' + M('2027، 10:15') + ' · الموافقة ' + M('10:12'), pf4: 'امتحان شهادة · ' + M('30') + ' يناير ' + M('2027، 16:00') + ' · الموافقة ' + M('15:57') },
+      pf_ses: { pf1: 'امتحان شهادة · ' + M('25') + ' ديسمبر ' + M('2026، 14:00') + ' · الموافقة ' + M('13:58'), pf2: 'امتحان مؤسسة · ' + M('25') + ' ديسمبر ' + M('2026، 10:00') + ' · موافقة وليّ الأمر ' + M('10') + ' فبراير', pf3: 'امتحان شهادة · ' + M('24') + ' ديسمبر ' + M('2026، 10:15') + ' · الموافقة ' + M('10:12'), pf4: 'امتحان شهادة · ' + M('23') + ' ديسمبر ' + M('2026، 16:00') + ' · الموافقة ' + M('15:57') },
       pf_ev: { face: function (a, b) { return 'لم يُعثر على الوجه في ' + M(a) + ' من ' + M(b) + ' فحوص حضور'; }, tab: function (n, s) { return 'غادر تبويب الامتحان ' + M(n) + ' مرات (' + M(s + ' s') + ' إجمالًا)'; }, cons: 'أُعطيت الموافقة على اللقطات قبل البدء',
         foc: function (n, d) { return M(n) + ' مرات فقدان تركيز (' + M(d) + ' إجمالًا)'; }, pres: function (n) { return 'فاته ' + M(n) + ' فحص حضور عشوائي'; }, gcons: 'موافقة وليّ الأمر؛ لم تُلتقط صور (دون ' + M('18') + ')', gap: function (m) { return 'لا إجابات لمدة ' + M(m) + ' دقائق'; } },
       pf_n: { pf3: 'غياب الوجه في ' + M('3') + ' فحوص وفجوة ' + M('6') + ' دقائق. لم تُحتسب النتيجة؛ وعُرضت إعادة مجانية.', pf4: 'تبديل قصير واحد إلى صفحة الدورة. لا مشكلة.' },
@@ -2215,7 +2215,7 @@ class Component extends DCLogic {
       sh_cols: { k: 'Type de test', q: 'Ordre des questions', o: 'Ordre des options', abc: 'Sujets A/B/C' }, sh_on: 'Toujours', sh_real: 'Ordre officiel',
       sf_h: 'Revue des réponses similaires', sf_lock: 'Jamais de sanction automatique : le contrôle signale seulement une paire. Une personne décide avec un motif, l’apprenant est informé et peut faire appel, chaque étape est journalisée.',
       sf_list: 'Paires signalées (tests de la plateforme)', sf_score: 'Correspondance',
-      sf_ses: { sf1: 'SSC groupe B-07 · examen blanc mensuel · Physique · 30 janv. 2027, 19:00', sf2: 'HSC Chimie · test classé national 18 · 31 janv. 2027, 20:00', sf3: 'Quiz national hebdomadaire 42 · 27 janv. 2027, 21:00', sf4: 'Certificat d’anglais oral · partie écrite · 15 janv. 2027, 11:00' },
+      sf_ses: { sf1: 'SSC groupe B-07 · examen blanc mensuel · Physique · 23 déc. 2026, 19:00', sf2: 'HSC Chimie · test classé national 18 · 24 déc. 2026, 20:00', sf3: 'Quiz national hebdomadaire 42 · 20 déc. 2026, 21:00', sf4: 'Certificat d’anglais oral · partie écrite · 29 janv. 2027, 11:00' },
       sf_ev: { same: function (a, b) { return 'Même mauvaise option dans ' + a + ' des ' + b + ' réponses fausses'; }, gap: function (s) { return 'Réponses données en moyenne à ' + s + ' s d’écart'; }, odds: function (x) { return 'Probabilité par hasard : environ 1 sur ' + x.replace(/,/g, ' '); }, dev: 'Appareils et réseaux différents', wifi: 'Même réseau Wi-Fi' },
       sf_n: { sf3: 'Temps très proches sur 6 des 7 réponses fausses. Résultat non compté pour le classement du quiz ; une reprise gratuite a été proposée.', sf4: 'Les deux suivent les mêmes notes de soutien ; les ressemblances portent sur des erreurs courantes. Aucune mesure.' },
       sf_app: { sf3: '« Nous sommes cousins et avons révisé le même chapitre ensemble ce soir-là, mais nous avons répondu chacun sur notre téléphone dans des pièces différentes. »' },
@@ -2274,7 +2274,7 @@ class Component extends DCLogic {
       cp_score: function (n) { return 'Note = cas de test réussis sur ' + n + '.'; }, t_cp_pub: 'Publié — le problème peut servir en test',
       sb_h: 'Limites du bac à sable par exécution', sb_time: 'Limite de temps', sb_mem: 'Limite mémoire', sb_net: 'Réseau', sb_out: 'Limite de sortie', cs: function (v) { return v + ' s'; }, cl_h: 'Langages au lancement',
       cf_h: 'Revue des codes similaires', cf_lock: 'Un signalement de similarité n’est pas une preuve. Une personne décide avec un motif ; l’apprenant peut s’expliquer et faire appel.', cf_list: 'Rendus signalés', cf_score: 'Similarité',
-      cf_ses: { cf1: 'Cours Python bases · test de code 3 · 31 janv. 2027', cf2: 'Cours JavaScript · test de code 2 · 25 janv. 2027' },
+      cf_ses: { cf1: 'Cours Python bases · test de code 3 · 14 févr. 2027', cf2: 'Cours JavaScript · test de code 2 · 8 févr. 2027' },
       cf_ev: { tok: 'Même structure ligne à ligne une fois noms et espaces retirés', ren: 'Seuls les noms de variables diffèrent', time: function (m) { return 'Rendus à ' + m + ' min d’écart'; }, short: 'Solution courte (9 lignes) — peu de façons de l’écrire', book: 'Identique à l’exemple corrigé du cours' },
       cf_n: { cf2: 'La tâche a une réponse courte classique vue à la leçon 4. Aucune mesure.' },
       cr_acc: 'Les certificats NexaTute attestent des compétences acquises sur NexaTute — ce n’est pas une accréditation d’un conseil, d’une université ou d’un organisme public.',
@@ -2296,7 +2296,7 @@ class Component extends DCLogic {
       pfq_h: 'Signalements de surveillance', pf_lock: 'Les signalements vont à une personne. La décision exige un motif, l’apprenant peut faire appel, et un signalement IA seul ne prouve jamais une fraude.', pf_list: 'Signalements à revoir', pf_score: 'Score',
       pf_th_h: 'Captures (adulte, avec consentement) — seuls les relecteurs les ouvrent ; supprimées après 6 mois avec le consentement', pf_face: 'visage vu', pf_noface: 'pas de visage',
       pf_age: function (n) { return 'adulte, ' + n + ' ans'; }, pf_u18l: 'moins de 18 ans · 10e', pf_u18: 'Moins de 18 ans : aucune capture ni vidéo — seuls les événements sont affichés. Consentement du parent enregistré.',
-      pf_ses: { pf1: 'Examen de certificat · 1er févr. 2027, 14:00 · consentement 13:58', pf2: 'Examen d’établissement · 1er févr. 2027, 10:00 · consentement du parent 27 janv.', pf3: 'Examen de certificat · 31 janv. 2027, 10:15 · consentement 10:12', pf4: 'Examen de certificat · 30 janv. 2027, 16:00 · consentement 15:57' },
+      pf_ses: { pf1: 'Examen de certificat · 25 déc. 2026, 14:00 · consentement 13:58', pf2: 'Examen d’établissement · 25 déc. 2026, 10:00 · consentement du parent 10 févr.', pf3: 'Examen de certificat · 24 déc. 2026, 10:15 · consentement 10:12', pf4: 'Examen de certificat · 23 déc. 2026, 16:00 · consentement 15:57' },
       pf_ev: { face: function (a, b) { return 'Visage absent à ' + a + ' des ' + b + ' contrôles de présence'; }, tab: function (n, s) { return 'A quitté l’onglet de l’examen ' + n + ' fois (' + s + ' s au total)'; }, cons: 'Consentement aux captures donné avant le début',
         foc: function (n, d) { return n + ' pertes de focus (' + d + ' au total)'; }, pres: function (n) { return n + ' contrôle de présence manqué'; }, gcons: 'Consentement du parent ; aucune image prise (moins de 18 ans)', gap: function (m) { return 'Aucune réponse pendant ' + m + ' minutes'; } },
       pf_n: { pf3: 'Visage absent à 3 contrôles et 6 minutes sans réponse. Résultat non compté ; une reprise gratuite a été proposée.', pf4: 'Un court changement d’onglet vers la page du cours. Aucun problème.' },
@@ -2474,7 +2474,7 @@ class Component extends DCLogic {
     var self = this, s = this.state || {}, B = r.t.ntf, rd = s.ntfRead || {};
     // Each sample is true on this page at the prototype clock (Fri 23 Oct 2026, 15:40) and opens its item (go) when clicked.
     // ps: HSC Physics 1st paper solutions are due by 16:20 (exam ended 13:20); dif: 3 MindForge items held by the 09:00 DIF check;
-    // po: the payout batch for January sales is ready (not yet prepared); vt: the December return (nil, Free Beta) was filed on 15 Jan.
+    // po: the payout batch for January sales is ready (not yet prepared); vt: the December return (nil, Free Beta) was filed on 29 Jan.
     var N = [{ id: 'ps', lv: 'urgent', cat: 'qual', m: 20, u: 1, go: { area: 'q', qTab: 'circ', cSub: 'ps' } },
       { id: 'dif', lv: 'important', cat: 'qual', m: 400, u: 1, go: { area: 'q', qTab: 'mf', mfSub: 'dif' } },
       { id: 'po', lv: 'important', cat: 'money', m: 340, u: 1, go: { area: 'm', mTab: 'pay' } },
@@ -2515,7 +2515,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + 'টি পড়া হয়নি' : 'সব পড়া হয়েছে'; },
       aria: function (n) { return 'নোটিফিকেশন, ' + n + 'টি পড়া হয়নি'; },
       ago: function (m) { return m < 60 ? m + ' মিনিট আগে' : (m < 1440 ? Math.round(m / 60) + ' ঘণ্টা আগে' : (m < 2880 ? 'গতকাল' : Math.round(m / 1440) + ' দিন আগে')); },
-      it: { ps: 'HSC পদার্থবিজ্ঞান 1ম পত্রের সমাধান প্রকাশের এক ঘণ্টারও কম বাকি', dif: 'DIF চেকের পর 3টি MindForge আইটেম আটকে রাখা হয়েছে', po: 'ফেব্রুয়ারির পেমেন্ট ব্যাচ (জানুয়ারির বিক্রি) তৈরির জন্য প্রস্তুত', vt: 'ডিসেম্বরের VAT রিটার্ন (মূসক 9.1) 15 জানুয়ারি জমা হয়েছে — শূন্য, Free Beta-তে বিক্রি ছিল না' },
+      it: { ps: 'HSC পদার্থবিজ্ঞান 1ম পত্রের সমাধান প্রকাশের এক ঘণ্টারও কম বাকি', dif: 'DIF চেকের পর 3টি MindForge আইটেম আটকে রাখা হয়েছে', po: 'ফেব্রুয়ারির পেমেন্ট ব্যাচ (জানুয়ারির বিক্রি) তৈরির জন্য প্রস্তুত', vt: 'ডিসেম্বরের VAT রিটার্ন (মূসক 9.1) 29 জানুয়ারি জমা হয়েছে — শূন্য, Free Beta-তে বিক্রি ছিল না' },
       px: { ps: 'NexaTute Admin: অতি জরুরি — পরীক্ষার পরের সমাধান প্রকাশের সময়সীমা ঘনিয়ে এসেছে। প্যানেল খুলুন।', dif: 'NexaTute Admin: ন্যায্যতা যাচাইয়ের পর MindForge আইটেম আটকে আছে।', po: 'NexaTute Admin: একটি পেমেন্ট ব্যাচ তৈরির জন্য প্রস্তুত।', vt: '' }};
     B.en = {
       h: 'Notifications',
@@ -2535,7 +2535,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + ' unread' : 'All read'; },
       aria: function (n) { return 'Notifications, ' + n + ' unread'; },
       ago: function (m) { return m < 60 ? m + ' min ago' : (m < 1440 ? Math.round(m / 60) + ' h ago' : (m < 2880 ? 'yesterday' : Math.round(m / 1440) + ' days ago')); },
-      it: { ps: 'Less than an hour left to publish the HSC Physics 1st paper solutions', dif: '3 MindForge items are on hold after a DIF check', po: 'The February payout batch (January sales) is ready to prepare', vt: 'December VAT return (Mushak 9.1) was filed on 15 Jan — nil, no sales in the Free Beta' },
+      it: { ps: 'Less than an hour left to publish the HSC Physics 1st paper solutions', dif: '3 MindForge items are on hold after a DIF check', po: 'The February payout batch (January sales) is ready to prepare', vt: 'December VAT return (Mushak 9.1) was filed on 29 Jan — nil, no sales in the Free Beta' },
       px: { ps: 'NexaTute Admin: urgent — post-exam solutions are close to their publishing deadline. Open the panel.', dif: 'NexaTute Admin: MindForge items are on hold after a fairness check.', po: 'NexaTute Admin: a payout batch is ready to prepare.', vt: '' }};
     B.hi = {
       h: 'नोटिफ़िकेशन',
@@ -2555,7 +2555,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + ' बिना पढ़े' : 'सब पढ़ लिए'; },
       aria: function (n) { return 'नोटिफ़िकेशन, ' + n + ' बिना पढ़े'; },
       ago: function (m) { return m < 60 ? m + ' मिनट पहले' : (m < 1440 ? Math.round(m / 60) + ' घंटे पहले' : (m < 2880 ? 'कल' : Math.round(m / 1440) + ' दिन पहले')); },
-      it: { ps: 'HSC भौतिकी पहले पेपर के हल प्रकाशित करने में एक घंटे से कम बचा है', dif: 'DIF जाँच के बाद 3 MindForge आइटम रोके गए हैं', po: 'फ़रवरी का भुगतान बैच (जनवरी की बिक्री) तैयार करने के लिए उपलब्ध है', vt: 'दिसंबर का VAT रिटर्न (मूसक 9.1) 15 जनवरी को जमा हुआ — शून्य, Free Beta में बिक्री नहीं थी' },
+      it: { ps: 'HSC भौतिकी पहले पेपर के हल प्रकाशित करने में एक घंटे से कम बचा है', dif: 'DIF जाँच के बाद 3 MindForge आइटम रोके गए हैं', po: 'फ़रवरी का भुगतान बैच (जनवरी की बिक्री) तैयार करने के लिए उपलब्ध है', vt: 'दिसंबर का VAT रिटर्न (मूसक 9.1) 29 जनवरी को जमा हुआ — शून्य, Free Beta में बिक्री नहीं थी' },
       px: { ps: 'NexaTute Admin: अति आवश्यक — परीक्षा के बाद के हल प्रकाशित करने की समय-सीमा पास है। पैनल खोलें।', dif: 'NexaTute Admin: निष्पक्षता जाँच के बाद MindForge आइटम रुके हुए हैं।', po: 'NexaTute Admin: एक भुगतान बैच तैयार करने के लिए उपलब्ध है।', vt: '' }};
     B.ur = {
       h: 'نوٹیفکیشنز',
@@ -2575,7 +2575,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + ' بغیر پڑھے' : 'سب پڑھ لیے'; },
       aria: function (n) { return 'نوٹیفکیشنز، ' + n + ' بغیر پڑھے'; },
       ago: function (m) { return m < 60 ? m + ' منٹ پہلے' : (m < 1440 ? Math.round(m / 60) + ' گھنٹے پہلے' : (m < 2880 ? 'کل' : Math.round(m / 1440) + ' دن پہلے')); },
-      it: { ps: M('HSC') + ' طبیعیات پہلے پرچے کے حل شائع کرنے میں ایک گھنٹے سے کم باقی ہے', dif: M('DIF') + ' جانچ کے بعد 3 ' + M('MindForge') + ' آئٹم روک دیے گئے ہیں', po: 'فروری کا ادائیگی بیچ (جنوری کی فروخت) تیار کرنے کے لیے موجود ہے', vt: 'دسمبر کا ' + M('VAT') + ' ریٹرن (' + M('Mushak 9.1') + ') 15 جنوری کو جمع ہوا — صفر، ' + M('Free Beta') + ' میں فروخت نہیں تھی' },
+      it: { ps: M('HSC') + ' طبیعیات پہلے پرچے کے حل شائع کرنے میں ایک گھنٹے سے کم باقی ہے', dif: M('DIF') + ' جانچ کے بعد 3 ' + M('MindForge') + ' آئٹم روک دیے گئے ہیں', po: 'فروری کا ادائیگی بیچ (جنوری کی فروخت) تیار کرنے کے لیے موجود ہے', vt: 'دسمبر کا ' + M('VAT') + ' ریٹرن (' + M('Mushak 9.1') + ') 29 جنوری کو جمع ہوا — صفر، ' + M('Free Beta') + ' میں فروخت نہیں تھی' },
       px: { ps: M('NexaTute Admin') + ': فوری — امتحان کے بعد کے حل شائع کرنے کی آخری حد قریب ہے۔ پینل کھولیں۔', dif: M('NexaTute Admin') + ': منصفانہ جانچ کے بعد ' + M('MindForge') + ' آئٹم رکے ہوئے ہیں۔', po: M('NexaTute Admin') + ': ایک ادائیگی بیچ تیار کرنے کے لیے موجود ہے۔', vt: '' }};
     B.ar = {
       h: 'الإشعارات',
@@ -2595,7 +2595,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + ' غير مقروءة' : 'كلها مقروءة'; },
       aria: function (n) { return 'الإشعارات، ' + n + ' غير مقروءة'; },
       ago: function (m) { return m < 60 ? 'قبل ' + m + ' دقيقة' : (m < 1440 ? 'قبل ' + Math.round(m / 60) + ' ساعة' : (m < 2880 ? 'أمس' : 'قبل ' + Math.round(m / 1440) + ' أيام')); },
-      it: { ps: 'أقل من ساعة متبقية لنشر حلول الورقة الأولى في فيزياء ' + M('HSC'), dif: '3 عناصر في ' + M('MindForge') + ' موقوفة بعد فحص ' + M('DIF'), po: 'دفعة مستحقات فبراير (مبيعات يناير) جاهزة للإعداد', vt: 'قُدّم إقرار ضريبة ديسمبر (' + M('Mushak 9.1') + ') في 15 يناير — صفري، لا مبيعات في ' + M('Free Beta') },
+      it: { ps: 'أقل من ساعة متبقية لنشر حلول الورقة الأولى في فيزياء ' + M('HSC'), dif: '3 عناصر في ' + M('MindForge') + ' موقوفة بعد فحص ' + M('DIF'), po: 'دفعة مستحقات فبراير (مبيعات يناير) جاهزة للإعداد', vt: 'قُدّم إقرار ضريبة ديسمبر (' + M('Mushak 9.1') + ') في 29 يناير — صفري، لا مبيعات في ' + M('Free Beta') },
       px: { ps: M('NexaTute Admin') + ': عاجل — اقترب موعد نشر حلول ما بعد الامتحان. افتح اللوحة.', dif: M('NexaTute Admin') + ': عناصر في ' + M('MindForge') + ' موقوفة بعد فحص الإنصاف.', po: M('NexaTute Admin') + ': دفعة مستحقات جاهزة للإعداد.', vt: '' }};
     B.fr = {
       h: 'Notifications',
@@ -2615,7 +2615,7 @@ class Component extends DCLogic {
       sub: function (n) { return n ? n + (n > 1 ? ' non lues' : ' non lue') : 'Tout est lu'; },
       aria: function (n) { return 'Notifications, ' + n + ' non lue(s)'; },
       ago: function (m) { return m < 60 ? 'il y a ' + m + ' min' : (m < 1440 ? 'il y a ' + Math.round(m / 60) + ' h' : (m < 2880 ? 'hier' : 'il y a ' + Math.round(m / 1440) + ' jours')); },
-      it: { ps: 'Moins d’une heure pour publier les solutions de physique HSC, 1re épreuve', dif: '3 items MindForge sont suspendus après un contrôle DIF', po: 'Le lot de versements de février (ventes de janvier) est prêt à préparer', vt: 'La déclaration de TVA de décembre (Mushak 9.1) a été déposée le 15 janv. — néant, aucune vente pendant la Free Beta' },
+      it: { ps: 'Moins d’une heure pour publier les solutions de physique HSC, 1re épreuve', dif: '3 items MindForge sont suspendus après un contrôle DIF', po: 'Le lot de versements de février (ventes de janvier) est prêt à préparer', vt: 'La déclaration de TVA de décembre (Mushak 9.1) a été déposée le 29 janv. — néant, aucune vente pendant la Free Beta' },
       px: { ps: 'NexaTute Admin : urgent — l’échéance de publication des solutions d’après-examen approche. Ouvrez le panneau.', dif: 'NexaTute Admin : des items MindForge sont suspendus après un contrôle d’équité.', po: 'NexaTute Admin : un lot de versements est prêt à préparer.', vt: '' }};
     Object.keys(B).forEach(function (c) { if (L[c]) L[c].ntf = B[c]; });
   }
@@ -2632,7 +2632,7 @@ class Component extends DCLogic {
     var fmtD = function (iso, opt) { try { return new Date(ms(iso)).toLocaleDateString(t.dl, Object.assign({ day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }, opt || {})).replace(/জানুয়ারী/g, 'জানুয়ারি').replace(/ফেব্রুয়ারী/g, 'ফেব্রুয়ারি'); } catch (e) { return iso; } };
     var hm = function (m) { m = (((m + 40) % 1440) + 1440) % 1440; // fix8 D1: the demo clock moved from 15:40 to 16:20, every time shows +40 min
       var h = Math.floor(m / 60), mi = m % 60; return (h < 10 ? '0' : '') + h + ':' + (mi < 10 ? '0' : '') + mi; };
-    var NOW = 940 + s.clk; // one clock for every admin page: Mon 1 Feb 2027, 16:20 Dhaka (shown through hm, +40 min; fix8 D1)
+    var NOW = 940 + s.clk; // one clock for every admin page: Fri 25 Dec 2026, 16:20 Dhaka (shown through hm, +40 min; fix8 D1)
     var chips = function (keys, cur, label, pick) { return keys.map(function (k) { var on = cur === k; return { name: label(k), code: k, on: on, cls: on ? 'on' : '', pick: function () { pick(k); } }; }); };
     var setIn = function (obj, k, v) { var o = Object.assign({}, obj); o[k] = v; return o; };
     var GREEN = ['#E3F5EC', '#0F6B40'], AMBER = ['#FFF3DD', '#8A4B00'], RED = ['#FDEDE6', '#9A3412'], GREY = ['#F0F1F6', '#59617A'], BLUE = ['#ECEBFD', '#3B34C9'];
@@ -2704,16 +2704,16 @@ class Component extends DCLogic {
       self.setState(patch);
     };
 
-    // fix8 D1: gift cards went on sale with the paid plans (1 Jan 2027); January sales ৳6,800 — none has expired (12-month validity)
-    var GB0 = [{ id: 'g1', code: 'SS-2701-ON', ch: 'online', val: 800, qty: 500, sold: 2, red: 1, exp: 0, from: '2027-01-01', st: 'live' },
-      { id: 'g2', code: 'SS-2701-BK', ch: 'bkash', val: 20, qty: 2000, sold: 20, red: 14, exp: 0, from: '2027-01-01', st: 'live' },
-      { id: 'g3', code: 'SS-2701-MR', ch: 'recharge', val: 800, qty: 300, sold: 3, red: 2, exp: 0, from: '2027-01-05', st: 'live' },
-      { id: 'g4', code: 'SS-2701-BS', ch: 'book', val: 2400, qty: 100, sold: 1, red: 0, exp: 0, from: '2027-01-10', st: 'live' }];
+    // fix8 D1: gift vouchers went on sale with the paid plans (15 Jan 2027); January sales ৳6,800 — none has expired (12-month validity)
+    var GB0 = [{ id: 'g1', code: 'SS-2701-ON', ch: 'online', val: 800, qty: 500, sold: 2, red: 1, exp: 0, from: '2027-01-15', st: 'live' },
+      { id: 'g2', code: 'SS-2701-BK', ch: 'bkash', val: 20, qty: 2000, sold: 20, red: 14, exp: 0, from: '2027-01-15', st: 'live' },
+      { id: 'g3', code: 'SS-2701-MR', ch: 'recharge', val: 800, qty: 300, sold: 3, red: 2, exp: 0, from: '2027-01-19', st: 'live' },
+      { id: 'g4', code: 'SS-2701-BS', ch: 'book', val: 2400, qty: 100, sold: 1, red: 0, exp: 0, from: '2027-01-24', st: 'live' }];
     var gAll = GB0.concat(s.gb);
     var gById = function (id) { return gAll.filter(function (g) { return g.id === id; })[0]; };
-    var RQ = { r1: { kind: 'year', who: 'sadia', paid: 8000, buy: '2027-01-04', used: 1, ch: 'bkash', why: 'move' }, r2: { kind: 'mkt', who: 'farzana', paid: 350, buy: '2027-01-28', opened: false, ch: 'card', why: 'wrong' },
-      r3: { kind: 'olymp', who: 'raihan', paid: 2500, mp: 1250, used: 1, buy: '2027-01-01', ch: 'bkash', why: 'time' }, /* Olympiad Personal ৳1,250 a month × 2 */ r4: { kind: 'gift', who: 'jannat', paid: 800, buy: '2027-01-09', ch: 'bkash', why: 'cash' },
-      r5: { kind: 'over', who: 'mehnaz', paid: 800, buy: '2027-01-01', ch: 'bkash', why: 'twice' } };
+    var RQ = { r1: { kind: 'year', who: 'sadia', paid: 8000, buy: '2027-01-18', used: 1, ch: 'bkash', why: 'move' }, r2: { kind: 'mkt', who: 'farzana', paid: 350, buy: '2027-02-11', opened: false, ch: 'card', why: 'wrong' },
+      r3: { kind: 'olymp', who: 'raihan', paid: 2500, mp: 1250, used: 1, buy: '2027-01-15', ch: 'bkash', why: 'time' }, /* Olympiad Personal ৳1,250 a month × 2 */ r4: { kind: 'gift', who: 'jannat', paid: 800, buy: '2027-01-23', ch: 'bkash', why: 'cash' },
+      r5: { kind: 'over', who: 'mehnaz', paid: 800, buy: '2027-01-15', ch: 'bkash', why: 'twice' } };
 
     // ---------- Approvals engine (same rule table as Platform admin) ----------
     var T1 = 100000, T2 = 1000000;
@@ -2750,7 +2750,7 @@ class Component extends DCLogic {
       if (a.kind === 'exnte') return t.xa.ad_set(t.xa.set_n.nte + ' · ' + UI[a.val.l].langName);
       if (XKD[a.kind]) return t.xa.ad_set(t.xa.set_n[a.ref]);
       if (a.kind === 'ref') { var r = RQ[a.ref]; return t.ad.ref(t.rk[r.kind], N(r.who)); }
-      if (a.kind === 'gift') { var g = gById(a.ref); return t.ad.gift(g.code, nf(g.qty), tk(g.val), t.gch[g.ch]); }
+      if (a.kind === 'gift') { var g = gById(a.ref); return t.ad.gift(g.code, nf(g.qty), nf(g.val) + ' ' + t.ad.min_u, t.gch[g.ch]); }
       if (a.kind === 'pay') return t.ad.pay(a.n);
       if (a.kind === 'mfset') return t.ad.mfset(a.ref, a.n);
       if (a.kind === 'anyc') return t.ad.anyc(t.f7.ac_items[a.ref], a.rate.toFixed(2));
@@ -2762,11 +2762,11 @@ class Component extends DCLogic {
     var apSec = function (a) { return a.kind === 'mfset' ? 'q' : (a.kind === 'sch' || a.kind === 'pat' || XKD[a.kind] ? 'tm' : 'm'); };
     var effects = function (a, patch) {
       if (a.kind === 'anyc') { patch.ac = setIn(s.ac, a.ref, 'final'); patch.acRate = setIn(s.acRate, a.ref, a.rate); patch.acLab = setIn(s.acLab, a.ref, a.lab); return { who: 'sys', act: 'post', k: 'anyc_live', a: [a.ref, a.rate.toFixed(2)] }; }
-      if (a.kind === 'exnte') { var nl = a.val.l, nn = (s.ntV || []).filter(function (x) { return x.l === nl; }).length + 2; patch.ntV = (s.ntV || []).concat([{ l: nl, v: 'v' + nn, txt: a.val.txt, by: a.maker, ok: meId, d: '2027-02-01' }]);
+      if (a.kind === 'exnte') { var nl = a.val.l, nn = (s.ntV || []).filter(function (x) { return x.l === nl; }).length + 2; patch.ntV = (s.ntV || []).concat([{ l: nl, v: 'v' + nn, txt: a.val.txt, by: a.maker, ok: meId, d: '2027-02-15' }]);
         patch.ntD = setIn(s.ntD, nl, undefined); return { who: 'sys', act: 'post', k: 'ex_nt_live', a: [nl] }; }
-      if (a.kind === 'rvk') { patch.rvk = (s.rvk || []).concat([{ id: a.cid, c: null, wtxt: a.why, d: '2027-02-01', by: a.maker, ok: meId }]); return { who: 'sys', act: 'post', k: 'ex_rv_live', a: [a.cid] }; }
+      if (a.kind === 'rvk') { patch.rvk = (s.rvk || []).concat([{ id: a.cid, c: null, wtxt: a.why, d: '2027-02-15', by: a.maker, ok: meId }]); return { who: 'sys', act: 'post', k: 'ex_rv_live', a: [a.cid] }; }
       if (XKD[a.kind]) { patch.xsL = setIn(s.xsL, a.ref, a.val); patch.xsD = setIn(s.xsD, a.ref, null); return { who: 'sys', act: 'post', k: 'ex_set_live', a: [a.ref] }; }
-      if (a.kind === 'sch') { var sv = Object.assign({}, s.schV); sv[a.ref] = (s.schV[a.ref] || []).concat([{ v: a.v, why: a.why, d: '2027-02-01', by: a.maker, ok: meId, m: a.mk }]); patch.schV = sv; patch.schD = setIn(s.schD, a.ref, null);
+      if (a.kind === 'sch') { var sv = Object.assign({}, s.schV); sv[a.ref] = (s.schV[a.ref] || []).concat([{ v: a.v, why: a.why, d: '2027-02-15', by: a.maker, ok: meId, m: a.mk }]); patch.schV = sv; patch.schD = setIn(s.schD, a.ref, null);
         return { who: 'sys', act: 'post', k: 'tm_sch_live', a: [a.ref, a.v] }; }
       if (a.kind === 'pat') { patch.qtL = setIn(s.qtL, a.ref, a.pat); patch.qtD = setIn(s.qtD, a.ref, null); return { who: 'sys', act: 'post', k: 'tm_pat_live', a: [a.ref] }; }
       if (a.kind === 'mfset') { var mi = Object.assign({}, s.mfIn); (a.ids || []).forEach(function (i) { mi[i] = true; }); patch.mfIn = mi; patch.mfV = s.mfV + 1; patch.mfAdd = s.mfAdd + a.n; patch.mfPick = {};
@@ -2849,7 +2849,7 @@ class Component extends DCLogic {
     // the check only flags; a person decides with a reason, the learner is told and can appeal, and the appeal is decided by someone else. Every step is logged.
     var xa = t.xa, xE = area === 'tm' && canE;
     var dc = function (x, n) { var v = Number(x).toFixed(n); return s.lang === 'fr' ? v.replace('.', ',') : v; };
-    var xAt = function (m) { return m < 0 ? fmtD('2027-01-31') + ' ' + hm(m) : t.today_at(hm(m)); };
+    var xAt = function (m) { return m < 0 ? fmtD('2027-02-14') + ' ' + hm(m) : t.today_at(hm(m)); };
     var xStep = function (v, lo, hi, d, set, txt, on) { return { v: txt ? txt(v) : String(v), minusOff: !on || v <= lo, plusOff: !on || v >= hi,
       minus: function () { if (on && v > lo) set(Math.max(lo, Math.round((v - d) * 100) / 100)); }, plus: function () { if (on && v < hi) set(Math.min(hi, Math.round((v + d) * 100) / 100)); } }; };
     var xTog = function (on, can, flip) { return { on: on, cls: on ? 'tg' : 'tg off', off: !can, flip: function () { if (can) flip(); } }; };
@@ -2881,7 +2881,7 @@ class Component extends DCLogic {
       outMin: xStep(rcD.outMin, 0, 120, 15, function (v) { var d = xDraft('rec'); d.outMin = v; xSetD('rec', d); }, xa.rec_s, rcEd),
       calls: xa.rec_calls(nf(19000 / rcD.sync)), lose: xa.rec_lose(rcD.sync),
       rules: ['idb', 'resume', 'prac', 'timed'].map(function (k) { return { t: xa.rec_r[k], s: xa.rec_rs[k] }; }),
-      k: [{ l: xa.rec_k.loss, v: '1,284', s: xa.rec_ks.loss }, { l: xa.rec_k.ok, v: dc(99.7, 1) + '%', s: xa.rec_ks.ok }, { l: xa.rec_k.avg, v: xa.rec_s(48), s: xa.rec_ks.avg }, { l: xa.rec_k.cred, v: '412', s: xa.rec_ks.cred(fmtD('2027-01-30')) }],
+      k: [{ l: xa.rec_k.loss, v: '1,284', s: xa.rec_ks.loss }, { l: xa.rec_k.ok, v: dc(99.7, 1) + '%', s: xa.rec_ks.ok }, { l: xa.rec_k.avg, v: xa.rec_s(48), s: xa.rec_ks.avg }, { l: xa.rec_k.cred, v: '412', s: xa.rec_ks.cred(fmtD('2027-02-13')) }],
       outTxt: xa.rec_out(rcD.outMin) });
 
     // (2) randomization & anti-cheating: shuffle defaults per test kind + similarity review queue (platform tests)
@@ -2916,7 +2916,7 @@ class Component extends DCLogic {
         dec: function () { if (decOff) return; act([{ who: meId, act: 'edit', k: 'ex_q_dec', a: [sel, out], why: String(why).trim() }],
           { xqS: setIn(s.xqS, sel, 'dec'), xqDec: setIn(s.xqDec, sel, { by: meId, m: NOW + 2, out: out, why: String(why).trim() }), xqWhy: setIn(s.xqWhy, sel, '') }, xa.t_q_dec); },
         hasDec: !!dd, decRes: res(), decBy: dd ? xa.q_by(I(pName(dd.by)), xAt(dd.m)) : '', decWhy: dd ? dd.why : '',
-        isDec: S === 'dec', ntf: dd ? xa.q_ntf(title, xa.q_out[dd.out]) : '', win: xa.q_win(fmtD(S === 'dec' && s.xqDec[sel] ? '2027-02-08' : (q.winD || '2027-02-08'))),
+        isDec: S === 'dec', ntf: dd ? xa.q_ntf(title, xa.q_out[dd.out]) : '', win: xa.q_win(fmtD(S === 'dec' && s.xqDec[sel] ? '2027-02-22' : (q.winD || '2027-02-22'))),
         isApp: S === 'appeal', appTxt: ap ? ap.txt : '', appAt: ap ? xa.q_app_at(xAt(ap.m)) : '', canApp: canApp, appOwn: S === 'appeal' && !!dd && dd.by === meId, appRole: S === 'appeal' && !!dd && dd.by !== meId && !xE,
         aOuts: chips(['uphold', 'overturn'], aOut, function (k) { return xa.q_aout[k]; }, function (k) { self.setState({ xqOut: setIn(s.xqOut, sel + '_a', k) }); }),
         aWhy: aWhy, onAWhy: function (e) { self.setState({ xqWhy: setIn(s.xqWhy, sel + '_a', e.target.value) }); }, aOff: aOff,
@@ -2963,7 +2963,7 @@ class Component extends DCLogic {
       ar: 'اختبار تدريبي من NexaTute — غير معترف به من أي مجلس تعليمي أو جهة امتحانات. الامتحانات الحقيقية والاعتراف بها من شأن الجهة المختصة.',
       fr: 'Examen d’entraînement NexaTute — non reconnu par aucun conseil d’éducation ni aucune autorité d’examen. Les vrais examens et leur reconnaissance relèvent de l’autorité concernée.' };
     var NTR = { bn: 'ok', en: 'ok', hi: 'wait', ur: 'wait', ar: 'wait', fr: 'wait' };
-    var ntVers = function (l) { return [{ v: 'v1', by: 'p10', ok: 'p1', d: '2027-02-03', txt: NT0[l] }].concat((s.ntV || []).filter(function (x) { return x.l === l; })); };
+    var ntVers = function (l) { return [{ v: 'v1', by: 'p10', ok: 'p1', d: '2027-02-17', txt: NT0[l] }].concat((s.ntV || []).filter(function (x) { return x.l === l; })); };
     var ntLive = function (l) { var v = ntVers(l); return v[v.length - 1]; };
     var ntL = NT0[s.ntSel] ? s.ntSel : 'bn', ntCur = ntLive(ntL), ntP = s.aps.filter(function (a) { return a.kind === 'exnte' && a.st === 'wait' && a.val.l === ntL; })[0] || null;
     var ntDr = s.ntD[ntL] !== undefined ? s.ntD[ntL] : ntCur.txt, ntDirty = String(ntDr).trim() !== ntCur.txt, ntWhy = s.xsWhy['nte_' + ntL] || '', ntEd = xE && !ntP;
@@ -3035,7 +3035,7 @@ class Component extends DCLogic {
     var crD = crB.D, crEd = crB.edit, crC = ['eng', 'py', 'dm', 'xl'];
     var crSet = function (k, sub) { return function (v) { var d = xDraft('crt'); if (sub) d.pass[sub] = v; else d[k] = v; xSetD('crt', d); }; };
     var crBad = !(crC.every(function (k) { return crD.pass[k] < crD.prof; }) && crD.prof < crD.adv);
-    var RV0 = [{ id: 'NX-C-2610-00412', c: 'eng', why: 'rv1', d: '2027-01-12', by: 'p10', ok: 'p1' }, { id: 'NX-C-2609-01877', c: 'py', why: 'rv2', d: '2026-12-28', by: 'p1', ok: 'p10' }, { id: 'NX-C-2608-00930', c: 'dm', why: 'rv3', d: '2026-11-19', by: 'p10', ok: 'p1' }];
+    var RV0 = [{ id: 'NX-C-2610-00412', c: 'eng', why: 'rv1', d: '2027-01-26', by: 'p10', ok: 'p1' }, { id: 'NX-C-2609-01877', c: 'py', why: 'rv2', d: '2026-12-22', by: 'p1', ok: 'p10' }, { id: 'NX-C-2608-00930', c: 'dm', why: 'rv3', d: '2026-12-24', by: 'p10', ok: 'p1' }];
     var rvAll = (s.rvk || []).slice().reverse().concat(RV0), rvCid = String(s.rvId || '').trim().toUpperCase(), rvWhy = s.rvWhy || '';
     var rvKnown = /^NX-C-\d{4}-\d{5}$/.test(rvCid), rvDone = rvAll.some(function (r) { return r.id === rvCid; }) || s.aps.some(function (a) { return a.kind === 'rvk' && a.st === 'wait' && a.cid === rvCid; });
     var rvOff = !xE || !rvKnown || rvDone || !String(rvWhy).trim();
@@ -3084,15 +3084,15 @@ class Component extends DCLogic {
       go: function () { if (!oCanGo) return; act([{ who: meId, act: 'publish', k: 'ex_em_live', a: [oSel] }], { orgS: setIn(s.orgS, oSel, 'live') }, xa.t_em_live); },
       cons: CNS[oSel].map(function (r) { var wd = r[4] === 'wd'; return { id: r[0], n: r[1], t: xa.em_t[r[2]], at: xAt(r[3]), sh: wd ? xa.em_wd : xa.em_sh, bg: wd ? GREY[0] : GREEN[0], fg: wd ? GREY[1] : GREEN[1] }; }),
       noCons: CNS[oSel].length === 0, hasCons: CNS[oSel].length > 0, foot: xa.em_foot, price: xa.em_price,
-      // learners (owner, 25 Oct 2026): free on BCS + Job Test Preparation and the other job-test courses; otherwise the "Recruitment tests" add-on ৳399 a month ($6), up to 3 tests a day, 18+ only.
+      // learners (owner, 25 Oct 2026): free on BCS + Job Test Preparation and the other job-test courses; otherwise the "Recruitment tests" add-on ৳399 a month ($4.42), up to 3 tests a day, 18+ only.
       // The per-plan switch and price live in Platform admin › Plans & modules (two-person approval); this view only shows them.
       lrn: [{ l: xa.em_l.job, v: xa.em_free, s: xa.em_ls.job(3) }, { l: xa.em_l.add, v: '৳399', s: xa.em_ls.add('$6', 3) }, { l: xa.em_l.via, v: '168 · 46', s: xa.em_ls.via }], lrnNote: xa.em_l_note };
 
     // (11) institution API: OAuth client-credential keys with scopes, webhooks, rate limits; institution head + NexaTute security owner approve (maker ≠ approver); rotation / revocation
-    var API = { api1: { who: 'ideal', head: 'mihead', hd: '2027-01-31', maker: 'p10', sc: ['ro_r', 'as', 'res_r'], rate: 60, day: 20000, hook: 'https://erp.mirpur-ideal.example/nexatute/results', st: 'wait', cid: 'nx_cli_7f3a91' },
-      api2: { who: 'dmc', head: 'dmhead', hd: '2027-02-01', maker: 'p13', sc: ['ro_r', 'ro_w', 'res_r'], rate: 120, day: 40000, hook: 'https://portal.dmc.example/api/nexatute', st: 'wait', cid: 'nx_cli_b20c44' },
-      api3: { who: 'rahman', head: 'rahead', hd: '2026-12-02', maker: 'p10', ok: 'p13', okd: '2026-12-03', sc: ['ro_r', 'as', 'res_r'], rate: 60, day: 20000, hook: 'https://rahman-coaching.example/hooks/results', st: 'live', cid: 'nx_cli_51de07', rot: '2027-01-01' },
-      api4: { who: 'cgs', head: 'cghead', hd: '2026-11-10', maker: 'p10', ok: 'p13', okd: '2026-11-11', sc: ['ro_r', 'res_r'], rate: 60, day: 20000, hook: 'https://cgs.example/nexatute', st: 'revoked', cid: 'nx_cli_0a77e2', rvd: '2027-01-14' } };
+    var API = { api1: { who: 'ideal', head: 'mihead', hd: '2027-02-14', maker: 'p10', sc: ['ro_r', 'as', 'res_r'], rate: 60, day: 20000, hook: 'https://erp.mirpur-ideal.example/nexatute/results', st: 'wait', cid: 'nx_cli_7f3a91' },
+      api2: { who: 'dmc', head: 'dmhead', hd: '2027-02-15', maker: 'p13', sc: ['ro_r', 'ro_w', 'res_r'], rate: 120, day: 40000, hook: 'https://portal.dmc.example/api/nexatute', st: 'wait', cid: 'nx_cli_b20c44' },
+      api3: { who: 'rahman', head: 'rahead', hd: '2027-01-06', maker: 'p10', ok: 'p13', okd: '2027-01-07', sc: ['ro_r', 'as', 'res_r'], rate: 60, day: 20000, hook: 'https://rahman-coaching.example/hooks/results', st: 'live', cid: 'nx_cli_51de07', rot: '2027-01-15' },
+      api4: { who: 'cgs', head: 'cghead', hd: '2026-12-15', maker: 'p10', ok: 'p13', okd: '2026-12-16', sc: ['ro_r', 'res_r'], rate: 60, day: 20000, hook: 'https://cgs.example/nexatute', st: 'revoked', cid: 'nx_cli_0a77e2', rvd: '2027-01-28' } };
     var apiSt = function (id) { return s.apiS[id] || API[id].st; };
     var apiSel = API[s.apiSel] ? s.apiSel : 'api1', ac = API[apiSel], aSt = apiSt(apiSel), aD = s.apiD[apiSel] || {};
     var apiLv = lvl('api'), isSec = has('sec'), isBoard = has('board');
@@ -3111,7 +3111,7 @@ class Component extends DCLogic {
       noRole: aSt === 'wait' && ac.maker !== meId && !apiCan, rjOff: !apiCan || !String(apiWhy).trim(),
       ok: function () { if (!apiCan) return; act([{ who: meId, act: 'approve', k: 'ex_api_ok', a: [apiSel] }], { apiS: setIn(s.apiS, apiSel, 'live'), apiD: setIn(s.apiD, apiSel, { ok: meId, m: NOW + 2 }) }, xa.t_api_ok); },
       rj: function () { if (!apiCan || !String(apiWhy).trim()) return; act([{ who: meId, act: 'reject', k: 'ex_api_rj', a: [apiSel], why: String(apiWhy).trim() }], { apiS: setIn(s.apiS, apiSel, 'rj'), apiD: setIn(s.apiD, apiSel, { by: meId, m: NOW + 2, why: String(apiWhy).trim() }), apiWhy: setIn(s.apiWhy, apiSel, '') }, xa.t_api_rj); },
-      isLive: aSt === 'live', canLive: aSt === 'live' && apiLv === 2, rot: xa.api_rot(s.apiRot && s.apiRot[apiSel] ? t.today_at(hm(s.apiRot[apiSel])) : (ac.rot ? fmtD(ac.rot) : fmtD('2027-02-01'))),
+      isLive: aSt === 'live', canLive: aSt === 'live' && apiLv === 2, rot: xa.api_rot(s.apiRot && s.apiRot[apiSel] ? t.today_at(hm(s.apiRot[apiSel])) : (ac.rot ? fmtD(ac.rot) : fmtD('2027-02-15'))),
       rotate: function () { if (!(aSt === 'live' && apiLv === 2)) return; act([{ who: meId, act: 'edit', k: 'ex_api_rot', a: [apiSel] }], { apiRot: setIn(s.apiRot || {}, apiSel, NOW + 2) }, xa.t_api_rot); },
       rvOff: !(aSt === 'live' && apiLv === 2) || !String(apiWhy).trim(),
       revoke: function () { if (!(aSt === 'live' && apiLv === 2) || !String(apiWhy).trim()) return; act([{ who: meId, act: 'retire', k: 'ex_api_rv', a: [apiSel], why: String(apiWhy).trim() }], { apiS: setIn(s.apiS, apiSel, 'revoked'), apiWhy: setIn(s.apiWhy, apiSel, '') }, xa.t_api_rv); },

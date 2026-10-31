@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<title>Wallet, notifications, profile, settings</title>
+<title>Extra minutes & Daily Pass, notifications, profile, settings</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -80,7 +80,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
 </div>
 <div style="display:flex;gap:40px">
 
-<!-- 4.1 Wallet -->
+<!-- 4.1 Extra minutes & Daily Pass -->
 <div class="col">
   <div class="cap"><b>4.1</b>{{ t.k002 }}</div>
   <div class="ph">
@@ -91,11 +91,11 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
     <div class="bd" style="gap:8px">
       <div style="background:#141A33;color:#fff;border-radius:20px;padding:16px 18px">
         <p style="margin:0;font-size:13px;color:#C9CDF0">{{ t.k005 }}</p>
-        <p style="margin:2px 0 0;font-size:34px;font-weight:700">৳145</p>
+        <p style="margin:2px 0 0;font-size:34px;font-weight:700">45 {{ t.min_u }}</p>
         <p style="margin:6px 0 0;font-size:13px;color:#C9CDF0">{{ t.k006 }}</p>
       </div>
       <p class="t3" style="font-size:14px">{{ t.k007 }}</p>
-      <div class="row"><button class="amt">৳100</button><button class="amt" style="border:2px solid #3B34C9">৳200</button><button class="amt">৳500</button></div>
+      <div class="row"><button class="amt">30 {{ t.min_u }} · ৳30</button><button class="amt" style="border:2px solid #3B34C9">60 {{ t.min_u }} · ৳60</button><button class="amt">120 {{ t.min_u }} · ৳120</button></div>
       <div class="cd" style="border:2px solid #F2A93B;display:flex;flex-direction:column;gap:6px;padding:14px 16px">
         <div class="row" style="justify-content:space-between"><p class="t2">Daily Pass</p><b style="font-size:20px">৳20</b></div>
         <p class="sm">{{ t.k008 }}</p>
@@ -108,9 +108,9 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
       </div>
       <p class="t3" style="font-size:14px">{{ t.k012 }}</p>
       <div class="cd st4" style="padding:2px 16px">
-        <div class="li"><span style="flex:1">{{ t.k013 }}</span><span>− ৳12</span></div>
+        <div class="li"><span style="flex:1">{{ t.k013 }}</span><span>− 12 {{ t.min_u }}</span></div>
         <div class="li"><span style="flex:1">{{ t.k014 }}</span><span style="color:#0F6B40">{{ t.k015 }}</span></div>
-        <div class="li" style="border:0"><span style="flex:1">{{ t.k016 }}</span><span style="color:#0F6B40">+ ৳100</span></div>
+        <div class="li" style="border:0"><span style="flex:1">{{ t.k016 }}</span><span style="color:#0F6B40">+ 60 {{ t.min_u }}</span></div>
       </div>
       <div class="cd" style="padding:8px 12px;background:#E3F5EC;border-color:#BFE6D1;display:flex;gap:10px;align-items:flex-start">
         <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:#0F6B40"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -178,7 +178,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
       <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>{{ fx.dash }}</a>
       <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>{{ t.k060 }}</a>
       <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v14H7a3 3 0 0 1-3-3z"/><path d="M4 18a3 3 0 0 1 3-3h11"/></svg>{{ t.k061 }}</a>
-      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Teacher</a>
+      <a href="#"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Co-Tutor</a>
       <a href="#" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>{{ t.k041 }}</a>
     </nav>
   </div>
@@ -265,7 +265,7 @@ a{color:#3B34C9}a:hover{color:#2A24A0}
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2206,"height":1100}}'>
 class Component extends DCLogic {
   // fix16 (28 Oct 2026): LiveKit class features / learning-guarantee claim flow — 6 languages, identical keys
-  fx16(l) { var D = {"bn": {"check_h": "শেখার নিশ্চয়তা — 4 সপ্তাহের যাচাই", "claim_ok": "তুমি যোগ্য: এই 4 সপ্তাহের মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত আসবে।", "claim_btn": "দাবি করুন", "credit": "ক্রেডিট 6 মাস বৈধ", "week4": "4 সপ্তাহের 4 নম্বর সপ্তাহ", "dash": "ড্যাশবোর্ড", "not_result": "এটি পরীক্ষার গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়।"}, "en": {"check_h": "Learning guarantee — 4-week check", "claim_ok": "You qualify: the minutes from these 4 weeks come back as wallet credit.", "claim_btn": "Claim", "credit": "Credit valid for 6 months", "week4": "Week 4 of 4", "dash": "Dashboard", "not_result": "Not a promise of exam grades or results."}, "hi": {"check_h": "सीखने की गारंटी — 4 हफ़्ते की जाँच", "claim_ok": "आप योग्य हैं: इन 4 हफ़्तों के मिनट वॉलेट क्रेडिट के रूप में लौटेंगे।", "claim_btn": "दावा करें", "credit": "क्रेडिट 6 महीने मान्य", "week4": "4 में से हफ़्ता 4", "dash": "डैशबोर्ड", "not_result": "यह परीक्षा के ग्रेड या परिणाम का कोई वादा नहीं है।"}, "ur": {"check_h": "سیکھنے کی ضمانت — ⁦4⁩ ہفتوں کی جانچ", "claim_ok": "آپ اہل ہیں: ان ⁦4⁩ ہفتوں کے منٹ والیٹ کریڈٹ کے طور پر واپس آئیں گے۔", "claim_btn": "دعویٰ کریں", "credit": "کریڈٹ ⁦6⁩ ماہ کارآمد", "week4": "⁦4⁩ میں سے ہفتہ ⁦4⁩", "dash": "ڈیش بورڈ", "not_result": "یہ امتحانی گریڈ یا نتائج کا کوئی وعدہ نہیں۔"}, "ar": {"check_h": "ضمان التعلّم — تحقّق الأسابيع الأربعة", "claim_ok": "أنت مؤهل: تعود دقائق هذه الأسابيع الأربعة رصيدًا في المحفظة.", "claim_btn": "طالِب", "credit": "الرصيد صالح ⁦6⁩ أشهر", "week4": "الأسبوع ⁦4⁩ من ⁦4⁩", "dash": "لوحة المتابعة", "not_result": "ليس وعدًا بدرجات الامتحانات أو نتائجها."}, "fr": {"check_h": "Garantie d’apprentissage — vérification des 4 semaines", "claim_ok": "Tu y as droit : les minutes de ces 4 semaines reviennent en crédit sur le portefeuille.", "claim_btn": "Demander", "credit": "Crédit valable 6 mois", "week4": "Semaine 4 sur 4", "dash": "Tableau de bord", "not_result": "Ce n’est pas une promesse de notes ou de résultats d’examen."}}; return D[l] || D.bn; }
+  fx16(l) { var D = {"bn": {"check_h": "শেখার নিশ্চয়তা — 4 সপ্তাহের যাচাই", "claim_ok": "তুমি যোগ্য: এই 4 সপ্তাহের মিনিটগুলো কোর্সে আবার যোগ হবে।", "claim_btn": "দাবি করুন", "credit": "মিনিট 6 মাস বৈধ", "week4": "4 সপ্তাহের 4 নম্বর সপ্তাহ", "dash": "ড্যাশবোর্ড", "not_result": "এটি পরীক্ষার গ্রেড বা রেজাল্টের কোনো প্রতিশ্রুতি নয়।"}, "en": {"check_h": "Learning guarantee — 4-week check", "claim_ok": "You qualify: the minutes from these 4 weeks are added back to the course.", "claim_btn": "Claim", "credit": "Minutes valid for 6 months", "week4": "Week 4 of 4", "dash": "Dashboard", "not_result": "Not a promise of exam grades or results."}, "hi": {"check_h": "सीखने की गारंटी — 4 हफ़्ते की जाँच", "claim_ok": "आप योग्य हैं: इन 4 हफ़्तों के मिनट कोर्स में वापस जुड़ेंगे।", "claim_btn": "दावा करें", "credit": "मिनट 6 महीने मान्य", "week4": "4 में से हफ़्ता 4", "dash": "डैशबोर्ड", "not_result": "यह परीक्षा के ग्रेड या परिणाम का कोई वादा नहीं है।"}, "ur": {"check_h": "سیکھنے کی ضمانت — ⁦4⁩ ہفتوں کی جانچ", "claim_ok": "آپ اہل ہیں: ان ⁦4⁩ ہفتوں کے منٹ کورس میں واپس شامل ہوں گے۔", "claim_btn": "دعویٰ کریں", "credit": "منٹ ⁦6⁩ ماہ کارآمد", "week4": "⁦4⁩ میں سے ہفتہ ⁦4⁩", "dash": "ڈیش بورڈ", "not_result": "یہ امتحانی گریڈ یا نتائج کا کوئی وعدہ نہیں۔"}, "ar": {"check_h": "ضمان التعلّم — تحقّق الأسابيع الأربعة", "claim_ok": "أنت مؤهل: تعود دقائق هذه الأسابيع الأربعة إلى الدورة.", "claim_btn": "طالِب", "credit": "الدقائق صالحة ⁦6⁩ أشهر", "week4": "الأسبوع ⁦4⁩ من ⁦4⁩", "dash": "لوحة المتابعة", "not_result": "ليس وعدًا بدرجات الامتحانات أو نتائجها."}, "fr": {"check_h": "Garantie d’apprentissage — vérification des 4 semaines", "claim_ok": "Tu y as droit : les minutes de ces 4 semaines reviennent dans le cours.", "claim_btn": "Demander", "credit": "Minutes valables 6 mois", "week4": "Semaine 4 sur 4", "dash": "Tableau de bord", "not_result": "Ce n’est pas une promesse de notes ou de résultats d’examen."}}; return D[l] || D.bn; }
   // fix11 (owner 26 Oct 2026, 22:15): the static wireframe in 6 languages — same frames, a language picker (default bn), RTL via M() for ur/ar
   langs() { return ['bn', 'en', 'hi', 'ur', 'ar', 'fr']; }
   uiText() { return this.i18n(); }
@@ -273,16 +273,17 @@ class Component extends DCLogic {
     var M = function (x) { return '\u2066' + x + '\u2069'; };
     var L = {};
     L.bn = {
+      min_u: 'মিনিট',
       lgp_h: 'ভাষা',
       lgp_n: 'বাংলা',
-      k001: 'ওয়ালেট ও Daily Pass, নোটিফিকেশন, প্রোফাইল ও প্ল্যান, সেটিংস',
-      k002: 'ওয়ালেট ও Daily Pass',
+      k001: 'বাড়তি মিনিট ও Daily Pass, নোটিফিকেশন, প্রোফাইল ও প্ল্যান, সেটিংস',
+      k002: 'বাড়তি মিনিট ও Daily Pass',
       k003: 'পেছনে',
-      k004: 'ওয়ালেট',
-      k005: 'ব্যালান্স',
+      k004: 'বাড়তি মিনিট',
+      k005: 'বাড়তি 1:1 মিনিট বাকি (গণিত)',
       k006: 'অতিরিক্ত 1:1 কল · ৳1/মিনিট · রাত 1–7টা ৳0.80/মিনিট (শুধু প্রাপ্তবয়স্ক কোর্সে, 20% ছাড়)',
-      k007: 'টপ-আপ',
-      k008: '24 ঘণ্টা · 20 মিনিট 1:1 Nexa Teacher + Nexa Co-Teacher + মক টেস্ট',
+      k007: 'বাড়তি মিনিট কিনুন — এখনই পরিশোধ, কোনো ব্যালান্স রাখা হয় না',
+      k008: '24 ঘণ্টা · 20 মিনিট 1:1 Nexa Tutor + Nexa Co-Tutor + মক টেস্ট',
       k009: 'bKash দিয়ে কিনো',
       k010: 'মাসিক খরচের সীমা',
       k011: 'সীমা ঠিক করেছেন তোমার অভিভাবক',
@@ -290,10 +291,10 @@ class Component extends DCLogic {
       k013: '1:1 কল · গণিত',
       k014: 'সেরা প্রশ্নের পুরস্কার',
       k015: '+10 মিনিট',
-      k016: 'টপ-আপ · Nagad',
+      k016: 'বাড়তি 60 মিনিট কেনা · Nagad',
       k017: 'শেখার নিশ্চয়তা:',
-      k018: 'নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো ওয়ালেট ক্রেডিট হিসেবে ফেরত দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
-      k019: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; ক্রেডিট থাকে 6 মাস। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k018: 'নিয়মিত 4 সপ্তাহ পড়ার পরও (সপ্তাহে 3 বা তার বেশি সেশন) তোমার আয়ত্ত না বাড়লে, সেই মিনিটগুলো তোমার কোর্সে আবার যোগ করে দিই [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
+      k019: 'সব পেইড প্ল্যানে প্রযোজ্য (Free Beta, Free Trial, ফ্রি টিয়ার বা Daily Pass-এ নয়)। এটি নির্ভর করে তোমার, তোমার অভিভাবকের আর শিক্ষকের নিয়মিত অংশগ্রহণের ওপর; মিনিটগুলো 6 মাস বৈধ থাকে। পূর্ণ নিয়ম আছে শেখার নিশ্চয়তার শর্তাবলিতে [আমাদের আইনজীবীর সঙ্গে নিশ্চিত করতে হবে]।',
       k020: 'নোটিফিকেশন',
       k021: 'সব পড়া হয়েছে',
       k022: 'ব্যাচ ক্লাস 30 মিনিট পরে',
@@ -306,21 +307,21 @@ class Component extends DCLogic {
       k029: '3 দিন আগের ভুলগুলো আবার দেখো',
       k030: 'সকাল 9:00',
       k031: '6 মিনিট ফেরত দেওয়া হয়েছে',
-      k032: 'গতকাল সার্ভার সমস্যায় Nexa Teacher থেমে গিয়েছিল',
+      k032: 'গতকাল সার্ভার সমস্যায় Nexa Tutor থেমে গিয়েছিল',
       k033: 'গতকাল',
       k034: 'শনিবার: এই সপ্তাহের লক্ষ্য ঠিক করো',
       k035: 'শুক্রবারের 2 মিনিটের রিফ্লেকশন বাকি',
       k036: '2 দিন আগে',
       k037: 'অটো-রিনিউ ঠিক হয়েছে — পেমেন্ট সফল',
-      k038: 'প্রথম চেষ্টা ব্যর্থ হয়েছিল; 3 দিনের গ্রেসের মধ্যে আবার চেষ্টা সফল। প্ল্যান থামেনি — মেয়াদ 5 মার্চ 2027 পর্যন্ত।',
-      k039: '5 ফেব্রুয়ারি',
+      k038: 'প্রথম চেষ্টা ব্যর্থ হয়েছিল; 3 দিনের গ্রেসের মধ্যে আবার চেষ্টা সফল। প্ল্যান থামেনি — মেয়াদ 19 মার্চ 2027 পর্যন্ত।',
+      k039: '19 ফেব্রুয়ারি',
       k040: 'প্রোফাইল ও প্ল্যান',
       k041: 'প্রোফাইল',
       k042: 'ত',
       k043: 'তানভীর আহমেদ',
       k044: 'Nexa ID · মুখ যাচাই সম্পন্ন',
       k045: 'চালু',
-      k046: 'মেয়াদ 5 মার্চ 2027 পর্যন্ত · অটো-রিনিউ (কেনার সময় বেছে নেওয়া)',
+      k046: 'মেয়াদ 19 মার্চ 2027 পর্যন্ত · অটো-রিনিউ (কেনার সময় বেছে নেওয়া)',
       k047: 'Personal-এ আপগ্রেড — এখনই চালু',
       k048: 'দিনে 75 মিনিট 1:1। এই মাসের বাকি 15 দিনের জন্য শুধু পার্থক্য দাও:',
       k049: 'আপগ্রেড করো',
@@ -385,16 +386,17 @@ class Component extends DCLogic {
       k108: 'কয়েক মিনিটের মধ্যে তৈরি (ডিফল্ট) · লিংক তোমার নোটিফিকেশনে · 7 দিন কাজ করবে (ডিফল্ট) · একবারের কোড চাইবে'
     };
     L.en = {
+      min_u: 'min',
       lgp_h: 'Language',
       lgp_n: 'English',
-      k001: 'Wallet and Daily Pass, notifications, profile and plan, settings',
-      k002: 'Wallet and Daily Pass',
+      k001: 'Extra minutes and Daily Pass, notifications, profile and plan, settings',
+      k002: 'Extra minutes and Daily Pass',
       k003: 'Back',
-      k004: 'Wallet',
-      k005: 'Balance',
+      k004: 'Extra minutes',
+      k005: 'Extra 1:1 minutes left (Maths)',
       k006: 'Extra 1:1 call · ৳1/min · 1–7 am ৳0.80/min (adult courses only, 20% off)',
-      k007: 'Top up',
-      k008: '24 hours · 20 min 1:1 Nexa Teacher + Nexa Co-Teacher + mock tests',
+      k007: 'Buy extra minutes — paid now, no balance kept',
+      k008: '24 hours · 20 min 1:1 Nexa Tutor + Nexa Co-Tutor + mock tests',
       k009: 'Buy with bKash',
       k010: 'Monthly spending limit',
       k011: 'Your guardian set the limit',
@@ -402,10 +404,10 @@ class Component extends DCLogic {
       k013: '1:1 call · Maths',
       k014: 'Best-question reward',
       k015: '+10 minutes',
-      k016: 'Top-up · Nagad',
+      k016: 'Extra 60 min bought · Nagad',
       k017: 'Learning guarantee:',
-      k018: 'if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we give the minutes back as wallet credit [to confirm with our lawyer].',
-      k019: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the credit lasts 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',
+      k018: 'if your mastery doesn’t improve after 4 weeks of regular study (3 or more sessions a week), we add the minutes back to your course [to confirm with our lawyer].',
+      k019: 'Applies to every paid plan (not the Free Beta, Free Trial, free tier or Daily Pass). It depends on regular study by you, your guardian and your teacher; the minutes stay valid for 6 months. Full rules in the Learning guarantee terms [to confirm with our lawyer].',
       k020: 'Notifications',
       k021: 'Mark all read',
       k022: 'Batch class in 30 minutes',
@@ -418,21 +420,21 @@ class Component extends DCLogic {
       k029: 'Look again at the mistakes from 3 days ago',
       k030: '9:00 am',
       k031: '6 minutes given back',
-      k032: 'Nexa Teacher stopped yesterday because of a server problem',
+      k032: 'Nexa Tutor stopped yesterday because of a server problem',
       k033: 'Yesterday',
       k034: 'Saturday: set this week’s goal',
       k035: 'Friday’s 2-minute reflection is still to do',
       k036: '2 days ago',
       k037: 'Auto-renew done — payment successful',
-      k038: 'The first try failed; a retry within the 3-day grace period worked. The plan did not stop — valid until 5 March 2027.',
-      k039: '5 February',
+      k038: 'The first try failed; a retry within the 3-day grace period worked. The plan did not stop — valid until 19 March 2027.',
+      k039: '19 February',
       k040: 'Profile and plan',
       k041: 'Profile',
       k042: 'T',
       k043: 'Tanvir Ahmed',
       k044: 'Nexa ID · face check done',
       k045: 'Active',
-      k046: 'Valid until 5 March 2027 · auto-renew (chosen at purchase)',
+      k046: 'Valid until 19 March 2027 · auto-renew (chosen at purchase)',
       k047: 'Upgrade to Personal — starts now',
       k048: '75 minutes of 1:1 a day. For the 15 days left this month you pay only the difference:',
       k049: 'Upgrade',
@@ -497,16 +499,17 @@ class Component extends DCLogic {
       k108: 'Ready within a few minutes (default) · link in your notifications · valid 7 days (default) · asks for a one-time code'
     };
     L.hi = {
+      min_u: 'मिनट',
       lgp_h: 'भाषा',
       lgp_n: 'हिन्दी',
-      k001: 'वॉलेट और Daily Pass, नोटिफ़िकेशन, प्रोफ़ाइल और प्लान, सेटिंग्स',
-      k002: 'वॉलेट और Daily Pass',
+      k001: 'अतिरिक्त मिनट और Daily Pass, नोटिफ़िकेशन, प्रोफ़ाइल और प्लान, सेटिंग्स',
+      k002: 'अतिरिक्त मिनट और Daily Pass',
       k003: 'पीछे',
-      k004: 'वॉलेट',
-      k005: 'बैलेंस',
+      k004: 'अतिरिक्त मिनट',
+      k005: 'अतिरिक्त 1:1 मिनट बाकी (गणित)',
       k006: 'अतिरिक्त 1:1 कॉल · ৳1/मिनट · रात 1–7 बजे ৳0.80/मिनट (सिर्फ़ वयस्क कोर्स में, 20% छूट)',
-      k007: 'टॉप-अप',
-      k008: '24 घंटे · 20 मिनट 1:1 Nexa Teacher + Nexa Co-Teacher + मॉक टेस्ट',
+      k007: 'अतिरिक्त मिनट ख़रीदें — अभी भुगतान, कोई बैलेंस नहीं रखा जाता',
+      k008: '24 घंटे · 20 मिनट 1:1 Nexa Tutor + Nexa Co-Tutor + मॉक टेस्ट',
       k009: 'bKash से ख़रीदो',
       k010: 'मासिक ख़र्च की सीमा',
       k011: 'सीमा तुम्हारे अभिभावक ने तय की है',
@@ -514,10 +517,10 @@ class Component extends DCLogic {
       k013: '1:1 कॉल · गणित',
       k014: 'सबसे अच्छे प्रश्न का इनाम',
       k015: '+10 मिनट',
-      k016: 'टॉप-अप · Nagad',
+      k016: 'अतिरिक्त 60 मिनट ख़रीदे · Nagad',
       k017: 'सीखने की गारंटी:',
-      k018: 'अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट वॉलेट क्रेडिट के रूप में लौटा देते हैं [हमारे वकील से पुष्टि होनी है]।',
-      k019: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; क्रेडिट 6 महीने चलता है। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',
+      k018: 'अगर 4 हफ़्ते नियमित पढ़ाई (हफ़्ते में 3 या ज़्यादा सेशन) के बाद भी आपकी महारत नहीं बढ़ती, तो हम वे मिनट आपके कोर्स में वापस जोड़ देते हैं [हमारे वकील से पुष्टि होनी है]।',
+      k019: 'हर पेड प्लान पर लागू (Free Beta, Free Trial, फ़्री टियर या Daily Pass पर नहीं)। यह आपकी, आपके अभिभावक की और आपके शिक्षक की नियमित भागीदारी पर निर्भर है; मिनट 6 महीने मान्य रहते हैं। पूरे नियम सीखने की गारंटी की शर्तें में हैं [हमारे वकील से पुष्टि होनी है]।',
       k020: 'नोटिफ़िकेशन',
       k021: 'सब पढ़ लिए',
       k022: 'बैच क्लास 30 मिनट में',
@@ -530,21 +533,21 @@ class Component extends DCLogic {
       k029: '3 दिन पहले की ग़लतियाँ फिर देखो',
       k030: 'सुबह 9:00',
       k031: '6 मिनट लौटाए गए',
-      k032: 'कल सर्वर की समस्या से Nexa Teacher रुक गया था',
+      k032: 'कल सर्वर की समस्या से Nexa Tutor रुक गया था',
       k033: 'कल',
       k034: 'शनिवार: इस हफ़्ते का लक्ष्य तय करो',
       k035: 'शुक्रवार का 2 मिनट का रिफ़्लेक्शन बाकी',
       k036: '2 दिन पहले',
       k037: 'ऑटो-रिन्यू हो गया — भुगतान सफल',
-      k038: 'पहली कोशिश विफल हुई; 3 दिन की छूट-अवधि में दोबारा कोशिश सफल। प्लान रुका नहीं — 5 मार्च 2027 तक वैध।',
-      k039: '5 फ़रवरी',
+      k038: 'पहली कोशिश विफल हुई; 3 दिन की छूट-अवधि में दोबारा कोशिश सफल। प्लान रुका नहीं — 19 मार्च 2027 तक वैध।',
+      k039: '19 फ़रवरी',
       k040: 'प्रोफ़ाइल और प्लान',
       k041: 'प्रोफ़ाइल',
       k042: 'त',
       k043: 'तनवीर अहमद',
       k044: 'Nexa ID · चेहरा जाँच पूरी',
       k045: 'चालू',
-      k046: '5 मार्च 2027 तक वैध · ऑटो-रिन्यू (ख़रीदते समय चुना)',
+      k046: '19 मार्च 2027 तक वैध · ऑटो-रिन्यू (ख़रीदते समय चुना)',
       k047: 'Personal में अपग्रेड — अभी चालू',
       k048: 'रोज़ 75 मिनट 1:1। इस महीने के बचे 15 दिनों के लिए सिर्फ़ अंतर दो:',
       k049: 'अपग्रेड करो',
@@ -609,16 +612,17 @@ class Component extends DCLogic {
       k108: 'कुछ मिनटों में तैयार (डिफ़ॉल्ट) · लिंक तुम्हारी नोटिफ़िकेशन में · 7 दिन मान्य (डिफ़ॉल्ट) · एक बार का कोड माँगेगा'
     };
     L.ur = {
+      min_u: 'منٹ',
       lgp_h: 'زبان',
       lgp_n: 'اردو',
-      k001: 'والیٹ اور Daily Pass، نوٹیفکیشنز، پروفائل اور پلان، ترتیبات',
-      k002: 'والیٹ اور Daily Pass',
+      k001: 'اضافی منٹ اور Daily Pass، نوٹیفکیشنز، پروفائل اور پلان، ترتیبات',
+      k002: 'اضافی منٹ اور Daily Pass',
       k003: 'پیچھے',
-      k004: 'والیٹ',
-      k005: 'بیلنس',
+      k004: 'اضافی منٹ',
+      k005: 'اضافی 1:1 منٹ باقی (ریاضی)',
       k006: 'اضافی ' + M('1:1') + ' کال · ' + M('৳1/') + 'منٹ · رات ' + M('1–7') + ' بجے ' + M('৳0.80/') + 'منٹ (صرف بالغوں کے کورس میں، ' + M('20%') + ' رعایت)',
-      k007: 'ٹاپ اپ',
-      k008: M('24') + ' گھنٹے · ' + M('20') + ' منٹ ' + M('1:1 Nexa Teacher + Nexa Co-Teacher +') + ' ماک ٹیسٹ',
+      k007: 'اضافی منٹ خریدیں — ابھی ادائیگی، کوئی بیلنس نہیں رکھا جاتا',
+      k008: M('24') + ' گھنٹے · ' + M('20') + ' منٹ ' + M('1:1 Nexa Tutor + Nexa Co-Tutor +') + ' ماک ٹیسٹ',
       k009: 'bKash سے خریدو',
       k010: 'ماہانہ خرچ کی حد',
       k011: 'حد تمہارے سرپرست نے طے کی ہے',
@@ -626,10 +630,10 @@ class Component extends DCLogic {
       k013: M('1:1') + ' کال · ریاضی',
       k014: 'بہترین سوال کا انعام',
       k015: M('+10') + ' منٹ',
-      k016: 'ٹاپ اپ · Nagad',
+      k016: 'اضافی 60 منٹ خریدے · Nagad',
       k017: 'سیکھنے کی ضمانت:',
-      k018: 'اگر ' + M('4') + ' ہفتے باقاعدہ پڑھائی (ہفتے میں ' + M('3') + ' یا زیادہ سیشن)' + ' کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ والیٹ کریڈٹ کے طور پر واپس کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔',
-      k019: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ کریڈٹ ⁦6⁩ ماہ تک رہتا ہے۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k018: 'اگر ' + M('4') + ' ہفتے باقاعدہ پڑھائی (ہفتے میں ' + M('3') + ' یا زیادہ سیشن)' + ' کے بعد بھی آپ کی مہارت نہیں بڑھتی، تو ہم وہ منٹ آپ کے کورس میں واپس شامل کر دیتے ہیں [ہمارے وکیل سے تصدیق باقی]۔',
+      k019: 'ہر پیڈ پلان پر لاگو (Free Beta، Free Trial، فری ٹیئر یا Daily Pass پر نہیں)۔ یہ آپ کی، آپ کے سرپرست کی اور آپ کے استاد کی باقاعدہ شرکت پر منحصر ہے؛ منٹ ⁦6⁩ ماہ تک کارآمد رہتے ہیں۔ مکمل قواعد سیکھنے کی ضمانت کی شرائط میں ہیں [ہمارے وکیل سے تصدیق باقی]۔',
       k020: 'نوٹیفکیشن',
       k021: 'سب پڑھ لیے',
       k022: 'بیچ کلاس ' + M('30') + ' منٹ میں',
@@ -642,21 +646,21 @@ class Component extends DCLogic {
       k029: M('3') + ' دن پہلے کی غلطیاں دوبارہ دیکھو',
       k030: 'صبح ' + M('9:00'),
       k031: M('6') + ' منٹ واپس کیے گئے',
-      k032: 'کل سرور کے مسئلے سے Nexa Teacher رک گیا تھا',
+      k032: 'کل سرور کے مسئلے سے Nexa Tutor رک گیا تھا',
       k033: 'کل',
       k034: 'ہفتہ: اس ہفتے کا ہدف طے کرو',
       k035: 'جمعہ کا ' + M('2') + ' منٹ کا ریفلیکشن باقی',
       k036: M('2') + ' دن پہلے',
       k037: 'آٹو رینیو ہو گیا — ادائیگی کامیاب',
-      k038: 'پہلی کوشش ناکام ہوئی؛ ' + M('3') + ' دن کی رعایتی مدت میں دوبارہ کوشش کامیاب۔ پلان نہیں رکا — ' + M('5') + ' مارچ ' + M('2027') + ' تک کارآمد۔',
-      k039: M('5') + ' فروری',
+      k038: 'پہلی کوشش ناکام ہوئی؛ ' + M('3') + ' دن کی رعایتی مدت میں دوبارہ کوشش کامیاب۔ پلان نہیں رکا — ' + M('19') + ' مارچ ' + M('2027') + ' تک کارآمد۔',
+      k039: M('19') + ' فروری',
       k040: 'پروفائل اور پلان',
       k041: 'پروفائل',
       k042: 'ت',
       k043: 'تنویر احمد',
       k044: 'Nexa ID · چہرے کی جانچ مکمل',
       k045: 'فعال',
-      k046: M('5') + ' مارچ ' + M('2027') + ' تک کارآمد · آٹو رینیو (خریدتے وقت چنا)',
+      k046: M('19') + ' مارچ ' + M('2027') + ' تک کارآمد · آٹو رینیو (خریدتے وقت چنا)',
       k047: 'Personal میں اپ گریڈ — ابھی چالو',
       k048: 'روز ' + M('75') + ' منٹ ' + M('1:1') + '۔ اس مہینے کے باقی ' + M('15') + ' دنوں کے لیے صرف فرق دو:',
       k049: 'اپ گریڈ کرو',
@@ -721,16 +725,17 @@ class Component extends DCLogic {
       k108: 'چند منٹ میں تیار (ڈیفالٹ) · لنک تمہاری نوٹیفکیشن میں · ⁦7⁩ دن کارآمد (ڈیفالٹ) · ایک بار کا کوڈ مانگے گا'
     };
     L.ar = {
+      min_u: 'دقيقة',
       lgp_h: 'اللغة',
       lgp_n: 'العربية',
-      k001: 'المحفظة وDaily Pass، الإشعارات، الملف الشخصي والخطة، الإعدادات',
-      k002: 'المحفظة وDaily Pass',
+      k001: 'دقائق إضافية وDaily Pass، الإشعارات، الملف الشخصي والخطة، الإعدادات',
+      k002: 'دقائق إضافية وDaily Pass',
       k003: 'رجوع',
-      k004: 'المحفظة',
-      k005: 'الرصيد',
+      k004: 'دقائق إضافية',
+      k005: 'دقائق 1:1 الإضافية المتبقية (الرياضيات)',
       k006: 'مكالمة ' + M('1:1') + ' إضافية · ' + M('৳1/') + 'دقيقة · من ' + M('1') + ' إلى ' + M('7') + ' صباحًا ' + M('৳0.80/') + 'دقيقة (لدورات البالغين فقط، خصم ' + M('20%') + ')',
-      k007: 'الشحن',
-      k008: M('24') + ' ساعة · ' + M('20') + ' دقيقة ' + M('1:1') + ' مع Nexa Teacher + Nexa Co-Teacher + اختبارات تجريبية',
+      k007: 'اشترِ دقائق إضافية — يُدفع الآن، ولا يُحتفظ بأي رصيد',
+      k008: M('24') + ' ساعة · ' + M('20') + ' دقيقة ' + M('1:1') + ' مع Nexa Tutor + Nexa Co-Tutor + اختبارات تجريبية',
       k009: 'اشترِ عبر bKash',
       k010: 'حدّ الإنفاق الشهري',
       k011: 'ولي أمرك هو من حدّد هذا الحد',
@@ -738,10 +743,10 @@ class Component extends DCLogic {
       k013: 'مكالمة ' + M('1:1') + ' · الرياضيات',
       k014: 'مكافأة أفضل سؤال',
       k015: M('+10') + ' دقائق',
-      k016: 'شحن · Nagad',
+      k016: 'شراء 60 دقيقة إضافية · Nagad',
       k017: 'ضمان التعلّم:',
-      k018: 'إذا لم يتحسّن إتقانك بعد ' + M('4') + ' أسابيع من الدراسة المنتظمة (' + M('3') + ' جلسات أو أكثر أسبوعيًا)' + '، نعيد إليك الدقائق رصيدًا في المحفظة [بانتظار تأكيد محامينا].',
-      k019: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ ويبقى الرصيد صالحًا ⁦6⁩ أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',
+      k018: 'إذا لم يتحسّن إتقانك بعد ' + M('4') + ' أسابيع من الدراسة المنتظمة (' + M('3') + ' جلسات أو أكثر أسبوعيًا)' + '، نعيد إضافة الدقائق إلى دورتك [بانتظار تأكيد محامينا].',
+      k019: 'يسري على كل الخطط المدفوعة (لا يشمل Free Beta وFree Trial والباقة المجانية وDaily Pass). ويعتمد على مشاركتك المنتظمة ومشاركة وليّ أمرك ومعلّمك؛ وتبقى الدقائق صالحة ⁦6⁩ أشهر. القواعد الكاملة في شروط ضمان التعلّم [بانتظار تأكيد محامينا].',
       k020: 'الإشعارات',
       k021: 'تمّت قراءة الكل',
       k022: 'الحصة الجماعية بعد ' + M('30') + ' دقيقة',
@@ -754,21 +759,21 @@ class Component extends DCLogic {
       k029: 'راجع أخطاء ما قبل ' + M('3') + ' أيام',
       k030: M('9:00') + ' صباحًا',
       k031: 'أُعيدت ' + M('6') + ' دقائق',
-      k032: 'توقف Nexa Teacher أمس بسبب مشكلة في الخادم',
+      k032: 'توقف Nexa Tutor أمس بسبب مشكلة في الخادم',
       k033: 'أمس',
       k034: 'السبت: حدّد هدف هذا الأسبوع',
       k035: 'تأمّل الجمعة لمدة دقيقتين لم يُنجز بعد',
       k036: 'قبل يومين',
       k037: 'تم التجديد التلقائي — الدفع ناجح',
-      k038: 'فشلت المحاولة الأولى؛ ونجحت إعادة المحاولة خلال مهلة ' + M('3') + ' أيام. لم تتوقف الخطة — سارية حتى ' + M('5') + ' مارس ' + M('2027') + '.',
-      k039: M('5') + ' فبراير',
+      k038: 'فشلت المحاولة الأولى؛ ونجحت إعادة المحاولة خلال مهلة ' + M('3') + ' أيام. لم تتوقف الخطة — سارية حتى ' + M('19') + ' مارس ' + M('2027') + '.',
+      k039: M('19') + ' فبراير',
       k040: 'الملف الشخصي والخطة',
       k041: 'الملف',
       k042: 'ت',
       k043: 'تنوير أحمد',
       k044: 'Nexa ID · اكتمل فحص الوجه',
       k045: 'مفعّلة',
-      k046: 'سارية حتى ' + M('5') + ' مارس ' + M('2027') + ' · تجديد تلقائي (اختير عند الشراء)',
+      k046: 'سارية حتى ' + M('19') + ' مارس ' + M('2027') + ' · تجديد تلقائي (اختير عند الشراء)',
       k047: 'الترقية إلى Personal — تبدأ الآن',
       k048: M('75') + ' دقيقة ' + M('1:1') + ' يوميًا. للأيام الخمسة عشر المتبقية من هذا الشهر تدفع الفرق فقط:',
       k049: 'رقِّ الخطة',
@@ -833,16 +838,17 @@ class Component extends DCLogic {
       k108: 'جاهز خلال دقائق قليلة (افتراضي) · الرابط في إشعاراتك · صالح ⁦7⁩ أيام (افتراضي) · يطلب رمزًا لمرة واحدة'
     };
     L.fr = {
+      min_u: 'min',
       lgp_h: 'Langue',
       lgp_n: 'Français',
-      k001: 'Portefeuille et Daily Pass, notifications, profil et formule, réglages',
-      k002: 'Portefeuille et Daily Pass',
+      k001: 'Minutes en plus et Daily Pass, notifications, profil et formule, réglages',
+      k002: 'Minutes en plus et Daily Pass',
       k003: 'Retour',
-      k004: 'Portefeuille',
-      k005: 'Solde',
+      k004: 'Minutes en plus',
+      k005: 'Minutes 1:1 en plus restantes (Maths)',
       k006: 'Appel 1:1 en plus · ৳1/min · de 1 h à 7 h ৳0,80/min (cours adultes seulement, −20 %)',
-      k007: 'Recharger',
-      k008: '24 heures · 20 min de 1:1 Nexa Teacher + Nexa Co-Teacher + examens blancs',
+      k007: 'Acheter des minutes en plus — payées maintenant, aucun solde conservé',
+      k008: '24 heures · 20 min de 1:1 Nexa Tutor + Nexa Co-Tutor + examens blancs',
       k009: 'Acheter avec bKash',
       k010: 'Plafond de dépenses mensuel',
       k011: 'C’est ton parent qui a fixé le plafond',
@@ -850,10 +856,10 @@ class Component extends DCLogic {
       k013: 'Appel 1:1 · Maths',
       k014: 'Récompense meilleure question',
       k015: '+10 minutes',
-      k016: 'Recharge · Nagad',
+      k016: '60 min en plus achetées · Nagad',
       k017: 'Garantie d’apprentissage :',
-      k018: 'si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous te rendons les minutes en crédit sur ton portefeuille [à confirmer avec notre avocat].',
-      k019: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; le crédit est valable 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',
+      k018: 'si ta maîtrise ne progresse pas après 4 semaines d’étude régulière (3 séances ou plus par semaine), nous rajoutons les minutes à ton cours [à confirmer avec notre avocat].',
+      k019: 'S’applique à toutes les formules payantes (pas à la Free Beta, au Free Trial, à l’offre gratuite ni au Daily Pass). Elle dépend de ta participation régulière, de celle de ton parent et de ton enseignant ; les minutes restent valables 6 mois. Règles complètes dans les Conditions de la garantie d’apprentissage [à confirmer avec notre avocat].',
       k020: 'Notifications',
       k021: 'Tout marquer lu',
       k022: 'Cours en groupe dans 30 minutes',
@@ -866,21 +872,21 @@ class Component extends DCLogic {
       k029: 'Revois les erreurs d’il y a 3 jours',
       k030: '9 h 00',
       k031: '6 minutes rendues',
-      k032: 'Nexa Teacher s’est arrêté hier à cause d’un problème de serveur',
+      k032: 'Nexa Tutor s’est arrêté hier à cause d’un problème de serveur',
       k033: 'Hier',
       k034: 'Samedi : fixe l’objectif de la semaine',
       k035: 'La réflexion de 2 minutes de vendredi reste à faire',
       k036: 'Il y a 2 jours',
       k037: 'Renouvellement auto effectué — paiement réussi',
-      k038: 'Le premier essai a échoué ; un nouvel essai pendant les 3 jours de grâce a réussi. La formule ne s’est pas arrêtée — valable jusqu’au 5 mars 2027.',
-      k039: '5 février',
+      k038: 'Le premier essai a échoué ; un nouvel essai pendant les 3 jours de grâce a réussi. La formule ne s’est pas arrêtée — valable jusqu’au 19 mars 2027.',
+      k039: '19 février',
       k040: 'Profil et formule',
       k041: 'Profil',
       k042: 'T',
       k043: 'Tanvir Ahmed',
       k044: 'Nexa ID · vérification du visage faite',
       k045: 'Active',
-      k046: 'Valable jusqu’au 5 mars 2027 · renouvellement auto (choisi à l’achat)',
+      k046: 'Valable jusqu’au 19 mars 2027 · renouvellement auto (choisi à l’achat)',
       k047: 'Passer à Personal — démarre maintenant',
       k048: '75 min de 1:1 par jour. Pour les 15 jours restants du mois, tu paies seulement la différence :',
       k049: 'Passer à la formule',

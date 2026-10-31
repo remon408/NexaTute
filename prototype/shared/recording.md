@@ -98,7 +98,7 @@ Consent pending reason (sample, under-18 batch): en "Waiting for your guardian�
 | r_na | Unavailable | পাওয়া যাচ্ছে না | उपलब्ध नहीं | دستیاب نہیں | غير متاح | Indisponible |
 
 Prefix for the report chip: en "Report:" · bn "রিপোর্ট:" · hi "रिपोर्ट:" · ur "رپورٹ:" · ar "التقرير:" · fr "Rapport :"
-A class report exists even when the class was not recorded (it is built from the Nexa Teacher’s own text and the quiz results);
+A class report exists even when the class was not recorded (it is built from the Nexa Tutor’s own text and the quiz results);
 "Updated" = a later review or practice changed the report (review history is append-only).
 
 ## 5. Library naming format (memory, exact)
@@ -115,7 +115,7 @@ Retention: deleted automatically 12 months after the class; switch "Keep until m
 | lib_keep_rule | Deleted automatically 12 months after the class | ক্লাসের 12 মাস পরে নিজে থেকে মুছে যায় | क्लास के 12 महीने बाद अपने आप मिट जाती है | کلاس کے 12 مہینے بعد خود بخود مٹ جاتی ہے | تُحذف تلقائيًا بعد 12 شهرًا من الحصة | Supprimé automatiquement 12 mois après le cours |
 | lib_keep_sw | Keep until my course ends | কোর্স শেষ হওয়া পর্যন্ত রাখো | कोर्स ख़त्म होने तक रखो | کورس ختم ہونے تک رکھو | احتفظ بها حتى نهاية دورتي | Garder jusqu’à la fin de mon cours |
 | lib_rep | 2nd class on this topic · linked to your review history | এই টপিকের 2য় ক্লাস · তোমার রিভিউ ইতিহাসের সঙ্গে যুক্ত | इस टॉपिक की 2री क्लास · तुम्हारे रिव्यू इतिहास से जुड़ी | اس ٹاپک کی دوسری کلاس · تمہاری ریویو ہسٹری سے جڑی | الحصة الثانية في هذا الموضوع · مرتبطة بسجل مراجعتك | 2e cours sur ce thème · lié à ton historique de révision |
-| lib_tutor | Nexa Teacher (AI) | Nexa Teacher (AI) | Nexa Teacher (AI) | Nexa Teacher (AI) | Nexa Teacher (AI) | Nexa Teacher (AI) |
+| lib_tutor | Nexa Tutor (AI) | Nexa Tutor (AI) | Nexa Tutor (AI) | Nexa Tutor (AI) | Nexa Tutor (AI) | Nexa Tutor (AI) |
 
 Learner = Tanvir (SSC 2027, batch B-07). X02 is set on Sun 6 Dec 2026 (Free Beta 20 Nov – 9 Dec 2026; the code keeps "today = 20" and shows day numbers 14 days earlier), so every sample class is on or before 6 Dec 2026.
 Months: bn ডিসেম্বর / নভেম্বর · hi दिसंबर / नवंबर · ur دسمبر / نومبر · ar ديسمبر / نوفمبر · fr déc. / nov. (short) / décembre / novembre. "1:1" and "B-07" stay Latin.
