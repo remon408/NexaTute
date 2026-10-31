@@ -15,6 +15,7 @@ Reply to the owner (Md Raju Ahmed) in Bengali, plain and short. Follow `CLAUDE.m
 6. Shared patterns: `docs/tasks/sharing-and-connectors.md`, `language-prompt.md`, `internal-video-service.md`, `free-class-links.md`, `marketing-automation.md`, `rename-nexa-tutor.md`.
 
 ## Step 1 — plan (Opus), show the owner before building
+- Start from the feature catalogue made on 31 Oct: `docs/features/motion-studio-features_2026-10-31.md` (≈200 features, prices recomputed, newest decisions applied, open items marked "(to confirm)"). Check it, do not rebuild it from scratch.
 - List every approved Motion Studio feature and place it on boards by area (customer app, ordering and pricing, editor/timeline, voices/characters/clone studio, AI Co-Director, delivery and sharing, account/plans/refunds, safety and consent, admin pages 1–19 + Co-Admin, landing page, legal pages links, "Free class" / "Learn to do this" links into NexaTute, blog "Motion Notes").
 - HANDOVER asked for four phases (launch / first 3 months / 2027 / later) while the owner also wants all features in the Free Beta. Show the owner the list and ask how to handle that before building.
 - Board plan with sizes: every board ≤ 1,800,000 bytes **with all 10 languages** (bn, en, hi, ur, ar, fr, ja, de, zh, ko); keep each board well below (≈1.3 MB) so it never needs splitting later.
