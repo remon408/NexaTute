@@ -1,0 +1,753 @@
+REMONLOGIC
+
+AI Reliability &
+Self-Correction Platform
+
+RASP — Deep Review, Gap Analysis & Updated Master Specification
+
+NexaTute • Remon Motion Studio • NexaLogicDev
+
+Consolidated Edition | 31 October 2026
+
+Status: Planning specification — requires architecture, implementation,
+testing and governance approval
+
+Document Control
+
+Executive Summary
+
+এই document-এ RASP-এর পূর্ববর্তী feature proposals পুনরায় audit করে একটি
+consolidated specification তৈরি করা হয়েছে। RASP-কে শুধু AI answer
+correction utility হিসেবে নয়, RemonLogic-এর shared AI quality, safety,
+evidence, governance and operations layer হিসেবে ধরা হয়েছে। একটি shared
+core থাকবে; কিন্তু প্রতিটি product-এর data, permissions, validators, risk
+policies ও review workflows আলাদা থাকবে।
+
+-   Core pattern: Generate → Validate → Score/Risk → Correct/Retry →
+    Re-validate → Release/Abstain/Review → Record.
+
+-   Critical design principle: model-generated confidence বা model
+    agreement একা correctness-এর proof নয়.
+
+-   High-risk actions must be gated by deterministic authorization and
+    explicit policy; the model cannot grant itself permissions.
+
+-   Knowledge/correction memory must be governed, scoped, versioned,
+    auditable, reversible and deletion-aware.
+
+-   Production readiness requires measurable acceptance criteria, test
+    evidence, owners, incident procedures and rollback—not merely a
+    complete feature list.
+
+Key Deep-Review Findings
+
+-   Earlier proposals covered most functional feature categories, but
+    several operational controls needed explicit specification:
+    threat-model test coverage, server-side authorization, tenant
+    isolation testing, deletion propagation, multimodal evaluation,
+    idempotency, release-bundle compatibility, evaluation-data
+    contamination controls, queue/capacity protection and human-review
+    QA.
+
+-   Some features overlapped and should be consolidated into shared
+    modules rather than implemented as separate systems.
+
+-   RASP must be risk-based: low-risk tasks can use lightweight checks;
+    consequential or irreversible actions require stronger evidence,
+    human approval or safe abstention.
+
+-   Framework alignment is a design aid; it does not establish legal
+    compliance or certification.
+
+1. Goals, Non-Goals & Design Principles
+
+1.1 Goals
+
+-   Reduce factual, reasoning, calculation, policy, code and
+    media-quality errors before delivery.
+
+-   Detect unsupported claims, contradictory output, stale evidence and
+    requirement violations.
+
+-   Correct outputs through bounded, observable retries and independent
+    evidence/tools.
+
+-   Safely abstain, disclose uncertainty or escalate when verification
+    is insufficient.
+
+-   Protect users, tenants, data, tools, production systems and
+    model/provider integrations.
+
+-   Measure quality, cost, latency, incidents and correction
+    effectiveness over time.
+
+-   Support shared reliability capabilities without merging
+    product-specific knowledge or permissions.
+
+1.2 Non-goals / explicit limitations
+
+-   RASP cannot guarantee zero errors or absolute truth.
+
+-   Self-critique, model consensus or confidence scores are not
+    sufficient proof of correctness.
+
+-   Correction memory/RAG is not equivalent to model-weight training or
+    permanent learning.
+
+-   Automated validators cannot replace qualified human review for every
+    high-impact or context-sensitive decision.
+
+-   Framework mapping does not automatically mean certification,
+    regulatory compliance or legal approval.
+
+1.3 Design principles
+
+-   Fail safely for high-risk actions; degrade gracefully for low-risk
+    informational tasks.
+
+-   Least privilege, tenant isolation, data minimization and privacy by
+    design.
+
+-   Independent verification where practical; deterministic tools for
+    calculable/structured claims.
+
+-   Evidence and provenance attached to decisions; no fabricated
+    citations or evidence.
+
+-   Version everything that can affect output: model, prompt, tools,
+    policy, source/index, validator and workflow.
+
+-   Human accountability for consequential decisions, publication and
+    production deployment.
+
+-   Measure false acceptance and false rejection, not only aggregate
+    accuracy.
+
+2. Target Architecture
+
+Logical architecture (implementation may be distributed):
+
+1.  Product entry points: NexaTute, Remon Motion Studio, NexaLogicDev;
+    each passes tenant, user, product, task type and policy context.
+
+2.  Identity & Policy Gateway: authenticate user/service, authorize
+    requested action, enforce product/tenant boundaries and policy
+    version.
+
+3.  Task Orchestrator: classify task/risk, select workflow, apply
+    latency/cost/retry budgets and route to approved models/tools.
+
+4.  Generation Layer: model/provider/local inference or product-specific
+    generation service.
+
+5.  Evidence & Retrieval Layer: approved source registry, scoped
+    retrieval, freshness/provenance and access controls.
+
+6.  Verification Layer: independent validators, deterministic tools,
+    task-specific quality checks and adversarial checks.
+
+7.  Decision Gate: release, correct/retry, disclose limitations,
+    abstain, escalate or block action.
+
+8.  Human Review Workbench: reviewer assignment, evidence, diffs,
+    approval, appeal and audit.
+
+9.  Reliability Data Plane: versioned correction registry, test
+    datasets, event/audit store, metrics and incident records.
+
+10. Operations Plane: monitoring, SLOs, capacity controls, incident
+    response, disaster recovery, release management and rollback.
+
+2.1 Shared core vs product plugins
+
+2.2 Data isolation rules
+
+-   Separate product and tenant namespaces for retrieval indexes,
+    correction records, caches, logs, files and tool credentials.
+
+-   Cross-product sharing limited to approved generic rules, validator
+    code, anonymized metrics and reusable test methods.
+
+-   Never transfer private prompts, student records, customer assets,
+    proprietary code or project-specific corrections across products
+    without explicit authorization and lawful basis.
+
+-   Every retrieval/tool operation must re-check authorization at
+    execution time; prior conversation context is not permission.
+
+-   Deletion/update requests must propagate to derived indexes/caches
+    where applicable, with backup retention exceptions documented.
+
+3. Consolidated Feature Modules
+
+3.1 Verification & Self-Correction Engine
+
+-   Claim-level verification for factual statements and critical
+    assertions.
+
+-   Independent verification strategy: alternate source, deterministic
+    tool, separate verifier or different method where appropriate.
+
+-   Contradiction, unsupported-claim, hallucinated-citation and
+    instruction-compliance checks.
+
+-   Math/science checks using symbolic/numeric tools, units and domain
+    constraints.
+
+-   Bounded retry/correction loop with retry, time, token, tool and cost
+    budgets.
+
+-   Failure policy: release with caveat, abstain, safe fallback, human
+    review or block.
+
+-   Correction diff and concise explanation of what changed, where
+    possible.
+
+-   Quality scorecard with calibrated metrics; avoid presenting score as
+    guarantee.
+
+3.2 Evidence, Knowledge & Decision Integrity
+
+-   Source trust registry: authority, jurisdiction, date, version,
+    license, access rights and freshness.
+
+-   Evidence traceability from claim/output to source/tool/test
+    evidence.
+
+-   Knowledge ingestion validation, malware/content screening,
+    quarantine and approval.
+
+-   Data poisoning and prompt-injection screening for retrieved content
+    and datasets.
+
+-   Correction registry with scope, author, reviewer, validity, expiry,
+    provenance and rollback.
+
+-   Approved requirement/decision registry with authority hierarchy and
+    conflict detection.
+
+-   Change-impact analysis when requirements, source editions, policies
+    or models change.
+
+-   Lineage and deletion propagation across documents, embeddings,
+    caches, derived artifacts and correction records.
+
+3.3 AI Security & Agent Control Plane
+
+-   Threat model and attack test suite mapped to applicable OWASP GenAI
+    risks.
+
+-   Server-side authorization and policy decision point for every
+    tool/action.
+
+-   Prompt-injection defenses for user input, retrieved documents, code
+    comments, media metadata and tool outputs.
+
+-   Least privilege, tool allowlists, scoped credentials, sandboxing and
+    network egress controls.
+
+-   Sensitive information/secret detection and redaction; secure
+    logging.
+
+-   Excessive agency controls: action limits, approval gates, loop
+    guards and execution budgets.
+
+-   Output handling validation before HTML, SQL, shell, code, API or
+    downstream system use.
+
+-   Vector/embedding access controls, tenant filters, integrity checks
+    and retrieval attack testing.
+
+-   Security red-team exercises, vulnerability disclosure and
+    remediation workflow.
+
+3.4 Model, Provider & Release Governance
+
+-   Model/provider registry with capabilities, limitations, version,
+    region, data terms, license and approval status.
+
+-   Model/prompt/tool/policy/source-index/validator version binding in
+    release manifest.
+
+-   Shadow testing, canary rollout, A/B evaluation and automatic/manual
+    rollback.
+
+-   Provider outage, deprecation, terms change and exit/migration plan.
+
+-   Model drift, behavior change and quality regression detection.
+
+-   Release readiness gates based on risk, test coverage, security and
+    SLOs.
+
+-   Supply-chain provenance for models, packages, datasets, containers
+    and generated artifacts.
+
+3.5 Evaluation, Benchmark & Quality Analytics
+
+-   Golden datasets with ownership, versioning, representativeness and
+    privacy review.
+
+-   Dataset contamination/leakage controls; holdout and adversarial test
+    sets.
+
+-   Task-specific metrics: factuality, groundedness, reasoning, code
+    test pass, media quality, safety, latency and cost.
+
+-   False-acceptance and false-rejection rates; confidence calibration
+    and uncertainty evaluation.
+
+-   Regression tests for every approved correction and resolved
+    incident.
+
+-   Bias/fairness evaluation across language, locale, accessibility and
+    relevant user groups.
+
+-   Coverage map: identify output types, risks and products lacking
+    validators/tests.
+
+-   Quality SLOs and release thresholds defined per product/task/risk.
+
+3.6 Human Review, Appeals & Accountability
+
+-   Role-based reviewer permissions, assignment, SLA, escalation and
+    workload limits.
+
+-   Double review or specialist review for designated critical cases.
+
+-   Reviewer calibration, disagreement resolution, audit and quality
+    sampling.
+
+-   User/teacher/customer appeal and dispute workflow with status and
+    resolution record.
+
+-   Approval expiry/re-review triggers when source, model, policy or
+    output changes.
+
+-   Human approval for consequential decisions, public release of
+    sensitive content and production deployment.
+
+-   Clear separation between AI suggestion, reviewer decision and
+    authorized action.
+
+3.7 Reliability Operations & Resilience
+
+-   Observability: quality, error classes, latency, cost, retries,
+    fallbacks, queue depth and validator health.
+
+-   Incident lifecycle: detect, classify, contain, investigate, correct,
+    communicate and prevent recurrence.
+
+-   Root-cause analysis and duplicate-error clustering.
+
+-   Capacity controls: per-tenant quotas, concurrency, backpressure,
+    priority queues and overload mode.
+
+-   Idempotency keys and workflow state management for retries,
+    duplicate delivery and partial failures.
+
+-   Disaster recovery: backups, restore tests, RTO/RPO targets, failover
+    and continuity runbooks.
+
+-   Kill switch, safe mode, feature flags and rollback controls.
+
+-   Privacy-safe logs, retention/deletion, access audit and export
+    controls.
+
+3.8 Transparency, Accessibility & User Experience
+
+-   AI-generated/corrected content disclosure where appropriate and
+    required.
+
+-   Clear statuses: checking, verified against defined checks, needs
+    review, or unable to verify.
+
+-   Explain limitations without implying certainty; accessible language
+    and UI.
+
+-   Accessibility testing for captions, screen readers, keyboard
+    navigation, contrast and readable explanations.
+
+-   User feedback/report-error flow and controlled conversion into test
+    cases.
+
+-   Reliability Passport: model/version, evidence references,
+    validators, correction events, approval and limitations—redacted for
+    privacy.
+
+4. Product-Specific Requirements
+
+4.1 NexaTute — AI Tutor
+
+-   Curriculum registry by board, syllabus, class/grade, subject, exam
+    year and textbook edition.
+
+-   Answer grounding and source edition checks; distinguish official
+    source from supplementary explanation.
+
+-   Step-by-step math/science verification, unit checks and independent
+    answer-key cross-check.
+
+-   Marking-rubric and exam-answer completeness validation; flag
+    ambiguous questions.
+
+-   Misconception detection and pedagogical quality: explain at learner
+    level, then check understanding.
+
+-   Teacher override with versioning, approval, scope, expiry and
+    rollback.
+
+-   Student privacy, age-appropriate safety, role-based access,
+    retention/deletion and recording-consent integration.
+
+-   Learning fairness across languages, proficiency levels and
+    accessibility needs.
+
+-   Live classroom latency budget, mic/request-to-speak controls, safe
+    fallback and escalation for urgent/sensitive queries.
+
+-   AI must not autonomously make consequential grading/eligibility
+    decisions without defined human oversight.
+
+4.2 Remon Motion Studio
+
+-   Creative brief compliance: requested scenes, duration, aspect ratio,
+    style, brand rules and deliverables.
+
+-   Script fact-checking and narrative/storyboard continuity graph.
+
+-   Character, location, prop, chronology and visual-style consistency
+    checks.
+
+-   Audio, voice, lip-sync, subtitle, timing and audio-video
+    synchronization validation.
+
+-   Render integrity: playable file, duration, resolution, frame/audio
+    integrity, checksum and delivery verification.
+
+-   Scene-level retry/re-render, retry budget and cost-aware repair.
+
+-   Asset/voice/likeness consent, license, provenance, scope and
+    revocation tracking.
+
+-   Content-plan policy enforcement; Islamic content requires configured
+    religious-source/attribution checks.
+
+-   Sensitive/public content review, approval state,
+    disclosure/watermark policy where applicable, takedown workflow.
+
+-   Client revision memory scoped to project/customer; no uncontrolled
+    global memory transfer.
+
+4.3 NexaLogicDev
+
+-   Requirements-to-test traceability and architecture rule checks.
+
+-   Sandboxed build/test with resource limits, restricted network egress
+    and no default production credentials.
+
+-   Compile/lint/unit/integration/security tests and failure-driven
+    patch loop.
+
+-   Dependency, license, secret, vulnerability and supply-chain scans.
+
+-   API/schema/contract compatibility and database migration dry-run.
+
+-   Patch diff, impact summary, test evidence and rollback plan.
+
+-   Signed/provenance-tracked build artifacts and reproducible-build
+    checks where feasible.
+
+-   Human authorization for deployment, destructive migrations and
+    sensitive changes.
+
+-   Canary deployment, post-deployment monitoring, rollback and
+    vulnerability response workflow.
+
+5. Output-Type Verification Matrix
+
+6. Risk Tiers & Decision Policy
+
+Risk tier is contextual. A task can be escalated based on uncertainty,
+audience size, reversibility, sensitive data, impact or source conflict.
+
+7. Reliability Passport & Audit Events
+
+For each material output/action, store a privacy-minimized record
+containing:
+
+-   Output/task ID; product/tenant reference; timestamp; risk tier;
+    policy version.
+
+-   Model/provider/version; prompt/workflow version; tool/validator
+    versions.
+
+-   Evidence/source references and freshness metadata—not unnecessary
+    raw private content.
+
+-   Validation results, failures, retries, uncertainty decision and
+    final disposition.
+
+-   Human reviewer/approval identity and decision where applicable.
+
+-   Artifact checksum/provenance for code/media outputs.
+
+-   Known limitations, incident linkage and rollback/deletion status.
+
+Records must be access-controlled, tamper-evident where feasible,
+retention-limited and exportable for authorized audit.
+
+8. Metrics & Acceptance Criteria
+
+Do not use one global 'accuracy' number. Define targets by product, task
+type, risk tier and language. Establish baseline first, then approve
+targets.
+
+Numeric targets should be set after baseline evaluation and
+load/security testing; do not invent universal targets before workload
+characterization.
+
+9. Implementation Roadmap
+
+10. Required Deliverables Before Production
+
+-   ☐ RASP Master Requirements & Verification Matrix
+
+-   ☐ System architecture and trust-boundary/data-flow diagrams
+
+-   ☐ Threat model and security test plan
+
+-   ☐ Product/tenant data classification and access-control matrix
+
+-   ☐ Source registry and knowledge-ingestion policy
+
+-   ☐ Model/provider registry and approved-use policy
+
+-   ☐ Risk-tier and output-release policy
+
+-   ☐ Product-specific validator specifications
+
+-   ☐ Evaluation dataset governance and benchmark report
+
+-   ☐ Quality SLOs, capacity plan and cost ceilings
+
+-   ☐ Human review, appeal and escalation SOP
+
+-   ☐ Incident response, customer communication and vulnerability
+    response plans
+
+-   ☐ Backup/restore, failover and disaster recovery test evidence
+
+-   ☐ Release manifest, canary, rollback and kill-switch runbooks
+
+-   ☐ Privacy retention/deletion propagation test evidence
+
+-   ☐ Accessibility and multilingual quality test report
+
+-   ☐ Legal/compliance applicability assessment for target jurisdictions
+
+-   ☐ Independent security/quality review and production sign-off
+
+11. Framework Mapping & Reference Sources
+
+Use these references as control-design inputs. They are not substitutes
+for legal review, certification audits or product-specific risk
+assessment.
+
+-   NIST AI RMF Generative AI Profile (NIST AI 600-1, 2024; page
+    updated 2026) — Generative AI lifecycle risks, measurement and
+    risk-management actions.
+    https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+
+-   NIST AI Risk Management Framework — Voluntary AI risk management
+    framework; NIST notes the AI RMF is under revision.
+    https://www.nist.gov/itl/ai-risk-management-framework
+
+-   ISO/IEC 42001:2023 — AI management systems — Organizational AI
+    management system requirements and continual improvement.
+    https://www.iso.org/standard/42001
+
+-   OWASP GenAI LLM Top 10 2026 — LLM application security threat
+    categories and mitigations.
+    https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/
+
+-   OWASP GenAI Security Project 2026 announcement — 2026 LLM Top 10 and
+    agent-control guidance context.
+    https://genai.owasp.org/2026/09/01/owasp-genai-security-project-unveils-2026-top-10-for-llm-applications-new-agent-control-standard-and-sponsors-as-community-tops-30000-members/
+
+-   NIST Secure Software Development Framework (SSDF) — Secure SDLC,
+    software protection, release provenance and vulnerability response.
+    https://csrc.nist.gov/projects/ssdf
+
+12. Final Audit Conclusion
+
+Deep review অনুযায়ী RASP-এর proposed functional scope comprehensive, কিন্তু
+feature completeness ও production readiness এক নয়। Critical
+additions/updates হলো: explicit threat-model coverage, server-side
+authorization, tenant-isolation tests, data lineage/deletion
+propagation, multimodal evaluation, idempotent workflow recovery,
+release-bundle compatibility, evaluation-data contamination controls,
+queue/capacity protection এবং human-review QA.
+
+Recommendation: এই document-কে planning baseline হিসেবে approve করে
+পরবর্তী deliverable হিসেবে Requirements Traceability Matrix, architecture
+diagrams, threat model, product-specific acceptance tests এবং phased
+implementation plan তৈরি করা। Production approval কেবল measurable test
+evidence, security review, operational drills এবং accountable
+sign-off-এর পর দেওয়া উচিত.
+
+Appendix A — Consolidated Module Map
+
+Field | Value
+
+Document | RASP Deep Review & Updated Master Specification
+
+Version | 1.0 — Consolidated deep-review draft
+
+Date | 31 October 2026
+
+Scope | Shared AI reliability platform for NexaTute, Remon Motion Studio
+and NexaLogicDev
+
+Purpose | Consolidate previous feature proposals, identify gaps, remove
+duplication, define control requirements and implementation acceptance
+criteria
+
+Status | Planning baseline; not a certification, legal opinion, or
+production-readiness attestation
+
+Shared RASP core | Product-specific plugins
+
+Identity/policy integration; task/risk classification; model routing;
+evidence/provenance; verification orchestration; bounded retry/fallback;
+uncertainty/abstention; audit/events; monitoring; release/version
+control; incident workflows. | NexaTute
+curriculum/answer/rubric/learning validators; Motion Studio
+script/storyboard/visual/audio/render/rights validators; NexaLogicDev
+compile/test/security/schema/deployment validators.
+
+Output type | Minimum checks | Failure behavior
+
+Text / factual answer | Claim evidence, source freshness, contradiction,
+instruction compliance, uncertainty | Correct, caveat, abstain or review
+
+Math / science | Independent calculation, symbolic/numeric check, units,
+assumptions | Recompute; disclose assumptions; escalate if unresolved
+
+Image | Prompt compliance, safety, text/logo checks, artifact
+inspection, rights metadata | Regenerate targeted region/asset or block
+
+Audio / voice | Transcript, timing, integrity, consent/voice policy,
+intelligibility | Reprocess/re-record or review
+
+Video | Scene continuity, render integrity, audio/subtitle sync,
+rights/policy, final artifact check | Targeted re-render; hold
+publication
+
+Code | Compile, tests, static/security checks, dependency/license,
+sandbox behavior | Patch/test again; block deploy on failure
+
+Structured data/API | Schema, types, required fields, ranges, contract
+validation | Reject/repair payload
+
+Live voice/classroom | Latency, interruption handling, safety,
+authorization, fallback | Short safe response, defer or escalate
+
+Tool/action | Authorization, arguments/schema, side effects,
+idempotency, confirmation rules | Block or request approval
+
+Tier | Examples | Required controls | Decision
+
+T0 — Low | Formatting, low-impact transformations | Basic schema/policy
+checks; bounded cost | Release if checks pass
+
+T1 — Moderate | General factual explanations, routine content |
+Evidence/validator checks; uncertainty handling | Release, correct or
+caveat
+
+T2 — High | Educational answer keys, public-facing media, substantial
+code changes | Independent checks, provenance, enhanced tests; review as
+policy requires | Release only after defined gate
+
+T3 — Critical / irreversible | Production deploy, destructive migration,
+sensitive publication, consequential decision | Explicit authorization,
+specialist/human approval, audit, rollback/compensation plan | Fail
+closed if controls unavailable
+
+Metric family | Examples | Acceptance rule
+
+Quality | Claim verification pass, groundedness, task success, code test
+pass, render QA | Target and test dataset defined per task; no release
+if critical threshold fails
+
+Safety/security | Policy violations, unauthorized tool actions, secret
+leakage, red-team success rate | Zero unauthorized critical actions in
+defined test suite; unresolved critical findings block release
+
+Calibration | Confidence calibration, false acceptance, false rejection,
+abstention quality | Thresholds defined and validated on held-out
+representative data
+
+Operations | P95/P99 latency, availability, queue depth, retry/fallback
+rate | Product-specific SLOs and overload behavior tested
+
+Economics | Cost per verified task, retry cost, human review cost |
+Budget ceilings and alert thresholds; no unbounded loops
+
+Governance | Review SLA, audit completeness, deletion propagation,
+incident closure | Evidence-based completion; sampled audits and
+periodic review
+
+Phase | Deliverables | Exit criteria
+
+Phase 0 — Foundation | Requirements matrix, threat model, data
+classification, product risk tiers, architecture decisions | Owners
+assigned; scope and policies approved
+
+Phase 1 — Core MVP | Policy gateway integration, orchestrator, basic
+validators, bounded retries, abstention, audit events | Golden tests
+pass; tenant isolation and failure paths tested
+
+Phase 2 — Product plugins | NexaTute, Motion Studio, NexaLogicDev
+validators and review workflows | Product acceptance tests pass;
+latency/cost baselines established
+
+Phase 3 — Operations | Dashboards, SLOs, incidents, queue controls,
+idempotency, DR/restore drills | Operational runbooks and restore
+evidence approved
+
+Phase 4 — Release governance | Version bundles, shadow/canary, rollback,
+provider registry, supply-chain provenance | Release/rollback rehearsed;
+critical security findings closed
+
+Phase 5 — Advanced governance | Fairness, appeals, privacy lifecycle,
+dataset governance, external audit mapping | Evidence pack and periodic
+review cadence established
+
+Module | Primary responsibility
+
+M1 Verification & Correction | Detect, verify, correct, abstain or
+escalate
+
+M2 Evidence & Knowledge Integrity | Trusted sources, provenance,
+governed corrections and decisions
+
+M3 AI Security & Agent Control | Threat controls, permissions, tool
+safety, sandboxing
+
+M4 Model & Release Governance | Model/provider lifecycle, version
+bundles, rollout and rollback
+
+M5 Evaluation & Quality Intelligence | Benchmarks, calibration,
+fairness, regression and metrics
+
+M6 Human Review & Accountability | Review, approval, appeals,
+accountability
+
+M7 Reliability Operations & Resilience | Observability, incidents,
+capacity, idempotency, DR
+
+M8 Transparency & Accessibility | User notices, limitations,
+accessibility and reliability passport
+
+M9 Product Quality Plugins | NexaTute, Motion Studio and NexaLogicDev
+domain validators
