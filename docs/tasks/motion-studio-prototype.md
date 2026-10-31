@@ -12,7 +12,8 @@ Reply to the owner (Md Raju Ahmed) in Bengali, plain and short. Follow `CLAUDE.m
 3. `docs/memory/areas/motion-studio.md` and `docs/memory/preferences.md`.
 4. Motion Studio Blueprint Edition 1.0 sources `docs/motion-studio/source/` — written BEFORE most 30–31 Oct decisions; it still contains wallet, old GPU split, old dates and old refund text. Use it for features and screens, never for those outdated rules.
 5. `docs/reviews/motion-studio_gaps_admin_2026-10-30.md` (19 admin pages + central settings registry), `docs/reviews/gap_solutions_2026-10-30.md`, and the 31 Oct audit `docs/reviews/audit_2026-10-31/` (contradictions.md and crossproduct.md list every Motion Studio item that is out of date or missing a cross-product connection).
-6. Shared patterns: `docs/tasks/sharing-and-connectors.md`, `language-prompt.md`, `internal-video-service.md`, `free-class-links.md`, `marketing-automation.md`, `rename-nexa-tutor.md`.
+6. Nexa Verify (RASP, 31 Oct): build the Motion Studio "AI Quality (Nexa Verify)" admin page per `docs/tasks/nexa-verify-admin.md`, and the user-facing statuses.
+7. Shared patterns: `docs/tasks/sharing-and-connectors.md`, `language-prompt.md`, `internal-video-service.md`, `free-class-links.md`, `marketing-automation.md`, `rename-nexa-tutor.md`.
 
 ## Step 1 — plan (Opus), show the owner before building
 - Start from the feature catalogue made on 31 Oct: `docs/features/motion-studio-features_2026-10-31.md` (≈200 features, prices recomputed, newest decisions applied, open items marked "(to confirm)"). Check it, do not rebuild it from scratch.
