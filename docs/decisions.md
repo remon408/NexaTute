@@ -224,7 +224,7 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
 - 31 Oct 2026 (owner): no separate GPU server for Nexa Verify now; reserve 1–2 cards on A6000 #1/#2 (same cluster) and measure Nexa Verify's GPU use in the December 1-week test; a separate server (same provider/location, preferably 48 GB) only if the test shows it competes with live classes at peak.
 - 31 Oct 2026 (owner): every Nexa Verify control is in the admin panel of all three products (risk tiers, validators, thresholds, retries, human-review rules and sample %, sources, corrections, appeals, user labels, models/releases, GPU/cost, privacy/retention, kill switches, audit log) — all "(default)", two-person approval, logged; safety/legal floors protected (3 approvals + 24 h). Spec: docs/tasks/nexa-verify-admin.md.
 - 31 Oct 2026 (owner, answers to the text-fix pass questions):
-  1. Prototype demo clock: update it to fit the new dates (Claude default, editable: demo "today" moves from Mon 1 Feb 2027 to Mon 8 Mar 2027 — same distance after the paid launch, weekdays unchanged; sample dates move with it).
+  1. Prototype demo clock: update it to fit the new dates — see the next line (25 Dec 2026).
   2. "Nexa Co-Teacher Pass" is renamed "Nexa Co-Tutor Pass".
   3. "AI Teacher Live" is renamed "AI Tutor Live".
   4. PlayBoom starts together with NexaTute: Free Beta 15 Jan 2027, paid 5 Feb 2027 (replaces Free Beta 1–20 Jan, paid 21 Jan).
@@ -235,3 +235,4 @@ Not offered: AI "customer testimonial" videos; lyric videos of other people's so
   9. Extra minutes on the Account screen are sold per order in 30 / 60 / 120-minute packs (৳1/min default), controlled from the admin panel.
   10. Affiliate period 12 months (replaces 3 months), controlled from the admin panel.
   Also approved: Free Beta shown as "15 Jan – 4 Feb 2027 (21 days)"; USD shown to the cent as "$7.73" in all languages; admin GPU samples recomputed to the real fleet; X14's outside-AI fallback for under-18 requests is removed (own servers only).
+- 31 Oct 2026 (owner, replaces the NexaTute dates of the 31 Oct line "Free Beta 15 Jan 2027, paid 5 Feb 2027"): NexaTute paid version starts Fri 15 Jan 2027; Free Beta comes before it — Fri 25 Dec 2026 to Thu 14 Jan 2027 (21 days); the prototype demo "today" is Fri 25 Dec 2026 (first day of the Free Beta). PlayBoom follows the same dates. Claude defaults (editable): 2-week closed pilot Fri 11 – Thu 24 Dec 2026; Nexa Speak app public release with the paid version on 15 Jan 2027 (to confirm). Remon Motion Studio and NexaLogicDev dates unchanged.
